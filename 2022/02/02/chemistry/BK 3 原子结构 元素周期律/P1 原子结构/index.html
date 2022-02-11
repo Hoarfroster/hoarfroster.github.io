@@ -24,7 +24,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"hoarfroster.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"hoarfroster.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="知识聚焦 一、原子结构  认识过程  公元前5世纪，古希腊哲学家德谟克利特提出古代原子学说，认为万物都由间断的、不可分的原子构成。 19世纪初，英国学者道尔顿的近代原子学说和意大利学者阿伏伽德罗的分子学说。 1904年英国学者汤姆生的“葡萄干面包式”原子结构模型。 1911年英国学者卢瑟福的行星式原子结构模型。 1913年丹麦学者玻尔的轨道原子结构模型。 20世纪初现代学者的量子力学原子结构模型。">
@@ -227,6 +227,7 @@ mjx-container[display="true"] + br {
 
   <div class="site-nav-right">
     <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
@@ -261,11 +262,39 @@ mjx-container[display="true"] + br {
     <a href="/archives/" rel="section">Archives</a>
 
   </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger">
+          Search
+        </a>
+      </li>
   </ul>
 </nav>
 
 
 
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
 
 </div>
     </header>
@@ -335,7 +364,19 @@ mjx-container[display="true"] + br {
                 </span>
             </span>
 
-          
+          <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+              <span>824</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+              <span>1 mins.</span>
+            </span>
 
         </div>
       </header>
@@ -346,7 +387,7 @@ mjx-container[display="true"] + br {
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="知识聚焦-4">知识聚焦</h2>
+        <h2 id="知识聚焦-6">知识聚焦</h2>
 <h3 id="一、原子结构">一、原子结构</h3>
 <blockquote>
 <h1>认识过程</h1>
@@ -473,7 +514,7 @@ mjx-container[display="true"] + br {
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9F%A5%E8%AF%86%E8%81%9A%E7%84%A6-4"><span class="nav-number">1.</span> <span class="nav-text">知识聚焦</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%8E%9F%E5%AD%90%E7%BB%93%E6%9E%84"><span class="nav-number">1.1.</span> <span class="nav-text">一、原子结构</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number"></span> <span class="nav-text">认识过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E8%83%BD%E5%B1%82%E3%80%81%E8%83%BD%E7%BA%A7%E4%B8%8E%E6%8E%92%E5%B8%83%E8%A7%84%E5%88%99"><span class="nav-number">0.1.</span> <span class="nav-text">二、能层、能级与排布规则</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E8%83%BD%E7%BA%A7%E3%80%81%E8%83%BD%E5%B1%82"><span class="nav-number">0.1.1.</span> <span class="nav-text">1. 能级、能层</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9E%84%E9%80%A0%E5%8E%9F%E7%90%86%E5%B9%B6%E4%B8%8D%E6%98%AF%E5%8E%9F%E7%90%86%EF%BC%8C%E8%80%8C%E6%98%AF%E8%A7%84%E5%BE%8B%EF%BC%8C%E6%98%AF%E5%8E%9F%E5%AD%90%E5%92%8C%E7%94%B5%E5%AD%90%E5%90%8C%E6%97%B6%E9%80%92%E5%A2%9E%E6%97%B6%E7%9A%84%E8%A7%84%E5%BE%8B%EF%BC%81%E6%89%80%E4%BB%A5%E5%A4%B1%E5%8E%BB%E7%94%B5%E5%AD%90%E5%BD%A2%E6%88%90%E7%A6%BB%E5%AD%90%E7%9A%84%E6%97%B6%E5%80%99%E5%B9%B6%E4%B8%8D%E6%98%AF%E6%8C%89%E7%85%A7%E8%BF%99%E4%B8%AA%E6%9D%A5%E5%A4%B1%E5%8E%BB%E7%9A%84%EF%BC%81"><span class="nav-number">0.1.1.1.</span> <span class="nav-text">构造原理并不是原理，而是规律，是原子和电子同时递增时的规律！所以失去电子形成离子的时候并不是按照这个来失去的！</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%89%B9%E6%AE%8A%E8%A7%84%E5%BE%8B"><span class="nav-number">0.1.2.</span> <span class="nav-text">特殊规律</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E7%94%B5%E5%AD%90%E4%BA%91%E5%92%8C%E7%94%B5%E5%AD%90%E8%BD%A8%E9%81%93"><span class="nav-number">0.1.3.</span> <span class="nav-text">2. 电子云和电子轨道</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E5%8E%9F%E7%90%86%E8%A7%84%E5%88%99"><span class="nav-number">0.1.4.</span> <span class="nav-text">3. 原理规则</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9F%A5%E8%AF%86%E8%81%9A%E7%84%A6-6"><span class="nav-number">1.</span> <span class="nav-text">知识聚焦</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%8E%9F%E5%AD%90%E7%BB%93%E6%9E%84"><span class="nav-number">1.1.</span> <span class="nav-text">一、原子结构</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number"></span> <span class="nav-text">认识过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E8%83%BD%E5%B1%82%E3%80%81%E8%83%BD%E7%BA%A7%E4%B8%8E%E6%8E%92%E5%B8%83%E8%A7%84%E5%88%99"><span class="nav-number">0.1.</span> <span class="nav-text">二、能层、能级与排布规则</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E8%83%BD%E7%BA%A7%E3%80%81%E8%83%BD%E5%B1%82"><span class="nav-number">0.1.1.</span> <span class="nav-text">1. 能级、能层</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9E%84%E9%80%A0%E5%8E%9F%E7%90%86%E5%B9%B6%E4%B8%8D%E6%98%AF%E5%8E%9F%E7%90%86%EF%BC%8C%E8%80%8C%E6%98%AF%E8%A7%84%E5%BE%8B%EF%BC%8C%E6%98%AF%E5%8E%9F%E5%AD%90%E5%92%8C%E7%94%B5%E5%AD%90%E5%90%8C%E6%97%B6%E9%80%92%E5%A2%9E%E6%97%B6%E7%9A%84%E8%A7%84%E5%BE%8B%EF%BC%81%E6%89%80%E4%BB%A5%E5%A4%B1%E5%8E%BB%E7%94%B5%E5%AD%90%E5%BD%A2%E6%88%90%E7%A6%BB%E5%AD%90%E7%9A%84%E6%97%B6%E5%80%99%E5%B9%B6%E4%B8%8D%E6%98%AF%E6%8C%89%E7%85%A7%E8%BF%99%E4%B8%AA%E6%9D%A5%E5%A4%B1%E5%8E%BB%E7%9A%84%EF%BC%81"><span class="nav-number">0.1.1.1.</span> <span class="nav-text">构造原理并不是原理，而是规律，是原子和电子同时递增时的规律！所以失去电子形成离子的时候并不是按照这个来失去的！</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%89%B9%E6%AE%8A%E8%A7%84%E5%BE%8B"><span class="nav-number">0.1.2.</span> <span class="nav-text">特殊规律</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E7%94%B5%E5%AD%90%E4%BA%91%E5%92%8C%E7%94%B5%E5%AD%90%E8%BD%A8%E9%81%93"><span class="nav-number">0.1.3.</span> <span class="nav-text">2. 电子云和电子轨道</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E5%8E%9F%E7%90%86%E8%A7%84%E5%88%99"><span class="nav-number">0.1.4.</span> <span class="nav-text">3. 原理规则</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -552,6 +593,16 @@ mjx-container[display="true"] + br {
     <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Hoarfroster</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="Symbols count total">34k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">1:01</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT</a>
   </div>
@@ -650,6 +701,10 @@ window.addEventListener('pjax:success', () => {
   
 
 
+
+
+  
+<script src="/js/local-search.js"></script>
 
 
 
