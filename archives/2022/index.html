@@ -17,7 +17,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"hoarfroster.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"hoarfroster.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta property="og:type" content="website">
@@ -72,11 +72,123 @@
   </style>
 </noscript>
 
-</head>
+<style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
   <div class="container use-motion">
-    <div class="headband"></div>
+    <!--<div class="headband"></div>-->
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
@@ -176,14 +288,34 @@
 
       <div class="post-meta">
         <time itemprop="dateCreated"
-              datetime="2022-02-11T18:55:58+08:00"
+              datetime="2022-02-11T19:01:06+08:00"
               content="2022-02-11">
           02-11
         </time>
       </div>
 
       <div class="post-title">
-          <a class="post-title-link" href="/2022/02/11/chemistry/BK%2011%20%E6%9C%89%E6%9C%BA%E5%8F%8D%E5%BA%94%20%E9%AB%98%E5%88%86%E5%AD%90%E5%8C%96%E5%90%88%E7%89%A9/P2%20%E5%90%88%E6%88%90%E9%AB%98%E5%88%86%E5%AD%90/" itemprop="url">
+          <a class="post-title-link" href="/2022/02/11/Readme/" itemprop="url">
+            <span itemprop="name">Untitled</span>
+          </a>
+      </div>
+
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <div class="post-meta">
+        <time itemprop="dateCreated"
+              datetime="2022-02-11T19:01:06+08:00"
+              content="2022-02-11">
+          02-11
+        </time>
+      </div>
+
+      <div class="post-title">
+          <a class="post-title-link" href="/2022/02/11/TODO/" itemprop="url">
             <span itemprop="name">Untitled</span>
           </a>
       </div>
@@ -204,6 +336,26 @@
 
       <div class="post-title">
           <a class="post-title-link" href="/2022/02/11/chemistry/BK%2011%20%E6%9C%89%E6%9C%BA%E5%8F%8D%E5%BA%94%20%E9%AB%98%E5%88%86%E5%AD%90%E5%8C%96%E5%90%88%E7%89%A9/P1%20%E7%94%9F%E7%89%A9%E5%A4%A7%E5%88%86%E5%AD%90/" itemprop="url">
+            <span itemprop="name">Untitled</span>
+          </a>
+      </div>
+
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <div class="post-meta">
+        <time itemprop="dateCreated"
+              datetime="2022-02-11T18:55:58+08:00"
+              content="2022-02-11">
+          02-11
+        </time>
+      </div>
+
+      <div class="post-title">
+          <a class="post-title-link" href="/2022/02/11/chemistry/BK%2011%20%E6%9C%89%E6%9C%BA%E5%8F%8D%E5%BA%94%20%E9%AB%98%E5%88%86%E5%AD%90%E5%8C%96%E5%90%88%E7%89%A9/P2%20%E5%90%88%E6%88%90%E9%AB%98%E5%88%86%E5%AD%90/" itemprop="url">
             <span itemprop="name">Untitled</span>
           </a>
       </div>
@@ -324,46 +476,6 @@
 
       <div class="post-title">
           <a class="post-title-link" href="/2022/02/11/chemistry/BK%206%20%E5%8C%96%E5%AD%A6%E5%8F%8D%E5%BA%94%E9%80%9F%E7%8E%87%E3%80%81%E6%96%B9%E5%90%91%E4%B8%8E%E5%8C%96%E5%AD%A6%E5%B9%B3%E8%A1%A1/P1%20%E5%8C%96%E5%AD%A6%E5%8F%8D%E5%BA%94%E9%80%9F%E7%8E%87%E3%80%81%E6%96%B9%E5%90%91/" itemprop="url">
-            <span itemprop="name">Untitled</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-02-11T18:55:58+08:00"
-              content="2022-02-11">
-          02-11
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/02/11/chemistry/BK%206%20%E5%8C%96%E5%AD%A6%E5%8F%8D%E5%BA%94%E9%80%9F%E7%8E%87%E3%80%81%E6%96%B9%E5%90%91%E4%B8%8E%E5%8C%96%E5%AD%A6%E5%B9%B3%E8%A1%A1/P2%20%E5%8C%96%E5%AD%A6%E5%B9%B3%E8%A1%A1/" itemprop="url">
-            <span itemprop="name">Untitled</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-02-11T18:55:58+08:00"
-              content="2022-02-11">
-          02-11
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/02/11/chemistry/BK%207%20%E7%94%B5%E8%A7%A3%E8%B4%A8%E6%BA%B6%E6%B6%B2/P3%20%E9%9A%BE%E6%BA%B6%E7%94%B5%E8%A7%A3%E8%B4%A8%E7%9A%84%E6%BA%B6%E8%A7%A3%E5%B9%B3%E8%A1%A1/" itemprop="url">
             <span itemprop="name">Untitled</span>
           </a>
       </div>
@@ -496,7 +608,7 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Hoarfroster</span>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT</a>
   </div>
 
         
@@ -514,6 +626,7 @@
 
   
   <script src="/lib/anime.min.js"></script>
+  <script src="/lib/pjax/pjax.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 
@@ -527,6 +640,65 @@
 
 <script src="/js/next-boot.js"></script>
 
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
 
 
 
@@ -546,9 +718,11 @@
 
 
 
+    <div id="pjax">
   
 
   
 
+    </div>
 </body>
 </html>
