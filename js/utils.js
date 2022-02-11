@@ -212,7 +212,7 @@ NexT.utils = {
     document.querySelectorAll('.menu-item').forEach(element => {
       var target = element.querySelector('a[href]');
       if (!target) return;
-      var isSamePath = target.pathname === location.pathname || target.pathname === location.pathname.replace('index.html', '');
+      var isSamePath = target.pathname === location.pathname || target.pathname === location.pathname.replace('index.md', '');
       var isSubPath = !CONFIG.root.startsWith(target.pathname) && location.pathname.startsWith(target.pathname);
       element.classList.toggle('menu-item-active', target.hostname === location.hostname && (isSamePath || isSubPath));
     });
