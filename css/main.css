@@ -1150,8 +1150,9 @@ pre .javascript .function {
   background: var(--color-scale-white);
   position: sticky;
   top: 0;
-  padding-bottom: 8px;
+  padding-bottom: 16px;
   z-index: 1000;
+  box-shadow: 7px 3px 8px 0 rgba(0,0,0,0.063);
 }
 .header-inner {
   margin: 0 auto;
