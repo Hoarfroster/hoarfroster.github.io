@@ -25,7 +25,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"hoarfroster.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":false,"nav":null,"activeClass":"disqus"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"hoarfroster.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqusjs","storage":true,"lazyload":false,"nav":null,"activeClass":"disqusjs"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="知识聚焦 一、元素周期律        定义 元素性质随着元素原子序数的递增而是周期性变化。     实质 元素性质的周期性递变是核外电子排布周期性变化的必然结果   核外电子排布 最外层电子数由1递增至8（若层为最外层，则由1递增至2）而现周期性变化。   原子半径 原子半径由大到小（稀有气体元素除外）呈周期性变化。原子半径由电子层数和核电荷数决定，它是反映结构的一个参考数据。   最高正价 由">
@@ -372,21 +372,7 @@ mjx-container[display="true"] + br {
               </span>
               <span class="post-meta-item-text">Views: </span>
               <span class="firestore-visitors-count"></span>
-            </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2022/02/02/chemistry/BK%203%20%E5%8E%9F%E5%AD%90%E7%BB%93%E6%9E%84%20%E5%85%83%E7%B4%A0%E5%91%A8%E6%9C%9F%E5%BE%8B/P2%20%E5%85%83%E7%B4%A0%E5%91%A8%E6%9C%9F%E5%BE%8B/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/02/02/chemistry/BK 3 原子结构 元素周期律/P2 元素周期律/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
+            </span><br>
             <span class="post-meta-item" title="Symbols count in article">
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
@@ -979,35 +965,21 @@ window.addEventListener('pjax:success', () => {
 
   
 
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/disqusjs@1/dist/disqusjs.css">
+
 <script>
-  function loadCount() {
-    var d = document, s = d.createElement('script');
-    s.src = 'https://hoarfroster.disqus.com/count.js';
-    s.id = 'dsq-count-scr';
-    (d.head || d.body).appendChild(s);
-  }
-  // defer loading until the whole page loading is completed
-  window.addEventListener('load', loadCount, false);
-</script>
-<script>
-  var disqus_config = function() {
-    this.page.url = "https://hoarfroster.github.io/2022/02/02/chemistry/BK%203%20%E5%8E%9F%E5%AD%90%E7%BB%93%E6%9E%84%20%E5%85%83%E7%B4%A0%E5%91%A8%E6%9C%9F%E5%BE%8B/P2%20%E5%85%83%E7%B4%A0%E5%91%A8%E6%9C%9F%E5%BE%8B/";
-    this.page.identifier = "2022/02/02/chemistry/BK 3 原子结构 元素周期律/P2 元素周期律/";
-    this.page.title = "元素周期律";
-    };
-  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
-    if (window.DISQUS) {
-      DISQUS.reset({
-        reload: true,
-        config: disqus_config
-      });
-    } else {
-      var d = document, s = d.createElement('script');
-      s.src = 'https://hoarfroster.disqus.com/embed.js';
-      s.setAttribute('data-timestamp', '' + +new Date());
-      (d.head || d.body).appendChild(s);
-    }
-  });
+NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/disqusjs@1/dist/disqus.js', () => {
+    window.dsqjs = new DisqusJS({
+      api       : 'https://disqus.skk.moe/disqus/' || 'https://disqus.com/api/',
+      apikey    : 'Lo65MITAya5vcdTm6cJ8V5qCBNx3PVErvDOsfJ5tUPtEbw3DMS3EIzEx6vrmTzCN',
+      shortname : 'hoarfroster',
+      url       : "https://hoarfroster.github.io/2022/02/02/chemistry/BK%203%20%E5%8E%9F%E5%AD%90%E7%BB%93%E6%9E%84%20%E5%85%83%E7%B4%A0%E5%91%A8%E6%9C%9F%E5%BE%8B/P2%20%E5%85%83%E7%B4%A0%E5%91%A8%E6%9C%9F%E5%BE%8B/",
+      identifier: "2022/02/02/chemistry/BK 3 原子结构 元素周期律/P2 元素周期律/",
+      title     : "元素周期律",
+    });
+  }, window.DisqusJS);
+});
 </script>
 
     </div>
