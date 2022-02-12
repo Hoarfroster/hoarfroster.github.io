@@ -387,9 +387,9 @@ mjx-container[display="true"] + br {
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="知识聚焦-2">知识聚焦</h2>
-<h3 id="一、合成高分子的基本方法">一、合成高分子的基本方法</h3>
-<h3 id="二、高分子材料">二、高分子材料</h3>
+        <h2 id="知识聚焦">知识聚焦</h2>
+<h3 id="一合成高分子的基本方法">一、合成高分子的基本方法</h3>
+<h3 id="二高分子材料">二、高分子材料</h3>
 <!-- flag of hidden posts -->
     </div>
 
@@ -472,7 +472,7 @@ mjx-container[display="true"] + br {
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9F%A5%E8%AF%86%E8%81%9A%E7%84%A6-2"><span class="nav-text">知识聚焦</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%90%88%E6%88%90%E9%AB%98%E5%88%86%E5%AD%90%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%96%B9%E6%B3%95"><span class="nav-text">一、合成高分子的基本方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E9%AB%98%E5%88%86%E5%AD%90%E6%9D%90%E6%96%99"><span class="nav-text">二、高分子材料</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9F%A5%E8%AF%86%E8%81%9A%E7%84%A6"><span class="nav-text">知识聚焦</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E5%90%88%E6%88%90%E9%AB%98%E5%88%86%E5%AD%90%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%96%B9%E6%B3%95"><span class="nav-text">一、合成高分子的基本方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E9%AB%98%E5%88%86%E5%AD%90%E6%9D%90%E6%96%99"><span class="nav-text">二、高分子材料</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -610,7 +610,7 @@ mjx-container[display="true"] + br {
       }
     }
   </script>
-  <script data-pjax>
+  <script>
     (function() {
       var db = firebase.firestore();
       var articles = db.collection('articles-info');
@@ -651,7 +651,6 @@ mjx-container[display="true"] + br {
 
   
   <script src="/lib/anime.min.js"></script>
-  <script src="/lib/pjax/pjax.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 
@@ -664,65 +663,6 @@ mjx-container[display="true"] + br {
 
 
 <script src="/js/next-boot.js"></script>
-
-  <script>
-var pjax = new Pjax({
-  selectors: [
-    'head title',
-    '#page-configurations',
-    '.content-wrap',
-    '.post-toc-wrap',
-    '.languages',
-    '#pjax'
-  ],
-  switches: {
-    '.post-toc-wrap': Pjax.switches.innerHTML
-  },
-  analytics: false,
-  cacheBust: false,
-  scrollTo : !CONFIG.bookmark.enable
-});
-
-window.addEventListener('pjax:success', () => {
-  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
-    var code = element.text || element.textContent || element.innerHTML || '';
-    var parent = element.parentNode;
-    parent.removeChild(element);
-    var script = document.createElement('script');
-    if (element.id) {
-      script.id = element.id;
-    }
-    if (element.className) {
-      script.className = element.className;
-    }
-    if (element.type) {
-      script.type = element.type;
-    }
-    if (element.src) {
-      script.src = element.src;
-      // Force synchronous loading of peripheral JS.
-      script.async = false;
-    }
-    if (element.dataset.pjax !== undefined) {
-      script.dataset.pjax = '';
-    }
-    if (code !== '') {
-      script.appendChild(document.createTextNode(code));
-    }
-    parent.appendChild(script);
-  });
-  NexT.boot.refresh();
-  // Define Motion Sequence & Bootstrap Motion.
-  if (CONFIG.motion.enable) {
-    NexT.motion.integrator
-      .init()
-      .add(NexT.motion.middleWares.subMenu)
-      .add(NexT.motion.middleWares.postList)
-      .bootstrap();
-  }
-  NexT.utils.updateSidebarPosition();
-});
-</script>
 
 
 
@@ -747,7 +687,6 @@ window.addEventListener('pjax:success', () => {
 
 
 
-    <div id="pjax">
   
 
   
@@ -769,6 +708,5 @@ NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
 });
 </script>
 
-    </div>
 </body>
 </html>

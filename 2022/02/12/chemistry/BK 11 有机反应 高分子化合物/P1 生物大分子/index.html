@@ -388,10 +388,10 @@ mjx-container[display="true"] + br {
 
       
         <h2 id="知识聚焦">知识聚焦</h2>
-<h3 id="一、糖类">一、糖类</h3>
-<h3 id="二、蛋白质">二、蛋白质</h3>
-<h3 id="三、核">三、核</h3>
-<h3 id="四、">四、</h3>
+<h3 id="一糖类">一、糖类</h3>
+<h3 id="二蛋白质">二、蛋白质</h3>
+<h3 id="三核">三、核</h3>
+<h3 id="四">四、</h3>
 <!-- flag of hidden posts -->
     </div>
 
@@ -474,7 +474,7 @@ mjx-container[display="true"] + br {
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9F%A5%E8%AF%86%E8%81%9A%E7%84%A6"><span class="nav-text">知识聚焦</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E7%B3%96%E7%B1%BB"><span class="nav-text">一、糖类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E8%9B%8B%E7%99%BD%E8%B4%A8"><span class="nav-text">二、蛋白质</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E6%A0%B8"><span class="nav-text">三、核</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9B%E3%80%81"><span class="nav-text">四、</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9F%A5%E8%AF%86%E8%81%9A%E7%84%A6"><span class="nav-text">知识聚焦</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E7%B3%96%E7%B1%BB"><span class="nav-text">一、糖类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E8%9B%8B%E7%99%BD%E8%B4%A8"><span class="nav-text">二、蛋白质</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E6%A0%B8"><span class="nav-text">三、核</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9B"><span class="nav-text">四、</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -612,7 +612,7 @@ mjx-container[display="true"] + br {
       }
     }
   </script>
-  <script data-pjax>
+  <script>
     (function() {
       var db = firebase.firestore();
       var articles = db.collection('articles-info');
@@ -653,7 +653,6 @@ mjx-container[display="true"] + br {
 
   
   <script src="/lib/anime.min.js"></script>
-  <script src="/lib/pjax/pjax.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 
@@ -666,65 +665,6 @@ mjx-container[display="true"] + br {
 
 
 <script src="/js/next-boot.js"></script>
-
-  <script>
-var pjax = new Pjax({
-  selectors: [
-    'head title',
-    '#page-configurations',
-    '.content-wrap',
-    '.post-toc-wrap',
-    '.languages',
-    '#pjax'
-  ],
-  switches: {
-    '.post-toc-wrap': Pjax.switches.innerHTML
-  },
-  analytics: false,
-  cacheBust: false,
-  scrollTo : !CONFIG.bookmark.enable
-});
-
-window.addEventListener('pjax:success', () => {
-  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
-    var code = element.text || element.textContent || element.innerHTML || '';
-    var parent = element.parentNode;
-    parent.removeChild(element);
-    var script = document.createElement('script');
-    if (element.id) {
-      script.id = element.id;
-    }
-    if (element.className) {
-      script.className = element.className;
-    }
-    if (element.type) {
-      script.type = element.type;
-    }
-    if (element.src) {
-      script.src = element.src;
-      // Force synchronous loading of peripheral JS.
-      script.async = false;
-    }
-    if (element.dataset.pjax !== undefined) {
-      script.dataset.pjax = '';
-    }
-    if (code !== '') {
-      script.appendChild(document.createTextNode(code));
-    }
-    parent.appendChild(script);
-  });
-  NexT.boot.refresh();
-  // Define Motion Sequence & Bootstrap Motion.
-  if (CONFIG.motion.enable) {
-    NexT.motion.integrator
-      .init()
-      .add(NexT.motion.middleWares.subMenu)
-      .add(NexT.motion.middleWares.postList)
-      .bootstrap();
-  }
-  NexT.utils.updateSidebarPosition();
-});
-</script>
 
 
 
@@ -749,7 +689,6 @@ window.addEventListener('pjax:success', () => {
 
 
 
-    <div id="pjax">
   
 
   
@@ -771,6 +710,5 @@ NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
 });
 </script>
 
-    </div>
 </body>
 </html>

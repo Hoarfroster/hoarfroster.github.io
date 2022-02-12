@@ -372,8 +372,8 @@ mjx-container[display="true"] + br {
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1>Under Construction List</h1>
-<h2 id="Chemistry">Chemistry</h2>
+        <h1 id="under-construction-list">Under Construction List</h1>
+<h2 id="chemistry">Chemistry</h2>
 <ul>
 <li>P2 物质的聚集状态与晶体结构 =&gt; 一、物质的聚集状态</li>
 </ul>
@@ -454,7 +454,7 @@ mjx-container[display="true"] + br {
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">Under Construction List</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Chemistry"><span class="nav-text">Chemistry</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#under-construction-list"><span class="nav-text">Under Construction List</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#chemistry"><span class="nav-text">Chemistry</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -592,7 +592,7 @@ mjx-container[display="true"] + br {
       }
     }
   </script>
-  <script data-pjax>
+  <script>
     (function() {
       var db = firebase.firestore();
       var articles = db.collection('articles-info');
@@ -633,7 +633,6 @@ mjx-container[display="true"] + br {
 
   
   <script src="/lib/anime.min.js"></script>
-  <script src="/lib/pjax/pjax.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 
@@ -646,65 +645,6 @@ mjx-container[display="true"] + br {
 
 
 <script src="/js/next-boot.js"></script>
-
-  <script>
-var pjax = new Pjax({
-  selectors: [
-    'head title',
-    '#page-configurations',
-    '.content-wrap',
-    '.post-toc-wrap',
-    '.languages',
-    '#pjax'
-  ],
-  switches: {
-    '.post-toc-wrap': Pjax.switches.innerHTML
-  },
-  analytics: false,
-  cacheBust: false,
-  scrollTo : !CONFIG.bookmark.enable
-});
-
-window.addEventListener('pjax:success', () => {
-  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
-    var code = element.text || element.textContent || element.innerHTML || '';
-    var parent = element.parentNode;
-    parent.removeChild(element);
-    var script = document.createElement('script');
-    if (element.id) {
-      script.id = element.id;
-    }
-    if (element.className) {
-      script.className = element.className;
-    }
-    if (element.type) {
-      script.type = element.type;
-    }
-    if (element.src) {
-      script.src = element.src;
-      // Force synchronous loading of peripheral JS.
-      script.async = false;
-    }
-    if (element.dataset.pjax !== undefined) {
-      script.dataset.pjax = '';
-    }
-    if (code !== '') {
-      script.appendChild(document.createTextNode(code));
-    }
-    parent.appendChild(script);
-  });
-  NexT.boot.refresh();
-  // Define Motion Sequence & Bootstrap Motion.
-  if (CONFIG.motion.enable) {
-    NexT.motion.integrator
-      .init()
-      .add(NexT.motion.middleWares.subMenu)
-      .add(NexT.motion.middleWares.postList)
-      .bootstrap();
-  }
-  NexT.utils.updateSidebarPosition();
-});
-</script>
 
 
 
@@ -729,7 +669,6 @@ window.addEventListener('pjax:success', () => {
 
 
 
-    <div id="pjax">
   
 
   
@@ -751,6 +690,5 @@ NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
 });
 </script>
 
-    </div>
 </body>
 </html>
