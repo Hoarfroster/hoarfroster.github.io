@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 6.0.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/avatar.png" color="#222">
 
 <link rel="stylesheet" href="/css/main.css">
 
@@ -21,6 +21,7 @@
     });
   }
 </script>
+<script async src="/js/cursor.js"></script>
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
@@ -314,7 +315,7 @@ mjx-container[display="true"] + br {
   <div class="post-block">
     <div class="posts-collapse">
       <div class="collection-title">
-        <span class="collection-header">Um..! 20 posts in total. Keep on posting.</span>
+        <span class="collection-header">Um..! 16 posts in total. Keep on posting.</span>
       </div>
 
       
@@ -394,8 +395,8 @@ mjx-container[display="true"] + br {
       </div>
 
       <div class="post-title">
-          <a class="post-title-link" href="/2022/01/31/chemistry/BK%206%20%E5%8C%96%E5%AD%A6%E5%8F%8D%E5%BA%94%E9%80%9F%E7%8E%87%E3%80%81%E6%96%B9%E5%90%91%E4%B8%8E%E5%8C%96%E5%AD%A6%E5%B9%B3%E8%A1%A1/P2%20%E5%8C%96%E5%AD%A6%E5%B9%B3%E8%A1%A1/" itemprop="url">
-            <span itemprop="name">化学平衡</span>
+          <a class="post-title-link" href="/2022/01/31/chemistry/BK%206%20%E5%8C%96%E5%AD%A6%E5%8F%8D%E5%BA%94%E9%80%9F%E7%8E%87%E3%80%81%E6%96%B9%E5%90%91%E4%B8%8E%E5%8C%96%E5%AD%A6%E5%B9%B3%E8%A1%A1/P1%20%E5%8C%96%E5%AD%A6%E5%8F%8D%E5%BA%94%E9%80%9F%E7%8E%87%E3%80%81%E6%96%B9%E5%90%91/" itemprop="url">
+            <span itemprop="name">化学反应速率、方向</span>
           </a>
       </div>
 
@@ -414,8 +415,8 @@ mjx-container[display="true"] + br {
       </div>
 
       <div class="post-title">
-          <a class="post-title-link" href="/2022/01/31/chemistry/BK%206%20%E5%8C%96%E5%AD%A6%E5%8F%8D%E5%BA%94%E9%80%9F%E7%8E%87%E3%80%81%E6%96%B9%E5%90%91%E4%B8%8E%E5%8C%96%E5%AD%A6%E5%B9%B3%E8%A1%A1/P1%20%E5%8C%96%E5%AD%A6%E5%8F%8D%E5%BA%94%E9%80%9F%E7%8E%87%E3%80%81%E6%96%B9%E5%90%91/" itemprop="url">
-            <span itemprop="name">化学反应速率、方向</span>
+          <a class="post-title-link" href="/2022/01/31/chemistry/BK%206%20%E5%8C%96%E5%AD%A6%E5%8F%8D%E5%BA%94%E9%80%9F%E7%8E%87%E3%80%81%E6%96%B9%E5%90%91%E4%B8%8E%E5%8C%96%E5%AD%A6%E5%B9%B3%E8%A1%A1/P2%20%E5%8C%96%E5%AD%A6%E5%B9%B3%E8%A1%A1/" itemprop="url">
+            <span itemprop="name">化学平衡</span>
           </a>
       </div>
 
@@ -536,7 +537,7 @@ mjx-container[display="true"] + br {
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-count">16</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -603,7 +604,7 @@ mjx-container[display="true"] + br {
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">34k</span>
+    <span title="Symbols count total">33k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
@@ -618,6 +619,77 @@ mjx-container[display="true"] + br {
 
 
 
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-firestore.js"></script>
+  <script>
+    firebase.initializeApp({
+      apiKey   : 'AIzaSyDqM81uUD8yWHAvsGasJzvWBHhpBYnRttI',
+      projectId: 'hoar-froster'
+    });
+
+    function getCount(doc, increaseCount) {
+      // IncreaseCount will be false when not in article page
+      return doc.get().then(d => {
+        var count = 0;
+        if (!d.exists) { // Has no data, initialize count
+          if (increaseCount) {
+            doc.set({
+              count: 1
+            });
+            count = 1;
+          }
+        } else { // Has data
+          count = d.data().count;
+          if (increaseCount) {
+            // If first view this article
+            doc.set({ // Increase count
+              count: count + 1
+            });
+            count++;
+          }
+        }
+
+        return count;
+      });
+    }
+
+    function appendCountTo(el) {
+      return count => {
+        el.innerText = count;
+      }
+    }
+  </script>
+  <script data-pjax>
+    (function() {
+      var db = firebase.firestore();
+      var articles = db.collection('articles-info');
+
+      if (CONFIG.page.isPost) { // Is article page
+        var title = document.querySelector('.post-title').innerText.trim();
+        var doc = articles.doc(title);
+        var increaseCount = CONFIG.hostname === location.hostname;
+        if (localStorage.getItem(title)) {
+          increaseCount = false;
+        } else {
+          // Mark as visited
+          localStorage.setItem(title, true);
+        }
+        getCount(doc, increaseCount).then(appendCountTo(document.querySelector('.firestore-visitors-count')));
+      } else if (CONFIG.page.isHome) { // Is index page
+        var promises = [...document.querySelectorAll('.post-title')].map(element => {
+          var title = element.innerText.trim();
+          var doc = articles.doc(title);
+          return getCount(doc);
+        });
+        Promise.all(promises).then(counts => {
+          var metas = document.querySelectorAll('.firestore-visitors-count');
+          counts.forEach((val, idx) => {
+            appendCountTo(metas[idx])(val);
+          });
+        });
+      }
+    })();
+  </script>
 
 
 

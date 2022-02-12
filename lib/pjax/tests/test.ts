@@ -21,7 +21,8 @@ let options: Pjax.IOptions = {
   currentUrlFullReload: true
 };
 
-options.analytics = () => {};
+options.analytics = () => {
+};
 options.scrollTo = [1, 1];
 options.scrollTo = false;
 
