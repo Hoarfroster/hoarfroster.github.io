@@ -25,7 +25,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"hoarfroster.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqusjs","storage":true,"lazyload":false,"nav":null,"activeClass":"disqusjs"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"hoarfroster.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":false,"nav":null,"activeClass":"disqus"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="知识聚焦 一、化学反应的焓变 1. 焓和焓变 ​ 焓是一个与内能相关的物理量，焓与内能均无法计算绝对值。单位 ；符号。 ​ 焓变是恒压条件下，反应的热效应。单位 ；符号。 ​ 反应体系放热，焓减小，。反应体系吸热，焓增大，。 ​ 反应热不转换为电能光能等其他能量下，反应热&#x3D;焓变。 ​ &#x3D;&#x3D;判断焓变大小的时候，一定要注意正负号！&#x3D;&#x3D; 2. 化学反应中能量变化的原因 ​ 化学反应的本质是反应物分子中旧">
@@ -374,7 +374,21 @@ mjx-container[display="true"] + br {
               </span>
               <span class="post-meta-item-text">Views: </span>
               <span class="firestore-visitors-count"></span>
-            </span><br>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2022/01/31/chemistry/BK%205%20%E5%8C%96%E5%AD%A6%E5%8F%8D%E5%BA%94%E7%9A%84%E8%83%BD%E9%87%8F%E5%8F%98%E5%8C%96/P1%20%E5%8C%96%E5%AD%A6%E8%83%BD%E4%B8%8E%E7%83%AD%E8%83%BD/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/01/31/chemistry/BK 5 化学反应的能量变化/P1 化学能与热能/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
             <span class="post-meta-item" title="Symbols count in article">
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
@@ -834,21 +848,35 @@ window.addEventListener('pjax:success', () => {
 
   
 
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/disqusjs@1/dist/disqusjs.css">
-
 <script>
-NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
-  NexT.utils.getScript('//cdn.jsdelivr.net/npm/disqusjs@1/dist/disqus.js', () => {
-    window.dsqjs = new DisqusJS({
-      api       : 'https://disqus.skk.moe/disqus/' || 'https://disqus.com/api/',
-      apikey    : 'Lo65MITAya5vcdTm6cJ8V5qCBNx3PVErvDOsfJ5tUPtEbw3DMS3EIzEx6vrmTzCN',
-      shortname : 'hoarfroster',
-      url       : "https://hoarfroster.github.io/2022/01/31/chemistry/BK%205%20%E5%8C%96%E5%AD%A6%E5%8F%8D%E5%BA%94%E7%9A%84%E8%83%BD%E9%87%8F%E5%8F%98%E5%8C%96/P1%20%E5%8C%96%E5%AD%A6%E8%83%BD%E4%B8%8E%E7%83%AD%E8%83%BD/",
-      identifier: "2022/01/31/chemistry/BK 5 化学反应的能量变化/P1 化学能与热能/",
-      title     : "化学能与热能",
-    });
-  }, window.DisqusJS);
-});
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://hoarfroster.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://hoarfroster.github.io/2022/01/31/chemistry/BK%205%20%E5%8C%96%E5%AD%A6%E5%8F%8D%E5%BA%94%E7%9A%84%E8%83%BD%E9%87%8F%E5%8F%98%E5%8C%96/P1%20%E5%8C%96%E5%AD%A6%E8%83%BD%E4%B8%8E%E7%83%AD%E8%83%BD/";
+    this.page.identifier = "2022/01/31/chemistry/BK 5 化学反应的能量变化/P1 化学能与热能/";
+    this.page.title = "化学能与热能";
+    };
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://hoarfroster.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
 </script>
 
     </div>

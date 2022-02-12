@@ -25,7 +25,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"hoarfroster.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqusjs","storage":true,"lazyload":false,"nav":null,"activeClass":"disqusjs"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"hoarfroster.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":false,"nav":null,"activeClass":"disqus"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="知识聚焦 一、烷烃 1. 烷烃的结构与性质 ​ 烷烃的结构与甲烷相似，分子中的碳原子都采用杂化，以伸向四面体4个顶点方向的杂化轨道与其他碳原子或氢原子结合，形成键。 ​ 甲烷是烷烃的代表物，纯净的甲烷是无色无臭的气体，难溶于水，密度比空气小，化学性质稳定，常温下不能被酸性溶液氧化，不与强酸、强碱和溴的四氯化碳溶液反应。甲烷可以在空气中燃烧（可燃性）和能在光照下与氯气发生取代反应。甲烷到正丁烷都为气">
@@ -379,7 +379,21 @@ mjx-container[display="true"] + br {
               </span>
               <span class="post-meta-item-text">Views: </span>
               <span class="firestore-visitors-count"></span>
-            </span><br>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2022/02/09/chemistry/BK%2010%20%E7%83%83%E5%8F%8A%E5%85%B6%E8%A1%8D%E7%94%9F%E7%89%A9/P1%20%E7%83%83%E7%9A%84%E7%BB%93%E6%9E%84%E4%B8%8E%E6%80%A7%E8%B4%A8/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/02/09/chemistry/BK 10 烃及其衍生物/P1 烃的结构与性质/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
             <span class="post-meta-item" title="Symbols count in article">
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
@@ -827,21 +841,35 @@ window.addEventListener('pjax:success', () => {
 
   
 
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/disqusjs@1/dist/disqusjs.css">
-
 <script>
-NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
-  NexT.utils.getScript('//cdn.jsdelivr.net/npm/disqusjs@1/dist/disqus.js', () => {
-    window.dsqjs = new DisqusJS({
-      api       : 'https://disqus.skk.moe/disqus/' || 'https://disqus.com/api/',
-      apikey    : 'Lo65MITAya5vcdTm6cJ8V5qCBNx3PVErvDOsfJ5tUPtEbw3DMS3EIzEx6vrmTzCN',
-      shortname : 'hoarfroster',
-      url       : "https://hoarfroster.github.io/2022/02/09/chemistry/BK%2010%20%E7%83%83%E5%8F%8A%E5%85%B6%E8%A1%8D%E7%94%9F%E7%89%A9/P1%20%E7%83%83%E7%9A%84%E7%BB%93%E6%9E%84%E4%B8%8E%E6%80%A7%E8%B4%A8/",
-      identifier: "2022/02/09/chemistry/BK 10 烃及其衍生物/P1 烃的结构与性质/",
-      title     : "烷烃 烯烃 炔烃",
-    });
-  }, window.DisqusJS);
-});
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://hoarfroster.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://hoarfroster.github.io/2022/02/09/chemistry/BK%2010%20%E7%83%83%E5%8F%8A%E5%85%B6%E8%A1%8D%E7%94%9F%E7%89%A9/P1%20%E7%83%83%E7%9A%84%E7%BB%93%E6%9E%84%E4%B8%8E%E6%80%A7%E8%B4%A8/";
+    this.page.identifier = "2022/02/09/chemistry/BK 10 烃及其衍生物/P1 烃的结构与性质/";
+    this.page.title = "烷烃 烯烃 炔烃";
+    };
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://hoarfroster.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
 </script>
 
     </div>

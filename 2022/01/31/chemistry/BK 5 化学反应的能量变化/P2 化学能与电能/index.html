@@ -25,7 +25,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"hoarfroster.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqusjs","storage":true,"lazyload":false,"nav":null,"activeClass":"disqusjs"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"hoarfroster.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":false,"nav":null,"activeClass":"disqus"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="知识聚焦 一、原电池 1. 原电池 ​ 原电池指将化学能转变为电能的装置。 2. 原电池的构成 ​ 构成原电池的条件包括：  两个活泼性不同的电极；（一个发生氧化反应，一个发生还原反应） 电解质溶液或熔融电解质作为介质；（阴离子向负极移动，阳离子向正极移动） 形成闭合回路 存在自发的氧化还原反应 原电池可以用盐桥连接两个反应池，也可以用离子膜隔离两个反应池，以实现反应独立不干扰和反应定向发生等目的">
@@ -370,7 +370,21 @@ mjx-container[display="true"] + br {
               </span>
               <span class="post-meta-item-text">Views: </span>
               <span class="firestore-visitors-count"></span>
-            </span><br>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2022/01/31/chemistry/BK%205%20%E5%8C%96%E5%AD%A6%E5%8F%8D%E5%BA%94%E7%9A%84%E8%83%BD%E9%87%8F%E5%8F%98%E5%8C%96/P2%20%E5%8C%96%E5%AD%A6%E8%83%BD%E4%B8%8E%E7%94%B5%E8%83%BD/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/01/31/chemistry/BK 5 化学反应的能量变化/P2 化学能与电能/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
             <span class="post-meta-item" title="Symbols count in article">
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
@@ -954,21 +968,35 @@ window.addEventListener('pjax:success', () => {
 
   
 
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/disqusjs@1/dist/disqusjs.css">
-
 <script>
-NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
-  NexT.utils.getScript('//cdn.jsdelivr.net/npm/disqusjs@1/dist/disqus.js', () => {
-    window.dsqjs = new DisqusJS({
-      api       : 'https://disqus.skk.moe/disqus/' || 'https://disqus.com/api/',
-      apikey    : 'Lo65MITAya5vcdTm6cJ8V5qCBNx3PVErvDOsfJ5tUPtEbw3DMS3EIzEx6vrmTzCN',
-      shortname : 'hoarfroster',
-      url       : "https://hoarfroster.github.io/2022/01/31/chemistry/BK%205%20%E5%8C%96%E5%AD%A6%E5%8F%8D%E5%BA%94%E7%9A%84%E8%83%BD%E9%87%8F%E5%8F%98%E5%8C%96/P2%20%E5%8C%96%E5%AD%A6%E8%83%BD%E4%B8%8E%E7%94%B5%E8%83%BD/",
-      identifier: "2022/01/31/chemistry/BK 5 化学反应的能量变化/P2 化学能与电能/",
-      title     : "化学能与电能",
-    });
-  }, window.DisqusJS);
-});
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://hoarfroster.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://hoarfroster.github.io/2022/01/31/chemistry/BK%205%20%E5%8C%96%E5%AD%A6%E5%8F%8D%E5%BA%94%E7%9A%84%E8%83%BD%E9%87%8F%E5%8F%98%E5%8C%96/P2%20%E5%8C%96%E5%AD%A6%E8%83%BD%E4%B8%8E%E7%94%B5%E8%83%BD/";
+    this.page.identifier = "2022/01/31/chemistry/BK 5 化学反应的能量变化/P2 化学能与电能/";
+    this.page.title = "化学能与电能";
+    };
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://hoarfroster.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
 </script>
 
     </div>
