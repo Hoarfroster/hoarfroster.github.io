@@ -2,7 +2,7 @@
 title: Cell Biology
 date: 2022/02/22 22:16:00
 categories:
-- [High School, Biology]
+- [High School, Biology, Cell Biology]
 tags:
 - School Notes
 - Biology
