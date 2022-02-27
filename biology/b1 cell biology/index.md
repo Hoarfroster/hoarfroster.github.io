@@ -23,13 +23,13 @@ tags:
 
 ### 目录
 
-```contents_template
+```template:contents
 
 ```
 
 ### 探究·实践
 
-```experiments_template
+```template:experiment
 [
 	["使用高倍显微镜观察几种细胞", "[[High School, Biology, Cell Biology], 细胞及其组成]", "1.2"], 
 	["检测生物组织中的糖类、脂肪和蛋白质", "[[High School, Biology, Cell Biology], 组成细胞的分子]", "2.1"], 
