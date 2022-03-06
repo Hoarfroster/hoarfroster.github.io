@@ -104,27 +104,22 @@ tags:
 ```mermaid
 stateDiagram-v2
     direction LR
-    s1: 分化成熟细胞
-    s2: 分生态细胞
     state forkstate <<fork>>
-    s3: 根、茎芽
-    s4: 胚状体
     state joinstate <<join>>
-    s5: 再生植株
 
 	state 脱分化 {
         direction LR
-        s1 --> s2
+        分化成熟细胞 --> 分生态细胞
     }
     state 再分化 {
         direction LR
-        s2 --> forkstate
-        forkstate --> s3
-        forkstate --> s4
-    s3 --> joinstate
-    s4 --> joinstate
+        分生态细胞 --> forkstate
+        forkstate --> 根、茎芽
+        forkstate --> 胚状体
+        根、茎芽 --> joinstate
+        胚状体 --> joinstate
     }
-    joinstate --> s5
+    joinstate --> 再生植株
 ```
 
 > #### 植物细胞表达全能性的方式与过程
