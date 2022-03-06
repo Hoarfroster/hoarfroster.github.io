@@ -1,6 +1,6 @@
 ---
 title: 植物组织培养：实验设备和培养条件
-subtitle: Tissue Culture of Plant: Equipment and Requirements
+subtitle: Tissue Culture of Plant - Equipment and Requirements
 date: 2022/03/06 17:02:32
 categories:
 - [Professional Course, Biology, Bioengineering, Tissue Culture of Plant by HZAU]
