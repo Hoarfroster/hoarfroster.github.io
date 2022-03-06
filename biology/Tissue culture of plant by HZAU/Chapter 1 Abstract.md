@@ -1,5 +1,6 @@
 ---
 title: 植物组织培养：绪论
+subtitle: Tissue Culture of Plant: Abstract
 date: 2022/03/06 14:42:00
 categories:
 - [Professional Course, Biology, Bioengineering, Tissue Culture of Plant by HZAU]
