@@ -8,6 +8,7 @@ tags:
   - Computer Science
   - Android
   - Kotlin
+description: 记录一下 2020 年初 Android 刚出 DarkMode 时从 WebView 中判断系统 DarkMode 状态方法。
 ---
 
 ​	不清楚现在的情况如何，仅记录一下 2020 年初 Android 刚出 DarkMode 时从 WebView 中判断系统 DarkMode 状态方法。

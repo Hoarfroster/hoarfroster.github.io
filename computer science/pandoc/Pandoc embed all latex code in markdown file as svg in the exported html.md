@@ -8,6 +8,7 @@ tags:
   - Computer Science
   - Pandoc
   - Lua
+description: 日常写的笔记等文章，或多或少会存在一部分的 latex 代码来实现数学公式的输入与化学结构式的表达，但是 pandoc 默认并不支持完备的 latex，只支持有限的一部分 package，存在一定的限制，故而一直在想着去整一个插件去让 pandoc 支持 latex 转 svg 来嵌入到输出的 HTML 文件中，实现 latex 的嵌入功能。
 ---
 
 ## 前言
@@ -21,8 +22,6 @@ tags:
 ​	参考了一下，使用了 Lua 作为 [pandoc filter](https://pandoc.org/lua-filters.html) 的语言，主要还是因为它简单，而且不少语法与 C 相似。
 
 ​	整理一下目的，我需要抓出所有 Markdown 里面的 latex 代码，提取出来后使用命令行工具转换为 svg 文件，再把生成的 svg 返回给 pandoc 供替换。
-
-<!-- more -->
 
 ## 开始秃头
 

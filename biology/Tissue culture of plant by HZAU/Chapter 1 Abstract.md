@@ -10,6 +10,7 @@ tags:
 - Botany
 - Cell Culture
 - Professional Course
+description: 华中农业大学植物组织培养课程笔记：绪论。
 ---
 
 #### 思考问题
