@@ -1,11 +1,20 @@
+---
+title: Deno 1.8 发行公告
+subtitle: Deno 1.8 Release Notes
+date: 2021/03/04 21:29:00
+category: [Computer Science, Backend, Deno]
+tag:
+- Computer Science
+- Backend
+- Deno
+- JavaScript
+description: 今天我们正式地发布了 Deno 1.8.0 版本。我们在这个版本中添加了大量的新功能，也同时优化了它的稳定性。
+---
+
 > * 原文地址：[Deno 1.8 Release Notes](https://deno.land/posts/v1.8)
 > * 原文作者：[Deno官方](https://deno.land/posts/v1.8)
-> * 译文出自：[掘金翻译计划](https://github.com/xitu/gold-miner)
-> * 本文永久链接：[https://github.com/xitu/gold-miner/blob/master/article/2021/6-css-properties-nobody-is-talking-about.md](https://github.com/xitu/gold-miner/blob/master/article/2021/Deno-1-8-Release-Notes.md)
 > * 译者：[霜羽 Hoarfroster](https://github.com/PassionPenguin)
 > * 校对者：[zenblo](https://github.com/zenblo)
-
-# Deno 1.8 发行公告
 
 今天我们正式地发布了 Deno 1.8.0 版本。我们在这个版本中添加了大量的新功能，也同时优化了它的稳定性：
 
@@ -354,9 +363,3 @@ console.log(files["deno:///bundle.js"]);
 Deno 1.8 捆绑了 TypeScript 的最新稳定版本。
 
 有关 Typescript 4.2 中新功能的更多信息，请参见 [TypeScript 4.2](https://devblogs.microsoft.com/typescript/announcing-typescript-4-2/)
-
-> 如果发现译文存在错误或其他需要改进的地方，欢迎到 [掘金翻译计划](https://github.com/xitu/gold-miner) 对译文进行修改并 PR，也可获得相应奖励积分。文章开头的 **本文永久链接** 即为本文在 GitHub 上的 MarkDown 链接。
-
----
-
-> [掘金翻译计划](https://github.com/xitu/gold-miner) 是一个翻译优质互联网技术文章的社区，文章来源为 [掘金](https://juejin.im) 上的英文分享文章。内容覆盖 [Android](https://github.com/xitu/gold-miner#android)、[iOS](https://github.com/xitu/gold-miner#ios)、[前端](https://github.com/xitu/gold-miner#前端)、[后端](https://github.com/xitu/gold-miner#后端)、[区块链](https://github.com/xitu/gold-miner#区块链)、[产品](https://github.com/xitu/gold-miner#产品)、[设计](https://github.com/xitu/gold-miner#设计)、[人工智能](https://github.com/xitu/gold-miner#人工智能)等领域，想要查看更多优质译文请持续关注 [掘金翻译计划](https://github.com/xitu/gold-miner)、[官方微博](http://weibo.com/juejinfanyi)、[知乎专栏](https://zhuanlan.zhihu.com/juejinfanyi)。
