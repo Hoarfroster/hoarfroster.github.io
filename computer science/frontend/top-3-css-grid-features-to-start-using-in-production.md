@@ -1,11 +1,19 @@
+---
+title: 3 个最棒的最值得你去在产品中使用的 CSS Grid 功能
+subtitle: Top 3 CSS Grid Features To Start Using in Production
+date: 2021/02/19 21:32:00
+category: [Computer Science, Frontend, Styling]
+tag:
+- Computer Science
+- Frontend
+- CSS
+description: Grid 最初是由 Microsoft 团队起草的，并于 2011 年在 IE 10 中落实的。经过近 9 年的发展，我们现在可以说，浏览器对 Grid 的支持已经变得足够好，这样我们可以安心在生产环境中中使用 Grid 了。
+---
+
 > * 原文地址：[Top 3 CSS Grid Features To Start Using in Production](https://medium.com/better-programming/top-3-css-grid-features-to-start-using-in-production-b0fe59b2e0f7)
 > * 原文作者：[Jose Granja](https://medium.com/@dioxmio)
-> * 译文出自：[掘金翻译计划](https://github.com/xitu/gold-miner)
-> * 本文永久链接：[https://github.com/xitu/gold-miner/blob/master/article/2021/top-3-css-grid-features-to-start-using-in-production.md](https://github.com/xitu/gold-miner/blob/master/article/2021/top-3-css-grid-features-to-start-using-in-production.md)
 > * 译者：[霜羽 Hoarfroster](https://github.com/PassionPenguin)
 > * 校对者：[Usualminds](https://github.com/Usualminds)、[zqp1226358](https://github.com/zqp1226358)
-
-# 3 个最棒的最值得你去在产品中使用的 CSS Grid 功能
 
 ![由 [Sigmund](https://unsplash.com/@sigmund?utm_source=medium&utm_medium=referral) 拍摄并在 [Unsplash](https://unsplash.com?utm_source=medium&utm_medium=referral) 上传的图片](https://cdn-images-1.medium.com/max/8096/0*mWiTIfu6BVlYQ5lf)
 
@@ -367,9 +375,3 @@ grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 不幸的是，我们无法等待 IE 11 的终结，因为它至少在 4 年内不会发生，毕竟它仍然在企业级别被广泛地使用着。现在我们需要添加一些 polyfill 确保 100％ 的用户都能够正常地使用。
 
 我希望我的文章能为阅读的你提供开始在生产中使用 Grid 的信心。毕竟一旦开始使用它，就再也没有回头路了，这玩意真是太好用了！
-
-> 如果发现译文存在错误或其他需要改进的地方，欢迎到 [掘金翻译计划](https://github.com/xitu/gold-miner) 对译文进行修改并 PR，也可获得相应奖励积分。文章开头的 **本文永久链接** 即为本文在 GitHub 上的 MarkDown 链接。
-
----
-
-> [掘金翻译计划](https://github.com/xitu/gold-miner) 是一个翻译优质互联网技术文章的社区，文章来源为 [掘金](https://juejin.im) 上的英文分享文章。内容覆盖 [Android](https://github.com/xitu/gold-miner#android)、[iOS](https://github.com/xitu/gold-miner#ios)、[前端](https://github.com/xitu/gold-miner#前端)、[后端](https://github.com/xitu/gold-miner#后端)、[区块链](https://github.com/xitu/gold-miner#区块链)、[产品](https://github.com/xitu/gold-miner#产品)、[设计](https://github.com/xitu/gold-miner#设计)、[人工智能](https://github.com/xitu/gold-miner#人工智能)等领域，想要查看更多优质译文请持续关注 [掘金翻译计划](https://github.com/xitu/gold-miner)、[官方微博](http://weibo.com/juejinfanyi)、[知乎专栏](https://zhuanlan.zhihu.com/juejinfanyi)。
