@@ -1,11 +1,20 @@
+---
+title: 在 Flutter 项目中使用 Lottie 构建原生 Splash 启动页
+subtitle: Native Splash Screen in Flutter Using Lottie
+date: 2021/03/13 11:00:00
+category: [Computer Science, Dart, Flutter]
+tag:
+- Computer Science
+- Dart
+- Flutter
+- UI
+description: 我们当然可以直接使用 Dart 代码为 Flutter 应用程序添加动画启动效果，但是，Flutter 应用程序在 Android 和 iOS 中以 FlutterActivity 或 FlutterViewController 的形式启动，会让 Flutter 应用程序在实际绘制第一帧之前已经耗费了一段时间。因此，在应用启动时设置启动画面将会带来更好的用户体验。
+---
+
 > * 原文地址：[Native Splash Screen in Flutter Using Lottie](https://medium.com/swlh/native-splash-screen-in-flutter-using-lottie-121ce2b9b0a4)
 > * 原文作者：[AbedElaziz Shehadeh](https://medium.com/@elaziz-shehadeh)
-> * 译文出自：[掘金翻译计划](https://github.com/xitu/gold-miner)
-> * 本文永久链接：[https://github.com/xitu/gold-miner/blob/master/article/2021/native-splash-screen-in-flutter-using-lottie.md](https://github.com/xitu/gold-miner/blob/master/article/2021/native-splash-screen-in-flutter-using-lottie.md)
 > * 译者：[霜羽 Hoarfroster](https://github.com/PassionPenguin)
 > * 校对者：[zenblo](https://github.com/zenblo)、[keepmovingljzy](https://github.com/keepmovingljzy)
-
-# 在 Flutter 项目中使用 Lottie 构建原生 Splash 启动页
 
 ![](https://cdn-images-1.medium.com/max/2400/1*4vlkTJCWbP2Kh2vyK9BdEw.png)
 
@@ -38,7 +47,7 @@ dependencies {
 ```xml
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.abedelazizshe.flutter_lottie_splash_app">
-    <!-- io.flutter.app.FlutterApplication is an android.app.Application that
+    <!-- io.dart.app.FlutterApplication is an android.app.Application that
          calls FlutterMain.startInitialization(this); in its onCreate method.
          In most cases you can leave this as-is, but you if you want to provide
          additional functionality it is fine to subclass or reimplement
@@ -279,9 +288,3 @@ let flutterViewController = FlutterViewController(engine: flutterEngine, nibName
 [**AbedElazizShe/flutter_lottie_splash_app**](https://github.com/AbedElazizShe/flutter_lottie_splash_app)
 
 如果你有任何疑问，或者有更好的方法可以解决此问题，请记得发表评论嗷。
-
-> 如果发现译文存在错误或其他需要改进的地方，欢迎到 [掘金翻译计划](https://github.com/xitu/gold-miner) 对译文进行修改并 PR，也可获得相应奖励积分。文章开头的 **本文永久链接** 即为本文在 GitHub 上的 MarkDown 链接。
-
----
-
-> [掘金翻译计划](https://github.com/xitu/gold-miner) 是一个翻译优质互联网技术文章的社区，文章来源为 [掘金](https://juejin.im) 上的英文分享文章。内容覆盖 [Android](https://github.com/xitu/gold-miner#android)、[iOS](https://github.com/xitu/gold-miner#ios)、[前端](https://github.com/xitu/gold-miner#前端)、[后端](https://github.com/xitu/gold-miner#后端)、[区块链](https://github.com/xitu/gold-miner#区块链)、[产品](https://github.com/xitu/gold-miner#产品)、[设计](https://github.com/xitu/gold-miner#设计)、[人工智能](https://github.com/xitu/gold-miner#人工智能)等领域，想要查看更多优质译文请持续关注 [掘金翻译计划](https://github.com/xitu/gold-miner)、[官方微博](http://weibo.com/juejinfanyi)、[知乎专栏](https://zhuanlan.zhihu.com/juejinfanyi)。
