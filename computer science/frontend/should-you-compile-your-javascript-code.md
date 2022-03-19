@@ -1,11 +1,20 @@
+---
+title: 你应该编译你的 JavaScript 代码吗？
+subtitle: Should You Compile Your JavaScript Code?
+date: 2021/02/09 00:12:00
+category: [Computer Science, Frontend, JavaScript]
+tag:
+- Computer Science
+- Frontend
+- Backend
+- JavaScript
+description: 我们都会也都喜爱 JavaScript，并且我们都通过编写代码和在我们最爱的运行环境（通常是浏览器，Node.js 和 Deno）中来执行 JavaScript 代码。但你是否曾经尝试过去编译你的 JavaScript 代码呢？
+---
+
 > * 原文地址：[Should You Compile Your JavaScript Code?](https://blog.bitsrc.io/should-you-compile-your-javascript-code-a857ad2e3032)
 > * 原文作者：[Fernando Doglio](https://medium.com/@deleteman123)
-> * 译文出自：[掘金翻译计划](https://github.com/xitu/gold-miner)
-> * 本文永久链接：[https://github.com/xitu/gold-miner/blob/master/article/2021/should-you-compile-your-javascript-code.md](https://github.com/xitu/gold-miner/blob/master/article/2021/should-you-compile-your-javascript-code.md)
 > * 译者：[霜羽 Hoarfroster](https://github.com/PassionPenguin)
 > * 校对者：[zenblo](https://github.com/zenblo)、[Ashira97](https://github.com/Ashira97)
-
-# 你应该编译你的 JavaScript 代码吗？
 
 ![Image by [seznandy](https://pixabay.com/users/seznandy-15803435/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=5093898) from [Pixabay](https://pixabay.com/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=5093898)](https://cdn-images-1.medium.com/max/3840/1*_7N-LnDFVgKcgEgzczZVmg.jpeg)
 
@@ -111,9 +120,3 @@ $ nectar your-file.js
 对于编译 JavaScript 做法的推广，我并不认为会是一个很大的趋势，毕竟事实证明了，现有的运行时已经足以满足最常见的使用情况。对于希望拥有原生性能并且不愿意切换到其他技术的朋友来说，编译 JavaScript 真的有用吗？这当然有用，但这只是 JavaScript 广泛用途的其中一种情况。
 
 你会考虑编译你的 JavaScript 代码吗？发表一下你的看法吧！
-
-> 如果发现译文存在错误或其他需要改进的地方，欢迎到 [掘金翻译计划](https://github.com/xitu/gold-miner) 对译文进行修改并 PR，也可获得相应奖励积分。文章开头的 **本文永久链接** 即为本文在 GitHub 上的 MarkDown 链接。
-
----
-
-> [掘金翻译计划](https://github.com/xitu/gold-miner) 是一个翻译优质互联网技术文章的社区，文章来源为 [掘金](https://juejin.im) 上的英文分享文章。内容覆盖 [Android](https://github.com/xitu/gold-miner#android)、[iOS](https://github.com/xitu/gold-miner#ios)、[前端](https://github.com/xitu/gold-miner#前端)、[后端](https://github.com/xitu/gold-miner#后端)、[区块链](https://github.com/xitu/gold-miner#区块链)、[产品](https://github.com/xitu/gold-miner#产品)、[设计](https://github.com/xitu/gold-miner#设计)、[人工智能](https://github.com/xitu/gold-miner#人工智能)等领域，想要查看更多优质译文请持续关注 [掘金翻译计划](https://github.com/xitu/gold-miner)、[官方微博](http://weibo.com/juejinfanyi)、[知乎专栏](https://zhuanlan.zhihu.com/juejinfanyi)。
