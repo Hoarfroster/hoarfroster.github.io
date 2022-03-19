@@ -13,8 +13,8 @@ description: 对于敢于冒险并想就提案向 TC39 给予反馈的 JavaScrip
 
 > * 原文地址：[How to experiment with a proposal before Stage 4](https://github.com/tc39/how-we-work/blob/master/experiment.md)
 > * 原文作者：[Ecma TC39](https://github.com/tc39/how-we-work)
-> * 译者：* 译者：[霜羽 Hoarfroster](https://github.com/PassionPenguin)
-> * 校对者：* 校对者：[finalwhy](https://github.com/finalwhy)，[zaviertang](https://github.com/zaviertang)
+> * 译者：[霜羽 Hoarfroster](https://github.com/PassionPenguin)
+> * 校对者：[finalwhy](https://github.com/finalwhy)，[zaviertang](https://github.com/zaviertang)
 
 对于敢于冒险并想就提案向 TC39 给予反馈的 JavaScript 程序员而言，可以通过以下几种方式提前尝试新提案：
 

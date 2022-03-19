@@ -13,8 +13,8 @@ description: 每个处于第二阶段或更高阶段的提案都有一个规范�
 
 > * 原文地址：[Reading a proposal draft](https://github.com/tc39/how-we-work/blob/master/how-to-read.md)
 > * 原文作者：[Ecma TC39](https://github.com/tc39/how-we-work)
-> * 译者：* 译者：[霜羽 Hoarfroster](https://github.com/PassionPenguin)
-> * 校对者：* 校对者：[KimYang](https://github.com/KimYangOfCat)
+> * 译者：[霜羽 Hoarfroster](https://github.com/PassionPenguin)
+> * 校对者：[KimYang](https://github.com/KimYangOfCat)
 
 每个处于第二阶段或更高阶段的提案都有一个规范文本草案，存储在 `https://tc39.es/proposal-<name>`。这些草案都是供实现该功能时所参考的权威定义；README 或 Issue 中的内容或讨论可能会引用这份草案作为背景。
 

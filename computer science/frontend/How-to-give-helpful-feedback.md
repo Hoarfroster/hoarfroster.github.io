@@ -13,8 +13,8 @@ description: 不管是借助在线渠道或是在 TC39 会议中出席，我们�
 
 > * 原文地址：[How to give helpful feedback](https://github.com/tc39/how-we-work/blob/master/feedback.md)
 > * 原文作者：[Ecma TC39](https://github.com/tc39/how-we-work)
-> * 译者：* 译者：[霜羽 Hoarfroster](https://github.com/PassionPenguin)
-> * 校对者：* 校对者：[Kim Yang](https://github.com/KimYangOfCat)、[Miigon](https://github.com/Miigon)
+> * 译者：[霜羽 Hoarfroster](https://github.com/PassionPenguin)
+> * 校对者：[Kim Yang](https://github.com/KimYangOfCat)、[Miigon](https://github.com/Miigon)
 
 不管是借助在线渠道或是在 TC39 会议中出席，我们始终会就提案提供反馈。以下的这些建议能够确保您的反馈意见是可行的和有帮助的。
 

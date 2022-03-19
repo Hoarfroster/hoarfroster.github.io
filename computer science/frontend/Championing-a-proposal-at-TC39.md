@@ -13,8 +13,8 @@ description: 你想为 JavaScript 提出一个新功能吗？不过提出提案�
 
 > * 原文地址：[Championing a proposal at TC39](https://github.com/tc39/how-we-work/blob/master/champion.md)
 > * 原文作者：[ECMA TC39](https://github.com/tc39/how-we-work)
-> * 译者：* 译者：[霜羽 Hoarfroster](https://github.com/PassionPenguin)
-> * 校对者：* 校对者：[Kimhooo](https://github.com/Kimhooo)，[KimYangOfCat](https://github.com/KimYangOfCat)
+> * 译者：[霜羽 Hoarfroster](https://github.com/PassionPenguin)
+> * 校对者：[Kimhooo](https://github.com/Kimhooo)，[KimYangOfCat](https://github.com/KimYangOfCat)
 
 你想为 JavaScript 提出一个新功能吗？不过提出提案需要一个 TC39 代表作为提案发起人，来推动提案通过各个[阶段流程](https://tc39.es/process-document/)。本文将为你描述如何做到这一点。
 

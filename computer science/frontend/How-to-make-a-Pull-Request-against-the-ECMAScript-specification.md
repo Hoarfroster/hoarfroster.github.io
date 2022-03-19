@@ -13,8 +13,8 @@ description: 对 JavaScript 规范的所有更改最终都会变为对 ecma262 �
 
 > * 原文地址：[How to make a Pull Request against the ECMAScript specification](https://github.com/tc39/how-we-work/blob/master/pr.md)
 > * 原文作者：[Ecma TC39](https://github.com/tc39/how-we-work)
-> * 译者：* 译者：[霜羽 Hoarfroster](https://github.com/PassionPenguin)、[Usualminds](https://github.com/Usualminds)
-> * 校对者：* 校对者：[Usualminds](https://github.com/Usualminds)、[kimberlyohq](https://github.com/kimberlyohq)、[Kim Yang](https://github.com/KimYangOfCat)
+> * 译者：[霜羽 Hoarfroster](https://github.com/PassionPenguin)、[Usualminds](https://github.com/Usualminds)
+> * 校对者：[Usualminds](https://github.com/Usualminds)、[kimberlyohq](https://github.com/kimberlyohq)、[Kim Yang](https://github.com/KimYangOfCat)
 
 对 JavaScript 规范的所有更改最终都会变为对 [ecma262](https://github.com/tc39/ecma262/) 或 [ecma402](https://github.com/tc39/ecma402/) 存储库的拉取请求。
 
