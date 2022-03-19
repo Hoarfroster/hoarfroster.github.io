@@ -1,11 +1,19 @@
+---
+title: 缓存踩踏事件是如何导致 Facebook 最大的宕机事件之一发生的
+subtitle: How A Cache Stampede Caused One Of Facebook’s Biggest Outages
+date: 2021/07/28 19:53:00
+category: [Computer Science, Cloud]
+tag:
+- Computer Science
+- Cloud
+- Backend
+description: 2010 年 9 月 23 日，Facebook 发生了迄今为止最严重的宕机事件之一。在这次事件中，Facebook 关闭了四个小时。情况如此严重，以至于工程师不得不让 Facebook 下线才能恢复。
+---
+
 > * 原文地址：[How A Cache Stampede Caused One Of Facebook’s Biggest Outages](https://medium.com/better-programming/how-a-cache-stampede-caused-one-of-facebooks-biggest-outages-dbb964ffc8ed)
 > * 原文作者：[Sun-Li Beatteay](https://medium.com/@SunnyB)
-> * 译文出自：[掘金翻译计划](https://github.com/xitu/gold-miner)
-> * 本文永久链接：[https://github.com/xitu/gold-miner/blob/master/article/2021/how-a-cache-stampede-caused-one-of-facebooks-biggest-outages.md](https://github.com/xitu/gold-miner/blob/master/article/2021/how-a-cache-stampede-caused-one-of-facebooks-biggest-outages.md)
 > * 译者：[霜羽 Hoarfroster](https://github.com/PassionPenguin)
 > * 校对者：[kamly](https://github.com/kamly)、[JalanJiang](https://github.com/JalanJiang)
-
-# 缓存踩踏事件是如何导致 Facebook 最大的宕机事件之一发生的
 
 ![由 [Susan Yin](https://unsplash.com/@syinq) 上传至 [Unsplash](https://unsplash.com)(https://unsplash.com)](https://cdn-images-1.medium.com/max/10368/0*FGGy038B4etUbHdm)
 
@@ -199,9 +207,3 @@ Facebook 的缓存踩踏事件如此具有破坏性的原因之一是，即使�
 虽然我相信了解缓存踩踏事件如何对系统造成严重破坏，但我不认为每个技术团队都必须立即添加这些措施。我们选择如何处理缓存踩踏将取决于我们项目的用例、架构和流量负载。
 
 但是，当我们发现自己正在与惊群效应问题作斗争，那么了解缓存踩踏事件并了解可能的解决方案将使我们在未来受益。
-
-> 如果发现译文存在错误或其他需要改进的地方，欢迎到 [掘金翻译计划](https://github.com/xitu/gold-miner) 对译文进行修改并 PR，也可获得相应奖励积分。文章开头的 **本文永久链接** 即为本文在 GitHub 上的 MarkDown 链接。
-
----
-
-> [掘金翻译计划](https://github.com/xitu/gold-miner) 是一个翻译优质互联网技术文章的社区，文章来源为 [掘金](https://juejin.im) 上的英文分享文章。内容覆盖 [Android](https://github.com/xitu/gold-miner#android)、[iOS](https://github.com/xitu/gold-miner#ios)、[前端](https://github.com/xitu/gold-miner#前端)、[后端](https://github.com/xitu/gold-miner#后端)、[区块链](https://github.com/xitu/gold-miner#区块链)、[产品](https://github.com/xitu/gold-miner#产品)、[设计](https://github.com/xitu/gold-miner#设计)、[人工智能](https://github.com/xitu/gold-miner#人工智能)等领域，想要查看更多优质译文请持续关注 [掘金翻译计划](https://github.com/xitu/gold-miner)、[官方微博](http://weibo.com/juejinfanyi)、[知乎专栏](https://zhuanlan.zhihu.com/juejinfanyi)。
