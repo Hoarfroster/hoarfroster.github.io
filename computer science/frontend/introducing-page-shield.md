@@ -1,11 +1,18 @@
+---
+title: Page Shield：保护浏览器中的用户数据
+subtitle: Page Shield: Protect User Data In-Browser
+date: 2021/05/01 22:30:00
+category: [Computer Science, Frontend]
+tag: 
+- Computer Science
+- Frontend
+description: 今天我们很高兴为大家介绍 Page Shield，一款客户端安全产品，用于检测终端用户浏览器中的攻击。
+---
+
 > * 原文地址：[Page Shield: Protect User Data In-Browser](https://blog.cloudflare.com/introducing-page-shield/)
 > * 原文作者：[Justin Zhou](https://blog.cloudflare.com/author/justin-zhou)
-> * 译文出自：[掘金翻译计划](https://github.com/xitu/gold-miner)
-> * 本文永久链接：[https://github.com/xitu/gold-miner/blob/master/article/2021/introducing-page-shield.md](https://github.com/xitu/gold-miner/blob/master/article/2021/introducing-page-shield.md)
 > * 译者：[霜羽 Hoarfroster](https://github.com/PassionPenguin)
 > * 校对者：
-
-# Page Shield：保护浏览器中的用户数据
 
 ![](https://blog.cloudflare.com/content/images/2021/03/image3-31.png)
 
