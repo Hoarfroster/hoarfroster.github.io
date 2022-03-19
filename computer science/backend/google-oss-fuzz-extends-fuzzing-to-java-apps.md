@@ -1,11 +1,20 @@
+---
+title: Google 的开源混沌测试工具 OSS-Fuzz 现在支持 Java 应用了
+subtitle: Google’s OSS-Fuzz extends fuzzing to Java apps
+date: 2021/03/23 09:42:00
+category: [Computer Science, Backend, Java]
+tag:
+- Computer Science
+- Backend
+- Java
+- Kotlin
+description: Google 的开源混沌测试服务 OSS-Fuzz 现在支持 Java 以及 JVM-based 的应用程序了！这项功能于 3 月 10 日公布。
+---
+
 > * 原文地址：[Google’s OSS-Fuzz extends fuzzing to Java apps](https://www.infoworld.com/article/3611510/googles-oss-fuzz-extends-fuzzing-to-java-apps.html#tk.rss_devops)
 > * 原文作者：[Paul Krill](https://www.infoworld.com/author/Paul-Krill/)
-> * 译文出自：[掘金翻译计划](https://github.com/xitu/gold-miner)
-> * 本文永久链接：[https://github.com/xitu/gold-miner/blob/master/article/2021/google-oss-fuzz-extends-fuzzing-to-java-apps.md](https://github.com/xitu/gold-miner/blob/master/article/2021/google-oss-fuzz-extends-fuzzing-to-java-apps.md)
 > * 译者：[霜羽 Hoarfroster](https://github.com/PassionPenguin)
 > * 校对者：[huifrank](https://github.com/huifrank)，[1autodidact](https://github.com/1autodidact)
-
-# Google 的开源混沌测试工具 OSS-Fuzz 现在支持 Java 应用了
 
 Google 的开源混沌测试服务 OSS-Fuzz 现在支持 Java 以及 JVM-based 的应用程序了！这项功能于 3 月 10 日公布。
 
@@ -19,9 +28,3 @@ Google 通过将 OSS-Fuzz 与 Code Intelligence 的 [Jazzer](https://blog.code-i
 * [Value Profiles](https://llvm.org/docs/LibFuzzer.html#value-profile).
 
 [Google 提供了](https://google.github.io/oss-fuzz/getting-started/new-project-guide/jvm-lang/)向基于 JVM 语言编写的开源项目加入 OSS-Fuzz 的文档。Jazzer 的开发计划要求 Jazzer 最终支持所有的 libFuzzer 功能。Jazzer 还可以通过 Java 原生接口执行本地代码时提供覆盖率反馈。这样可以发现内存不安全的本地代码中的内存损坏漏洞。OSS-Fuzz 还同时支持了 Go、Python，C/C + 和 Rust 等语言。
-
-> 如果发现译文存在错误或其他需要改进的地方，欢迎到 [掘金翻译计划](https://github.com/xitu/gold-miner) 对译文进行修改并 PR，也可获得相应奖励积分。文章开头的 **本文永久链接** 即为本文在 GitHub 上的 MarkDown 链接。
-
----
-
-> [掘金翻译计划](https://github.com/xitu/gold-miner) 是一个翻译优质互联网技术文章的社区，文章来源为 [掘金](https://juejin.im) 上的英文分享文章。内容覆盖 [Android](https://github.com/xitu/gold-miner#android)、[iOS](https://github.com/xitu/gold-miner#ios)、[前端](https://github.com/xitu/gold-miner#前端)、[后端](https://github.com/xitu/gold-miner#后端)、[区块链](https://github.com/xitu/gold-miner#区块链)、[产品](https://github.com/xitu/gold-miner#产品)、[设计](https://github.com/xitu/gold-miner#设计)、[人工智能](https://github.com/xitu/gold-miner#人工智能)等领域，想要查看更多优质译文请持续关注 [掘金翻译计划](https://github.com/xitu/gold-miner)、[官方微博](http://weibo.com/juejinfanyi)、[知乎专栏](https://zhuanlan.zhihu.com/juejinfanyi)。
