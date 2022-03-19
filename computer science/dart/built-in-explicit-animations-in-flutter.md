@@ -1,11 +1,20 @@
+---
+title: Flutter 中内置的显式动画
+subtitle: Built-in Explicit Animations in Flutter
+date: 2021/01/17 15:47:00
+category: [Computer Science, Dart, Flutter]
+tag:
+- Computer Science
+- Dart
+- Flutter
+- UI
+description: 在我们的上一篇文章中，我们弄清楚了如何利用 Flutter 的交织动画编写一些完美的动画。AnimatedFoo 和 TweenAnimationBuilder 让我们能够将一些基本动画运用在应用程序中。这些动画通常从头到尾使用补间进行渲染，而在这背后，Flutter 代替了我们控制好了这一切，满足了我们对动画的预期，也让我们不用再担心动画的播放顺序。
+---
+
 > * 原文地址：[Built-in Explicit Animations in Flutter](https://medium.com/flutterdevs/built-in-explicit-animations-in-flutter-438a039dd90)
 > * 原文作者：[Shaiq khan](https://medium.com/@shaiq_khan)
-> * 译文出自：[掘金翻译计划](https://github.com/xitu/gold-miner)
-> * 本文永久链接：[https://github.com/xitu/gold-miner/blob/master/article/2021/built-in-explicit-animations-in-flutter.md](https://github.com/xitu/gold-miner/blob/master/article/2021/built-in-explicit-animations-in-flutter.md)
 > * 译者：[霜羽 Hoarfroster](https://github.com/PassionPenguin)
 > * 校对者：[lsvih](https://github.com/lsvih)
-
-# Flutter 中内置的显式动画
 
 ![](https://cdn-images-1.medium.com/max/2160/1*-VpftDFf_ArJZoyuOjqBJA.png)
 
@@ -93,9 +102,3 @@ _animationController = AnimationController(
 ![](https://cdn-images-1.medium.com/max/2000/1*y7sP1wxW1UHb_42Wv2foUw.gif)
 
 这就是显式动画的基本入门了，我们在本文中构建了一个示例，而我相信，通过学习，你也同样可以轻松学会如何去制作这样一个动画，感谢你的阅读～
-
-> 如果发现译文存在错误或其他需要改进的地方，欢迎到 [掘金翻译计划](https://github.com/xitu/gold-miner) 对译文进行修改并 PR，也可获得相应奖励积分。文章开头的 **本文永久链接** 即为本文在 GitHub 上的 MarkDown 链接。
-
----
-
-> [掘金翻译计划](https://github.com/xitu/gold-miner) 是一个翻译优质互联网技术文章的社区，文章来源为 [掘金](https://juejin.im) 上的英文分享文章。内容覆盖 [Android](https://github.com/xitu/gold-miner#android)、[iOS](https://github.com/xitu/gold-miner#ios)、[前端](https://github.com/xitu/gold-miner#前端)、[后端](https://github.com/xitu/gold-miner#后端)、[区块链](https://github.com/xitu/gold-miner#区块链)、[产品](https://github.com/xitu/gold-miner#产品)、[设计](https://github.com/xitu/gold-miner#设计)、[人工智能](https://github.com/xitu/gold-miner#人工智能)等领域，想要查看更多优质译文请持续关注 [掘金翻译计划](https://github.com/xitu/gold-miner)、[官方微博](http://weibo.com/juejinfanyi)、[知乎专栏](https://zhuanlan.zhihu.com/juejinfanyi)。
