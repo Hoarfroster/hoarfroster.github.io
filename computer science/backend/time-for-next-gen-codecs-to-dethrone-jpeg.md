@@ -1,11 +1,20 @@
+---
+title: 是时候该罢黜 JPEG，独尊新编码了
+subtitle: Time for Next-Gen Codecs to Dethrone JPEG
+date: 2021/04/15 09:33:00
+category: [Computer Science, Backend, Codecs]
+tag:
+- Computer Science
+- Backend
+- Codecs
+- JPEG
+description: 我对图像编码十分狂热。如今，一场“图像编码之战”正在酝酿之中，而我并不是唯一对此有想法的人。显然，作为 JPEG 委员会 JPEG XL 特设小组的主席，我坚定地致力于多年的图像编码的工作。但是，在本文中，我将努力做到公平和中立。
+---
+
 > * 原文地址：[Time for Next-Gen Codecs to Dethrone JPEG](https://cloudinary.com/blog/time_for_next_gen_codecs_to_dethrone_jpeg)
 > * 原文作者：[Jon Sneyers](https://cloudinary.com/blog/author/jon_sneyers)
-> * 译文出自：[掘金翻译计划](https://github.com/xitu/gold-miner)
-> * 本文永久链接：[https://github.com/xitu/gold-miner/blob/master/article/2021/time-for-next-gen-codecs-to-dethrone-jpeg.md](https://github.com/xitu/gold-miner/blob/master/article/2021/time-for-next-gen-codecs-to-dethrone-jpeg.md)
 > * 译者：[霜羽 Hoarfroster](https://github.com/PassionPenguin)
 > * 校对者：[Kimhooo](https://github.com/Kimhooo)、[PingHGao](https://github.com/PingHGao)
-
-# 是时候该罢黜 JPEG，独尊新编码了
 
 ![是时候用新一代图像编码格式替换 JPEG 编码格式了](https://res.cloudinary.com/cloudinary-marketing/image/upload/c_fill,w_770/dpr_2.0,f_auto,fl_lossy,q_auto/v1/Web_Assets/blog/jxl-compare-codecs.png)
 
@@ -145,9 +154,3 @@ WebP 和 HEIC 不支持没有色度二次采样的图像则是另一种限制。
 > ### 注：
 >
 > 同时，需要注意的是，上面列出的 AVIF 限制适用于当前定义的最高 AVIF 配置文件（“高级”配置文件），实际上有三个规则，像素数不得大于 35651584，宽度不得大于 16384 且高度不得大于 8704。也可以使用不带配置文件的 AVIF，然后适用 AV1 限制：色彩深度最高为 12 位，最大尺寸最高为 65535x65535（如果你选择使用网格，那还能够更大）。对于 HEIC 来说，可以将容器与具有高达 16 位色彩深度和 4:4:4 的压缩率的 HEVC 有效载荷一起使用，尽管大多数硬件实现均不支持该容器。
-
-> 如果发现译文存在错误或其他需要改进的地方，欢迎到 [掘金翻译计划](https://github.com/xitu/gold-miner) 对译文进行修改并 PR，也可获得相应奖励积分。文章开头的 **本文永久链接** 即为本文在 GitHub 上的 MarkDown 链接。
-
----
-
-> [掘金翻译计划](https://github.com/xitu/gold-miner) 是一个翻译优质互联网技术文章的社区，文章来源为 [掘金](https://juejin.im) 上的英文分享文章。内容覆盖 [Android](https://github.com/xitu/gold-miner#android)、[iOS](https://github.com/xitu/gold-miner#ios)、[前端](https://github.com/xitu/gold-miner#前端)、[后端](https://github.com/xitu/gold-miner#后端)、[区块链](https://github.com/xitu/gold-miner#区块链)、[产品](https://github.com/xitu/gold-miner#产品)、[设计](https://github.com/xitu/gold-miner#设计)、[人工智能](https://github.com/xitu/gold-miner#人工智能)等领域，想要查看更多优质译文请持续关注 [掘金翻译计划](https://github.com/xitu/gold-miner)、[官方微博](http://weibo.com/juejinfanyi)、[知乎专栏](https://zhuanlan.zhihu.com/juejinfanyi)。
