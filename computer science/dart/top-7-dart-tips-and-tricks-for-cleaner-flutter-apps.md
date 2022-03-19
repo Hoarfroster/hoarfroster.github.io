@@ -1,11 +1,19 @@
+---
+title: 7 个最能用于构造更整洁的 Flutter 应用的 Dart 小贴士和小技巧
+subtitle: Top 7 Dart Tips and Tricks for Cleaner Flutter Apps
+date: 2021/04/23 09:32:00
+category: [Computer Science, Dart, Flutter]
+tag:
+- Computer Science
+- Flutter
+- Dart
+description: Dart 是一门针对客户端进行了优化的编程语言，专门用于快速地构建移动端、桌面端和服务端应用程序。Dart 由 Google 开发，并与 Google 的跨平台框架 Flutter 相互搭配。借助 Flutter 和 Dart，我们可以构建具有流畅 UI 和原生性能的应用程序。今天，我们总结并分享了七个我们认为最实用的 Dart 技巧，来帮助大家改善应用程序的开发。我们可以使用这些技巧来编写简洁的代码，并充分利用上 Dart 所提供的许多特性。
+---
+
 > * 原文地址：[Top 7 Dart Tips and Tricks for Cleaner Flutter Apps](https://betterprogramming.pub/top-7-dart-tips-and-tricks-for-cleaner-flutter-apps-562664a15826)
 > * 原文作者：[The Educative Team](https://medium.com/@educative-inc)
-> * 译文出自：[掘金翻译计划](https://github.com/xitu/gold-miner)
-> * 本文永久链接：[https://github.com/xitu/gold-miner/blob/master/article/2021/top-7-dart-tips-and-tricks-for-cleaner-flutter-apps.md](https://github.com/xitu/gold-miner/blob/master/article/2021/top-7-dart-tips-and-tricks-for-cleaner-flutter-apps.md)
 > * 译者：[霜羽 Hoarfroster](https://github.com/PassionPenguin)
 > * 校对者：[5Reasons](https://github.com/5Reasons)、[greycodee](https://github.com/greycodee)
-
-# 7 个最能用于构造更整洁的 Flutter 应用的 Dart 小贴士和小技巧
 
 ![由 [Lucie Hošová](https://unsplash.com/@marjorylucabaxter?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) 上传至 [Unsplash](https://unsplash.com/s/photos/dart?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)](https://cdn-images-1.medium.com/max/10368/1*UkUGENyS23H0pweg_EdyNg.jpeg)
 
@@ -229,9 +237,3 @@ Stream<int> countStream(int n) async* {
 * 枚举类型
 
 学习愉快！
-
-> 如果发现译文存在错误或其他需要改进的地方，欢迎到 [掘金翻译计划](https://github.com/xitu/gold-miner) 对译文进行修改并 PR，也可获得相应奖励积分。文章开头的 **本文永久链接** 即为本文在 GitHub 上的 MarkDown 链接。
-
----
-
-> [掘金翻译计划](https://github.com/xitu/gold-miner) 是一个翻译优质互联网技术文章的社区，文章来源为 [掘金](https://juejin.im) 上的英文分享文章。内容覆盖 [Android](https://github.com/xitu/gold-miner#android)、[iOS](https://github.com/xitu/gold-miner#ios)、[前端](https://github.com/xitu/gold-miner#前端)、[后端](https://github.com/xitu/gold-miner#后端)、[区块链](https://github.com/xitu/gold-miner#区块链)、[产品](https://github.com/xitu/gold-miner#产品)、[设计](https://github.com/xitu/gold-miner#设计)、[人工智能](https://github.com/xitu/gold-miner#人工智能)等领域，想要查看更多优质译文请持续关注 [掘金翻译计划](https://github.com/xitu/gold-miner)、[官方微博](http://weibo.com/juejinfanyi)、[知乎专栏](https://zhuanlan.zhihu.com/juejinfanyi)。
