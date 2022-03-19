@@ -1,11 +1,20 @@
+---
+title: 你的 Android 设备现在更安全了 —— 还有 5 项别的新功能！
+subtitle: Your Android is now even safer — and 5 other new features
+date: 2021/03/25 17:54:00
+categories:
+- [Computer Science, Android]
+tags:
+- Computer Science
+- Android
+- Kotlin
+description: 不久以前，我们向 Android 使用者介绍了 Emoji Kitchen 和自动叙述有声读物等功能。但是我们想保持频繁地更新，因此今天我们重点介绍 6 个 Google 的最新的更新，让 Android 手机更加安全和便捷 —— 为大家所准备的。
+---
+
 > * 原文地址：[Your Android is now even safer — and 5 other new features](https://blog.google/products/android/new-features-spring-2021/)
 > * 原文作者：[Hideaki Oshima](https://blog.google/)
-> * 译文出自：[掘金翻译计划](https://github.com/xitu/gold-miner)
-> * 本文永久链接：[https://github.com/xitu/gold-miner/blob/master/article/2021/new-features-spring-2021.md](https://github.com/xitu/gold-miner/blob/master/article/2021/new-features-spring-2021.md)
-> * 译者：[Hoarfroster](https://github.com/PassionPenguin)
+> * 译者：[霜羽 Hoarfroster](https://github.com/PassionPenguin)
 > * 校对者：
-
-# 你的 Android 设备现在更安全了 —— 还有 5 项别的新功能！
 
 ![头图](https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Hero_Image_W3RuhIb.max-1000x1000.png)
 
@@ -66,9 +75,3 @@ Android Auto 的新功能可帮助您享受更多驱动器乐趣。借助自定�
 我们还在启动屏幕上启动了快捷方式。这些功能使您可以方便地访问您的联系人，甚至可以像使用手机一样，只需轻按汽车显示屏上的图标，即可使用 Assistant 来完成诸如检查天气或远程调节恒温器之类的任务。对于具有更大屏幕的汽车，您可以使用具有实时查看 Google Maps 和媒体控件的分屏功能来做更多的事情。而且，如果您有家人和朋友一起兜风，您现在可以设置一个隐私屏幕，以控制何时在汽车显示屏上显示 Android Auto。
 
 这些 Android Auto 功能将在未来几天内在运行 Android 6.0 或更高版本的手机上以及连接到的[兼容的汽车](https://www.android.com/auto/compatibility/)上提供。
-
-> 如果发现译文存在错误或其他需要改进的地方，欢迎到 [掘金翻译计划](https://github.com/xitu/gold-miner) 对译文进行修改并 PR，也可获得相应奖励积分。文章开头的 **本文永久链接** 即为本文在 GitHub 上的 MarkDown 链接。
-
----
-
-> [掘金翻译计划](https://github.com/xitu/gold-miner) 是一个翻译优质互联网技术文章的社区，文章来源为 [掘金](https://juejin.im) 上的英文分享文章。内容覆盖 [Android](https://github.com/xitu/gold-miner#android)、[iOS](https://github.com/xitu/gold-miner#ios)、[前端](https://github.com/xitu/gold-miner#前端)、[后端](https://github.com/xitu/gold-miner#后端)、[区块链](https://github.com/xitu/gold-miner#区块链)、[产品](https://github.com/xitu/gold-miner#产品)、[设计](https://github.com/xitu/gold-miner#设计)、[人工智能](https://github.com/xitu/gold-miner#人工智能)等领域，想要查看更多优质译文请持续关注 [掘金翻译计划](https://github.com/xitu/gold-miner)、[官方微博](http://weibo.com/juejinfanyi)、[知乎专栏](https://zhuanlan.zhihu.com/juejinfanyi)。
