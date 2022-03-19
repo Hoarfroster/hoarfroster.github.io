@@ -36,6 +36,6 @@ description: 不管是借助在线渠道或是在 TC39 会议中出席，我们�
 - 在发布新主题之前，搜索涵盖某个主题的现有问题。
 - 提出正面的反馈、赞同先前批评意见的反馈以及新的批评意见都很有帮助。
 - 除 GitHub 以及会议讨论以外的渠道（例如 Twitter 的 Topic 中）中给出的反馈更可能会被遗忘。
-- 在会议中，请使用排队举手工具，而不要在演示中途打断。有关详细信息，请参见 [how-to-participate-in-meetings.md](https://github.com/xitu/gold-miner/blob/master/article/ECMA-TC39/How-to-participate-in-meetings.md) 一文。
+- 在会议中，请使用排队举手工具，而不要在演示中途打断。有关详细信息，请参见 [how-to-participate-in-meetings.md](https://github.com/tc39/how-we-work/blob/master/how-to-participate-in-meetings.md) 一文。
 
 提案小组负责仔细考查并总结所有反馈，在考虑了以上所有要求之后向委员会提出建议。提案发起人不一定总能在表达意见的所有人之间取得绝对共识，但他们应尽力认真聆听并做出平衡的判断。

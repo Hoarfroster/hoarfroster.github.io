@@ -42,7 +42,7 @@ Safari 对 PWA 的支持？更确切地说应该是缺乏支持！Apple 是现�
 
 在 Mac 上，某些应用程序的 Web 版本无法发送推送通知，导致不能提供全部功能。
 
-![推送通知浏览器支持表格](https://github.com/PassionPenguin/gold-miner-images/blob/master/safari-has-become-the-second-internet-explorer-developer.mozilla.org_en-US_docs_Web_API_Push_API.png?raw=true)
+![推送通知浏览器支持表格](https://github.com/PassionPenguin/picgo-database/blob/main/safari-has-become-the-second-internet-explorer-developer.mozilla.org_en-US_docs_Web_API_Push_API.png?raw=true)
 
 Messenger 应用们就是最好的例子。如今，Telegram 或 Facebook Messenger 只能在网站打开时通过变更标题和播放声音来通知用户有关新消息的信息。如果用户静音了，并将浏览器最小化了，显然就会错过新的消息。
 

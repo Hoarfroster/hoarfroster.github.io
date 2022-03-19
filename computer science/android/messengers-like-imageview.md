@@ -118,7 +118,7 @@ internal class ImageSizeMeasurer {
 
 比如说，应用于非常窄的图片。
 
-![](https://github.com/PassionPenguin/gold-miner-images/blob/master/messengers-like-imageview-example.png?raw=true)
+![](https://github.com/PassionPenguin/picgo-database/blob/main/messengers-like-imageview-example.png?raw=true)
 
 * 要么宽度符合最大限值，但高度太小
 * 要么高度达到最小限值，但宽度过大

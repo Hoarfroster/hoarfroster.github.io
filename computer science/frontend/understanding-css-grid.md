@@ -187,7 +187,7 @@ CSS Grid 与常规栅格相比也具有明显的优势，根据屏幕大小，�
 
 现在，所有现代浏览器（Safari、Chrome、Firefox、Edge）都原生地支持 CSS Grid。凭借 87.85% 的全球支持率（译者注：截止至译文发布时，支持率已达到 95.47％），CSS Grid 已经成为 Boostrap 和 Co 的替代品。
 
-![2021 年 3 月的状态，数据来自 [caniuse.com](https://caniuse.com/#search=CSS%20Grid)](https://github.com/PassionPenguin/gold-miner-images/blob/master/understanding-css-grid-caniuse.com__search=CSS%2520Grid.png?raw=true)
+![2021 年 3 月的状态，数据来自 [caniuse.com](https://caniuse.com/#search=CSS%20Grid)](https://github.com/PassionPenguin/picgo-database/blob/main/understanding-css-grid-caniuse.com__search=CSS%2520Grid.png?raw=true)
 
 ## CSS 栅格的实践案例
 

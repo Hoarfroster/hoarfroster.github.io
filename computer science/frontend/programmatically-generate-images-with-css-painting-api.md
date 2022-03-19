@@ -226,7 +226,7 @@ registerPaint('random', Random);
 
 ## 浏览器支持
 
-![数据源：[Can I Use](https://caniuse.com/css-paint-api)](https://github.com/PassionPenguin/gold-miner-images/blob/master/programmatically-generate-images-with-css-painting-api-caniuse.com_css-paint-api.png?raw=true)
+![数据源：[Can I Use](https://caniuse.com/css-paint-api)](https://github.com/PassionPenguin/picgo-database/blob/main/programmatically-generate-images-with-css-painting-api-caniuse.com_css-paint-api.png?raw=true)
 
 包括 Firefox 在内的大多数浏览器都不支持 CSS Painting API。到目前为止，只有基于 Chromium 的浏览器完全支持此功能，真希望不久的将来浏览器支持会有所改善。
 

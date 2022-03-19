@@ -15,7 +15,7 @@ description: 测试环节是软件工程中的重要组成部分。如果你不�
 > * 译者：[霜羽 Hoarfroster](https://github.com/PassionPenguin)
 > * 校对者：[zenblo](https://github.com/zenblo)、[Ashira97](https://github.com/Ashira97)
 
-![JavaScript 测试框架的使用情况，数据来源《2020 年 Javascript 状况调查》](https://github.com/PassionPenguin/gold-miner-images/blob/master/a-review-of-javascript-testing-frameworks-in-2021-UsageRanking.jpg?raw=true)
+![JavaScript 测试框架的使用情况，数据来源《2020 年 Javascript 状况调查》](https://github.com/PassionPenguin/picgo-database/blob/main/a-review-of-javascript-testing-frameworks-in-2021-UsageRanking.jpg?raw=true)
 
 测试环节是软件工程中的重要组成部分。如果你不熟悉测试，那你可能会提出和别人一样的问题 —— 如果我的软件的所有功能都在正常运作，我为什么还要进行测试呢？
 
@@ -35,7 +35,7 @@ Jest 是一个易于操作的，delightful 的 JavaScript 测试框架。它的�
 
 Jest 是我最喜欢的框架之一，因为它快速、安全，易于使用而且它还为我们提供了大量文档。基于 [2020 年 Javascript 状况调查](https://2020.stateofjs.com/zh-Hans)，它是 JavaScript 开发人员中最常用的测试框架之一。而且调查显示，大多数开发人员都感兴趣于学习它。
 
-![JavaScript 测试框架的使用情况，数据来源《2020 年 Javascript 状况调查》](https://github.com/PassionPenguin/gold-miner-images/blob/master/a-review-of-javascript-testing-frameworks-in-2021-UsageRanking.jpg?raw=true)
+![JavaScript 测试框架的使用情况，数据来源《2020 年 Javascript 状况调查》](https://github.com/PassionPenguin/picgo-database/blob/main/a-review-of-javascript-testing-frameworks-in-2021-UsageRanking.jpg?raw=true)
 
 ### 2. Mocha
 
@@ -57,7 +57,7 @@ Jasmine 是一个用于测试 JavaScript 代码的行为驱动开发框架。它
 
 调查显示，虽然许多开发人员正在使用 Jasmine，但是他们对该框架的兴趣的趋势是下降的。
 
-![JavaScript 测试框架的兴趣情况，数据来源《2020 年 Javascript 状况》](https://github.com/PassionPenguin/gold-miner-images/blob/master/a-review-of-javascript-testing-frameworks-in-2021-InterestRanking.jpg?raw=true)
+![JavaScript 测试框架的兴趣情况，数据来源《2020 年 Javascript 状况》](https://github.com/PassionPenguin/picgo-database/blob/main/a-review-of-javascript-testing-frameworks-in-2021-InterestRanking.jpg?raw=true)
 
 ### 4. AVA
 

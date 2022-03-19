@@ -36,7 +36,7 @@ description: 如果 <input> 的 font-size 被设定为 16px 或更大，那么 i
 > 
 > [comment]: <> (Original Video Link: https://video.twimg.com/tweet_video/EyX2MSaXMAExyQA.mp4)
 > 
-> ![](https://github.com/PassionPenguin/gold-miner-images/blob/master/16px-or-larger-text-prevents-ios-form-zoom-EyX2MSaXMAExyQA.gif?raw=true)
+> ![](https://github.com/PassionPenguin/picgo-database/blob/main/16px-or-larger-text-prevents-ios-form-zoom-EyX2MSaXMAExyQA.gif?raw=true)
 > 
 > —— Josh W. Comeau @JoshWComeau 9:07, Apr 7, 2021
 > 

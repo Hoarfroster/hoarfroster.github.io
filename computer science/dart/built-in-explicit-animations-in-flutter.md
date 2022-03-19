@@ -18,7 +18,7 @@ description: 在我们的上一篇文章中，我们弄清楚了如何利用 Flu
 
 ![](https://cdn-images-1.medium.com/max/2160/1*-VpftDFf_ArJZoyuOjqBJA.png)
 
-在我们的 [上一篇文章](https://github.com/xitu/gold-miner/blob/master/article/2021/staggered-animation-in-flutter.md) 中，我们弄清楚了如何利用 Flutter 的交织动画编写一些完美的动画。`AnimatedFoo` 和 `TweenAnimationBuilder` 让我们能够将一些基本动画运用在应用程序中。这些动画通常从头到尾使用补间进行渲染，而在这背后，Flutter 代替了我们控制好了这一切，满足了我们对动画的预期，也让我们不用再担心动画的播放顺序。
+在我们的 [上一篇文章](https://medium.com/flutterdevs/staggered-animation-in-flutter-e7282a936b99) 中，我们弄清楚了如何利用 Flutter 的交织动画编写一些完美的动画。`AnimatedFoo` 和 `TweenAnimationBuilder` 让我们能够将一些基本动画运用在应用程序中。这些动画通常从头到尾使用补间进行渲染，而在这背后，Flutter 代替了我们控制好了这一切，满足了我们对动画的预期，也让我们不用再担心动画的播放顺序。
 
 对于部分动画来说，使用补间动画是极好的选择。当然，我们也可以用另外一种方式重新开始制作新的动画。
 
