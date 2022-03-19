@@ -1,11 +1,19 @@
+---
+title: Chrome 90 Beta 版本更新，支持 WebRTC AV1 编码器，新的 Origin Trials，还有更多等着你来～
+subtitle: Chrome 90 Beta: AV1 Encoder for WebRTC, New Origin Trials, and More
+date: 2021/03/25 17:54:00
+category: [Computer Science, Frontend, Browser]
+tag:
+- Computer Science
+- Frontend
+- Browser
+description: 除非另有说明，否则以下描述的更改适用于适用于 Android、Chrome OS、Linux、macOS 和 Windows 的 Chrome beta 通道版本的更新。你可以通过文中的链接或访问 ChromeStatus.com 上的列表更详细地了解此处列出的功能。 Chrome 90 已于 2021 年 3 月 11 日发布 Beta 版。
+---
+
 > * 原文地址：[Chrome 90 Beta: AV1 Encoder for WebRTC, New Origin Trials, and More](https://blog.chromium.org/2021/03/chrome-90-beta-av1-encoder-for-webrtc.html)
 > * 原文作者：[Chromium Dev](https://blog.chromium.org/)
-> * 译文出自：[掘金翻译计划](https://github.com/xitu/gold-miner)
-> * 本文永久链接：[https://github.com/xitu/gold-miner/blob/master/article/2021/chrome-90-beta-av1-encoder-for-webrtc.md](https://github.com/xitu/gold-miner/blob/master/article/2021/chrome-90-beta-av1-encoder-for-webrtc.md)
-> * 译者：[Hoarfroster](https://github.com/PassionPenguin)
+> * 译者：[霜羽 Hoarfroster](https://github.com/PassionPenguin)
 > * 校对者：
-
-# Chrome 90 Beta 版本更新，支持 WebRTC AV1 编码器，新的 Origin Trials，还有更多等着你来～
 
 除非另有说明，否则以下描述的更改适用于适用于 Android、Chrome OS、Linux、macOS 和 Windows 的 Chrome beta 通道版本的更新。你可以通过文中的链接或访问 [ChromeStatus.com](https://www.chromestatus.com/features#milestone%3D90) 上的列表更详细地了解此处列出的功能。 Chrome 90 已于 2021 年 3 月 11 日发布 Beta 版。
 
@@ -135,9 +143,3 @@ Chrome 浏览器已[删除了对非标准 RTP 数据通道的支持](https://www
 ## 为 `navigator.plugins` 和 `navigator.mimeTypes` 返回 `null`
 
 Chrome 浏览器中 [`navigator.plugins` 和 `navigator.mimeTypes` 的调用会返回 `null`](https://www.chromestatus.com/feature/5741884322349056)。随着 Flash 的移除，我们不再需要为这些属性返回任何内容。
-
-> 如果发现译文存在错误或其他需要改进的地方，欢迎到 [掘金翻译计划](https://github.com/xitu/gold-miner) 对译文进行修改并 PR，也可获得相应奖励积分。文章开头的 **本文永久链接** 即为本文在 GitHub 上的 MarkDown 链接。
-
----
-
-> [掘金翻译计划](https://github.com/xitu/gold-miner) 是一个翻译优质互联网技术文章的社区，文章来源为 [掘金](https://juejin.im) 上的英文分享文章。内容覆盖 [Android](https://github.com/xitu/gold-miner#android)、[iOS](https://github.com/xitu/gold-miner#ios)、[前端](https://github.com/xitu/gold-miner#前端)、[后端](https://github.com/xitu/gold-miner#后端)、[区块链](https://github.com/xitu/gold-miner#区块链)、[产品](https://github.com/xitu/gold-miner#产品)、[设计](https://github.com/xitu/gold-miner#设计)、[人工智能](https://github.com/xitu/gold-miner#人工智能)等领域，想要查看更多优质译文请持续关注 [掘金翻译计划](https://github.com/xitu/gold-miner)、[官方微博](http://weibo.com/juejinfanyi)、[知乎专栏](https://zhuanlan.zhihu.com/juejinfanyi)。
