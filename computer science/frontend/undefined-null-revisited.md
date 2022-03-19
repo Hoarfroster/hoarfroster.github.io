@@ -1,11 +1,19 @@
+---
+title: 重新审视 undefined 和 null
+subtitle: undefined vs. null revisited
+date: 2021/03/06 16:30:00
+category: [Computer Science, Frontend, JavaScript]
+tag:
+- Computer Science
+- Frontend
+- JavaScript
+description: 很多的编程语言都有一种表示空值的类型，叫做 null。它指示了一个变量当前并没有指向任何对象 —— 例如，某个变量还没有初始化的时候。
+---
+
 > * 原文地址：[undefined vs. null revisited](https://2ality.com/2021/01/undefined-null-revisited.html)
 > * 原文作者：[Dr. Axel Rauschmayer](http://dr-axel.de/)
-> * 译文出自：[掘金翻译计划](https://github.com/xitu/gold-miner)
-> * 本文永久链接：[https://github.com/xitu/gold-miner/blob/master/article/2021/undefined-null-revisited.md](https://github.com/xitu/gold-miner/blob/master/article/2021/undefined-null-revisited.md)
 > * 译者：[霜羽 Hoarfroster](https://github.com/PassionPenguin)
 > * 校对者：[Moonball](https://github.com/Moonball)、[felixliao](https://github.com/felixliao)
-
-# 重新审视 undefined 和 null
 
 很多的编程语言都有一种表示空值的类型，叫做 `null`。它指示了一个变量当前并没有指向任何对象 —— 例如，某个变量还没有初始化的时候。
 
@@ -478,9 +486,3 @@ assert.deepEqual(
 
 * 我将 `null` 用作被忽略的值。（顺便说一句，TypeScript 相对较好地支持了这种方法。）
 * 我通过上述的其中一种技术避免了同时出现 `undefined` 和 `null` 的情况，优点在乎让代码更干净，而缺点在于需要做出更多的工作。
-
-> 如果发现译文存在错误或其他需要改进的地方，欢迎到 [掘金翻译计划](https://github.com/xitu/gold-miner) 对译文进行修改并 PR，也可获得相应奖励积分。文章开头的 **本文永久链接** 即为本文在 GitHub 上的 MarkDown 链接。
-
----
-
-> [掘金翻译计划](https://github.com/xitu/gold-miner) 是一个翻译优质互联网技术文章的社区，文章来源为 [掘金](https://juejin.im) 上的英文分享文章。内容覆盖 [Android](https://github.com/xitu/gold-miner#android)、[iOS](https://github.com/xitu/gold-miner#ios)、[前端](https://github.com/xitu/gold-miner#前端)、[后端](https://github.com/xitu/gold-miner#后端)、[区块链](https://github.com/xitu/gold-miner#区块链)、[产品](https://github.com/xitu/gold-miner#产品)、[设计](https://github.com/xitu/gold-miner#设计)、[人工智能](https://github.com/xitu/gold-miner#人工智能)等领域，想要查看更多优质译文请持续关注 [掘金翻译计划](https://github.com/xitu/gold-miner)、[官方微博](http://weibo.com/juejinfanyi)、[知乎专栏](https://zhuanlan.zhihu.com/juejinfanyi)。
