@@ -4,7 +4,7 @@ subtitle: Messengers-like ImageView
 date: 2021/02/25 19:24:00
 categories:
 - [Computer Science, Android]
-  tags:
+tags:
 - Computer Science
 - Android
 - Kotlin
