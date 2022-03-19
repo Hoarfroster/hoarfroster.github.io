@@ -1,11 +1,18 @@
+---
+title: 2021 年 1 月 RedMonk 编程语言排名
+subtitle: The RedMonk Programming Language Rankings -  January 2021
+date: 2021/03/10 09:19:00
+category: [Computer Science, Misc]
+tag:
+- Computer Science
+- Programming Languages
+description: 这个版本的 RedMonk 编程语言排名由 MongoDB 发布。从设备到云端，MongoDB 让你能够以处理代码的方式去处理数据，并且不局限于任何一种语言 —— 因此你可以更快编译和分发你的应用。如果你是一个 Python、.NET、Java 或是 JavaScript 开发者，那不妨现在就从 MongoDB University 开始了解吧！
+---
+
 > * 原文地址：[The RedMonk Programming Language Rankings: January 2021](https://redmonk.com/sogrady/2021/03/01/language-rankings-1-21/)
 > * 原文作者：[RedMonk](https://redmonk.com/sogrady/2021/03/01/language-rankings-1-21/)
-> * 译文出自：[掘金翻译计划](https://github.com/xitu/gold-miner)
-> * 本文永久链接：[https://github.com/xitu/gold-miner/blob/master/article/2021/The-RedMonk-Programming-Language-Rankings-January-2021.md](https://github.com/xitu/gold-miner/blob/master/article/2021/The-RedMonk-Programming-Language-Rankings-January-2021.md)
 > * 译者：[霜羽 Hoarfroster](https://github.com/PassionPenguin)
 > * 校对者：[Chorer](https://github.com/Chorer)、[chzh9311](https://github.com/chzh9311)
-
-# 2021 年 1 月 RedMonk 编程语言排名
 
 > 这个版本的 RedMonk 编程语言排名由 MongoDB 发布。从设备到云端，MongoDB 让你能够以处理代码的方式去处理数据，并且不局限于任何一种语言 —— 因此你可以更快编译和分发你的应用。如果你是一个 Python、.NET、Java 或是 JavaScript 开发者，那不妨现在就从 [MongoDB University](https://university.mongodb.com/learning_paths/developer) 开始了解吧！
 
@@ -80,9 +87,3 @@ GitHub 的分析数据来源是 GitHub Archive 上的拉取请求，GitHub 也�
 * **Dart（3）：** 在不到三年前，Dart 就被嘲笑说已经步入中年了。我们跟踪的开发人员对 Dart 的兴趣和相关的活动少之又少。但是，在 Flutter 框架推出两年后，Dart 排名上升了 3 位，刚好排在我们排名的前 20 名之外的 21 名。在 Dart 似乎停滞了两个季度之后（Kotlin 也是如此），人们怀疑 Dart 是否已经到了它的极限了。本季度的结果表明，这个猜想的答案是否定的。显然，Flutter 对这种语言的流行产生了实质性的影响，并且向大家明确了 Dart 并没有因为自身可以被编译为世界上其它的流行语言而遭受挫败，这反而对它还有利。虽然要在我们的排名中位居第 21 位已经非常困难了 —— Rust 可以证明 —— 但是看到这个季度 Dart 恢复上升的轨迹，我们可以将注意力重新放到 Dart 身上，看看它是否能够冲破 20 名的罗网，以及它可能会替代的语言。
 
 鸣谢：我的同事 Rachel Stephens 在这些排名中编写了负责 GitHub 部分的查询。她还负责 Stack Overflow 数据的查询设计。
-
-> 如果发现译文存在错误或其他需要改进的地方，欢迎到 [掘金翻译计划](https://github.com/xitu/gold-miner) 对译文进行修改并 PR，也可获得相应奖励积分。文章开头的 **本文永久链接** 即为本文在 GitHub 上的 MarkDown 链接。
-
----
-
-> [掘金翻译计划](https://github.com/xitu/gold-miner) 是一个翻译优质互联网技术文章的社区，文章来源为 [掘金](https://juejin.im) 上的英文分享文章。内容覆盖 [Android](https://github.com/xitu/gold-miner#android)、[iOS](https://github.com/xitu/gold-miner#ios)、[前端](https://github.com/xitu/gold-miner#前端)、[后端](https://github.com/xitu/gold-miner#后端)、[区块链](https://github.com/xitu/gold-miner#区块链)、[产品](https://github.com/xitu/gold-miner#产品)、[设计](https://github.com/xitu/gold-miner#设计)、[人工智能](https://github.com/xitu/gold-miner#人工智能)等领域，想要查看更多优质译文请持续关注 [掘金翻译计划](https://github.com/xitu/gold-miner)、[官方微博](http://weibo.com/juejinfanyi)、[知乎专栏](https://zhuanlan.zhihu.com/juejinfanyi)。
