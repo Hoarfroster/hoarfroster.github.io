@@ -1,11 +1,21 @@
+---
+title: 黑客“高手”利用 11 个零日漏洞去感染 Windows、iOS 还有 Android 用户
+subtitle: “Expert” hackers used 11 zerodays to infect Windows, iOS, and Android users
+date: 2021/03/31 09:32:00
+category: [Computer Science, Misc]
+tag:
+- Computer Science
+- Security
+- Windows
+- iOS
+- Android
+description: 谷歌研究人员说，一个高级黑客团队在为期 9 个月的攻击活动中利用了不少于 11 个零日漏洞，并通过被感染的网站去感染打过所有补丁的运行 Windows、iOS 和 Android 的设备。
+---
+
 > * 原文地址：[“Expert” hackers used 11 zerodays to infect Windows, iOS, and Android users](https://arstechnica.com/information-technology/2021/03/expert-hackers-used-11-zerodays-to-infect-windows-ios-and-android-users/)
 > * 原文作者：[Dan Goodin](https://arstechnica.com/author/dan-goodin/)
-> * 译文出自：[掘金翻译计划](https://github.com/xitu/gold-miner)
-> * 本文永久链接：[https://github.com/xitu/gold-miner/blob/master/article/2021/expert-hackers-used-11-zerodays-to-infect-windows-ios-and-android-users.md](https://github.com/xitu/gold-miner/blob/master/article/2021/expert-hackers-used-11-zerodays-to-infect-windows-ios-and-android-users.md)
 > * 译者：[霜羽 Hoarfroster](https://github.com/PassionPenguin)
 > * 校对者：[Kimhooo](https://github.com/Kimhooo)、[PingHGao](https://github.com/PingHGao)
-
-# 黑客“高手”利用 11 个零日漏洞去感染 Windows、iOS 还有 Android 用户
 > 针对未知漏洞的漏洞利用程序花样百出，让这个黑客团伙与众不同。
 ![图源 Getty](https://cdn.arstechnica.net/wp-content/uploads/2020/11/zeroday-800x534.jpg)
 
@@ -50,9 +60,3 @@
 周四的帖子未提供负责袭击的组织的详细信息。我们特别想知道这些黑客是不是研究人员已经知道的某个团伙的成员，还是说这是之前未见过的团伙。有关被攻击对象的信息也很有用。
 
 确保应用程序和操作系统处于最新版本状态，并避免去访问可疑网站依然很重要。但不幸的是，这些措施对于被这个来历不明的团伙攻击的受害者而言却毫无帮助。
-
-> 如果发现译文存在错误或其他需要改进的地方，欢迎到 [掘金翻译计划](https://github.com/xitu/gold-miner) 对译文进行修改并 PR，也可获得相应奖励积分。文章开头的 **本文永久链接** 即为本文在 GitHub 上的 MarkDown 链接。
-
----
-
-> [掘金翻译计划](https://github.com/xitu/gold-miner) 是一个翻译优质互联网技术文章的社区，文章来源为 [掘金](https://juejin.im) 上的英文分享文章。内容覆盖 [Android](https://github.com/xitu/gold-miner#android)、[iOS](https://github.com/xitu/gold-miner#ios)、[前端](https://github.com/xitu/gold-miner#前端)、[后端](https://github.com/xitu/gold-miner#后端)、[区块链](https://github.com/xitu/gold-miner#区块链)、[产品](https://github.com/xitu/gold-miner#产品)、[设计](https://github.com/xitu/gold-miner#设计)、[人工智能](https://github.com/xitu/gold-miner#人工智能)等领域，想要查看更多优质译文请持续关注 [掘金翻译计划](https://github.com/xitu/gold-miner)、[官方微博](http://weibo.com/juejinfanyi)、[知乎专栏](https://zhuanlan.zhihu.com/juejinfanyi)。
