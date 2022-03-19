@@ -1,11 +1,19 @@
+---
+title: JavaScript 中哪一种循环最快呢？
+subtitle: Which type of loop is fastest in JavaScript?
+date: 2021/05/17 19:22:00
+category: [Computer Science, Frontend, JavaScript]
+tag:
+- Computer Science
+- Frontend
+- JavaScript
+description: 了解哪一种 for 循环或迭代器适合我们的需求，防止我们犯下一些影响应用性能的低级错误。
+---
+
 > * 原文地址：[Which type of loop is fastest in JavaScript?](https://medium.com/javascript-in-plain-english/which-type-of-loop-is-fastest-in-javascript-ec834a0f21b9)
 > * 原文作者：[kushsavani](https://kushsavani.medium.com/)
-> * 译文出自：[掘金翻译计划](https://github.com/xitu/gold-miner)
-> * 本文永久链接：[https://github.com/xitu/gold-miner/blob/master/article/2021/which-type-of-loop-is-fastest-in-javascript.md](https://github.com/xitu/gold-miner/blob/master/article/2021/which-type-of-loop-is-fastest-in-javascript.md)
 > * 译者：[霜羽 Hoarfroster](https://github.com/PassionPenguin)
 > * 校对者：[Chorer](https://github.com/Chorer)、[HumanBeing](https://github.com/HumanBeingXenon)、[yoghurt](https://juejin.cn/user/2840793777440296)
-
-# JavaScript 中哪一种循环最快呢？
 
 了解哪一种 `for` 循环或迭代器适合我们的需求，防止我们犯下一些影响应用性能的低级错误。
 
@@ -115,7 +123,3 @@ for (let i of arr) {
 - `for...in` 比较慢，没那么方便
 
 最后，给你一条明智的建议 —— 优先考虑可读性。尤其是当我们开发复杂的结构程序时，更需要这样做。当然，我们也应该专注于性能。尽量避免增添不必要的、多余的花哨代码，因为这有时可能对你的程序性能造成严重影响。祝你编码愉快。
-
-> 如果发现译文存在错误或其他需要改进的地方，欢迎到 [掘金翻译计划](https://github.com/xitu/gold-miner) 对译文进行修改并 PR，也可获得相应奖励积分。文章开头的 **本文永久链接** 即为本文在 GitHub 上的 MarkDown 链接。
----
-> [掘金翻译计划](https://github.com/xitu/gold-miner) 是一个翻译优质互联网技术文章的社区，文章来源为 [掘金](https://juejin.im) 上的英文分享文章。内容覆盖 [Android](https://github.com/xitu/gold-miner#android)、[iOS](https://github.com/xitu/gold-miner#ios)、[前端](https://github.com/xitu/gold-miner#前端)、[后端](https://github.com/xitu/gold-miner#后端)、[区块链](https://github.com/xitu/gold-miner#区块链)、[产品](https://github.com/xitu/gold-miner#产品)、[设计](https://github.com/xitu/gold-miner#设计)、[人工智能](https://github.com/xitu/gold-miner#人工智能)等领域，想要查看更多优质译文请持续关注 [掘金翻译计划](https://github.com/xitu/gold-miner)、[官方微博](http://weibo.com/juejinfanyi)、[知乎专栏](https://zhuanlan.zhihu.com/juejinfanyi)。
