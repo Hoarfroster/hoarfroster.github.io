@@ -1,11 +1,20 @@
+---
+title: CSS3 会替代 SCSS 吗？
+subtitle: Will SCSS be replaced by CSS3?
+date: 2021/02/23 09:50:00
+category: [Computer Science, Frontend, Styling]
+tag:
+- Computer Science
+- Frontend
+- CSS
+- SCSS
+description: 当谈及设置网页样式的时候，我们可以选择在项目中使用纯 CSS 或是 SCSS（除了其它处理器之外）。SCSS 是 CSS 的超集。大多数的开发者都认为，受益于高级的功能和清晰的语法，SCSS 使用起来比 CSS 更加方便。
+---
+
 > * 原文地址：[Will SCSS be replaced by CSS3?](https://blog.bitsrc.io/will-scss-be-replaced-by-css3-754842d6b681)
 > * 原文作者：[Viduni Wickramarachchi](https://medium.com/@viduniwickramarachchi)
-> * 译文出自：[掘金翻译计划](https://github.com/xitu/gold-miner)
-> * 本文永久链接：[https://github.com/xitu/gold-miner/blob/master/article/2021/will-scss-be-replaced-by-css3.md](https://github.com/xitu/gold-miner/blob/master/article/2021/will-scss-be-replaced-by-css3.md)
 > * 译者：[霜羽 Hoarfroster](https://github.com/PassionPenguin)
 > * 校对者：[Chorer](https://github.com/Chorer)、[Usualminds](https://github.com/Usualminds)
-
-# CSS3 会替代 SCSS 吗？
 
 ![](https://cdn-images-1.medium.com/max/5760/1*iiuMRihN7Lj3i1-hTk8PjA.jpeg)
 
@@ -161,9 +170,3 @@ SCSS 中还有很多例如[函数](https://sass-lang.com/documentation/at-rules/
 因此我认为，即使 CSS 已经诞生了很多新功能，SCSS 仍然是更好的选择。你可以在下面的评论区中谈谈你的想法。
 
 希望你能够喜欢这篇文章。谢谢阅读！
-
-> 如果发现译文存在错误或其他需要改进的地方，欢迎到 [掘金翻译计划](https://github.com/xitu/gold-miner) 对译文进行修改并 PR，也可获得相应奖励积分。文章开头的 **本文永久链接** 即为本文在 GitHub 上的 MarkDown 链接。
-
----
-
-> [掘金翻译计划](https://github.com/xitu/gold-miner) 是一个翻译优质互联网技术文章的社区，文章来源为 [掘金](https://juejin.im) 上的英文分享文章。内容覆盖 [Android](https://github.com/xitu/gold-miner#android)、[iOS](https://github.com/xitu/gold-miner#ios)、[前端](https://github.com/xitu/gold-miner#前端)、[后端](https://github.com/xitu/gold-miner#后端)、[区块链](https://github.com/xitu/gold-miner#区块链)、[产品](https://github.com/xitu/gold-miner#产品)、[设计](https://github.com/xitu/gold-miner#设计)、[人工智能](https://github.com/xitu/gold-miner#人工智能)等领域，想要查看更多优质译文请持续关注 [掘金翻译计划](https://github.com/xitu/gold-miner)、[官方微博](http://weibo.com/juejinfanyi)、[知乎专栏](https://zhuanlan.zhihu.com/juejinfanyi)。
