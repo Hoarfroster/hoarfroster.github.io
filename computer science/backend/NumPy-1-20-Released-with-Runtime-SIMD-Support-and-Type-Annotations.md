@@ -1,11 +1,19 @@
+---
+title: NumPy 1.20 问世，带来了运行时 SIMD 的支持和类型注释
+subtitle: NumPy 1.20 Released with Runtime SIMD Support and Type Annotations
+date: 2021/03/10 09:17:00
+category: [Computer Science, Backend, Python]
+tag:
+- Computer Science
+- Backend
+- Python
+description: 新发布的 NumPy 1.20 版本在性能和说明文档方面都有所提升。我们现在可以在 NumPy 函数中使用类型注释。SIMD（单指令流多数据流） 指令的更广泛使用完善了通用功能（ufunc）。NumPy 还对它的文档做出了显著的改进。
+---
+
 > * 原文地址：[NumPy 1.20 Released with Runtime SIMD Support and Type Annotations](https://www.infoq.com/news/2021/03/numpy-120-typed-SIMD/)
 > * 原文作者：[Bruno-Courio](https://www.infoq.com/profile/Bruno-Couriol/)
-> * 译文出自：[掘金翻译计划](https://github.com/xitu/gold-miner)
-> * 本文永久链接：[https://github.com/xitu/gold-miner/blob/master/article/2021/NumPy-1-20-Released-with-Runtime-SIMD-Support-and-Type-Annotations.md](https://github.com/xitu/gold-miner/blob/master/article/2021/NumPy-1-20-Released-with-Runtime-SIMD-Support-and-Type-Annotations.md)
 > * 译者：[霜羽 Hoarfroster](https://github.com/PassionPenguin)
 > * 校对者：[HumanBeingXenon](https://github.com/HumanBeingXenon)、[zenblo](https://github.com/zenblo)
-
-# NumPy 1.20 问世，带来了运行时 SIMD 的支持和类型注释
 
 新发布的 NumPy 1.20 版本在[性能和说明文档](https://github.com/numpy/numpy/releases/tag/v1.20.0)方面都有所提升。我们现在可以在 NumPy 函数中使用类型注释。[SIMD（单指令流多数据流）](https://zh.wikipedia.org/wiki/SIMD) 指令的更广泛使用完善了通用功能（[ufunc](https://numpy.org/doc/stable/reference/ufuncs.html)）。NumPy 还对它的文档做出了显著的改进。
 
@@ -39,9 +47,3 @@ NumPy 1.20 是一个大型项目，由 184 人合并贡献了 684 个 pull 请�
 > 使用 Julia 确实可以更好地进行类型注释，但是 NumPy 带来的类型注释对于许多不使用 Julia 的用户来说是有益的。数字的密集运算的并不是主要问题，Python 拥有更多的更好的库这一点也很重要，并且还能够避免 Julia 调用 Python 的麻烦。
 
 [NumPy](http://www.numpy.org/) 是一个开源 Python 库，增加了对大型、多维、同构类型的数组和矩阵的支持。NumPy 含有一堆的数学函数，用于创建和变换这些数组、线性代数例程等。NumPy 是 [SciPy](http://www.scipy.org/) 的核心，Scipy 是一个基于 Python 的开放源代码软件生态系统，用于数学、科学和工程学。NumPy 使得数据科学家可以使用高效的脚本语言来执行数据分析任务。
-
-> 如果发现译文存在错误或其他需要改进的地方，欢迎到 [掘金翻译计划](https://github.com/xitu/gold-miner) 对译文进行修改并 PR，也可获得相应奖励积分。文章开头的 **本文永久链接** 即为本文在 GitHub 上的 MarkDown 链接。
-
----
-
-> [掘金翻译计划](https://github.com/xitu/gold-miner) 是一个翻译优质互联网技术文章的社区，文章来源为 [掘金](https://juejin.im) 上的英文分享文章。内容覆盖 [Android](https://github.com/xitu/gold-miner#android)、[iOS](https://github.com/xitu/gold-miner#ios)、[前端](https://github.com/xitu/gold-miner#前端)、[后端](https://github.com/xitu/gold-miner#后端)、[区块链](https://github.com/xitu/gold-miner#区块链)、[产品](https://github.com/xitu/gold-miner#产品)、[设计](https://github.com/xitu/gold-miner#设计)、[人工智能](https://github.com/xitu/gold-miner#人工智能)等领域，想要查看更多优质译文请持续关注 [掘金翻译计划](https://github.com/xitu/gold-miner)、[官方微博](http://weibo.com/juejinfanyi)、[知乎专栏](https://zhuanlan.zhihu.com/juejinfanyi)。
