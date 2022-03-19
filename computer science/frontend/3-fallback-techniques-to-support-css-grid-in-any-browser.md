@@ -1,11 +1,20 @@
+---
+title: 3 种在任何浏览器中使用 CSS 网格的后备方案
+subtitle: 3 Fallback Techniques To Support CSS Grid in Any Browser
+date: 2021/03/15 21:48:00
+category: [Computer Science, Frontend, Styling]
+tag:
+- Computer Science
+- Frontend
+- CSS
+- UI
+description: 如今，CSS Grid 在浏览器中已经广受支持 —— 支持 Grid 基本功能的浏览器占比约为 95％。不过有时我们无法忽略剩下的 5％，因为我们可能希望自己的 Web 应用的布局在所有浏览器中看起来都一样的棒，而且我们甚至还可能希望去使用一些支持度较低的 Grid 的新功能。
+---
+
 > * 原文地址：[3 Fallback Techniques To Support CSS Grid in Any Browser](https://betterprogramming.pub/3-fallback-techniques-to-support-css-grid-in-any-browser-1740454d7cdb)
 > * 原文作者：[Jose Granja](https://medium.com/@dioxmio)
-> * 译文出自：[掘金翻译计划](https://github.com/xitu/gold-miner)
-> * 本文永久链接：[https://github.com/xitu/gold-miner/blob/master/article/2021/3-fallback-techniques-to-support-css-grid-in-any-browser.md](https://github.com/xitu/gold-miner/blob/master/article/2021/3-fallback-techniques-to-support-css-grid-in-any-browser.md)
 > * 译者：[霜羽 Hoarfroster](https://github.com/PassionPenguin)
 > * 校对者：[Chorer](https://github.com/Chorer)、[sin7777](https://github.com/sin7777)
-
-# 3 种在任何浏览器中使用 CSS 网格的后备方案
 
 ![由 [John Schnobrich](https://unsplash.com/@johnschno?utm_source=medium&utm_medium=referral) 上传至 [Unsplash](https://unsplash.com?utm_source=medium&utm_medium=referral).](https://cdn-images-1.medium.com/max/9662/0*z99PsHMNipBY051X)
 
@@ -445,9 +454,3 @@ Grid 和 Flexbox 旨在解决不同的情况。我们无法一直使用 Flexbox 
 这些策略不仅仅是为了添加基本的 Grid 功能。只要我们提供合理的后备方案，我们就可以利用诸如 `subgrid` 之类的最新功能。
 
 我希望这能鼓励你在需要时去生产环境中逐渐应用 Grid。现在，我们不必再躲在 Flexbox 后面了！
-
-> 如果发现译文存在错误或其他需要改进的地方，欢迎到 [掘金翻译计划](https://github.com/xitu/gold-miner) 对译文进行修改并 PR，也可获得相应奖励积分。文章开头的 **本文永久链接** 即为本文在 GitHub 上的 MarkDown 链接。
-
----
-
-> [掘金翻译计划](https://github.com/xitu/gold-miner) 是一个翻译优质互联网技术文章的社区，文章来源为 [掘金](https://juejin.im) 上的英文分享文章。内容覆盖 [Android](https://github.com/xitu/gold-miner#android)、[iOS](https://github.com/xitu/gold-miner#ios)、[前端](https://github.com/xitu/gold-miner#前端)、[后端](https://github.com/xitu/gold-miner#后端)、[区块链](https://github.com/xitu/gold-miner#区块链)、[产品](https://github.com/xitu/gold-miner#产品)、[设计](https://github.com/xitu/gold-miner#设计)、[人工智能](https://github.com/xitu/gold-miner#人工智能)等领域，想要查看更多优质译文请持续关注 [掘金翻译计划](https://github.com/xitu/gold-miner)、[官方微博](http://weibo.com/juejinfanyi)、[知乎专栏](https://zhuanlan.zhihu.com/juejinfanyi)。
