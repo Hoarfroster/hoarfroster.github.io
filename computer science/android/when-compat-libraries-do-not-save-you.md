@@ -1,11 +1,19 @@
+---
+title: 当 Android 的 Compat 库不能拯救你的时候
+subtitle: When “Compat” libraries won’t save you
+date: 2021/04/11 16:15:00
+category: [Computer Science, Android, Kotlin]
+tag:
+- Computer Science
+- Android
+- Kotlin
+description: Compat 支持库的概念可能是 Android 主导手机领域的重要方面之一。不像是 iOS，Android 用户往往因为他们的手机不允许更新而在新版本推出后不能更新他们的操作系统，而这就是 Android 的碎片化问题。不过开发者们还是希望在他们的应用程序中使用最新的功能来竞争，而解决方法很简单：我们不需要在操作系统中添加新的 API，而是可以直接通过使用谷歌向我们提供的 "回溯" 版本，直接将这些 API 和你的应用一起打包部署。
+---
+
 > * 原文地址：[When “Compat” libraries won’t save you](https://proandroiddev.com/when-compat-libraries-do-not-save-you-dc55f16b4160)
 > * 原文作者：[Danny Preussler](https://dpreussler.medium.com)
-> * 译文出自：[掘金翻译计划](https://github.com/xitu/gold-miner)
-> * 本文永久链接：[https://github.com/xitu/gold-miner/blob/master/article/2021/when-compat-libraries-do-not-save-you.md](https://github.com/xitu/gold-miner/blob/master/article/2021/when-compat-libraries-do-not-save-you.md)
 > * 译者：[霜羽 Hoarfroster](https://github.com/PassionPenguin)
 > * 校对者：[Kimhooo](https://github.com/Kimhooo)、[greycodee](https://github.com/greycodee)
-
-# 当 Android 的 Compat 库不能拯救你的时候
 
 —— 还有为什么你应该避免使用 `NewApi` 抑制警告！
 
@@ -169,9 +177,3 @@ if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P)
 记住，这些注释也被认为是你的代码读者的文档。
 
 PS: 最新的 NotificationCompat alpha 版本将为我们带来 `NotificationChannel` 和 `NotificationChannelGroup` 的兼容版本。🥳
-
-> 如果发现译文存在错误或其他需要改进的地方，欢迎到 [掘金翻译计划](https://github.com/xitu/gold-miner) 对译文进行修改并 PR，也可获得相应奖励积分。文章开头的 **本文永久链接** 即为本文在 GitHub 上的 MarkDown 链接。
-
----
-
-> [掘金翻译计划](https://github.com/xitu/gold-miner) 是一个翻译优质互联网技术文章的社区，文章来源为 [掘金](https://juejin.im) 上的英文分享文章。内容覆盖 [Android](https://github.com/xitu/gold-miner#android)、[iOS](https://github.com/xitu/gold-miner#ios)、[前端](https://github.com/xitu/gold-miner#前端)、[后端](https://github.com/xitu/gold-miner#后端)、[区块链](https://github.com/xitu/gold-miner#区块链)、[产品](https://github.com/xitu/gold-miner#产品)、[设计](https://github.com/xitu/gold-miner#设计)、[人工智能](https://github.com/xitu/gold-miner#人工智能)等领域，想要查看更多优质译文请持续关注 [掘金翻译计划](https://github.com/xitu/gold-miner)、[官方微博](http://weibo.com/juejinfanyi)、[知乎专栏](https://zhuanlan.zhihu.com/juejinfanyi)。
