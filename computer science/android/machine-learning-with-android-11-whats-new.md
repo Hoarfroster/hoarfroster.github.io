@@ -1,11 +1,20 @@
+---
+title: 使用 Android 11 进行机器学习：新功能
+subtitle: Machine Learning with Android 11: What’s new
+date: 2021/02/25 19:23:00
+categories:
+- [Computer Science, Android]
+tags:
+- Computer Science
+- Android
+- Kotlin
+description: 本文将会向大家展示如何使用专为 Android 11 设计的工具或插件来开始使用设备上的 ML（Machine Learning，机器学习）功能。如果你以前在 Android 中使用过 ML，则可以跟随本文一起探索将你的 ML 应用程序与 Android 应用程序集成的更简便方法。而如果你没有在 Android 中使用过 ML，那么这可能是你使用 Android 进行 ML 的起点，开始你使用 ML 为你的 Android 应用程序提供超强功能之旅。
+---
+
 > * 原文地址：[Machine Learning with Android 11: What’s new](https://proandroiddev.com/machine-learning-with-android-11-whats-new-1a8d084c7398)
 > * 原文作者：[Rishit Dagli](https://medium.com/@rishit.dagli)
-> * 译文出自：[掘金翻译计划](https://github.com/xitu/gold-miner)
-> * 本文永久链接：[https://github.com/xitu/gold-miner/blob/master/article/2021/machine-learning-with-android-11-whats-new.md](https://github.com/xitu/gold-miner/blob/master/article/2021/machine-learning-with-android-11-whats-new.md)
 > * 译者：[霜羽 Hoarfroster](https://github.com/PassionPenguin)
 > * 校对者：[HumanBeing](https://github.com/HumanBeingXenon)、[keepmovingljzy](https://github.com/keepmovingljzy)、[lsvih](https://github.com/lsvih)
-
-# 使用 Android 11 进行机器学习：新功能
 
 ![使用 Android 11 进行机器学习：新功能](https://cdn-images-1.medium.com/max/3840/1*_6zTCa-SeOV2q549ey3b5Q.jpeg)
 
@@ -189,9 +198,3 @@ TensorFlow Hub 是一个开放源代码存储库，其中包含最新技术和�
 ---
 
 [GitHub 仓库](https://github.com/Rishit-dagli/ML-with-Android-11) 中提供了此处展示的所有有关 TF Lite Model Maker 的示例的代码。我还为您你供了一些已训练的模型，供初学者入门和实验。
-
-> 如果发现译文存在错误或其他需要改进的地方，欢迎到 [掘金翻译计划](https://github.com/xitu/gold-miner) 对译文进行修改并 PR，也可获得相应奖励积分。文章开头的 **本文永久链接** 即为本文在 GitHub 上的 MarkDown 链接。
-
----
-
-> [掘金翻译计划](https://github.com/xitu/gold-miner) 是一个翻译优质互联网技术文章的社区，文章来源为 [掘金](https://juejin.im) 上的英文分享文章。内容覆盖 [Android](https://github.com/xitu/gold-miner#android)、[iOS](https://github.com/xitu/gold-miner#ios)、[前端](https://github.com/xitu/gold-miner#前端)、[后端](https://github.com/xitu/gold-miner#后端)、[区块链](https://github.com/xitu/gold-miner#区块链)、[产品](https://github.com/xitu/gold-miner#产品)、[设计](https://github.com/xitu/gold-miner#设计)、[人工智能](https://github.com/xitu/gold-miner#人工智能)等领域，想要查看更多优质译文请持续关注 [掘金翻译计划](https://github.com/xitu/gold-miner)、[官方微博](http://weibo.com/juejinfanyi)、[知乎专栏](https://zhuanlan.zhihu.com/juejinfanyi)。
