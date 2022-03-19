@@ -1,11 +1,18 @@
+---
+title: Apple WWDC 21 回归，6 月 7 日线上不见不散！
+subtitle: Apple announces June 7 start date for online-only WWDC 21
+date: 2021/04/02 12:17:00
+category: [Computer Science, Misc]
+tag:
+- Computer Science
+- Apple
+description: Apple 的年度开发者大会即将举行。这家 iPhone 制造商于周二晚些时分向大家发出了邀请，欢迎大家一起参加以开发者为中心的年度活动 WWDC。这个活动通常会展示 iOS、iPadOS、MacOS 和其他软件平台的下一步发展与远景规划。按照惯例，今年的在线活动通常在 6 月初举行（6 月 7 日至 11 日）。
+---
+
 > * 原文地址：[Apple announces June 7 start date for online-only WWDC 21](https://www.cnet.com/news/apple-announces-june-7-start-date-for-wwdc-2021/)
 > * 原文作者：[Eli Blumenthal](https://www.cnet.com/profiles/eli.blumenthal/)
-> * 译文出自：[掘金翻译计划](https://github.com/xitu/gold-miner)
-> * 本文永久链接：[https://github.com/xitu/gold-miner/blob/master/article/2021/apple-announces-june-7-start-date-for-wwdc-2021.md](https://github.com/xitu/gold-miner/blob/master/article/2021/apple-announces-june-7-start-date-for-wwdc-2021.md)
 > * 译者：[霜羽 Hoarfroster](https://github.com/PassionPenguin)
 > * 校对者：[husiyu](https://github.com/husiyu)、[Kimhooo](https://github.com/Kimhooo)
-
-# Apple WWDC 21 回归，6 月 7 日线上不见不散！
 
 ## Apple 的开发者大会来了！
 
