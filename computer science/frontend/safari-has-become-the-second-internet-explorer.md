@@ -1,11 +1,19 @@
+---
+title: 恭喜 Safari 荣获「第二个 Internet Explorer」的美誉
+subtitle: Safari Has Become The Second Internet Explorer
+date: 2021/02/15 22:35:00
+category: [Computer Science, Frontend, Browser]
+tag:
+- Computer Science
+- Frontend
+- Browser
+description: 如果你去问问一个程序员他对听到 IE 这个词的感受，一般来说，绝对是这样的 —— OMG 痛苦的要死！我当然也不是例外！我作为一名 Web 开发者已经有了十多年，在这段时间里面，开发过不少必须要兼容 IE 的项目。我清晰地认识到，某些奇葩浏览器不支持别的浏览器支持的常见功能这个问题，是如何令我们这群本已秃头的程序员们更加头秃沮丧的。或者说，有的时候，这种坑货浏览器甚至还会错误地将部分元素渲染在错误的地方！更糟糕的是，你可能有些时候还得去调试某些意料之外的错误的行为。
+---
+
 > * 原文地址：[Safari Has Become The Second Internet Explorer](https://medium.com/javascript-in-plain-english/safari-has-become-the-second-internet-explorer-e2c2dd114837)
 > * 原文作者：[Golosay Volodymyr](https://medium.com/@golosay)
-> * 译文出自：[掘金翻译计划](https://github.com/xitu/gold-miner)
-> * 本文永久链接：[https://github.com/xitu/gold-miner/blob/master/article/2021/safari-has-become-the-second-internet-explorer.md](https://github.com/xitu/gold-miner/blob/master/article/2021/safari-has-become-the-second-internet-explorer.md)
 > * 译者：[霜羽 Hoarfroster](https://github.com/PassionPenguin)
 > * 校对者：[lsvih](https://github.com/lsvih)
-
-# 恭喜 Safari 荣获「第二个 Internet Explorer」的美誉
 
 ![Safari 有时候看起来长得跟 IE 没啥不一样的](https://cdn-images-1.medium.com/max/2300/1*obluMaNgoWxwefRpP__Elg.png)
 
@@ -110,9 +118,3 @@ ytd-page-manager {
 Safari 是快速的、节能的一款（甚至是）安全的浏览器。但是 Apple 它呢有它自己的想法。当然，Apple 还是喜欢赚钱，而让用户能够避开 App Store 安装应用程序可不是什么有利可图的想法。类似的辩解口径对于自己不兼容某些主流的媒体格式都是通用的，但是这些问题可真真实实地阻碍了技术的发展，给我们这群头秃的开发人员平添了更多的麻烦。
 
 **感谢你的阅读！**
-
-> 如果发现译文存在错误或其他需要改进的地方，欢迎到 [掘金翻译计划](https://github.com/xitu/gold-miner) 对译文进行修改并 PR，也可获得相应奖励积分。文章开头的 **本文永久链接** 即为本文在 GitHub 上的 MarkDown 链接。
-
----
-
-> [掘金翻译计划](https://github.com/xitu/gold-miner) 是一个翻译优质互联网技术文章的社区，文章来源为 [掘金](https://juejin.im) 上的英文分享文章。内容覆盖 [Android](https://github.com/xitu/gold-miner#android)、[iOS](https://github.com/xitu/gold-miner#ios)、[前端](https://github.com/xitu/gold-miner#前端)、[后端](https://github.com/xitu/gold-miner#后端)、[区块链](https://github.com/xitu/gold-miner#区块链)、[产品](https://github.com/xitu/gold-miner#产品)、[设计](https://github.com/xitu/gold-miner#设计)、[人工智能](https://github.com/xitu/gold-miner#人工智能)等领域，想要查看更多优质译文请持续关注 [掘金翻译计划](https://github.com/xitu/gold-miner)、[官方微博](http://weibo.com/juejinfanyi)、[知乎专栏](https://zhuanlan.zhihu.com/juejinfanyi)。
