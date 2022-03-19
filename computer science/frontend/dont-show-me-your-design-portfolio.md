@@ -1,11 +1,20 @@
+---
+title: 你有设计作品的作品集吗？挺好的，但这还不够
+subtitle: Have a design portfolio? Great, but that’s not enough
+date: 2021/02/28 00:01:00
+category: [Computer Science, Frontend, Styling]
+tag:
+- Computer Science
+- Frontend
+- CSS
+- UI
+description: 在实际工作中担任视觉设计师近十年后，我开始在大学和职业学校教授设计课程。学生们最常问的一个问题是：如何建立一个自己的作品集（从而让我能找到一份工作）？
+---
+
 > * 原文地址：[Have a design portfolio? Great, but that’s not enough](https://medium.com/design-bootcamp/dont-show-me-your-design-portfolio-e46053651055)
 > * 原文作者：[Stella Guan](https://medium.com/@stellaguan)
-> * 译文出自：[掘金翻译计划](https://github.com/xitu/gold-miner)
-> * 本文永久链接：[https://github.com/xitu/gold-miner/blob/master/article/2021/dont-show-me-your-design-portfolio.md](https://github.com/xitu/gold-miner/blob/master/article/2021/dont-show-me-your-design-portfolio.md)
 > * 译者：[霜羽 Hoarfroster](https://github.com/PassionPenguin)
 > * 校对者：[zhuzilin](https://github.com/zhuzilin)、[HumanBeing](https://github.com/HumenBeingXenon)、[lsvih](https://github.com/lsvih)
-
-# 你有设计作品的作品集吗？挺好的，但这还不够
 
 在实际工作中担任视觉设计师近十年后，我开始在大学和职业学校教授设计课程。学生们最常问的一个问题是：**如何建立一个自己的作品集（从而让我能找到一份工作）**？
 
@@ -215,9 +224,3 @@ Shawn Park 是产品设计师。他很好地展示了他的作品集的重新设
 ---
 
 **最初于 2021 年 1 月 4 日在 [https://www.stellaguan.com](https://www.stellaguan.com/dont-show-me-your-design-portfolio/) 上发布**
-
-> 如果发现译文存在错误或其他需要改进的地方，欢迎到 [掘金翻译计划](https://github.com/xitu/gold-miner) 对译文进行修改并 PR，也可获得相应奖励积分。文章开头的 **本文永久链接** 即为本文在 GitHub 上的 MarkDown 链接。
-
----
-
-> [掘金翻译计划](https://github.com/xitu/gold-miner) 是一个翻译优质互联网技术文章的社区，文章来源为 [掘金](https://juejin.im) 上的英文分享文章。内容覆盖 [Android](https://github.com/xitu/gold-miner#android)、[iOS](https://github.com/xitu/gold-miner#ios)、[前端](https://github.com/xitu/gold-miner#前端)、[后端](https://github.com/xitu/gold-miner#后端)、[区块链](https://github.com/xitu/gold-miner#区块链)、[产品](https://github.com/xitu/gold-miner#产品)、[设计](https://github.com/xitu/gold-miner#设计)、[人工智能](https://github.com/xitu/gold-miner#人工智能)等领域，想要查看更多优质译文请持续关注 [掘金翻译计划](https://github.com/xitu/gold-miner)、[官方微博](http://weibo.com/juejinfanyi)、[知乎专栏](https://zhuanlan.zhihu.com/juejinfanyi)。
