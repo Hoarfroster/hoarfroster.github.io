@@ -1,11 +1,21 @@
+---
+title: Svelte NodeGUI 发布了！我们现在可以使用 Qt 和 Svelte 构建原生桌面端应用程序
+subtitle: New Svelte NodeGui Allows Creating Native Desktop Applications with Qt and Svelte
+date: 2021/03/25 23:41:00
+category: [Computer Science, Backend, Node]
+tag:
+- Computer Science
+- Backend
+- Node
+- Svelte
+- Qt
+description: Jamie Birch 最近发布了 Svelte NodeGUI，一个用于在 Windows、Linux 和 macOS 上构建桌面端应用程序的框架。这是一个相较 Electron 来说更轻量的代替方案，让我们能够使用 Svelte 前端框架和编译器，以及 Qt 控件工具包，还可以用 HTML 和 CSS 子集，构建桌面端应用程序。
+---
+
 > * 原文地址：[New Svelte NodeGui Allows Creating Native Desktop Applications with Qt and Svelte](https://www.infoq.com/news/2021/03/svelte-nodegui-native-desktop/)
 > * 原文作者：[Bruno Couriol](https://www.infoq.com/profile/Bruno-Couriol/)
-> * 译文出自：[掘金翻译计划](https://github.com/xitu/gold-miner)
-> * 本文永久链接：[https://github.com/xitu/gold-miner/blob/master/article/2021/svelte-nodegui-native-desktop.md](https://github.com/xitu/gold-miner/blob/master/article/2021/svelte-nodegui-native-desktop.md)
 > * 译者：[Hoarfroster](https://github.com/PassionPenguin)
 > * 校对者：
-
-# Svelte NodeGUI 发布了！我们现在可以使用 Qt 和 Svelte 构建原生桌面端应用程序
 
 [Jamie Birch](https://twitter.com/LinguaBrowse) 最近[发布了 Svelte NodeGUI](https://twitter.com/LinguaBrowse/status/1367929896685756422)，一个用于在 Windows、Linux 和 macOS 上构建桌面端应用程序的框架。这是一个相较 Electron 来说更轻量的代替方案，让我们能够使用 [Svelte 前端框架和编译器](https://svelte.dev/)，以及 [Qt 控件工具包](https://www.qt.io/)，还可以用 HTML 和 CSS 子集，构建桌面端应用程序。
 
@@ -92,9 +102,3 @@ Qt [针对商业和开源许可证提供了两种许可](https://www.qt.io/licen
 > 只要遵守 LGPL 许可要求，你就可以免费将 Qt 用于商业应用程序。对于桌面应用程序，这相对容易实现。我们需要确保你正在动态链接到 Qt 库和额外的许可证和信用信息。更多信息请点击[此处](https://www.youtube.com/watch?v=bwTlCBbB3RY)。
 
 [Svelte NodeGUI](https://github.com/nodegui/svelte-nodegui) 则是根据 MIT 许可分发的开源项目。
-
-> 如果发现译文存在错误或其他需要改进的地方，欢迎到 [掘金翻译计划](https://github.com/xitu/gold-miner) 对译文进行修改并 PR，也可获得相应奖励积分。文章开头的 **本文永久链接** 即为本文在 GitHub 上的 MarkDown 链接。
-
----
-
-> [掘金翻译计划](https://github.com/xitu/gold-miner) 是一个翻译优质互联网技术文章的社区，文章来源为 [掘金](https://juejin.im) 上的英文分享文章。内容覆盖 [Android](https://github.com/xitu/gold-miner#android)、[iOS](https://github.com/xitu/gold-miner#ios)、[前端](https://github.com/xitu/gold-miner#前端)、[后端](https://github.com/xitu/gold-miner#后端)、[区块链](https://github.com/xitu/gold-miner#区块链)、[产品](https://github.com/xitu/gold-miner#产品)、[设计](https://github.com/xitu/gold-miner#设计)、[人工智能](https://github.com/xitu/gold-miner#人工智能)等领域，想要查看更多优质译文请持续关注 [掘金翻译计划](https://github.com/xitu/gold-miner)、[官方微博](http://weibo.com/juejinfanyi)、[知乎专栏](https://zhuanlan.zhihu.com/juejinfanyi)。
