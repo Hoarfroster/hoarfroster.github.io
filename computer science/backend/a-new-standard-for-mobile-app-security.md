@@ -1,11 +1,20 @@
+---
+title: 移动应用安全的新标准
+subtitle: A New Standard for Mobile App Security
+date: 2021/08/10 15:37:00
+category: [Computer Science, Backend]
+tag:
+- Computer Science
+- Backend
+- iOS
+- Android
+description: 由于在移动设备上花费了大量时间，因此确保移动应用程序的安全性比以往任何时候都更加重要。尽管数字安全很重要，但并没有一个一致的行业标准来评估移动应用程序。对于普通开发者而言，现有的指南要么太轻量级，要么太繁重，同时也缺乏合规性。
+---
+
 > * 原文地址：[A New Standard for Mobile App Security](https://security.googleblog.com/2021/04/a-new-standard-for-mobile-app-security.html)
 > * 原文作者：[Brooke Davis and Eugene Liderman, Android Security and Privacy Team](https://security.googleblog.com/)
-> * 译文出自：[掘金翻译计划](https://github.com/xitu/gold-miner)
-> * 本文永久链接：[https://github.com/xitu/gold-miner/blob/master/article/2021/a-new-standard-for-mobile-app-security.md](https://github.com/xitu/gold-miner/blob/master/article/2021/a-new-standard-for-mobile-app-security.md)
 > * 译者：[霜羽 Hoarfroster](https://github.com/PassionPenguin)
 > * 校对者：[Chorer](https://github.com/Chorer)、[CarlosChenN](https://github.com/CarlosChenN)
-
-# 移动应用安全的新标准
 
 ![](https://1.bp.blogspot.com/-TNecO7NNDL8/YHdg3EKOL3I/AAAAAAAADsc/EW2Jj7nVYaQxkZSvrxpmXZudgt1yrtwIwCNcBGAsYHQ/s0/Image%2B%23%2B0.png)
 
