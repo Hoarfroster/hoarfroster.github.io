@@ -1,11 +1,20 @@
+---
+title: 快停止在 CSS 中使用像素单位
+subtitle: Stop Using the Pixel Unit in CSS
+date: 2021/05/18 19:12:00
+category: [Computer Science, Frontend, Styling]
+tag:
+- Computer Science
+- Frontend
+- CSS
+- UI
+description: 为什么 Web 开发者如此盲目地使用 px 单位？这只是一个坏习惯吗？是因为缺乏其他单位的知识吗？也许是因为设计团队的模拟依赖于 px 和 pt？目前我们也无法明白为什么像素是大多数团队当前的首选单位。
+---
+
 > * 原文地址：[Stop Using the Pixel Unit in CSS](https://betterprogramming.pub/stop-using-the-pixel-unit-in-css-8b8788a1301f)
 > * 原文作者：[Jose Granja](https://medium.com/@dioxmio)
-> * 译文出自：[掘金翻译计划](https://github.com/xitu/gold-miner)
-> * 本文永久链接：[https://github.com/xitu/gold-miner/blob/master/article/2021/stop-using-the-pixel-unit-in-css.md](https://github.com/xitu/gold-miner/blob/master/article/2021/stop-using-the-pixel-unit-in-css.md)
 > * 译者：[霜羽 Hoarfroster](https://github.com/PassionPenguin)
 > * 校对者：[KimYangOfCat](https://github.com/KimYangOfCat)，[Kimhooo](https://github.com/Kimhooo)、[Li-saltair](https://github.com/Li-saltair)
-
-# 快停止在 CSS 中使用像素单位
 
 ![图源 [Alexander Andrews](https://unsplash.com/@alex_andrews?utm_source=medium&utm_medium=referral)，出自 [Unsplash](https://unsplash.com?utm_source=medium&utm_medium=referral).](https://cdn-images-1.medium.com/max/12450/0*5eX8OB4YTWwqM1RV)
 
@@ -245,9 +254,3 @@ html {
 幸运的是，相对单位如 `rem` 和 `em` 的使用正在不断扩大。同时，浏览器正在尽力提供一些解决方案。当使用绝对值时，如果用户正在缩放，则浏览器单元将缩放以匹配用户应用的适当缩放。这虽不是完美的体验，也是个不错的后备。
 
 我希望本文能为你提供最后的推动力，使你尽可能远离像素单位。
-
-> 如果发现译文存在错误或其他需要改进的地方，欢迎到 [掘金翻译计划](https://github.com/xitu/gold-miner) 对译文进行修改并 PR，也可获得相应奖励积分。文章开头的 **本文永久链接** 即为本文在 GitHub 上的 MarkDown 链接。
-
----
-
-> [掘金翻译计划](https://github.com/xitu/gold-miner) 是一个翻译优质互联网技术文章的社区，文章来源为 [掘金](https://juejin.im) 上的英文分享文章。内容覆盖 [Android](https://github.com/xitu/gold-miner#android)、[iOS](https://github.com/xitu/gold-miner#ios)、[前端](https://github.com/xitu/gold-miner#前端)、[后端](https://github.com/xitu/gold-miner#后端)、[区块链](https://github.com/xitu/gold-miner#区块链)、[产品](https://github.com/xitu/gold-miner#产品)、[设计](https://github.com/xitu/gold-miner#设计)、[人工智能](https://github.com/xitu/gold-miner#人工智能)等领域，想要查看更多优质译文请持续关注 [掘金翻译计划](https://github.com/xitu/gold-miner)、[官方微博](http://weibo.com/juejinfanyi)、[知乎专栏](https://zhuanlan.zhihu.com/juejinfanyi)。
