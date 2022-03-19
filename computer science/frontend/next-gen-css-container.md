@@ -1,6 +1,6 @@
 ---
 title: 下一代 CSS：@container
-subtitle: Next Gen CSS: @container
+subtitle: Next Gen CSS - @container
 date: 2021/07/06 10:48:00
 category: [Computer Science, Frontend, Styling]
 tag:

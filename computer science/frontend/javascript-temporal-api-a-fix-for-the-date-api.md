@@ -1,6 +1,6 @@
 ---
 title: JavaScript Temporal API —— Date API 问题的一个解决方案
-subtitle: JavaScript Temporal API- A Fix for the Date API
+subtitle: JavaScript Temporal API - A Fix for the Date API
 date: 2021/03/10 23:24:00
 category: [Computer Science, Frontend, JavaScript]
 tag:

@@ -1,6 +1,6 @@
 ---
 title: 我们是怎么做到的：Google I/O Photo Booth
-subtitle: How It’s Made: I/O Photo Booth
+subtitle: How It’s Made - I/O Photo Booth
 date: 2021/04/10 15:52:00
 category: [Computer Science, Dart, Flutter]
 tag:

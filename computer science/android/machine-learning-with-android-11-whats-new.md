@@ -1,6 +1,6 @@
 ---
 title: 使用 Android 11 进行机器学习：新功能
-subtitle: Machine Learning with Android 11: What’s new
+subtitle: Machine Learning with Android 11 - What’s new
 date: 2021/02/25 19:23:00
 categories:
 - [Computer Science, Android]

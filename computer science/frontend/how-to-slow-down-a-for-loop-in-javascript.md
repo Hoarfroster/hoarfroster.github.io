@@ -1,6 +1,6 @@
 ---
 title: 如何让 JavaScript 中的循环慢下来
-subtitle: How To Slow Down A For-Loop in JavaScript
+subtitle: How To Slow Down A For - Loop in JavaScript
 date: 2021/02/02 11:58:00
 category: [Computer Science, Frontend, JavaScript]
 tag:

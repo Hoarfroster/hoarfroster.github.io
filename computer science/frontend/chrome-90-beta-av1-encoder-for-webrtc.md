@@ -1,6 +1,6 @@
 ---
 title: Chrome 90 Beta 版本更新，支持 WebRTC AV1 编码器，新的 Origin Trials，还有更多等着你来～
-subtitle: Chrome 90 Beta: AV1 Encoder for WebRTC, New Origin Trials, and More
+subtitle: Chrome 90 Beta - AV1 Encoder for WebRTC, New Origin Trials, and More
 date: 2021/03/25 17:54:00
 category: [Computer Science, Frontend, Browser]
 tag:

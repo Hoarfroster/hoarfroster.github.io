@@ -1,6 +1,6 @@
 ---
 title: Raspberry Pi 九岁啦：你可能不知道的 9 件事 
-subtitle: Raspberry Pi’s Ninth Birthday: 9 Things You Might Not Know
+subtitle: Raspberry Pi’s Ninth Birthday - 9 Things You Might Not Know
 date: 2021/03/14 18:15:00
 category: [Computer Science, Misc]
 tag:

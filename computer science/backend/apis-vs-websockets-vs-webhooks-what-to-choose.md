@@ -1,6 +1,6 @@
 ---
 title: API、WebSockets 和 WebHooks：究竟应该选谁
-subtitle: APIs vs. WebSockets vs. WebHooks: What to Choose?
+subtitle: APIs vs. WebSockets vs. WebHooks - What to Choose?
 date: 2021/03/10 23:35:00
 category: [Computer Science, Backend]
 tag:

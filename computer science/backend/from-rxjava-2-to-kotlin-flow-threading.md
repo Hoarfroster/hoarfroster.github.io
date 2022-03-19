@@ -1,6 +1,6 @@
 ---
 title: 从 RxJava 2 转向使用 Kotlin 流：多线程
-subtitle: From RxJava 2 to Kotlin Flow: Threading
+subtitle: From RxJava 2 to Kotlin Flow - Threading
 date: 2021/03/11 21:45:00
 category: [Computer Science, Backend, Kotlin]
 tag:

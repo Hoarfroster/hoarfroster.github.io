@@ -1,6 +1,6 @@
 ---
 title: HEX vs RGB vs HSL：设置 CSS 颜色属性的最佳方法是什么
-subtitle: HEX vs RGB vs HSL: What is the Best Method to set CSS Color Property
+subtitle: HEX vs RGB vs HSL - What is the Best Method to set CSS Color Property
 date: 2021/07/14 21:48:00
 category: [Computer Science, Frontend, Styling]
 tag:

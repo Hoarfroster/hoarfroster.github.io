@@ -1,6 +1,6 @@
 ---
 title: 1993 年的 CGI 脚本和早期服务端 Web 编程
-subtitle: 1993: CGI Scripts and Early Server-Side Web Programming
+subtitle: 1993 - CGI Scripts and Early Server-Side Web Programming
 date: 2021/04/03 16:47:00
 category: [Computer Science, Frontend]
 tag:

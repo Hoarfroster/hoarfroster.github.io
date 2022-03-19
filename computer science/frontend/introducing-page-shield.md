@@ -1,6 +1,6 @@
 ---
 title: Page Shield：保护浏览器中的用户数据
-subtitle: Page Shield: Protect User Data In-Browser
+subtitle: Page Shield - Protect User Data In-Browser
 date: 2021/05/01 22:30:00
 category: [Computer Science, Frontend]
 tag: 
