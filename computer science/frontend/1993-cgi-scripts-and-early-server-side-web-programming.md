@@ -1,11 +1,18 @@
+---
+title: 1993 年的 CGI 脚本和早期服务端 Web 编程
+subtitle: 1993: CGI Scripts and Early Server-Side Web Programming
+date: 2021/04/03 16:47:00
+category: [Computer Science, Frontend]
+tag:
+- Computer Science
+- Frontend
+description: 在 JavaScript 诞生的几年前，一个叫做通用网关接口（CGI）的规范为网页提供了一种早期的交互形式。不同于在浏览器内部（也就是客户端）执行交互任务的 JavaScript，CGI 脚本是借助服务器上的外部程序（服务器端的程序）运行的。CGI 脚本在服务器上执行后，结果会以 HTML 代码的形式发回给原网页。因此，虽然 CGI 脚本不像 JavaScript 那样作为浏览器中的动态组件，但它确实允许那些早期的互联网使用者和开发者在 1993 年和 1994 年运行交互式程序。从很多方面来看，Web 应用应该起源于 CGI，而不是 JavaScript。
+---
+
 > * 原文地址：[1993: CGI Scripts and Early Server-Side Web Programming](https://webdevelopmenthistory.com/1993-cgi-scripts-and-early-server-side-web-programming/)
 > * 原文作者：[ricmac](https://webdevelopmenthistory.com/author/richardricmac-org/)
-> * 译文出自：[掘金翻译计划](https://github.com/xitu/gold-miner)
-> * 本文永久链接：[https://github.com/xitu/gold-miner/blob/master/article/2021/1993-cgi-scripts-and-early-server-side-web-programming.md](https://github.com/xitu/gold-miner/blob/master/article/2021/1993-cgi-scripts-and-early-server-side-web-programming.md)
 > * 译者：[霜羽 Hoarfroster](https://github.com/PassionPenguin)
 > * 校对者：[zenblo](https://github.com/zenblo)、[Chorer](https://github.com/Chorer)
-
-# 1993 年的 CGI 脚本和早期服务端 Web 编程
 
 ![头图](https://webdevelopmenthistory.com/wp-content/uploads/2021/03/1993_cgi_mosaic.jpg)
 
@@ -96,9 +103,3 @@ FormMail 强调了早年 CGI 脚本的一个问题：由于设计上它们允许
 但是 CGI 提供了一种简单的方式来通过网页访问后端功能，从而在很多方面都绕开了这种复杂化的运动。网关"实际上只是一个从浏览器到服务器的虚拟管道，它可以执行一个脚本，然后将结果送回浏览器。这种简单性使得 20 世纪 90 年代有影响力的网站，如 Yahoo!、eBay 和 Craigslist 等得以摆脱 Netscape 或微软，获得蓬勃的发展。
 
 但网络发展的另一个主题是，事物不会静止太久! 1994 年出现了一种新的脚本语言，它是基于 CGI 的 —— [PHP](https://www.php.net/manual/en/history.php.php)，一个名字最初是"个人主页工具 "的意思的语言。随着时间的推移，PHP 在很多情况下成为了 Perl CGI 脚本的替代品。我将在本系列关于服务器端 Web 开发的下一篇文章中深入探讨*这个故事*。
-
-> 如果发现译文存在错误或其他需要改进的地方，欢迎到 [掘金翻译计划](https://github.com/xitu/gold-miner) 对译文进行修改并 PR，也可获得相应奖励积分。文章开头的 **本文永久链接** 即为本文在 GitHub 上的 MarkDown 链接。
-
----
-
-> [掘金翻译计划](https://github.com/xitu/gold-miner) 是一个翻译优质互联网技术文章的社区，文章来源为 [掘金](https://juejin.im) 上的英文分享文章。内容覆盖 [Android](https://github.com/xitu/gold-miner#android)、[iOS](https://github.com/xitu/gold-miner#ios)、[前端](https://github.com/xitu/gold-miner#前端)、[后端](https://github.com/xitu/gold-miner#后端)、[区块链](https://github.com/xitu/gold-miner#区块链)、[产品](https://github.com/xitu/gold-miner#产品)、[设计](https://github.com/xitu/gold-miner#设计)、[人工智能](https://github.com/xitu/gold-miner#人工智能)等领域，想要查看更多优质译文请持续关注 [掘金翻译计划](https://github.com/xitu/gold-miner)、[官方微博](http://weibo.com/juejinfanyi)、[知乎专栏](https://zhuanlan.zhihu.com/juejinfanyi)。
