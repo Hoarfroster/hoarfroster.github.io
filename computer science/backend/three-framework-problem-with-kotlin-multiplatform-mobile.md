@@ -1,11 +1,20 @@
+---
+title: Kotlin Multiplatform Mobile 的三模块问题
+subtitle: Three-framework problem with Kotlin Multiplatform Mobile
+date: 2021/06/15 09:54:00
+category: [Computer Science, Backend, Kotlin]
+tag:
+- Computer Science
+- Backend
+- Kotlin
+- Kotlin Multiplatform
+description: Kotlin Multiplatform Mobile 正在日趋成熟，越来越多的团队使用该平台同时在 Android 和 iOS 端上开发应用程序。但随着越来越多的项目采纳它，新的问题出现了。今天，我们将讨论一个模块化应用程序中可能发生的问题。这些应用使用了多个 KMP（Kotlin 多平台）框架，它们会在 iOS 应用中被共享和使用。这些 KMP 框架都使用了来自第三方模块或 iOS 程序可见的库中的通用代码。
+---
+
 > * 原文地址：[Three-framework problem with Kotlin Multiplatform Mobile](https://medium.com/xorum-io/three-framework-problem-with-kotlin-multiplatform-mobile-16267c5afa53)
 > * 原文作者：[Yev Kanivets](https://medium.com/@yev-kanivets)
-> * 译文出自：[掘金翻译计划](https://github.com/xitu/gold-miner)
-> * 本文永久链接：[https://github.com/xitu/gold-miner/blob/master/article/2021/three-framework-problem-with-kotlin-multiplatform-mobile.md](https://github.com/xitu/gold-miner/blob/master/article/2021/three-framework-problem-with-kotlin-multiplatform-mobile.md)
 > * 译者：[霜羽 Hoarfroster](https://github.com/PassionPenguin)
 > * 校对者：[Kimhooo](https://github.com/Kimhooo)、[HumanBeingXenon](https://github.com/HumanBeingXenon)
-
-# Kotlin Multiplatform Mobile 的三模块问题
 
 Kotlin Multiplatform Mobile 正在日趋成熟，越来越多的团队使用该平台同时在 Android 和 iOS 端上开发应用程序。但随着越来越多的项目采纳它，新的问题出现了。
 
@@ -54,9 +63,3 @@ Android 应用程序中的每个模块都由 2 个子模块表示：共享 KMP �
 没有完美的技术或解决方案。你应该做好处理问题的准备，因为它们会在开发的全过程中出现，特别如果是你够胆使用 alpha 或 beta 版本的软件。
 
 Kotlin Multiplatform 使得你可以使用模块化架构，不过还是有一些重要的制约。在我们规划共有部分的实现及其在 iOS 应用程序中的使用时，必须考虑这些制约。
-
-> 如果发现译文存在错误或其他需要改进的地方，欢迎到 [掘金翻译计划](https://github.com/xitu/gold-miner) 对译文进行修改并 PR，也可获得相应奖励积分。文章开头的 **本文永久链接** 即为本文在 GitHub 上的 MarkDown 链接。
-
----
-
-> [掘金翻译计划](https://github.com/xitu/gold-miner) 是一个翻译优质互联网技术文章的社区，文章来源为 [掘金](https://juejin.im) 上的英文分享文章。内容覆盖 [Android](https://github.com/xitu/gold-miner#android)、[iOS](https://github.com/xitu/gold-miner#ios)、[前端](https://github.com/xitu/gold-miner#前端)、[后端](https://github.com/xitu/gold-miner#后端)、[区块链](https://github.com/xitu/gold-miner#区块链)、[产品](https://github.com/xitu/gold-miner#产品)、[设计](https://github.com/xitu/gold-miner#设计)、[人工智能](https://github.com/xitu/gold-miner#人工智能)等领域，想要查看更多优质译文请持续关注 [掘金翻译计划](https://github.com/xitu/gold-miner)、[官方微博](http://weibo.com/juejinfanyi)、[知乎专栏](https://zhuanlan.zhihu.com/juejinfanyi)。
