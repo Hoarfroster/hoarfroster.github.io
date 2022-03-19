@@ -1,11 +1,19 @@
+---
+title: 都 1202 年了，你还不知道这些检查 CSS 的工具？？？
+subtitle: Tools for Auditing CSS
+date: 2021/03/19 16:26:00
+category: [Computer Science, Frontend, Styling]
+tag:
+- Computer Science
+- Frontend
+- CSS
+description: 每当需要检查 CSS 的时候到来，我通常都会使用我将在下文中向大家介绍的那些工具。但在此之前，让我们先看看检查 CSS 到底是什么。
+---
+
 > * 原文地址：[Tools for Auditing CSS](https://css-tricks.com/tools-for-auditing-css/)
 > * 原文作者：[Silvestar Bistrović](https://css-tricks.com/author/silvestar/)
-> * 译文出自：[掘金翻译计划](https://github.com/xitu/gold-miner)
-> * 本文永久链接：[https://github.com/xitu/gold-miner/blob/master/article/2021/tools-for-auditing-css.md](https://github.com/xitu/gold-miner/blob/master/article/2021/tools-for-auditing-css.md)
 > * 译者：[霜羽 Hoarfroster](https://github.com/Hoarfroster)
 > * 校对者：[zenblo](https://github.com/zenblo)
-
-# 不会吧不会吧，都 1202 年了，你还不知道这些检查 CSS 的工具？？？
 
 在开发者的日常工作中检查 CSS 并不是一项常见的任务，但有时却不得不做。或许这是性能检查的一部分，用来排查有问题的 CSS 或删去未使用的选择器。也许是努力提高可访问性的一部分，在代码库中使用的所有颜色都要进行对比评估。甚至可能是为了加强一致性。
 
@@ -155,9 +163,3 @@ CSS 在我们身边无处不在，我们需要把它当作每个项目的一等�
 让今天成为你开始关心你的 CSS 代码的日子。
 
 我知道检查 CSS 对每个人来说都不会是一件有趣的事情。但是，如果你针对这些工具中的任何一个运行你的代码，并试图改善你的 CSS 代码库中的哪怕是一个部分，那么这篇文章已经完成了它的工作。
-
-> 如果发现译文存在错误或其他需要改进的地方，欢迎到 [掘金翻译计划](https://github.com/xitu/gold-miner) 对译文进行修改并 PR，也可获得相应奖励积分。文章开头的 **本文永久链接** 即为本文在 GitHub 上的 MarkDown 链接。
-
----
-
-> [掘金翻译计划](https://github.com/xitu/gold-miner) 是一个翻译优质互联网技术文章的社区，文章来源为 [掘金](https://juejin.im) 上的英文分享文章。内容覆盖 [Android](https://github.com/xitu/gold-miner#android)、[iOS](https://github.com/xitu/gold-miner#ios)、[前端](https://github.com/xitu/gold-miner#前端)、[后端](https://github.com/xitu/gold-miner#后端)、[区块链](https://github.com/xitu/gold-miner#区块链)、[产品](https://github.com/xitu/gold-miner#产品)、[设计](https://github.com/xitu/gold-miner#设计)、[人工智能](https://github.com/xitu/gold-miner#人工智能)等领域，想要查看更多优质译文请持续关注 [掘金翻译计划](https://github.com/xitu/gold-miner)、[官方微博](http://weibo.com/juejinfanyi)、[知乎专栏](https://zhuanlan.zhihu.com/juejinfanyi)。
