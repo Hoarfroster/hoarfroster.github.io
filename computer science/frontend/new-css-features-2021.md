@@ -1,11 +1,20 @@
+---
+title: 都 2021 年了，你还不知道这 10 个 CSS 功能？
+subtitle: 10 New CSS Features You Might Not Know About (2021 Edition)
+date: 2021/05/23 21:11:00
+category: [Computer Science, Frontend, Styling]
+tag:
+- Computer Science
+- Frontend
+- CSS
+- UI
+description: 没有 CSS，现代 Web 应用程序将无法实现。标记语言（译者注：这是样式表语言……）负责让网站有良好的视觉体验、令人愉悦的布局，并且每个元素都各居其位。但是，你知道新的 CSS 特性一直在出现吗？
+---
+
 > * 原文地址：[10 New CSS Features You Might Not Know About (2021 Edition)](https://torquemag.io/2021/03/new-css-features/)
 > * 原文作者：[Nick Schäferhoff](https://torquemag.io/author/NSchaferhoff1234/)
-> * 译文出自：[掘金翻译计划](https://github.com/xitu/gold-miner)
-> * 本文永久链接：[https://github.com/xitu/gold-miner/blob/master/article/2021/new-css-features-2021.md](https://github.com/xitu/gold-miner/blob/master/article/2021/new-css-features-2021.md)
 > * 译者：[霜羽 Hoarfroster](https://github.com/PassionPenguin)
 > * 校对者：[Baddyo](https://github.com/Baddyo)、[nia3y](https://github.com/nia3y)
-
-# 都 2021 年了，你还不知道这 10 个 CSS 功能？
 
 没有 CSS，现代 Web 应用程序将无法实现。标记语言（译者注：这是样式表语言……）负责让网站有良好的视觉体验、令人愉悦的布局，并且每个元素都各居其位。但是，你知道新的 CSS 特性一直在出现吗？
 
@@ -297,9 +306,3 @@ div:hover {
 本文我们主要讲了一些我们可能没注意到的现代 CSS 所具有的功能，并且还有更多的类似功能等待着我们的发掘。—— 如果你还有其他想要分享的，请告诉我们，我们会很开心的。除此之外，祝你编程愉快！
 
 *你最喜欢的现代 CSS 功能是什么？在下面的评论部分中分享它！*
-
-> 如果发现译文存在错误或其他需要改进的地方，欢迎到 [掘金翻译计划](https://github.com/xitu/gold-miner) 对译文进行修改并 PR，也可获得相应奖励积分。文章开头的 **本文永久链接** 即为本文在 GitHub 上的 MarkDown 链接。
-
----
-
-> [掘金翻译计划](https://github.com/xitu/gold-miner) 是一个翻译优质互联网技术文章的社区，文章来源为 [掘金](https://juejin.im) 上的英文分享文章。内容覆盖 [Android](https://github.com/xitu/gold-miner#android)、[iOS](https://github.com/xitu/gold-miner#ios)、[前端](https://github.com/xitu/gold-miner#前端)、[后端](https://github.com/xitu/gold-miner#后端)、[区块链](https://github.com/xitu/gold-miner#区块链)、[产品](https://github.com/xitu/gold-miner#产品)、[设计](https://github.com/xitu/gold-miner#设计)、[人工智能](https://github.com/xitu/gold-miner#人工智能)等领域，想要查看更多优质译文请持续关注 [掘金翻译计划](https://github.com/xitu/gold-miner)、[官方微博](http://weibo.com/juejinfanyi)、[知乎专栏](https://zhuanlan.zhihu.com/juejinfanyi)。
