@@ -1,11 +1,19 @@
+---
+title: Figma 生产环境中的 Rust
+subtitle: Rust in production at Figma
+date: 2021/03/10 22:26:00
+category: [Computer Science, Backend, Rust]
+tag:
+- Computer Science
+- Backend
+- Rust
+description: 对于我们 Figma 来说，性能永远是我们最重要的卖点之一。我们力争去让团队能够所思即所得，而我们的多人同步引擎就是决定这个愿景能否实现的关键部分。我们希望能够让每个协作者都可以实时看到别人在 Figma 文档中所做的修改！
+---
+
 > * 原文地址：[Rust in production at Figma](https://www.figma.com/blog/rust-in-production-at-figma/)
 > * 原文作者：[Evan Wallace](https://twitter.com/evanwallace)
-> * 译文出自：[掘金翻译计划](https://github.com/xitu/gold-miner)
-> * 本文永久链接：[https://github.com/xitu/gold-miner/blob/master/article/2021/Rust-in-production-at-Figma.md](https://github.com/xitu/gold-miner/blob/master/article/2021/Rust-in-production-at-Figma.md)
 > * 译者：[霜羽 Hoarfroster](https://github.com/PassionPenguin)
 > * 校对者：[lsvih](https://github.com/lsvih)、[zhuzilin](https://github.com/zhuzilin)、[youngjuning](https://github.com/youngjuning)
-
-# Figma 生产环境中的 Rust
 
 > Mozilla 的新语言究竟是如何显著地提升了我们服务端的性能的呢？
 
@@ -122,9 +130,3 @@ Figma 的文档都是压缩过后的，因此我们的服务器需要能够处�
 我们的多人服务器是很少的对性能敏感的代码，组合一些很小的依赖库所构成的，因此在 Rust 中重写，即便遇到了问题，也仍然对我们来说是非常棒的。它让我们能够将服务端多人编写的性能提升一个数量级，让我们 Figma 的多人服务得以获得一个更广阔的未来！
 
 **感谢 Figma～**
-
-> 如果发现译文存在错误或其他需要改进的地方，欢迎到 [掘金翻译计划](https://github.com/xitu/gold-miner) 对译文进行修改并 PR，也可获得相应奖励积分。文章开头的 **本文永久链接** 即为本文在 GitHub 上的 MarkDown 链接。
-
----
-
-> [掘金翻译计划](https://github.com/xitu/gold-miner) 是一个翻译优质互联网技术文章的社区，文章来源为 [掘金](https://juejin.im) 上的英文分享文章。内容覆盖 [Android](https://github.com/xitu/gold-miner#android)、[iOS](https://github.com/xitu/gold-miner#ios)、[前端](https://github.com/xitu/gold-miner#前端)、[后端](https://github.com/xitu/gold-miner#后端)、[区块链](https://github.com/xitu/gold-miner#区块链)、[产品](https://github.com/xitu/gold-miner#产品)、[设计](https://github.com/xitu/gold-miner#设计)、[人工智能](https://github.com/xitu/gold-miner#人工智能)等领域，想要查看更多优质译文请持续关注 [掘金翻译计划](https://github.com/xitu/gold-miner)、[官方微博](http://weibo.com/juejinfanyi)、[知乎专栏](https://zhuanlan.zhihu.com/juejinfanyi)。
