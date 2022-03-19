@@ -1,11 +1,19 @@
+---
+title: Chrome 88 DevTools 中的新功能
+subtitle: New Features in Chrome 88 Devtools
+date: 2021/03/10 22:15:00
+category: [Computer Science, Frontend, Browser]
+tag:
+- Computer Science
+- Frontend
+- Browser 
+description: 最近发布的 Chrome 88 对 Chrome DevTools 进行了重大更新，包括改进的网络调试、实验性的 CSS Flexbox 调试工具、改进的框架详细信息视图、新的 WASM 调试功能以及总体性能上的提高。
+---
+
 > * 原文地址：[New Features in Chrome 88 Devtools](https://www.infoq.com/news/2021/03/new-features-chrome-88/?topicPageSponsorship=eb89fa44-b190-43ef-87d0-4bc8727e7413)
 > * 原文作者：[Guy Nesher](https://www.infoq.com/profile/Guy-Nesher/)
-> * 译文出自：[掘金翻译计划](https://github.com/xitu/gold-miner)
-> * 本文永久链接：[https://github.com/xitu/gold-miner/blob/master/article/2021/new-features-chrome-88.md](https://github.com/xitu/gold-miner/blob/master/article/2021/new-features-chrome-88.md)
 > * 译者：[霜羽 Hoarfroster](https://github.com/PassionPenguin)
 > * 校对者：[Chorer](https://github.com/Chorer)
-
-# Chrome 88 DevTools 中的新功能
 
 最近发布的 Chrome 88 对 Chrome DevTools 进行了重大更新，包括改进的网络调试、实验性的 CSS Flexbox 调试工具、改进的框架详细信息视图、新的 WASM 调试功能以及总体性能上的提高。
 
@@ -43,9 +51,3 @@ Chrome 88 还使 [Wasm](https://developer.mozilla.org/zh-CN/docs/WebAssembly) �
 最后，从  JavaScript 编译速度的角度来说，由于减少了启动过程中的序列化、解析和反序列化所带来的性能开销，DevTools 现在的启动速度提高了近 40％。
 
 Chrome DevTools 提供了丰富的实用程序集以调试 Web 应用，并且用于大多数基于 Chromium 的浏览器中。Chrome 开发团队将继续改进 DevTools，并在每次发布新版本的 Chrome 时都提供新功能。开发者可以在 [Google 开发者网站](https://developers.google.com/web/updates/tags/devtools)上跟进最新功能，并在[邮件列表](https://groups.google.com/forum/#!forum/google-chrome-developer-tools)中讨论可能出现的功能、更新和漏洞。
-
-> 如果发现译文存在错误或其他需要改进的地方，欢迎到 [掘金翻译计划](https://github.com/xitu/gold-miner) 对译文进行修改并 PR，也可获得相应奖励积分。文章开头的 **本文永久链接** 即为本文在 GitHub 上的 MarkDown 链接。
-
----
-
-> [掘金翻译计划](https://github.com/xitu/gold-miner) 是一个翻译优质互联网技术文章的社区，文章来源为 [掘金](https://juejin.im) 上的英文分享文章。内容覆盖 [Android](https://github.com/xitu/gold-miner#android)、[iOS](https://github.com/xitu/gold-miner#ios)、[前端](https://github.com/xitu/gold-miner#前端)、[后端](https://github.com/xitu/gold-miner#后端)、[区块链](https://github.com/xitu/gold-miner#区块链)、[产品](https://github.com/xitu/gold-miner#产品)、[设计](https://github.com/xitu/gold-miner#设计)、[人工智能](https://github.com/xitu/gold-miner#人工智能)等领域，想要查看更多优质译文请持续关注 [掘金翻译计划](https://github.com/xitu/gold-miner)、[官方微博](http://weibo.com/juejinfanyi)、[知乎专栏](https://zhuanlan.zhihu.com/juejinfanyi)。
