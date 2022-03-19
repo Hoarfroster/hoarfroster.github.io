@@ -1,11 +1,20 @@
+---
+title: 从 RxJava 2 转向使用 Kotlin 流：多线程
+subtitle: From RxJava 2 to Kotlin Flow: Threading
+date: 2021/03/11 21:45:00
+category: [Computer Science, Backend, Kotlin]
+tag:
+- Computer Science
+- Backend
+- Java
+- Kotlin
+description: 长期以来，RxJava 一直是 Android 响应式解决方案的无可争议的引领者。虽然 Kotlin 不断扩展，并且引入了冷流（Flow）的概念，情况可能在未来几年迅速改变，但这并不意味着 RxJava 会退出历史舞台。虽说响应式编程最初与线程无关，但合适的线程的并发和并行对程序而言仍然非常重要。在本文中，我们将简要回顾 RxJava 2 中的线程（对其用法做一些基本说明），然后讨论一下 Kotlin Flow 中线程的工作原理，让我们能在不影响功能的情况下能够顺利地完成代码迁移。
+---
+
 > * 原文地址：[From RxJava 2 to Kotlin Flow: Threading](https://proandroiddev.com/from-rxjava-2-to-kotlin-flow-threading-8618867e1955)
 > * 原文作者：[Vasya Drobushkov](https://medium.com/@krossovochkin)
-> * 译文出自：[掘金翻译计划](https://github.com/xitu/gold-miner)
-> * 本文永久链接：[https://github.com/xitu/gold-miner/blob/master/article/2021/from-rxjava-2-to-kotlin-flow-threading.md](https://github.com/xitu/gold-miner/blob/master/article/2021/from-rxjava-2-to-kotlin-flow-threading.md)
 > * 译者：[霜羽 Hoarfroster](https://github.com/PassionPenguin)
 > * 校对者：[samyu2000](https://github.com/samyu2000)、[zenblo](https://github.com/zenblo)
-
-# 从 RxJava 2 转向使用 Kotlin 流：多线程
 
 ![[来源](https://unsplash.com/photos/vyyVbUOYNPc)](https://cdn-images-1.medium.com/max/2000/0*piI5NnrRuivMUOKD)
 
@@ -518,9 +527,3 @@ Kotlin Flow 真的不错，可以跟 RxJava Observable 相媲美。它们的使�
 希望您喜欢这篇文章，但愿它对您有所帮助
 
 祝你编程快乐！
-
-> 如果发现译文存在错误或其他需要改进的地方，欢迎到 [掘金翻译计划](https://github.com/xitu/gold-miner) 对译文进行修改并 PR，也可获得相应奖励积分。文章开头的 **本文永久链接** 即为本文在 GitHub 上的 MarkDown 链接。
-
----
-
-> [掘金翻译计划](https://github.com/xitu/gold-miner) 是一个翻译优质互联网技术文章的社区，文章来源为 [掘金](https://juejin.im) 上的英文分享文章。内容覆盖 [Android](https://github.com/xitu/gold-miner#android)、[iOS](https://github.com/xitu/gold-miner#ios)、[前端](https://github.com/xitu/gold-miner#前端)、[后端](https://github.com/xitu/gold-miner#后端)、[区块链](https://github.com/xitu/gold-miner#区块链)、[产品](https://github.com/xitu/gold-miner#产品)、[设计](https://github.com/xitu/gold-miner#设计)、[人工智能](https://github.com/xitu/gold-miner#人工智能)等领域，想要查看更多优质译文请持续关注 [掘金翻译计划](https://github.com/xitu/gold-miner)、[官方微博](http://weibo.com/juejinfanyi)、[知乎专栏](https://zhuanlan.zhihu.com/juejinfanyi)。
