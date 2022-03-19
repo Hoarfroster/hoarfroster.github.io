@@ -1,11 +1,20 @@
+---
+title: Node.js 缓冲区的完整指南
+subtitle: A Complete Guide of Node.js Buffer
+date: 2021/01/13 21:26:00
+category: [Computer Science, Backend, JavaScript]
+tag:
+- Computer Science
+- Backend
+- JavaScript
+- Node.js
+description: Node.js 服务器一般需要在文件系统中进行读写，而文件在存储层面而言其实都是二进制流。除此之外，Node.js 还能与 TCP 流一起使用，让 TCP 流在不可靠的互联网络上提供可靠的端到端字节流保障通信。
+---
+
 > * 原文地址：[A Complete Guide of Node.js Buffer](https://medium.com/javascript-in-plain-english/a-complete-guide-of-node-js-buffer-3a38d2d949b1)
 > * 原文作者：[Harsh Patel](https://medium.com/@harsh-patel)
-> * 译文出自：[掘金翻译计划](https://github.com/xitu/gold-miner)
-> * 本文永久链接：[https://github.com/xitu/gold-miner/blob/master/article/2021/a-complete-guide-of-node-js-buffer.md](https://github.com/xitu/gold-miner/blob/master/article/2021/a-complete-guide-of-node-js-buffer.md)
 > * 译者：[霜羽 Hoarfroster](https://github.com/PassionPenguin)
 > * 校对者：[flashhu](https://github.com/flashhu)、[regon-cao](https://github.com/regon-cao)
-
-# Node.js 缓冲区的完整指南
 
 二进制流是大量的二进制数据的集合。由于通常情况下二进制流的大小挺大的，因此二进制流一般不会一起运送，而会在运输前切分成小块然后逐一发送。
 
@@ -196,9 +205,3 @@ console.log(buf.toJSON());
 ## 结论
 
 如果我们需要进一步了解并使用 Node.js 的缓冲区，我们需要对缓冲区以及 Node.js 缓冲区的工作原理有更扎实的基础知识。我们还应该了解为什么我们需要使用 Node.js 缓冲区和各种 Node.js 缓冲区方法的使用。
-
-> 如果发现译文存在错误或其他需要改进的地方，欢迎到 [掘金翻译计划](https://github.com/xitu/gold-miner) 对译文进行修改并 PR，也可获得相应奖励积分。文章开头的 **本文永久链接** 即为本文在 GitHub 上的 MarkDown 链接。
-
----
-
-> [掘金翻译计划](https://github.com/xitu/gold-miner) 是一个翻译优质互联网技术文章的社区，文章来源为 [掘金](https://juejin.im) 上的英文分享文章。内容覆盖 [Android](https://github.com/xitu/gold-miner#android)、[iOS](https://github.com/xitu/gold-miner#ios)、[前端](https://github.com/xitu/gold-miner#前端)、[后端](https://github.com/xitu/gold-miner#后端)、[区块链](https://github.com/xitu/gold-miner#区块链)、[产品](https://github.com/xitu/gold-miner#产品)、[设计](https://github.com/xitu/gold-miner#设计)、[人工智能](https://github.com/xitu/gold-miner#人工智能)等领域，想要查看更多优质译文请持续关注 [掘金翻译计划](https://github.com/xitu/gold-miner)、[官方微博](http://weibo.com/juejinfanyi)、[知乎专栏](https://zhuanlan.zhihu.com/juejinfanyi)。
