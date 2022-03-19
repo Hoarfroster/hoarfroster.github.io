@@ -1,11 +1,18 @@
+---
+title: API、WebSockets 和 WebHooks：究竟应该选谁
+subtitle: APIs vs. WebSockets vs. WebHooks: What to Choose?
+date: 2021/03/10 23:35:00
+category: [Computer Science, Backend]
+tag:
+- Computer Science
+- Backend
+description: 无论开发什么应用，我们都需要一种可靠的机制来进行组件间通信。例如，在 Web 应用中，我们需要在浏览器和服务器之间进行通信；有时，服务器需要将消息返回浏览器；此外，在某些情况下，后端服务还可能依赖于另一个需要很长响应时间的服务。
+---
+
 > * 原文地址：[APIs vs. WebSockets vs. WebHooks: What to Choose?](https://blog.bitsrc.io/apis-vs-websockets-vs-webhooks-what-to-choose-5942b73aeb9b)
 > * 原文作者：[Chameera Dulanga](https://medium.com/@chameeradulanga)
-> * 译文出自：[掘金翻译计划](https://github.com/xitu/gold-miner)
-> * 本文永久链接：[https://github.com/xitu/gold-miner/blob/master/article/2021/apis-vs-websockets-vs-webhooks-what-to-choose.md](https://github.com/xitu/gold-miner/blob/master/article/2021/apis-vs-websockets-vs-webhooks-what-to-choose.md)
 > * 译者：[霜羽 Hoarfroster](https://github.com/PassionPenguin)
 > * 校对者：[Chorer](https://github.com/Chorer)、[HumanBeingXenon](https://github.com/HumanBeingXenon)、[Usualminds](https://github.com/Usualminds)
-
-# API、WebSockets 和 WebHooks：究竟应该选谁
 
 ![](https://cdn-images-1.medium.com/max/5760/1*k3Etz0QztOVwxIMYg1Tatw.jpeg)
 
@@ -85,9 +92,3 @@ WebHooks 通过提供一种断开机制以接收来自服务商的响应，从�
 相信现在你已经了解这些通信方式的不同使用场景，如果你有什么想要分享的内容，请在评论区中留言。
 
 感谢你的阅读！
-
-> 如果发现译文存在错误或其他需要改进的地方，欢迎到 [掘金翻译计划](https://github.com/xitu/gold-miner) 对译文进行修改并 PR，也可获得相应奖励积分。文章开头的 **本文永久链接** 即为本文在 GitHub 上的 MarkDown 链接。
-
----
-
-> [掘金翻译计划](https://github.com/xitu/gold-miner) 是一个翻译优质互联网技术文章的社区，文章来源为 [掘金](https://juejin.im) 上的英文分享文章。内容覆盖 [Android](https://github.com/xitu/gold-miner#android)、[iOS](https://github.com/xitu/gold-miner#ios)、[前端](https://github.com/xitu/gold-miner#前端)、[后端](https://github.com/xitu/gold-miner#后端)、[区块链](https://github.com/xitu/gold-miner#区块链)、[产品](https://github.com/xitu/gold-miner#产品)、[设计](https://github.com/xitu/gold-miner#设计)、[人工智能](https://github.com/xitu/gold-miner#人工智能)等领域，想要查看更多优质译文请持续关注 [掘金翻译计划](https://github.com/xitu/gold-miner)、[官方微博](http://weibo.com/juejinfanyi)、[知乎专栏](https://zhuanlan.zhihu.com/juejinfanyi)。
