@@ -1,11 +1,20 @@
+---
+title: Rust 与 C 的速度比较
+subtitle: Speed of Rust vs. C
+date: 2021/07/19 09:57:00
+category: [Computer Science, Backend, Rust]
+tag:
+- Computer Science
+- Backend
+- Rust
+- C
+description: 
+---
+
 > * 原文地址：[Speed of Rust vs. C](https://kornel.ski/rust-c-speed)
 > * 原文作者：[kornelski](https://twitter.com/kornelski)
-> * 译文出自：[掘金翻译计划](https://github.com/xitu/gold-miner)
-> * 本文永久链接：[https://github.com/xitu/gold-miner/blob/master/article/2021/speed-of-rust-vs-c.md](https://github.com/xitu/gold-miner/blob/master/article/2021/speed-of-rust-vs-c.md)
 > * 译者：[霜羽 Hoarfroster](https://github.com/PassionPenguin)
 > * 校对者：[PingHGao](https://github.com/PingHGao)、[Z招锦](https://github.com/zenblofe)
-
-# Rust 与 C 的速度比较
 
 Rust 程序的运行速度和内存使用量应该与 C 程序大致相同，不过由于这些语言的整体编程风格差异很大，我们很难准确地概括它们的速度。这就是我对于 Rust 和 C 运行速度的总结：有时它们相同，有时 C 语言更快，有时 Rust 更快。
 
@@ -115,9 +124,3 @@ Rust 和 C 库在记录线程安全方面有一个有趣的区别。 Rust 为线
 Rust 足够低级，如有必要，它可以像 C 一样被优化以获得最大性能。更高级别的抽象、简单的内存管理和丰富的可用库往往使 Rust 程序能拥有更多代码，能做更多事情，并且如果任其发展，可能会导致程序的臃肿。然而，Rust 程序也被优化得很好，有时甚至能比 C 更好。虽然 C 适合在逐字节逐个指针级别编写最少的代码，但 Rust 具有强大的功能，可以有效地将多个函数甚至整个库组合在一起。
 
 但最大的潜力在于能够无畏地并行化大多数 Rust 代码，即使等效的 C 代码风险太大而无法并行化。在这方面，Rust 是一种比 C 成熟得多的语言。
-
-> 如果发现译文存在错误或其他需要改进的地方，欢迎到 [掘金翻译计划](https://github.com/xitu/gold-miner) 对译文进行修改并 PR，也可获得相应奖励积分。文章开头的 **本文永久链接** 即为本文在 GitHub 上的 MarkDown 链接。
-
----
-
-> [掘金翻译计划](https://github.com/xitu/gold-miner) 是一个翻译优质互联网技术文章的社区，文章来源为 [掘金](https://juejin.im) 上的英文分享文章。内容覆盖 [Android](https://github.com/xitu/gold-miner#android)、[iOS](https://github.com/xitu/gold-miner#ios)、[前端](https://github.com/xitu/gold-miner#前端)、[后端](https://github.com/xitu/gold-miner#后端)、[区块链](https://github.com/xitu/gold-miner#区块链)、[产品](https://github.com/xitu/gold-miner#产品)、[设计](https://github.com/xitu/gold-miner#设计)、[人工智能](https://github.com/xitu/gold-miner#人工智能)等领域，想要查看更多优质译文请持续关注 [掘金翻译计划](https://github.com/xitu/gold-miner)、[官方微博](http://weibo.com/juejinfanyi)、[知乎专栏](https://zhuanlan.zhihu.com/juejinfanyi)。
