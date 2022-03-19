@@ -1,11 +1,19 @@
+---
+title: 现代 Web 应用程序中的 Web 分享
+subtitle: Web Share for Modern Web Apps
+date: 2021/05/16 17:09:00
+category: [Computer Science, Frontend, JavaScript]
+tag:
+- Computer Science
+- Frontend
+- JavaScript
+description: 不知道你有没有接触过 Web Share API？我想你们中的很多人应该都听说过这个词吧！Web Share API 其实已经出现一段时间了，只不过最初只有移动设备支持 Web Share API。
+---
+
 > * 原文地址：[Web Share for Modern Web Apps](https://blog.bitsrc.io/web-share-for-modern-web-apps-43c3e2329093)
 > * 原文作者：[Janaka Ekanayake](https://medium.com/@clickforjanaka)
-> * 译文出自：[掘金翻译计划](https://github.com/xitu/gold-miner)
-> * 本文永久链接：[https://github.com/xitu/gold-miner/blob/master/article/2021/web-share-for-modern-web-apps.md](https://github.com/xitu/gold-miner/blob/master/article/2021/web-share-for-modern-web-apps.md)
 > * 译者：[霜羽 Hoarfroster](https://github.com/PassionPenguin)
 > * 校对者：[Chorer](https://github.com/Chorer)、[Usualminds](https://github.com/Usualminds)
-
-# 现代 Web 应用程序中的 Web 分享
 
 ![](https://cdn-images-1.medium.com/max/5760/1*QXEz4H_A4nons0JRZmblhQ.png)
 
@@ -138,9 +146,3 @@ Chrome 是支持 Web Share Target API 的主要浏览器之一。此外，Safari
 > 但是，Web Share API 应该由用户主动操作触发，这样做是为了减少不便和滥用。
 
 谢谢你的阅读。欢迎在下方留言，分享你的经验。
-
-> 如果发现译文存在错误或其他需要改进的地方，欢迎到 [掘金翻译计划](https://github.com/xitu/gold-miner) 对译文进行修改并 PR，也可获得相应奖励积分。文章开头的 **本文永久链接** 即为本文在 GitHub 上的 MarkDown 链接。
-
----
-
-> [掘金翻译计划](https://github.com/xitu/gold-miner) 是一个翻译优质互联网技术文章的社区，文章来源为 [掘金](https://juejin.im) 上的英文分享文章。内容覆盖 [Android](https://github.com/xitu/gold-miner#android)、[iOS](https://github.com/xitu/gold-miner#ios)、[前端](https://github.com/xitu/gold-miner#前端)、[后端](https://github.com/xitu/gold-miner#后端)、[区块链](https://github.com/xitu/gold-miner#区块链)、[产品](https://github.com/xitu/gold-miner#产品)、[设计](https://github.com/xitu/gold-miner#设计)、[人工智能](https://github.com/xitu/gold-miner#人工智能)等领域，想要查看更多优质译文请持续关注 [掘金翻译计划](https://github.com/xitu/gold-miner)、[官方微博](http://weibo.com/juejinfanyi)、[知乎专栏](https://zhuanlan.zhihu.com/juejinfanyi)。
