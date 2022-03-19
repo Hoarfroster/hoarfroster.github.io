@@ -1,11 +1,19 @@
+---
+title: 在 TypeScript 中引入 JSON 模块
+subtitle: Importing JSON Modules in TypeScript
+date: 2021/01/29 10:35:00
+category: [Computer Science, Backend, TypeScript]
+tag:
+- Computer Science
+- Backend
+- TypeScript
+description: TypeScript 2.9 版本引入了一个新的 --resolveJsonModule 编译选项，让我们可以在 TypeScript 模块内部引入 JSON 模块。
+---
+
 > * 原文地址：[Importing JSON Modules in TypeScript](https://mariusschulz.com/blog/importing-json-modules-in-typescript)
 > * 原文作者：[Marius Schulz](https://mariusschulz.com/)
-> * 译文出自：[掘金翻译计划](https://github.com/xitu/gold-miner)
-> * 本文永久链接：[https://github.com/xitu/gold-miner/blob/master/article/2021/importing-json-modules-in-typescript.md](https://github.com/xitu/gold-miner/blob/master/article/2021/importing-json-modules-in-typescript.md)
 > * 译者：[霜羽 Hoarfroster](https://github.com/PassionPenguin)
 > * 校对者：[zenblo](https://github.com/zenblo)、[regonCao](https://github.com/regon-cao)
-
-# 在 TypeScript 中引入 JSON 模块
 
 TypeScript 2.9 版本引入了一个新的 `--resolveJsonModule` 编译选项，让我们可以在 TypeScript 模块内部引入 JSON 模块。
 
@@ -115,9 +123,3 @@ app.listen(config.server.nodePort, () => {
 ```
 
 这就是在 TypeScript 模块中导入 JSON 模块的方法！我们仅需在配置文件中通过设置 `resolveJsonModule` 这个编译器选项的值为 `true` 即可启用这个功能！
-
-> 如果发现译文存在错误或其他需要改进的地方，欢迎到 [掘金翻译计划](https://github.com/xitu/gold-miner) 对译文进行修改并 PR，也可获得相应奖励积分。文章开头的 **本文永久链接** 即为本文在 GitHub 上的 MarkDown 链接。
-
----
-
-> [掘金翻译计划](https://github.com/xitu/gold-miner) 是一个翻译优质互联网技术文章的社区，文章来源为 [掘金](https://juejin.im) 上的英文分享文章。内容覆盖 [Android](https://github.com/xitu/gold-miner#android)、[iOS](https://github.com/xitu/gold-miner#ios)、[前端](https://github.com/xitu/gold-miner#前端)、[后端](https://github.com/xitu/gold-miner#后端)、[区块链](https://github.com/xitu/gold-miner#区块链)、[产品](https://github.com/xitu/gold-miner#产品)、[设计](https://github.com/xitu/gold-miner#设计)、[人工智能](https://github.com/xitu/gold-miner#人工智能)等领域，想要查看更多优质译文请持续关注 [掘金翻译计划](https://github.com/xitu/gold-miner)、[官方微博](http://weibo.com/juejinfanyi)、[知乎专栏](https://zhuanlan.zhihu.com/juejinfanyi)。
