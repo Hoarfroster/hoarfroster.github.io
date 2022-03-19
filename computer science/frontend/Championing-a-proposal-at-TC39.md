@@ -1,15 +1,22 @@
+---
+title: 如何在 TC39 提起一项提案？
+subtitle: [Championing a proposal at TC39](https://github.com/tc39/how-we-work/blob/master/champion.md)
+date: 2021/03/19 16:44:00
+category: [Computer Science, Frontend, tc39]
+tag:
+- Computer Science
+- Frontend
+- tc39
+- JavaScript
+description: 你想为 JavaScript 提出一个新功能吗？不过提出提案需要一个 TC39 代表作为提案发起人，来推动提案通过各个[阶段流程](https://tc39.es/process-document/)。本文将为你描述如何做到这一点。
+---
+
 > * 原文地址：[Championing a proposal at TC39](https://github.com/tc39/how-we-work/blob/master/champion.md)
 > * 原文作者：[ECMA TC39](https://github.com/tc39/how-we-work)
-> * 译文出自：[掘金翻译计划](https://github.com/xitu/gold-miner)
-> * 本文永久链接：[https://github.com/xitu/gold-miner/blob/master/article/ECMA-TC39/Championing-a-proposal-at-TC39.md](https://github.com/xitu/gold-miner/blob/master/article/ECMA-TC39/Championing-a-proposal-at-TC39.md)
-> * 译者：[霜羽 Hoarfroster](https://github.com/PassionPenguin)
-> * 校对者：[Kimhooo](https://github.com/Kimhooo)，[KimYangOfCat](https://github.com/KimYangOfCat)
+> * 译者：* 译者：[霜羽 Hoarfroster](https://github.com/PassionPenguin)
+> * 校对者：* 校对者：[Kimhooo](https://github.com/Kimhooo)，[KimYangOfCat](https://github.com/KimYangOfCat)
 
-**本文是为 TC39 代表编写的（参见[加入 TC39](https://github.com/tc39/how-we-work/blob/master/join-tc39.md)。如果您不是代表，您也可以帮助提案的发起人完成其中的一些任务，不过其中一些工作涉及在 TC39 会议上出席，以及在委员会中提供介绍和建立共识。**
-
-# 如何在 TC39 提起一项提案？
-
-你想为 JavaScript 提出一个新功能吗？不过提出提案需要一个 TC39 代表作为提案发起人，来推动提案通过各个[阶段流程](https://tc39.es/process-document/)。本文档将为你描述如何做到这一点。
+你想为 JavaScript 提出一个新功能吗？不过提出提案需要一个 TC39 代表作为提案发起人，来推动提案通过各个[阶段流程](https://tc39.es/process-document/)。本文将为你描述如何做到这一点。
 
 提出一项提案是一项在委员会以外改进维护提案中的平行工作，同样的是平行工作的还有向委员会在关于收集更多的想法、反馈，并最终通过阶段推进提案等方面的演示。委员会以外的工作很少会有需要暂缓委员会内部的进展以帮助委员会以外的工作的推进，但委员会会对其进行阶段的提升，而这一进步会是对里程碑和支持的良好致谢。想要将提案添加到 JavaScript 规范的功能之中，需要该提案步入第四阶段。
 
@@ -151,7 +158,3 @@
 - **Archive 提案仓库**。第四阶段的提案将不会有进一步的更改，将来的任何更改都将是针对主要规范的单独提案。
 - **确保提供了良好的文档**。理想情况下，您在投标过程的早期就开发了文档。现在，至关重要的是，各个级别的文档都必须具有良好的质量，以供广大 JavaScript 开发者使用。
 - **确保在可能的情况下有条件地使用 polyfills 或 shims**。一旦提案进入第四阶段，则在可行且正确的情况下，请顺应内置的实现。这使开发者可以在不牺牲正确性的情况下，尽可能地受益于原生实现的更好性能。对于 polyfills 或 shims，如果存在已知的错误和偏差，则严格检查原生实现是否有用，而不是仅检查原生实现的存在是很有帮助的。但是，以依赖于修改全局环境的形式进行广泛部署存在兼容性风险，尤其是在提案成为标准之前 —— 使用不内置于运行环境中的 polyfill 可能会有所帮助。
-
-> 如果发现译文存在错误或其他需要改进的地方，欢迎到 [掘金翻译计划](https://github.com/xitu/gold-miner) 对译文进行修改并 PR，也可获得相应奖励积分。文章开头的 **本文永久链接** 即为本文在 GitHub 上的 MarkDown 链接。
----
-> [掘金翻译计划](https://github.com/xitu/gold-miner) 是一个翻译优质互联网技术文章的社区，文章来源为 [掘金](https://juejin.im) 上的英文分享文章。内容覆盖 [Android](https://github.com/xitu/gold-miner#android)、[iOS](https://github.com/xitu/gold-miner#ios)、[前端](https://github.com/xitu/gold-miner#前端)、[后端](https://github.com/xitu/gold-miner#后端)、[区块链](https://github.com/xitu/gold-miner#区块链)、[产品](https://github.com/xitu/gold-miner#产品)、[设计](https://github.com/xitu/gold-miner#设计)、[人工智能](https://github.com/xitu/gold-miner#人工智能)等领域，想要查看更多优质译文请持续关注 [掘金翻译计划](https://github.com/xitu/gold-miner)、[官方微博](http://weibo.com/juejinfanyi)、[知乎专栏](https://zhuanlan.zhihu.com/juejinfanyi)。

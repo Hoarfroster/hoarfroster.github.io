@@ -1,11 +1,20 @@
+---
+title: 如何提出有用的反馈
+subtitle: [How to give helpful feedback](https://github.com/tc39/how-we-work/blob/master/feedback.md)
+date: 2021/05/25 23:14:00
+category: [Computer Science, Frontend, tc39]
+tag:
+- Computer Science
+- Frontend
+- tc39
+- JavaScript
+description: 不管是借助在线渠道或是在 TC39 会议中出席，我们始终会就提案提供反馈。以下的这些建议能够确保您的反馈意见是可行的和有帮助的。
+---
+
 > * 原文地址：[How to give helpful feedback](https://github.com/tc39/how-we-work/blob/master/feedback.md)
 > * 原文作者：[Ecma TC39](https://github.com/tc39/how-we-work)
-> * 译文出自：[掘金翻译计划](https://github.com/xitu/gold-miner)
-> * 本文永久链接：[https://github.com/xitu/gold-miner/blob/master/article/ECMA-TC39/How-to-give-helpful-feedback.md](https://github.com/xitu/gold-miner/blob/master/article/ECMA-TC39/How-to-give-helpful-feedback.md)
-> * 译者：[霜羽 Hoarfroster](https://github.com/PassionPenguin)
-> * 校对者：[Kim Yang](https://github.com/KimYangOfCat)、[Miigon](https://github.com/Miigon)
-
-# 如何提出有用的反馈
+> * 译者：* 译者：[霜羽 Hoarfroster](https://github.com/PassionPenguin)
+> * 校对者：* 校对者：[Kim Yang](https://github.com/KimYangOfCat)、[Miigon](https://github.com/Miigon)
 
 不管是借助在线渠道或是在 TC39 会议中出席，我们始终会就提案提供反馈。以下的这些建议能够确保您的反馈意见是可行的和有帮助的。
 
@@ -30,7 +39,3 @@
 - 在会议中，请使用排队举手工具，而不要在演示中途打断。有关详细信息，请参见 [how-to-participate-in-meetings.md](https://github.com/xitu/gold-miner/blob/master/article/ECMA-TC39/How-to-participate-in-meetings.md) 一文。
 
 提案小组负责仔细考查并总结所有反馈，在考虑了以上所有要求之后向委员会提出建议。提案发起人不一定总能在表达意见的所有人之间取得绝对共识，但他们应尽力认真聆听并做出平衡的判断。
-
-> 如果发现译文存在错误或其他需要改进的地方，欢迎到 [掘金翻译计划](https://github.com/xitu/gold-miner) 对译文进行修改并 PR，也可获得相应奖励积分。文章开头的 **本文永久链接** 即为本文在 GitHub 上的 MarkDown 链接。
----
-> [掘金翻译计划](https://github.com/xitu/gold-miner) 是一个翻译优质互联网技术文章的社区，文章来源为 [掘金](https://juejin.im) 上的英文分享文章。内容覆盖 [Android](https://github.com/xitu/gold-miner#android)、[iOS](https://github.com/xitu/gold-miner#ios)、[前端](https://github.com/xitu/gold-miner#前端)、[后端](https://github.com/xitu/gold-miner#后端)、[区块链](https://github.com/xitu/gold-miner#区块链)、[产品](https://github.com/xitu/gold-miner#产品)、[设计](https://github.com/xitu/gold-miner#设计)、[人工智能](https://github.com/xitu/gold-miner#人工智能)等领域，想要查看更多优质译文请持续关注 [掘金翻译计划](https://github.com/xitu/gold-miner)、[官方微博](http://weibo.com/juejinfanyi)、[知乎专栏](https://zhuanlan.zhihu.com/juejinfanyi)。

@@ -1,11 +1,20 @@
+---
+title: 如何针对 ECMAScript 规范创建一个拉取请求
+subtitle: [How to make a Pull Request against the ECMAScript specification](https://github.com/tc39/how-we-work/blob/master/pr.md)
+date: 2021// ::
+category: [Computer Science, Frontend, tc39]
+tag:
+- Computer Science
+- Frontend
+- tc39
+- JavaScript
+description: 对 JavaScript 规范的所有更改最终都会变为对 ecma262 或 ecma402 存储库的拉取请求。
+---
+
 > * 原文地址：[How to make a Pull Request against the ECMAScript specification](https://github.com/tc39/how-we-work/blob/master/pr.md)
 > * 原文作者：[Ecma TC39](https://github.com/tc39/how-we-work)
-> * 译文出自：[掘金翻译计划](https://github.com/xitu/gold-miner)
-> * 本文永久链接：[https://github.com/xitu/gold-miner/blob/master/article/ECMA-TC39/How-to-make-a-Pull-Request-against-the-ECMAScript-specification.md](https://github.com/xitu/gold-miner/blob/master/article/ECMA-TC39/How-to-make-a-Pull-Request-against-the-ECMAScript-specification.md)
-> * 译者：[霜羽 Hoarfroster](https://github.com/PassionPenguin)、[Usualminds](https://github.com/Usualminds)
-> * 校对者：[Usualminds](https://github.com/Usualminds)、[kimberlyohq](https://github.com/kimberlyohq)、[Kim Yang](https://github.com/KimYangOfCat)
-
-# 如何针对 ECMAScript 规范创建一个拉取请求
+> * 译者：* 译者：[霜羽 Hoarfroster](https://github.com/PassionPenguin)、[Usualminds](https://github.com/Usualminds)
+> * 校对者：* 校对者：[Usualminds](https://github.com/Usualminds)、[kimberlyohq](https://github.com/kimberlyohq)、[Kim Yang](https://github.com/KimYangOfCat)
 
 对 JavaScript 规范的所有更改最终都会变为对 [ecma262](https://github.com/tc39/ecma262/) 或 [ecma402](https://github.com/tc39/ecma402/) 存储库的拉取请求。
 
@@ -51,7 +60,3 @@
 ### 实施反馈
 
 在许多情况下，收集有关实施规范的拉取请求的现实状况、是否实现对某些不太重要的修改感兴趣等方面，获取外界的反馈是有用的。对于这些情况，委员会可能会要求构建一个或多个实现（可能只是在 fork 中或被隐藏在 flag 中），然后再合并规范拉取请求。
-
-> 如果发现译文存在错误或其他需要改进的地方，欢迎到 [掘金翻译计划](https://github.com/xitu/gold-miner) 对译文进行修改并 PR，也可获得相应奖励积分。文章开头的 **本文永久链接** 即为本文在 GitHub 上的 MarkDown 链接。
----
-> [掘金翻译计划](https://github.com/xitu/gold-miner) 是一个翻译优质互联网技术文章的社区，文章来源为 [掘金](https://juejin.im) 上的英文分享文章。内容覆盖 [Android](https://github.com/xitu/gold-miner#android)、[iOS](https://github.com/xitu/gold-miner#ios)、[前端](https://github.com/xitu/gold-miner#前端)、[后端](https://github.com/xitu/gold-miner#后端)、[区块链](https://github.com/xitu/gold-miner#区块链)、[产品](https://github.com/xitu/gold-miner#产品)、[设计](https://github.com/xitu/gold-miner#设计)、[人工智能](https://github.com/xitu/gold-miner#人工智能)等领域，想要查看更多优质译文请持续关注 [掘金翻译计划](https://github.com/xitu/gold-miner)、[官方微博](http://weibo.com/juejinfanyi)、[知乎专栏](https://zhuanlan.zhihu.com/juejinfanyi)。
