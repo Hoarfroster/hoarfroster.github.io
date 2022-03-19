@@ -1,11 +1,20 @@
+---
+title: Flutter 动画：构建一个和 Medium 一样的鼓掌动画
+subtitle: Flutter Animation - Creating medium’s clap animation in flutter
+date: 2021/04/11 16:27:00
+category: [Computer Science, Dart, Flutter]
+tag:
+- Computer Science
+- Dart
+- Flutter
+- UI
+description: 在这篇文章中，我们将从零开始探索 Flutter 动画。我们将通过在 Flutter 中模仿制作 Medium 的鼓掌动画，学习一些关于动画的核心概念。
+---
+
 > * 原文地址：[Flutter Animation : Creating medium’s clap animation in flutter](https://proandroiddev.com/flutter-animation-creating-mediums-clap-animation-in-flutter-3168f047421e)
 > * 原文作者：[Kartik Sharma](https://medium.com/@Kartik1607)
-> * 译文出自：[掘金翻译计划](https://github.com/xitu/gold-miner)
-> * 本文永久链接：[https://github.com/xitu/gold-miner/blob/master/article/2021/flutter-animation-creating-mediums-clap-animation-in-flutter.md](https://github.com/xitu/gold-miner/blob/master/article/2021/flutter-animation-creating-mediums-clap-animation-in-flutter.md)
 > * 译者：[霜羽 Hoarfroster](https://github.com/PassionPenguin)
 > * 校对者：[greycodee](https://github.com/greycodee)、[HumanBeingXenon](https://github.com/HumanBeingXenon)
-
-# Flutter 动画：构建一个和 Medium 一样的鼓掌动画
 
 在这篇文章中，我们将从零开始探索 Flutter 动画。我们将通过在 Flutter 中模仿制作 Medium 的鼓掌动画，学习一些关于动画的核心概念。
 
@@ -592,9 +601,3 @@ Widget getScoreButton() {
 这就是我们对 Flutter 中**基本动画的介绍**。我们未来还会继续探索更多的 Flutter 知识，以学习创建更高级的 UI。
 
 你可以在我的 [Git 仓库](https://github.com/Kartik1607/FlutterUI/tree/master/MediumClapAnimation/medium_clap)找到完整的代码。
-
-> 如果发现译文存在错误或其他需要改进的地方，欢迎到 [掘金翻译计划](https://github.com/xitu/gold-miner) 对译文进行修改并 PR，也可获得相应奖励积分。文章开头的 **本文永久链接** 即为本文在 GitHub 上的 MarkDown 链接。
-
----
-
-> [掘金翻译计划](https://github.com/xitu/gold-miner) 是一个翻译优质互联网技术文章的社区，文章来源为 [掘金](https://juejin.im) 上的英文分享文章。内容覆盖 [Android](https://github.com/xitu/gold-miner#android)、[iOS](https://github.com/xitu/gold-miner#ios)、[前端](https://github.com/xitu/gold-miner#前端)、[后端](https://github.com/xitu/gold-miner#后端)、[区块链](https://github.com/xitu/gold-miner#区块链)、[产品](https://github.com/xitu/gold-miner#产品)、[设计](https://github.com/xitu/gold-miner#设计)、[人工智能](https://github.com/xitu/gold-miner#人工智能)等领域，想要查看更多优质译文请持续关注 [掘金翻译计划](https://github.com/xitu/gold-miner)、[官方微博](http://weibo.com/juejinfanyi)、[知乎专栏](https://zhuanlan.zhihu.com/juejinfanyi)。
