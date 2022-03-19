@@ -12,8 +12,8 @@ description: 如果问前端、后端甚至游戏开发人员之间存在什么�
 
 > * 原文地址：[Unexpected App Crashes on Android and How to Deal with Them](https://levelup.gitconnected.com/unexpected-app-crashes-on-android-and-how-to-deal-with-them-c5d07512d99f)
 > * 原文作者：[Kunal Chaubal](https://medium.com/@kunalchaubal)
-> * 译者：* 译者：[霜羽 Hoarfroster](https://github.com/PassionPenguin)
-> * 校对者：* 校对者：[zenblo](https://github.com/zenblo)、[HumanBeing](https://github.com/HumanBeingXenon)
+> * 译者：[霜羽 Hoarfroster](https://github.com/PassionPenguin)
+> * 校对者：[zenblo](https://github.com/zenblo)、[HumanBeing](https://github.com/HumanBeingXenon)
 
 ![图自 [testbytes](https://pixabay.com/users/testbytes-1013799/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=762486) 源于 [Pixabay](https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=762486)](https://cdn-images-1.medium.com/max/2560/1*4WT3_B3SVKgvexQOTE_ZqQ.jpeg)
 
