@@ -1,11 +1,20 @@
+---
+title: 纯 CSS 创建五彩斑斓的智能阴影
+subtitle: Creating Colorful, Smart Shadows
+date: 2021/07/06 10:49:00
+category: [Computer Science, Frontend, Styling]
+tag:
+- Computer Science
+- Frontend
+- CSS
+- UI
+description: 几天前，我在 Home Depot（也就是大孩子的玩具反斗城）处发现，他们有一个巨大的显示器来展示所有这些彩色的供销售的电灯泡！其中一项是一组在电视后面的智能灯泡。它们会在电视的后面投影近似于电视在播出的内容的彩色阴影，与以下内容类似：
+---
+
 > * 原文地址：[Creating Colorful, Smart Shadows](https://www.kirupa.com/html5/creating_colorful_smart_shadows.htm)
 > * 原文作者：[kirupa](https://www.kirupa.com/me/index.htm)
-> * 译文出自：[掘金翻译计划](https://github.com/xitu/gold-miner)
-> * 本文永久链接：[https://github.com/xitu/gold-miner/blob/master/article/2021/creating_colorful_smart_shadows.md](https://github.com/xitu/gold-miner/blob/master/article/2021/creating_colorful_smart_shadows.md)
 > * 译者：[霜羽 Hoarfroster](https://github.com/PassionPenguin)
 > * 校对者：[CarlosChenN](https://github.com/CarlosChenN)、[Kim Yang](https://github.com/KimYangOfCat)
-
-# 纯 CSS 创建五彩斑斓的智能阴影
 
 几天前，我在 Home Depot（也就是大孩子的[玩具反斗城](http://en.wikipedia.org/wiki/Toys_R_Us)）处发现，他们有一个巨大的显示器来展示所有这些彩色的供销售的电灯泡！其中一项是一组在电视后面的智能灯泡。它们会在电视的后面投影近似于电视在播出的内容的彩色阴影，与以下内容 [类似](https://www.philips-hue.com/en-us/p/hue-play-hdmi-sync-box-/046677555221)：
 
@@ -153,9 +162,3 @@
 伪元素允许我们使用 CSS 来完成一些历史上属于 HTML 和 JavaScript 领域的元素创建任务。对于我们多彩而智能的阴影，我们能够依靠父元素来设置背景图像。这使我们能够轻松定义一个既继承了父元素的背景图像细节，又允许我们为其设置一系列属性以实现模糊和阴影效果的子伪元素。尽管这一切都很好，我们也最大限度地减少了大量复制和粘贴，但这种方法不是很灵活。
 
 如果我想将这样的阴影应用到一个不只是带有背景图像的空元素上怎么办？如果我有一个像 **Button** 或 **ComboBox** 这样的 HTML 元素想要应用这种阴影效果怎么办？一种解决方案是依靠 JavaScript 在 DOM 中复制适当的元素，将它们放置在前景元素下方，应用过滤器，然后就可以了。虽然可行，但考虑到该过程的复杂程度，实在是有些不寒而栗。可惜 JavaScript 没有等效的 [renderTargetBitmap](https://docs.microsoft.com/en-us/dotnet/api/system.windows.media.imaging.rendertargetbitmap?view=net-5.0) 这种能够把我们的视觉效果渲染成位图，然后你可以做任何你想做的事的 API…… 🥶
-
-> 如果发现译文存在错误或其他需要改进的地方，欢迎到 [掘金翻译计划](https://github.com/xitu/gold-miner) 对译文进行修改并 PR，也可获得相应奖励积分。文章开头的 **本文永久链接** 即为本文在 GitHub 上的 MarkDown 链接。
-
----
-
-> [掘金翻译计划](https://github.com/xitu/gold-miner) 是一个翻译优质互联网技术文章的社区，文章来源为 [掘金](https://juejin.im) 上的英文分享文章。内容覆盖 [Android](https://github.com/xitu/gold-miner#android)、[iOS](https://github.com/xitu/gold-miner#ios)、[前端](https://github.com/xitu/gold-miner#前端)、[后端](https://github.com/xitu/gold-miner#后端)、[区块链](https://github.com/xitu/gold-miner#区块链)、[产品](https://github.com/xitu/gold-miner#产品)、[设计](https://github.com/xitu/gold-miner#设计)、[人工智能](https://github.com/xitu/gold-miner#人工智能)等领域，想要查看更多优质译文请持续关注 [掘金翻译计划](https://github.com/xitu/gold-miner)、[官方微博](http://weibo.com/juejinfanyi)、[知乎专栏](https://zhuanlan.zhihu.com/juejinfanyi)。
