@@ -1,6 +1,6 @@
 ---
 title: 如何在 TC39 提起一项提案？
-subtitle: [Championing a proposal at TC39](https://github.com/tc39/how-we-work/blob/master/champion.md)
+subtitle: Championing a proposal at TC39
 date: 2021/03/19 16:44:00
 category: [Computer Science, Frontend, tc39]
 tag:

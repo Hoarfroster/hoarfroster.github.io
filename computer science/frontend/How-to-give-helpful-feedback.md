@@ -1,6 +1,6 @@
 ---
 title: 如何提出有用的反馈
-subtitle: [How to give helpful feedback](https://github.com/tc39/how-we-work/blob/master/feedback.md)
+subtitle: How to give helpful feedback
 date: 2021/05/25 23:14:00
 category: [Computer Science, Frontend, tc39]
 tag:

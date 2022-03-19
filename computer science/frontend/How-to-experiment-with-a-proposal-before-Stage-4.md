@@ -1,6 +1,6 @@
 ---
 title: 如何在第 4 阶段之前体验一个提案
-subtitle: [How to experiment with a proposal before Stage 4](https://github.com/tc39/how-we-work/blob/master/experiment.md)
+subtitle: How to experiment with a proposal before Stage 4
 date: 2021/03/19 16:44:00
 category: [Computer Science, Frontend, tc39]
 tag:

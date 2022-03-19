@@ -1,7 +1,7 @@
 ---
 title: 如何针对 ECMAScript 规范创建一个拉取请求
-subtitle: [How to make a Pull Request against the ECMAScript specification](https://github.com/tc39/how-we-work/blob/master/pr.md)
-date: 2021// ::
+subtitle: How to make a Pull Request against the ECMAScript specification
+date: 2021/03/19 16:44:00
 category: [Computer Science, Frontend, tc39]
 tag:
 - Computer Science

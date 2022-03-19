@@ -1,6 +1,6 @@
 ---
 title: 如何阅读一份提案草案？
-subtitle: [Reading a proposal draft](https://github.com/tc39/how-we-work/blob/master/how-to-read.md)
+subtitle: Reading a proposal draft
 date: 2021/03/19 16:44:00
 category: [Computer Science, Frontend, tc39]
 tag:
