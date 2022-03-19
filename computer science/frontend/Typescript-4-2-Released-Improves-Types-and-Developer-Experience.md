@@ -1,11 +1,20 @@
+---
+title: TypeScript 4.2 正式发布：优化了类型和开发者体验
+subtitle: Typescript 4.2 Released, Improves Types and Developer Experience
+date: 2021/03/02 23:17:00
+category: [Computer Science, Backend, TypeScript]
+tag:
+- Computer Science
+- Backend
+- Frontend
+- TypeScript
+description: TypeScript 团队最近正式发布了 TypeScript 4.2 版本！该版本的 TypeScript 拥有了更灵活的类型注释，更严格的检查，额外的配置选项以及一些其他的重大变化。我们现在可以在元组的类型定义中的任意位置使用 Rest 参数（而不是只能在末尾使用）了！类型别名不再在类型错误消息中扩展，从而让我们开发者拥有更好的体验。
+---
+
 > * 原文地址：[Typescript 4.2 Released, Improves Types and Developer Experience](https://www.infoq.com/news/2021/02/typescript-4-2-released/)
 > * 原文作者：[Bruno-Couriol](https://www.infoq.com/profile/Bruno-Couriol/)
-> * 译文出自：[掘金翻译计划](https://github.com/xitu/gold-miner)
-> * 本文永久链接：[https://github.com/xitu/gold-miner/blob/master/article/2021/Typescript-4-2-Released-Improves-Types-and-Developer-Experience.md](https://github.com/xitu/gold-miner/blob/master/article/2021/Typescript-4-2-Released-Improves-Types-and-Developer-Experience.md)
 > * 译者：[霜羽 Hoarfroster](https://github.com/PassionPenguin)
 > * 校对者：[lsvih](https://github.com/lsvih)、[zenblo](https://github.com/zenblo)
-
-# TypeScript 4.2 正式发布：优化了类型和开发者体验
 
 TypeScript 团队最近正式发布了 [TypeScript 4.2](https://devblogs.microsoft.com/typescript/announcing-typescript-4-2/) 版本！该版本的 TypeScript 拥有了更灵活的类型注释，更严格的检查，额外的配置选项以及一些其他的重大变化。我们现在可以在元组的类型定义中的任意位置使用 Rest 参数（而不是只能在末尾使用）了！类型别名不再在类型错误消息中扩展，从而让我们开发者拥有更好的体验。
 
@@ -121,9 +130,3 @@ TypeScript 4.2 实现在任何规模或位置更加准确编写 JavaScript 的�
 >  由于 TypeScript 进行了大量更新导致的担忧，人们开始怀疑 TypeScript 是否会变得太复杂使得我们无法了解全部的问题，就像 C++ 那样。。
 
 TypeScript 4.2 还有其他的重大更改和功能新增，欢迎开发者阅读完整的发行说明。TypeScript 是基于 Apache 2 许可的开源软件，我们鼓励通过 TypeScript 在 GitHub 上的项目，在遵循 TypeScript 贡献准则和 Microsoft 开源行为准则的前提下进行贡献和反馈。
-
-> 如果发现译文存在错误或其他需要改进的地方，欢迎到 [掘金翻译计划](https://github.com/xitu/gold-miner) 对译文进行修改并 PR，也可获得相应奖励积分。文章开头的 **本文永久链接** 即为本文在 GitHub 上的 MarkDown 链接。
-
----
-
-> [掘金翻译计划](https://github.com/xitu/gold-miner) 是一个翻译优质互联网技术文章的社区，文章来源为 [掘金](https://juejin.im) 上的英文分享文章。内容覆盖 [Android](https://github.com/xitu/gold-miner#android)、[iOS](https://github.com/xitu/gold-miner#ios)、[前端](https://github.com/xitu/gold-miner#前端)、[后端](https://github.com/xitu/gold-miner#后端)、[区块链](https://github.com/xitu/gold-miner#区块链)、[产品](https://github.com/xitu/gold-miner#产品)、[设计](https://github.com/xitu/gold-miner#设计)、[人工智能](https://github.com/xitu/gold-miner#人工智能)等领域，想要查看更多优质译文请持续关注 [掘金翻译计划](https://github.com/xitu/gold-miner)、[官方微博](http://weibo.com/juejinfanyi)、[知乎专栏](https://zhuanlan.zhihu.com/juejinfanyi)。
