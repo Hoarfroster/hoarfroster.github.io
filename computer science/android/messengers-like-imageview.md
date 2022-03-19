@@ -1,11 +1,21 @@
+---
+title: 构建像 `Messenger` 短信软件那样的 ImageView
+subtitle: Messengers-like ImageView
+date: 2021/02/25 19:24:00
+categories:
+- [Computer Science, Android]
+  tags:
+- Computer Science
+- Android
+- Kotlin
+- UI
+description: 在上一篇论述中，我们讨论了发送图片消息时候的上传动画以及构建这个动画的方法。今天我决定写一篇与图片的显示有关的文章。先来提个问题，在消息历史记录中，我们应该如何显示图片？
+---
+
 > * 原文地址：[Messengers-like ImageView](https://proandroiddev.com/messengers-like-imageview-90e9f1da19f4)
 > * 原文作者：[Michael Spitsin](https://medium.com/@programmerr47)
-> * 译文出自：[掘金翻译计划](https://github.com/xitu/gold-miner)
-> * 本文永久链接：[https://github.com/xitu/gold-miner/blob/master/article/2021/messengers-like-imageview.md](https://github.com/xitu/gold-miner/blob/master/article/2021/messengers-like-imageview.md)
 > * 译者：[霜羽 Hoarfroster](https://github.com/PassionPenguin)
 > * 校对者：[HumanBeing](https://github.com/HumanBeingXenon)、[keepmovingljzy](https://github.com/keepmovingljzy)
-
-# 构建像 `Messenger` 短信软件那样的 ImageView
 
 ![](https://cdn-images-1.medium.com/max/2372/1*eUsCLT2MWPgMMc_7ltldOw.png)
 
@@ -517,9 +527,3 @@ class ChatImageView @JvmOverloads constructor(
 ## 后记
 
 如果你喜欢这篇文章，别忘记点赞或一键三连来支持我们。如果你有任何的疑问，请在评论区留言，让我们可以一起讨论！祝你编程快乐！
-
-> 如果发现译文存在错误或其他需要改进的地方，欢迎到 [掘金翻译计划](https://github.com/xitu/gold-miner) 对译文进行修改并 PR，也可获得相应奖励积分。文章开头的 **本文永久链接** 即为本文在 GitHub 上的 MarkDown 链接。
-
----
-
-> [掘金翻译计划](https://github.com/xitu/gold-miner) 是一个翻译优质互联网技术文章的社区，文章来源为 [掘金](https://juejin.im) 上的英文分享文章。内容覆盖 [Android](https://github.com/xitu/gold-miner#android)、[iOS](https://github.com/xitu/gold-miner#ios)、[前端](https://github.com/xitu/gold-miner#前端)、[后端](https://github.com/xitu/gold-miner#后端)、[区块链](https://github.com/xitu/gold-miner#区块链)、[产品](https://github.com/xitu/gold-miner#产品)、[设计](https://github.com/xitu/gold-miner#设计)、[人工智能](https://github.com/xitu/gold-miner#人工智能)等领域，想要查看更多优质译文请持续关注 [掘金翻译计划](https://github.com/xitu/gold-miner)、[官方微博](http://weibo.com/juejinfanyi)、[知乎专栏](https://zhuanlan.zhihu.com/juejinfanyi)。
