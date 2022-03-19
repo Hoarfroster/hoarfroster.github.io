@@ -1,11 +1,18 @@
+---
+title: Dropbox 公布了 Atlas —— 一个托管服务编排平台
+subtitle: Dropbox Reveals Atlas - a Managed Service Orchestration Platform
+date: 2021/03/22 22:24:00
+category: [Computer Science, Cloud]
+tag:
+- Computer Science
+- Cloud
+description: 在最近的博客文章中，Dropbox 公布了 Atlas，该平台的目标是为用户提供面向服务架构的各种便利，同时让拥有一个服务的维护成本降至最低。
+---
+
 > * 原文地址：[Dropbox Reveals Atlas - a Managed Service Orchestration Platform](https://www.infoq.com/news/2021/03/dropbox-atlas/)
 > * 原文作者：[Eran Stiller](https://www.infoq.com/profile/Eran-Stiller/)
-> * 译文出自：[掘金翻译计划](https://github.com/xitu/gold-miner)
-> * 本文永久链接：[https://github.com/xitu/gold-miner/blob/master/article/2021/dropbox-reveals-Atlas.md](https://github.com/xitu/gold-miner/blob/master/article/2021/dropbox-reveals-Atlas.md)
 > * 译者：[霜羽 Hoarfroster](https://github.com/PassionPenguin)
 > * 校对者：[5Reasons](https://github.com/5Reasons)、[kamly](https://github.com/kamly)、[husiyu](https://github.com/husiyu)
-
-# Dropbox 公布了 Atlas —— 一个托管服务编排平台
 
 在最近的博客文章中，[Dropbox 公布了 Atlas](https://dropbox.tech/infrastructure/atlas--our-journey-from-a-python-monolith-to-a-managed-platform)，该平台的目标是为用户提供[面向服务架构](https://en.wikipedia.org/wiki/Service-oriented_architecture)的各种便利，同时让拥有一个服务的维护成本降至最低。
 
@@ -33,9 +40,3 @@ Atlas 的设计涉及一些围绕组件化、编排和操作性的关键工作�
 ![Canary 版本分析](https://res.infoq.com/news/2021/03/dropbox-atlas/en/resources/1Dropbox-atlas-canary-1615307469053.png)
 
 <small>Canary 版本分析，图源 [Dropbox](https://dropbox.tech/infrastructure/atlas--our-journey-from-a-python-monolith-to-a-managed-platform) </small>
-
-> 如果发现译文存在错误或其他需要改进的地方，欢迎到 [掘金翻译计划](https://github.com/xitu/gold-miner) 对译文进行修改并 PR，也可获得相应奖励积分。文章开头的 **本文永久链接** 即为本文在 GitHub 上的 MarkDown 链接。
-
----
-
-> [掘金翻译计划](https://github.com/xitu/gold-miner) 是一个翻译优质互联网技术文章的社区，文章来源为 [掘金](https://juejin.im) 上的英文分享文章。内容覆盖 [Android](https://github.com/xitu/gold-miner#android)、[iOS](https://github.com/xitu/gold-miner#ios)、[前端](https://github.com/xitu/gold-miner#前端)、[后端](https://github.com/xitu/gold-miner#后端)、[区块链](https://github.com/xitu/gold-miner#区块链)、[产品](https://github.com/xitu/gold-miner#产品)、[设计](https://github.com/xitu/gold-miner#设计)、[人工智能](https://github.com/xitu/gold-miner#人工智能)等领域，想要查看更多优质译文请持续关注 [掘金翻译计划](https://github.com/xitu/gold-miner)、[官方微博](http://weibo.com/juejinfanyi)、[知乎专栏](https://zhuanlan.zhihu.com/juejinfanyi)。
