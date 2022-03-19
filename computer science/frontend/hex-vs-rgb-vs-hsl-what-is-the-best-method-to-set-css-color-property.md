@@ -1,11 +1,20 @@
+---
+title: HEX vs RGB vs HSL：设置 CSS 颜色属性的最佳方法是什么
+subtitle: HEX vs RGB vs HSL: What is the Best Method to set CSS Color Property
+date: 2021/07/14 21:48:00
+category: [Computer Science, Frontend, Styling]
+tag:
+- Computer Science
+- Frontend
+- CSS
+- UI
+description: 不知道你是否了解 HEX、RGB 和 HSL 之间的区别，以及其中任意一种的各种优势？
+---
+
 > * 原文地址：[HEX vs RGB vs HSL: What is the Best Method to set CSS Color Property](https://blog.bitsrc.io/hex-vs-rgb-vs-hsl-what-is-the-best-method-to-set-css-color-property-f45d2debeee)
 > * 原文作者：[Nethmi Wijesinghe](https://medium.com/@wnethmi96)
-> * 译文出自：[掘金翻译计划](https://github.com/xitu/gold-miner)
-> * 本文永久链接：[https://github.com/xitu/gold-miner/blob/master/article/2021/hex-vs-rgb-vs-hsl-what-is-the-best-method-to-set-css-color-property.md](https://github.com/xitu/gold-miner/blob/master/article/2021/hex-vs-rgb-vs-hsl-what-is-the-best-method-to-set-css-color-property.md)
 > * 译者：[霜羽 Hoarfroster](https://github.com/PassionPenguin)
 > * 校对者：[Chorer](https://github.com/Chorer)、[nia3y](https://github.com/nia3y)、[CarlosChenN](https://github.com/CarlosChenN)
-
-# HEX vs RGB vs HSL：设置 CSS 颜色属性的最佳方法是什么
 
 ![](https://cdn-images-1.medium.com/max/5760/1*fjzP30im_c--lgsIKqhj0g.jpeg)
 
@@ -168,9 +177,3 @@ p {
 ---
 
 希望能在另一篇令人兴奋的文章中再次遇见你。祝你编码愉快！ 💻
-
-> 如果发现译文存在错误或其他需要改进的地方，欢迎到 [掘金翻译计划](https://github.com/xitu/gold-miner) 对译文进行修改并 PR，也可获得相应奖励积分。文章开头的 **本文永久链接** 即为本文在 GitHub 上的 MarkDown 链接。
-
----
-
-> [掘金翻译计划](https://github.com/xitu/gold-miner) 是一个翻译优质互联网技术文章的社区，文章来源为 [掘金](https://juejin.im) 上的英文分享文章。内容覆盖 [Android](https://github.com/xitu/gold-miner#android)、[iOS](https://github.com/xitu/gold-miner#ios)、[前端](https://github.com/xitu/gold-miner#前端)、[后端](https://github.com/xitu/gold-miner#后端)、[区块链](https://github.com/xitu/gold-miner#区块链)、[产品](https://github.com/xitu/gold-miner#产品)、[设计](https://github.com/xitu/gold-miner#设计)、[人工智能](https://github.com/xitu/gold-miner#人工智能)等领域，想要查看更多优质译文请持续关注 [掘金翻译计划](https://github.com/xitu/gold-miner)、[官方微博](http://weibo.com/juejinfanyi)、[知乎专栏](https://zhuanlan.zhihu.com/juejinfanyi)。
