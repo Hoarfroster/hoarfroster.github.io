@@ -1,11 +1,20 @@
+---
+title: 16px 或更大的字体大小可以避免 iOS 的表单缩放问题
+subtitle: 16px or Larger Text Prevents iOS Form Zoom
+date: 2021/05/24 19:24:00
+category: [Computer Science, Frontend, Styling]
+tag:
+- Computer Science
+- Frontend
+- CSS
+- UI
+description: 如果 <input> 的 font-size 被设定为 16px 或更大，那么 iOS 上的 Safari 将正常聚焦到输入表单中。但是，一旦 font-size 等于或小于 15px，视图窗口就会放大并聚焦到该 <input>（或许是因为苹果认为字体太小，因此它会放大以帮助你更清楚地看到自己在做什么）。这个设计是用来增强可访问性的，如果你不想要，请确保 <input> 的字体足够大。
+---
+
 > * 原文地址：[16px or Larger Text Prevents iOS Form Zoom](https://css-tricks.com/16px-or-larger-text-prevents-ios-form-zoom/)
 > * 原文作者：[Chris Coyier ](https://css-tricks.com/author/chriscoyier/)
-> * 译文出自：[掘金翻译计划](https://github.com/xitu/gold-miner)
-> * 本文永久链接：[https://github.com/xitu/gold-miner/blob/master/article/2021/.md](https://github.com/xitu/gold-miner/blob/master/article/2021/.md)
 > * 译者：[霜羽 Hoarfroster](https://github.com/PassionPenguin)
 > * 校对者：[Kim Yang](https://github.com/KimYangOfCat)、[Chorer](https://github.com/Chorer)
-
-# 16px 或更大的字体大小可以避免 iOS 的表单缩放问题
 
 [“今天我已经学到的” —— 我从乔什·科莫（Josh W. Comeau）的推特中学习到](https://twitter.com/joshwcomeau/status/1379782931116351490?s=12) 的东西真的是太棒了！！！如果 `<input>` 的 `font-size` 被设定为 `16px` 或更大，那么 iOS 上的 Safari 将正常聚焦到输入表单中。但是，一旦 `font-size` 等于或小于 `15px`，视图窗口就会放大并聚焦到该 `<input>`（或许是因为苹果认为字体太小，因此它会放大以帮助你更清楚地看到自己在做什么）。这个设计是用来增强可访问性的，如果你不想要，请确保 `<input>` 的字体足够大。
 
@@ -42,9 +51,3 @@
 > ![](https://pbs.twimg.com/media/EyX5IBWWUAA8Sis?format=png&name=small)
 > 
 > —— Josh W. Comeau @JoshWComeau 9:07, Apr 7, 2021
-
-> 如果发现译文存在错误或其他需要改进的地方，欢迎到 [掘金翻译计划](https://github.com/xitu/gold-miner) 对译文进行修改并 PR，也可获得相应奖励积分。文章开头的 **本文永久链接** 即为本文在 GitHub 上的 MarkDown 链接。
-
----
-
-> [掘金翻译计划](https://github.com/xitu/gold-miner) 是一个翻译优质互联网技术文章的社区，文章来源为 [掘金](https://juejin.im) 上的英文分享文章。内容覆盖 [Android](https://github.com/xitu/gold-miner#android)、[iOS](https://github.com/xitu/gold-miner#ios)、[前端](https://github.com/xitu/gold-miner#前端)、[后端](https://github.com/xitu/gold-miner#后端)、[区块链](https://github.com/xitu/gold-miner#区块链)、[产品](https://github.com/xitu/gold-miner#产品)、[设计](https://github.com/xitu/gold-miner#设计)、[人工智能](https://github.com/xitu/gold-miner#人工智能)等领域，想要查看更多优质译文请持续关注 [掘金翻译计划](https://github.com/xitu/gold-miner)、[官方微博](http://weibo.com/juejinfanyi)、[知乎专栏](https://zhuanlan.zhihu.com/juejinfanyi)。
