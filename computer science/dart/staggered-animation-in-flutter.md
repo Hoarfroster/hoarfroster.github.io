@@ -1,11 +1,20 @@
+---
+title: Flutter 中的交织动画
+subtitle: Staggered Animation In Flutter
+date: 2021/01/17 15:46:00
+category: [Computer Science, Dart, Flutter]
+tag:
+- Computer Science
+- Dart
+- Flutter
+- UI
+description: 交织动画由一个动画序列或重叠的动画组成，而要制作交织的动画，我们需要使用多个或多组动画对象。我们应该使用同一个 AnimationController 控制所有动画，每个动画对象都应该指定某个点或锚点在一段时间内的运动，并且对于要执行的动画的每个属性，我们都应该创建一个补间（Tween）。
+---
+
 > * 原文地址：[Staggered Animation In Flutter](https://medium.com/flutterdevs/staggered-animation-in-flutter-e7282a936b99)
 > * 原文作者：[Shaiq khan](https://medium.com/@shaiq_khan)
-> * 译文出自：[掘金翻译计划](https://github.com/xitu/gold-miner)
-> * 本文永久链接：[https://github.com/xitu/gold-miner/blob/master/article/2021/staggered-animation-in-flutter.md](https://github.com/xitu/gold-miner/blob/master/article/2021/staggered-animation-in-flutter.md)
 > * 译者：[霜羽 Hoarfroster](https://github.com/PassionPenguin)
 > * 校对者：[lsvih](https://github.com/lsvih)
-
-# Flutter 中的交织动画
 
 ![Flutter 中的交织动画](https://cdn-images-1.medium.com/max/2000/1*icYuiagsCKqcRapvjiLbmw.png)
 
@@ -209,9 +218,3 @@ class StaggeredTrekkingEnterAnimation {
 **单击下面的 GitHub 链接以找到交织动画的源代码：**
 
 [**flutter-devs/Flutter-StaggeredAnimation**](https://github.com/flutter-devs/Flutter-StaggeredAnimation)
-
-> 如果发现译文存在错误或其他需要改进的地方，欢迎到 [掘金翻译计划](https://github.com/xitu/gold-miner) 对译文进行修改并 PR，也可获得相应奖励积分。文章开头的 **本文永久链接** 即为本文在 GitHub 上的 MarkDown 链接。
-
----
-
-> [掘金翻译计划](https://github.com/xitu/gold-miner) 是一个翻译优质互联网技术文章的社区，文章来源为 [掘金](https://juejin.im) 上的英文分享文章。内容覆盖 [Android](https://github.com/xitu/gold-miner#android)、[iOS](https://github.com/xitu/gold-miner#ios)、[前端](https://github.com/xitu/gold-miner#前端)、[后端](https://github.com/xitu/gold-miner#后端)、[区块链](https://github.com/xitu/gold-miner#区块链)、[产品](https://github.com/xitu/gold-miner#产品)、[设计](https://github.com/xitu/gold-miner#设计)、[人工智能](https://github.com/xitu/gold-miner#人工智能)等领域，想要查看更多优质译文请持续关注 [掘金翻译计划](https://github.com/xitu/gold-miner)、[官方微博](http://weibo.com/juejinfanyi)、[知乎专栏](https://zhuanlan.zhihu.com/juejinfanyi)。
