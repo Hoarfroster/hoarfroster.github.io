@@ -1,11 +1,19 @@
+---
+title: 10 个你应该现在启用的绝佳的 Chrome Flags
+subtitle: 10 Awesome Chrome Flags You Should Enable Right Now
+date: 2021/03/10 22:15:00
+category: [Computer Science, Frontend, Browser]
+tag:
+- Computer Science
+- Frontend
+- Browser
+description: 如果您可以神奇地升级浏览器来使用 Chrome 普通用户不知道的功能，那会很酷吗？
+---
+
 > * 原文地址：[10 Awesome Chrome Flags You Should Enable Right Now](https://medium.com/better-programming/10-awesome-chrome-flags-you-should-enable-right-now-2684e4518cb5)
 > * 原文作者：[Sanjeet Chatterjee](https://medium.com/@thesanjeetc)
-> * 译文出自：[掘金翻译计划](https://github.com/xitu/gold-miner)
-> * 本文永久链接：[https://github.com/xitu/gold-miner/blob/master/article/2020/10-awesome-chrome-flags-you-should-enable-right-now.md](https://github.com/xitu/gold-miner/blob/master/article/2020/10-awesome-chrome-flags-you-should-enable-right-now.md)
-> * 译者：苏苏的 [PassionPenguin](https://github.com/PassionPenguin)
+> * 译者：[霜羽 Hoarfroster](https://github.com/PassionPenguin)
 > * 校对者：[lsvih](https://github.com/lsvih)
-
-# 10 个你应该现在启用的绝佳的 Chrome Flags
 
 ![图源作者](https://cdn-images-1.medium.com/max/4480/1*nnoOXTFecfO8aW0LqCaN5w.png)
 
