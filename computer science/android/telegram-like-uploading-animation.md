@@ -1,11 +1,20 @@
+---
+title: 构建和 Telegram 一样的上传动画
+subtitle: Telegram-like uploading animation
+date: 2021/05/16 17:09:00
+category: [Computer Science, Android, Kotlin]
+tag:
+- Computer Science
+- Android
+- Kotlin
+- UI
+description: 前段时间，我研究了一个新功能：在 app 内部聊天中发送图片。这个功能本身很大，包括了多种东西，但实际上，最初并没有设计上传动画与取消上传的功能。当我用到这部分的时候，我决定增加图片上传动画，所以我们就给他们这个功能吧：)
+---
+
 > * 原文地址：[Telegram-like uploading animation](https://proandroiddev.com/telegram-like-uploading-animation-e284f1404f63)
 > * 原文作者：[Michael Spitsin](https://programmerr47.medium.com)
-> * 译文出自：[掘金翻译计划](https://github.com/xitu/gold-miner)
-> * 本文永久链接：[https://github.com/xitu/gold-miner/blob/master/article/2021/telegram-like-uploading-animation.md](https://github.com/xitu/gold-miner/blob/master/article/2021/telegram-like-uploading-animation.md)
 > * 译者：[霜羽 Hoarfroster](https://github.com/PassionPenguin)
 > * 校对者：[Kimhooo](https://github.com/Kimhooo)、[greycodee](https://github.com/greycodee)
-
-# 构建和 Telegram 一样的上传动画
 
 ![](https://miro.medium.com/max/1656/1*Fkn89gxEsTWWefUu1dV0UA.png)
 
@@ -442,9 +451,3 @@ drawArc(progressRect, currentAngle - sweepAngle, sweepAngle, false, progressPain
 ![](https://miro.medium.com/max/292/0*19Qsjr8oaWOKrhLk.gif)
 
 如果你喜欢这篇文章，别忘了点赞关注收藏一键三连！如果你有什么问题，可以评论我，我们来讨论一下。祝你编程愉快!
-
-> 如果发现译文存在错误或其他需要改进的地方，欢迎到 [掘金翻译计划](https://github.com/xitu/gold-miner) 对译文进行修改并 PR，也可获得相应奖励积分。文章开头的 **本文永久链接** 即为本文在 GitHub 上的 MarkDown 链接。
-
----
-
-> [掘金翻译计划](https://github.com/xitu/gold-miner) 是一个翻译优质互联网技术文章的社区，文章来源为 [掘金](https://juejin.im) 上的英文分享文章。内容覆盖 [Android](https://github.com/xitu/gold-miner#android)、[iOS](https://github.com/xitu/gold-miner#ios)、[前端](https://github.com/xitu/gold-miner#前端)、[后端](https://github.com/xitu/gold-miner#后端)、[区块链](https://github.com/xitu/gold-miner#区块链)、[产品](https://github.com/xitu/gold-miner#产品)、[设计](https://github.com/xitu/gold-miner#设计)、[人工智能](https://github.com/xitu/gold-miner#人工智能)等领域，想要查看更多优质译文请持续关注 [掘金翻译计划](https://github.com/xitu/gold-miner)、[官方微博](http://weibo.com/juejinfanyi)、[知乎专栏](https://zhuanlan.zhihu.com/juejinfanyi)。
