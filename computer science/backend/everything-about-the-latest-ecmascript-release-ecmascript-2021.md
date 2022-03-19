@@ -1,11 +1,19 @@
+---
+title: 有关 ECMAScript 最新版本的所有信息｜ECMAScript 2021
+subtitle: Everything about the latest ECMAScript release | ECMAScript 2021
+date: 2021/05/17 19:21:00
+category: [Computer Science, Backend, ECMAScript]
+tag:
+- Computer Science
+- Backend
+- ECMAScript
+description: 在本文中，我们将通过一些示例代码向大家介绍 ECMAScript 2021 最新版本的功能。
+---
+
 > * 原文地址：[Everything about the latest ECMAScript release | ECMAScript 2021](https://levelup.gitconnected.com/everything-about-the-latest-ecmascript-release-ecmascript-2021-c011e817f41a)
 > * 原文作者：[Kritika Sharma](https://medium.com/@kritikasharmablog)
-> * 译文出自：[掘金翻译计划](https://github.com/xitu/gold-miner)
-> * 本文永久链接：[https://github.com/xitu/gold-miner/blob/master/article/2021/everything-about-the-latest-ecmascript-release-ecmascript-2021.md](https://github.com/xitu/gold-miner/blob/master/article/2021/everything-about-the-latest-ecmascript-release-ecmascript-2021.md)
 > * 译者：[霜羽 Hoarfroster](https://github.com/Hoarfroster)
 > * 校对者：[KimYang](https://github.com/KimYangOfCat)、[Tong-H](https://github.com/Tong-H)
-
-# 有关 ECMAScript 最新版本的所有信息｜ECMAScript 2021
 
 在本文中，我们将通过一些示例代码向大家介绍 ECMAScript 2021 最新版本的功能。
 
@@ -137,9 +145,3 @@ console.log(budget); // 会打印正常数字：
 
 * [https://dev.to/faithfulojebiyi/new-features-in-ecmascript-2021-with-code-examples-302h](https://dev.to/faithfulojebiyi/new-features-in-ecmascript-2021-with-code-examples-302h)
 * [https://2ality.com/2020/09/ecmascript-2021.html](https://2ality.com/2020/09/ecmascript-2021.html)
-
-> 如果发现译文存在错误或其他需要改进的地方，欢迎到 [掘金翻译计划](https://github.com/xitu/gold-miner) 对译文进行修改并 PR，也可获得相应奖励积分。文章开头的 **本文永久链接** 即为本文在 GitHub 上的 MarkDown 链接。
-
----
-
-> [掘金翻译计划](https://github.com/xitu/gold-miner) 是一个翻译优质互联网技术文章的社区，文章来源为 [掘金](https://juejin.im) 上的英文分享文章。内容覆盖 [Android](https://github.com/xitu/gold-miner#android)、[iOS](https://github.com/xitu/gold-miner#ios)、[前端](https://github.com/xitu/gold-miner#前端)、[后端](https://github.com/xitu/gold-miner#后端)、[区块链](https://github.com/xitu/gold-miner#区块链)、[产品](https://github.com/xitu/gold-miner#产品)、[设计](https://github.com/xitu/gold-miner#设计)、[人工智能](https://github.com/xitu/gold-miner#人工智能)等领域，想要查看更多优质译文请持续关注 [掘金翻译计划](https://github.com/xitu/gold-miner)、[官方微博](http://weibo.com/juejinfanyi)、[知乎专栏](https://zhuanlan.zhihu.com/juejinfanyi)。
