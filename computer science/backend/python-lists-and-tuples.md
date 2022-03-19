@@ -1,11 +1,19 @@
+---
+title: Python 中的列表和元组
+subtitle: Lists and Tuples in Python
+date: 2021/01/25 19:38:00
+category: [Computer Science, Backend, Python]
+tag:
+- Computer Science
+- Backend
+- Python
+description: 要编写一个高效的程序，我们需要了解两件事事：首先是程序的输入内容是什么，其次是我们应该如何选择最合适的数据结构来处理该输入。
+---
+
 > * 原文地址：[Lists and Tuples in Python](https://medium.com/python-in-plain-english/python-lists-and-tuples-760d45ebeaa8)
 > * 原文作者：[Mayur Jain](https://medium.com/@mayur-ds)
-> * 译文出自：[掘金翻译计划](https://github.com/xitu/gold-miner)
-> * 本文永久链接：[https://github.com/xitu/gold-miner/blob/master/article/2021/python-lists-and-tuples.md](https://github.com/xitu/gold-miner/blob/master/article/2021/python-lists-and-tuples.md)
 > * 译者：[霜羽 Hoarfroster](https://github.com/PassionPenguin)
 > * 校对者：[zenblo](https://github.com/zenblo)、[lsvih](https://github.com/lsvih)
-
-# Python 中的列表和元组
 
 要编写一个高效的程序，我们需要了解两件事事：**首先是程序的输入内容是什么，其次是我们应该如何选择最合适的数据结构来处理该输入。**
 
@@ -96,9 +104,3 @@ TypeError: 'tuple' object does not support item assignment
 **参考资料**
 
 [High Performance Python book](https://www.oreilly.com/library/view/high-performance-python/9781449361747/)
-
-> 如果发现译文存在错误或其他需要改进的地方，欢迎到 [掘金翻译计划](https://github.com/xitu/gold-miner) 对译文进行修改并 PR，也可获得相应奖励积分。文章开头的 **本文永久链接** 即为本文在 GitHub 上的 MarkDown 链接。
-
----
-
-> [掘金翻译计划](https://github.com/xitu/gold-miner) 是一个翻译优质互联网技术文章的社区，文章来源为 [掘金](https://juejin.im) 上的英文分享文章。内容覆盖 [Android](https://github.com/xitu/gold-miner#android)、[iOS](https://github.com/xitu/gold-miner#ios)、[前端](https://github.com/xitu/gold-miner#前端)、[后端](https://github.com/xitu/gold-miner#后端)、[区块链](https://github.com/xitu/gold-miner#区块链)、[产品](https://github.com/xitu/gold-miner#产品)、[设计](https://github.com/xitu/gold-miner#设计)、[人工智能](https://github.com/xitu/gold-miner#人工智能)等领域，想要查看更多优质译文请持续关注 [掘金翻译计划](https://github.com/xitu/gold-miner)、[官方微博](http://weibo.com/juejinfanyi)、[知乎专栏](https://zhuanlan.zhihu.com/juejinfanyi)。
