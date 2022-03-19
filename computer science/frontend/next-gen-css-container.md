@@ -1,11 +1,20 @@
+---
+title: 下一代 CSS：@container
+subtitle: Next Gen CSS: @container
+date: 2021/07/06 10:48:00
+category: [Computer Science, Frontend, Styling]
+tag:
+- Computer Science
+- Frontend
+- CSS
+- UI
+description: Chrome 正在试验 CSS @container 查询器功能，这是由 Oddbird 的 Miriam Suzanne 和一群网络平台开发者支持的 CSS 工作组 Containment Level 3 规范。@container 查询器使我们能够根据父容器的大小来设置元素的样式。
+---
+
 > * 原文地址：[Next Gen CSS: @container](https://css-tricks.com/next-gen-css-container/)
 > * 原文作者：[Una Kravets](https://css-tricks.com/author/unakravets/)
-> * 译文出自：[掘金翻译计划](https://github.com/xitu/gold-miner)
-> * 本文永久链接：[https://github.com/xitu/gold-miner/blob/master/article/2021/next-gen-css-containermd](https://github.com/xitu/gold-miner/blob/master/article/2021/next-gen-css-container.md)
 > * 译者：[霜羽 Hoarfroster](https://github.com/PassionPenguin)
 > * 校对者：[Chorer](https://github.com/Chorer)、[Kim Yang](https://github.com/KimYangOfCat)
-
-# 下一代 CSS：@container
 
 Chrome 正在试验 CSS `@container` 查询器功能，这是由 [Oddbird](https://css.oddbird.net/rwd/query/) 的 [Miriam Suzanne](https://twitter.com/TerribleMia) 和一群网络平台开发者支持的 CSS 工作组 [Containment Level 3 规范](https://github.com/w3c/csswg-drafts/issues?q=is%3Aissue+label%3Acss-contain-3+)。`@container` 查询器使我们能够**根据父容器的大小来设置元素的样式**。
 
@@ -134,9 +143,3 @@ viewport 和用户代理不再是我们创建响应式布局和 UI 样式的唯�
 您现在可以在 Chromium 中试验 `@container` 属性，方法是导航到：[Chrome Canary](https://www.google.com/chrome/canary/) 中的 `chrome://flags` 页面并打开 **#experimental-container-queries** 标志。
 
 ![](https://i2.wp.com/css-tricks.com/wp-content/uploads/2021/05/chrome-canary-conatiner-query-flag.png?resize=1902%2C1510&ssl=1)
-
-> 如果发现译文存在错误或其他需要改进的地方，欢迎到 [掘金翻译计划](https://github.com/xitu/gold-miner) 对译文进行修改并 PR，也可获得相应奖励积分。文章开头的 **本文永久链接** 即为本文在 GitHub 上的 MarkDown 链接。
-
----
-
-> [掘金翻译计划](https://github.com/xitu/gold-miner) 是一个翻译优质互联网技术文章的社区，文章来源为 [掘金](https://juejin.im) 上的英文分享文章。内容覆盖 [Android](https://github.com/xitu/gold-miner#android)、[iOS](https://github.com/xitu/gold-miner#ios)、[前端](https://github.com/xitu/gold-miner#前端)、[后端](https://github.com/xitu/gold-miner#后端)、[区块链](https://github.com/xitu/gold-miner#区块链)、[产品](https://github.com/xitu/gold-miner#产品)、[设计](https://github.com/xitu/gold-miner#设计)、[人工智能](https://github.com/xitu/gold-miner#人工智能)等领域，想要查看更多优质译文请持续关注 [掘金翻译计划](https://github.com/xitu/gold-miner)、[官方微博](http://weibo.com/juejinfanyi)、[知乎专栏](https://zhuanlan.zhihu.com/juejinfanyi)。
