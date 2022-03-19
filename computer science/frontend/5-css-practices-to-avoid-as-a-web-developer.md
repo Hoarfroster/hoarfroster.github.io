@@ -1,11 +1,20 @@
+---
+title: Web 开发者应该避免的 5 个 CSS 的做法
+subtitle: 5 CSS Practices To Avoid as a Web Developer
+date: 2021/05/17 01:53:00
+category: [Computer Science, Frontend, Styling]
+tag:
+- Computer Science
+- Frontend
+- CSS
+- UI
+description: 有人认为 CSS 很难学习，觉得 CSS 有很多的坑，甚至还有一点儿魔幻，难以理解，很容易会搬起石头砸自己的脚。对此我感到难过，毕竟，我可不这么认为。
+---
+
 > * 原文地址：[5 CSS Practices To Avoid as a Web Developer](https://betterprogramming.pub/5-css-practices-to-avoid-as-a-web-developer-1b7553c05131)
 > * 原文作者：[Alexey Shepelev](https://medium.com/@alexey-shepelev)
-> * 译文出自：[掘金翻译计划](https://github.com/xitu/gold-miner)
-> * 本文永久链接：[https://github.com/xitu/gold-miner/blob/master/article/2021/5-css-practices-to-avoid-as-a-web-developer.md](https://github.com/xitu/gold-miner/blob/master/article/2021/5-css-practices-to-avoid-as-a-web-developer.md)
 > * 译者：[霜羽 Hoarfroster](https://github.com/PassionPenguin)
 > * 校对者：[KimYang](https://github.com/KimYangOfCat)、[Chorer](https://github.com/Chorer)
-
-# Web 开发者应该避免的 5 个 CSS 的做法
 
 ![图源 [Pankaj Patel](https://unsplash.com/@pankajpatel)，上传至 [Unsplash](https://unsplash.com/?utm_source=medium&utm_medium=referral).](https://cdn-images-1.medium.com/max/9874/1*0Ca38BL7C5MRI0qsdAQT3Q.jpeg)
 
@@ -241,9 +250,3 @@
 ## 小结
 
 希望在阅读本文后，你能够学会如何避免这些简单的错误并接受我的建议。感谢阅读！
-
-> 如果发现译文存在错误或其他需要改进的地方，欢迎到 [掘金翻译计划](https://github.com/xitu/gold-miner) 对译文进行修改并 PR，也可获得相应奖励积分。文章开头的 **本文永久链接** 即为本文在 GitHub 上的 MarkDown 链接。
-
----
-
-> [掘金翻译计划](https://github.com/xitu/gold-miner) 是一个翻译优质互联网技术文章的社区，文章来源为 [掘金](https://juejin.im) 上的英文分享文章。内容覆盖 [Android](https://github.com/xitu/gold-miner#android)、[iOS](https://github.com/xitu/gold-miner#ios)、[前端](https://github.com/xitu/gold-miner#前端)、[后端](https://github.com/xitu/gold-miner#后端)、[区块链](https://github.com/xitu/gold-miner#区块链)、[产品](https://github.com/xitu/gold-miner#产品)、[设计](https://github.com/xitu/gold-miner#设计)、[人工智能](https://github.com/xitu/gold-miner#人工智能)等领域，想要查看更多优质译文请持续关注 [掘金翻译计划](https://github.com/xitu/gold-miner)、[官方微博](http://weibo.com/juejinfanyi)、[知乎专栏](https://zhuanlan.zhihu.com/juejinfanyi)。
