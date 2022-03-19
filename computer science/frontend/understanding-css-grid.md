@@ -1,11 +1,20 @@
+---
+title: 自适应 CSS 栅格：自由布局的最终版本
+subtitle: Responsive CSS Grid -  The Ultimate Layout Freedom
+date: 2021/03/02 23:28:00
+category: [Computer Science, Frontend, Styling]
+tag:
+- Computer Science
+- Frontend
+- CSS
+- UI
+description: CSS 栅格布局（Grid）是一种全新的在 Web 上创建二维布局的方法。我们仅需几行 CSS，就可以创建一个之前不用 JavaScript 根本不可能实现的栅格布局。我们不需要任何插件或复杂的安装步骤，不需要繁琐的附加文件，同时也不需要局限于 12 列的栅格布局（译者注：指 Bootstrap 提供的 12 栅格系统）。
+---
+
 > * 原文地址：[Responsive CSS Grid: The Ultimate Layout Freedom](https://medium.muz.li/understanding-css-grid-ce92b7aa67cb)
 > * 原文作者：[Christine Vallaure](https://medium.com/@christinevallaure)
-> * 译文出自：[掘金翻译计划](https://github.com/xitu/gold-miner)
-> * 本文永久链接：[https://github.com/xitu/gold-miner/blob/master/article/2021/understanding-css-grid.md](https://github.com/xitu/gold-miner/blob/master/article/2021/understanding-css-grid.md)
 > * 译者：[霜羽 Hoarfroster](https://github.com/PassionPenguin)
 > * 校对者：[zenblo](https://github.com/zenblo)、[Chorer](https://github.com/Chorer)、[lsvih](https://github.com/lsvih)
-
-# 自适应 CSS 栅格：自由布局的最终版本
 
 ![](https://cdn-images-1.medium.com/max/2800/0*MJfiLHUiFLi5M2sm.png)
 
@@ -194,9 +203,3 @@ CSS Grid 与常规栅格相比也具有明显的优势，根据屏幕大小，�
 ## 在你开始使用 Grid 之前
 
 我想你可能还会喜欢我在 [moonlearning.io](https://moonlearning.io/) 或[完整的设计移交到开发课程](https://www.udemy.com/course/design-handoff/?referralCode=1296BF141742FFA166C2) 上发布的其它文章和课程（有关如何使用 Grid 的更多信息！）。
-
-> 如果发现译文存在错误或其他需要改进的地方，欢迎到 [掘金翻译计划](https://github.com/xitu/gold-miner) 对译文进行修改并 PR，也可获得相应奖励积分。文章开头的 **本文永久链接** 即为本文在 GitHub 上的 MarkDown 链接。
-
----
-
-> [掘金翻译计划](https://github.com/xitu/gold-miner) 是一个翻译优质互联网技术文章的社区，文章来源为 [掘金](https://juejin.im) 上的英文分享文章。内容覆盖 [Android](https://github.com/xitu/gold-miner#android)、[iOS](https://github.com/xitu/gold-miner#ios)、[前端](https://github.com/xitu/gold-miner#前端)、[后端](https://github.com/xitu/gold-miner#后端)、[区块链](https://github.com/xitu/gold-miner#区块链)、[产品](https://github.com/xitu/gold-miner#产品)、[设计](https://github.com/xitu/gold-miner#设计)、[人工智能](https://github.com/xitu/gold-miner#人工智能)等领域，想要查看更多优质译文请持续关注 [掘金翻译计划](https://github.com/xitu/gold-miner)、[官方微博](http://weibo.com/juejinfanyi)、[知乎专栏](https://zhuanlan.zhihu.com/juejinfanyi)。
