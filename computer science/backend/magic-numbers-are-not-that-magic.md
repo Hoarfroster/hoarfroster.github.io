@@ -4,11 +4,11 @@ subtitle: Magic Numbers Are Not That Magic
 date: 2021/02/03 09:54:03
 categories:
 - [Computer Science, Backend]
-  tags:
+tags:
 - Computer Science
 - Backend
 - Kotlin
-  description: 我真的不喜欢幻数这个词 —— 我看到太多人都理解错了。我见过这么一种代码审查，一看见代码中或者注释中有数字就评论：“哦，这是个幻数呢，请您务必给它取个名并放在代码头部”，我好多的代码里也会有这样的评论。
+description: 我真的不喜欢幻数这个词 —— 我看到太多人都理解错了。我见过这么一种代码审查，一看见代码中或者注释中有数字就评论：“哦，这是个幻数呢，请您务必给它取个名并放在代码头部”，我好多的代码里也会有这样的评论。
 ---
 
 > * 原文地址：[Magic Numbers Are Not That Magic](https://medium.com/better-programming/magic-numbers-are-not-that-magic-132297d435f5)
