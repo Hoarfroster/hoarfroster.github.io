@@ -1,11 +1,20 @@
+---
+title: 和 Node.js 创始人 Ryan Dahl 的对话
+subtitle: Interview with Ryan Dahl, Creator of Node.js
+date: 2021/03/08 20:08:00
+category: [Computer Science, Backend, JavaScript]
+tag:
+- Computer Science
+- Backend
+- JavaScript
+- Node.js
+description: Ryan Dahl 是 Node.js 的创始人以及 Deno JavaScript 和 TypeScript 运行时的早期开发者。我们很高兴有机会与 Ryan 探讨他开发的一些别的项目以及 Deno 面临的主要挑战，了解他对 JavaScript 和 TypeScript 的未来的想法，寻找更多第三方的 Deno 生态系统项目的更多信息，并讨论如果他能时光倒流，他会如何改变 Node.js 的开发！
+---
+
 > * 原文地址：[Interview with Ryan Dahl, Creator of Node.js](https://evrone.com/ryan-dahl-interview)
 > * 原文作者：[Ryan Dahl](https://evrone.com/ryan-dahl-interview)
-> * 译文出自：[掘金翻译计划](https://github.com/xitu/gold-miner)
-> * 本文永久链接：[https://github.com/xitu/gold-miner/blob/master/article/2021/Interview-with-Ryan-Dahl-Creator-of-Node-js.md](https://github.com/xitu/gold-miner/blob/master/article/2021/Interview-with-Ryan-Dahl-Creator-of-Node-js.md)
 > * 译者：[霜羽 Hoarfroster](https://github.com/PassionPenguin)
 > * 校对者：[Chorer](https://github.com/Chorer)、[zenblo](https://github.com/zenblo)、[lsvih](https://github.com/lsvih)
-
-# 和 Node.js 创始人 Ryan Dahl 的对话
 
 ## 导言
 
@@ -116,9 +125,3 @@ Goroutines 非常易于使用，并能够达到最佳性能。与 Go 一样，No
 ## 结论
 
 我们很高兴能与 Ryan 对话，进一步地了解他的生活、想法和计划。在 Evrone，我们经常使用 Node.js 为客户构建自定义解决方案。感谢你的阅读！
-
-> 如果发现译文存在错误或其他需要改进的地方，欢迎到 [掘金翻译计划](https://github.com/xitu/gold-miner) 对译文进行修改并 PR，也可获得相应奖励积分。文章开头的 **本文永久链接** 即为本文在 GitHub 上的 MarkDown 链接。
-
----
-
-> [掘金翻译计划](https://github.com/xitu/gold-miner) 是一个翻译优质互联网技术文章的社区，文章来源为 [掘金](https://juejin.im) 上的英文分享文章。内容覆盖 [Android](https://github.com/xitu/gold-miner#android)、[iOS](https://github.com/xitu/gold-miner#ios)、[前端](https://github.com/xitu/gold-miner#前端)、[后端](https://github.com/xitu/gold-miner#后端)、[区块链](https://github.com/xitu/gold-miner#区块链)、[产品](https://github.com/xitu/gold-miner#产品)、[设计](https://github.com/xitu/gold-miner#设计)、[人工智能](https://github.com/xitu/gold-miner#人工智能)等领域，想要查看更多优质译文请持续关注 [掘金翻译计划](https://github.com/xitu/gold-miner)、[官方微博](http://weibo.com/juejinfanyi)、[知乎专栏](https://zhuanlan.zhihu.com/juejinfanyi)。
