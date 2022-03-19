@@ -1,11 +1,20 @@
+---
+title: 详细解读 Webpack 的模块热替换功能
+subtitle: Webpack’s Hot Module Replacement Feature Explained
+date: 2021/04/01 21:47:00
+category: [Computer Science, Frontend, JavaScript]
+tag:
+- Computer Science
+- Frontend
+- JavaScript
+- Webpack
+description: 在开发 JavaScript 应用程序时，每次我们保存代码更改后，我们都需要重新加载浏览器以刷新用户界面。
+---
+
 > * 原文地址：[Webpack’s Hot Module Replacement Feature Explained](https://blog.bitsrc.io/webpacks-hot-module-replacement-feature-explained-43c13b169986)
 > * 原文作者：[Nathan Sebhastian](https://medium.com/@nathansebhastian)
-> * 译文出自：[掘金翻译计划](https://github.com/xitu/gold-miner)
-> * 本文永久链接：[https://github.com/xitu/gold-miner/blob/master/article/2021/webpacks-hot-module-replacement-feature-explained.md](https://github.com/xitu/gold-miner/blob/master/article/2021/webpacks-hot-module-replacement-feature-explained.md)
 > * 译者：[霜羽 Hoarfroster](https://github.com/PassionPenguin)
 > * 校对者：[5Reasons](https://github.com/5Reasons)、[nia3y](https://github.com/nia3y)
-
-# 详细解读 Webpack 的模块热替换功能
 
 ![](https://cdn-images-1.medium.com/max/2024/1*q3OLOdT-Ep86tfnvugnabw.png)
 
@@ -98,9 +107,3 @@ Create React App 和 Next.js 都内置了 React Fast Refresh，React 特定的�
 热模块替换能让我们无需刷新浏览器即可在浏览器中查看代码更改所带来的效果，从而可以保留前端应用程序的状态。
 
 但是实现 HMR 可能很棘手，因为它会产生一些副作用。幸运的是，HMR 已在许多 JavaScript 应用程序生成器中实现。因此我们可以直接享受此功能，而不必自己实现。
-
-> 如果发现译文存在错误或其他需要改进的地方，欢迎到 [掘金翻译计划](https://github.com/xitu/gold-miner) 对译文进行修改并 PR，也可获得相应奖励积分。文章开头的 **本文永久链接** 即为本文在 GitHub 上的 MarkDown 链接。
-
----
-
-> [掘金翻译计划](https://github.com/xitu/gold-miner) 是一个翻译优质互联网技术文章的社区，文章来源为 [掘金](https://juejin.im) 上的英文分享文章。内容覆盖 [Android](https://github.com/xitu/gold-miner#android)、[iOS](https://github.com/xitu/gold-miner#ios)、[前端](https://github.com/xitu/gold-miner#前端)、[后端](https://github.com/xitu/gold-miner#后端)、[区块链](https://github.com/xitu/gold-miner#区块链)、[产品](https://github.com/xitu/gold-miner#产品)、[设计](https://github.com/xitu/gold-miner#设计)、[人工智能](https://github.com/xitu/gold-miner#人工智能)等领域，想要查看更多优质译文请持续关注 [掘金翻译计划](https://github.com/xitu/gold-miner)、[官方微博](http://weibo.com/juejinfanyi)、[知乎专栏](https://zhuanlan.zhihu.com/juejinfanyi)。
