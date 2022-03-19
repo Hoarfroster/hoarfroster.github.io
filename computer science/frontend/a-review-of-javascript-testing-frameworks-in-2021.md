@@ -1,11 +1,19 @@
+---
+title: 2021 年 JavaScript 测试框架回顾
+subtitle: A Review of JavaScript Testing Frameworks in 2021
+date: 2021/02/02 15:24:00
+category: [Computer Science, Frontend, JavaScript]
+tag:
+- Computer Science
+- Frontend
+- JavaScript
+description: 测试环节是软件工程中的重要组成部分。如果你不熟悉测试，那你可能会提出和别人一样的问题 —— 如果我的软件的所有功能都在正常运作，我为什么还要进行测试呢？
+---
+
 > * 原文地址：[A Review of JavaScript Testing Frameworks in 2021](https://medium.com/javascript-in-plain-english/a-review-of-javascript-testing-frameworks-in-2021-fe5934567c2a)
 > * 原文作者：[Kisan Tamang](https://medium.com/@kisantamang)
-> * 译文出自：[掘金翻译计划](https://github.com/xitu/gold-miner)
-> * 本文永久链接：[https://github.com/xitu/gold-miner/blob/master/article/2021/a-review-of-javascript-testing-frameworks-in-2021.md](https://github.com/xitu/gold-miner/blob/master/article/2021/a-review-of-javascript-testing-frameworks-in-2021.md)
-> * 译者：[PassionPenguin](https://github.com/PassionPenguin)
+> * 译者：[霜羽 Hoarfroster](https://github.com/PassionPenguin)
 > * 校对者：[zenblo](https://github.com/zenblo)、[Ashira97](https://github.com/Ashira97)
-
-# 2021 年 JavaScript 测试框架回顾
 
 ![JavaScript 测试框架的使用情况，数据来源《2020 年 Javascript 状况调查》](https://github.com/PassionPenguin/gold-miner-images/blob/master/a-review-of-javascript-testing-frameworks-in-2021-UsageRanking.jpg?raw=true)
 
@@ -78,9 +86,3 @@ Puppeteer 是一个 Node.js 库，提供了高级的 API，通过 [DevTools 协�
 如果你是 Node.js 开发人员或 React 开发人员，我强烈推介你使用 Jest。
 
 祝学习愉快！
-
-> 如果发现译文存在错误或其他需要改进的地方，欢迎到 [掘金翻译计划](https://github.com/xitu/gold-miner) 对译文进行修改并 PR，也可获得相应奖励积分。文章开头的 **本文永久链接** 即为本文在 GitHub 上的 MarkDown 链接。
-
----
-
-> [掘金翻译计划](https://github.com/xitu/gold-miner) 是一个翻译优质互联网技术文章的社区，文章来源为 [掘金](https://juejin.im) 上的英文分享文章。内容覆盖 [Android](https://github.com/xitu/gold-miner#android)、[iOS](https://github.com/xitu/gold-miner#ios)、[前端](https://github.com/xitu/gold-miner#前端)、[后端](https://github.com/xitu/gold-miner#后端)、[区块链](https://github.com/xitu/gold-miner#区块链)、[产品](https://github.com/xitu/gold-miner#产品)、[设计](https://github.com/xitu/gold-miner#设计)、[人工智能](https://github.com/xitu/gold-miner#人工智能)等领域，想要查看更多优质译文请持续关注 [掘金翻译计划](https://github.com/xitu/gold-miner)、[官方微博](http://weibo.com/juejinfanyi)、[知乎专栏](https://zhuanlan.zhihu.com/juejinfanyi)。
