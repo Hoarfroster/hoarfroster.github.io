@@ -1,11 +1,19 @@
+---
+title: JavaScript Temporal API —— Date API 问题的一个解决方案
+subtitle: JavaScript Temporal API- A Fix for the Date API
+date: 2021/03/10 23:24:00
+category: [Computer Science, Frontend, JavaScript]
+tag:
+- Computer Science
+- Frontend
+- JavaScript
+description: JavaScript 的日期处理 API 比较糟糕，因为它是直接对 Java 的 Date 类进行复制来实现了 Date 对象，而 Java 维护者最终弃用了许多 Date 类的方法，并于 1997 年创建了 Calendar 类以取代它。
+---
+
 > * 原文地址：[JavaScript Temporal API- A Fix for the Date API](https://blog.bitsrc.io/javascript-temporal-api-a-fix-for-the-date-api-aa8381a4234c)
 > * 原文作者：[Nathan Sebhastian](https://medium.com/@nathansebhastian)
-> * 译文出自：[掘金翻译计划](https://github.com/xitu/gold-miner)
-> * 本文永久链接：[https://github.com/xitu/gold-miner/blob/master/article/2021/javascript-temporal-api-a-fix-for-the-date-api.md](https://github.com/xitu/gold-miner/blob/master/article/2021/javascript-temporal-api-a-fix-for-the-date-api.md)
 > * 译者：[霜羽 Hoarfroster](https://github.com/PassionPenguin)
 > * 校对者：[Chorer](https://github.com/Chorer)、[Usualminds](https://github.com/Usualminds)
-
-# JavaScript Temporal API —— Date API 问题的一个解决方案
 
 ![](https://cdn-images-1.medium.com/max/2024/1*iq9Xe8BZue94e2BD4ecpqA.png)
 
@@ -220,9 +228,3 @@ Temporal.PlainDate.from("2021-02-06").withCalendar("islamic").day;
 `Temporal` API 是针对 JavaScript 的一项新提案，有望为该语言提供现代化的日期和时间 API。而根据我基于 Polyfill 的测试，该 API 确实提供了更简单的日期和时间操作，同时也考虑到了时区和日历的差异。
 
 该提案本身仍处于第三阶段，因此，如果你有兴趣了解更多信息并提供反馈，你可以访问 [Temporal 文档](https://tc39.es/proposal-temporal/docs/index.html) 并尝试其提供的 [Polyfill NPM 包](https://www.npmjs.com/package/proposal-temporal)。
-
-> 如果发现译文存在错误或其他需要改进的地方，欢迎到 [掘金翻译计划](https://github.com/xitu/gold-miner) 对译文进行修改并 PR，也可获得相应奖励积分。文章开头的 **本文永久链接** 即为本文在 GitHub 上的 MarkDown 链接。
-
----
-
-> [掘金翻译计划](https://github.com/xitu/gold-miner) 是一个翻译优质互联网技术文章的社区，文章来源为 [掘金](https://juejin.im) 上的英文分享文章。内容覆盖 [Android](https://github.com/xitu/gold-miner#android)、[iOS](https://github.com/xitu/gold-miner#ios)、[前端](https://github.com/xitu/gold-miner#前端)、[后端](https://github.com/xitu/gold-miner#后端)、[区块链](https://github.com/xitu/gold-miner#区块链)、[产品](https://github.com/xitu/gold-miner#产品)、[设计](https://github.com/xitu/gold-miner#设计)、[人工智能](https://github.com/xitu/gold-miner#人工智能)等领域，想要查看更多优质译文请持续关注 [掘金翻译计划](https://github.com/xitu/gold-miner)、[官方微博](http://weibo.com/juejinfanyi)、[知乎专栏](https://zhuanlan.zhihu.com/juejinfanyi)。
