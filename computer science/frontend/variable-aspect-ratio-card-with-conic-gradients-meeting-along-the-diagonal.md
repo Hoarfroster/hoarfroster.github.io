@@ -1,11 +1,20 @@
+---
+title: 对角线分割的圆锥渐变式可变长宽比卡片
+subtitle: Variable Aspect Ratio Card With Conic Gradients Meeting Along the Diagonal
+date: 2021/06/19 12:46:00
+category: [Computer Science, Frontend, Styling]
+tag:
+- Computer Science
+- Frontend
+- CSS
+- UI
+description: 我最近遇到了一个有趣的问题 —— 我需要实现一个具有可变纵横比（由用户决定）的卡片，且纵横比值定义在了 --ratio 这个自定义属性中。
+---
+
 > * 原文地址：[Variable Aspect Ratio Card With Conic Gradients Meeting Along the Diagonal](https://css-tricks.com/variable-aspect-ratio-card-with-conic-gradients-meeting-along-the-diagonal/)
 > * 原文作者：[Ana Tudor](https://css-tricks.com/author/thebabydino/)
-> * 译文出自：[掘金翻译计划](https://github.com/xitu/gold-miner)
-> * 本文永久链接：[https://github.com/xitu/gold-miner/blob/master/article/2021/variable-aspect-ratio-card-with-conic-gradients-meeting-along-the-diagonal.md](https://github.com/xitu/gold-miner/blob/master/article/2021/variable-aspect-ratio-card-with-conic-gradients-meeting-along-the-diagonal.md)
 > * 译者：[霜羽 Hoarfroster](https://github.com/PassionPenguin)
 > * 校对者：[CarlosChenN](https://github.com/CarlosChenN)、[Usualminds](https://github.com/Usualminds)
-
-# 对角线分割的圆锥渐变式可变长宽比卡片
 
 我最近遇到了一个有趣的问题 —— 我需要实现一个具有可变纵横比（由用户决定）的卡片，且纵横比值定义在了 `--ratio` 这个自定义属性中。具有特定纵横比的卡片是 CSS 中的一个经典问题，也是近年来变得容易解决的问题，尤其是有了 [`aspect-ratio`](https://css-tricks.com/almanac/properties/a/aspect-ratio/) 之后，但这里棘手的部分是我们需要在每张卡片沿对角线交点处分别添加一个圆锥渐变，如图：
 
@@ -248,9 +257,3 @@ $r: .5rem;
 ## 最终效果
 
 把上面的代码合并起来，这是一个交互式演示，允许通过拖动滑块来更改纵横比 —— 每次滑块值更改时，`--ratio` 变量都会更新：[CodePen](https://codepen.io/thebabydino/pen/XWpyowX)。
-
-> 如果发现译文存在错误或其他需要改进的地方，欢迎到 [掘金翻译计划](https://github.com/xitu/gold-miner) 对译文进行修改并 PR，也可获得相应奖励积分。文章开头的 **本文永久链接** 即为本文在 GitHub 上的 MarkDown 链接。
-
----
-
-> [掘金翻译计划](https://github.com/xitu/gold-miner) 是一个翻译优质互联网技术文章的社区，文章来源为 [掘金](https://juejin.im) 上的英文分享文章。内容覆盖 [Android](https://github.com/xitu/gold-miner#android)、[iOS](https://github.com/xitu/gold-miner#ios)、[前端](https://github.com/xitu/gold-miner#前端)、[后端](https://github.com/xitu/gold-miner#后端)、[区块链](https://github.com/xitu/gold-miner#区块链)、[产品](https://github.com/xitu/gold-miner#产品)、[设计](https://github.com/xitu/gold-miner#设计)、[人工智能](https://github.com/xitu/gold-miner#人工智能)等领域，想要查看更多优质译文请持续关注 [掘金翻译计划](https://github.com/xitu/gold-miner)、[官方微博](http://weibo.com/juejinfanyi)、[知乎专栏](https://zhuanlan.zhihu.com/juejinfanyi)。
