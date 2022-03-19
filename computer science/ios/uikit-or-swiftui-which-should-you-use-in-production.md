@@ -1,11 +1,21 @@
+---
+title: UIKit 和 SwiftUI：我该选择哪一个运用在实际产品开发中？
+subtitle: UIKit or SwiftUI -  Which Should You Use in Production?
+date: 2021/01/25 19:48:00
+category: [Computer Science, iOS, SwiftUI]
+tag:
+- Computer Science
+- iOS
+- Swift
+- SwiftUI
+- UIKit
+description: Apple 最近发布了 iOS 14 —— 这意味着 Apple 已经给了开发者们一年时间缓冲决定是否使用 SwiftUI 了。而且这意味着 SwiftUI 不仅可以被爱好者们在其闲余的项目中使用，而且要被企业团队评估是否能在其发布的应用中使用了。
+---
+
 > * 原文地址：[UIKit or SwiftUI: Which Should You Use in Production?](https://medium.com/better-programming/uikit-or-swiftui-which-should-you-use-in-production-f57258bc6ad5)
 > * 原文作者：[Alexey Naumov](https://medium.com/@nalexn)
-> * 译文出自：[掘金翻译计划](https://github.com/xitu/gold-miner)
-> * 本文永久链接：[https://github.com/xitu/gold-miner/blob/master/article/2020/uikit-or-swiftui-which-should-you-use-in-production.md](https://github.com/xitu/gold-miner/blob/master/article/2020/uikit-or-swiftui-which-should-you-use-in-production.md)
-> * 译者：苏苏的 [霜羽 Hoarfroster](https://github.com/PassionPenguin)
+> * 译者：[霜羽 Hoarfroster](https://github.com/PassionPenguin)
 > * 校对者：[Zilin Zhu](https://github.com/zhuzilin)、[lsvih](https://github.com/lsvih)
-
-# UIKit 和 SwiftUI：我该选择哪一个运用在实际产品开发中？
 
 ![图自 [Mario Dobelmann](https://unsplash.com/@mariodobelmann?utm_source=medium&utm_medium=referral) 源于 [Unsplash](https://unsplash.com?utm_source=medium&utm_medium=referral)](https://cdn-images-1.medium.com/max/11516/0*uqSWA_30Auiz_7F4)
 
