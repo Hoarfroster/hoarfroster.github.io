@@ -24,7 +24,7 @@ description: 我对图像编码十分狂热。如今，一场“图像编码之�
 
 ![一张棋盘](https://res.cloudinary.com/cloudinary-marketing/image/upload/w_700,c_fill,f_auto,q_auto,dpr_2.0/Web_Assets/blog/chess-board-competition.jpg "一张棋盘")
 
-六名对手正在进入战场，请做好准备 —— 全军出击：
+六名选手正在进入战场，请做好准备 —— 全军出击：
 
 * **JPEG 2000** —— JPEG 小组，这是 JPEG 编码继承者中最早初露头角的一位，不过仅被 Safari 5+ 支持
 * **WebP** —— Google，支持在所有现代浏览器中使用

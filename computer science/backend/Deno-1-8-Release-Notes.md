@@ -78,7 +78,7 @@ if (adapter) {
 $ deno run --unstable --allow-write=output.png https://raw.githubusercontent.com/crowlKats/webgpu-examples/f3b979f57fd471b11a28c5b0c91d0447221ba77b/hello-triangle/mod.ts
 ```
 
-![一个简单的绿色背景的红色三角形](https://deno.land/posts/v1.8/webgpu_triangle.png)
+![一个简单的绿色背景的红色三角形](https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/v2-85594ad0a400c1d77cbbbddb95d2d9b1_720w.png)
 
 [需要注意的是在输出 PNG 上使用了 WebAssembly](https://github.com/crowlKats/webgpu-examples/blob/f3b979f57fd471b11a28c5b0c91d0447221ba77b/utils.ts#L77-L106)。有关更多的信息请访问这一个 GitHub 仓库：[crowlKats/webgpu-examples](https://github.com/crowlKats/webgpu-examples)。
 
@@ -302,7 +302,7 @@ File {}
 
 在即将发布的版本中，`Deno.test` 中的异步操作清理工具将使用此新信息，以在测试完成之前未完成异步操作时提供更多可操作的错误。我们已经看到此功能用于检测应用程序并将数据通过管道传输到监视软件中：
 
-![一个网站表格显示着 `Deno.metrics` 的输出](https://deno.land/posts/v1.8/per_op_metrics.png)
+![一个网站表格显示着 `Deno.metrics` 的输出](https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/v2-4fae6d12908d01b0d324f9594d7fae10_1440w.jpg)
 
 ### `deno fmt` 对 JSON 的支持
 
