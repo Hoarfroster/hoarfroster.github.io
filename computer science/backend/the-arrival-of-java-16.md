@@ -15,8 +15,6 @@ description: 在我们庆祝 Java 成立 25 周年之际，2020 年对于 Java �
 > * 译者：[霜羽 Hoarfroster](https://github.com/PassionPenguin)
 > * 校对者：
 
-![](https://cdn.app.compendium.com/uploads/user/e7c690e8-6ff9-102a-ac6d-e4aebca50425/ed5569e8-c0dd-458c-8450-cde6300093bd/File/a5023b0f0fb67f59176a0499af9021ed/java_horz_clr.png)
-
 在我们庆祝 Java 成立 [25 周年之际](https://www.oracle.com/java/moved-by-java/)，2020 年对于 Java 来说是值得纪念的一年。经过了 20 多年的创新，Java 一直是：
 
 * 通过适应不断变化的技术格局而保持平台独立性，从而具有灵活性。
@@ -27,13 +25,13 @@ description: 在我们庆祝 Java 成立 25 周年之际，2020 年对于 Java �
 
 Oracle 进一步展示了 Java 的持续创新之路，并自豪地宣布 Java 16 的全面 Release，这是六个月紧张开发中的第七个功能版本的 Release。源源不断的预期变化让开发者可以更轻松地管理他们对创新建议的采纳。
 
-![](https://cdn.app.compendium.com/uploads/user/e7c690e8-6ff9-102a-ac6d-e4aebca50425/ed5569e8-c0dd-458c-8450-cde6300093bd/Image/1b71450b94c7e38e2ca7981ba45246f4/features_in_java16.png)
+![img](https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/v2-c2364e54b150336418b9b87d011c8c17_720w.png)
 
 ## Java 16 现在可用了！
 
 Oracle 现在[为所有开发者和企业](https://www.oracle.com/news/announcement/oracle-announces-java-16-031621.html)正式提供 [Java 16](https://www.oracle.com/news/announcement/oracle-announces-java-16-031621.html)。根据 [Oracle 关键补丁更新（CPU，Critical Patch Update）时间表](https://www.oracle.com/technetwork/topics/security/alerts-086861.html)，Oracle JDK 16 将至少获得两个季度的更新，然后我们会再发布 Oracle JDK 17。Java 17 将在 2021 年 9 月实现全面可用性，但是早已在 [jdk.java.net](https://jdk.java.net/) 网站上提供了[构建版本](https://jdk.java.net/17/)。
 
-Oracle 再次使用开源 GPLv2 协议 和 CPE 协议将 Java 16 作为 [Oracle OpenJDK 版本](https://jdk.java.net/15/)[](https://oracle.com/javadownload)向大家提供，并且对于使用 Oracle JDK 版本作为 Oracle 产品或服务，或针对那些希望能够获得商业支持的人的那一部分的用户，也获得了[商业许可](https://oracle.com/javadownload)。
+Oracle 再次使用开源 GPLv2 协议 和 CPE 协议将 Java 16 作为 [Oracle OpenJDK 版本](https://jdk.java.net/15/)向大家提供，并且对于使用 Oracle JDK 版本作为 Oracle 产品或服务，或针对那些希望能够获得商业支持的人的那一部分的用户，也获得了[商业许可](https://oracle.com/javadownload)。
 
 **Java 16，Together**
 
@@ -47,7 +45,7 @@ JDK 的总体变化率多年来一直保持基本恒定，但是在六个月的�
 
 在 Java 16
 中标记为已解决的 [1,897 个](https://bugs.openjdk.java.net/issues/?jql=project%20%3D%20JDK%20AND%20fixVersion%20%3D%2016%20AND%20resolution%20%3D%20Fixed%20AND%20%28comment%20~%20%22URL%3A%20http%3A%2F%2Fhg.openjdk.java.net%22%20OR%20comment%20~%20%22URL%3A%20https%3A%2F%2Fhg.openjdk.java.net%22%20OR%20comment%20~%20%22URL%3A%20https%3A%2F%2Fgit.openjdk.java.net%2F%22%29%20AND%20%28labels%20not%20in%20%28hgupdate-sync%29%20OR%20labels%20is%20EMPTY%29%20%20ORDER%20BY%20updated%20DESC%2C%20assignee%20ASC)问题中，有 [1,397](https://bugs.openjdk.java.net/browse/JDK-8246707?jql=project%20%3D%20JDK%20AND%20fixVersion%20%3D%2016%20AND%20resolution%20%3D%20Fixed%20AND%20%28comment%20~%20%22URL%3A%20http%3A%2F%2Fhg.openjdk.java.net%22%20OR%20comment%20~%20%22URL%3A%20https%3A%2F%2Fhg.openjdk.java.net%22%20OR%20comment%20~%20%22URL%3A%20https%3A%2F%2Fgit.openjdk.java.net%2F%22%29%20%20AND%20%28labels%20not%20in%20%28hgupdate-sync%29%20OR%20labels%20is%20EMPTY%29%20AND%20assignee%20in%20membersOf%28oracle-employees%29%20ORDER%20BY%20updated%20DESC%2C%20assignee%20ASC)
-个由 Oracle 工作人员解决了，而另外的 [500](https://bugs.openjdk.java.net/browse/JDK-8257574?jql=project%20%3D%20JDK%20AND%20fixVersion%20%3D%2016%20AND%20resolution%20%3D%20Fixed%20AND%20(comment%20~%20%22URL%3A%20http%3A%2F%2Fhg.openjdk.java.net%22%20OR%20comment%20~%20%22URL%3A%20https%3A%2F%2Fhg.openjdk.java.net%22%20%20OR%20comment%20~%20%22URL%3A%20https%3A%2F%2Fgit.openjdk.java.net%2F%22)%20%20AND%20(labels%20not%20in%20(hgupdate-sync)%20OR%20labels%20is%20EMPTY)%20AND%20assignee%20not%20in%20%20membersOf(oracle-employees)%20ORDER%20BY%20updated%20DESC%2C%20assignee%20ASC) 个则由个人开发者和为其他组织工作的开发者解决。仔细研究这些问题并整理来自受让人的组织数据，将得到以下组织结构图。该组织结构图由助力 Java 16 中的修补程序的开发的人员构成：
+个由 Oracle 工作人员解决了，而另外的  <a href="https://bugs.openjdk.java.net/browse/JDK-8257574?jql=project%20%3D%20JDK%20AND%20fixVersion%20%3D%2016%20AND%20resolution%20%3D%20Fixed%20AND%20(comment%20~%20%22URL%3A%20http%3A%2F%2Fhg.openjdk.java.net%22%20OR%20comment%20~%20%22URL%3A%20https%3A%2F%2Fhg.openjdk.java.net%22%20%20OR%20comment%20~%20%22URL%3A%20https%3A%2F%2Fgit.openjdk.java.net%2F%22)%20%20AND%20(labels%20not%20in%20(hgupdate-sync)%20OR%20labels%20is%20EMPTY)%20AND%20assignee%20not%20in%20%20membersOf(oracle-employees)%20ORDER%20BY%20updated%20DESC%2C%20assignee%20ASC">500</a> 个则由个人开发者和为其他组织工作的开发者解决。仔细研究这些问题并整理来自受让人的组织数据，将得到以下组织结构图。该组织结构图由助力 Java 16 中的修补程序的开发的人员构成：
 
 ![](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/515b6bd1c2b3439b883b450c9af979d0~tplv-k3u1fbpfcp-zoom-1.image)
 

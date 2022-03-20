@@ -8,7 +8,7 @@ tag:
 - Backend
 - Rust
 - C
-description: 
+description: Rust 程序的运行速度和内存使用量应该与 C 程序大致相同，不过由于这些语言的整体编程风格差异很大，我们很难准确地概括它们的速度。这就是我对于 Rust 和 C 运行速度的总结：有时它们相同，有时 C 语言更快，有时 Rust 更快。
 ---
 
 > * 原文地址：[Speed of Rust vs. C](https://kornel.ski/rust-c-speed)

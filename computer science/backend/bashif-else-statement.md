@@ -15,7 +15,7 @@ description: 在本篇教程中，我们会逐步深入 Bash 中的 if 语句基
 > * 译者：[霜羽 Hoarfroster](https://github.com/PassionPenguin)
 > * 校对者：[zenblo](https://github.com/zenblo)、[flying-yogurt](https://github.com/flying-yogurt)、[lsvih](https://github.com/lsvih)
 
-![Bash 中的 if else 语句](https://linuxize.com/post/bash-if-else-statement/featured_hu91e1d6741dfcdbd79b4fecce3479ee44_25821_480x0_resize_q75_lanczos.jpg)
+![Bash 中的 if else 语句](https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/featured_hu91e1d6741dfcdbd79b4fecce3479ee44_25821_768x0_resize_q75_lanczos.jpg)
 
 在本篇教程中，我们会逐步深入 Bash 中的 if 语句基础，带着大家一起学习如何在 Shell 脚本中使用 if 语句。
 

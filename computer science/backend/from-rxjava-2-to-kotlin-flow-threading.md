@@ -279,7 +279,7 @@ collect: pool-1-thread-2 @coroutine#2
 
 ![](https://cdn-images-1.medium.com/max/2000/1*sv6HwmwwsOufpc-00wZpCQ.png)
 
-we’ll see the following result:
+我们可以得到这些结果：
 
 ```
 inner: pool-2-thread-2 @coroutine#6
@@ -298,7 +298,7 @@ collect: pool-1-thread-3 @coroutine#2
 
 ![](https://cdn-images-1.medium.com/max/2000/1*isZ3b5z8Jg7f-V9tOqdFlw.png)
 
-The result will be:
+结果如下：
 
 ```
 outer: pool-2-thread-1 @coroutine#3
@@ -313,17 +313,17 @@ collect: pool-1-thread-2 @coroutine#2
 collect: pool-1-thread-2 @coroutine#2
 ```
 
-That means that everything above flowOn is run on the second pool. Outer is on the first thread and each inner flow on its own (second and third):
+这意味着所有在 `flowOn` 以前的代码都会在第二个 pool 中运行，外面的代码会在第一线程，而每一个里面的 flow 都会有属于它自己的线程：
 
 ![](https://cdn-images-1.medium.com/max/2000/1*dfWRpulMkYT_8aNiXJVCPA.png)
 
-In red it is shown running on `d2`, and in blue — on `d1` .
+红色部分运行在 `d2` 而蓝色部分运行在 `d1`。
 
-Now let’s see what would be if we put `flowOn` inside `flatMapMerge`:
+下面让我们来看看如果我们把 `flowOn` 放在 `flatMapMerge` 中会发生什么：
 
 ![](https://cdn-images-1.medium.com/max/2000/1*SM6l5_038WGzm9Z4Zd97nA.png)
 
-The output will be:
+输出如下：
 
 ```
 outer: pool-1-thread-2 @coroutine#3
@@ -338,27 +338,27 @@ collect: pool-1-thread-3 @coroutine#2
 collect: pool-1-thread-3 @coroutine#2
 ```
 
-We see that outer now runs on the `d1` and therefore not affected by `flowOn`:
+我们可以看到外面的运行在了 `d1`，也因而没有被 `flowOn` 影响： 
 
 ![](https://cdn-images-1.medium.com/max/2000/1*5D5AHoF0nPJyD7lcMvp0cA.png)
 
-And that’s the difference.
+这就是它们间的差异。
 
-## Comparison
+## 比较
 
-Now let’s make some comparison and conclusion and also see few examples.
+现在让我们来做一些比较和总结，也看看几个例子。
 
-From the comparison part both RxJava and Kotlin Flow represent cold streams. Both have general operators and approaches for changing threading (schedulers or dispatchers) in the chain.
+从比较部分来看，RxJava 和 Kotlin Flow 都展现出 cold streams。两者都有一般的操作符和方法来改变链中的线程（调度器或分配器）。
 
-#### Control of threading
+#### 线程的控制
 
-In RxJava for threading **Schedulers** are used (most common io(), computation(), mainThread())
+在RxJava中，用于线程的**调度器**被使用（最常见的有 `io()`、`computation()`、`mainThread()`）。
 
-In Kotlin Flow for threading **Dispatchers** are used ****(most common IO, Default, Main)
+在Kotlin Flow中，用于线程的**调度器**最常见的是 `IO`、`Default`、`Main`）。
 
-#### Threading operators
+#### 线程操作符
 
-In RxJava we declare on which scheduler chain should be **subscribed (started)** using **subscribeOn**, and where it should **proceed** using **observeOn**.
+在RxJava中，我们使用**subscribeOn**声明哪个调度器链应该被**订阅（启动）**，使用 `observeOn` 声明它应该在哪里进行。
 
 在 Kotlin Flow 中，我们使用收集流的 Scope 定义了在使用在哪个上下文（调度器）上收集完这个链，以及在 `flowOn` 之前它的执行的地方。
 
