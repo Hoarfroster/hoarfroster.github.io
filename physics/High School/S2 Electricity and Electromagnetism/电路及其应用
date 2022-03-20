@@ -237,7 +237,7 @@ tags:
 >
 > ​	下图为电流表的内接法，$R_测=R_A+R$：
 >
-> ![电流表内接](https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/A_Inside.svg)
+> ![电流表内接](https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/A_inside.svg)
 >
 > 1. 电压表示数 $U_V=U_R+U_A>U_R$，电流表示数 $I_A=I_R$；
 > 2. $R_测=\dfrac{U_V}{I_A}>\dfrac{U_R}{I_R}=R_真$，**测量值偏大**，==误差来源于电流表的分压作用==。
@@ -246,7 +246,7 @@ tags:
 >
 > ​	下图为电流表的外接法，$R_测=\dfrac{R_VR}{R_V+R}$：
 >
-> ![电流表外接](https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/A_Outside.svg)
+> ![电流表外接](https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/A_outside.svg)
 >
 > 1. 电压表示数 $U_V=U_R$，电流表示数 $I_A=I_R+I_V>I_R$；
 > 2. $R_测=\dfrac{U_V}{I_A}<\dfrac{U_R}{I_R}=R_真$，**测量值偏小**，==误差来源于电压表的分流作用==。
@@ -343,3 +343,67 @@ tags:
 ​	我们常将外电路的用电器称为**负载**，称外电路的电势降落为**路端电压** $U$，根据闭合电路的欧姆定律，有 $U=E-Ir$。
 
 #### 3.实验：电池电动势和内阻的测量 | #exp-电池电动势和内阻的测量
+
+##### 一、实验原理：
+
+​	实验原理为闭合电路欧姆定律。
+
+##### 二、实验思路
+
+1. 思路一：**伏安法**
+
+    ​	根据闭合电路的欧姆定律，电源电动势 $E$、内阻 $r$，与路端电压 $U$、电流 $I$ 的关系可以写成 $E=U+Ir$，如果能测出 $U$ 与 $I$ 的两组数据，就可以解出 $E$ 与 $r$​。因此，用电压表、电流表加上一个滑动变阻器 $R$，就能测定电源的电动势 $E$ 和内阻 $r$。
+
+    ![image-20220320142426857](https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/image-20220320142426857.png)
+
+2. 思路二：**安阻法**
+
+    ​	根据闭合电路欧姆定律的变式 $E=IR+Ir$​，测出 $I$、$R$ 的两组数据，也可以得到关于 $E$ 和 $r$ 的两个方程，从中解出 $E$ 和 $r$。这样，用电流表和电阻箱也可以测定电源的电动势 $E$ 和内阻 $r$。
+
+    ![image-20220320142612756](https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/image-20220320142612756.png)
+
+3. 思路三：**伏阻法**
+
+    ​	根据闭合电路欧姆定律的变式 $E=U+\dfrac{U}{R}r$​，测出 $U$、$R$ 的两组数据，同样能通过解方程组求出 $E$ 和 $r$。这样，除了以上两个方法外，还可以用电压表和电阻箱来测定电源的电动势 $E$ 和内阻 $r$。
+
+    ![image-20220320142719137](https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/image-20220320142719137.png)
+
+##### 三、实验操作
+
+​	只测量两组数据，通过联立方程解得 $E$ 和 $r$，看起来比较简单，误差却可能较大。只有多次测量，并对数据进行处理，才能减小误差。所以，应该使用滑动变阻器改变外电路的电阻，进行多次测量。
+
+##### 四、测量物理量
+
+​	按照不同思路分别测量不同的物理量，代入式计算。
+
+1. 伏安法处理数据有以下两种方式：
+    1. 公式法：根据闭合电路欧姆定律，列方程组即可。
+    2. 作图法：根据 $U=-Ir+E$（$y=kx+b$），根据描点作图结果，直线的斜率的绝对值为内阻 $r$，直线的 $y$ 轴截距为电源电动势 $E$。
+2. 安阻法处理数据有以下两种方式：
+    1. 公式法，根据闭合电路欧姆定律 $E=I(R+r)$，有 $E=\dfrac{(R_1-R_2)I_1I_2}{I_2-I_1}$，$r=\dfrac{I_1R_1-I_2R_2}{I_2-I_1}$。
+    2. 作图法：根据 $E=I(R+r)$，有变式 $\dfrac{1}{r}=\dfrac{R}{E}+\dfrac{r}{E}$，即直线的斜率为 $\dfrac{1}{E}$，$y$ 轴截距为 $\dfrac{r}{E}$。
+3. 伏阻法处理数据有以下两种方式：
+    1. 公式法：根据闭合电路欧姆定律 $E=U+\dfrac{U}{R}r$，有 $E=\dfrac{U_1U_2(R_2-R_1)}{U_1R_2-U_2R_1}$，$r=\dfrac{R_1R_2(U_1-U_2)}{U_2R_1-U_1R_2}$。
+    2. 作图法：根据闭合电路欧姆定律 $E=U+\dfrac{U}{R}r$，有变式 $\dfrac{1}{U}=\dfrac{1}{E}+\dfrac{r}{E}\cdot\dfrac{1}{R}$，即直线的斜率为 $\dfrac{r}{E}$，在 $y$ 轴上的截距为 $\dfrac{1}{E}$。
+
+##### 五、误差分析
+
+1. 伏安法测得的误差来源于电压表的分流时（电流表外接），测量值均偏小。伏安法测得的误差来源于电流表的分压时（电流表内接），电源电动势无系统误差，但电源内阻偏大。
+
+    1. 电流表外接误差分析：$E_测=\dfrac{R_V}{R_V+r}E$，$r_测=\dfrac{R_V}{R_V+r}r$。
+
+        <img src="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/Electromotive-force-measurement-Ammeter-separate-voltage.svg" alt="电流表外接误差分析" style="max-width: 240px" />
+
+    2. 电流表内接误差分析：$E_测=E$，$r_测=R_A+r$。
+
+    	<img src="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/Electromotive-force-measurement-Voltmeter-separate-current.svg" alt="电流表内接误差分析" style="max-width: 240px" />
+
+2. 安阻法测得的电源电动势无系统误差，但电源内阻测量值偏大，误差来源于**电流表的分压**。
+
+3. 伏阻法计算得到的的数据都偏小，误差来源于**电压表的分流**。
+
+#### 4. 电源的最大输出功率
+
+​	电源的输出功率 $P_O = UI$，由闭合电路欧姆定律，$I$ 与 $U$ 成反比关系，证明 $UI$ 有极值存在。如果外电路是纯电阻电路，则有 $P_O=UI=I^2R=(\dfrac{E}{R+r})^2\times R$。
+
+​	因为 $(R+r)^2=(R-r)^2+4Rr$，故==当 $R=r$（外电路电阻与内电阻相等时）功率有最大值==，$P_{Omax}=\dfrac{E^2}{4r}$。
