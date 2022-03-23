@@ -15,30 +15,30 @@ description: 给选中的文本添加样式并不是没用的行为，而值得�
 > * 原文作者：[Patrick Brosset ](https://css-tricks.com/author/patrickbrosset/)
 > * 译者：[霜羽 Hoarfroster](https://github.com/PassionPenguin)
 
-**Styling ranges of text** in software is a very useful thing to be able to do. Thankfully, we have the CSS Custom Highlight API to look forward to because it represents the future of styling text ranges on the web.
+**给选中的文本添加样式**并不是没用的行为，而值得开心的是，CSS Custom Highlight API 即将到来，而且它将会成为未来 Web 上样式化选中文本的不二法门！
 
 ![Animation screenshot of the CSS Custom Highlight API demo.](https://i0.wp.com/css-tricks.com/wp-content/uploads/2022/02/s_8E0FC85C45E73C25EFCF623C768360F2F95DBDDEC338D5F6DE316BB0830F6F67_1644484463021_highlight-api-demo-no-text-deco.gif?resize=800%2C733&ssl=1)
 
-One example: if you’ve ever used text editing software like Google Docs, Word, or Dropbox Paper, you’ll see they detect spelling and grammar errors and displaying nice little squiggly underlines below them to attract attention. Code editors like VS Code do the same for code errors.
+举个例子：如果你用过 知乎编辑器、Google Docs、百度文库、Word 或 Dropbox Paper 这些文本编辑软件，你不难发现它们会检测到拼写和语法错误，并会在错误的下方用下划波浪线提醒你**“大傻子！写错了！”**。类似的，VS Code、IDEA 这样的代码编辑器也会在出现代码错误时有类似的提醒。
 
 ![](https://i0.wp.com/css-tricks.com/wp-content/uploads/2022/02/s_8E0FC85C45E73C25EFCF623C768360F2F95DBDDEC338D5F6DE316BB0830F6F67_1643042116795_image.png?resize=977%2C269&ssl=1)
 
-Another very common use case for highlighting text is **search and highlight**, where you're given a text input box and typing in it searches matching results on the page, and highlights them. Try pressing `Ctrl`/`⌘`\+ `F` in your web browser right now and type in some text from this article.
+对于高亮文本，另一个非常常见的用例的是**搜索并高亮**这一操作。在你进行网页内搜索时，浏览器会弹出一个文本输入框。在你输入相关内容后，网页中相匹配的内容就会被高亮。你可以现在试试按 `Ctrl`/`⌘`\+ `F`，然后并输入本文中的一些文字尝试这一操作。
 
 ![](https://i0.wp.com/css-tricks.com/wp-content/uploads/2022/02/s_8E0FC85C45E73C25EFCF623C768360F2F95DBDDEC338D5F6DE316BB0830F6F67_1643042176497_image.png?resize=1117%2C951&ssl=1)
 
-The browser itself often handles these styling situations. Editable areas (like a `<textarea>`) get spelling squiggles automatically. The find command highlights found text automatically.
+浏览器本身就经常需要处理这类高亮，比如说可编辑元素（如 `<textarea>`）会有错误拼写检查，搜索功能会自动高亮找到的文本内容……
 
-But what about when we want to do this type of styling ourselves? Doing this on the web has been a common problem for a long time. It has probably costed many people a lot more time than it should have.
+但是你是否（或者你的产品经理是否）想要让你在网页上实现这种样式呢？似乎在网页上实现高亮文本一直是个常见的需求，可能浪费了不少人让他们去造轮子……
 
-This isn’t a simple problem to solve. We aren’t just wrapping text in a `<span>` with a class and applying some CSS. Indeed, this requires being able to correctly highlight *multiple* ranges of text across an arbitrarily complex DOM tree, and possibly crossing the boundaries of DOM elements.
+别把这个问题想得太简单啦，我们不只需要将文本扔进一个有特定 `class` 的 `<span>` 中并对它应用一些 CSS 样式。实际上，我们需要能够在各种情形下的复杂的 DOM 树中正确突出显示*多段*文本，并且任意一段文本都可能会跨越多个 DOM 元素的边界。
 
-There are two common solutions to this, including:
+有两种常见的解决方案，包括：
 
-1.  styling text range pseudo-elements, and
-2.  creating your own text highlighting system.
+1. 给伪元素样式化（`:selection` 等伪元素）；
+2. 创建自己的文本高亮系统；
 
-We’ll review them first and then take a look at the upcoming CSS Custom Highlight API that can change it all. but if you're
+我们将首先用这两种方法完成高亮文本操作，然后看看**即将推出的可以改变这一切的 CSS Custom Highlight API**。
 
 ### Potential Solution #1: Style-able Text Ranges
 
@@ -86,6 +86,8 @@ So the user text selection is nice because it’s relatively simple to put in pl
 
 One major drawback, however, is that creating a selection resets whatever the user has already manually selected. Try selecting text in the demo above to test this. You’ll see how it goes away as soon as the code moves the selection somewhere else.
 
+
+
 ### Potential Solution #2: Custom Highlighting System
 
 This second solution is pretty much the only thing you can do if using the `Selection` object is insufficient for you. This solution revolves around doing everything yourself, using JavaScript to insert new HTML elements in the DOM where you want the highlighting to appear.
@@ -99,6 +101,8 @@ Interestingly, [CodeMirror](https://codemirror.net) and [Monaco](https://microso
 Overall, it feels like a browser-powered highlighting feature is missing. Something that would help solve all of these drawbacks (no interference with user text selection, multi-selection support, simple code) and be faster than custom-made solutions.
 
 Fortunately, that’s what we’re here to talk about!
+
+
 
 ### Enter the CSS Custom Highlight API
 
@@ -128,6 +132,8 @@ const highlight = new Highlight(range1, range2, ..., rangeN);
 
 But you can also create as many `Highlight` objects as you need. For example, if you are building a collaborative text editor where each user gets a different text color, then you can create one `Highlight` object per user. Each object can then be styled differently, as we’ll see next.
 
+
+
 #### Registering Highlights
 
 Now Highlight objects on their own don’t do anything. They first need to be registered in what is called the highlight registry. This is done by using the [CSS Highlights API](https://www.w3.org/TR/css-highlight-api-1/#highlight-registry). The registry works like a map where you can register new highlights by giving them names, as well as remove highlights (or even clear the entire registry).
@@ -139,6 +145,8 @@ CSS.highlights.set('my-custom-highlight', highlight);
 ```
 
 Where `my-custom-highlight` is the name of your choosing and `highlight` is a `Highlight` object created in the last step.
+
+
 
 #### Styling Highlights
 
@@ -163,6 +171,8 @@ It’s worth noting that, just like `::selection`, a subset of CSS properties on
 *   [`text-decoration`](https://css-tricks.com/almanac/properties/t/text-decoration/) (which will likely only be supported in the version 2 of the specification)
 *   [`text-shadow`](https://css-tricks.com/almanac/properties/t/text-shadow/)
 
+
+
 #### Updating Highlights
 
 There are multiple ways to update highlighted text on the page.
@@ -183,6 +193,8 @@ The API is also supported in [Safari 99+](https://developer.apple.com/safari/tec
 
 Firefox does not support the API yet, though you can [read Mozilla’s position about it](https://github.com/mozilla/standards-positions/issues/482) for more information.
 
+
+
 ### Demo
 
 Speaking of Microsoft Edge, they have a demo set up where you can take the CSS Custom Highlight API for a test drive. But Before trying the demo, be sure you’re using either Chrome or Edge Canary with the Experimental Web Platform features flag in the `about:flags` page.
@@ -192,6 +204,8 @@ Speaking of Microsoft Edge, they have a demo set up where you can take the CSS C
 The demo uses the Custom Highlight API to highlight ranges of text in the page based on what you type in the search field at the top of the page.
 
 After the page loads, JavaScript code retrieves all the text nodes in the page (using a [TreeWalker](https://developer.mozilla.org/en-US/docs/Web/API/TreeWalker)) and when the user types in the search field, the code iterates over these nodes until it finds matches. Those matches are then used to create `Range` objects, which are then highlighted with the Custom Highlight API.
+
+
 
 ### Closing Thoughts
 
