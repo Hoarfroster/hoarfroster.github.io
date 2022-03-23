@@ -32,15 +32,15 @@ px 单位可以使你轻松上手，但是后来却变成了一个问题。在�
 
 > “请注意，如果锚点单位是像素单位，则物理单位可能与它们的物理尺寸不匹配。或者，如果锚点单元是物理单元，则像素单元可能不会映射到设备像素的总数。
 >
->请注意，像素单位和物理单位的定义与CSS的早期版本不同。特别是，在 CSS 的早期版本中，像素单位和物理单位不是以固定比率关联的：物理单位始终与物理尺寸相关联，而像素单位会发生变化以最紧密地匹配参考像素。（进行此更改是因为现有内容过多取决于 96dpi 的假设，而打破该假设会破坏内容。）” —— [W3C]（https://www.w3.org/TR/2011/WD-css3-values-20110906 /）
+>请注意，像素单位和物理单位的定义与CSS的早期版本不同。特别是，在 CSS 的早期版本中，像素单位和物理单位不是以固定比率关联的：物理单位始终与物理尺寸相关联，而像素单位会发生变化以最紧密地匹配参考像素。（进行此更改是因为现有内容过多取决于 96dpi 的假设，而打破该假设会破坏内容。）” —— [W3C](https://www.w3.org/TR/2011/WD-css3-values-20110906/)
 
 总之，这意味着像素不可靠。由于其不可靠的特性，可能无法实现像素完美的布局。
 
 让我们看一下每英寸点数不同的像素等效于 1mm 的像素：
 
-![在 Pixelcalculator 上平均 MacBook dpi 的毫米到像素](https://cdn-images-1.medium.com/max/2000/1*xgFl-SLMot8k2KR0HEn4mQ.png)
+![Pixelcalculator：MacBook 平均 dpi 转换 —— 毫米 to 像素](https://cdn-images-1.medium.com/max/2000/1*xgFl-SLMot8k2KR0HEn4mQ.png)
 
-![Pixelcalculator 上平均 iPhone dpi 的毫米到像素](https://cdn-images-1.medium.com/max/2000/1*qBVYc5fFUBNnzgTMJYHtoQ.png)
+![Pixelcalculator：iPhone 平均 dpi 转换 —— 毫米 to 像素](https://cdn-images-1.medium.com/max/2000/1*qBVYc5fFUBNnzgTMJYHtoQ.png)
 
 可以区分屏幕上像素的日子已经一去不复返了。我们已经习惯了这种限制，这是一个我们需要放弃的想法。随着时间的流逝，“像素”一词的含义已失去其含义，现在该停止在我们的 CSS 代码中将其设为默认单位了。
 
@@ -56,7 +56,7 @@ px 单位可以使你轻松上手，但是后来却变成了一个问题。在�
 
 我们如何解决这个问题？我们如何才能使布局具有响应性？—— 使用“相对单位”。那到底是什么？
 
-> “相对长度单位是相对于其他单位的，也许是父元素字体的大小或视口的大小。” — [MDN Web 文档]（https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Values_and_units）
+> “相对长度单位是相对于其他单位的，也许是父元素字体的大小或视口的大小。” — [MDN Web 文档](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Values_and_units)
 
 让我们检查一下我们可以使用的相对单位：
 

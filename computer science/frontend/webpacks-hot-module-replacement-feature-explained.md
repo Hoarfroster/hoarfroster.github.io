@@ -11,7 +11,7 @@ tag:
 description: 在开发 JavaScript 应用程序时，每次我们保存代码更改后，我们都需要重新加载浏览器以刷新用户界面。
 ---
 
-> * 原文地址：[Webpack’s Hot Module Replacement Feature Explained](https://blog.bitsrc.io/webpacks-hot-module-replacement-feature-explained-43c13b169986)
+> * 原文地址：[Webpack's Hot Module Replacement Feature Explained](https://blog.bitsrc.io/webpacks-hot-module-replacement-feature-explained-43c13b169986)
 > * 原文作者：[Nathan Sebhastian](https://medium.com/@nathansebhastian)
 > * 译者：[霜羽 Hoarfroster](https://github.com/PassionPenguin)
 > * 校对者：[5Reasons](https://github.com/5Reasons)、[nia3y](https://github.com/nia3y)
