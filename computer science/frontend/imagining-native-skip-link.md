@@ -15,7 +15,7 @@ description: 当点击一个链接时，页面会被重新加载，焦点会恢�
 > * 译者：[霜羽 Hoarfroster](https://github.com/PassionPenguin)
 > * 校对者：[chzh9311](https://github.com/chzh9311)、[Kimhooo](https://github.com/Kimhooo)
 
-[我们最近在 [A11y Advent calendar](https://kittygiraudel.com/2020/12/01/a11y-advent-calendar/) 话题中谈到了["跳至内容"链接](https://kittygiraudel.com/2020/12/06/a11y-advent-skip-to-content/)。如果你不熟悉这个概念，我引用一下那里的原文：
+我们最近在 [A11y Advent calendar](https://kittygiraudel.com/2020/12/01/a11y-advent-calendar/) 话题中谈到了["跳至内容"链接](https://kittygiraudel.com/2020/12/06/a11y-advent-skip-to-content/)。如果你不熟悉这个概念，我引用一下那里的原文：
 
 > 当点击一个链接时，页面会被重新加载，焦点会恢复到页面顶部。而如果在这时候使用无障碍辅助功能在页面中导航，在访问主要内容之前，必须先逐一跳过整个页眉、导航，有时甚至包括侧边栏。这体验太糟糕了！为了解决这个问题，一个常见的设计模式是实现一个跳过链接，也就是发送至主要内容区域的锚链接。
 
@@ -90,5 +90,3 @@ if (!windows.navigator.skipLink) {
 这绝不是完美的，我也没有一个万无一失的解决方案可以提供。如果有的话，我相信比我更聪明、更有见识的人早就提出来了。
 
 不过，缺乏跳转链接对使用辅助技术浏览网页的人来说是一个很大的障碍。而且考虑到每个网站都需要一个，不同网站之间几乎没有差异，这确实感觉像是浏览器在原生上该做的事情。
-
-和往常一样，欢迎在掘金社区上与我分享你的想法：)

@@ -146,3 +146,151 @@ Chrome 是支持 Web Share Target API 的主要浏览器之一。此外，Safari
 > 但是，Web Share API 应该由用户主动操作触发，这样做是为了减少不便和滥用。
 
 谢谢你的阅读。欢迎在下方留言，分享你的经验。
+
+## 译者补充翻译 —— MDN
+
+[网络共享 API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Share_API) 的 `navigator.share()` 方法可以用于调用设备的本地共享机制来共享数据，如文本、URL 或文件。可用的_共享接受者_取决于设备，可能会包括剪贴板、联系人和电子邮件应用程序、网站、蓝牙等。
+
+这个方法要求当前文档有 [`web-share`](/en-US/docs/Web/HTTP/Headers/Feature-Policy/web-share) 权限策略，并且该方法必须由一个 UI 事件触发，比如点击按钮，而不能由脚本自行调用。此外，该方法必须指定有效的数据，并由本地实现支持共享。
+
+该方法会用 `undefined` 来 `resolve` 一个 [`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)。在 Windows 上，`resolve` 会发生在启动共享弹出窗口的时候，而在 Android 上，一旦数据被成功传递到_共享接受者_，`Promise` 就会被 `resolve`。
+
+### 语法
+
+```
+navigator.share(data)
+```
+
+#### 参数
+
+`data`
+
+一个包含要分享的数据的对象。
+
+User Agent 会忽略它无法解析的数据对象，并且也只会基于对象的属性进行判断。所有属性都是可选的，但必须至少指定一个已知的数据属性。
+
+可能的值是。
+
+* `url`: 一个 [`USVString`](https://developer.mozilla.org/en-US/docs/Web/API/USVString) 代表一个要共享的URL。
+* `text`: 一个 [`USVString`](https://developer.mozilla.org/en-US/docs/Web/API/USVString) 代表要分享的文本。
+* `title`: 一个  [`USVString`](https://developer.mozilla.org/en-US/docs/Web/API/USVString)  代表要共享的标题（可能会被传递接受者忽略）。
+* `files`: 一个 [`File`](https://developer.mozilla.org/en-US/docs/Web/API/File) 对象的数组，指代要共享的文件。关于可共享的文件类型详见下文。
+
+#### 返回值
+
+一个 `resolve` 结果为 `undefined`的 [`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)。如果遇到错误，则会返回一个 `rejected` 的 `Promise`。
+
+### Exceptions
+
+[`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) 可能会被以下 `DOMException` 值之一拒绝。
+
+`NotAllowedError`
+
+产生该错误的原因是用户没有授予 [web-share](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy/web-share)  权限，或者这一次调用不是由用户行为调用的（不是 UI 等调用的函数所调用的），或者由于安全考虑，文件共享被阻止了。
+
+`TypeError`
+
+指定的共享数据不合法，可能的原因包括:
+
+* `data` 参数被完全省略或只包含未知值的属性。请注意，任何无法被 User Agent 识别的属性都会被忽略。
+* 一个不合规的 `URL`。
+* 指定了一个文件但是浏览器在该平台上的 implement 不支持文件共享。
+* 分享指定的数据会被 User Agent 认为是 "恶意的分享"。
+
+`AbortError`
+
+用户取消了共享操作或没有可用的共享目标。
+
+`DataError`
+
+启动共享目标或传输数据时出现了问题。
+
+### 可共享文件类型
+
+下面是一个通常可共享的文件类型的列表。然而，你应该总是在调用这个 API 之前先用 [`navigator.canShare()`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/canShare) 测试共享是否会成功。
+
+* 应用程序文件
+    * `.pdf` - `application/pdf`。
+* 音频
+    * `.flac` - `audio/flac`。
+    * `.m4a` - `audio/x-m4a`。
+    * `.mp3` - `audio/mpeg` (也接受 `audio/mp3`)
+    * `.oga` - `audio/ogg`。
+    * `.ogg` - `audio/ogg`。
+    * `.opus` - `audio/ogg`。
+    * `.wav` - `audio/wav`。
+    * `.weba` - `audio/webm`。
+* 图像
+    * `.bmp` - `image/bmp`。
+    * `.gif` - `image/gif`。
+    * `.ico` - `image/x-icon`。
+    * `.jfif` - `image/jpeg`。
+    * `.jpeg` - `image/jpeg`。
+    * `.jpg` - `image/jpeg`。
+    * `.pjp` - `image/jpeg`。
+    * `.pjpeg` - `image/jpeg`。
+    * `.png` - `image/png`。
+    * `.svg` - `image/svg+xml`。
+    * `.svgz` - `image/svg+xml`。
+    * `.tif` - `image/tiff`。
+    * `.tiff` - `image/tiff`。
+    * `.webp` - `image/webp`。
+    * `.xbm` - `image/x-xbitmap`。
+* 文本
+    * `.css` - `text/css`。
+    * `.csv` - `text/csv`。
+    * `.ehtml` - `text/html`。
+    * `.htm` - `text/html`。
+    * `.html` - `text/html`。
+    * `.shtm` - `text/html`。
+    * `.shtml` - `text/html`。
+    * `.text` - `text/plain`。
+    * `.txt` - `text/plain`。
+* 视频
+    * `.m4v` - `video/mp4`。
+    * `.mp4` - `video/mp4`。
+    * `.mpeg` - `video/mpeg`。
+    * `.mpg` - `video/mpeg`。
+    * `.ogm` - `video/ogg`。
+    * `.ogv` - `video/ogg`。
+    * `.webm` - `video/webm`。
+
+### 示例
+
+如下例子为分享网页链接：一个监测点击按钮行为，调用 Web Share API 分享 MDN 的 URL 的例子。这是从我们的 [Web Share Test](https://mdn.github.io/dom-examples/web-share/)（[见源代码](https://github.com/mdn/dom-examples/blob/master/web-share/index.html)）中复制过来的。
+
+#### HTML
+
+HTML 代码仅仅只包括一个按钮供触发事件以及一个 `<p>` 标签用于显示测试结果。
+
+```html
+<p><button>Share MDN!</button></p>
+<p class="result"></p>
+```
+
+### JavaScript
+
+```js
+const shareData = {
+    title: 'MDN',
+    text: '在 MDN 上学习技术！',
+    url: 'https://developer.mozilla.org'
+};
+
+const btn = document.querySelector('button');
+const resultPara = document.querySelector('.result');
+
+// 分享操作必须由用户行为触发
+btn.addEventListener('click', async () => {
+  try {
+    await navigator.share(shareData);
+    resultPara.textContent = 'MDN 链接被成功分享了'
+  } catch(err) {
+    resultPara.textContent = 'Error: ' + err
+  }
+});
+```
+
+### 规范
+
+相关规范：[Web Share API  #share-method](https://w3c.github.io/web-share/#share-method)

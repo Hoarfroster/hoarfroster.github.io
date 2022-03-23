@@ -66,7 +66,7 @@ hsl(300, 100%, 25.1%)
 
 这些颜色可以是暗淡的，也可以是鲜艳的。颜色越少，它变成灰色的阴影就越多。**饱和度**指代混合色中存在多少颜色，它能控制颜色的**鲜艳或暗淡**程度。
 
-![使用 Brandon Mathis 的 [HSL 颜色选择器](https://hslpicker.com/#ff5100)](https://hslpicker.com/#ff5100)](https://cdn-images-1.medium.com/max/2044/1*-eXO8dohWa8I60_Qo-AKyQ.gif)
+![使用 Brandon Mathis 的 [HSL 颜色选择器](https://hslpicker.com/#ff5100)(https://hslpicker.com/#ff5100)](https://cdn-images-1.medium.com/max/2044/1*-eXO8dohWa8I60_Qo-AKyQ.gif)
 
 如你所见，当饱和度值沿线从 100% 变为 0% 时，颜色会从纯色调变为暗色调。
 
