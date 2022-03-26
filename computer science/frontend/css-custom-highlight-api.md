@@ -1,6 +1,6 @@
 ---
 title: 你不会不知道最新的 CSS API 可以给选中的文本添加样式吧？
-subtitle: CSS Custom Highlight API: The Future of Highlighting Text Ranges on the Web
+subtitle: CSS Custom Highlight API - The Future of Highlighting Text Ranges on the Web
 date: 2022/03/23 23:42:00
 category: [Computer Science, Frontend, Styling]
 tag:
