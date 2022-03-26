@@ -17,7 +17,7 @@ description: 给选中的文本添加样式并不是没用的行为，而值得�
 
 **给选中的文本添加样式**并不是没用的行为，而值得开心的是，CSS Custom Highlight API 即将到来，而且它将会成为未来 Web 上样式化选中文本的不二法门！
 
-![Animation screenshot of the CSS Custom Highlight API demo.](https://i0.wp.com/css-tricks.com/wp-content/uploads/2022/02/s_8E0FC85C45E73C25EFCF623C768360F2F95DBDDEC338D5F6DE316BB0830F6F67_1644484463021_highlight-api-demo-no-text-deco.gif?resize=800%2C733&ssl=1)
+![CSS Custom Highlight API demo 动画演示](https://i0.wp.com/css-tricks.com/wp-content/uploads/2022/02/s_8E0FC85C45E73C25EFCF623C768360F2F95DBDDEC338D5F6DE316BB0830F6F67_1644484463021_highlight-api-demo-no-text-deco.gif?resize=800%2C733&ssl=1)
 
 举个例子：如果我们用过 知乎编辑器、Google Docs、百度文库、Word 或 Dropbox Paper 这些文本编辑软件，我们不难发现它们会检测到拼写和语法错误，并会在错误的下方用下划波浪线提醒我们**“大傻子！写错了！”**。类似的，VS Code、IDEA 这样的代码编辑器也会在出现代码错误时有类似的提醒。
 
@@ -44,7 +44,7 @@ description: 给选中的文本添加样式并不是没用的行为，而值得�
 
 可能最常见的用例是我们选择的文本，当我们使用鼠标等选择网页中的一段文本时，浏览器会自动创建一个 [`Selection`](https://developer.mozilla.org/en-US/docs/Web/API/Selection) 对象。事实上，现在尝试在此页面上选择文本，然后在 DevTools 控制台中运行 `document.getSelection()`。 我们应该会看到有关所选文本的位置信息。
 
-![DevTools window showing the position of the current selection in the console.](https://i0.wp.com/css-tricks.com/wp-content/uploads/2022/02/Screen-Shot-2022-02-14-at-7.33.16-AM.png?resize=1846%2C1196&ssl=1)
+![DevTools 的一个显示当前文本选择位置的控制台窗口。](https://i0.wp.com/css-tricks.com/wp-content/uploads/2022/02/Screen-Shot-2022-02-14-at-7.33.16-AM.png?resize=1846%2C1196&ssl=1)
 
 事实证明，我们还可以通过 JavaScript 以编程方式创建文本选择。 这是一个例子：
 
@@ -90,7 +90,7 @@ document.getSelection().addRange(range);
 
 不幸的是，这意味着要编写和维护更多的 JavaScript，更不用说它迫使浏览器在高亮文本发生变化时重新创建页面布局。此外，还有一些复杂的边缘情况，例如，当我们想要高亮文本跨越多个 DOM 元素的一段文本时。
 
-![Illustration showing a line of HTML with an emphasis element and a strong element with a bright yellow highlight running through them.](https://i0.wp.com/css-tricks.com/wp-content/uploads/2022/02/s_8E0FC85C45E73C25EFCF623C768360F2F95DBDDEC338D5F6DE316BB0830F6F67_1643109885151_image.png?resize=1129%2C100&ssl=1)
+![显示一行用斜体、粗体显示，并且由一条亮黄色的高亮的 HTML 内容。](https://i0.wp.com/css-tricks.com/wp-content/uploads/2022/02/s_8E0FC85C45E73C25EFCF623C768360F2F95DBDDEC338D5F6DE316BB0830F6F67_1643109885151_image.png?resize=1129%2C100&ssl=1)
 
 有趣的是，[CodeMirror](https://codemirror.net) 和 [Monaco](https://microsoft.github.io/monaco-editor/)（支持 VS Code 的 JavaScript 文本编辑器库）有自己的高亮逻辑，使用了稍微不同的方法，其中高亮放在了 DOM 树单独一个部分中 —— 文本行和高亮文本的段在 DOM 中的两个不同位置呈现，然后彼此重叠。如果我们检查包含文本的 DOM 子树，你会发现并没有高亮样式。这样，可以重新渲染高亮样式，而不会影响文本行，也不必在其中引入新元素。
 
@@ -199,6 +199,6 @@ Firefox 尚不支持 API，你可以 [阅读 Mozilla 对此的观点](https://gi
 
 仅允许将 CSS 属性的子集与 `::highlight()` 伪元素一起使用的原因是子集仅包含可以由浏览器非常有效地应用而无需重新创建页面布局的属性.通过在周围的页面中插入新的 DOM 元素来高亮文本文本范围需要引擎做更多的工作。
 
-[Fernando Fiori](https://github.com/ffiori)，API 的工作人员，创建了这个漂亮的[性能比较演示](https://ffiori.github.io/highlight-api-demos/demo-performance .html)。在笔者的测试中，CSS 自定义高亮 API 的平均执行速度比基于 DOM 的高亮快 5✕。
+[Fernando Fiori](https://github.com/ffiori)，这一 API 的贡献者，创建了这个漂亮的[性能比较演示](https://ffiori.github.io/highlight-api-demos/demo-performance .html)。在笔者的测试中，CSS 自定义高亮 API 的平均执行速度比基于 DOM 的高亮快 5 倍。
 
-有了 Chromium 和 Safari 的实验性支持，我们正在接近可以在生产中使用的东西。我迫不及待地等待浏览器持续支持自定义高亮 API，看看这将解锁哪些功能！
+有了 Chromium 和 Safari 的实验性支持，我们正在稳步接近这一即将可以运用在生产中的 API。我着实迫不及待地期盼着浏览器对这一 API 的广泛支持，想象着可以用这一 API 解决什么问题，解锁什么 CSS 的骚操作！
