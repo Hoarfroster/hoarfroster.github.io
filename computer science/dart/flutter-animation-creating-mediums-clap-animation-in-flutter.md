@@ -97,9 +97,7 @@ Flutter 为我们提供了一份免费的入门代码午餐～它已经管理了
 
 下面是我们想要达到的最终效果：
 
-![](https://miro.medium.com/max/1600/1*Hnkdb5BSXFmjVitdYQiirQ.gif)
-
-我们将会创建的动画。作者：[**Thuy Gia Nguyen**](https://dribbble.com/shots/4294768-Medium-Claps-Made-in-Flinto)
+![我们将会创建的动画。作者：[**Thuy Gia Nguyen**](https://dribbble.com/shots/4294768-Medium-Claps-Made-in-Flinto)](https://miro.medium.com/max/1600/1*Hnkdb5BSXFmjVitdYQiirQ.gif)
 
 在添加动画之前，我们先来快速浏览并解决一些简单的问题。
 
