@@ -1,0 +1,56 @@
+\documentclass[12pt,preview]{standalone}
+\usepackage{ctex}
+\usepackage[version=4]{mhchem}
+\usepackage{chemfig}
+\usepackage{amssymb}
+\DeclareOldFontCommand{\rm}{\normalfont\rmfamily}{\mathrm}
+\DeclareOldFontCommand{\sf}{\normalfont\sffamily}{\mathsf}
+\DeclareOldFontCommand{\tt}{\normalfont\ttfamily}{\mathtt}
+\DeclareOldFontCommand{\bf}{\normalfont\bfseries}{\mathbf}
+\DeclareOldFontCommand{\it}{\normalfont\itshape}{\mathit}
+\DeclareOldFontCommand{\sl}{\normalfont\slshape}{\@nomath\sl}
+\DeclareOldFontCommand{\sc}{\normalfont\scshape}{\@nomath\sc}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+
+\begin{document}
+\begin{preview}
+\title{Hello World}
+\author{Hoarfroster}
+
+\makeatletter\catcode`\_=11
+\definearrow5{-u>}{%
+    \CF_arrowshiftnodes{#3}%
+    \expandafter\draw\expandafter[\CF_arrowcurrentstyle](\CF_arrowstartnode)
+    --(\CF_arrowendnode)node[midway](uarrow@arctangent){};%
+    \CF_ifempty{#4}
+    {\def\CF_uarrowradius{0.333}}
+    {\def\CF_uarrowradius{#4}}%
+    \CF_ifempty{#5}%
+    {\def\CF_uarrowabsangle{60}}
+    {\pgfmathsetmacro\CF_uarrowabsangle{abs(#5)}}
+    %
+    \edef\CF_tmpstr{[\CF_ifempty{#1}{draw=none}{\unexpanded\expandafter{\CF_arrowcurrentstyle}},-]}%
+    \expandafter\draw\CF_tmpstr (uarrow@arctangent)%
+    arc[radius=\CF_compoundsep*\CF_currentarrowlength*\CF_uarrowradius,start angle=\CF_arrowcurrentangle+90,delta angle=\CF_uarrowabsangle]node(uarrowstart){};
+    %
+    \edef\CF_tmpstr{[\CF_ifempty{#2}{draw=none}{\unexpanded\expandafter{\CF_arrowcurrentstyle}},-CF]}%
+    \expandafter\draw\CF_tmpstr (uarrow@arctangent)%
+    arc[radius=\CF_compoundsep*\CF_currentarrowlength*\CF_uarrowradius,%
+    start angle=\CF_arrowcurrentangle+90,%
+    delta angle=-\CF_uarrowabsangle]%
+    node(uarrowend){};
+    \pgfmathsetmacro\CF_tmpstr{\CF_uarrowradius*cos(\CF_arrowcurrentangle)<0?"+":"-"}%
+    \ifdim\CF_uarrowradius pt>\z@
+    \CF_arrowdisplaylabel{#1}{0}\CF_tmpstr{uarrowstart}{#2}{1}\CF_tmpstr{uarrowend}%
+    \else
+    \CF_arrowdisplaylabel{#2}{0}\CF_tmpstr{uarrowstart}{#1}{1}\CF_tmpstr{uarrowend}%
+    \fi
+}
+\catcode`\_=8
+\makeatother
+$设：\lim_{n\to\infty}{x_n}=a, \lim_{n\to\infty}{y_n}=b,则\ i) \lim_{n\to\infty}{x_n\pm y_n}=a\pm b\ ii) \lim_{n\to\infty}{x_ny_n}=ab\ iii) \lim_{n\to\infty}{\frac{x_n}{y_n}}=\frac{a}{b}\quad(b\neq0)$
+\end{preview}
+\end{document}
