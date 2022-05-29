@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/avatar.png" color="#222">
+  <meta name="google-site-verification" content="iFMbHL1JuWjTlNFq5Rv96vDzpsqakxTpdE2nw7Crr6o">
+  <meta name="msvalidate.01" content="EF6D8CD8A3335E66AB96B4D544FCD96C">
+  <meta name="baidu-site-verification" content="code-80b80Pbzs2">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link href="/lib/fontawesome/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<script>
+
+  window.onload = function() {
+    document.querySelectorAll("p").forEach(e=>{
+      e.innerHTML = e.innerHTML.replaceAll(/==(.+?)==/g, "<mark>$1</mark>").replaceAll(/​\s+?/g, "<span class='tab'></span>");
+    });
+    
+    [...document.querySelectorAll("pre > code")].forEach(e=> {
+        var codeClass = e.parentElement.classList.value;
+        if (codeClass == null || codeClass === "") {
+            e.classList.add("hljs");
+        } else {
+            var map = {
+                js: "javascript"
+            };
+            if (map[codeClass]) {
+                codeClass = map[codeClass];
+            }
+            codeClass.split(" ").forEach(i=>e.classList.add(i));
+            hljs.highlightElement(e);
+        }
+    });
+
+    [...document.querySelectorAll('.classcial-chinese-literature-and-poetry-translation')].forEach(i=>{
+      let el = document.createElement('div');
+      el.setAttribute('class', 'fa-solid fa-eye');
+      i.prepend(el);
+      el.addEventListener('click', ()=>{
+        let status = el.classList.contains('fa-eye');
+        [...i.querySelectorAll('.translation')].forEach(j=>{
+          j.classList.remove('hide');
+          if(status) {
+            j.classList.add('hide');
+          }
+        });
+        el.attributes['class'].value = el.attributes['class'].value.replace('fa-eye-slash', 'fa-0').replace('fa-eye', 'fa-eye-slash').replace('fa-0', 'fa-eye');
+      });
+
+      [...i.querySelectorAll('.original-text')].forEach(e=>{
+        let el = document.createElement('div');
+        el.setAttribute('class', 'fa-solid fa-eye-slash');
+        e.prepend(el);
+        el.addEventListener('click', ()=>{
+            e.nextSibling.classList.toggle('hide');
+            el.attributes['class'].value = el.attributes['class'].value.replace('fa-eye-slash', 'fa-0').replace('fa-eye', 'fa-eye-slash').replace('fa-0', 'fa-eye');
+        });
+      })
+    });
+  }
+</script>
+<script async src="/js/highlight.min.js"></script>
+<script async src="/js/cursor.js"></script>
+<script data-ad-client="ca-pub-2275811890061218" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"hoarfroster.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqusjs","storage":true,"lazyload":false,"nav":null,"activeClass":"disqusjs"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="了解哪一种 for 循环或迭代器适合我们的需求，防止我们犯下一些影响应用性能的低级错误。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript 中哪一种循环最快呢？">
+<meta property="og:url" content="https://hoarfroster.github.io/2021/05/17/computer%20science/frontend/which-type-of-loop-is-fastest-in-javascript/index.html">
+<meta property="og:site_name" content="Hoarfroster 的小窝">
+<meta property="og:description" content="了解哪一种 for 循环或迭代器适合我们的需求，防止我们犯下一些影响应用性能的低级错误。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://miro.medium.com/max/10944/0*FjGuCxH-seN1PrRF">
+<meta property="og:image" content="https://miro.medium.com/max/12000/0*E9FPH2LFeFnTGWF5">
+<meta property="article:published_time" content="2021-05-17T11:22:00.000Z">
+<meta property="article:modified_time" content="2022-05-28T15:43:08.303Z">
+<meta property="article:author" content="Hoarfroster">
+<meta property="article:tag" content="Computer Science">
+<meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="Frontend">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://miro.medium.com/max/10944/0*FjGuCxH-seN1PrRF">
+
+<link rel="canonical" href="https://hoarfroster.github.io/2021/05/17/computer%20science/frontend/which-type-of-loop-is-fastest-in-javascript/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>JavaScript 中哪一种循环最快呢？ | Hoarfroster 的小窝</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <!--<div class="headband"></div>-->
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hoarfroster 的小窝</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section">Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section">About</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section">Categories</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger">
+          Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://hoarfroster.github.io/2021/05/17/computer%20science/frontend/which-type-of-loop-is-fastest-in-javascript/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Hoarfroster">
+      <meta itemprop="description" content="这里是霜羽~~咕咕咕">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hoarfroster 的小窝">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          JavaScript 中哪一种循环最快呢？
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-05-17 19:22:00" itemprop="dateCreated datePublished" datetime="2021-05-17T19:22:00+08:00">2021-05-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-05-28 23:43:08" itemprop="dateModified" datetime="2022-05-28T23:43:08+08:00">2022-05-28</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Computer-Science/" itemprop="url" rel="index"><span itemprop="name">Computer Science</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Computer-Science/Frontend/" itemprop="url" rel="index"><span itemprop="name">Frontend</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Computer-Science/Frontend/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span><br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+              <span>3.1k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+              <span>6 mins.</span>
+            </span>
+            <div class="post-description">了解哪一种 for 循环或迭代器适合我们的需求，防止我们犯下一些影响应用性能的低级错误。</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <blockquote>
+<ul>
+<li>原文地址：<a target="_blank" rel="noopener" href="https://medium.com/javascript-in-plain-english/which-type-of-loop-is-fastest-in-javascript-ec834a0f21b9">Which
+type of loop is fastest in JavaScript?</a></li>
+<li>原文作者：<a target="_blank" rel="noopener" href="https://kushsavani.medium.com/">kushsavani</a></li>
+<li>译者：<a target="_blank" rel="noopener" href="https://github.com/PassionPenguin">霜羽
+Hoarfroster</a></li>
+<li>校对者：<a target="_blank" rel="noopener" href="https://github.com/Chorer">Chorer</a>、<a target="_blank" rel="noopener" href="https://github.com/HumanBeingXenon">HumanBeing</a>、<a target="_blank" rel="noopener" href="https://juejin.cn/user/2840793777440296">yoghurt</a></li>
+</ul>
+</blockquote>
+<p>了解哪一种 <code>for</code>
+循环或迭代器适合我们的需求，防止我们犯下一些影响应用性能的低级错误。</p>
+<figure>
+<img src="https://miro.medium.com/max/10944/0*FjGuCxH-seN1PrRF" alt="由 Artem Sapegin 上传至 Unsplash">
+<figcaption aria-hidden="true">由 <a target="_blank" rel="noopener" href="https://unsplash.com/@sapegin?utm_source=medium&amp;utm_medium=referral">Artem
+Sapegin</a> 上传至 <a target="_blank" rel="noopener" href="https://unsplash.com/?utm_source=medium&amp;utm_medium=referral">Unsplash</a></figcaption>
+</figure>
+<p>JavaScript 是 Web 开发领域的“常青树”。无论是 JavaScript 框架（如
+Node.js、React、Angular、Vue 等），还是原生
+JavaScript，都拥有非常庞大的粉丝基础。我们来谈谈现代 JavaScript
+吧。循环一直是大多数编程语言的重要组成部分，而现代 JavaScript
+为我们提供了许多迭代或循环值的方法。</p>
+<p>但问题在于，我们是否真的知道哪种循环或迭代最适合我们的需求。<code>for</code>
+循环有很多变形，例如
+<code>for</code>、<code>for</code>（倒序）、<code>for…of</code>、<code>forEach</code>、<code>for…in</code>、<code>for…await</code>。本文将围绕这些展开讨论。</p>
+<h2 id="究竟哪一种循环更快"><strong>究竟哪一种循环更快？</strong></h2>
+<p><strong>答案其实是：</strong> <code>for</code>（倒序）</p>
+<p>最让我感到惊讶的事情是，当我在本地计算机上进行测试之后，我不得不接受
+<code>for</code>（倒序）是所有 <code>for</code>
+循环中最快的这一事实。下面我会举个对一个包含超过一百万项元素的数组执行一次循环遍历的例子。</p>
+<p><strong>声明</strong>：<code>console.time()</code>
+结果的准确度在很大程度上取决于我们运行测试的系统配置。你可以在<a target="_blank" rel="noopener" href="https://johnresig.com/blog/accuracy-of-javascript-time/">此处</a>对准确度作进一步了解。</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> million <span class="op">=</span> <span class="dv">1000000</span><span class="op">;</span> </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> arr <span class="op">=</span> <span class="bu">Array</span>(million)<span class="op">;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">time</span>(<span class="st">'⏳'</span>)<span class="op">;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (<span class="kw">let</span> i <span class="op">=</span> arr<span class="op">.</span><span class="at">length</span><span class="op">;</span> i <span class="op">&gt;</span> <span class="dv">0</span><span class="op">;</span> i<span class="op">--</span>) &#123;&#125; <span class="co">// for(倒序)  :- 1.5ms</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (<span class="kw">let</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> arr<span class="op">.</span><span class="at">length</span><span class="op">;</span> i<span class="op">++</span>) &#123;&#125; <span class="co">// for          :- 1.6ms</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>arr<span class="op">.</span><span class="fu">forEach</span>(v <span class="kw">=&gt;</span> v)                     <span class="co">// foreach      :- 2.1ms</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (<span class="kw">const</span> v <span class="kw">of</span> arr) &#123;&#125;                 <span class="co">// for...of     :- 11.7ms</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">timeEnd</span>(<span class="st">'⏳'</span>)<span class="op">;</span></span></code></pre></div>
+<p>造成这样结果的原因很简单，在代码中，正序和倒序的 <code>for</code>
+循环几乎花费一样的时间，仅仅相差了 0.1
+毫秒。原因是，<code>for</code>（倒序）只需要计算一次起始变量
+<code>let i = arr.length</code>，而在正序的 <code>for</code>
+循环中，它在每次变量增加后都会检查条件
+<code>i&lt;arr.length</code>。这个细微的差别不是很重要，你可以忽略它。（译者注：在数据量小或对时间不敏感的代码上，我们大可忽略它，但是根据译者的测试，当数据量扩大，例如十亿，千亿等的数量级，差距就显著提升，我们就需要考虑时间对应用程序性能的影响了。）</p>
+<p>而 <code>forEach</code> 是 <code>Array</code>
+原型的一个方法，与普通的 <code>for</code> 循环相比，<code>forEach</code>
+和 <code>for…of</code>
+需要花费更多的时间进行数组迭代。（译者注：但值得注意的是，<code>for…of</code>
+和 <code>forEach</code>
+都从对象中获取了数据，而原型并没有，因此没有可比性。）</p>
+<h2 id="循环的类型以及我们应该在何处使用它们"><strong>循环的类型，以及我们应该在何处使用它们</strong></h2>
+<h3 id="for-循环正序和倒序"><strong>1. For
+循环（正序和倒序）</strong></h3>
+<p>我想，也许大家都应该对这个基础循环非常熟悉了。我们可以在任何我们需要的地方使用
+<code>for</code> 循环，按照核定的次数运行一段代码。最基础的
+<code>for</code>
+循环运行最迅速的，那我们每一次都应该使用它，对吗？并不然，性能不仅仅只是唯一尺度，代码可读性往往更加重要，就让我们选择适合我们应用程序的变形即可。</p>
+<h3 id="foreach"><strong>2. <code>forEach</code></strong></h3>
+<p>这个方法需要接受一个回调函数作为输入参数，遍历数组的每一个元素，并执行我们的回调函数（以元素本身和它的索引（可选参数）作为参数赋予给回调函数）。<code>forEach</code>
+还允许在回调函数中使用一个可选参数 <code>this</code>。</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> things <span class="op">=</span> [<span class="st">'have'</span><span class="op">,</span> <span class="st">'fun'</span><span class="op">,</span> <span class="st">'coding'</span>]<span class="op">;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> callbackFun <span class="op">=</span> (item<span class="op">,</span> idex) <span class="kw">=&gt;</span> &#123;</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="vs">`</span><span class="sc">$&#123;</span>item<span class="sc">&#125;</span><span class="vs"> - </span><span class="sc">$&#123;</span>index<span class="sc">&#125;</span><span class="vs">`</span>)<span class="op">;</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>&#125;</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>things<span class="op">.</span><span class="fu">foreach</span>(callbackFun)<span class="op">;</span> </span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">/* 输出   have - 0</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">        fun - 1</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">        coding - 2 */</span></span></code></pre></div>
+<p>需要注意的是，如果我们要使用 <code>forEach</code>，我们不能使用
+JavaScript
+的短路运算符（||、&amp;&amp;……），即不能在每一次循环中跳过或结束循环。</p>
+<h3 id="forof"><strong>3. <code>for…of</code></strong></h3>
+<p><code>for…of</code> 是在 ES6（ECMAScript
+6）中实现标准化的。它会对一个可迭代的对象（例如
+<code>array</code>、<code>map</code>、<code>set</code>、<code>string</code>
+等）创建一个循环，并且有一个突出的优点，即优秀的可读性。</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> arr <span class="op">=</span> [<span class="dv">3</span><span class="op">,</span> <span class="dv">5</span><span class="op">,</span> <span class="dv">7</span>]<span class="op">;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> str <span class="op">=</span> <span class="st">'hello'</span><span class="op">;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (<span class="kw">let</span> i <span class="kw">of</span> arr) &#123;</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>   <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(i)<span class="op">;</span> <span class="co">// 输出 3, 5, 7</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>&#125;</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (<span class="kw">let</span> i <span class="kw">of</span> str) &#123;</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>   <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(i)<span class="op">;</span> <span class="co">// 输出 'h', 'e', 'l', 'l', 'o'</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>&#125;</span></code></pre></div>
+<p>需要注意的是，请不要在生成器中使用 <code>for……of</code>，即便
+<code>for……of</code>
+循环提前终止。在退出循环后，生成器被关闭，并尝试再次迭代，不会产生任何进一步的结果。</p>
+<h3 id="for-in"><strong>4. <code>for</code>
+<code>in</code></strong></h3>
+<p><code>for…in</code>
+会在对象的所有可枚举属性上迭代指定的变量。对于每个不同的属性，<code>for…in</code>
+语句除返回数字索引外，还将返回用户定义的属性的名称。
+因此，在遍历数组时最好使用带有数字索引的传统 <code>for</code> 循环。
+因为 <code>for…in</code>
+语句还会迭代除数组元素之外的用户定义属性，就算我们修改了数组对象（例如添加自定义属性或方法），依然如此。</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> details <span class="op">=</span> &#123;<span class="dt">firstName</span><span class="op">:</span> <span class="st">'john'</span><span class="op">,</span> <span class="dt">lastName</span><span class="op">:</span> <span class="st">'Doe'</span>&#125;<span class="op">;</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> fullName <span class="op">=</span> <span class="st">''</span><span class="op">;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (<span class="kw">let</span> i <span class="kw">in</span> details) &#123;</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    fullName <span class="op">+=</span> details[i] <span class="op">+</span> <span class="st">' '</span><span class="op">;</span> <span class="co">// fullName: john doe</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>&#125;</span></code></pre></div>
+<h3 id="forof-和-forin"><code>for…of</code> 和 <code>for…in</code></h3>
+<p><code>for…of</code> 和 <code>for…in</code>
+之间的主要区别是它们迭代的内容。<code>for…in</code>
+循环遍历对象的属性，而 <code>for…of</code> 循环遍历可迭代对象的值。</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> arr<span class="op">=</span> [<span class="dv">4</span><span class="op">,</span> <span class="dv">5</span><span class="op">,</span> <span class="dv">6</span>]<span class="op">;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (<span class="kw">let</span> i <span class="kw">in</span> arr) &#123;</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>   <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(i)<span class="op">;</span> <span class="co">// '0', '1', '2'</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>&#125;</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (<span class="kw">let</span> i <span class="kw">of</span> arr) &#123;</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>   <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(i)<span class="op">;</span> <span class="co">// '4', '5', '6'</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>&#125;</span></code></pre></div>
+<figure>
+<img src="https://miro.medium.com/max/12000/0*E9FPH2LFeFnTGWF5" alt="由 Tine Ivanič 上传至 Unsplash">
+<figcaption aria-hidden="true">由 <a target="_blank" rel="noopener" href="https://unsplash.com/@tine999?utm_source=medium&amp;utm_medium=referral">Tine
+Ivanič</a> 上传至 <a target="_blank" rel="noopener" href="https://unsplash.com/?utm_source=medium&amp;utm_medium=referral">Unsplash</a></figcaption>
+</figure>
+<h3 id="结论"><strong>结论</strong></h3>
+<ul>
+<li><code>for</code> 最快，但可读性比较差</li>
+<li><code>foreach</code> 比较快，能够控制内容</li>
+<li><code>for...of</code> 比较慢，但香</li>
+<li><code>for...in</code> 比较慢，没那么方便</li>
+</ul>
+<p>最后，给你一条明智的建议 ——
+优先考虑可读性。尤其是当我们开发复杂的结构程序时，更需要这样做。当然，我们也应该专注于性能。尽量避免增添不必要的、多余的花哨代码，因为这有时可能对你的程序性能造成严重影响。祝你编码愉快。</p>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Computer-Science/" rel="tag"># Computer Science</a>
+              <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+              <a href="/tags/Frontend/" rel="tag"># Frontend</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/05/17/computer%20science/backend/everything-about-the-latest-ecmascript-release-ecmascript-2021/" rel="prev" title="有关 ECMAScript 最新版本的所有信息｜ECMAScript 2021">
+      <i class="fa fa-chevron-left"></i> 有关 ECMAScript 最新版本的所有信息｜ECMAScript 2021
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/05/18/computer%20science/frontend/stop-using-the-pixel-unit-in-css/" rel="next" title="快停止在 CSS 中使用像素单位">
+      快停止在 CSS 中使用像素单位 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A9%B6%E7%AB%9F%E5%93%AA%E4%B8%80%E7%A7%8D%E5%BE%AA%E7%8E%AF%E6%9B%B4%E5%BF%AB"><span class="nav-text">究竟哪一种循环更快？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BE%AA%E7%8E%AF%E7%9A%84%E7%B1%BB%E5%9E%8B%E4%BB%A5%E5%8F%8A%E6%88%91%E4%BB%AC%E5%BA%94%E8%AF%A5%E5%9C%A8%E4%BD%95%E5%A4%84%E4%BD%BF%E7%94%A8%E5%AE%83%E4%BB%AC"><span class="nav-text">循环的类型，以及我们应该在何处使用它们</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#for-%E5%BE%AA%E7%8E%AF%E6%AD%A3%E5%BA%8F%E5%92%8C%E5%80%92%E5%BA%8F"><span class="nav-text">1. For
+循环（正序和倒序）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#foreach"><span class="nav-text">2. forEach</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#forof"><span class="nav-text">3. for…of</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#for-in"><span class="nav-text">4. for
+in</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#forof-%E5%92%8C-forin"><span class="nav-text">for…of 和 for…in</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%93%E8%AE%BA"><span class="nav-text">结论</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Hoarfroster"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Hoarfroster</p>
+  <div class="site-description" itemprop="description">这里是霜羽~~咕咕咕</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">193</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">53</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">58</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <ul class="links-of-author motion-element">
+      <li class="links-of-author-item">
+        <a href="https://github.com/PassionPenguin" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;PassionPenguin" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        <span> PassionPenguin</span>
+      </li>
+      <li class="links-of-author-item">
+        <a href="mailto:hoarfroster@outlook.com" title="E-Mail → mailto:hoarfroster@outlook.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+        <span> hoarfroster@outlook.com</span>
+      </li>
+      <li class="links-of-author-item">
+        <a href="https://twitter.com/zhangqizhe" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;zhangqizhe" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+        <span> @zhangqizhe</span>
+      </li>
+      <li class="links-of-author-item">
+        <a href="https://www.instagram.com/glacierpenguin/" title="Instagram → https:&#x2F;&#x2F;www.instagram.com&#x2F;glacierpenguin&#x2F;" rel="noopener" target="_blank"><i class="fab fa-instagram fa-fw"></i>Instagram</a>
+        <span> @glacierpenguin</span>
+      </li>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hoarfroster</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="Symbols count total">1.1m</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">34:12</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT</a>
+  </div>
+
+        
+
+
+
+
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-firestore.js"></script>
+  <script>
+    firebase.initializeApp({
+      apiKey   : 'AIzaSyDqM81uUD8yWHAvsGasJzvWBHhpBYnRttI',
+      projectId: 'hoar-froster'
+    });
+
+    function getCount(doc, increaseCount) {
+      // IncreaseCount will be false when not in article page
+      return doc.get().then(d => {
+        var count = 0;
+        if (!d.exists) { // Has no data, initialize count
+          if (increaseCount) {
+            doc.set({
+              count: 1
+            });
+            count = 1;
+          }
+        } else { // Has data
+          count = d.data().count;
+          if (increaseCount) {
+            // If first view this article
+            doc.set({ // Increase count
+              count: count + 1
+            });
+            count++;
+          }
+        }
+
+        return count;
+      });
+    }
+
+    function appendCountTo(el) {
+      return count => {
+        el.innerText = count;
+      }
+    }
+  </script>
+  <script>
+    (function() {
+      var db = firebase.firestore();
+      var articles = db.collection('articles-info');
+
+      if (CONFIG.page.isPost) { // Is article page
+        var title = document.querySelector('.post-title').innerText.trim();
+        var doc = articles.doc(title);
+        var increaseCount = CONFIG.hostname === location.hostname;
+        if (localStorage.getItem(title)) {
+          increaseCount = false;
+        } else {
+          // Mark as visited
+          localStorage.setItem(title, true);
+        }
+        getCount(doc, increaseCount).then(appendCountTo(document.querySelector('.firestore-visitors-count')));
+      } else if (CONFIG.page.isHome) { // Is index page
+        var promises = [...document.querySelectorAll('.post-title')].map(element => {
+          var title = element.innerText.trim();
+          var doc = articles.doc(title);
+          return getCount(doc);
+        });
+        Promise.all(promises).then(counts => {
+          var metas = document.querySelectorAll('.firestore-visitors-count');
+          counts.forEach((val, idx) => {
+            appendCountTo(metas[idx])(val);
+          });
+        });
+      }
+    })();
+  </script>
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var canonicalURL, curProtocol;
+      //Get the <link> tag
+      var x=document.getElementsByTagName("link");
+		//Find the last canonical URL
+		if(x.length > 0){
+			for (i=0;i<x.length;i++){
+				if(x[i].rel.toLowerCase() == 'canonical' && x[i].href){
+					canonicalURL=x[i].href;
+				}
+			}
+		}
+    //Get protocol
+	    if (!canonicalURL){
+	    	curProtocol = window.location.protocol.split(':')[0];
+	    }
+	    else{
+	    	curProtocol = canonicalURL.split(':')[0];
+	    }
+      //Get current URL if the canonical URL does not exist
+	    if (!canonicalURL) canonicalURL = window.location.href;
+	    //Assign script content. Replace current URL with the canonical URL
+      !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=canonicalURL,t=document.referrer;if(!e.test(r)){var n=(String(curProtocol).toLowerCase() === 'https')?"https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif":"//api.share.baidu.com/s.gif";t?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var i=new Image;i.src=n}}(window);})();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme    : 'default',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/disqusjs@1/dist/disqusjs.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/disqusjs@1/dist/disqus.js', () => {
+    window.dsqjs = new DisqusJS({
+      api       : 'https://disqus.skk.moe/disqus/' || 'https://disqus.com/api/',
+      apikey    : 'Lo65MITAya5vcdTm6cJ8V5qCBNx3PVErvDOsfJ5tUPtEbw3DMS3EIzEx6vrmTzCN',
+      shortname : 'hoarfroster',
+      url       : "https://hoarfroster.github.io/2021/05/17/computer%20science/frontend/which-type-of-loop-is-fastest-in-javascript/",
+      identifier: "2021/05/17/computer science/frontend/which-type-of-loop-is-fastest-in-javascript/",
+      title     : "JavaScript 中哪一种循环最快呢？",
+    });
+  }, window.DisqusJS);
+});
+</script>
+
+</body>
+</html>

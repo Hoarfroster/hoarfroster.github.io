@@ -1,0 +1,1235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/avatar.png" color="#222">
+  <meta name="google-site-verification" content="iFMbHL1JuWjTlNFq5Rv96vDzpsqakxTpdE2nw7Crr6o">
+  <meta name="msvalidate.01" content="EF6D8CD8A3335E66AB96B4D544FCD96C">
+  <meta name="baidu-site-verification" content="code-80b80Pbzs2">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link href="/lib/fontawesome/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<script>
+
+  window.onload = function() {
+    document.querySelectorAll("p").forEach(e=>{
+      e.innerHTML = e.innerHTML.replaceAll(/==(.+?)==/g, "<mark>$1</mark>").replaceAll(/​\s+?/g, "<span class='tab'></span>");
+    });
+    
+    [...document.querySelectorAll("pre > code")].forEach(e=> {
+        var codeClass = e.parentElement.classList.value;
+        if (codeClass == null || codeClass === "") {
+            e.classList.add("hljs");
+        } else {
+            var map = {
+                js: "javascript"
+            };
+            if (map[codeClass]) {
+                codeClass = map[codeClass];
+            }
+            codeClass.split(" ").forEach(i=>e.classList.add(i));
+            hljs.highlightElement(e);
+        }
+    });
+
+    [...document.querySelectorAll('.classcial-chinese-literature-and-poetry-translation')].forEach(i=>{
+      let el = document.createElement('div');
+      el.setAttribute('class', 'fa-solid fa-eye');
+      i.prepend(el);
+      el.addEventListener('click', ()=>{
+        let status = el.classList.contains('fa-eye');
+        [...i.querySelectorAll('.translation')].forEach(j=>{
+          j.classList.remove('hide');
+          if(status) {
+            j.classList.add('hide');
+          }
+        });
+        el.attributes['class'].value = el.attributes['class'].value.replace('fa-eye-slash', 'fa-0').replace('fa-eye', 'fa-eye-slash').replace('fa-0', 'fa-eye');
+      });
+
+      [...i.querySelectorAll('.original-text')].forEach(e=>{
+        let el = document.createElement('div');
+        el.setAttribute('class', 'fa-solid fa-eye-slash');
+        e.prepend(el);
+        el.addEventListener('click', ()=>{
+            e.nextSibling.classList.toggle('hide');
+            el.attributes['class'].value = el.attributes['class'].value.replace('fa-eye-slash', 'fa-0').replace('fa-eye', 'fa-eye-slash').replace('fa-0', 'fa-eye');
+        });
+      })
+    });
+  }
+</script>
+<script async src="/js/highlight.min.js"></script>
+<script async src="/js/cursor.js"></script>
+<script data-ad-client="ca-pub-2275811890061218" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"hoarfroster.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqusjs","storage":true,"lazyload":false,"nav":null,"activeClass":"disqusjs"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="高中数学概率笔记。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="概率">
+<meta property="og:url" content="https://hoarfroster.github.io/2022/04/10/mathematics/High%20School/Possibility%20and%20Stats/%E6%A6%82%E7%8E%87/index.html">
+<meta property="og:site_name" content="Hoarfroster 的小窝">
+<meta property="og:description" content="高中数学概率笔记。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-04-10T11:17:00.000Z">
+<meta property="article:modified_time" content="2022-05-28T15:43:08.334Z">
+<meta property="article:author" content="Hoarfroster">
+<meta property="article:tag" content="School Notes">
+<meta property="article:tag" content="High School">
+<meta property="article:tag" content="Mathematics">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://hoarfroster.github.io/2022/04/10/mathematics/High%20School/Possibility%20and%20Stats/%E6%A6%82%E7%8E%87/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>概率 | Hoarfroster 的小窝</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <!--<div class="headband"></div>-->
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hoarfroster 的小窝</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section">Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section">About</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section">Categories</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger">
+          Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://hoarfroster.github.io/2022/04/10/mathematics/High%20School/Possibility%20and%20Stats/%E6%A6%82%E7%8E%87/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Hoarfroster">
+      <meta itemprop="description" content="这里是霜羽~~咕咕咕">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hoarfroster 的小窝">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          概率
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-04-10 19:17:00" itemprop="dateCreated datePublished" datetime="2022-04-10T19:17:00+08:00">2022-04-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-05-28 23:43:08" itemprop="dateModified" datetime="2022-05-28T23:43:08+08:00">2022-05-28</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/High-School/" itemprop="url" rel="index"><span itemprop="name">High School</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/High-School/Mathematics/" itemprop="url" rel="index"><span itemprop="name">Mathematics</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/High-School/Mathematics/Possiblity-and-Stats/" itemprop="url" rel="index"><span itemprop="name">Possiblity and Stats</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span><br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+              <span>11k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+              <span>19 mins.</span>
+            </span>
+            <div class="post-description">高中数学概率笔记。</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+<h2 id="知识聚焦">知识聚焦</h2>
+<h3 id="一随机事件的概率">一、随机事件的概率</h3>
+<h4 id="事件与概率">1. 事件与概率</h4>
+<p>​ <strong>事件</strong>指试验出现的结果：</p>
+<ol type="1">
+<li>根据事件是否发生，可以分为<strong>必然事件、不可能事件和随机事件</strong>，其中必然事件的概率为
+<span class="math inline">1</span>，不可能事件的概率为 <span class="math inline">0</span>，随机事件的概率属于 <span class="math inline">(0,1)</span>。</li>
+<li><strong>互斥事件</strong>指事件不能同时发生，满足 <span class="math inline"><em>P</em>(<em>A</em>∪<em>B</em>) = <em>P</em>(<em>A</em>) + <em>P</em>(<em>B</em>)</span>，<span class="math inline"><em>A</em> ∩ <em>B</em> = ⌀</span>。</li>
+<li><strong>对立事件</strong>指 <span class="math inline"><em>A</em> ∪ <em>B</em></span> 为必然事件，<span class="math inline"><em>A</em> ∩ <em>B</em> = ⌀</span>，<strong>对立事件是特殊的互斥事件</strong>，记作
+<span class="math inline">$B=\overline{A}$</span>，<span class="math inline">$P(A)=1-P(\overline{A})$</span>。</li>
+</ol>
+<h4 id="古典概型">2. 古典概型</h4>
+<p>​ 如果一次试验有如下两个特征，则称这样的试验为古典概型：</p>
+<ol type="1">
+<li><strong>有限性</strong>：一次试验的结果只可以是有限个，即只有有限个不同的基本事件。</li>
+<li><strong>等可能性</strong>：每个基本事件发生的可能性是均等的。</li>
+</ol>
+<p>​ 古典概型的计算公式 <span class="math inline">$P(A) = \dfrac{事件 A
+包含的基本事件个数}{试验的基本事件总数}$</span>。</p>
+<h4 id="独立性">3. 独立性</h4>
+<p>​ 一般的，对于两个事件 <span class="math inline"><em>A</em>, <em>B</em></span>，若 <span class="math inline"><em>A</em></span> 事件的发生不改变 <span class="math inline"><em>B</em></span> 事件发生的概率，则称 <span class="math inline"><em>A</em>, <em>B</em></span>
+事件<strong>相互独立</strong>。若 <span class="math inline"><em>P</em>(<em>A</em><em>B</em>) = <em>P</em>(<em>A</em>)<em>P</em>(<em>B</em>)</span>，也满足相互独立。</p>
+<h3 id="二条件概率">二、条件概率</h3>
+<h4 id="条件概率">1. 条件概率</h4>
+<p>​ 对于两个事件 <span class="math inline"><em>A</em>, <em>B</em></span> 且 <span class="math inline"><em>P</em>(<em>A</em>) &gt; 0</span>，在已知事件
+<span class="math inline"><em>A</em></span> 发生下，事件 <span class="math inline"><em>B</em></span>
+发生的概率称为<strong>条件概率</strong> <span class="math inline"><em>P</em>(<em>B</em>|<em>A</em>)</span>，计算公式
+<span class="math inline">$P(B|A)=\dfrac{P(AB)}{P(A)}$</span>。条件概率的本质是改变了<strong>基本事件样本空间</strong>，计算条件概率可以使用<strong><em>缩小样本空间法</em></strong>。</p>
+<h4 id="全概率与贝叶斯公式">2. 全概率与贝叶斯公式</h4>
+<p>​ 对于 <span class="math inline"><em>A</em><sub>1</sub>, <em>A</em><sub>2</sub>, ⋯, <em>A</em><sub><em>n</em></sub></span>
+是一组两两互斥的事件，<span class="math inline"><em>A</em><sub>1</sub> ∪ <em>A</em><sub>2</sub> ∪ ⋯ ∪ <em>A</em><sub><em>n</em></sub> = <em>Ω</em></span>，且
+<span class="math inline"><em>P</em>(<em>A</em><sub><em>i</em></sub>) &gt; 0, <em>i</em> ∈ {1, 2, ⋯, <em>n</em>}</span>，则对任意事件
+<span class="math inline"><em>B</em> ∈ <em>Ω</em></span>
+有<strong>全概率公式</strong>： <span class="math display">$$
+$P(B)=\sum^n_{i=1}{P(A_i)P(B|A_i)}$
+$$</span> ​ 若 <span class="math inline"><em>P</em>(<em>B</em>) &gt; 0</span>，有<strong>贝叶斯公式</strong>：
+<span class="math display">$$
+$P(A_i|B)=\dfrac{P(A_i)P(B|A_i)}{P(B)}$
+$$</span></p>
+<h4 id="离散型随机变量及其数字特征">2. 离散型随机变量及其数字特征</h4>
+<p>​ 一般地，对于随机试验样本空间 <span class="math inline"><em>Ω</em></span> 的每一个样本点 <span class="math inline"><em>ω</em></span>，都有唯一实数 <span class="math inline"><em>X</em>(<em>ω</em>)</span> 与之对应，则 <span class="math inline"><em>X</em></span>
+为<strong>随机变量</strong>。如果随机变量可能取值为<strong>有限个或可以一一列举的无限个</strong>，我们称之为<strong>离散型随机变量</strong>。</p>
+<p>​ 对离散型随机变量的可能取值 <span class="math inline"><em>x</em><sub>1</sub>, <em>x</em><sub>2</sub>, ⋯, <em>x</em><sub><em>n</em></sub></span>，我们称
+<span class="math inline"><em>X</em></span> 取每一个值 <span class="math inline"><em>x</em><sub><em>i</em></sub></span> 的概率 <span class="math inline"><em>P</em>(<em>X</em>=<em>x</em><sub><em>i</em></sub>) = <em>p</em><sub><em>i</em></sub>, <em>i</em> ∈ {1, 2, ⋯, <em>n</em>}</span>
+为 <span class="math inline"><em>X</em></span>
+的<strong>随机分布列</strong>，简称<strong>分布列</strong>，可以用表格或图像表示。</p>
+<p>​ 我们对上述离散型随机变量，称 <span class="math inline">$E(X)=\sum^n_{i=1}{x_ip_i}$</span>
+为随机变量的<strong>均值</strong>或<strong>数学期望</strong>（简称<strong>期望</strong>），即其可能取值关于对应概率的加权平均数。同样，我们规定
+<span class="math inline">$D(X)=\sum^{n}_{i=1}{(x_i-E(X))^2p_i}=E(X^2)-(E(X))^2$</span>
+为随机变量的<strong>方差</strong>（也可记为 <span class="math inline"><em>V</em><em>a</em><em>r</em>(<em>X</em>)</span>），并称其算数平均数为其标准差，记为
+<span class="math inline"><em>σ</em>(<em>X</em>)</span>。</p>
+<ol type="1">
+<li><span class="math inline"><em>E</em>(<em>a</em><em>X</em>+<em>b</em>) = <em>a</em><em>E</em>(<em>X</em>) + <em>b</em></span>；</li>
+<li><span class="math inline"><em>D</em>(<em>a</em><em>X</em>+<em>b</em>) = <em>a</em><sup>2</sup><em>D</em>(<em>X</em>)</span>；</li>
+</ol>
+<h3 id="三二项分布与超几何分布">三、二项分布与超几何分布</h3>
+<h4 id="二项分布">1. 二项分布</h4>
+<p>​ 我们把只有两个可能结果的随机试验的结果 <span class="math inline"><em>X</em></span>
+称其服从<strong>两点分布</strong>。</p>
+<p>​
+我们把只包含两个可能结果的试验称为<strong>伯努利试验</strong>，将一个伯努利试验独立地重复进行
+<span class="math inline"><em>n</em></span> 次所组成的随机试验称为
+<strong><span class="math inline"><em>n</em></span>
+重伯努利试验</strong>。一般地，在 <span class="math inline"><em>n</em></span> 重伯努利试验中，设每次试验中事件
+<span class="math inline"><em>A</em></span> 发生的概率为 <span class="math inline"><em>p</em> ∈ (0,1)</span>，用 <span class="math inline"><em>X</em></span> 表示其发生的次数，则 <span class="math inline"><em>X</em></span> 的分布列为 <span class="math inline"><em>P</em>(<em>X</em>=<em>k</em>) = <em>C</em><sub><em>n</em></sub><sup><em>k</em></sup><em>p</em><sup><em>k</em></sup>(1−<em>p</em>)<sup><em>n</em> − <em>k</em></sup>, <em>k</em> ∈ {0, 1, 2, ⋯, <em>n</em>}</span>，并称
+<span class="math inline"><em>X</em></span> 服从二项分布，记作 <span class="math inline"><em>X</em> ∼ <em>B</em>(<em>n</em>,<em>p</em>)</span>。</p>
+<p>​ 一般地，服从二项分布的离散型随机变量 <span class="math inline"><em>X</em></span>：</p>
+<ol type="1">
+<li><span class="math inline"><em>E</em>(<em>X</em>) = <em>n</em><em>p</em></span>；</li>
+<li><span class="math inline"><em>D</em>(<em>X</em>) = <em>n</em><em>p</em>(1−<em>p</em>)</span>；</li>
+</ol>
+<h4 id="超几何分布">2. 超几何分布</h4>
+<p>​ 随机变量如果服从超几何分布，则记为 <span class="math inline"><em>X</em> ∼ <em>H</em>(<em>n</em>,<em>M</em>,<em>N</em>)</span>，其中
+<span class="math inline"><em>N</em></span> 为总数，<span class="math inline"><em>M</em></span> 为某类的总数，<span class="math inline"><em>n</em></span> 是选出来的个数，<span class="math inline">$P(X=k)=\dfrac{C_M^kC_{N-M}^{n-k}}{C_N^n}$</span>，<span class="math inline">$E(X)=n\dfrac{M}{N}$</span>，<del><span class="math inline">$D(X)=n\dfrac{M}{N}\cdot\dfrac{(N-M)(N-n)}{N(N-1)}$</span></del>。</p>
+<p>​
+超几何分布是古典概型的一种情况，特点是==总体有两类元素组成，从总体中不放回的取出元素，其中含有一类元素的个数服从超几何分布==。<strong><em>二项分布是有放回抽样，特点是独立与重复；超几何分布是不放回抽样；当问题涉及“用样本数据估计总体数据”，在超几何分布与二项分布中一般选二项分布</em></strong>。</p>
+<h4 id="正态分布">3. 正态分布</h4>
+<p>​ 如果一个随机变量取值充满整个区间甚至整个实数轴，但取一点的概率为
+<span class="math inline">0</span>，我们称这类变量为<strong>连续型随机变量</strong>。</p>
+<p>​ 正态曲线 <span class="math inline">$\phi_{\mu,\sigma}(x)=\dfrac{1}{\sqrt{2\pi}\sigma}e^{-\dfrac{(x-\mu)^2}{2\sigma^2}},
+x\in\R$</span>，其中 <span class="math inline"><em>μ</em>, <em>σ</em></span>（<span class="math inline"><em>σ</em> &gt; 0</span>）为参数，我们称该曲线的图像为正态分布密度曲线，简称正态曲线，记作
+<span class="math inline"><em>X</em> ∼ <em>N</em>(<em>μ</em>,<em>σ</em><sup>2</sup>)</span>。</p>
+<ol type="1">
+<li><span class="math inline"><em>μ</em></span> 可以理解为均值，<span class="math inline"><em>σ</em></span> 可以理解为标准差（<span class="math inline"><em>σ</em><sup>2</sup></span> 为方差）；</li>
+<li>曲线位于 <span class="math inline"><em>x</em></span> 轴上方，关于
+<span class="math inline"><em>x</em> = <em>μ</em></span> 对称，与 <span class="math inline"><em>x</em></span> 轴之间的面积为 <span class="math inline">1</span>；</li>
+<li>曲线在 <span class="math inline"><em>x</em> = <em>μ</em></span>
+处达到最大值 <span class="math inline">$\dfrac{1}{\sqrt{2\pi}\sigma}$</span>；</li>
+<li><span class="math inline"><em>σ</em></span> 一定时，曲线由 <span class="math inline"><em>μ</em></span> 确定位置，沿 <span class="math inline"><em>x</em></span> 轴左加右减；</li>
+<li><span class="math inline"><em>μ</em></span> 一定时，曲线由 <span class="math inline"><em>σ</em></span> 确定形状，<span class="math inline"><em>σ</em></span>
+越小总体分布越集中曲线越瘦小，反之越分散越矮胖。</li>
+</ol>
+<p>​ 若 <span class="math inline"><em>X</em> ∼ <em>N</em>(<em>μ</em>,<em>σ</em><sup>2</sup>)</span>，则
+<span class="math inline"><em>P</em>(<em>μ</em>−<em>σ</em>≤<em>X</em>≤<em>μ</em>+<em>σ</em>) = 0.6826</span>，<span class="math inline"><em>P</em>(<em>μ</em>−2<em>σ</em>≤<em>X</em>≤<em>μ</em>+2<em>σ</em>) = 0.9544</span>，<span class="math inline"><em>P</em>(<em>μ</em>−3<em>σ</em>≤<em>X</em>≤<em>μ</em>+3<em>σ</em>) = 0.9974</span>。正态总体几乎总取值于区间
+<span class="math inline">[<em>μ</em>−3<em>σ</em>,<em>μ</em>+3<em>σ</em>]</span>
+之内，在此之外几乎不可能发生，统计学中称之为 <strong><span class="math inline">3<em>σ</em></span> 原则</strong>。</p>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/School-Notes/" rel="tag"># School Notes</a>
+              <a href="/tags/High-School/" rel="tag"># High School</a>
+              <a href="/tags/Mathematics/" rel="tag"># Mathematics</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/04/09/physics/High%20School/S3%20Waves/%E6%9C%BA%E6%A2%B0%E6%B3%A2/" rel="prev" title="机械波">
+      <i class="fa fa-chevron-left"></i> 机械波
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9F%A5%E8%AF%86%E8%81%9A%E7%84%A6"><span class="nav-text">知识聚焦</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E9%9A%8F%E6%9C%BA%E4%BA%8B%E4%BB%B6%E7%9A%84%E6%A6%82%E7%8E%87"><span class="nav-text">一、随机事件的概率</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8B%E4%BB%B6%E4%B8%8E%E6%A6%82%E7%8E%87"><span class="nav-text">1. 事件与概率</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%A4%E5%85%B8%E6%A6%82%E5%9E%8B"><span class="nav-text">2. 古典概型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%8B%AC%E7%AB%8B%E6%80%A7"><span class="nav-text">3. 独立性</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E6%9D%A1%E4%BB%B6%E6%A6%82%E7%8E%87"><span class="nav-text">二、条件概率</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9D%A1%E4%BB%B6%E6%A6%82%E7%8E%87"><span class="nav-text">1. 条件概率</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%A8%E6%A6%82%E7%8E%87%E4%B8%8E%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%85%AC%E5%BC%8F"><span class="nav-text">2. 全概率与贝叶斯公式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A6%BB%E6%95%A3%E5%9E%8B%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E5%8F%8A%E5%85%B6%E6%95%B0%E5%AD%97%E7%89%B9%E5%BE%81"><span class="nav-text">2. 离散型随机变量及其数字特征</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E4%BA%8C%E9%A1%B9%E5%88%86%E5%B8%83%E4%B8%8E%E8%B6%85%E5%87%A0%E4%BD%95%E5%88%86%E5%B8%83"><span class="nav-text">三、二项分布与超几何分布</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E9%A1%B9%E5%88%86%E5%B8%83"><span class="nav-text">1. 二项分布</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%B6%85%E5%87%A0%E4%BD%95%E5%88%86%E5%B8%83"><span class="nav-text">2. 超几何分布</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%AD%A3%E6%80%81%E5%88%86%E5%B8%83"><span class="nav-text">3. 正态分布</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Hoarfroster"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Hoarfroster</p>
+  <div class="site-description" itemprop="description">这里是霜羽~~咕咕咕</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">193</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">53</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">58</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <ul class="links-of-author motion-element">
+      <li class="links-of-author-item">
+        <a href="https://github.com/PassionPenguin" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;PassionPenguin" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        <span> PassionPenguin</span>
+      </li>
+      <li class="links-of-author-item">
+        <a href="mailto:hoarfroster@outlook.com" title="E-Mail → mailto:hoarfroster@outlook.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+        <span> hoarfroster@outlook.com</span>
+      </li>
+      <li class="links-of-author-item">
+        <a href="https://twitter.com/zhangqizhe" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;zhangqizhe" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+        <span> @zhangqizhe</span>
+      </li>
+      <li class="links-of-author-item">
+        <a href="https://www.instagram.com/glacierpenguin/" title="Instagram → https:&#x2F;&#x2F;www.instagram.com&#x2F;glacierpenguin&#x2F;" rel="noopener" target="_blank"><i class="fab fa-instagram fa-fw"></i>Instagram</a>
+        <span> @glacierpenguin</span>
+      </li>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hoarfroster</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="Symbols count total">1.1m</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">34:12</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT</a>
+  </div>
+
+        
+
+
+
+
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-firestore.js"></script>
+  <script>
+    firebase.initializeApp({
+      apiKey   : 'AIzaSyDqM81uUD8yWHAvsGasJzvWBHhpBYnRttI',
+      projectId: 'hoar-froster'
+    });
+
+    function getCount(doc, increaseCount) {
+      // IncreaseCount will be false when not in article page
+      return doc.get().then(d => {
+        var count = 0;
+        if (!d.exists) { // Has no data, initialize count
+          if (increaseCount) {
+            doc.set({
+              count: 1
+            });
+            count = 1;
+          }
+        } else { // Has data
+          count = d.data().count;
+          if (increaseCount) {
+            // If first view this article
+            doc.set({ // Increase count
+              count: count + 1
+            });
+            count++;
+          }
+        }
+
+        return count;
+      });
+    }
+
+    function appendCountTo(el) {
+      return count => {
+        el.innerText = count;
+      }
+    }
+  </script>
+  <script>
+    (function() {
+      var db = firebase.firestore();
+      var articles = db.collection('articles-info');
+
+      if (CONFIG.page.isPost) { // Is article page
+        var title = document.querySelector('.post-title').innerText.trim();
+        var doc = articles.doc(title);
+        var increaseCount = CONFIG.hostname === location.hostname;
+        if (localStorage.getItem(title)) {
+          increaseCount = false;
+        } else {
+          // Mark as visited
+          localStorage.setItem(title, true);
+        }
+        getCount(doc, increaseCount).then(appendCountTo(document.querySelector('.firestore-visitors-count')));
+      } else if (CONFIG.page.isHome) { // Is index page
+        var promises = [...document.querySelectorAll('.post-title')].map(element => {
+          var title = element.innerText.trim();
+          var doc = articles.doc(title);
+          return getCount(doc);
+        });
+        Promise.all(promises).then(counts => {
+          var metas = document.querySelectorAll('.firestore-visitors-count');
+          counts.forEach((val, idx) => {
+            appendCountTo(metas[idx])(val);
+          });
+        });
+      }
+    })();
+  </script>
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var canonicalURL, curProtocol;
+      //Get the <link> tag
+      var x=document.getElementsByTagName("link");
+		//Find the last canonical URL
+		if(x.length > 0){
+			for (i=0;i<x.length;i++){
+				if(x[i].rel.toLowerCase() == 'canonical' && x[i].href){
+					canonicalURL=x[i].href;
+				}
+			}
+		}
+    //Get protocol
+	    if (!canonicalURL){
+	    	curProtocol = window.location.protocol.split(':')[0];
+	    }
+	    else{
+	    	curProtocol = canonicalURL.split(':')[0];
+	    }
+      //Get current URL if the canonical URL does not exist
+	    if (!canonicalURL) canonicalURL = window.location.href;
+	    //Assign script content. Replace current URL with the canonical URL
+      !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=canonicalURL,t=document.referrer;if(!e.test(r)){var n=(String(curProtocol).toLowerCase() === 'https')?"https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif":"//api.share.baidu.com/s.gif";t?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var i=new Image;i.src=n}}(window);})();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme    : 'default',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/disqusjs@1/dist/disqusjs.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/disqusjs@1/dist/disqus.js', () => {
+    window.dsqjs = new DisqusJS({
+      api       : 'https://disqus.skk.moe/disqus/' || 'https://disqus.com/api/',
+      apikey    : 'Lo65MITAya5vcdTm6cJ8V5qCBNx3PVErvDOsfJ5tUPtEbw3DMS3EIzEx6vrmTzCN',
+      shortname : 'hoarfroster',
+      url       : "https://hoarfroster.github.io/2022/04/10/mathematics/High%20School/Possibility%20and%20Stats/%E6%A6%82%E7%8E%87/",
+      identifier: "2022/04/10/mathematics/High School/Possibility and Stats/概率/",
+      title     : "概率",
+    });
+  }, window.DisqusJS);
+});
+</script>
+
+</body>
+</html>

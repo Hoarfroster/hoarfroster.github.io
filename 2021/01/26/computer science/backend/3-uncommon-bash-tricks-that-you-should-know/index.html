@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/avatar.png" color="#222">
+  <meta name="google-site-verification" content="iFMbHL1JuWjTlNFq5Rv96vDzpsqakxTpdE2nw7Crr6o">
+  <meta name="msvalidate.01" content="EF6D8CD8A3335E66AB96B4D544FCD96C">
+  <meta name="baidu-site-verification" content="code-80b80Pbzs2">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link href="/lib/fontawesome/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<script>
+
+  window.onload = function() {
+    document.querySelectorAll("p").forEach(e=>{
+      e.innerHTML = e.innerHTML.replaceAll(/==(.+?)==/g, "<mark>$1</mark>").replaceAll(/​\s+?/g, "<span class='tab'></span>");
+    });
+    
+    [...document.querySelectorAll("pre > code")].forEach(e=> {
+        var codeClass = e.parentElement.classList.value;
+        if (codeClass == null || codeClass === "") {
+            e.classList.add("hljs");
+        } else {
+            var map = {
+                js: "javascript"
+            };
+            if (map[codeClass]) {
+                codeClass = map[codeClass];
+            }
+            codeClass.split(" ").forEach(i=>e.classList.add(i));
+            hljs.highlightElement(e);
+        }
+    });
+
+    [...document.querySelectorAll('.classcial-chinese-literature-and-poetry-translation')].forEach(i=>{
+      let el = document.createElement('div');
+      el.setAttribute('class', 'fa-solid fa-eye');
+      i.prepend(el);
+      el.addEventListener('click', ()=>{
+        let status = el.classList.contains('fa-eye');
+        [...i.querySelectorAll('.translation')].forEach(j=>{
+          j.classList.remove('hide');
+          if(status) {
+            j.classList.add('hide');
+          }
+        });
+        el.attributes['class'].value = el.attributes['class'].value.replace('fa-eye-slash', 'fa-0').replace('fa-eye', 'fa-eye-slash').replace('fa-0', 'fa-eye');
+      });
+
+      [...i.querySelectorAll('.original-text')].forEach(e=>{
+        let el = document.createElement('div');
+        el.setAttribute('class', 'fa-solid fa-eye-slash');
+        e.prepend(el);
+        el.addEventListener('click', ()=>{
+            e.nextSibling.classList.toggle('hide');
+            el.attributes['class'].value = el.attributes['class'].value.replace('fa-eye-slash', 'fa-0').replace('fa-eye', 'fa-eye-slash').replace('fa-0', 'fa-eye');
+        });
+      })
+    });
+  }
+</script>
+<script async src="/js/highlight.min.js"></script>
+<script async src="/js/cursor.js"></script>
+<script data-ad-client="ca-pub-2275811890061218" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"hoarfroster.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqusjs","storage":true,"lazyload":false,"nav":null,"activeClass":"disqusjs"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="优秀的开发人员往往键入的内容更少。一种减少键入的方法是恰当地使用你的命令行（通常是 Bash），而本文将要向大家介绍的内容就是 —— 3 个减少键入的 Bash 技巧。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="3 个鲜为人知的 Bash 技巧">
+<meta property="og:url" content="https://hoarfroster.github.io/2021/01/26/computer%20science/backend/3-uncommon-bash-tricks-that-you-should-know/index.html">
+<meta property="og:site_name" content="Hoarfroster 的小窝">
+<meta property="og:description" content="优秀的开发人员往往键入的内容更少。一种减少键入的方法是恰当地使用你的命令行（通常是 Bash），而本文将要向大家介绍的内容就是 —— 3 个减少键入的 Bash 技巧。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn-images-1.medium.com/max/4000/0*-UdH52A57htDgdu0.png">
+<meta property="article:published_time" content="2021-01-26T13:53:00.000Z">
+<meta property="article:modified_time" content="2022-05-28T15:43:08.162Z">
+<meta property="article:author" content="Hoarfroster">
+<meta property="article:tag" content="Computer Science">
+<meta property="article:tag" content="Backend">
+<meta property="article:tag" content="Bash">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn-images-1.medium.com/max/4000/0*-UdH52A57htDgdu0.png">
+
+<link rel="canonical" href="https://hoarfroster.github.io/2021/01/26/computer%20science/backend/3-uncommon-bash-tricks-that-you-should-know/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>3 个鲜为人知的 Bash 技巧 | Hoarfroster 的小窝</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <!--<div class="headband"></div>-->
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hoarfroster 的小窝</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section">Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section">About</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section">Categories</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger">
+          Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://hoarfroster.github.io/2021/01/26/computer%20science/backend/3-uncommon-bash-tricks-that-you-should-know/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Hoarfroster">
+      <meta itemprop="description" content="这里是霜羽~~咕咕咕">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hoarfroster 的小窝">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          3 个鲜为人知的 Bash 技巧
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-01-26 21:53:00" itemprop="dateCreated datePublished" datetime="2021-01-26T21:53:00+08:00">2021-01-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-05-28 23:43:08" itemprop="dateModified" datetime="2022-05-28T23:43:08+08:00">2022-05-28</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Computer-Science/" itemprop="url" rel="index"><span itemprop="name">Computer Science</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Computer-Science/Backend/" itemprop="url" rel="index"><span itemprop="name">Backend</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Computer-Science/Backend/Bash/" itemprop="url" rel="index"><span itemprop="name">Bash</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span><br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+              <span>2.4k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+              <span>4 mins.</span>
+            </span>
+            <div class="post-description">优秀的开发人员往往键入的内容更少。一种减少键入的方法是恰当地使用你的命令行（通常是 Bash），而本文将要向大家介绍的内容就是 —— 3 个减少键入的 Bash 技巧。</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <blockquote>
+<ul>
+<li>原文地址：<a target="_blank" rel="noopener" href="https://medium.com/better-programming/3-uncommon-bash-tricks-that-you-should-know-c0fc988065c7">3
+Uncommon Bash Tricks That You Should Know</a></li>
+<li>原文作者：<a target="_blank" rel="noopener" href="https://medium.com/@adgefficiency">Adam
+Green</a></li>
+<li>译者：<a target="_blank" rel="noopener" href="https://github.com/PassionPenguin">霜羽
+Hoarfroster</a></li>
+<li>校对者：<a target="_blank" rel="noopener" href="https://github.com/flashhu">flashhu</a>、<a target="_blank" rel="noopener" href="https://github.com/plusmultiply0">plusmultiply0</a></li>
+</ul>
+</blockquote>
+<figure>
+<img src="https://cdn-images-1.medium.com/max/4000/0*-UdH52A57htDgdu0.png" alt="图源 Matera，摄于意大利">
+<figcaption aria-hidden="true">图源 Matera，摄于意大利</figcaption>
+</figure>
+<p>优秀的开发人员往往键入的内容更少 —— 这也让他们能够：</p>
+<ul>
+<li>更快地工作</li>
+<li>更准确地工作</li>
+<li>减少错误</li>
+<li>减轻双手疲劳的压力</li>
+</ul>
+<p>一种减少键入的方法是恰当地使用你的命令行（通常是
+Bash），<strong>而本文将要向大家介绍的内容就是 —— 3 个减少键入的 Bash
+技巧。</strong></p>
+<p>本文中介绍的 3 个 Bash 技巧是：</p>
+<ol type="1">
+<li>使用 <code>&#123;a,b&#125;</code> —— 扩展参数，以避免再次键入单个命令</li>
+<li>使用 <code>$_</code> ——
+访问最后一个参数，以避免从最后一个命令中重新键入</li>
+<li>使用 <code>^old^new</code> —— 快速更改最后一条命令的一部分</li>
+</ol>
+<p>所有这些技巧都与 zsh 兼容。</p>
+<p><strong>本文输入的命令均以 <code>$</code>
+开头。对于命令行解析后的代码，我将在相关代码下面以不带 <code>$</code>
+的单独一行写出这句代码等同的解析后的代码。</strong></p>
+<h2 id="ab-拓展参数"><code>&#123;a,b&#125;</code> 拓展参数</h2>
+<p>当我们在编写命令时，我们常会重复输入同一个命令。</p>
+<p>以更改文件后缀为例，我们一般使用的是 <code>mv</code>：</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> mv README.txt README.md</span></code></pre></div>
+<p>注意到我们写了两次 README，而参数扩展就可以避免这种重复 ——
+更改文件的后缀而无需输入 README 两次：</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> mv README.<span class="dt">&#123;txt</span><span class="op">,</span><span class="dt">md&#125;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> README.txt README.md</span></code></pre></div>
+<p>我们使用的参数扩展为 <code>&#123;txt,md&#125;</code>，而它将会扩展为两个参数 ——
+<code>txt md</code>（会以空格分隔）。</p>
+<p><strong>参数扩展会为花括号内，以逗号分割的每个元素分别创建一个参数：</strong></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="dt">&#123;1</span><span class="op">,</span><span class="dt">2</span><span class="op">,</span><span class="dt">3&#125;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">1</span> 2 3</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo pre<span class="dt">&#123;1</span><span class="op">,</span><span class="dt">2</span><span class="op">,</span><span class="dt">3&#125;</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="ex">pre1</span> pre2 pre3</span></code></pre></div>
+<p>空元素将创建不带任何替换项的参数：</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo pre<span class="dt">&#123;</span><span class="op">,</span><span class="dt">1</span><span class="op">,</span><span class="dt">2&#125;</span>fix</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">prefix</span> pre1fix pre2fix</span></code></pre></div>
+<p>另一个例子 —— 我们将要把 <code>data</code> 文件夹中的
+<code>models</code> 文件夹重命名为 <code>ml</code>：</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> mv data/models data/ml</span></code></pre></div>
+<p>我们可以使用参数扩展来节省重新输入 <code>data/</code> 的时间：</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> mv data/<span class="dt">&#123;models</span><span class="op">,</span><span class="dt">ml&#125;</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> data/models data/ml</span></code></pre></div>
+<p>我们可以使用带有数字序列的参数扩展 ——
+这在创建顺序编号目录时很有用：</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> mkdir data<span class="dt">&#123;</span><span class="dv">0</span><span class="dt">..</span><span class="dv">2</span><span class="dt">&#125;</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> data0 data1 data2</span></code></pre></div>
+<p>我们还可以在<strong>参数内部进行参数扩展</strong> ——
+例如，更改路径中的文件夹名称：</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cat models/<span class="dt">&#123;baseline</span><span class="op">,</span><span class="dt">final&#125;</span>/data.csv</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> models/baseline/data.csv models/final/data.csv</span></code></pre></div>
+<p>最后一个示例：在 <code>mv</code> 命令中，我们使用了 3 个参数 ——
+将两个 Python 文件移动到 tests 文件夹中：</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> mv test_unit.py test_system.py tests</span></code></pre></div>
+<h3 id="小结">小结</h3>
+<p><strong>每当你在单个命令中多次键入某些内容时，参数扩展极大可能可以帮助你节省精力。</strong></p>
+<h2 id="使用-_-使用访问最后一个参数">使用 <code>$_</code>
+使用访问最后一个参数</h2>
+<p>终端由一系列命令操作构成，而我们经常在多个命令之间重用信息。</p>
+<p>如果说我们前面的技巧，参数扩展，是用于减少在单个命令上的键入的。那么现在这个技巧则是用于减少对多个命令的键入。</p>
+<p>以创建文件夹并将当前目录转移到其中的情况为例：</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> mkdir temp</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd temp</span></code></pre></div>
+<p>现在我们其实可以通过使用 <code>$_</code>
+<strong>将上个命令的参数传递过来</strong>，避免让自己重复键入同样的内容：</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> mkdir temp    </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd <span class="va">$_</span> </span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> temp </span></code></pre></div>
+<p>上面的代码中，我们使用了 <code>$_</code>
+访问上一个命令的最后一个参数，在本例中这个参数为 <code>temp</code>。</p>
+<p>想要重用上一个命令的最后一个参数（本例中为
+<code>temp</code>）的场景其实非常普遍，以至于 Bash
+会将其存储在一个特殊的变量 <code>_</code> 中。我们需要使用
+<code>$</code> 前缀来访问它（与 <code>$PATH</code> 或 <code>$HOME</code>
+相同）。</p>
+<p>下面是使用 <code>$_</code> 的另一个示例 —— 移动文件并借助
+<code>cat</code> 使用打印内容到 <code>STDOUT</code>：</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> mv main.py src/main.py </span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cat src/main.py</span></code></pre></div>
+<p>那么现在我们该如何再次重用最后一个参数 <code>src/main.py</code>？</p>
+<p>你可以使用以下命令重写此代码，<code>$_</code>
+在第二个命令中会自动替换为 <code>src/main.py</code>：</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> mv main.py src/main.py </span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cat <span class="va">$_</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> src/main.py</span></code></pre></div>
+<p>使用 <code>$_</code>
+意味着你不需要重写复杂的文件路径，从而不会在重新键入时出错。</p>
+<h3 id="小结-1">小结</h3>
+<p><strong>每当你需要在多个命令重复键入某些内容时，使用 <code>$_</code>
+可能有助于减轻疲惫的双手的压力。</strong></p>
+<h2 id="使用-oldnew-快速替换">使用 <code>^old^new</code> 快速替换</h2>
+<p>有时，我们可能在命令行管理程序中运行了一个命令，并很快意识到自己在命令中犯了一个错误。</p>
+<p>但其实我们无需再次键入命令，我们可以使用快速替换，通过更换上一个命令中的内容来修复错误。</p>
+<p>举个例子 —— 你希望通过 ssh 连接到服务器，并运行了命令去连接 ——
+运行后才意识到用户名应该是 user 而非 ubuntu！</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ssh ubuntu@198.compute.com</span></code></pre></div>
+<p>你可以<strong>使用快速替换来更改所需的部分</strong>，而不必再次重新键入整个命令以在此处将
+ubuntu 改为 user：</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ^ubuntu^user</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> user@198.compute.com</span></code></pre></div>
+<p>快速替换的格式是 <code>^old^new</code>，等效于：</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> !!:s/old/new</span></code></pre></div>
+<p><code>!!</code> 用于获取最后一个命令，而 <code>:s</code>
+是替换的正则表达式。我想你会同意 <code>^old^new</code>
+减轻了不少工作负担！</p>
+<h3 id="小结-2">小结</h3>
+<p><strong>当你写错了命令，并且命令不方便重写（例如很长），那么，使用
+<code>^old^new</code> 能够极大的减轻你的麻烦。</strong></p>
+<hr>
+<p>感谢阅读！</p>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Computer-Science/" rel="tag"># Computer Science</a>
+              <a href="/tags/Backend/" rel="tag"># Backend</a>
+              <a href="/tags/Bash/" rel="tag"># Bash</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/01/25/computer%20science/ios/uikit-or-swiftui-which-should-you-use-in-production/" rel="prev" title="UIKit 和 SwiftUI：我该选择哪一个运用在实际产品开发中？">
+      <i class="fa fa-chevron-left"></i> UIKit 和 SwiftUI：我该选择哪一个运用在实际产品开发中？
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/01/29/computer%20science/backend/importing-json-modules-in-typescript/" rel="next" title="在 TypeScript 中引入 JSON 模块">
+      在 TypeScript 中引入 JSON 模块 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ab-%E6%8B%93%E5%B1%95%E5%8F%82%E6%95%B0"><span class="nav-text">{a,b} 拓展参数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93"><span class="nav-text">小结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-_-%E4%BD%BF%E7%94%A8%E8%AE%BF%E9%97%AE%E6%9C%80%E5%90%8E%E4%B8%80%E4%B8%AA%E5%8F%82%E6%95%B0"><span class="nav-text">使用 $_
+使用访问最后一个参数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93-1"><span class="nav-text">小结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-oldnew-%E5%BF%AB%E9%80%9F%E6%9B%BF%E6%8D%A2"><span class="nav-text">使用 ^old^new 快速替换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93-2"><span class="nav-text">小结</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Hoarfroster"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Hoarfroster</p>
+  <div class="site-description" itemprop="description">这里是霜羽~~咕咕咕</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">193</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">53</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">58</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <ul class="links-of-author motion-element">
+      <li class="links-of-author-item">
+        <a href="https://github.com/PassionPenguin" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;PassionPenguin" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        <span> PassionPenguin</span>
+      </li>
+      <li class="links-of-author-item">
+        <a href="mailto:hoarfroster@outlook.com" title="E-Mail → mailto:hoarfroster@outlook.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+        <span> hoarfroster@outlook.com</span>
+      </li>
+      <li class="links-of-author-item">
+        <a href="https://twitter.com/zhangqizhe" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;zhangqizhe" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+        <span> @zhangqizhe</span>
+      </li>
+      <li class="links-of-author-item">
+        <a href="https://www.instagram.com/glacierpenguin/" title="Instagram → https:&#x2F;&#x2F;www.instagram.com&#x2F;glacierpenguin&#x2F;" rel="noopener" target="_blank"><i class="fab fa-instagram fa-fw"></i>Instagram</a>
+        <span> @glacierpenguin</span>
+      </li>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hoarfroster</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="Symbols count total">1.1m</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">34:12</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT</a>
+  </div>
+
+        
+
+
+
+
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-firestore.js"></script>
+  <script>
+    firebase.initializeApp({
+      apiKey   : 'AIzaSyDqM81uUD8yWHAvsGasJzvWBHhpBYnRttI',
+      projectId: 'hoar-froster'
+    });
+
+    function getCount(doc, increaseCount) {
+      // IncreaseCount will be false when not in article page
+      return doc.get().then(d => {
+        var count = 0;
+        if (!d.exists) { // Has no data, initialize count
+          if (increaseCount) {
+            doc.set({
+              count: 1
+            });
+            count = 1;
+          }
+        } else { // Has data
+          count = d.data().count;
+          if (increaseCount) {
+            // If first view this article
+            doc.set({ // Increase count
+              count: count + 1
+            });
+            count++;
+          }
+        }
+
+        return count;
+      });
+    }
+
+    function appendCountTo(el) {
+      return count => {
+        el.innerText = count;
+      }
+    }
+  </script>
+  <script>
+    (function() {
+      var db = firebase.firestore();
+      var articles = db.collection('articles-info');
+
+      if (CONFIG.page.isPost) { // Is article page
+        var title = document.querySelector('.post-title').innerText.trim();
+        var doc = articles.doc(title);
+        var increaseCount = CONFIG.hostname === location.hostname;
+        if (localStorage.getItem(title)) {
+          increaseCount = false;
+        } else {
+          // Mark as visited
+          localStorage.setItem(title, true);
+        }
+        getCount(doc, increaseCount).then(appendCountTo(document.querySelector('.firestore-visitors-count')));
+      } else if (CONFIG.page.isHome) { // Is index page
+        var promises = [...document.querySelectorAll('.post-title')].map(element => {
+          var title = element.innerText.trim();
+          var doc = articles.doc(title);
+          return getCount(doc);
+        });
+        Promise.all(promises).then(counts => {
+          var metas = document.querySelectorAll('.firestore-visitors-count');
+          counts.forEach((val, idx) => {
+            appendCountTo(metas[idx])(val);
+          });
+        });
+      }
+    })();
+  </script>
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var canonicalURL, curProtocol;
+      //Get the <link> tag
+      var x=document.getElementsByTagName("link");
+		//Find the last canonical URL
+		if(x.length > 0){
+			for (i=0;i<x.length;i++){
+				if(x[i].rel.toLowerCase() == 'canonical' && x[i].href){
+					canonicalURL=x[i].href;
+				}
+			}
+		}
+    //Get protocol
+	    if (!canonicalURL){
+	    	curProtocol = window.location.protocol.split(':')[0];
+	    }
+	    else{
+	    	curProtocol = canonicalURL.split(':')[0];
+	    }
+      //Get current URL if the canonical URL does not exist
+	    if (!canonicalURL) canonicalURL = window.location.href;
+	    //Assign script content. Replace current URL with the canonical URL
+      !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=canonicalURL,t=document.referrer;if(!e.test(r)){var n=(String(curProtocol).toLowerCase() === 'https')?"https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif":"//api.share.baidu.com/s.gif";t?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var i=new Image;i.src=n}}(window);})();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme    : 'default',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/disqusjs@1/dist/disqusjs.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/disqusjs@1/dist/disqus.js', () => {
+    window.dsqjs = new DisqusJS({
+      api       : 'https://disqus.skk.moe/disqus/' || 'https://disqus.com/api/',
+      apikey    : 'Lo65MITAya5vcdTm6cJ8V5qCBNx3PVErvDOsfJ5tUPtEbw3DMS3EIzEx6vrmTzCN',
+      shortname : 'hoarfroster',
+      url       : "https://hoarfroster.github.io/2021/01/26/computer%20science/backend/3-uncommon-bash-tricks-that-you-should-know/",
+      identifier: "2021/01/26/computer science/backend/3-uncommon-bash-tricks-that-you-should-know/",
+      title     : "3 个鲜为人知的 Bash 技巧",
+    });
+  }, window.DisqusJS);
+});
+</script>
+
+</body>
+</html>

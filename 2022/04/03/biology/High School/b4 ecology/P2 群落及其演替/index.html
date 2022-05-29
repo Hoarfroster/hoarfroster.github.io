@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/avatar.png" color="#222">
+  <meta name="google-site-verification" content="iFMbHL1JuWjTlNFq5Rv96vDzpsqakxTpdE2nw7Crr6o">
+  <meta name="msvalidate.01" content="EF6D8CD8A3335E66AB96B4D544FCD96C">
+  <meta name="baidu-site-verification" content="code-80b80Pbzs2">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link href="/lib/fontawesome/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<script>
+
+  window.onload = function() {
+    document.querySelectorAll("p").forEach(e=>{
+      e.innerHTML = e.innerHTML.replaceAll(/==(.+?)==/g, "<mark>$1</mark>").replaceAll(/​\s+?/g, "<span class='tab'></span>");
+    });
+    
+    [...document.querySelectorAll("pre > code")].forEach(e=> {
+        var codeClass = e.parentElement.classList.value;
+        if (codeClass == null || codeClass === "") {
+            e.classList.add("hljs");
+        } else {
+            var map = {
+                js: "javascript"
+            };
+            if (map[codeClass]) {
+                codeClass = map[codeClass];
+            }
+            codeClass.split(" ").forEach(i=>e.classList.add(i));
+            hljs.highlightElement(e);
+        }
+    });
+
+    [...document.querySelectorAll('.classcial-chinese-literature-and-poetry-translation')].forEach(i=>{
+      let el = document.createElement('div');
+      el.setAttribute('class', 'fa-solid fa-eye');
+      i.prepend(el);
+      el.addEventListener('click', ()=>{
+        let status = el.classList.contains('fa-eye');
+        [...i.querySelectorAll('.translation')].forEach(j=>{
+          j.classList.remove('hide');
+          if(status) {
+            j.classList.add('hide');
+          }
+        });
+        el.attributes['class'].value = el.attributes['class'].value.replace('fa-eye-slash', 'fa-0').replace('fa-eye', 'fa-eye-slash').replace('fa-0', 'fa-eye');
+      });
+
+      [...i.querySelectorAll('.original-text')].forEach(e=>{
+        let el = document.createElement('div');
+        el.setAttribute('class', 'fa-solid fa-eye-slash');
+        e.prepend(el);
+        el.addEventListener('click', ()=>{
+            e.nextSibling.classList.toggle('hide');
+            el.attributes['class'].value = el.attributes['class'].value.replace('fa-eye-slash', 'fa-0').replace('fa-eye', 'fa-eye-slash').replace('fa-0', 'fa-eye');
+        });
+      })
+    });
+  }
+</script>
+<script async src="/js/highlight.min.js"></script>
+<script async src="/js/cursor.js"></script>
+<script data-ad-client="ca-pub-2275811890061218" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"hoarfroster.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqusjs","storage":true,"lazyload":false,"nav":null,"activeClass":"disqusjs"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="知识聚焦 ​ 生活在同一区域的不同种群不是孤立的，而是直接或间接地联系着，共同构成有序的整体，也即群落。 一、群落的结构 1.群落的物种组成 ​ 一个群落中的物种数目，称为物种丰富度。群落之间的物种通过复杂的种间关系，形成一个有机整体，其中种间关系主要包括原始合作（互惠）、互利共生、种间竞争和寄生等。  原始合作：两种生物共同生活在一起时，双方都受益，但分开之后各自也能独自生活。 互利共生：两种生">
+<meta property="og:type" content="article">
+<meta property="og:title" content="群落及其演替">
+<meta property="og:url" content="https://hoarfroster.github.io/2022/04/03/biology/High%20School/b4%20ecology/P2%20%E7%BE%A4%E8%90%BD%E5%8F%8A%E5%85%B6%E6%BC%94%E6%9B%BF/index.html">
+<meta property="og:site_name" content="Hoarfroster 的小窝">
+<meta property="og:description" content="知识聚焦 ​ 生活在同一区域的不同种群不是孤立的，而是直接或间接地联系着，共同构成有序的整体，也即群落。 一、群落的结构 1.群落的物种组成 ​ 一个群落中的物种数目，称为物种丰富度。群落之间的物种通过复杂的种间关系，形成一个有机整体，其中种间关系主要包括原始合作（互惠）、互利共生、种间竞争和寄生等。  原始合作：两种生物共同生活在一起时，双方都受益，但分开之后各自也能独自生活。 互利共生：两种生">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="c:/Users/hoarfroster/AppData/Roaming/Typora/typora-user-images/image-20220405121215030.png">
+<meta property="article:published_time" content="2022-04-03T08:54:00.000Z">
+<meta property="article:modified_time" content="2022-05-28T15:43:07.848Z">
+<meta property="article:author" content="Hoarfroster">
+<meta property="article:tag" content="School Notes">
+<meta property="article:tag" content="High School">
+<meta property="article:tag" content="Biology">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="c:/Users/hoarfroster/AppData/Roaming/Typora/typora-user-images/image-20220405121215030.png">
+
+<link rel="canonical" href="https://hoarfroster.github.io/2022/04/03/biology/High%20School/b4%20ecology/P2%20%E7%BE%A4%E8%90%BD%E5%8F%8A%E5%85%B6%E6%BC%94%E6%9B%BF/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>群落及其演替 | Hoarfroster 的小窝</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <!--<div class="headband"></div>-->
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hoarfroster 的小窝</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section">Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section">About</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section">Categories</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger">
+          Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://hoarfroster.github.io/2022/04/03/biology/High%20School/b4%20ecology/P2%20%E7%BE%A4%E8%90%BD%E5%8F%8A%E5%85%B6%E6%BC%94%E6%9B%BF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Hoarfroster">
+      <meta itemprop="description" content="这里是霜羽~~咕咕咕">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hoarfroster 的小窝">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          群落及其演替
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-04-03 16:54:00" itemprop="dateCreated datePublished" datetime="2022-04-03T16:54:00+08:00">2022-04-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-05-28 23:43:07" itemprop="dateModified" datetime="2022-05-28T23:43:07+08:00">2022-05-28</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/High-School/" itemprop="url" rel="index"><span itemprop="name">High School</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/High-School/Biology/" itemprop="url" rel="index"><span itemprop="name">Biology</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/High-School/Biology/Ecology/" itemprop="url" rel="index"><span itemprop="name">Ecology</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span><br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+              <span>3.5k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+              <span>6 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="知识聚焦">知识聚焦</h2>
+<p>​
+生活在同一区域的不同种群不是孤立的，而是<strong>直接或间接地联系着，共同构成有序的整体，也即<em>群落</em></strong>。</p>
+<h3 id="一群落的结构">一、群落的结构</h3>
+<h4 id="群落的物种组成">1.群落的物种组成</h4>
+<p>​
+<strong>一个群落中的物种数目，称为<em>物种丰富度</em></strong>。群落之间的物种通过复杂的种间关系，形成一个有机整体，其中<strong><em>种间关系</em>主要包括<em>原始合作（互惠）、互利共生、种间竞争和寄生</em>等</strong>。</p>
+<ol type="1">
+<li><strong><em>原始合作</em></strong>：两种生物共同生活在一起时，双方都受益，但分开之后各自也能独自生活。</li>
+<li><strong><em>互利共生</em></strong>：两种生物长期共同生活在一起，相互依存，彼此有利。互利共生曲线呈现<strong>同步性变化</strong>。</li>
+<li><strong><em>捕食</em></strong>：一种生物以另一种生物为食的现象。捕食曲线呈现不同步性变化（<strong>此消彼长，但不会导致某种生物灭绝</strong>）。</li>
+<li><strong><em>寄生</em></strong>：一种生物从另一种生物（宿主）的体液、组织或已消化的物质中获取营养并通常对宿主产生危害的现象。</li>
+<li><strong><em>种间竞争</em></strong>：两种或更多种生物共同利用同样的有限资源和空间而产生的相互排斥的现象。</li>
+</ol>
+<p>​
+需要<strong>注意区分种内关系（同种生物之间的关系）与种间关系（不同生物之间的关系）</strong>。</p>
+<h4 id="群落的空间结构">2. 群落的空间结构</h4>
+<p>​
+在群落中，各个生物种群分别占据了不同的空间，形成一定的空间结构，包括水平结构和垂直结构。</p>
+<h5 id="垂直结构">垂直结构</h5>
+<p>​
+主要指<strong>在垂直方向上的分层现象</strong>，如森林中的分层，湖泊中的分层等。</p>
+<p>​
+<strong>植物的分层现象与光的利用有关</strong>，分层现象显著提高了群落利用阳光等环境资源的能力。另外，<strong>地上分层</strong>的影响因素也包括<strong>温度</strong>，<strong>地下分层</strong>的影响因素也包括<strong>水分、无机盐</strong>等。动物的分层现象则与植物的垂直分层所提供的<strong>栖息空间与食物条件</strong>有关，有时可能与<strong>水中含氧量</strong>相关。</p>
+<h5 id="水平结构">水平结构</h5>
+<p>​
+群落的结构特征也可以表现在水平方向上，主要特征是<strong>镶嵌性</strong>，主要表现有基于地形不同、土壤湿度不同、盐碱度差异、光照强度不同与生物自身生长特点不同，以及人与动物的影响等因素分布着不同的种群。</p>
+<h4 id="群落的时间结构">群落的时间结构</h4>
+<h5 id="群落的季节性">群落的季节性</h5>
+<p>​
+由于阳光、水分、温度等随季节变化而变化，群落的外貌与结构也会随之有规律地变化，如动物的迁徙，植物的生长凋亡等。</p>
+<h5 id="生态位">生态位</h5>
+<p>​
+<strong>一个物种在群落中的地位或作用，包括<em>所出的空间位置、占用资源的情况、与其他物种间的关系</em>，称为这个物种的<em>生态位</em></strong>。研究动物的生态位通常要研究其栖息地、食物、天敌与物种间关系，研究植物的生态位通常研究出现频率、种群密度、植株高度等特征以及物种间关系。</p>
+<ol type="1">
+<li><p>群落中占据了相同生态位的两个物种，会通过种间竞争相互争夺生态位，结果可能是其中一个物种趋于灭绝，也可能是其通过自然选择，生态位发生分化，减少或排除相互竞争，达到共存。</p></li>
+<li><p>生态位的分化提高了群落中生物利用环境资源的能力。</p></li>
+<li><p>一个稳定的群落中，由于各种群在群落中具有各自的生态位，种群间能避免直接的竞争，从而保证了群落的稳定，即生态位的多样性是群落结构相对稳定的基础。</p></li>
+</ol>
+<p><img src="C:\Users\hoarfroster\AppData\Roaming\Typora\typora-user-images\image-20220405121215030.png" alt="image-20220405121215030" style="zoom: 25%;"></p>
+<p>图 a：物种 1、2、3
+相互间共用资源较少，但是每个物种单独能利用的资源较多，因此种内斗争较激烈，而种间竞争较弱；
+图 b：物种 1、2、3
+相互间共用资源较多，但是每个物种单独能利用的资源比较少，因此种间竞争激烈，种内竞争较弱，其中物种2能单独利用的资源最少，若资源有限，图
+b 中物种 2 有被排除的危险。</p>
+<h4 id="探究实践研究土壤中小动物类群的丰富度-exp-研究土壤中小动物类群的丰富度">探究·实践：研究土壤中小动物类群的丰富度
+| #exp-研究土壤中小动物类群的丰富度</h4>
+<h5 id="取样原理">取样原理</h5>
+<p>​
+许多土壤动物有较强的活动能力，而且身体微小，因此不适于用样方法或标记重捕法进行调查。在进行这类研究时，常用<strong>取样器取样</strong>的方法进行采集、调查。</p>
+<h5 id="采集原理">采集原理</h5>
+<ol type="1">
+<li><p><strong>采集体型较大的动物</strong>：a.利用土壤动物具有趋暗、趋湿、避高温的特性，用诱虫器采集；b.简易采集法：放在瓷盆内，挑拣动物。</p></li>
+<li><p><strong>采集体型较小的动物</strong>：用吸虫器采集，采集到的小动物可以放入酒精溶液中保存，也可以放入试管中保存。</p></li>
+</ol>
+<h5 id="丰富度的统计方法">丰富度的统计方法</h5>
+<ol type="1">
+<li><p><strong>记名计算法</strong>：适用于个体较大、种群数量有限的物种。</p></li>
+<li><p><strong>目测估计法</strong>：按预先确定的多度等级来估计单位面积（体积）中的种群数量。</p></li>
+</ol>
+<h5 id="注意事项">注意事项</h5>
+<ol type="1">
+<li><p>取样时应注意随机取样，避免人为因素的作用，尽量减小结果的偏差。</p></li>
+<li><p>小动物类群因取样地段不同，可能差异较大。从不同营养的环境中采集的土壤样本要分开统计，并尽可能多地收集小动物。</p></li>
+<li><p>取样时尽量不要破坏环境，同时注意安全。</p></li>
+<li><p>在装样的塑料袋上要标明取样的地点和时间。</p></li>
+<li><p>本实验调查的对象是样本内肉眼可见（可借助放大镜、实体镜）的所有动物，调查的指标是动物的种类丰富度。</p></li>
+</ol>
+<h3 id="二群落的主要类型">二、群落的主要类型</h3>
+<p>​
+根据群落的外貌和物种组成等方面的差异，可以将陆地的群落大致分为荒漠、草原、森林等类型。</p>
+<h4 id="不同群落中动植物种类差异与群落特点">1.
+不同群落中动植物种类差异与群落特点</h4>
+<table>
+<colgroup>
+<col style="width: 8%">
+<col style="width: 27%">
+<col style="width: 29%">
+<col style="width: 35%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>群落类型</th>
+<th>主要植物</th>
+<th>主要动物</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>针叶林</td>
+<td>主要由常绿针叶树种组成，如云杉、红杉、冷杉。</td>
+<td>驼鹿、雪兔、松鼠、黑熊、雷鸟、榛鸡等。</td>
+<td>气候寒冷，是地球上最大的森林带，覆盖地球表面积的 11%。</td>
+</tr>
+<tr class="even">
+<td>温带落叶阔叶林</td>
+<td>槭、山毛榉、栎、椴、柳等，灌林和阔叶草本植物。</td>
+<td>田鼠、金花鼠、林猫、红狐、山雀、旋木雀和啄木鸟等。</td>
+<td>气候温和，植物林间藤本不发达，以草质和半草质为主，动物多树栖、地栖。</td>
+</tr>
+<tr class="odd">
+<td>热带雨林</td>
+<td>常绿植物，种类繁多。</td>
+<td>猴类、鹦鹉科鸟类是热带雨林特有动物。</td>
+<td>气候高温高湿，生物种类繁多，约占地球一直种类一半，是地球上最丰富的生物基因库。</td>
+</tr>
+<tr class="even">
+<td>草原生物群落</td>
+<td>几乎完全由禾本科植物和阔叶草本植物组成。</td>
+<td>野驴、黄羊、黄鼠、鼠兔、鸵鸟、鸸鹋等。</td>
+<td>动植物种类较少，群落结构相对简单，动物善于奔跑，多穴居聚居。</td>
+</tr>
+<tr class="odd">
+<td>荒漠生物群落</td>
+<td>蒿属植物、藜属灌林、肉质旱生植物等。</td>
+<td>邵默动物，少数鸟类、蜥蜴。</td>
+<td>年降水稀少分布不均，物种少，群落结构非常简单</td>
+</tr>
+</tbody>
+</table>
+<h4 id="顶级群落">2. 顶级群落</h4>
+<p>​
+<strong><em>顶级群落</em></strong>指一个群落演替到与当地的气候和土壤条件处于平衡状态时，群落结构最复杂也最稳定，没有外力干扰将永保现状所<strong>最终达成平衡状态的群落</strong>。顶级群落主要由平均温度和年降雨量所决定。</p>
+<h3 id="三群落的演替">三、群落的演替</h3>
+<h4 id="群落演替">1. 群落演替</h4>
+<p><strong>随着时间的推移，一个群落被另一个群落代替的过程，叫作<em>群落演替</em></strong>。</p>
+<h5 id="群落发生演替的主要标志">群落发生演替的主要标志</h5>
+<p>群落在物种组成上发生了变化，或者是在一定区域内一个群落逐步被另一个群落替代。</p>
+<ol type="1">
+<li>在群落演替过程中，<strong>一些种群取代另一些种群是指优势取代，而不是“取而代之”</strong>。如形成森林后，乔木占据优势地位，但森林中仍有灌木、草本植物、苔藓等。</li>
+<li>群落的演替是一个<strong>漫长但并非永无休止</strong>的过程，当群落演替到与环境处于平衡状态时，就以相对稳定的群落为发展的顶点。</li>
+<li>群落演替最终都能达到其最高阶段形成顶极群落，但顶极群落并不一定是乔木阶段。演替的<strong>最高阶段受非生物环境的限制</strong>。恶劣的条件下，群落的演替一般不能达到最高的乔木阶段。</li>
+</ol>
+<h5 id="群落演替的特点">群落演替的特点</h5>
+<ol type="1">
+<li>演替是群落组成<strong>向着一定方向、具有一定规律、随时间而变化的<em>有序过程</em></strong>。因而它<strong>往往是连续变化的过程，是能预见的或可测的</strong>。</li>
+<li><strong>演替是<em>生物和环境</em>反复相互作用、发生在时间和空间上的不可逆变化</strong>。</li>
+<li><strong>演替使<em>群落的总能量增加、有机物总量增加、生物种类越来越多、群落的结构越来越复杂</em></strong>。</li>
+<li>顶极群落是演替达到的最终稳定状态，顶极群落并不是绝对稳定的，而是<strong>处于不断变化的相对稳定状态</strong>。</li>
+</ol>
+<h5 id="群落演替的原因">群落演替的原因</h5>
+<ol type="1">
+<li>环境不断变化，为群落中某些物种提供有利的繁殖条件，而对另一些物种的生存产生不利影响。</li>
+<li>生物本身不断进行繁殖、迁人或迁出。</li>
+<li>群落内部由于生物的生命活动造成内部非生物环境改变。</li>
+<li>生物种内和种间关系不断发生变化。</li>
+<li>人类活动的影响。人类活动通常是有意识、有目的地进行的，因此人类活动对群落演替的影响有时会超过其他因素。
+<ol type="1">
+<li>人类的许多活动正影响着群落的演替。人类可以砍伐森林、填湖造地、捕杀动物，也可以封山育林、治理沙漠、管理草原，甚至可以建立人工群落。</li>
+<li>人类活动往往会使群落演替按照不同于自然演替的速度和方向进行。</li>
+<li>外来物种的引入。人类活动会有意或无意地将一些新物种引入到某一群落之中。在适宜的条件下，新物种会迅速成为优势种，破坏原有群落的稳定。</li>
+<li>此外，垦殖荒原、围湖造田、森林砍伐、过度放牧等都会介入群落演替的过程。</li>
+</ol></li>
+</ol>
+<h4 id="群落演替过程的判断">2. 群落演替过程的判断</h4>
+<p>​ 群落演替的过程可人为地划分为三个阶段：</p>
+<ol type="1">
+<li><p><strong>侵入定居阶段</strong>（先锋群落阶段）：一些物种侵入裸地定居成功并改良了环境，为以后侵入的同种或异种物种创造有利条件。</p></li>
+<li><p><strong>竞争平衡阶段</strong>：通过种内或种间竞争，优势物种定居并繁殖后代，劣势物种被排斥，相互竞争过程中共存下来的物种，在利用资源上达到相对平衡。</p></li>
+<li><p><strong>相对稳定阶段</strong>：物种通过种间竞争，平衡地进入协调进化，资源利用更为充分有效，群落结构更加完善，有比较固定的物种组成和数量比例，群落结构复杂、层次多。
+#### 3. 群落演替类型的判断</p></li>
+<li><p>从起点上判断</p>
+<ol type="1">
+<li><p>从没有过植被或原有植被被彻底消灭的地方开始的演替是<strong>初生演替</strong>。</p></li>
+<li><p>从只是失去了原有植被但土壤条件仍保留，甚至还保留了植物的种子或其他繁殖体的地方开始的演替是<strong>次生演替</strong>。</p></li>
+</ol></li>
+<li><p>从时间、速度上判断</p>
+<ol type="1">
+<li>经历的时间长，速度缓慢的是<strong>初生演替</strong>。</li>
+<li>经历的时间短，速度较快的是<strong>次生演替</strong>。</li>
+</ol></li>
+</ol>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/School-Notes/" rel="tag"># School Notes</a>
+              <a href="/tags/High-School/" rel="tag"># High School</a>
+              <a href="/tags/Biology/" rel="tag"># Biology</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/04/03/biology/High%20School/b4%20ecology/P1%20%E7%A7%8D%E7%BE%A4%E5%8F%8A%E5%85%B6%E5%8A%A8%E6%80%81/" rel="prev" title="种群及其动态">
+      <i class="fa fa-chevron-left"></i> 种群及其动态
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/04/03/biology/High%20School/b4%20ecology/P3%20%E7%94%9F%E6%80%81%E7%B3%BB%E7%BB%9F%E5%8F%8A%E5%85%B6%E7%A8%B3%E5%AE%9A%E6%80%A7/" rel="next" title="生态系统及其稳定性">
+      生态系统及其稳定性 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9F%A5%E8%AF%86%E8%81%9A%E7%84%A6"><span class="nav-text">知识聚焦</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E7%BE%A4%E8%90%BD%E7%9A%84%E7%BB%93%E6%9E%84"><span class="nav-text">一、群落的结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BE%A4%E8%90%BD%E7%9A%84%E7%89%A9%E7%A7%8D%E7%BB%84%E6%88%90"><span class="nav-text">1.群落的物种组成</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BE%A4%E8%90%BD%E7%9A%84%E7%A9%BA%E9%97%B4%E7%BB%93%E6%9E%84"><span class="nav-text">2. 群落的空间结构</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9E%82%E7%9B%B4%E7%BB%93%E6%9E%84"><span class="nav-text">垂直结构</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B0%B4%E5%B9%B3%E7%BB%93%E6%9E%84"><span class="nav-text">水平结构</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BE%A4%E8%90%BD%E7%9A%84%E6%97%B6%E9%97%B4%E7%BB%93%E6%9E%84"><span class="nav-text">群落的时间结构</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BE%A4%E8%90%BD%E7%9A%84%E5%AD%A3%E8%8A%82%E6%80%A7"><span class="nav-text">群落的季节性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%94%9F%E6%80%81%E4%BD%8D"><span class="nav-text">生态位</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8E%A2%E7%A9%B6%E5%AE%9E%E8%B7%B5%E7%A0%94%E7%A9%B6%E5%9C%9F%E5%A3%A4%E4%B8%AD%E5%B0%8F%E5%8A%A8%E7%89%A9%E7%B1%BB%E7%BE%A4%E7%9A%84%E4%B8%B0%E5%AF%8C%E5%BA%A6-exp-%E7%A0%94%E7%A9%B6%E5%9C%9F%E5%A3%A4%E4%B8%AD%E5%B0%8F%E5%8A%A8%E7%89%A9%E7%B1%BB%E7%BE%A4%E7%9A%84%E4%B8%B0%E5%AF%8C%E5%BA%A6"><span class="nav-text">探究·实践：研究土壤中小动物类群的丰富度
+| #exp-研究土壤中小动物类群的丰富度</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8F%96%E6%A0%B7%E5%8E%9F%E7%90%86"><span class="nav-text">取样原理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%87%87%E9%9B%86%E5%8E%9F%E7%90%86"><span class="nav-text">采集原理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%B0%E5%AF%8C%E5%BA%A6%E7%9A%84%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95"><span class="nav-text">丰富度的统计方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-text">注意事项</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E7%BE%A4%E8%90%BD%E7%9A%84%E4%B8%BB%E8%A6%81%E7%B1%BB%E5%9E%8B"><span class="nav-text">二、群落的主要类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8D%E5%90%8C%E7%BE%A4%E8%90%BD%E4%B8%AD%E5%8A%A8%E6%A4%8D%E7%89%A9%E7%A7%8D%E7%B1%BB%E5%B7%AE%E5%BC%82%E4%B8%8E%E7%BE%A4%E8%90%BD%E7%89%B9%E7%82%B9"><span class="nav-text">1.
+不同群落中动植物种类差异与群落特点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A1%B6%E7%BA%A7%E7%BE%A4%E8%90%BD"><span class="nav-text">2. 顶级群落</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E7%BE%A4%E8%90%BD%E7%9A%84%E6%BC%94%E6%9B%BF"><span class="nav-text">三、群落的演替</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BE%A4%E8%90%BD%E6%BC%94%E6%9B%BF"><span class="nav-text">1. 群落演替</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BE%A4%E8%90%BD%E5%8F%91%E7%94%9F%E6%BC%94%E6%9B%BF%E7%9A%84%E4%B8%BB%E8%A6%81%E6%A0%87%E5%BF%97"><span class="nav-text">群落发生演替的主要标志</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BE%A4%E8%90%BD%E6%BC%94%E6%9B%BF%E7%9A%84%E7%89%B9%E7%82%B9"><span class="nav-text">群落演替的特点</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BE%A4%E8%90%BD%E6%BC%94%E6%9B%BF%E7%9A%84%E5%8E%9F%E5%9B%A0"><span class="nav-text">群落演替的原因</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BE%A4%E8%90%BD%E6%BC%94%E6%9B%BF%E8%BF%87%E7%A8%8B%E7%9A%84%E5%88%A4%E6%96%AD"><span class="nav-text">2. 群落演替过程的判断</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Hoarfroster"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Hoarfroster</p>
+  <div class="site-description" itemprop="description">这里是霜羽~~咕咕咕</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">193</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">53</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">58</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <ul class="links-of-author motion-element">
+      <li class="links-of-author-item">
+        <a href="https://github.com/PassionPenguin" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;PassionPenguin" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        <span> PassionPenguin</span>
+      </li>
+      <li class="links-of-author-item">
+        <a href="mailto:hoarfroster@outlook.com" title="E-Mail → mailto:hoarfroster@outlook.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+        <span> hoarfroster@outlook.com</span>
+      </li>
+      <li class="links-of-author-item">
+        <a href="https://twitter.com/zhangqizhe" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;zhangqizhe" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+        <span> @zhangqizhe</span>
+      </li>
+      <li class="links-of-author-item">
+        <a href="https://www.instagram.com/glacierpenguin/" title="Instagram → https:&#x2F;&#x2F;www.instagram.com&#x2F;glacierpenguin&#x2F;" rel="noopener" target="_blank"><i class="fab fa-instagram fa-fw"></i>Instagram</a>
+        <span> @glacierpenguin</span>
+      </li>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hoarfroster</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="Symbols count total">1.1m</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">34:12</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT</a>
+  </div>
+
+        
+
+
+
+
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-firestore.js"></script>
+  <script>
+    firebase.initializeApp({
+      apiKey   : 'AIzaSyDqM81uUD8yWHAvsGasJzvWBHhpBYnRttI',
+      projectId: 'hoar-froster'
+    });
+
+    function getCount(doc, increaseCount) {
+      // IncreaseCount will be false when not in article page
+      return doc.get().then(d => {
+        var count = 0;
+        if (!d.exists) { // Has no data, initialize count
+          if (increaseCount) {
+            doc.set({
+              count: 1
+            });
+            count = 1;
+          }
+        } else { // Has data
+          count = d.data().count;
+          if (increaseCount) {
+            // If first view this article
+            doc.set({ // Increase count
+              count: count + 1
+            });
+            count++;
+          }
+        }
+
+        return count;
+      });
+    }
+
+    function appendCountTo(el) {
+      return count => {
+        el.innerText = count;
+      }
+    }
+  </script>
+  <script>
+    (function() {
+      var db = firebase.firestore();
+      var articles = db.collection('articles-info');
+
+      if (CONFIG.page.isPost) { // Is article page
+        var title = document.querySelector('.post-title').innerText.trim();
+        var doc = articles.doc(title);
+        var increaseCount = CONFIG.hostname === location.hostname;
+        if (localStorage.getItem(title)) {
+          increaseCount = false;
+        } else {
+          // Mark as visited
+          localStorage.setItem(title, true);
+        }
+        getCount(doc, increaseCount).then(appendCountTo(document.querySelector('.firestore-visitors-count')));
+      } else if (CONFIG.page.isHome) { // Is index page
+        var promises = [...document.querySelectorAll('.post-title')].map(element => {
+          var title = element.innerText.trim();
+          var doc = articles.doc(title);
+          return getCount(doc);
+        });
+        Promise.all(promises).then(counts => {
+          var metas = document.querySelectorAll('.firestore-visitors-count');
+          counts.forEach((val, idx) => {
+            appendCountTo(metas[idx])(val);
+          });
+        });
+      }
+    })();
+  </script>
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var canonicalURL, curProtocol;
+      //Get the <link> tag
+      var x=document.getElementsByTagName("link");
+		//Find the last canonical URL
+		if(x.length > 0){
+			for (i=0;i<x.length;i++){
+				if(x[i].rel.toLowerCase() == 'canonical' && x[i].href){
+					canonicalURL=x[i].href;
+				}
+			}
+		}
+    //Get protocol
+	    if (!canonicalURL){
+	    	curProtocol = window.location.protocol.split(':')[0];
+	    }
+	    else{
+	    	curProtocol = canonicalURL.split(':')[0];
+	    }
+      //Get current URL if the canonical URL does not exist
+	    if (!canonicalURL) canonicalURL = window.location.href;
+	    //Assign script content. Replace current URL with the canonical URL
+      !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=canonicalURL,t=document.referrer;if(!e.test(r)){var n=(String(curProtocol).toLowerCase() === 'https')?"https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif":"//api.share.baidu.com/s.gif";t?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var i=new Image;i.src=n}}(window);})();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme    : 'default',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/disqusjs@1/dist/disqusjs.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/disqusjs@1/dist/disqus.js', () => {
+    window.dsqjs = new DisqusJS({
+      api       : 'https://disqus.skk.moe/disqus/' || 'https://disqus.com/api/',
+      apikey    : 'Lo65MITAya5vcdTm6cJ8V5qCBNx3PVErvDOsfJ5tUPtEbw3DMS3EIzEx6vrmTzCN',
+      shortname : 'hoarfroster',
+      url       : "https://hoarfroster.github.io/2022/04/03/biology/High%20School/b4%20ecology/P2%20%E7%BE%A4%E8%90%BD%E5%8F%8A%E5%85%B6%E6%BC%94%E6%9B%BF/",
+      identifier: "2022/04/03/biology/High School/b4 ecology/P2 群落及其演替/",
+      title     : "群落及其演替",
+    });
+  }, window.DisqusJS);
+});
+</script>
+
+</body>
+</html>

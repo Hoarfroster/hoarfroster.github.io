@@ -16,14 +16,60 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
+
+<link href="/lib/fontawesome/css/all.min.css" rel="stylesheet">
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 <script>
+
   window.onload = function() {
     document.querySelectorAll("p").forEach(e=>{
       e.innerHTML = e.innerHTML.replaceAll(/==(.+?)==/g, "<mark>$1</mark>").replaceAll(/​\s+?/g, "<span class='tab'></span>");
     });
+    
+    [...document.querySelectorAll("pre > code")].forEach(e=> {
+        var codeClass = e.parentElement.classList.value;
+        if (codeClass == null || codeClass === "") {
+            e.classList.add("hljs");
+        } else {
+            var map = {
+                js: "javascript"
+            };
+            if (map[codeClass]) {
+                codeClass = map[codeClass];
+            }
+            codeClass.split(" ").forEach(i=>e.classList.add(i));
+            hljs.highlightElement(e);
+        }
+    });
+
+    [...document.querySelectorAll('.classcial-chinese-literature-and-poetry-translation')].forEach(i=>{
+      let el = document.createElement('div');
+      el.setAttribute('class', 'fa-solid fa-eye');
+      i.prepend(el);
+      el.addEventListener('click', ()=>{
+        let status = el.classList.contains('fa-eye');
+        [...i.querySelectorAll('.translation')].forEach(j=>{
+          j.classList.remove('hide');
+          if(status) {
+            j.classList.add('hide');
+          }
+        });
+        el.attributes['class'].value = el.attributes['class'].value.replace('fa-eye-slash', 'fa-0').replace('fa-eye', 'fa-eye-slash').replace('fa-0', 'fa-eye');
+      });
+
+      [...i.querySelectorAll('.original-text')].forEach(e=>{
+        let el = document.createElement('div');
+        el.setAttribute('class', 'fa-solid fa-eye-slash');
+        e.prepend(el);
+        el.addEventListener('click', ()=>{
+            e.nextSibling.classList.toggle('hide');
+            el.attributes['class'].value = el.attributes['class'].value.replace('fa-eye-slash', 'fa-0').replace('fa-eye', 'fa-eye-slash').replace('fa-0', 'fa-eye');
+        });
+      })
+    });
   }
 </script>
+<script async src="/js/highlight.min.js"></script>
 <script async src="/js/cursor.js"></script>
 <script data-ad-client="ca-pub-2275811890061218" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <script id="hexo-configurations">
@@ -86,119 +132,7 @@
   </style>
 </noscript>
 
-<style>mjx-container[jax="SVG"] {
-  direction: ltr;
-}
-
-mjx-container[jax="SVG"] > svg {
-  overflow: visible;
-}
-
-mjx-container[jax="SVG"][display="true"] {
-  display: block;
-  text-align: center;
-  margin: 1em 0;
-}
-
-mjx-container[jax="SVG"][justify="left"] {
-  text-align: left;
-}
-
-mjx-container[jax="SVG"][justify="right"] {
-  text-align: right;
-}
-
-g[data-mml-node="merror"] > g {
-  fill: red;
-  stroke: red;
-}
-
-g[data-mml-node="merror"] > rect[data-background] {
-  fill: yellow;
-  stroke: none;
-}
-
-g[data-mml-node="mtable"] > line[data-line] {
-  stroke-width: 70px;
-  fill: none;
-}
-
-g[data-mml-node="mtable"] > rect[data-frame] {
-  stroke-width: 70px;
-  fill: none;
-}
-
-g[data-mml-node="mtable"] > .mjx-dashed {
-  stroke-dasharray: 140;
-}
-
-g[data-mml-node="mtable"] > .mjx-dotted {
-  stroke-linecap: round;
-  stroke-dasharray: 0,140;
-}
-
-g[data-mml-node="mtable"] > svg {
-  overflow: visible;
-}
-
-[jax="SVG"] mjx-tool {
-  display: inline-block;
-  position: relative;
-  width: 0;
-  height: 0;
-}
-
-[jax="SVG"] mjx-tool > mjx-tip {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-mjx-tool > mjx-tip {
-  display: inline-block;
-  padding: .2em;
-  border: 1px solid #888;
-  font-size: 70%;
-  background-color: #F8F8F8;
-  color: black;
-  box-shadow: 2px 2px 5px #AAAAAA;
-}
-
-g[data-mml-node="maction"][data-toggle] {
-  cursor: pointer;
-}
-
-mjx-status {
-  display: block;
-  position: fixed;
-  left: 1em;
-  bottom: 1em;
-  min-width: 25%;
-  padding: .2em .4em;
-  border: 1px solid #888;
-  font-size: 90%;
-  background-color: #F8F8F8;
-  color: black;
-}
-
-foreignObject[data-mjx-xml] {
-  font-family: initial;
-  line-height: normal;
-  overflow: visible;
-}
-
-.MathJax path {
-  stroke-width: 3;
-}
-
-mjx-container[display="true"] {
-  overflow: auto hidden;
-}
-
-mjx-container[display="true"] + br {
-  display: none;
-}
-</style></head>
+</head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
   <div class="container use-motion">
@@ -245,24 +179,9 @@ mjx-container[display="true"] + br {
     <a href="/about/" rel="section">About</a>
 
   </li>
-        <li class="menu-item menu-item-tags">
-
-    <a href="/tags/" rel="section">Tags</a>
-
-  </li>
         <li class="menu-item menu-item-categories">
 
     <a href="/categories/" rel="section">Categories</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section">Archives</a>
-
-  </li>
-        <li class="menu-item menu-item-sitemap">
-
-    <a href="/sitemap.xml" rel="section">Sitemap</a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -323,7 +242,8 @@ mjx-container[display="true"] + br {
   <div class="post-block">
     <div class="posts-collapse">
       <div class="collection-title">
-        <span class="collection-header">Um..! 16 posts in total. Keep on posting.</span>
+        
+        <span class="collection-header">Great! 193 posts in total. Keep on posting.</span>
       </div>
 
       
@@ -403,8 +323,8 @@ mjx-container[display="true"] + br {
       </div>
 
       <div class="post-title">
-          <a class="post-title-link" href="/2022/01/31/chemistry/BK%206%20%E5%8C%96%E5%AD%A6%E5%8F%8D%E5%BA%94%E9%80%9F%E7%8E%87%E3%80%81%E6%96%B9%E5%90%91%E4%B8%8E%E5%8C%96%E5%AD%A6%E5%B9%B3%E8%A1%A1/P2%20%E5%8C%96%E5%AD%A6%E5%B9%B3%E8%A1%A1/" itemprop="url">
-            <span itemprop="name">化学平衡</span>
+          <a class="post-title-link" href="/2022/01/31/chemistry/BK%206%20%E5%8C%96%E5%AD%A6%E5%8F%8D%E5%BA%94%E9%80%9F%E7%8E%87%E3%80%81%E6%96%B9%E5%90%91%E4%B8%8E%E5%8C%96%E5%AD%A6%E5%B9%B3%E8%A1%A1/P1%20%E5%8C%96%E5%AD%A6%E5%8F%8D%E5%BA%94%E9%80%9F%E7%8E%87%E3%80%81%E6%96%B9%E5%90%91/" itemprop="url">
+            <span itemprop="name">化学反应速率、方向</span>
           </a>
       </div>
 
@@ -423,28 +343,8 @@ mjx-container[display="true"] + br {
       </div>
 
       <div class="post-title">
-          <a class="post-title-link" href="/2022/01/31/chemistry/BK%206%20%E5%8C%96%E5%AD%A6%E5%8F%8D%E5%BA%94%E9%80%9F%E7%8E%87%E3%80%81%E6%96%B9%E5%90%91%E4%B8%8E%E5%8C%96%E5%AD%A6%E5%B9%B3%E8%A1%A1/P1%20%E5%8C%96%E5%AD%A6%E5%8F%8D%E5%BA%94%E9%80%9F%E7%8E%87%E3%80%81%E6%96%B9%E5%90%91/" itemprop="url">
-            <span itemprop="name">化学反应速率、方向</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-01-31T02:08:35+08:00"
-              content="2022-01-31">
-          01-31
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/01/31/chemistry/BK%205%20%E5%8C%96%E5%AD%A6%E5%8F%8D%E5%BA%94%E7%9A%84%E8%83%BD%E9%87%8F%E5%8F%98%E5%8C%96/P1%20%E5%8C%96%E5%AD%A6%E8%83%BD%E4%B8%8E%E7%83%AD%E8%83%BD/" itemprop="url">
-            <span itemprop="name">化学能与热能</span>
+          <a class="post-title-link" href="/2022/01/31/chemistry/BK%206%20%E5%8C%96%E5%AD%A6%E5%8F%8D%E5%BA%94%E9%80%9F%E7%8E%87%E3%80%81%E6%96%B9%E5%90%91%E4%B8%8E%E5%8C%96%E5%AD%A6%E5%B9%B3%E8%A1%A1/P2%20%E5%8C%96%E5%AD%A6%E5%B9%B3%E8%A1%A1/" itemprop="url">
+            <span itemprop="name">化学平衡</span>
           </a>
       </div>
 
@@ -465,6 +365,26 @@ mjx-container[display="true"] + br {
       <div class="post-title">
           <a class="post-title-link" href="/2022/01/31/chemistry/BK%205%20%E5%8C%96%E5%AD%A6%E5%8F%8D%E5%BA%94%E7%9A%84%E8%83%BD%E9%87%8F%E5%8F%98%E5%8C%96/P2%20%E5%8C%96%E5%AD%A6%E8%83%BD%E4%B8%8E%E7%94%B5%E8%83%BD/" itemprop="url">
             <span itemprop="name">化学能与电能</span>
+          </a>
+      </div>
+
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <div class="post-meta">
+        <time itemprop="dateCreated"
+              datetime="2022-01-31T02:08:35+08:00"
+              content="2022-01-31">
+          01-31
+        </time>
+      </div>
+
+      <div class="post-title">
+          <a class="post-title-link" href="/2022/01/31/chemistry/BK%205%20%E5%8C%96%E5%AD%A6%E5%8F%8D%E5%BA%94%E7%9A%84%E8%83%BD%E9%87%8F%E5%8F%98%E5%8C%96/P1%20%E5%8C%96%E5%AD%A6%E8%83%BD%E4%B8%8E%E7%83%AD%E8%83%BD/" itemprop="url">
+            <span itemprop="name">化学能与热能</span>
           </a>
       </div>
 
@@ -543,22 +463,20 @@ mjx-container[display="true"] + br {
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
-          <span class="site-state-item-count">16</span>
+          <a href="/archives">
+          <span class="site-state-item-count">193</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">53</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-          
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">58</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -612,12 +530,12 @@ mjx-container[display="true"] + br {
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">33k</span>
+    <span title="Symbols count total">1.1m</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">1:01</span>
+    <span title="Reading time total">34:12</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT</a>
   </div>
@@ -767,6 +685,19 @@ mjx-container[display="true"] + br {
 
 
 
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme    : 'default',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
 
 
   

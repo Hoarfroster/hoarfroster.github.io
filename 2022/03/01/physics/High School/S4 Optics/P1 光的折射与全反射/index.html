@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/avatar.png" color="#222">
+  <meta name="google-site-verification" content="iFMbHL1JuWjTlNFq5Rv96vDzpsqakxTpdE2nw7Crr6o">
+  <meta name="msvalidate.01" content="EF6D8CD8A3335E66AB96B4D544FCD96C">
+  <meta name="baidu-site-verification" content="code-80b80Pbzs2">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link href="/lib/fontawesome/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<script>
+
+  window.onload = function() {
+    document.querySelectorAll("p").forEach(e=>{
+      e.innerHTML = e.innerHTML.replaceAll(/==(.+?)==/g, "<mark>$1</mark>").replaceAll(/​\s+?/g, "<span class='tab'></span>");
+    });
+    
+    [...document.querySelectorAll("pre > code")].forEach(e=> {
+        var codeClass = e.parentElement.classList.value;
+        if (codeClass == null || codeClass === "") {
+            e.classList.add("hljs");
+        } else {
+            var map = {
+                js: "javascript"
+            };
+            if (map[codeClass]) {
+                codeClass = map[codeClass];
+            }
+            codeClass.split(" ").forEach(i=>e.classList.add(i));
+            hljs.highlightElement(e);
+        }
+    });
+
+    [...document.querySelectorAll('.classcial-chinese-literature-and-poetry-translation')].forEach(i=>{
+      let el = document.createElement('div');
+      el.setAttribute('class', 'fa-solid fa-eye');
+      i.prepend(el);
+      el.addEventListener('click', ()=>{
+        let status = el.classList.contains('fa-eye');
+        [...i.querySelectorAll('.translation')].forEach(j=>{
+          j.classList.remove('hide');
+          if(status) {
+            j.classList.add('hide');
+          }
+        });
+        el.attributes['class'].value = el.attributes['class'].value.replace('fa-eye-slash', 'fa-0').replace('fa-eye', 'fa-eye-slash').replace('fa-0', 'fa-eye');
+      });
+
+      [...i.querySelectorAll('.original-text')].forEach(e=>{
+        let el = document.createElement('div');
+        el.setAttribute('class', 'fa-solid fa-eye-slash');
+        e.prepend(el);
+        el.addEventListener('click', ()=>{
+            e.nextSibling.classList.toggle('hide');
+            el.attributes['class'].value = el.attributes['class'].value.replace('fa-eye-slash', 'fa-0').replace('fa-eye', 'fa-eye-slash').replace('fa-0', 'fa-eye');
+        });
+      })
+    });
+  }
+</script>
+<script async src="/js/highlight.min.js"></script>
+<script async src="/js/cursor.js"></script>
+<script data-ad-client="ca-pub-2275811890061218" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"hoarfroster.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqusjs","storage":true,"lazyload":false,"nav":null,"activeClass":"disqusjs"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="Deleting input.tex Deleting input.aux Deleting input.dvi Deleting input.log Deleting output.svg Deleting input.tex Deleting input.aux Deleting input.dvi Deleting input.log Deleting output.svg Deleting">
+<meta property="og:type" content="article">
+<meta property="og:title" content="光的折射与全反射">
+<meta property="og:url" content="https://hoarfroster.github.io/2022/03/01/physics/High%20School/S4%20Optics/P1%20%E5%85%89%E7%9A%84%E6%8A%98%E5%B0%84%E4%B8%8E%E5%85%A8%E5%8F%8D%E5%B0%84/index.html">
+<meta property="og:site_name" content="Hoarfroster 的小窝">
+<meta property="og:description" content="Deleting input.tex Deleting input.aux Deleting input.dvi Deleting input.log Deleting output.svg Deleting input.tex Deleting input.aux Deleting input.dvi Deleting input.log Deleting output.svg Deleting">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/image-20220301231513243.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/image-20220301231617041.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/1534395085415241.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/image-20220301232039007.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/image-20220301232213100.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/image-20220301232250738.png">
+<meta property="article:published_time" content="2022-03-01T04:45:00.000Z">
+<meta property="article:modified_time" content="2022-05-28T15:43:08.375Z">
+<meta property="article:author" content="Hoarfroster">
+<meta property="article:tag" content="School Notes">
+<meta property="article:tag" content="High School">
+<meta property="article:tag" content="Physics">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/image-20220301231513243.png">
+
+<link rel="canonical" href="https://hoarfroster.github.io/2022/03/01/physics/High%20School/S4%20Optics/P1%20%E5%85%89%E7%9A%84%E6%8A%98%E5%B0%84%E4%B8%8E%E5%85%A8%E5%8F%8D%E5%B0%84/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>光的折射与全反射 | Hoarfroster 的小窝</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <!--<div class="headband"></div>-->
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hoarfroster 的小窝</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section">Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section">About</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section">Categories</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger">
+          Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://hoarfroster.github.io/2022/03/01/physics/High%20School/S4%20Optics/P1%20%E5%85%89%E7%9A%84%E6%8A%98%E5%B0%84%E4%B8%8E%E5%85%A8%E5%8F%8D%E5%B0%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Hoarfroster">
+      <meta itemprop="description" content="这里是霜羽~~咕咕咕">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hoarfroster 的小窝">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          光的折射与全反射
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-03-01 12:45:00" itemprop="dateCreated datePublished" datetime="2022-03-01T12:45:00+08:00">2022-03-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-05-28 23:43:08" itemprop="dateModified" datetime="2022-05-28T23:43:08+08:00">2022-05-28</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/High-School/" itemprop="url" rel="index"><span itemprop="name">High School</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/High-School/Physics/" itemprop="url" rel="index"><span itemprop="name">Physics</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/High-School/Physics/Optics/" itemprop="url" rel="index"><span itemprop="name">Optics</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span><br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+              <span>6.7k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+              <span>12 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+<h2 id="课程标准">课程标准</h2>
+<h3 id="课程标准内容">课程标准内容</h3>
+<h4 id="光及其应用">1.3 光及其应用</h4>
+<blockquote>
+<p>1.3.1 通过实验，理解光的折射定律。会测量材料的折射率。</p>
+</blockquote>
+<p>​
+本条目要求学生：通过探究折射角与入射角关系的实验，理解光的折射定律。理解折射率的意义，知道折射率与光速、光在介质中传播速度的关系。知道光的色散现象，通过演示实验观察色散现象。在理解的基础上，能运用折射定律解释大自然的折射现象，分析解决一些简单的实际问题。</p>
+<p>​
+本条目还要求学生：会通过实验测量材料的折射率，了解测定折射率的方法讨论和交流减小实验误差的措施。</p>
+<p>​
+为了使学生更深入地理解折射率的物理概念，可以根据实际情况适当扩展，让学生了解相对折射率和绝对折射率的关系。这种扩展对学生理解折射率会有帮助。对概念的讲解，不宜限定过死，否则不利于学生形成全面合理的知识结构。</p>
+<blockquote>
+<p>1.3.2
+知道光的全反射现象及其产生的条件。初步了解光纤的工作原理、光纤技术在生产生活中的应用。</p>
+<p>例1 演示光沿水柱（或弯曲的玻璃柱）的传播。</p>
+<p>例2 观察光缆的结构，分析光的全反射在光纤中是如何产生的。</p>
+</blockquote>
+<p>​
+了解全反射在技术上的应用。通过了解光缆的结构，了解光导纤维的工作原理，在了解工作原理的基础上知道光纤技术在生产生活中的应用，例如光纤通信。学生应该密切联系生活实际进行学习，通过查阅资料，举例说明光纤在生产生活中的用途，体会光纤技术对社会生活的重大影响。</p>
+<h2 id="知识聚焦">知识聚焦</h2>
+<h3 id="一光学基本知识">一、光学基本知识</h3>
+<h4 id="光的折射与反射">1. 光的折射与反射</h4>
+<p>​ 一般来说，光从第 1 种介质射到该介质与第 2
+种介质的分界面时，一部分光会返回到第 1
+种介质，这个现象叫做<strong>光的反射</strong>；另一部分光会进入第 2
+种介质，这个现象叫做<strong>光的折射</strong>。</p>
+<figure>
+<img src="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/image-20220301231513243.png" alt="image-20220301231513243">
+<figcaption aria-hidden="true">image-20220301231513243</figcaption>
+</figure>
+<p>​ 1621
+年，荷兰数学家斯涅耳在分析大量数据后，总结了入射角和折射角之间的规律（<strong>折射定律</strong>）：==折射光线与入射光线、法线处于同一平面，折射光线与入射光线分别位于法线的两侧；入射角的正弦与折射角的正弦成正比（<span class="math inline">sin <em>i</em> = <em>n</em>sin <em>γ</em></span>，<span class="math inline"><em>n</em></span>为常数，与两种介质的性质有关）==。事实也表明，与光的反射现象一样，光的折射现象中<strong>光路可逆</strong>。</p>
+<p>​
+光从真空射入某种介质发生折射时，入射角的正弦与折射角的正弦之比称为折射率，用符号<span class="math inline"><em>n</em></span>表示。真空的折射率为 1
+，空气的折射率接近 1 。折射率与光在不同介质中传播的速度成反比：<span class="math inline">$n=\dfrac{c}{v}, n &gt; 1$</span>，其中<span class="math inline"><em>c</em></span>为真空中的光速。</p>
+<h4 id="视深与实际深度">2. 视深与实际深度</h4>
+<p>​
+视深是人眼垂直物体界面看透明物质内部某物点的像点离界面的距离，中学阶段一般沿着界面的法线方向观察，入射角小折射角也很小，<span class="math inline">$\dfrac{\sin{i}}{\sin{\gamma}}\approx\frac{\tan{i}}{\tan{\gamma}}$</span>，水中物体的视深<span class="math inline">$h=\dfrac{H}{n}$</span>（<span class="math inline"><em>H</em></span>为实际深度）。</p>
+<h4 id="实验测量玻璃的折射率-exp-测量玻璃的折射率">3.
+实验：测量玻璃的折射率 | #exp-测量玻璃的折射率</h4>
+<h5 id="一实验目的">一、实验目的</h5>
+<ol type="1">
+<li>测量玻璃的折射率；</li>
+<li>学习用插针法确定光路；</li>
+</ol>
+<h5 id="二实验器材">二、实验器材</h5>
+<p>​ 木板、白纸、玻璃砖、大头针、图钉、量角器、三角板、铅笔、圆规。</p>
+<h5 id="三实验原理与设计">三、实验原理与设计</h5>
+<p>​ 当光从空气射入玻璃时，根据折射定律<span class="math inline">$n=\dfrac{\sin{i}}{\sin{\gamma}}$</span>求出入射角<span class="math inline">sin <em>i</em></span>、折射角<span class="math inline">sin <em>γ</em></span>，即可计算出玻璃的折射率。</p>
+<p>​ 如图，透过玻璃砖观察大头针 A、B，调整视线方向使 B 挡住 A
+的像，再在观察侧依次插入大头针 C、D，使 C 挡住 B 的像，D 挡住 C
+的像。连接 AB、OO’、CD 即分别代表入射、折射和出射光线，测出入射角<span class="math inline">sin <em>θ</em><sub>1</sub></span>和折射角<span class="math inline">sin <em>θ</em><sub>2</sub></span>即可。</p>
+<figure>
+<img src="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/image-20220301231617041.png" alt="image-20220301231617041">
+<figcaption aria-hidden="true">image-20220301231617041</figcaption>
+</figure>
+<h5 id="四实验步骤">四、实验步骤</h5>
+<ol type="1">
+<li><p>把白纸用图钉钉在木板上，将玻璃砖放到白纸上，用笔描出玻璃砖<strong>光洁界面</strong>，用两枚大头针确定入射光的方向。</p></li>
+<li><p>用两枚大头针在玻璃砖的另一侧确定出射光的方向。</p></li>
+<li><p>取走玻璃砖，根据入射光和出射光的方向，确定入射点<span class="math inline"><em>O</em></span>和出射点<span class="math inline"><em>O</em>′</span>，连接<span class="math inline"><em>O</em><em>O</em>′</span>即为玻璃砖内部的折射光。画出<span class="math inline"><em>O</em></span>点处的法线，标出角<span class="math inline"><em>i</em>, <em>γ</em></span>，测量角度并计算折射率。</p></li>
+<li><p>重复上述实验多次，求出玻璃的折射率的平均值。</p></li>
+</ol>
+<h5 id="五数据处理">五、数据处理</h5>
+<ol type="1">
+<li>计算法：直接计算<span class="math inline">sin <em>i</em>, sin <em>γ</em></span>代入公式计算。</li>
+<li>图像法：求出多组对应的入射角与折射角正弦值，作出<span class="math inline">sin <em>i</em> − sin <em>γ</em></span>图像，直线的斜率即为折射率。</li>
+<li>单位圆法：在不使用量角器时，可以画单位圆，根据：</li>
+</ol>
+<p><span class="math display">$$
+\begin{align}
+n=\frac{\sin{i}}{\sin{\gamma}}\\
+\sin{i}=\frac{PN}{R}\\
+\sin{\gamma}=\frac{QN'}{R}\\
+\therefore n=\frac{PN}{QN'}
+\end{align}
+$$</span></p>
+<figure>
+<img src="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/1534395085415241.png" alt="Example">
+<figcaption aria-hidden="true">Example</figcaption>
+</figure>
+<h5 id="六注意事项">六、注意事项</h5>
+<ol type="1">
+<li>用手拿玻璃砖时，手只能接触玻璃砖的毛面或棱角，不能触摸光洁的光学面．严禁把玻璃砖当尺子画玻璃砖的两个边<span class="math inline"><em>a</em><em>a</em>′</span>、<span class="math inline"><em>b</em><em>b</em>′</span>。</li>
+<li>实验过程中，玻璃砖在纸上的位置不可移动。</li>
+<li>大头针应竖直地插在白纸上，且玻璃砖每一侧的两枚大头针<span class="math inline"><em>P</em><sub>1</sub></span>和<span class="math inline"><em>P</em><sub>2</sub></span>间、<span class="math inline"><em>P</em><sub>3</sub></span>和<span class="math inline"><em>P</em><sub>4</sub></span>间的距离应尽量大一些，以减少确定光路方向时造成的误差。</li>
+<li>实验时入射角不宜过小，否则会使入射角和折射角的值偏小，增大测量误差；入射角也不宜过大，否则在<span class="math inline"><em>b</em><em>b</em>′</span>一侧要么看不到<span class="math inline"><em>P</em><sub>1</sub></span>、<span class="math inline"><em>P</em><sub>2</sub></span>的虚像，要么看到<span class="math inline"><em>P</em><sub>1</sub></span>、<span class="math inline"><em>P</em><sub>2</sub></span>的像模糊不清，并且变粗，不便于插大头针<span class="math inline"><em>P</em><sub>3</sub></span>、<span class="math inline"><em>P</em><sub>4</sub></span>。由于要多次改变。</li>
+<li>入射角的大小重复实验，所以入射光线与出射光线要一一对应编号，以免混乱。</li>
+<li>玻璃砖应选用宽度尽量大的（<span class="math inline"> &gt; 5<em>c</em><em>m</em></span>）。若宽度太小，则会有较大的测量误差。</li>
+</ol>
+<h5 id="七误差分析">七、误差分析</h5>
+<ol type="1">
+<li>入射光线和出射光线画得不够精确：要求插大头针时间距应该稍大。</li>
+<li>入射角、折射角测量不够精确：要求入射角稍大些（不宜太大，否则反射光较强而折射光较弱）。</li>
+<li>玻璃砖的两个光洁界面可以不平行。界面不管是否平行都对测量没有误差影响。</li>
+<li>若画玻璃砖界面时偏离较远，则会使折射角变大，使测量的折射率偏小。</li>
+</ol>
+<h3 id="二光的全反射">二、光的全反射</h3>
+<h4 id="全反射现象">1. 全反射现象</h4>
+<p>​
+对于折射率不同的两种介质，折射率较小的称为<strong>光疏介质</strong>，折射率较大的称为<strong>光密介质</strong>。光从光疏介质射入光密介质时，当入射角增大到某一角度之后，使折射光线完全消失的现象称为<strong>全反射</strong>，此时入射角称为<strong>临界角</strong>。</p>
+<p>​ 因为折射角为<span class="math inline">$90\degree$</span>时发生全反射，由光的反射定律，<span class="math inline">$\sin{\gamma}=\dfrac{1}{n}$</span>。</p>
+<blockquote>
+<h3 id="计算全反射的临界角">计算全反射的临界角</h3>
+<p>​
+由于不同介质的折射率不同，如果要测出介质的全反射临界角，可以参考如下方法：从光疏介质以接近平行方向射入光线<span class="math inline"><em>A</em><em>O</em></span>，得到在光密介质端的折射光线<span class="math inline"><em>B</em><em>O</em></span>，由于光线可逆，我们即可推出<span class="math inline"><em>θ</em><sub>2</sub></span>角为临界角。</p>
+<figure>
+<img src="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/image-20220301232039007.png" alt="image-20220301232039007">
+<figcaption aria-hidden="true">image-20220301232039007</figcaption>
+</figure>
+</blockquote>
+<h4 id="全反射棱镜与光导纤维">2. 全反射棱镜与光导纤维</h4>
+<p>​
+如果玻璃棱镜的截面为等腰直角三角形，光垂直一边射入棱镜，会发生全反射而不折射的棱镜称为全反射棱镜，优点在于损耗小反射率高。</p>
+<p>​
+光沿有机玻璃棒的锯齿形路线传播（全反射）是光导纤维的导光原理。光导纤维可用于传导数据、制作内窥镜，具有传输容量大、衰减小、抗干扰性强与保密性等优点。</p>
+<figure>
+<img src="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/image-20220301232213100.png" alt="image-20220301232213100">
+<figcaption aria-hidden="true">image-20220301232213100</figcaption>
+</figure>
+<figure>
+<img src="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/image-20220301232250738.png" alt="image-20220301232250738">
+<figcaption aria-hidden="true">image-20220301232250738</figcaption>
+</figure>
+<h4 id="蜃景解释">3. “蜃景”解释</h4>
+<p>​
+空气密度随温度升高而减小，折射率也随之减小，故而在温度不同下空气会出现分层现象。</p>
+<p>​
+出现上方蜃景的原因：底层空气温度较低，高层空气温度较高，使光线不断折射直到发生全反射（光线上曲）。出现下方蜃景则是因为物体发出的光线向下传播时，底层空气温度较高折射率小使入射角逐渐变大（光线下曲）或发生全反射。</p>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/School-Notes/" rel="tag"># School Notes</a>
+              <a href="/tags/High-School/" rel="tag"># High School</a>
+              <a href="/tags/Physics/" rel="tag"># Physics</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/02/27/biology/High%20School/b1%20cell%20biology/P6%20%E7%BB%86%E8%83%9E%E7%9A%84%E7%94%9F%E5%91%BD%E5%8E%86%E7%A8%8B/" rel="prev" title="细胞的生命历程">
+      <i class="fa fa-chevron-left"></i> 细胞的生命历程
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/03/02/biology/High%20School/b5%20bioengineering/P1%20%E5%8F%91%E9%85%B5%E5%B7%A5%E7%A8%8B/" rel="next" title="发酵工程">
+      发酵工程 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%BE%E7%A8%8B%E6%A0%87%E5%87%86"><span class="nav-text">课程标准</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%BE%E7%A8%8B%E6%A0%87%E5%87%86%E5%86%85%E5%AE%B9"><span class="nav-text">课程标准内容</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%89%E5%8F%8A%E5%85%B6%E5%BA%94%E7%94%A8"><span class="nav-text">1.3 光及其应用</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9F%A5%E8%AF%86%E8%81%9A%E7%84%A6"><span class="nav-text">知识聚焦</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E5%85%89%E5%AD%A6%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86"><span class="nav-text">一、光学基本知识</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%89%E7%9A%84%E6%8A%98%E5%B0%84%E4%B8%8E%E5%8F%8D%E5%B0%84"><span class="nav-text">1. 光的折射与反射</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%86%E6%B7%B1%E4%B8%8E%E5%AE%9E%E9%99%85%E6%B7%B1%E5%BA%A6"><span class="nav-text">2. 视深与实际深度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E6%B5%8B%E9%87%8F%E7%8E%BB%E7%92%83%E7%9A%84%E6%8A%98%E5%B0%84%E7%8E%87-exp-%E6%B5%8B%E9%87%8F%E7%8E%BB%E7%92%83%E7%9A%84%E6%8A%98%E5%B0%84%E7%8E%87"><span class="nav-text">3.
+实验：测量玻璃的折射率 | #exp-测量玻璃的折射率</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%80%E5%AE%9E%E9%AA%8C%E7%9B%AE%E7%9A%84"><span class="nav-text">一、实验目的</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BA%8C%E5%AE%9E%E9%AA%8C%E5%99%A8%E6%9D%90"><span class="nav-text">二、实验器材</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%89%E5%AE%9E%E9%AA%8C%E5%8E%9F%E7%90%86%E4%B8%8E%E8%AE%BE%E8%AE%A1"><span class="nav-text">三、实验原理与设计</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9B%9B%E5%AE%9E%E9%AA%8C%E6%AD%A5%E9%AA%A4"><span class="nav-text">四、实验步骤</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BA%94%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86"><span class="nav-text">五、数据处理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%85%AD%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-text">六、注意事项</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%83%E8%AF%AF%E5%B7%AE%E5%88%86%E6%9E%90"><span class="nav-text">七、误差分析</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E5%85%89%E7%9A%84%E5%85%A8%E5%8F%8D%E5%B0%84"><span class="nav-text">二、光的全反射</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%A8%E5%8F%8D%E5%B0%84%E7%8E%B0%E8%B1%A1"><span class="nav-text">1. 全反射现象</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E5%85%A8%E5%8F%8D%E5%B0%84%E7%9A%84%E4%B8%B4%E7%95%8C%E8%A7%92"><span class="nav-text">计算全反射的临界角</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%A8%E5%8F%8D%E5%B0%84%E6%A3%B1%E9%95%9C%E4%B8%8E%E5%85%89%E5%AF%BC%E7%BA%A4%E7%BB%B4"><span class="nav-text">2. 全反射棱镜与光导纤维</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%9C%83%E6%99%AF%E8%A7%A3%E9%87%8A"><span class="nav-text">3. “蜃景”解释</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Hoarfroster"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Hoarfroster</p>
+  <div class="site-description" itemprop="description">这里是霜羽~~咕咕咕</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">193</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">53</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">58</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <ul class="links-of-author motion-element">
+      <li class="links-of-author-item">
+        <a href="https://github.com/PassionPenguin" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;PassionPenguin" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        <span> PassionPenguin</span>
+      </li>
+      <li class="links-of-author-item">
+        <a href="mailto:hoarfroster@outlook.com" title="E-Mail → mailto:hoarfroster@outlook.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+        <span> hoarfroster@outlook.com</span>
+      </li>
+      <li class="links-of-author-item">
+        <a href="https://twitter.com/zhangqizhe" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;zhangqizhe" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+        <span> @zhangqizhe</span>
+      </li>
+      <li class="links-of-author-item">
+        <a href="https://www.instagram.com/glacierpenguin/" title="Instagram → https:&#x2F;&#x2F;www.instagram.com&#x2F;glacierpenguin&#x2F;" rel="noopener" target="_blank"><i class="fab fa-instagram fa-fw"></i>Instagram</a>
+        <span> @glacierpenguin</span>
+      </li>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hoarfroster</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="Symbols count total">1.1m</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">34:12</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT</a>
+  </div>
+
+        
+
+
+
+
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-firestore.js"></script>
+  <script>
+    firebase.initializeApp({
+      apiKey   : 'AIzaSyDqM81uUD8yWHAvsGasJzvWBHhpBYnRttI',
+      projectId: 'hoar-froster'
+    });
+
+    function getCount(doc, increaseCount) {
+      // IncreaseCount will be false when not in article page
+      return doc.get().then(d => {
+        var count = 0;
+        if (!d.exists) { // Has no data, initialize count
+          if (increaseCount) {
+            doc.set({
+              count: 1
+            });
+            count = 1;
+          }
+        } else { // Has data
+          count = d.data().count;
+          if (increaseCount) {
+            // If first view this article
+            doc.set({ // Increase count
+              count: count + 1
+            });
+            count++;
+          }
+        }
+
+        return count;
+      });
+    }
+
+    function appendCountTo(el) {
+      return count => {
+        el.innerText = count;
+      }
+    }
+  </script>
+  <script>
+    (function() {
+      var db = firebase.firestore();
+      var articles = db.collection('articles-info');
+
+      if (CONFIG.page.isPost) { // Is article page
+        var title = document.querySelector('.post-title').innerText.trim();
+        var doc = articles.doc(title);
+        var increaseCount = CONFIG.hostname === location.hostname;
+        if (localStorage.getItem(title)) {
+          increaseCount = false;
+        } else {
+          // Mark as visited
+          localStorage.setItem(title, true);
+        }
+        getCount(doc, increaseCount).then(appendCountTo(document.querySelector('.firestore-visitors-count')));
+      } else if (CONFIG.page.isHome) { // Is index page
+        var promises = [...document.querySelectorAll('.post-title')].map(element => {
+          var title = element.innerText.trim();
+          var doc = articles.doc(title);
+          return getCount(doc);
+        });
+        Promise.all(promises).then(counts => {
+          var metas = document.querySelectorAll('.firestore-visitors-count');
+          counts.forEach((val, idx) => {
+            appendCountTo(metas[idx])(val);
+          });
+        });
+      }
+    })();
+  </script>
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var canonicalURL, curProtocol;
+      //Get the <link> tag
+      var x=document.getElementsByTagName("link");
+		//Find the last canonical URL
+		if(x.length > 0){
+			for (i=0;i<x.length;i++){
+				if(x[i].rel.toLowerCase() == 'canonical' && x[i].href){
+					canonicalURL=x[i].href;
+				}
+			}
+		}
+    //Get protocol
+	    if (!canonicalURL){
+	    	curProtocol = window.location.protocol.split(':')[0];
+	    }
+	    else{
+	    	curProtocol = canonicalURL.split(':')[0];
+	    }
+      //Get current URL if the canonical URL does not exist
+	    if (!canonicalURL) canonicalURL = window.location.href;
+	    //Assign script content. Replace current URL with the canonical URL
+      !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=canonicalURL,t=document.referrer;if(!e.test(r)){var n=(String(curProtocol).toLowerCase() === 'https')?"https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif":"//api.share.baidu.com/s.gif";t?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var i=new Image;i.src=n}}(window);})();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme    : 'default',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/disqusjs@1/dist/disqusjs.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/disqusjs@1/dist/disqus.js', () => {
+    window.dsqjs = new DisqusJS({
+      api       : 'https://disqus.skk.moe/disqus/' || 'https://disqus.com/api/',
+      apikey    : 'Lo65MITAya5vcdTm6cJ8V5qCBNx3PVErvDOsfJ5tUPtEbw3DMS3EIzEx6vrmTzCN',
+      shortname : 'hoarfroster',
+      url       : "https://hoarfroster.github.io/2022/03/01/physics/High%20School/S4%20Optics/P1%20%E5%85%89%E7%9A%84%E6%8A%98%E5%B0%84%E4%B8%8E%E5%85%A8%E5%8F%8D%E5%B0%84/",
+      identifier: "2022/03/01/physics/High School/S4 Optics/P1 光的折射与全反射/",
+      title     : "光的折射与全反射",
+    });
+  }, window.DisqusJS);
+});
+</script>
+
+</body>
+</html>

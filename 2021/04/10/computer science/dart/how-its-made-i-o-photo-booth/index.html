@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/avatar.png" color="#222">
+  <meta name="google-site-verification" content="iFMbHL1JuWjTlNFq5Rv96vDzpsqakxTpdE2nw7Crr6o">
+  <meta name="msvalidate.01" content="EF6D8CD8A3335E66AB96B4D544FCD96C">
+  <meta name="baidu-site-verification" content="code-80b80Pbzs2">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link href="/lib/fontawesome/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<script>
+
+  window.onload = function() {
+    document.querySelectorAll("p").forEach(e=>{
+      e.innerHTML = e.innerHTML.replaceAll(/==(.+?)==/g, "<mark>$1</mark>").replaceAll(/​\s+?/g, "<span class='tab'></span>");
+    });
+    
+    [...document.querySelectorAll("pre > code")].forEach(e=> {
+        var codeClass = e.parentElement.classList.value;
+        if (codeClass == null || codeClass === "") {
+            e.classList.add("hljs");
+        } else {
+            var map = {
+                js: "javascript"
+            };
+            if (map[codeClass]) {
+                codeClass = map[codeClass];
+            }
+            codeClass.split(" ").forEach(i=>e.classList.add(i));
+            hljs.highlightElement(e);
+        }
+    });
+
+    [...document.querySelectorAll('.classcial-chinese-literature-and-poetry-translation')].forEach(i=>{
+      let el = document.createElement('div');
+      el.setAttribute('class', 'fa-solid fa-eye');
+      i.prepend(el);
+      el.addEventListener('click', ()=>{
+        let status = el.classList.contains('fa-eye');
+        [...i.querySelectorAll('.translation')].forEach(j=>{
+          j.classList.remove('hide');
+          if(status) {
+            j.classList.add('hide');
+          }
+        });
+        el.attributes['class'].value = el.attributes['class'].value.replace('fa-eye-slash', 'fa-0').replace('fa-eye', 'fa-eye-slash').replace('fa-0', 'fa-eye');
+      });
+
+      [...i.querySelectorAll('.original-text')].forEach(e=>{
+        let el = document.createElement('div');
+        el.setAttribute('class', 'fa-solid fa-eye-slash');
+        e.prepend(el);
+        el.addEventListener('click', ()=>{
+            e.nextSibling.classList.toggle('hide');
+            el.attributes['class'].value = el.attributes['class'].value.replace('fa-eye-slash', 'fa-0').replace('fa-eye', 'fa-eye-slash').replace('fa-0', 'fa-eye');
+        });
+      })
+    });
+  }
+</script>
+<script async src="/js/highlight.min.js"></script>
+<script async src="/js/cursor.js"></script>
+<script data-ad-client="ca-pub-2275811890061218" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"hoarfroster.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqusjs","storage":true,"lazyload":false,"nav":null,"activeClass":"disqusjs"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="我们（Very Good Ventures 开发者们）与 Google 合作，为今年的 Google I&#x2F;O 带来了互动体验：Photo Booth！你现在可以与知名的谷歌吉祥物 Flutter&#39;s Dash、Android Jetpack、Chrome 的 Dino 和 Firebase 的 Sparky 合影，并用诸如派对帽、披萨、时髦眼镜等等的贴纸装饰照片！最后，你还可以在社交媒体上分享照片">
+<meta property="og:type" content="article">
+<meta property="og:title" content="我们是怎么做到的：Google I&#x2F;O Photo Booth">
+<meta property="og:url" content="https://hoarfroster.github.io/2021/04/10/computer%20science/dart/how-its-made-i-o-photo-booth/index.html">
+<meta property="og:site_name" content="Hoarfroster 的小窝">
+<meta property="og:description" content="我们（Very Good Ventures 开发者们）与 Google 合作，为今年的 Google I&#x2F;O 带来了互动体验：Photo Booth！你现在可以与知名的谷歌吉祥物 Flutter&#39;s Dash、Android Jetpack、Chrome 的 Dino 和 Firebase 的 Sparky 合影，并用诸如派对帽、披萨、时髦眼镜等等的贴纸装饰照片！最后，你还可以在社交媒体上分享照片">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://miro.medium.com/max/2800/0*diM5YKjX2b2OgNvD">
+<meta property="og:image" content="https://miro.medium.com/max/2800/0*OQnK58irOAv-Pjzq">
+<meta property="og:image" content="https://miro.medium.com/max/2800/0*Zd9s-7LFN9u17Ouo">
+<meta property="og:image" content="https://miro.medium.com/max/2800/0*kkxXNd0m-t4sjCAo">
+<meta property="og:image" content="https://miro.medium.com/max/3200/0*MVI3wAXUfJdGls5X">
+<meta property="og:image" content="https://miro.medium.com/max/2800/0*tXpB_n44hmjGxHXf">
+<meta property="og:image" content="https://miro.medium.com/max/3200/0*CN8nNM1HaOjg9SfQ">
+<meta property="article:published_time" content="2021-04-10T07:52:00.000Z">
+<meta property="article:modified_time" content="2022-05-28T15:43:08.224Z">
+<meta property="article:author" content="Hoarfroster">
+<meta property="article:tag" content="Computer Science">
+<meta property="article:tag" content="UI">
+<meta property="article:tag" content="Dart">
+<meta property="article:tag" content="Flutter">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://miro.medium.com/max/2800/0*diM5YKjX2b2OgNvD">
+
+<link rel="canonical" href="https://hoarfroster.github.io/2021/04/10/computer%20science/dart/how-its-made-i-o-photo-booth/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>我们是怎么做到的：Google I/O Photo Booth | Hoarfroster 的小窝</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <!--<div class="headband"></div>-->
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hoarfroster 的小窝</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section">Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section">About</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section">Categories</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger">
+          Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://hoarfroster.github.io/2021/04/10/computer%20science/dart/how-its-made-i-o-photo-booth/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Hoarfroster">
+      <meta itemprop="description" content="这里是霜羽~~咕咕咕">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hoarfroster 的小窝">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          我们是怎么做到的：Google I/O Photo Booth
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-04-10 15:52:00" itemprop="dateCreated datePublished" datetime="2021-04-10T15:52:00+08:00">2021-04-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-05-28 23:43:08" itemprop="dateModified" datetime="2022-05-28T23:43:08+08:00">2022-05-28</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Computer-Science/" itemprop="url" rel="index"><span itemprop="name">Computer Science</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Computer-Science/Dart/" itemprop="url" rel="index"><span itemprop="name">Dart</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Computer-Science/Dart/Flutter/" itemprop="url" rel="index"><span itemprop="name">Flutter</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span><br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+              <span>7.9k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+              <span>14 mins.</span>
+            </span>
+            <div class="post-description">我们（Very Good Ventures 开发者们）与 Google 合作，为今年的 Google I/O 带来了互动体验：Photo Booth！你现在可以与知名的谷歌吉祥物 Flutter's Dash、Android Jetpack、Chrome 的 Dino 和 Firebase 的 Sparky 合影，并用诸如派对帽、披萨、时髦眼镜等等的贴纸装饰照片！最后，你还可以在社交媒体上分享照片，或者选择下载照片以更新你的个人资料照片！</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <blockquote>
+<ul>
+<li>原文地址：<a target="_blank" rel="noopener" href="https://medium.com/flutter/how-its-made-i-o-photo-booth-3b8355d35883">How
+It’s Made: I/O Photo Booth</a></li>
+<li>原文作者：<a target="_blank" rel="noopener" href="https://medium.com/@vgv_team">Very Good Ventures
+Team</a></li>
+<li>译者：<a target="_blank" rel="noopener" href="https://github.com/PassionPenguin">霜羽
+Hoarfroster</a></li>
+<li>校对者：<a target="_blank" rel="noopener" href="https://github.com/Chorer">Chorer</a></li>
+</ul>
+</blockquote>
+<p><img src="https://miro.medium.com/max/2800/0*diM5YKjX2b2OgNvD"></p>
+<p>我们（Very Good Ventures 开发者们）与 Google 合作，为今年的 Google
+I/O 带来了互动体验：<a target="_blank" rel="noopener" href="https://photobooth.flutter.dev/">Photo
+Booth</a>！你现在可以与知名的谷歌吉祥物 <a target="_blank" rel="noopener" href="https://flutter.dev/dash">Flutter’s Dash</a>、Android
+Jetpack、Chrome 的 Dino 和 Firebase 的 Sparky
+合影，并用诸如派对帽、披萨、时髦眼镜等等的贴纸装饰照片！最后，你还可以在社交媒体上分享照片，或者选择下载照片以更新你的个人资料照片！</p>
+<p><img src="https://miro.medium.com/max/2800/0*OQnK58irOAv-Pjzq"></p>
+<p><small>Flutter Dash、Firebase Sparky、Android Jetpack 和 Chrome
+Dino</small></p>
+<p>我们使用 <a target="_blank" rel="noopener" href="https://flutter.dev/web">Flutter Web</a> 和 <a target="_blank" rel="noopener" href="https://firebase.google.com/">Firebase</a> 构建了 I/O Photo Booth
+这个软件，因为 <a target="_blank" rel="noopener" href="https://medium.com/flutter/whats-new-in-flutter-2-0-fe8e95ecc65">Flutter
+现在提供了对 Web 应用程序的支持</a>，我们认为这将是让今年虚拟 Google I/O
+的来自全球各地的与会者轻松访问此应用程序的好方法。Flutter
+的网络支持消除了我们必须从应用程序商店安装应用程序的限制，还使我们可以灵活地在指定的设备上运行它：移动端、桌面端或平板电脑端。这让我们可以无需下载，只需使用任何设备上的任何适当的浏览器，浏览我们给出的页面即可体验
+I/O Photo Booth！</p>
+<p>尽管 I/O Photo Booth 旨在提供 Web
+体验，但所有代码都是使用与平台无关的架构编写的。当对相机插件等元素的原生支持可用于各自的平台时，相同的代码适用于所有平台（桌面端、网络端和移动端）。</p>
+<h2 id="使用-flutter-制作虚拟照相亭">使用 Flutter 制作虚拟照相亭</h2>
+<h3 id="为-web-构建-flutter-相机插件">为 Web 构建 Flutter 相机插件</h3>
+<p>第一个挑战是在 Web 上为 Flutter 构建一个相机插件。最初，我们联系了 <a target="_blank" rel="noopener" href="https://www.baseflow.com/">Baseflow</a>
+团队，因为他们维护着现有的开源 <a target="_blank" rel="noopener" href="https://github.com/Baseflow/flutter-plugins">Flutter
+相机插件</a>。虽然 Baseflow 致力于为 iOS 和 Android
+构建一流的相机插件支持，但我们很高兴使用 <a target="_blank" rel="noopener" href="https://flutter.dev/docs/development/packages-and-plugins/developing-packages#federated-plugins">联合插件</a>。我们尽可能贴近官方插件界面，以便我们可以在准备好时将其合并回官方插件。</p>
+<p>我们确定了两个对于在 Flutter 中构建 I/O Photo Booth
+相机体验至关重要的 API。</p>
+<ol type="1">
+<li><strong>初始化相机：</strong>
+该应用程序首先需要访问我们设备上的相机。在台式机上，这可能是网络摄像头，而在移动设备上，我们选择了前置摄像头。我们还指定分辨率为
+1080p，以根据我们的设备最大限度地提高相机质量。</li>
+<li><strong>拍照：</strong> 我们使用了内置的 <a target="_blank" rel="noopener" href="https://api.flutter.dev/flutter/widgets/HtmlElementView-class.html"><code>HtmlElementView</code></a>。它可以使用平台视图来渲染原生
+Web 元素作为 Flutter 小部件。在这个项目中，我们渲染了一个 <a target="_blank" rel="noopener" href="https://api.flutter.dev/flutter/dart-html/VideoElement-class.html"><code>VideoElement</code></a>
+作为原生 HTML 元素 ——
+也就是我们之前在屏幕上看到的你拍你的照片。我们还使用了 <a target="_blank" rel="noopener" href="https://api.flutter.dev/flutter/dart-html/CanvasElement-class.html"><code>CanvasElement</code></a>
+作为另一个 HTML
+元素呈现方式，让我们可以在单击拍照按钮时从媒体流中捕获图像。</li>
+</ol>
+<pre class="dart"><code>Future&lt;CameraImage&gt; takePicture() async &#123;  
+ final videoWidth = videoElement.videoWidth;  
+ final videoHeight = videoElement.videoHeight;  
+ final canvas = html.CanvasElement(  
+   width: videoWidth,  
+   height: videoHeight,  
+ );  
+ canvas.context2D  
+   ..translate(videoWidth, 0)  
+   ..scale(-1, 1)  
+   ..drawImageScaled(videoElement, 0, 0, videoWidth, videoHeight);  
+ final blob = await canvas.toBlob();  
+ return CameraImage(  
+   data: html.Url.createObjectUrl(blob),  
+   width: videoWidth,  
+   height: videoHeight,  
+ );  
+&#125;</code></pre>
+<h3 id="相机权限">相机权限</h3>
+<p>在我们让 Flutter Camera 插件可以在 Web
+上运行后，我们创建了一个抽象来根据相机权限显示不同的
+UI。例如，在等待选择是否允许使用浏览器摄像头时，或者如果没有可用的摄像头可供访问，我们可以显示一条说明性消息。</p>
+<pre class="dart"><code>Camera(  
+ controller: _controller,  
+ placeholder: (_) =&gt; const SizedBox(),  
+ preview: (context, preview) =&gt; PhotoboothPreview(  
+   preview: preview,  
+   onSnapPressed: _onSnapPressed,  
+ ),  
+ error: (context, error) =&gt; PhotoboothError(error: error), 
+)</code></pre>
+<p>在此抽象中，<code>placeholder</code>
+在应用程序等待我们授予相机权限时返回初始
+UI（<code>const SizedBox()</code>）。<code>preview</code> 授予权限后返回
+UI，并提供摄像机的实时视频流。错误构建器允许我们在发生错误时捕获错误并呈现相应的错误消息。</p>
+<h3 id="镜像照片">镜像照片</h3>
+<p>我们的下一个挑战是镜像照片。如果我们保留原样使用相机拍摄照片，那么我们看到的将不是平时在照镜子时所看到的那样，而<a target="_blank" rel="noopener" href="https://9to5mac.com/2020/07/09/iphone-mirror-selfie-photos/">有些设备开放了接口如反转按钮来处理这个</a>。所以如果你用前置摄像头拍照，拍摄照片时，我们会看到镜像版本。</p>
+<p>在我们的第一种方法中，我们尝试捕捉默认的相机视图，然后围绕 y 轴应用
+180 度变换。这似乎有效，但后来我们遇到了<a target="_blank" rel="noopener" href="https://github.com/flutter/flutter/issues/79519">一个问题</a>，即
+Flutter 偶尔会覆盖转换，导致视频恢复到未镜像的版本.</p>
+<p>在 Flutter 团队的帮助下，我们通过将 <code>VideoElement</code> 包装在
+<a target="_blank" rel="noopener" href="https://api.flutter.dev/flutter/dart-html/DivElement-class.html"><code>DivElement</code></a>
+中并更新 <code>VideoElement</code> 元素，让 <code>VideoElement</code>
+填满 <code>DivElement</code>
+的宽度和高度，解决了这个问题。这允许我们将镜像应用到视频元素，而无需
+Flutter 覆盖变换效果，因为父元素是一个
+<code>div</code>。这种方法为我们提供了所需的镜像相机视图！</p>
+<p><img src="https://miro.medium.com/max/2800/0*Zd9s-7LFN9u17Ouo"></p>
+<p><small>非镜像视图</small></p>
+<p><img src="https://miro.medium.com/max/2800/0*kkxXNd0m-t4sjCAo"></p>
+<p><small>镜像视图</small></p>
+<h3 id="坚持严格的纵横比">坚持严格的纵横比</h3>
+<p>对大屏幕执行严格的 4:3 宽高比，对小屏幕执行严格的 3:4
+宽高比，这比看起来更难！强制执行此比例非常重要，既要遵守 Web
+应用程序的整体设计，又要确保照片在社交媒体上分享时看起来像素完美。这是一项具有挑战性的任务，因为设备上内置摄像头的纵横比差异很大。</p>
+<p>为了强制执行严格的纵横比，应用程序首先使用 JavaScript <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia"><code>getUserMedia</code>
+API</a>。我们使用这个 API，提供给 <code>VideoElement</code>
+流，也就是我们在相机视图中看到的（当然是镜像的）。我们还应用了 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit"><code>object-fit</code></a>
+CSS 属性来确保视频元素覆盖其父容器。我们使用 Flutter 的内置
+<code>AspectRatio</code>
+小部件设置纵横比。因此，相机不会对显示的纵横比做出任何假设；它始终返回支持的最大分辨率，然后符合
+Flutter 提供的约束（在本例中为 4:3 或 3:4）。</p>
+<pre class="dart"><code>final orientation = MediaQuery.of(context).orientation;  
+final aspectRatio = orientation == Orientation.portrait  
+   ? PhotoboothAspectRatio.portrait  
+   : PhotoboothAspectRatio.landscape;  
+return Scaffold(  
+ body: _PhotoboothBackground(  
+   aspectRatio: aspectRatio,  
+   child: Camera(  
+     controller: _controller,  
+     placeholder: (_) =&gt; const SizedBox(),  
+     preview: (context, preview) =&gt; PhotoboothPreview(  
+       preview: preview,  
+       onSnapPressed: () =&gt; _onSnapPressed(  
+         aspectRatio: aspectRatio,  
+       ),  
+     ),  
+     error: (context, error) =&gt; PhotoboothError(error: error),  
+   ),  
+ ),  
+);</code></pre>
+<h3 id="通过拖放添加朋友和贴纸">通过拖放添加朋友和贴纸</h3>
+<p>I/O Photo Booth 体验的很大一部分是与我们最喜欢的 Google
+朋友合影并添加道具。我们可以在照片中拖放好友和道具，也可以调整大小和旋转它们，直到获得我们喜欢的图像。不难注意到，将朋友添加到屏幕时，我们可以拖动它们并调整其大小。朋友们也有动画
+—— 我们使用了雪碧图来实现这种效果。</p>
+<pre class="dart"><code>for (final character in state.characters)  
+ DraggableResizable(     
+   canTransform: character.id == state.selectedAssetId,  
+   onUpdate: (update) &#123;  
+     context.read&lt;PhotoboothBloc&gt;().add(  
+       PhotoCharacterDragged(  
+         character: character,   
+         update: update,  
+       ),  
+     );  
+   &#125;,  
+   child: _AnimatedCharacter(name: character.asset.name),  
+ ),</code></pre>
+<p>为了调整对象的大小，我们创建了一个可拖动、可调整大小的小部件，它可以包裹在任何
+Flutter 小部件上，在本例中，这是朋友和道具。这个小部件使用了 <a target="_blank" rel="noopener" href="https://api.flutter.dev/flutter/widgets/LayoutBuilder-class.html"><code>LayoutBuilder</code></a>
+根据视口的约束来处理小部件的缩放。在其中，我们使用 <a target="_blank" rel="noopener" href="https://api.flutter.dev/flutter/widgets/GestureDetector-class.html"><code>GestureDetectors</code></a>
+连接到 <code>onScaleStart</code>、<code>onScaleUpdate</code> 和
+<code>onScaleEnd</code>
+回调。这些回调提供有关反映我们对朋友和道具所做更改所需的手势的详细信息。</p>
+<p><a target="_blank" rel="noopener" href="https://api.flutter.dev/flutter/widgets/Transform-class.html"><code>Transform</code></a>
+小部件和 4D
+矩阵转换将根据我们所做的各种手势处理缩放和旋转朋友和道具，如由多个
+<code>GestureDetector</code> 报告。</p>
+<pre class="dart"><code>Transform(  
+ alignment: Alignment.center,  
+ transform: Matrix4.identity()  
+   ..scale(scale)  
+   ..rotateZ(angle),  
+ child: _DraggablePoint(...),  
+)</code></pre>
+<p>最后，我们创建了一个单独的包来确定我们的设备是否支持触摸输入。可拖动、可调整大小的小部件会根据触摸功能进行调整。在具有触摸输入的设备上，可调整大小的锚点和旋转图标不可见，因为我们可以通过捏和平移来直接操纵图像，而在没有触摸输入的设备（例如我们的桌面设备）上，添加了锚点和旋转图标以适应单击和拖动。</p>
+<p><img src="https://miro.medium.com/max/3200/0*MVI3wAXUfJdGls5X"></p>
+<h2 id="优先考虑网络上的-flutter">优先考虑网络上的 Flutter</h2>
+<h3 id="使用-flutter-进行-web-优先开发">使用 Flutter 进行 Web
+优先开发</h3>
+<p>这是我们使用 Flutter 构建的首批纯 Web
+项目之一，它与移动应用程序具有不同的特性。</p>
+<p>我们需要确保该应用程序对任何设备上的任何浏览器都具有<a target="_blank" rel="noopener" href="https://flutter.dev/docs/development/ui/layout/adaptive-responsive">响应性和自适应性</a>。也就是说，我们必须确保
+I/O Photo Booth 可以根据浏览器大小进行缩放，并且能够处理移动和 Web
+输入。我们通过几种方式做到了这一点：</p>
+<ul>
+<li><strong>响应式调整大小：</strong>
+我们应该能够将浏览器的大小调整为所需的大小，并且 UI
+应相应地做出响应。如果我们的浏览器窗口为纵向，则相机将从具有 4:3
+纵横比的横向视图翻转为具有 3:4 纵横比的纵向视图。</li>
+<li><strong>响应式设计：</strong> 桌面浏览器的设计在右侧显示
+Dash、Android Jetpack、Dino 和
+Sparky，对于移动设备，它们显示在顶部。桌面设计也使用了摄像头右侧的抽屉，移动端使用了
+BottomSheet 类。</li>
+<li><strong>自适应输入：</strong> 如果从桌面访问 I/O Photo
+Booth，则鼠标点击被视为输入设备。而如果使用的是平板电脑或手机，则使用触摸作为输入。在调整贴纸大小并将其放置在照片中时，这一点尤其重要。移动设备端支持捏合和平移，桌面端支持单击和拖动。</li>
+</ul>
+<h3 id="可扩展架构">可扩展架构</h3>
+<p>我们还使用了自己的方法为此应用程序构建可扩展的移动应用程序。我们以强大的基础开始
+I/O Photo Booth，包括声音空值安全性、国际化以及从第一次提交开始的 100%
+单元和小部件测试覆盖率。我们使用了 <a target="_blank" rel="noopener" href="https://pub.dev/packages/flutter_bloc">flutter_bloc</a>
+进行状态管理，因为它允许轻松测试业务逻辑并观察应用程序中的所有状态变化。这对于开发人员日志和可追溯性特别有用，因为我们可以准确地看到状态之间的变化并更快地隔离问题。</p>
+<p>我们还实现了一个功能驱动的 monorepo
+结构。例如，贴纸、分享和实时相机预览都在它们自己的文件夹中实现，其中每个文件夹包含其各自的
+UI
+组件和业务逻辑。这些与外部依赖项集成，例如位于包子目录中的相机插件。这种架构允许我们的团队并行处理多个功能，而不会中断其他人的工作，最大限度地减少合并冲突，并使我们能够有效地重用代码。例如，UI
+组件库是一个单独的包，名为 <a target="_blank" rel="noopener" href="https://github.com/flutter/photobooth/tree/main/packages/photobooth_ui"><code>photobooth_ui</code></a>，相机插件也是单独的。</p>
+<p>通过将组件分成独立的包，我们可以提取和开源与此特定项目无关的各个组件。甚至
+UI 组件库包也可以为 Flutter 社区开源，类似于 <a target="_blank" rel="noopener" href="https://flutter.dev/docs/development/ui/widgets/material">Material</a>
+和 <a target="_blank" rel="noopener" href="https://flutter.dev/docs/development/ui/widgets/cupertino">Cupertino</a>
+组件库。</p>
+<h2 id="firebase-flutter-完美匹配">Firebase + Flutter = 完美匹配</h2>
+<h3 id="firebase-身份验证存储托管等">Firebase
+身份验证、存储、托管等</h3>
+<p>Photo Booth 利用 Firebase 生态系统进行各种后端集成。<a target="_blank" rel="noopener" href="https://pub.dev/packages/firebase_auth"><code>firebase_auth</code>
+包</a> 支持在应用启动后立即匿名登录用户。每个会话都使用 Firebase
+身份验证来创建一个具有唯一 ID 的匿名用户。</p>
+<p>当我们打开共享页面时，Firebase
+就能够起作用了。我们可以下载照片以保存为个人资料图片，也可以直接分享到社交媒体。如果我们选择下载照片，它会本地存储在我们的设备上。如果选择分享照片，应用会使用
+<a target="_blank" rel="noopener" href="https://pub.dev/packages/firebase_storage"><code>firebase_storage</code></a>
+<a target="_blank" rel="noopener" href="https://pub.dev/packages/firebase_storage">package</a>
+将照片存储在 Firebase 中，以便我们可以稍后检索它，以填充社交帖子。</p>
+<p>我们在 Firebase 存储桶上定义了 <a target="_blank" rel="noopener" href="https://firebase.google.com/docs/rules">Firebase 安全规则</a>
+以使照片在创建后不可变。这可以防止其他用户修改或删除存储桶中的照片。此外，我们使用
+Google Cloud 提供的 <a target="_blank" rel="noopener" href="https://cloud.google.com/storage/docs/lifecycle">对象生命周期管理</a>
+来定义删除所有 30
+天前的对象的规则，但我们也可以请求按照应用程序中列出的说明尽快删除自己的照片。</p>
+<p>此应用程序还使用了 <a target="_blank" rel="noopener" href="https://firebase.google.com/docs/hosting">Firebase Hosting</a>
+来快速安全地托管网络应用程序。<a target="_blank" rel="noopener" href="https://github.com/FirebaseExtended/action-hosting-deploy">action-hosting-deploy</a>
+GitHub Action 允许我们根据目标分支自动部署到 Firebase
+托管。当我们将更改合并到主分支时，该操作会触发一个工作流，该工作流构建应用程序的开发风格并将其部署到
+Firebase
+托管。类似地，当我们将更改合并到发布分支时，该操作会触发生产部署。GitHub
+Action 与 Firebase Hosting
+的结合使我们的团队能够快速迭代并始终预览最新版本。</p>
+<p>最后，我们使用 <a target="_blank" rel="noopener" href="https://firebase.google.com/products/performance">Firebase
+Performance Monitoring</a> 来监控关键的 Web 性能指标。</p>
+<h3 id="使用-cloud-functions-进行社交">使用 Cloud Functions
+进行社交</h3>
+<p>在生成自己的社交帖子之前，我们首先需要确保照片每一个像素都看起来足够完美。最终图像包括一个漂亮的框架以纪念
+I/O Photo Booth，并被裁剪为 4:3 或 3:4
+的纵横比，以便在社交帖子上看起来很棒。</p>
+<p>我们使用 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvas"><code>OffscreenCanvas</code></a>
+API 或 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/%20en-US/docs/Web/HTML/Element/canvas"><code>CanvasElement</code></a>
+作为 polyfill
+合成原始照片以及包含我们的朋友和道具的图层，并生成可以下载的单个图像。<a target="_blank" rel="noopener" href="https://github.com/flutter/photobooth/tree/main/packages/image_compositor"><code>image_compositor</code></a>
+<a target="_blank" rel="noopener" href="https://github.com/flutter/photobooth/tree/main/packages/image_compositor">包</a>
+处理此处理步骤。</p>
+<p>然后，我们利用 Firebase 强大的 <a target="_blank" rel="noopener" href="https://firebase.google.com/docs/functions">Cloud Functions</a>
+来协助将照片分享到社交媒体。当我们单击共享按钮时，我们将被带到所选平台上的一个新选项卡，其中包含一个预先填充的帖子。该帖子有一个重定向到我们编写的云函数的
+URL。浏览器在分析 URL
+时，会检测到云函数生成的动态元信息。此信息允许浏览器在我们的社交帖子中显示照片的精美预览图像以及指向共享页面的链接，我们的关注者可以在其中查看照片并导航回
+I/O Photo Booth 应用程序以获取他们自己的照片。</p>
+<pre class="dart"><code>function renderSharePage(imageFileName: string, baseUrl: string): string &#123;  
+ const context = Object.assign(&#123;&#125;, BaseHTMLContext, &#123;  
+   appUrl: baseUrl,  
+   shareUrl: `$&#123;baseUrl&#125;/share/$&#123;imageFileName&#125;`,  
+   shareImageUrl: bucketPathForFile(`$&#123;UPLOAD_PATH&#125;/$&#123;imageFileName&#125;`),  
+ &#125;);  
+ return renderTemplate(shareTmpl, context);  
+&#125;</code></pre>
+<p>最终产品看起来像这样：</p>
+<p><img src="https://miro.medium.com/max/2800/0*tXpB_n44hmjGxHXf"></p>
+<p>有关如何在 Flutter 项目中使用 Firebase 的更多信息，请查看此 <a target="_blank" rel="noopener" href="https://firebase.google.com/codelabs/firebase-get-to-know-flutter#0">codelab</a>。</p>
+<h2 id="成品效果">成品效果</h2>
+<p>这个项目是构建应用程序的网络优先方法的一个很好的例子。与我们使用
+Flutter 构建移动应用程序的经验相比，我们构建这个 Web
+应用程序的工作流程是如此相似，这让我们感到惊喜。我们必须考虑诸如视口大小、响应能力、触摸与鼠标输入、图像加载时间、浏览器兼容性以及为
+Web
+构建所带来的所有其他考虑因素等元素。但是，我们仍然使用相同的模式、架构和编码标准编写
+Flutter 代码。我们在为 Web 构建时感到宾至如归。Flutter
+软件包的工具和不断发展的生态系统，包括 Firebase 工具套件，使 I/O Photo
+Booth 成为可能。</p>
+<p><img src="https://miro.medium.com/max/3200/0*CN8nNM1HaOjg9SfQ"></p>
+<p><small>在 I/O Photo Booth 工作的非常好的 Ventures 团队</small></p>
+<p>我们已经开源了所有代码。查看 GitHub 上的 <a target="_blank" rel="noopener" href="https://github.com/flutter/photobooth">photo_booth</a> 项目！</p>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Computer-Science/" rel="tag"># Computer Science</a>
+              <a href="/tags/UI/" rel="tag"># UI</a>
+              <a href="/tags/Dart/" rel="tag"># Dart</a>
+              <a href="/tags/Flutter/" rel="tag"># Flutter</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/04/10/computer%20science/cloud/building-a-read-through-cache-using-cdn/" rel="prev" title="使用 CDN 构建直读式缓存">
+      <i class="fa fa-chevron-left"></i> 使用 CDN 构建直读式缓存
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/04/11/computer%20science/android/when-compat-libraries-do-not-save-you/" rel="next" title="当 Android 的 Compat 库不能拯救你的时候">
+      当 Android 的 Compat 库不能拯救你的时候 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-flutter-%E5%88%B6%E4%BD%9C%E8%99%9A%E6%8B%9F%E7%85%A7%E7%9B%B8%E4%BA%AD"><span class="nav-text">使用 Flutter 制作虚拟照相亭</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BA-web-%E6%9E%84%E5%BB%BA-flutter-%E7%9B%B8%E6%9C%BA%E6%8F%92%E4%BB%B6"><span class="nav-text">为 Web 构建 Flutter 相机插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B8%E6%9C%BA%E6%9D%83%E9%99%90"><span class="nav-text">相机权限</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%95%9C%E5%83%8F%E7%85%A7%E7%89%87"><span class="nav-text">镜像照片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9D%9A%E6%8C%81%E4%B8%A5%E6%A0%BC%E7%9A%84%E7%BA%B5%E6%A8%AA%E6%AF%94"><span class="nav-text">坚持严格的纵横比</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%9A%E8%BF%87%E6%8B%96%E6%94%BE%E6%B7%BB%E5%8A%A0%E6%9C%8B%E5%8F%8B%E5%92%8C%E8%B4%B4%E7%BA%B8"><span class="nav-text">通过拖放添加朋友和贴纸</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%98%E5%85%88%E8%80%83%E8%99%91%E7%BD%91%E7%BB%9C%E4%B8%8A%E7%9A%84-flutter"><span class="nav-text">优先考虑网络上的 Flutter</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-flutter-%E8%BF%9B%E8%A1%8C-web-%E4%BC%98%E5%85%88%E5%BC%80%E5%8F%91"><span class="nav-text">使用 Flutter 进行 Web
+优先开发</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%AF%E6%89%A9%E5%B1%95%E6%9E%B6%E6%9E%84"><span class="nav-text">可扩展架构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#firebase-flutter-%E5%AE%8C%E7%BE%8E%E5%8C%B9%E9%85%8D"><span class="nav-text">Firebase + Flutter &#x3D; 完美匹配</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#firebase-%E8%BA%AB%E4%BB%BD%E9%AA%8C%E8%AF%81%E5%AD%98%E5%82%A8%E6%89%98%E7%AE%A1%E7%AD%89"><span class="nav-text">Firebase
+身份验证、存储、托管等</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-cloud-functions-%E8%BF%9B%E8%A1%8C%E7%A4%BE%E4%BA%A4"><span class="nav-text">使用 Cloud Functions
+进行社交</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%90%E5%93%81%E6%95%88%E6%9E%9C"><span class="nav-text">成品效果</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Hoarfroster"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Hoarfroster</p>
+  <div class="site-description" itemprop="description">这里是霜羽~~咕咕咕</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">193</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">53</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">58</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <ul class="links-of-author motion-element">
+      <li class="links-of-author-item">
+        <a href="https://github.com/PassionPenguin" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;PassionPenguin" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        <span> PassionPenguin</span>
+      </li>
+      <li class="links-of-author-item">
+        <a href="mailto:hoarfroster@outlook.com" title="E-Mail → mailto:hoarfroster@outlook.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+        <span> hoarfroster@outlook.com</span>
+      </li>
+      <li class="links-of-author-item">
+        <a href="https://twitter.com/zhangqizhe" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;zhangqizhe" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+        <span> @zhangqizhe</span>
+      </li>
+      <li class="links-of-author-item">
+        <a href="https://www.instagram.com/glacierpenguin/" title="Instagram → https:&#x2F;&#x2F;www.instagram.com&#x2F;glacierpenguin&#x2F;" rel="noopener" target="_blank"><i class="fab fa-instagram fa-fw"></i>Instagram</a>
+        <span> @glacierpenguin</span>
+      </li>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hoarfroster</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="Symbols count total">1.1m</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">34:12</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT</a>
+  </div>
+
+        
+
+
+
+
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-firestore.js"></script>
+  <script>
+    firebase.initializeApp({
+      apiKey   : 'AIzaSyDqM81uUD8yWHAvsGasJzvWBHhpBYnRttI',
+      projectId: 'hoar-froster'
+    });
+
+    function getCount(doc, increaseCount) {
+      // IncreaseCount will be false when not in article page
+      return doc.get().then(d => {
+        var count = 0;
+        if (!d.exists) { // Has no data, initialize count
+          if (increaseCount) {
+            doc.set({
+              count: 1
+            });
+            count = 1;
+          }
+        } else { // Has data
+          count = d.data().count;
+          if (increaseCount) {
+            // If first view this article
+            doc.set({ // Increase count
+              count: count + 1
+            });
+            count++;
+          }
+        }
+
+        return count;
+      });
+    }
+
+    function appendCountTo(el) {
+      return count => {
+        el.innerText = count;
+      }
+    }
+  </script>
+  <script>
+    (function() {
+      var db = firebase.firestore();
+      var articles = db.collection('articles-info');
+
+      if (CONFIG.page.isPost) { // Is article page
+        var title = document.querySelector('.post-title').innerText.trim();
+        var doc = articles.doc(title);
+        var increaseCount = CONFIG.hostname === location.hostname;
+        if (localStorage.getItem(title)) {
+          increaseCount = false;
+        } else {
+          // Mark as visited
+          localStorage.setItem(title, true);
+        }
+        getCount(doc, increaseCount).then(appendCountTo(document.querySelector('.firestore-visitors-count')));
+      } else if (CONFIG.page.isHome) { // Is index page
+        var promises = [...document.querySelectorAll('.post-title')].map(element => {
+          var title = element.innerText.trim();
+          var doc = articles.doc(title);
+          return getCount(doc);
+        });
+        Promise.all(promises).then(counts => {
+          var metas = document.querySelectorAll('.firestore-visitors-count');
+          counts.forEach((val, idx) => {
+            appendCountTo(metas[idx])(val);
+          });
+        });
+      }
+    })();
+  </script>
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var canonicalURL, curProtocol;
+      //Get the <link> tag
+      var x=document.getElementsByTagName("link");
+		//Find the last canonical URL
+		if(x.length > 0){
+			for (i=0;i<x.length;i++){
+				if(x[i].rel.toLowerCase() == 'canonical' && x[i].href){
+					canonicalURL=x[i].href;
+				}
+			}
+		}
+    //Get protocol
+	    if (!canonicalURL){
+	    	curProtocol = window.location.protocol.split(':')[0];
+	    }
+	    else{
+	    	curProtocol = canonicalURL.split(':')[0];
+	    }
+      //Get current URL if the canonical URL does not exist
+	    if (!canonicalURL) canonicalURL = window.location.href;
+	    //Assign script content. Replace current URL with the canonical URL
+      !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=canonicalURL,t=document.referrer;if(!e.test(r)){var n=(String(curProtocol).toLowerCase() === 'https')?"https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif":"//api.share.baidu.com/s.gif";t?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var i=new Image;i.src=n}}(window);})();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme    : 'default',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/disqusjs@1/dist/disqusjs.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/disqusjs@1/dist/disqus.js', () => {
+    window.dsqjs = new DisqusJS({
+      api       : 'https://disqus.skk.moe/disqus/' || 'https://disqus.com/api/',
+      apikey    : 'Lo65MITAya5vcdTm6cJ8V5qCBNx3PVErvDOsfJ5tUPtEbw3DMS3EIzEx6vrmTzCN',
+      shortname : 'hoarfroster',
+      url       : "https://hoarfroster.github.io/2021/04/10/computer%20science/dart/how-its-made-i-o-photo-booth/",
+      identifier: "2021/04/10/computer science/dart/how-its-made-i-o-photo-booth/",
+      title     : "我们是怎么做到的：Google I/O Photo Booth",
+    });
+  }, window.DisqusJS);
+});
+</script>
+
+</body>
+</html>

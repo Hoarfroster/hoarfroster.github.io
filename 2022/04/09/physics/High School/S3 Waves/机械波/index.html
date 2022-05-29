@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/avatar.png" color="#222">
+  <meta name="google-site-verification" content="iFMbHL1JuWjTlNFq5Rv96vDzpsqakxTpdE2nw7Crr6o">
+  <meta name="msvalidate.01" content="EF6D8CD8A3335E66AB96B4D544FCD96C">
+  <meta name="baidu-site-verification" content="code-80b80Pbzs2">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link href="/lib/fontawesome/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<script>
+
+  window.onload = function() {
+    document.querySelectorAll("p").forEach(e=>{
+      e.innerHTML = e.innerHTML.replaceAll(/==(.+?)==/g, "<mark>$1</mark>").replaceAll(/​\s+?/g, "<span class='tab'></span>");
+    });
+    
+    [...document.querySelectorAll("pre > code")].forEach(e=> {
+        var codeClass = e.parentElement.classList.value;
+        if (codeClass == null || codeClass === "") {
+            e.classList.add("hljs");
+        } else {
+            var map = {
+                js: "javascript"
+            };
+            if (map[codeClass]) {
+                codeClass = map[codeClass];
+            }
+            codeClass.split(" ").forEach(i=>e.classList.add(i));
+            hljs.highlightElement(e);
+        }
+    });
+
+    [...document.querySelectorAll('.classcial-chinese-literature-and-poetry-translation')].forEach(i=>{
+      let el = document.createElement('div');
+      el.setAttribute('class', 'fa-solid fa-eye');
+      i.prepend(el);
+      el.addEventListener('click', ()=>{
+        let status = el.classList.contains('fa-eye');
+        [...i.querySelectorAll('.translation')].forEach(j=>{
+          j.classList.remove('hide');
+          if(status) {
+            j.classList.add('hide');
+          }
+        });
+        el.attributes['class'].value = el.attributes['class'].value.replace('fa-eye-slash', 'fa-0').replace('fa-eye', 'fa-eye-slash').replace('fa-0', 'fa-eye');
+      });
+
+      [...i.querySelectorAll('.original-text')].forEach(e=>{
+        let el = document.createElement('div');
+        el.setAttribute('class', 'fa-solid fa-eye-slash');
+        e.prepend(el);
+        el.addEventListener('click', ()=>{
+            e.nextSibling.classList.toggle('hide');
+            el.attributes['class'].value = el.attributes['class'].value.replace('fa-eye-slash', 'fa-0').replace('fa-eye', 'fa-eye-slash').replace('fa-0', 'fa-eye');
+        });
+      })
+    });
+  }
+</script>
+<script async src="/js/highlight.min.js"></script>
+<script async src="/js/cursor.js"></script>
+<script data-ad-client="ca-pub-2275811890061218" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"hoarfroster.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqusjs","storage":true,"lazyload":false,"nav":null,"activeClass":"disqusjs"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="高中物理笔记：机械波">
+<meta property="og:type" content="article">
+<meta property="og:title" content="机械波">
+<meta property="og:url" content="https://hoarfroster.github.io/2022/04/09/physics/High%20School/S3%20Waves/%E6%9C%BA%E6%A2%B0%E6%B3%A2/index.html">
+<meta property="og:site_name" content="Hoarfroster 的小窝">
+<meta property="og:description" content="高中物理笔记：机械波">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-04-09T04:56:00.000Z">
+<meta property="article:modified_time" content="2022-05-28T15:43:08.353Z">
+<meta property="article:author" content="Hoarfroster">
+<meta property="article:tag" content="School Notes">
+<meta property="article:tag" content="High School">
+<meta property="article:tag" content="Physics">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://hoarfroster.github.io/2022/04/09/physics/High%20School/S3%20Waves/%E6%9C%BA%E6%A2%B0%E6%B3%A2/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>机械波 | Hoarfroster 的小窝</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <!--<div class="headband"></div>-->
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hoarfroster 的小窝</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section">Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section">About</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section">Categories</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger">
+          Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://hoarfroster.github.io/2022/04/09/physics/High%20School/S3%20Waves/%E6%9C%BA%E6%A2%B0%E6%B3%A2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Hoarfroster">
+      <meta itemprop="description" content="这里是霜羽~~咕咕咕">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hoarfroster 的小窝">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          机械波
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-04-09 12:56:00" itemprop="dateCreated datePublished" datetime="2022-04-09T12:56:00+08:00">2022-04-09</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-05-28 23:43:08" itemprop="dateModified" datetime="2022-05-28T23:43:08+08:00">2022-05-28</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/High-School/" itemprop="url" rel="index"><span itemprop="name">High School</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/High-School/Physics/" itemprop="url" rel="index"><span itemprop="name">Physics</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/High-School/Physics/Waves/" itemprop="url" rel="index"><span itemprop="name">Waves</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span><br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+              <span>2.5k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+              <span>5 mins.</span>
+            </span>
+            <div class="post-description">高中物理笔记：机械波</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+<h2 id="课程标准">课程标准</h2>
+<h3 id="课程标准内容">课程标准内容</h3>
+<h4 id="机械振动与机械波选择性必修">1.2
+机械振动与机械波（选择性必修）</h4>
+<blockquote>
+<p>1.2.4
+通过观察，认识波的特征。能区别横波和纵波。能用图像描述横波。理解波速、波长和频率的关系。</p>
+</blockquote>
+<p>​
+本条目要求学生：通过观察水波槽中浮子的运动或绳波的运动，认识波是振动和能量的传播形式，在汉个质粒子只是围绕平衡位置振动，并不随波发生移动。通过观察和比较绳波和弹簧上的波，或者横波、纵波发生演示器演示的的传播过程，区分横波和纵波。在教学过程中，还可以让学生站成一行，依次起立和下蹲来模拟横波。</p>
+<p>​
+学生要能区别波动图像与振动图像，会在横波的图像上找出波长、振幅，不要求用图像描述纵波；知道波长、波速的含义；知道波的周期和频率由波源决定，而波速与介质的性质有关；能在具体情境中应用波速、频率（周期）、波长三者的关系分析解决问题。</p>
+<blockquote>
+<p>1.2.5 知道波的反射和折射现象。通过实验，了解波的干涉与衍射现象。</p>
+<p>例3 用波动演示器显示波的叠加。</p>
+<p>例4 观察音叉双臂振动激发的水波干涉现象。</p>
+</blockquote>
+<p>​
+本条目整合了实验版课程标准关于惠更斯原理和波的干涉、衍行射两个条目并降低了要求，只要求学生认识波的现象，不要求用惠更斯原理解释。在教学中，可以通过水波或声波观察波的反射、折射、干涉和衍射现象，让学生认识到干涉和衍射是波所特有的两种现象。波的叠加是干涉现象的基础，学生应该能用波的叠加解释干涉花样的形成，知道只有两列波的频率相同时它们才能发生干涉。声波是除了水波之外可以用来演示干涉和衍射的另一种波，例如，可以用声波的衍射解释“隔墙有耳”的现象。操场上两个扬声器播放同样的声音，在操场上行走时，感到有的地点声音大，有的地点声音小，这是声波的干涉现象。</p>
+<blockquote>
+<p>1.2.6
+通过实验，认识多普勒效应。能解释多普勒效应产生的原因。能列举多普勒效应的应用实例。</p>
+</blockquote>
+<p>​
+在教学中，教师可以在单音频信号发生器的一端系上绳子，快速旋转绳子使信号发生器做圆周运动，让学生听音调的变化；也可以利用视频，播放鸣笛的火车、汽车等交通工具驶过我们身边时的录像，让学生听音调的变化。在感知这些现象的基础上，引导学生应用所学过的波的知识，对多普勒效应产生的原因做出解释。多普勒效应有多种用途，如交通警察利用超声波测量车速，医生利用彩超诊断疾病等，可以让学生查阅资料了解多普勒效应的应用实例。</p>
+<h4 id="教学活动要求">教学活动要求</h4>
+<ol type="1">
+<li>学生们手拉手站成一排，依次下蹲、起立，模拟机械波。</li>
+<li>查阅资料，了解多普勒效应的实际应用。</li>
+<li>查阅资料，举办关于引力波的讨论会。</li>
+</ol>
+<h2 id="知识聚焦">知识聚焦</h2>
+<h3 id="一波的形成与描述">一、波的形成与描述</h3>
+<h4 id="波的形成">1. 波的形成</h4>
+<p>​
+振动的传播称为<strong>波动</strong>，简称<strong>波</strong>，产生条件有：</p>
+<ol type="1">
+<li>波源（机械振动）；</li>
+<li>传播振动的介质（相邻质点间存在相互作用力）；</li>
+</ol>
+<p>​
+==质点的振动方向与波的传播方向相互垂直的波==，叫作<strong>横波</strong>。在横波中，凸起的最高处叫作波峰，凹下的最低处叫作波谷。==质点的振动方向与波的传播方向在同一直线上的波==，叫作<strong>纵波</strong>。在纵波中，质点分布最密的位置叫作密部，质点分布最疏的位置叫作疏部。</p>
+<h4 id="波的描述">2. 波的描述</h4>
+<p>​
+如果波的图像是正弦曲线，这样的波叫作正弦波，也叫<strong>简谐波</strong>。可以证明，介质中有正弦波传播时，介质的质点在做简谐运动。</p>
+<ol type="1">
+<li><p>在波的传播方向上，振动相位总是相同的两个相邻质点间的距离，叫作<strong>波长
+<span class="math inline"><em>λ</em></span></strong>。</p></li>
+<li><p>机械波在介质中传播的速度为 <strong><span class="math inline"><em>v</em> = <em>λ</em><em>f</em></span></strong>，由介质的性质决定。</p></li>
+</ol>
+<h3 id="二波的反射折射和衍射-波的干涉-多普勒效应">二、波的反射、折射和衍射
+波的干涉 多普勒效应</h3>
+<h4 id="波的反射折射和衍射">1. 波的反射、折射和衍射</h4>
+<p>​
+当水波遇到挡板时会发生<strong>反射</strong>。如果用一条射线代表水波的入射方向（入射线），用另一条射线代表水波的反射方向（反射线），我们发现水波的反射与初中学过的光的反射遵循同样的规律。==反射线、法线与入射线在同一平面内，反射线与入射线分居法线两侧，反射角等于入射角==。</p>
+<p>​
+理论和实验证明，一切波都会发生<strong>折射</strong>现象。一列水波在深度不同的水域传播时，在交界面处将发生<strong>折射</strong>。</p>
+<p>​
+波可以绕过障碍物继续传播，这种现象叫作波的<strong>衍射</strong>。==实验表明，只有缝、孔的宽度或障碍物的尺寸跟波长相差不多，或者比波长更小时，才能观察到明显的衍射现象。==</p>
+<h4 id="波的独立传播与叠加原理">2. 波的独立传播与叠加原理</h4>
+<p>​
+<strong>波的独立传播原理</strong>指两列波相遇后，每列波仍像相遇前一致，保持各自特征（波长、频率等）继续沿原方向传播。<strong>波的叠加原理</strong>指几列波相遇后在重叠区域内，介质质点同时参与这几列波的振动，质点位移等于这几列波单独传播时引起的位移的矢量和。</p>
+<p>​
+频率相同、相位差恒定、振动方向相同的两列波叠加时，某些区域的振动总是加强，某些区域的振动总是减弱，这种现象叫作波的<strong>干涉</strong>。形成的这种稳定图样叫作干涉图样。==波的叠加是无条件的，波的稳定干涉需要频率相同、相位差恒定、振动方向相同==。</p>
+<blockquote>
+<h3 id="判断某点是振动加强点或振动减弱点">判断某点是振动加强点或振动减弱点</h3>
+<h5 id="条件法">条件法</h5>
+<p>​
+对振动情况完全相同的两个波源，在同一介质中形成的两列波的重叠区内，某点的振动是加强或减弱，取决于两个相干波源到这一点的路程差。</p>
+<ol type="1">
+<li><span class="math inline">$\Delta r=\pm2k\cdot\dfrac{\lambda}{2},
+k\in\N$</span>，即半波长的偶数倍（波长的整数倍）的点振动加强。</li>
+<li><span class="math inline">$\Delta
+r=\pm(2k+1)\cdot\dfrac{\lambda}{2},
+k\in\N$</span>，即半波长的奇数倍（波长的非整数倍）的点振动减弱。</li>
+<li>==若两波源振动步调相反，则结论相反==（振动方向相反）。</li>
+</ol>
+</blockquote>
+<p>​
+发现波源与观察者相互靠近或者相互远离时，接收到的波的频率都会发生变化。人们把这种现象叫作<strong>多普勒效应</strong>。</p>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/School-Notes/" rel="tag"># School Notes</a>
+              <a href="/tags/High-School/" rel="tag"># High School</a>
+              <a href="/tags/Physics/" rel="tag"># Physics</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/04/03/biology/High%20School/b4%20ecology/P4%20%E4%BA%BA%E4%B8%8E%E7%8E%AF%E5%A2%83/" rel="prev" title="人与环境">
+      <i class="fa fa-chevron-left"></i> 人与环境
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/04/10/mathematics/High%20School/Possibility%20and%20Stats/%E6%A6%82%E7%8E%87/" rel="next" title="概率">
+      概率 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%BE%E7%A8%8B%E6%A0%87%E5%87%86"><span class="nav-text">课程标准</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%BE%E7%A8%8B%E6%A0%87%E5%87%86%E5%86%85%E5%AE%B9"><span class="nav-text">课程标准内容</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%BA%E6%A2%B0%E6%8C%AF%E5%8A%A8%E4%B8%8E%E6%9C%BA%E6%A2%B0%E6%B3%A2%E9%80%89%E6%8B%A9%E6%80%A7%E5%BF%85%E4%BF%AE"><span class="nav-text">1.2
+机械振动与机械波（选择性必修）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%99%E5%AD%A6%E6%B4%BB%E5%8A%A8%E8%A6%81%E6%B1%82"><span class="nav-text">教学活动要求</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9F%A5%E8%AF%86%E8%81%9A%E7%84%A6"><span class="nav-text">知识聚焦</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E6%B3%A2%E7%9A%84%E5%BD%A2%E6%88%90%E4%B8%8E%E6%8F%8F%E8%BF%B0"><span class="nav-text">一、波的形成与描述</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B3%A2%E7%9A%84%E5%BD%A2%E6%88%90"><span class="nav-text">1. 波的形成</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B3%A2%E7%9A%84%E6%8F%8F%E8%BF%B0"><span class="nav-text">2. 波的描述</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E6%B3%A2%E7%9A%84%E5%8F%8D%E5%B0%84%E6%8A%98%E5%B0%84%E5%92%8C%E8%A1%8D%E5%B0%84-%E6%B3%A2%E7%9A%84%E5%B9%B2%E6%B6%89-%E5%A4%9A%E6%99%AE%E5%8B%92%E6%95%88%E5%BA%94"><span class="nav-text">二、波的反射、折射和衍射
+波的干涉 多普勒效应</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B3%A2%E7%9A%84%E5%8F%8D%E5%B0%84%E6%8A%98%E5%B0%84%E5%92%8C%E8%A1%8D%E5%B0%84"><span class="nav-text">1. 波的反射、折射和衍射</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B3%A2%E7%9A%84%E7%8B%AC%E7%AB%8B%E4%BC%A0%E6%92%AD%E4%B8%8E%E5%8F%A0%E5%8A%A0%E5%8E%9F%E7%90%86"><span class="nav-text">2. 波的独立传播与叠加原理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A4%E6%96%AD%E6%9F%90%E7%82%B9%E6%98%AF%E6%8C%AF%E5%8A%A8%E5%8A%A0%E5%BC%BA%E7%82%B9%E6%88%96%E6%8C%AF%E5%8A%A8%E5%87%8F%E5%BC%B1%E7%82%B9"><span class="nav-text">判断某点是振动加强点或振动减弱点</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9D%A1%E4%BB%B6%E6%B3%95"><span class="nav-text">条件法</span></a></li></ol></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Hoarfroster"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Hoarfroster</p>
+  <div class="site-description" itemprop="description">这里是霜羽~~咕咕咕</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">193</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">53</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">58</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <ul class="links-of-author motion-element">
+      <li class="links-of-author-item">
+        <a href="https://github.com/PassionPenguin" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;PassionPenguin" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        <span> PassionPenguin</span>
+      </li>
+      <li class="links-of-author-item">
+        <a href="mailto:hoarfroster@outlook.com" title="E-Mail → mailto:hoarfroster@outlook.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+        <span> hoarfroster@outlook.com</span>
+      </li>
+      <li class="links-of-author-item">
+        <a href="https://twitter.com/zhangqizhe" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;zhangqizhe" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+        <span> @zhangqizhe</span>
+      </li>
+      <li class="links-of-author-item">
+        <a href="https://www.instagram.com/glacierpenguin/" title="Instagram → https:&#x2F;&#x2F;www.instagram.com&#x2F;glacierpenguin&#x2F;" rel="noopener" target="_blank"><i class="fab fa-instagram fa-fw"></i>Instagram</a>
+        <span> @glacierpenguin</span>
+      </li>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hoarfroster</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="Symbols count total">1.1m</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">34:12</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT</a>
+  </div>
+
+        
+
+
+
+
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-firestore.js"></script>
+  <script>
+    firebase.initializeApp({
+      apiKey   : 'AIzaSyDqM81uUD8yWHAvsGasJzvWBHhpBYnRttI',
+      projectId: 'hoar-froster'
+    });
+
+    function getCount(doc, increaseCount) {
+      // IncreaseCount will be false when not in article page
+      return doc.get().then(d => {
+        var count = 0;
+        if (!d.exists) { // Has no data, initialize count
+          if (increaseCount) {
+            doc.set({
+              count: 1
+            });
+            count = 1;
+          }
+        } else { // Has data
+          count = d.data().count;
+          if (increaseCount) {
+            // If first view this article
+            doc.set({ // Increase count
+              count: count + 1
+            });
+            count++;
+          }
+        }
+
+        return count;
+      });
+    }
+
+    function appendCountTo(el) {
+      return count => {
+        el.innerText = count;
+      }
+    }
+  </script>
+  <script>
+    (function() {
+      var db = firebase.firestore();
+      var articles = db.collection('articles-info');
+
+      if (CONFIG.page.isPost) { // Is article page
+        var title = document.querySelector('.post-title').innerText.trim();
+        var doc = articles.doc(title);
+        var increaseCount = CONFIG.hostname === location.hostname;
+        if (localStorage.getItem(title)) {
+          increaseCount = false;
+        } else {
+          // Mark as visited
+          localStorage.setItem(title, true);
+        }
+        getCount(doc, increaseCount).then(appendCountTo(document.querySelector('.firestore-visitors-count')));
+      } else if (CONFIG.page.isHome) { // Is index page
+        var promises = [...document.querySelectorAll('.post-title')].map(element => {
+          var title = element.innerText.trim();
+          var doc = articles.doc(title);
+          return getCount(doc);
+        });
+        Promise.all(promises).then(counts => {
+          var metas = document.querySelectorAll('.firestore-visitors-count');
+          counts.forEach((val, idx) => {
+            appendCountTo(metas[idx])(val);
+          });
+        });
+      }
+    })();
+  </script>
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var canonicalURL, curProtocol;
+      //Get the <link> tag
+      var x=document.getElementsByTagName("link");
+		//Find the last canonical URL
+		if(x.length > 0){
+			for (i=0;i<x.length;i++){
+				if(x[i].rel.toLowerCase() == 'canonical' && x[i].href){
+					canonicalURL=x[i].href;
+				}
+			}
+		}
+    //Get protocol
+	    if (!canonicalURL){
+	    	curProtocol = window.location.protocol.split(':')[0];
+	    }
+	    else{
+	    	curProtocol = canonicalURL.split(':')[0];
+	    }
+      //Get current URL if the canonical URL does not exist
+	    if (!canonicalURL) canonicalURL = window.location.href;
+	    //Assign script content. Replace current URL with the canonical URL
+      !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=canonicalURL,t=document.referrer;if(!e.test(r)){var n=(String(curProtocol).toLowerCase() === 'https')?"https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif":"//api.share.baidu.com/s.gif";t?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var i=new Image;i.src=n}}(window);})();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme    : 'default',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/disqusjs@1/dist/disqusjs.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/disqusjs@1/dist/disqus.js', () => {
+    window.dsqjs = new DisqusJS({
+      api       : 'https://disqus.skk.moe/disqus/' || 'https://disqus.com/api/',
+      apikey    : 'Lo65MITAya5vcdTm6cJ8V5qCBNx3PVErvDOsfJ5tUPtEbw3DMS3EIzEx6vrmTzCN',
+      shortname : 'hoarfroster',
+      url       : "https://hoarfroster.github.io/2022/04/09/physics/High%20School/S3%20Waves/%E6%9C%BA%E6%A2%B0%E6%B3%A2/",
+      identifier: "2022/04/09/physics/High School/S3 Waves/机械波/",
+      title     : "机械波",
+    });
+  }, window.DisqusJS);
+});
+</script>
+
+</body>
+</html>

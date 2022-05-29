@@ -16,14 +16,60 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
+
+<link href="/lib/fontawesome/css/all.min.css" rel="stylesheet">
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 <script>
+
   window.onload = function() {
     document.querySelectorAll("p").forEach(e=>{
       e.innerHTML = e.innerHTML.replaceAll(/==(.+?)==/g, "<mark>$1</mark>").replaceAll(/​\s+?/g, "<span class='tab'></span>");
     });
+    
+    [...document.querySelectorAll("pre > code")].forEach(e=> {
+        var codeClass = e.parentElement.classList.value;
+        if (codeClass == null || codeClass === "") {
+            e.classList.add("hljs");
+        } else {
+            var map = {
+                js: "javascript"
+            };
+            if (map[codeClass]) {
+                codeClass = map[codeClass];
+            }
+            codeClass.split(" ").forEach(i=>e.classList.add(i));
+            hljs.highlightElement(e);
+        }
+    });
+
+    [...document.querySelectorAll('.classcial-chinese-literature-and-poetry-translation')].forEach(i=>{
+      let el = document.createElement('div');
+      el.setAttribute('class', 'fa-solid fa-eye');
+      i.prepend(el);
+      el.addEventListener('click', ()=>{
+        let status = el.classList.contains('fa-eye');
+        [...i.querySelectorAll('.translation')].forEach(j=>{
+          j.classList.remove('hide');
+          if(status) {
+            j.classList.add('hide');
+          }
+        });
+        el.attributes['class'].value = el.attributes['class'].value.replace('fa-eye-slash', 'fa-0').replace('fa-eye', 'fa-eye-slash').replace('fa-0', 'fa-eye');
+      });
+
+      [...i.querySelectorAll('.original-text')].forEach(e=>{
+        let el = document.createElement('div');
+        el.setAttribute('class', 'fa-solid fa-eye-slash');
+        e.prepend(el);
+        el.addEventListener('click', ()=>{
+            e.nextSibling.classList.toggle('hide');
+            el.attributes['class'].value = el.attributes['class'].value.replace('fa-eye-slash', 'fa-0').replace('fa-eye', 'fa-eye-slash').replace('fa-0', 'fa-eye');
+        });
+      })
+    });
   }
 </script>
+<script async src="/js/highlight.min.js"></script>
 <script async src="/js/cursor.js"></script>
 <script data-ad-client="ca-pub-2275811890061218" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <script id="hexo-configurations">
@@ -31,13 +77,15 @@
     var CONFIG = {"hostname":"hoarfroster.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqusjs","storage":true,"lazyload":false,"nav":null,"activeClass":"disqusjs"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta property="og:type" content="website">
+  <meta name="description" content="这里是霜羽~~咕咕咕">
+<meta property="og:type" content="website">
 <meta property="og:title" content="Tags">
 <meta property="og:url" content="https://hoarfroster.github.io/tags/index.html">
 <meta property="og:site_name" content="Hoarfroster 的小窝">
+<meta property="og:description" content="这里是霜羽~~咕咕咕">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-02-11T09:22:14.000Z">
-<meta property="article:modified_time" content="2022-02-12T08:28:41.750Z">
+<meta property="article:modified_time" content="2022-02-12T08:28:41.000Z">
 <meta property="article:author" content="Hoarfroster">
 <meta property="article:tag" content="notes, blog">
 <meta name="twitter:card" content="summary">
@@ -87,119 +135,7 @@
   </style>
 </noscript>
 
-<style>mjx-container[jax="SVG"] {
-  direction: ltr;
-}
-
-mjx-container[jax="SVG"] > svg {
-  overflow: visible;
-}
-
-mjx-container[jax="SVG"][display="true"] {
-  display: block;
-  text-align: center;
-  margin: 1em 0;
-}
-
-mjx-container[jax="SVG"][justify="left"] {
-  text-align: left;
-}
-
-mjx-container[jax="SVG"][justify="right"] {
-  text-align: right;
-}
-
-g[data-mml-node="merror"] > g {
-  fill: red;
-  stroke: red;
-}
-
-g[data-mml-node="merror"] > rect[data-background] {
-  fill: yellow;
-  stroke: none;
-}
-
-g[data-mml-node="mtable"] > line[data-line] {
-  stroke-width: 70px;
-  fill: none;
-}
-
-g[data-mml-node="mtable"] > rect[data-frame] {
-  stroke-width: 70px;
-  fill: none;
-}
-
-g[data-mml-node="mtable"] > .mjx-dashed {
-  stroke-dasharray: 140;
-}
-
-g[data-mml-node="mtable"] > .mjx-dotted {
-  stroke-linecap: round;
-  stroke-dasharray: 0,140;
-}
-
-g[data-mml-node="mtable"] > svg {
-  overflow: visible;
-}
-
-[jax="SVG"] mjx-tool {
-  display: inline-block;
-  position: relative;
-  width: 0;
-  height: 0;
-}
-
-[jax="SVG"] mjx-tool > mjx-tip {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-mjx-tool > mjx-tip {
-  display: inline-block;
-  padding: .2em;
-  border: 1px solid #888;
-  font-size: 70%;
-  background-color: #F8F8F8;
-  color: black;
-  box-shadow: 2px 2px 5px #AAAAAA;
-}
-
-g[data-mml-node="maction"][data-toggle] {
-  cursor: pointer;
-}
-
-mjx-status {
-  display: block;
-  position: fixed;
-  left: 1em;
-  bottom: 1em;
-  min-width: 25%;
-  padding: .2em .4em;
-  border: 1px solid #888;
-  font-size: 90%;
-  background-color: #F8F8F8;
-  color: black;
-}
-
-foreignObject[data-mjx-xml] {
-  font-family: initial;
-  line-height: normal;
-  overflow: visible;
-}
-
-.MathJax path {
-  stroke-width: 3;
-}
-
-mjx-container[display="true"] {
-  overflow: auto hidden;
-}
-
-mjx-container[display="true"] + br {
-  display: none;
-}
-</style></head>
+</head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
   <div class="container use-motion">
@@ -246,24 +182,9 @@ mjx-container[display="true"] + br {
     <a href="/about/" rel="section">About</a>
 
   </li>
-        <li class="menu-item menu-item-tags">
-
-    <a href="/tags/" rel="section">Tags</a>
-
-  </li>
         <li class="menu-item menu-item-categories">
 
     <a href="/categories/" rel="section">Categories</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section">Archives</a>
-
-  </li>
-        <li class="menu-item menu-item-sitemap">
-
-    <a href="/sitemap.xml" rel="section">Sitemap</a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -326,13 +247,13 @@ mjx-container[display="true"] + br {
     <div class="post-block" lang="en">
       <header class="post-header">
 
-<h1 class="post-title" itemprop="name headline">Tags
-</h1>
-
 <div class="post-meta">
   
 
 </div>
+
+<h1 class="post-title" itemprop="name headline">Tags
+</h1>
 
 </header>
 
@@ -342,10 +263,10 @@ mjx-container[display="true"] + br {
       <div class="post-body">
           <div class="tag-cloud">
             <div class="tag-cloud-title">
-              3 tags in total
+              58 tags in total
             </div>
             <div class="tag-cloud-tags">
-              <a href="/tags/Chemistry/" style="font-size: 12px; color: #ccc">Chemistry</a> <a href="/tags/High-School/" style="font-size: 12px; color: #ccc">High School</a> <a href="/tags/School-Notes/" style="font-size: 12px; color: #ccc">School Notes</a>
+              <a href="/tags/Android/" style="font-size: 18.35px; color: #8a8a8a">Android</a> <a href="/tags/Apple/" style="font-size: 12px; color: #ccc">Apple</a> <a href="/tags/Backend/" style="font-size: 24.71px; color: #484848">Backend</a> <a href="/tags/Bash/" style="font-size: 13.06px; color: #c1c1c1">Bash</a> <a href="/tags/Biology/" style="font-size: 23.65px; color: #535353">Biology</a> <a href="/tags/Botany/" style="font-size: 13.06px; color: #c1c1c1">Botany</a> <a href="/tags/Browser/" style="font-size: 15.18px; color: #ababab">Browser</a> <a href="/tags/C/" style="font-size: 12px; color: #ccc">C</a> <a href="/tags/CDN/" style="font-size: 12px; color: #ccc">CDN</a> <a href="/tags/CSS/" style="font-size: 21.53px; color: #696969">CSS</a> <a href="/tags/Cell-Culture/" style="font-size: 13.06px; color: #c1c1c1">Cell Culture</a> <a href="/tags/Chemistry/" style="font-size: 20.47px; color: #747474">Chemistry</a> <a href="/tags/Chinese/" style="font-size: 26.82px; color: #323232">Chinese</a> <a href="/tags/Cloud/" style="font-size: 13.06px; color: #c1c1c1">Cloud</a> <a href="/tags/Codecs/" style="font-size: 12px; color: #ccc">Codecs</a> <a href="/tags/Computer-Science/" style="font-size: 27.88px; color: #272727">Computer Science</a> <a href="/tags/Dart/" style="font-size: 17.29px; color: #959595">Dart</a> <a href="/tags/Database/" style="font-size: 12px; color: #ccc">Database</a> <a href="/tags/Deno/" style="font-size: 12px; color: #ccc">Deno</a> <a href="/tags/ECMAScript/" style="font-size: 12px; color: #ccc">ECMAScript</a> <a href="/tags/Flutter/" style="font-size: 17.29px; color: #959595">Flutter</a> <a href="/tags/Frontend/" style="font-size: 25.76px; color: #3d3d3d">Frontend</a> <a href="/tags/Git/" style="font-size: 12px; color: #ccc">Git</a> <a href="/tags/High-School/" style="font-size: 28.94px; color: #1c1c1c">High School</a> <a href="/tags/JPEG/" style="font-size: 12px; color: #ccc">JPEG</a> <a href="/tags/Java/" style="font-size: 14.12px; color: #b6b6b6">Java</a> <a href="/tags/JavaScript/" style="font-size: 22.59px; color: #5e5e5e">JavaScript</a> <a href="/tags/Kotlin/" style="font-size: 19.41px; color: #7f7f7f">Kotlin</a> <a href="/tags/Kotlin-Multiplatform/" style="font-size: 12px; color: #ccc">Kotlin Multiplatform</a> <a href="/tags/Lua/" style="font-size: 12px; color: #ccc">Lua</a> <a href="/tags/Mathematics/" style="font-size: 14.12px; color: #b6b6b6">Mathematics</a> <a href="/tags/Node/" style="font-size: 12px; color: #ccc">Node</a> <a href="/tags/Node-js/" style="font-size: 13.06px; color: #c1c1c1">Node.js</a> <a href="/tags/Pandoc/" style="font-size: 12px; color: #ccc">Pandoc</a> <a href="/tags/Physics/" style="font-size: 19.41px; color: #7f7f7f">Physics</a> <a href="/tags/Professional-Course/" style="font-size: 13.06px; color: #c1c1c1">Professional Course</a> <a href="/tags/Programming-Languages/" style="font-size: 12px; color: #ccc">Programming Languages</a> <a href="/tags/Python/" style="font-size: 13.06px; color: #c1c1c1">Python</a> <a href="/tags/Qt/" style="font-size: 12px; color: #ccc">Qt</a> <a href="/tags/Raspberry/" style="font-size: 12px; color: #ccc">Raspberry</a> <a href="/tags/Raspberry-Pi/" style="font-size: 12px; color: #ccc">Raspberry Pi</a> <a href="/tags/React/" style="font-size: 12px; color: #ccc">React</a> <a href="/tags/Rust/" style="font-size: 13.06px; color: #c1c1c1">Rust</a> <a href="/tags/SCSS/" style="font-size: 12px; color: #ccc">SCSS</a> <a href="/tags/SQLite/" style="font-size: 12px; color: #ccc">SQLite</a> <a href="/tags/School-Notes/" style="font-size: 30px; color: #111">School Notes</a> <a href="/tags/Security/" style="font-size: 12px; color: #ccc">Security</a> <a href="/tags/Source-Control/" style="font-size: 12px; color: #ccc">Source Control</a> <a href="/tags/Svelte/" style="font-size: 12px; color: #ccc">Svelte</a> <a href="/tags/Swift/" style="font-size: 12px; color: #ccc">Swift</a> <a href="/tags/SwiftUI/" style="font-size: 12px; color: #ccc">SwiftUI</a> <a href="/tags/TypeScript/" style="font-size: 14.12px; color: #b6b6b6">TypeScript</a> <a href="/tags/UI/" style="font-size: 23.65px; color: #535353">UI</a> <a href="/tags/UIKit/" style="font-size: 12px; color: #ccc">UIKit</a> <a href="/tags/Webpack/" style="font-size: 12px; color: #ccc">Webpack</a> <a href="/tags/Windows/" style="font-size: 13.06px; color: #c1c1c1">Windows</a> <a href="/tags/iOS/" style="font-size: 14.12px; color: #b6b6b6">iOS</a> <a href="/tags/tc39/" style="font-size: 16.24px; color: #a0a0a0">tc39</a>
             </div>
           </div>
         
@@ -429,22 +350,20 @@ mjx-container[display="true"] + br {
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
-          <span class="site-state-item-count">16</span>
+          <a href="/archives">
+          <span class="site-state-item-count">193</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">53</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-          
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">58</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -498,12 +417,12 @@ mjx-container[display="true"] + br {
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">33k</span>
+    <span title="Symbols count total">1.1m</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">1:01</span>
+    <span title="Reading time total">34:12</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT</a>
   </div>
@@ -653,6 +572,19 @@ mjx-container[display="true"] + br {
 
 
 
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme    : 'default',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
 
 
   

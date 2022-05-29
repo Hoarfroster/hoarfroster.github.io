@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/avatar.png" color="#222">
+  <meta name="google-site-verification" content="iFMbHL1JuWjTlNFq5Rv96vDzpsqakxTpdE2nw7Crr6o">
+  <meta name="msvalidate.01" content="EF6D8CD8A3335E66AB96B4D544FCD96C">
+  <meta name="baidu-site-verification" content="code-80b80Pbzs2">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link href="/lib/fontawesome/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<script>
+
+  window.onload = function() {
+    document.querySelectorAll("p").forEach(e=>{
+      e.innerHTML = e.innerHTML.replaceAll(/==(.+?)==/g, "<mark>$1</mark>").replaceAll(/​\s+?/g, "<span class='tab'></span>");
+    });
+    
+    [...document.querySelectorAll("pre > code")].forEach(e=> {
+        var codeClass = e.parentElement.classList.value;
+        if (codeClass == null || codeClass === "") {
+            e.classList.add("hljs");
+        } else {
+            var map = {
+                js: "javascript"
+            };
+            if (map[codeClass]) {
+                codeClass = map[codeClass];
+            }
+            codeClass.split(" ").forEach(i=>e.classList.add(i));
+            hljs.highlightElement(e);
+        }
+    });
+
+    [...document.querySelectorAll('.classcial-chinese-literature-and-poetry-translation')].forEach(i=>{
+      let el = document.createElement('div');
+      el.setAttribute('class', 'fa-solid fa-eye');
+      i.prepend(el);
+      el.addEventListener('click', ()=>{
+        let status = el.classList.contains('fa-eye');
+        [...i.querySelectorAll('.translation')].forEach(j=>{
+          j.classList.remove('hide');
+          if(status) {
+            j.classList.add('hide');
+          }
+        });
+        el.attributes['class'].value = el.attributes['class'].value.replace('fa-eye-slash', 'fa-0').replace('fa-eye', 'fa-eye-slash').replace('fa-0', 'fa-eye');
+      });
+
+      [...i.querySelectorAll('.original-text')].forEach(e=>{
+        let el = document.createElement('div');
+        el.setAttribute('class', 'fa-solid fa-eye-slash');
+        e.prepend(el);
+        el.addEventListener('click', ()=>{
+            e.nextSibling.classList.toggle('hide');
+            el.attributes['class'].value = el.attributes['class'].value.replace('fa-eye-slash', 'fa-0').replace('fa-eye', 'fa-eye-slash').replace('fa-0', 'fa-eye');
+        });
+      })
+    });
+  }
+</script>
+<script async src="/js/highlight.min.js"></script>
+<script async src="/js/cursor.js"></script>
+<script data-ad-client="ca-pub-2275811890061218" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"hoarfroster.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqusjs","storage":true,"lazyload":false,"nav":null,"activeClass":"disqusjs"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="我最近遇到了一个有趣的问题 —— 我需要实现一个具有可变纵横比（由用户决定）的卡片，且纵横比值定义在了 --ratio 这个自定义属性中。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="对角线分割的圆锥渐变式可变长宽比卡片">
+<meta property="og:url" content="https://hoarfroster.github.io/2021/06/19/computer%20science/frontend/variable-aspect-ratio-card-with-conic-gradients-meeting-along-the-diagonal/index.html">
+<meta property="og:site_name" content="Hoarfroster 的小窝">
+<meta property="og:description" content="我最近遇到了一个有趣的问题 —— 我需要实现一个具有可变纵横比（由用户决定）的卡片，且纵横比值定义在了 --ratio 这个自定义属性中。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i1.wp.com/css-tricks.com/wp-content/uploads/2021/05/var_cards.png?resize=799%2C571&amp;ssl=1">
+<meta property="og:image" content="https://css-tricks.com/wp-content/uploads/2021/04/ang_diag.svg">
+<meta property="og:image" content="https://i2.wp.com/css-tricks.com/wp-content/uploads/2021/04/css_vs_svg_grad.png?resize=999%2C556&amp;ssl=1">
+<meta property="og:image" content="https://i2.wp.com/css-tricks.com/wp-content/uploads/2021/04/flag_enable_firefox.png?resize=999%2C206&amp;ssl=1">
+<meta property="og:image" content="https://i1.wp.com/css-tricks.com/wp-content/uploads/2021/04/issues_scaling_card_hlight_firefox.png?resize=999%2C367&amp;ssl=1">
+<meta property="og:image" content="https://i1.wp.com/css-tricks.com/wp-content/uploads/2021/04/need_for_padding.png?resize=799%2C117&amp;ssl=1">
+<meta property="og:image" content="https://i1.wp.com/css-tricks.com/wp-content/uploads/2021/04/padding_issue.gif?resize=800%2C324&amp;ssl=1">
+<meta property="og:image" content="https://i2.wp.com/css-tricks.com/wp-content/uploads/2021/04/box_sizing_fix_collage.png?resize=799%2C459&amp;ssl=1">
+<meta property="og:image" content="https://i0.wp.com/css-tricks.com/wp-content/uploads/2021/04/place_content_hint.gif?resize=800%2C300&amp;ssl=1">
+<meta property="og:image" content="https://i0.wp.com/css-tricks.com/wp-content/uploads/2021/04/scaling_altering_corner_rad.png?resize=799%2C391&amp;ssl=1">
+<meta property="article:published_time" content="2021-06-19T04:46:00.000Z">
+<meta property="article:modified_time" content="2022-05-28T15:43:08.298Z">
+<meta property="article:author" content="Hoarfroster">
+<meta property="article:tag" content="Computer Science">
+<meta property="article:tag" content="UI">
+<meta property="article:tag" content="Frontend">
+<meta property="article:tag" content="CSS">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i1.wp.com/css-tricks.com/wp-content/uploads/2021/05/var_cards.png?resize=799%2C571&amp;ssl=1">
+
+<link rel="canonical" href="https://hoarfroster.github.io/2021/06/19/computer%20science/frontend/variable-aspect-ratio-card-with-conic-gradients-meeting-along-the-diagonal/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>对角线分割的圆锥渐变式可变长宽比卡片 | Hoarfroster 的小窝</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <!--<div class="headband"></div>-->
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hoarfroster 的小窝</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section">Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section">About</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section">Categories</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger">
+          Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://hoarfroster.github.io/2021/06/19/computer%20science/frontend/variable-aspect-ratio-card-with-conic-gradients-meeting-along-the-diagonal/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Hoarfroster">
+      <meta itemprop="description" content="这里是霜羽~~咕咕咕">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hoarfroster 的小窝">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          对角线分割的圆锥渐变式可变长宽比卡片
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-06-19 12:46:00" itemprop="dateCreated datePublished" datetime="2021-06-19T12:46:00+08:00">2021-06-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-05-28 23:43:08" itemprop="dateModified" datetime="2022-05-28T23:43:08+08:00">2022-05-28</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Computer-Science/" itemprop="url" rel="index"><span itemprop="name">Computer Science</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Computer-Science/Frontend/" itemprop="url" rel="index"><span itemprop="name">Frontend</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Computer-Science/Frontend/Styling/" itemprop="url" rel="index"><span itemprop="name">Styling</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span><br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+              <span>7.3k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+              <span>13 mins.</span>
+            </span>
+            <div class="post-description">我最近遇到了一个有趣的问题 —— 我需要实现一个具有可变纵横比（由用户决定）的卡片，且纵横比值定义在了 --ratio 这个自定义属性中。</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <blockquote>
+<ul>
+<li>原文地址：<a target="_blank" rel="noopener" href="https://css-tricks.com/variable-aspect-ratio-card-with-conic-gradients-meeting-along-the-diagonal/">Variable
+Aspect Ratio Card With Conic Gradients Meeting Along the
+Diagonal</a></li>
+<li>原文作者：<a target="_blank" rel="noopener" href="https://css-tricks.com/author/thebabydino/">Ana
+Tudor</a></li>
+<li>译者：<a target="_blank" rel="noopener" href="https://github.com/PassionPenguin">霜羽
+Hoarfroster</a></li>
+<li>校对者：<a target="_blank" rel="noopener" href="https://github.com/CarlosChenN">CarlosChenN</a>、<a target="_blank" rel="noopener" href="https://github.com/Usualminds">Usualminds</a></li>
+</ul>
+</blockquote>
+<p>我最近遇到了一个有趣的问题 ——
+我需要实现一个具有可变纵横比（由用户决定）的卡片，且纵横比值定义在了
+<code>--ratio</code> 这个自定义属性中。具有特定纵横比的卡片是 CSS
+中的一个经典问题，也是近年来变得容易解决的问题，尤其是有了 <a target="_blank" rel="noopener" href="https://css-tricks.com/almanac/properties/a/aspect-ratio/"><code>aspect-ratio</code></a>
+之后，但这里棘手的部分是我们需要在每张卡片沿对角线交点处分别添加一个圆锥渐变，如图：</p>
+<figure>
+<img src="https://i1.wp.com/css-tricks.com/wp-content/uploads/2021/05/var_cards.png?resize=799%2C571&amp;ssl=1" alt="一个 3 x 3 的正方形卡片网格，带有由圆锥渐变制成的彩色背景。渐变看起来像从卡片的对角延伸的条纹。每张卡片都以精美的字体展示 Hello Gorgeous 的名言。">
+<figcaption aria-hidden="true">一个 3 x 3
+的正方形卡片网格，带有由圆锥渐变制成的彩色背景。渐变看起来像从卡片的对角延伸的条纹。每张卡片都以精美的字体展示
+Hello Gorgeous 的名言。</figcaption>
+</figure>
+<p><small>用户设置的纵横比卡片。</small></p>
+<p>这里的挑战是，用 <code>linear-gradient()</code>
+对沿着可变纵横比框的对角线做唐突的改变，比较容易，例如使用像“向左上角”这样的方向随纵横比变化，但
+<code>conic-gradient()</code>
+需要一个角度或一个百分比来表示它绕了一整圈走了多远的渐变并不好构建。</p>
+<blockquote>
+<p>查看 <a target="_blank" rel="noopener" href="https://css-tricks.com/a-complete-guide-to-css-gradients/#h-conic-gradients">本指南</a>
+以了解圆锥渐变的工作原理。</p>
+</blockquote>
+<h2 id="简单的解决方案">简单的解决方案</h2>
+<p>CSS 规范现在包括了 <a target="_blank" rel="noopener" href="https://drafts.csswg.org/css-values-4/#trig-funcs">三角函数和反三角函数</a>，它<em>可以</em>在这里帮助我们
+—— 对角线与垂直线的角度是纵横比 <code>atan(var(--ratio))</code>
+的反正切（矩形的左边缘和上边缘与对角线形成直角三角形，其中对角线与垂直线形成的角度的切线是宽度超过高度
+—— 正是我们的纵横比）。</p>
+<figure>
+<img src="https://css-tricks.com/wp-content/uploads/2021/04/ang_diag.svg" alt="插图：显示一个宽度为 w 和高度为 h 的矩形，从左下角到右上角绘制一条对角线。这条对角线是直角三角形的斜边，直角三角形的斜边是矩形的左边缘和上边缘。在这个直角三角形中，斜边（原始矩形的对角线）与垂直（原始矩形的左边缘）之间的夹角的切线是左边缘 (h) 上方的上边缘 (w)。">
+<figcaption aria-hidden="true">插图：显示一个宽度为 w 和高度为 h
+的矩形，从左下角到右上角绘制一条对角线。这条对角线是直角三角形的斜边，直角三角形的斜边是矩形的左边缘和上边缘。在这个直角三角形中，斜边（原始矩形的对角线）与垂直（原始矩形的左边缘）之间的夹角的切线是左边缘
+(h) 上方的上边缘 (w)。</figcaption>
+</figure>
+<p><small>对角线与垂直线（边）的夹角。</small></p>
+<p>把它写成代码，我们有：</p>
+<pre class="scss"><code>--ratio: 3/ 2;
+aspect-ratio: var(--ratio);
+--angle: atan(var(--ratio));
+background:
+    /* below the diagonal */
+    conic-gradient(from var(--angle) at 0 100%,
+        #319197, #ff7a18, #af002d  calc(90deg - var(--angle)), transparent 0%),
+    /* above the diagonal */
+    conic-gradient(from calc(.5turn + var(--angle)) at 100% 0,
+        #ff7a18, #af002d, #319197 calc(90deg - var(--angle)));</code></pre>
+<p>然而，目前没有浏览器实现三角函数和反三角函数，所以这个简单的解决方案我们也只能想想，留着未来实现。</p>
+<h2 id="javascript-解决方案">JavaScript 解决方案</h2>
+<p>我们当然可以使用 JavaScript 中的 <code>--ratio</code> 值来计算
+<code>--angle</code>。</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> angle <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">atan</span>(<span class="dv">1</span> <span class="op">/</span> ratio<span class="op">.</span><span class="fu">split</span>(<span class="st">'/'</span>)<span class="op">.</span><span class="fu">map</span>(c <span class="kw">=&gt;</span> <span class="op">+</span>c<span class="op">.</span><span class="fu">trim</span>())<span class="op">.</span><span class="fu">reduce</span>((a<span class="op">,</span> c) <span class="kw">=&gt;</span> c <span class="op">/</span> a<span class="op">,</span> <span class="dv">1</span>))<span class="op">;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">document</span><span class="op">.</span><span class="at">body</span><span class="op">.</span><span class="at">style</span><span class="op">.</span><span class="fu">setProperty</span>(<span class="st">'--angle'</span><span class="op">,</span> <span class="vs">`</span><span class="sc">$&#123;</span><span class="op">+</span>(<span class="dv">180</span> <span class="op">*</span> angle <span class="op">/</span> <span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span>)<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)<span class="sc">&#125;</span><span class="vs">deg`</span>)</span></code></pre></div>
+<p>但是如果使用 JavaScript 不行呢？如果我们真的需要一个纯 CSS
+解决方案怎么办？好吧，这有点麻烦，但我们还是可以做到！</p>
+<h2 id="hacky-css-解决方案">hacky CSS 解决方案</h2>
+<p>这是我从 SVG 渐变的特殊性中得到的一个想法，老实说，当我<a target="_blank" rel="noopener" href="https://css-tricks.com/state-css-reflections/#the-svg-gradient-problem">第一次看到这个问题</a>
+时，我发现它非常令人沮丧.</p>
+<p>假设我们有一个从底部到顶部的 <code>50%</code> 的渐变（因为在 CSS
+中，这是一个角度为 <code>0°</code> 的渐变）。现在假设我们在 SVG
+中有相同的渐变，我们将两个渐变的角度更改为相同的值。</p>
+<p>在 CSS 中，这是：</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>linear-gradient(45deg<span class="op">,</span> var(--stop-list));</span></code></pre></div>
+<p>在 SVG 中，我们有：</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;linearGradient</span> <span class="er">id</span><span class="ot">=</span><span class="st">'g'</span> <span class="er">y1</span><span class="ot">=</span><span class="st">'100%'</span> <span class="er">x2</span><span class="ot">=</span><span class="st">'0%'</span> <span class="er">y2</span><span class="ot">=</span><span class="st">'0%'</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ot">                gradientTransform=</span><span class="st">'rotate(45 .5 .5)'</span><span class="kw">&gt;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">&lt;!-- 渐变停止 --&gt;</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/linearGradient&gt;</span></span></code></pre></div>
+<p>如下所示，这两个不会给我们相同的结果。虽然 CSS 渐变实际上是在
+<code>45°</code>，旋转了相同 <code>45°</code> 的 SVG
+渐变沿着对角线在橙色和红色之间有明显的过渡，即使我们的盒子不是方形的，所以对角线不是在
+<code>45°</code>！</p>
+<figure>
+<img src="https://i2.wp.com/css-tricks.com/wp-content/uploads/2021/04/css_vs_svg_grad.png?resize=999%2C556&amp;ssl=1" alt="屏幕截图：显示 CSS 渐变为 45°（左）的矩形与从下到上 SVG 渐变旋转 45°（右）的矩形。该角度可通过底部的滑块进行调节。CSS 渐变实际上是 45°，但 SVG 渐变的线垂直于矩形的对角线。">
+<figcaption aria-hidden="true">屏幕截图：显示 CSS 渐变为
+45°（左）的矩形与从下到上 SVG 渐变旋转
+45°（右）的矩形。该角度可通过底部的滑块进行调节。CSS 渐变实际上是
+45°，但 SVG 渐变的线垂直于矩形的对角线。</figcaption>
+</figure>
+<p><small><code>45°</code> CSS 与 SVG 渐变（<a target="_blank" rel="noopener" href="https://codepen.io/thebabydino/full/pbVdPx">例子</a>）。</small></p>
+<p>这是因为我们的 SVG 渐变被绘制在一个 <code>1x1</code> 方形框内，旋转了
+<code>45°</code>，这使得沿着方形对角线从橙色突然变为红色。然后这个正方形被拉伸以适应矩形，这基本上改变了对角线的角度。</p>
+<blockquote>
+<p>请注意，只有当我们不会将 <code>linearGradient</code> 的
+<code>gradientUnits</code> 属性从其默认值 <code>objectBoundingBox</code>
+更改为 <code>userSpaceOnUse</code> 时，才会发生 SVG 渐变失真。</p>
+</blockquote>
+<h3 id="基本思路">基本思路</h3>
+<p>我们不能在这里使用
+SVG，因为它只有线性和径向渐变，而没有圆锥渐变。但是，我们可以将 CSS
+圆锥渐变放在一个方形框中，并使用 <code>45°</code>
+角使它们沿对角线相交：</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>aspect-ratio<span class="in">: 1/ 1;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>width<span class="in">: 19em;</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>background<span class="in">: </span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="co">/* 对角线之下 */</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  conic-gradient(from 45deg at 0 100%<span class="op">,</span> </span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>      #319197<span class="op">,</span> <span class="pp">#ff7a18</span><span class="op">,</span> <span class="pp">#af002d</span> 45deg<span class="op">,</span> transparent 0%)<span class="op">,</span> </span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="co">/* 对角线之上 */</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  conic-gradient(from calc(<span class="fu">.5turn</span> <span class="op">+</span> 45deg) at 100% 0<span class="op">,</span> </span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>      <span class="pp">#ff7a18</span><span class="op">,</span> <span class="pp">#af002d</span><span class="op">,</span> #319197 45deg);</span></code></pre></div>
+<p>然后我们可以使用缩放 <code>transform</code> 来拉伸这个方框 —— 诀窍是
+<code>3/2</code> 中的 <code>/</code> 在用作 <code>aspect-ratio</code>
+值时是一个分隔符，但在 <code>calc()</code> 中被解析为除法：</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>--ratio<span class="in">: 3/ 2;</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>transform<span class="in">: scaley(calc(1/(var(--ratio)</span>)));</span></code></pre></div>
+<p>我们可以在下面嵌入的可编辑代码中更改 <code>--ratio</code>
+的值来查看，这样，两个圆锥渐变总是沿对角线相交：<a target="_blank" rel="noopener" href="https://codepen.io/thebabydino/pen/QWdzOVg">CodePen</a></p>
+<blockquote>
+<p>请注意，此演示仅适用于 <a target="_blank" rel="noopener" href="https://caniuse.com/mdn-css_properties_aspect-ratio">支持
+<code>aspect-ratio</code></a> 的浏览器。此属性在 Chrome 88+
+中支持开箱即用，但 Firefox 仍需要在 about:config 中将
+<code>layout.css.aspect-ratio.enabled</code> 标志设置为
+<code>true</code>。如果你使用的是 Safari……好吧，对不起！</p>
+</blockquote>
+<figure>
+<img src="https://i2.wp.com/css-tricks.com/wp-content/uploads/2021/04/flag_enable_firefox.png?resize=999%2C206&amp;ssl=1" alt="显示如何启用 Firefox 标志的屏幕截图。转到 about:config（在地址栏中键入该内容 —— 系统可能会询问您是否确定要在允许进入之前弄乱这些内容）。使用搜索栏查找“aspect” —— 这应该足以显示标志。将其值设置为 true。">
+<figcaption aria-hidden="true">显示如何启用 Firefox 标志的屏幕截图。转到
+about:config（在地址栏中键入该内容 ——
+系统可能会询问您是否确定要在允许进入之前弄乱这些内容）。使用搜索栏查找“aspect”
+—— 这应该足以显示标志。将其值设置为 true。</figcaption>
+</figure>
+<p><small>在 Firefox 中启用标志。</small></p>
+<h3 id="这种方法的问题以及如何解决这些问题">这种方法的问题以及如何解决这些问题</h3>
+<p>不过，缩放实际的 <code>.card</code>
+元素很少是一个好主意。对于我的用例，卡片位于网格上并且在它们上设置方向比例会弄乱布局（网格单元仍然是方形的，即使我们已经缩放了其中的
+<code>.card</code> 元素）。它们也有被 <code>scaley()</code>
+函数奇怪地拉伸的文本内容。</p>
+<figure>
+<img src="https://i1.wp.com/css-tricks.com/wp-content/uploads/2021/04/issues_scaling_card_hlight_firefox.png?resize=999%2C367&amp;ssl=1" alt="屏幕截图：显示卡片元素如何垂直缩小，但它们占据的网格单元仍然保持方形，就像定向缩放之前的卡片一样。">
+<figcaption aria-hidden="true">屏幕截图：显示卡片元素如何垂直缩小，但它们占据的网格单元仍然保持方形，就像定向缩放之前的卡片一样。</figcaption>
+</figure>
+<p><small>缩放实际卡片的问题（<a target="_blank" rel="noopener" href="https://codepen.io/thebabydino/pen/BapvOvr">例子</a>）</small></p>
+<p>解决方案是为实际卡片提供所需的
+<code>aspect-ratio</code>，并使用绝对定位的 <code>::before</code>
+放置在文本内容后面（<code>z-index: -1</code>）以创建我们的
+<code>background</code>。这个伪元素获得它的 <code>.card</code> 父元素的
+<code>width</code>
+并且最初是正方形的。我们还设置了之前的方向缩放和圆锥梯度。请注意，由于我们绝对定位的
+<code>::before</code> 与它的 <code>.card</code>
+父级的上边缘顶部对齐，我们也应该相对于这条边缘缩放它（<code>transform-origin</code>
+需要有一个值沿 y 轴为 <code>0</code>，而 x
+轴值无关紧要，可以是任何值）。</p>
+<pre class="scss"><code>body &#123;
+    --ratio: 3/ 2;
+    /* 其他装饰用的布局样式 */
+&#125;
+
+.card &#123;
+    position: relative;
+    aspect-ratio: var(--ratio);
+
+    &amp;::before &#123;
+        position: absolute;
+        z-index: -1; /* 移到文字下方 */
+
+        aspect-ratio: 1/ 1; /* 让卡片成为正方形 */
+        width: 100%;
+
+        /* 让它缩放到它所对其的顶部边缘 */
+        transform-origin: 0 0;
+        /* 使用 Transform 给他指定的缩放比 */
+        transform: scaley(calc(1 / (var(--ratio))));
+        /* 设置背景 */
+        background: /* 对角线之下 */
+                conic-gradient(from 45deg at 0 100%,
+                        #319197, #af002d, #ff7a18 45deg, transparent 0%),
+                    /* 对角线之上 */
+                conic-gradient(from calc(.5turn + 45deg) at 100% 0,
+                        #ff7a18, #af002d, #319197 45deg);
+        content: '';
+    &#125;
+&#125;</code></pre>
+<blockquote>
+<p>请注意，在此示例中，我们已将样式从原生 CSS 修改为使用 SCSS。</p>
+</blockquote>
+<p>这要好得多，因为它可以在下面的嵌入中看到，它也是可编辑的，因此我们可以修改
+<code>--ratio</code> 并查看当我们更改其值时一切将如何完美地适应。</p>
+<p><a target="_blank" rel="noopener" href="https://codepen.io/thebabydino/pen/MWJZPLe">CodePen</a>
+供代码参考与效果预览。</p>
+<h3 id="内边距问题">内边距问题</h3>
+<p>由于我们没有在卡片上设置
+<code>padding</code>，文本可能会一直延伸到边缘，甚至稍微超出边界，因为它有点倾斜。</p>
+<figure>
+<img src="https://i1.wp.com/css-tricks.com/wp-content/uploads/2021/04/need_for_padding.png?resize=799%2C117&amp;ssl=1" alt="屏幕截图：显示了这样一种情况，其中文本一直延伸到卡片的边缘，甚至出现了一点点，从而产生了丑陋的结果。">
+<figcaption aria-hidden="true">屏幕截图：显示了这样一种情况，其中文本一直延伸到卡片的边缘，甚至出现了一点点，从而产生了丑陋的结果。</figcaption>
+</figure>
+<p><small>缺少 <code>padding</code> 会导致问题。</small></p>
+<p>这应该不会太难修复，对吧？我们只是添加了一个
+<code>padding</code>，对吧？好吧，当我们这样做时，我们发现布局失效了！</p>
+<figure>
+<img src="https://i1.wp.com/css-tricks.com/wp-content/uploads/2021/04/padding_issue.gif?resize=800%2C324&amp;ssl=1" alt="GIF：显示开发工具网格覆盖突出显示，虽然背景（使用缩放的伪创建）仍然具有所需的纵横比，但网格单元和其中的实际卡片更高。">
+<figcaption aria-hidden="true">GIF：显示开发工具网格覆盖突出显示，虽然背景（使用缩放的伪创建）仍然具有所需的纵横比，但网格单元和其中的实际卡片更高。</figcaption>
+</figure>
+<p><small>添加 <code>padding</code> 会破坏布局。（<a target="_blank" rel="noopener" href="https://codepen.io/thebabydino/pen/MWJZxdV">例子</a>）</small></p>
+<p>这是因为我们在 <code>.card</code> 元素上设置的
+<code>aspect-ratio</code> 是由 <code>box-sizing</code> 指定的
+<code>.card</code> 框的纵横比。由于我们没有明确设置任何
+<code>box-sizing</code> 值，它的当前值是默认值也就是
+<code>content-box</code>。在这个框周围添加一个相同值的
+<code>padding</code> 会给我们一个不同纵横比的
+<code>padding-box</code>，让它不再与其它的元素的 <code>::before</code>
+重合。</p>
+<p>为了更好地理解这一点，假设我们的 <code>aspect-ratio</code> 为
+<code>4/1</code>，<code>content-box</code> 的宽度为
+<code>16rem</code>（<code>256px</code>）。这意味着
+<code>content-box</code> 的高度是这个宽度的四分之一，计算得出结果是
+<code>4rem</code> (<code>64px</code>)。所以 <code>content-box</code>
+是一个 <code>16rem×4rem</code>（<code>256px×64px</code>）大的矩形。</p>
+<p>现在假设我们沿着每条边添加一个
+<code>1rem</code>（<code>16px</code>）的
+<code>padding</code>。现在，<code>padding-box</code> 的宽度为
+<code>18rem</code>（<code>288px</code>，如上面的动画 GIF 所示）——
+计算得出 <code>content-box</code> 的宽度为
+<code>16rem</code>（<code>256px</code>) ，再加上左侧的 <code>1rem</code>
+(<code>16px</code>) 和来自 <code>padding</code> 的右侧的
+<code>1rem</code>。类似地，<code>padding-box</code> 的高度为
+<code>6rem</code>（<code>96px</code>）—— 计算得出
+<code>content-box</code> 的高度，即
+<code>4rem</code>（<code>64px</code>），再加上顶部的
+<code>1rem</code>（<code>16px</code>）和底部的 <code>1rem</code>
+<code>padding</code>。</p>
+<p>这意味着 <code>padding-box</code> 是一个
+<code>18rem×6rem</code>（<code>288px×96px</code>）的矩形，并且由于
+<code>18 = 3⋅6</code>，它的纵横比为 <code>3/1</code>，与我们为
+<code>aspect-ratio</code> 属性设置的 <code>4/1</code>
+值不一样！同时，<code>::before</code> 伪元素的宽度等于其父元素
+<code>padding-box</code> 的宽度（我们计算为 <code>18rem</code> 或
+<code>288px</code>），而且它的纵横比（通过缩放设置的）仍然是
+<code>4/1</code>，所以它的视觉高度计算可得是
+<code>4.5rem</code>（<code>72px</code>）。这就解释了为什么用这个伪元素创建的
+<code>background</code> —— 垂直缩小到一个
+<code>18rem×4.5rem</code>（<code>288px×72px</code>）的矩形 ——
+现在却比实际的卡片 —— 一个带有 <code>padding</code> 的
+<code>18rem×6rem</code>（<code>288px× 96px</code>) 矩形 —— 要小。</p>
+<p>因此，看起来解决方案非常简单 —— 我们只需要将 <code>box-sizing</code>
+设置为 <code>border-box</code>
+就可以解决我们的问题，因为这会在这个盒子上应用
+<code>aspect-ratio</code>（与 <code>padding-box</code> 当我们没有
+<code>border</code> 时一致）。</p>
+<p>果然，这可以解决问题……但仅限于 Firefox！</p>
+<figure>
+<img src="https://i2.wp.com/css-tricks.com/wp-content/uploads/2021/04/box_sizing_fix_collage.png?resize=799%2C459&amp;ssl=1" alt="屏幕截图：显示文本如何在 Chromium 浏览器（上图）中不居中对齐，而 Firefox（下图）则正确。">
+<figcaption aria-hidden="true">屏幕截图：显示文本如何在 Chromium
+浏览器（上图）中不居中对齐，而 Firefox（下图）则正确。</figcaption>
+</figure>
+<p><small>显示 Chromium（上图）和
+Firefox（下图）之间的区别。</small></p>
+<p>文本应该垂直居中对齐，因为我们给了 <code>.card</code>
+元素一个网格布局，并在它们上设置了
+<code>place-content: center</code>。然而，这不会发生在 Chromium
+浏览器中。当我们删除最后一个声明时，这变得更加明显 ——
+不知何故，卡片网格中的单元格也获得了 <code>3/1</code>
+的纵横比，并溢出了卡片的 <code>content-box</code>：</p>
+<figure>
+<img src="https://i0.wp.com/css-tricks.com/wp-content/uploads/2021/04/place_content_hint.gif?resize=800%2C300&amp;ssl=1" alt="GIF：由于某种原因，卡片内的网格单元获得设置的纵横比并溢出卡片的内容框。">
+<figcaption aria-hidden="true">GIF：由于某种原因，卡片内的网格单元获得设置的纵横比并溢出卡片的内容框。</figcaption>
+</figure>
+<p><small>使用 <code>place-content: center</code>
+与否来检查卡片的网格。（<a target="_blank" rel="noopener" href="https://codepen.io/thebabydino/pen/vYgvwBJ">例子</a>）</small></p>
+<p>幸运的是，这是一个 <a target="_blank" rel="noopener" href="https://bugs.chromium.org/p/chromium/issues/detail?id=1166875">已知的
+Chromium 错误</a>，并且<a target="_blank" rel="noopener" href="https://twitter.com/bfgeek/status/1385704283643932672">应该可以在未来几个月内得到修复</a>。</p>
+<p>与此同时，我们可以做的就是从 <code>.card</code> 元素中移除
+<code>box-sizing</code>、<code>padding</code> 和
+<code>place-content</code> 声明，移动子元素（或用 <code>::after</code>
+伪元素 ——
+我指的是，如果只需要一行代码，不过我们很懒惰。当然如果我们希望文本保持可以被选择，则实际的子元素应该是更好的主意）并使其成为带有
+<code>padding</code> 的 <code>grid</code>。</p>
+<pre class="scss"><code>.card &#123;
+    /* 和以前一致，
+       减去 box-sizing、place-content 和内边距定义
+       最后两个我们移动的子元素 */
+
+    &amp;__content &#123;
+        place-content: center;
+        padding: 1em
+    &#125;
+&#125;</code></pre>
+<p><a target="_blank" rel="noopener" href="https://codepen.io/thebabydino/pen/gOgqewy">CodePen</a>
+供代码参考与效果预览。</p>
+<h3 id="添加圆角">添加圆角</h3>
+<p>假设我们也希望我们的卡片有圆角。由于像 <code>::before</code>
+伪元素上我们用 <code>scaley</code> 这样的定向的 <code>transform</code>
+创建的 <code>background</code>
+<em>也会扭曲圆角</em>，因此实现这一点的最简单方法是设置一个
+<code>border- radius</code> 在实际的 <code>.card</code> 元素上，并使用
+<code>overflow: hidden</code> 切掉卡片之外的所有内容。</p>
+<figure>
+<img src="https://i0.wp.com/css-tricks.com/wp-content/uploads/2021/04/scaling_altering_corner_rad.png?resize=799%2C391&amp;ssl=1" alt="屏幕截图：左图是一个有一个完美的圆形边界半径没有缩放的元素。右图有一个不均匀缩放的元素 —— 它的边界半径不再是完美的圆形，而是被缩放扭曲了。">
+<figcaption aria-hidden="true">屏幕截图：左图是一个有一个完美的圆形边界半径没有缩放的元素。右图有一个不均匀缩放的元素
+—— 它的边界半径不再是完美的圆形，而是被缩放扭曲了。</figcaption>
+</figure>
+<p><small>非均匀缩放会扭曲圆角。（<a target="_blank" rel="noopener" href="https://codepen.io/thebabydino/pen/VJQMmJ">例子</a>）</small></p>
+<p>但是，如果在某些时候我们希望我们的 <code>.card</code>
+的其他子代在它之外可见，这就会成为问题。所以，我们要做的是直接在创建卡片背景的
+<code>::before</code> 伪元素上设置 <code>border-radius</code>，并在这个
+<code>border-radius</code> 上沿 y 轴反转方向缩放
+<code>transform</code>：</p>
+<pre class="scss"><code>$r: .5rem;
+
+.card &#123;
+    /* 和之前一致 */
+
+    &amp;::before &#123;
+        border-radius: #&#123;$r&#125;/ calc(#&#123;$r&#125;*var(--ratio));
+        transform: scaley(calc(1 / (var(--ratio))));
+        /* 和之前一致 */
+    &#125;
+&#125;</code></pre>
+<p><a target="_blank" rel="noopener" href="https://codepen.io/thebabydino/pen/RwKdKMv">CodePen</a>
+供代码参考与效果预览。</p>
+<h2 id="最终效果">最终效果</h2>
+<p>把上面的代码合并起来，这是一个交互式演示，允许通过拖动滑块来更改纵横比
+—— 每次滑块值更改时，<code>--ratio</code> 变量都会更新：<a target="_blank" rel="noopener" href="https://codepen.io/thebabydino/pen/XWpyowX">CodePen</a>。</p>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Computer-Science/" rel="tag"># Computer Science</a>
+              <a href="/tags/UI/" rel="tag"># UI</a>
+              <a href="/tags/Frontend/" rel="tag"># Frontend</a>
+              <a href="/tags/CSS/" rel="tag"># CSS</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/06/15/computer%20science/backend/three-framework-problem-with-kotlin-multiplatform-mobile/" rel="prev" title="Kotlin Multiplatform Mobile 的三模块问题">
+      <i class="fa fa-chevron-left"></i> Kotlin Multiplatform Mobile 的三模块问题
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/07/06/computer%20science/frontend/next-gen-css-container/" rel="next" title="下一代 CSS：@container">
+      下一代 CSS：@container <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="nav-text">简单的解决方案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#javascript-%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="nav-text">JavaScript 解决方案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hacky-css-%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="nav-text">hacky CSS 解决方案</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%80%9D%E8%B7%AF"><span class="nav-text">基本思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%99%E7%A7%8D%E6%96%B9%E6%B3%95%E7%9A%84%E9%97%AE%E9%A2%98%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E8%BF%99%E4%BA%9B%E9%97%AE%E9%A2%98"><span class="nav-text">这种方法的问题以及如何解决这些问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%85%E8%BE%B9%E8%B7%9D%E9%97%AE%E9%A2%98"><span class="nav-text">内边距问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E5%9C%86%E8%A7%92"><span class="nav-text">添加圆角</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%80%E7%BB%88%E6%95%88%E6%9E%9C"><span class="nav-text">最终效果</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Hoarfroster"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Hoarfroster</p>
+  <div class="site-description" itemprop="description">这里是霜羽~~咕咕咕</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">193</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">53</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">58</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <ul class="links-of-author motion-element">
+      <li class="links-of-author-item">
+        <a href="https://github.com/PassionPenguin" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;PassionPenguin" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        <span> PassionPenguin</span>
+      </li>
+      <li class="links-of-author-item">
+        <a href="mailto:hoarfroster@outlook.com" title="E-Mail → mailto:hoarfroster@outlook.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+        <span> hoarfroster@outlook.com</span>
+      </li>
+      <li class="links-of-author-item">
+        <a href="https://twitter.com/zhangqizhe" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;zhangqizhe" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+        <span> @zhangqizhe</span>
+      </li>
+      <li class="links-of-author-item">
+        <a href="https://www.instagram.com/glacierpenguin/" title="Instagram → https:&#x2F;&#x2F;www.instagram.com&#x2F;glacierpenguin&#x2F;" rel="noopener" target="_blank"><i class="fab fa-instagram fa-fw"></i>Instagram</a>
+        <span> @glacierpenguin</span>
+      </li>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hoarfroster</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="Symbols count total">1.1m</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">34:12</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT</a>
+  </div>
+
+        
+
+
+
+
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-firestore.js"></script>
+  <script>
+    firebase.initializeApp({
+      apiKey   : 'AIzaSyDqM81uUD8yWHAvsGasJzvWBHhpBYnRttI',
+      projectId: 'hoar-froster'
+    });
+
+    function getCount(doc, increaseCount) {
+      // IncreaseCount will be false when not in article page
+      return doc.get().then(d => {
+        var count = 0;
+        if (!d.exists) { // Has no data, initialize count
+          if (increaseCount) {
+            doc.set({
+              count: 1
+            });
+            count = 1;
+          }
+        } else { // Has data
+          count = d.data().count;
+          if (increaseCount) {
+            // If first view this article
+            doc.set({ // Increase count
+              count: count + 1
+            });
+            count++;
+          }
+        }
+
+        return count;
+      });
+    }
+
+    function appendCountTo(el) {
+      return count => {
+        el.innerText = count;
+      }
+    }
+  </script>
+  <script>
+    (function() {
+      var db = firebase.firestore();
+      var articles = db.collection('articles-info');
+
+      if (CONFIG.page.isPost) { // Is article page
+        var title = document.querySelector('.post-title').innerText.trim();
+        var doc = articles.doc(title);
+        var increaseCount = CONFIG.hostname === location.hostname;
+        if (localStorage.getItem(title)) {
+          increaseCount = false;
+        } else {
+          // Mark as visited
+          localStorage.setItem(title, true);
+        }
+        getCount(doc, increaseCount).then(appendCountTo(document.querySelector('.firestore-visitors-count')));
+      } else if (CONFIG.page.isHome) { // Is index page
+        var promises = [...document.querySelectorAll('.post-title')].map(element => {
+          var title = element.innerText.trim();
+          var doc = articles.doc(title);
+          return getCount(doc);
+        });
+        Promise.all(promises).then(counts => {
+          var metas = document.querySelectorAll('.firestore-visitors-count');
+          counts.forEach((val, idx) => {
+            appendCountTo(metas[idx])(val);
+          });
+        });
+      }
+    })();
+  </script>
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var canonicalURL, curProtocol;
+      //Get the <link> tag
+      var x=document.getElementsByTagName("link");
+		//Find the last canonical URL
+		if(x.length > 0){
+			for (i=0;i<x.length;i++){
+				if(x[i].rel.toLowerCase() == 'canonical' && x[i].href){
+					canonicalURL=x[i].href;
+				}
+			}
+		}
+    //Get protocol
+	    if (!canonicalURL){
+	    	curProtocol = window.location.protocol.split(':')[0];
+	    }
+	    else{
+	    	curProtocol = canonicalURL.split(':')[0];
+	    }
+      //Get current URL if the canonical URL does not exist
+	    if (!canonicalURL) canonicalURL = window.location.href;
+	    //Assign script content. Replace current URL with the canonical URL
+      !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=canonicalURL,t=document.referrer;if(!e.test(r)){var n=(String(curProtocol).toLowerCase() === 'https')?"https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif":"//api.share.baidu.com/s.gif";t?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var i=new Image;i.src=n}}(window);})();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme    : 'default',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/disqusjs@1/dist/disqusjs.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/disqusjs@1/dist/disqus.js', () => {
+    window.dsqjs = new DisqusJS({
+      api       : 'https://disqus.skk.moe/disqus/' || 'https://disqus.com/api/',
+      apikey    : 'Lo65MITAya5vcdTm6cJ8V5qCBNx3PVErvDOsfJ5tUPtEbw3DMS3EIzEx6vrmTzCN',
+      shortname : 'hoarfroster',
+      url       : "https://hoarfroster.github.io/2021/06/19/computer%20science/frontend/variable-aspect-ratio-card-with-conic-gradients-meeting-along-the-diagonal/",
+      identifier: "2021/06/19/computer science/frontend/variable-aspect-ratio-card-with-conic-gradients-meeting-along-the-diagonal/",
+      title     : "对角线分割的圆锥渐变式可变长宽比卡片",
+    });
+  }, window.DisqusJS);
+});
+</script>
+
+</body>
+</html>

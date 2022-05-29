@@ -1,0 +1,3263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/avatar.png" color="#222">
+  <meta name="google-site-verification" content="iFMbHL1JuWjTlNFq5Rv96vDzpsqakxTpdE2nw7Crr6o">
+  <meta name="msvalidate.01" content="EF6D8CD8A3335E66AB96B4D544FCD96C">
+  <meta name="baidu-site-verification" content="code-80b80Pbzs2">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link href="/lib/fontawesome/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<script>
+
+  window.onload = function() {
+    document.querySelectorAll("p").forEach(e=>{
+      e.innerHTML = e.innerHTML.replaceAll(/==(.+?)==/g, "<mark>$1</mark>").replaceAll(/​\s+?/g, "<span class='tab'></span>");
+    });
+    
+    [...document.querySelectorAll("pre > code")].forEach(e=> {
+        var codeClass = e.parentElement.classList.value;
+        if (codeClass == null || codeClass === "") {
+            e.classList.add("hljs");
+        } else {
+            var map = {
+                js: "javascript"
+            };
+            if (map[codeClass]) {
+                codeClass = map[codeClass];
+            }
+            codeClass.split(" ").forEach(i=>e.classList.add(i));
+            hljs.highlightElement(e);
+        }
+    });
+
+    [...document.querySelectorAll('.classcial-chinese-literature-and-poetry-translation')].forEach(i=>{
+      let el = document.createElement('div');
+      el.setAttribute('class', 'fa-solid fa-eye');
+      i.prepend(el);
+      el.addEventListener('click', ()=>{
+        let status = el.classList.contains('fa-eye');
+        [...i.querySelectorAll('.translation')].forEach(j=>{
+          j.classList.remove('hide');
+          if(status) {
+            j.classList.add('hide');
+          }
+        });
+        el.attributes['class'].value = el.attributes['class'].value.replace('fa-eye-slash', 'fa-0').replace('fa-eye', 'fa-eye-slash').replace('fa-0', 'fa-eye');
+      });
+
+      [...i.querySelectorAll('.original-text')].forEach(e=>{
+        let el = document.createElement('div');
+        el.setAttribute('class', 'fa-solid fa-eye-slash');
+        e.prepend(el);
+        el.addEventListener('click', ()=>{
+            e.nextSibling.classList.toggle('hide');
+            el.attributes['class'].value = el.attributes['class'].value.replace('fa-eye-slash', 'fa-0').replace('fa-eye', 'fa-eye-slash').replace('fa-0', 'fa-eye');
+        });
+      })
+    });
+  }
+</script>
+<script async src="/js/highlight.min.js"></script>
+<script async src="/js/cursor.js"></script>
+<script data-ad-client="ca-pub-2275811890061218" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"hoarfroster.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqusjs","storage":true,"lazyload":false,"nav":null,"activeClass":"disqusjs"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="这里是霜羽~~咕咕咕">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Hoarfroster 的小窝">
+<meta property="og:url" content="https://hoarfroster.github.io/page/20/index.html">
+<meta property="og:site_name" content="Hoarfroster 的小窝">
+<meta property="og:description" content="这里是霜羽~~咕咕咕">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="Hoarfroster">
+<meta property="article:tag" content="notes, blog">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://hoarfroster.github.io/page/20/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'en'
+  };
+</script>
+
+  <title>Hoarfroster 的小窝</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <!--<div class="headband"></div>-->
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hoarfroster 的小窝</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section">Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section">About</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section">Categories</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger">
+          Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content index posts-expand">
+            
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://hoarfroster.github.io/2022/02/07/chemistry/BK%209%20%E6%9C%89%E6%9C%BA%E7%BB%93%E6%9E%84/P1%20%E6%9C%89%E6%9C%BA%E7%BB%93%E6%9E%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Hoarfroster">
+      <meta itemprop="description" content="这里是霜羽~~咕咕咕">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hoarfroster 的小窝">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/02/07/chemistry/BK%209%20%E6%9C%89%E6%9C%BA%E7%BB%93%E6%9E%84/P1%20%E6%9C%89%E6%9C%BA%E7%BB%93%E6%9E%84/" class="post-title-link" itemprop="url">有机结构</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-02-07 01:40:04" itemprop="dateCreated datePublished" datetime="2022-02-07T01:40:04+08:00">2022-02-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-05-28 23:43:08" itemprop="dateModified" datetime="2022-05-28T23:43:08+08:00">2022-05-28</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/High-School/" itemprop="url" rel="index"><span itemprop="name">High School</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/High-School/Chemistry/" itemprop="url" rel="index"><span itemprop="name">Chemistry</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span><br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+              <span>33k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+              <span>1:01</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=latex)
+ restricted \write18 enabled.
+entering extended mode
+(./input.tex
+LaTeX2e &lt;2021-11-15&gt; patch level 1
+L3 programming layer &lt;2022-02-24&gt;
+(c:/texlive/2022/texmf-dist/tex/latex/standalone/standalone.cls
+Document Class: standalone 2018/03/26 v1.3a Class to compile TeX sub-files stan
+dalone
+(c:/texlive/2022/texmf-dist/tex/latex/tools/shellesc.sty)
+(c:/texlive/2022/texmf-dist/tex/generic/iftex/ifluatex.sty
+(c:/texlive/2022/texmf-dist/tex/generic/iftex/iftex.sty))
+(c:/texlive/2022/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+(c:/texlive/2022/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+(c:/texlive/2022/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+(c:/texlive/2022/texmf-dist/tex/generic/xkeyval/keyval.tex))))
+(c:/texlive/2022/texmf-dist/tex/latex/standalone/standalone.cfg)
+(c:/texlive/2022/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2021/10/04 v1.4n Standard LaTeX document class
+(c:/texlive/2022/texmf-dist/tex/latex/base/size12.clo))
+(c:/texlive/2022/texmf-dist/tex/latex/preview/preview.sty
+(c:/texlive/2022/texmf-dist/tex/latex/preview/prtightpage.def)))
+(c:/texlive/2022/texmf-dist/tex/latex/base/inputenc.sty
+
+! LaTeX Error: File `utf8x.def' not found.
+
+Type X to quit or <return> to proceed,
+or enter new name. (Default extension: def)
+
+Enter file name: 
+! Emergency stop.
+<read *=""> 
+         
+l.165 \endinput
+               ^^M
+No pages of output.
+Transcript written on input.log.
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=latex)
+ restricted \write18 enabled.
+entering extended mode
+(./input.tex
+LaTeX2e &lt;2021-11-15&gt; patch level 1
+L3 programming layer &lt;2022-02-24&gt;
+(c:/texlive/2022/texmf-dist/tex/latex/standalone/standalone.cls
+Document Class: standalone 2018/03/26 v1.3a Class to compile TeX sub-files stan
+dalone
+(c:/texlive/2022/texmf-dist/tex/latex/tools/shellesc.sty)
+(c:/texlive/2022/texmf-dist/tex/generic/iftex/ifluatex.sty
+(c:/texlive/2022/texmf-dist/tex/generic/iftex/iftex.sty))
+(c:/texlive/2022/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+(c:/texlive/2022/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+(c:/texlive/2022/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+(c:/texlive/2022/texmf-dist/tex/generic/xkeyval/keyval.tex))))
+(c:/texlive/2022/texmf-dist/tex/latex/standalone/standalone.cfg)
+(c:/texlive/2022/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2021/10/04 v1.4n Standard LaTeX document class
+(c:/texlive/2022/texmf-dist/tex/latex/base/size12.clo))
+(c:/texlive/2022/texmf-dist/tex/latex/preview/preview.sty
+(c:/texlive/2022/texmf-dist/tex/latex/preview/prtightpage.def)))
+(c:/texlive/2022/texmf-dist/tex/latex/base/inputenc.sty
+
+! LaTeX Error: File `utf8x.def' not found.
+
+Type X to quit or <return> to proceed,
+or enter new name. (Default extension: def)
+
+Enter file name: 
+! Emergency stop.
+<read *=""> 
+         
+l.165 \endinput
+               ^^M
+No pages of output.
+Transcript written on input.log.
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=latex)
+ restricted \write18 enabled.
+entering extended mode
+(./input.tex
+LaTeX2e &lt;2021-11-15&gt; patch level 1
+L3 programming layer &lt;2022-02-24&gt;
+(c:/texlive/2022/texmf-dist/tex/latex/standalone/standalone.cls
+Document Class: standalone 2018/03/26 v1.3a Class to compile TeX sub-files stan
+dalone
+(c:/texlive/2022/texmf-dist/tex/latex/tools/shellesc.sty)
+(c:/texlive/2022/texmf-dist/tex/generic/iftex/ifluatex.sty
+(c:/texlive/2022/texmf-dist/tex/generic/iftex/iftex.sty))
+(c:/texlive/2022/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+(c:/texlive/2022/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+(c:/texlive/2022/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+(c:/texlive/2022/texmf-dist/tex/generic/xkeyval/keyval.tex))))
+(c:/texlive/2022/texmf-dist/tex/latex/standalone/standalone.cfg)
+(c:/texlive/2022/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2021/10/04 v1.4n Standard LaTeX document class
+(c:/texlive/2022/texmf-dist/tex/latex/base/size12.clo))
+(c:/texlive/2022/texmf-dist/tex/latex/preview/preview.sty
+(c:/texlive/2022/texmf-dist/tex/latex/preview/prtightpage.def)))
+(c:/texlive/2022/texmf-dist/tex/latex/base/inputenc.sty
+
+! LaTeX Error: File `utf8x.def' not found.
+
+Type X to quit or <return> to proceed,
+or enter new name. (Default extension: def)
+
+Enter file name: 
+! Emergency stop.
+<read *=""> 
+         
+l.165 \endinput
+               ^^M
+No pages of output.
+Transcript written on input.log.
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=latex)
+ restricted \write18 enabled.
+entering extended mode
+(./input.tex
+LaTeX2e &lt;2021-11-15&gt; patch level 1
+L3 programming layer &lt;2022-02-24&gt;
+(c:/texlive/2022/texmf-dist/tex/latex/standalone/standalone.cls
+Document Class: standalone 2018/03/26 v1.3a Class to compile TeX sub-files stan
+dalone
+(c:/texlive/2022/texmf-dist/tex/latex/tools/shellesc.sty)
+(c:/texlive/2022/texmf-dist/tex/generic/iftex/ifluatex.sty
+(c:/texlive/2022/texmf-dist/tex/generic/iftex/iftex.sty))
+(c:/texlive/2022/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+(c:/texlive/2022/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+(c:/texlive/2022/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+(c:/texlive/2022/texmf-dist/tex/generic/xkeyval/keyval.tex))))
+(c:/texlive/2022/texmf-dist/tex/latex/standalone/standalone.cfg)
+(c:/texlive/2022/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2021/10/04 v1.4n Standard LaTeX document class
+(c:/texlive/2022/texmf-dist/tex/latex/base/size12.clo))
+(c:/texlive/2022/texmf-dist/tex/latex/preview/preview.sty
+(c:/texlive/2022/texmf-dist/tex/latex/preview/prtightpage.def)))
+(c:/texlive/2022/texmf-dist/tex/latex/base/inputenc.sty
+
+! LaTeX Error: File `utf8x.def' not found.
+
+Type X to quit or <return> to proceed,
+or enter new name. (Default extension: def)
+
+Enter file name: 
+! Emergency stop.
+<read *=""> 
+         
+l.165 \endinput
+               ^^M
+No pages of output.
+Transcript written on input.log.
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=latex)
+ restricted \write18 enabled.
+entering extended mode
+(./input.tex
+LaTeX2e &lt;2021-11-15&gt; patch level 1
+L3 programming layer &lt;2022-02-24&gt;
+(c:/texlive/2022/texmf-dist/tex/latex/standalone/standalone.cls
+Document Class: standalone 2018/03/26 v1.3a Class to compile TeX sub-files stan
+dalone
+(c:/texlive/2022/texmf-dist/tex/latex/tools/shellesc.sty)
+(c:/texlive/2022/texmf-dist/tex/generic/iftex/ifluatex.sty
+(c:/texlive/2022/texmf-dist/tex/generic/iftex/iftex.sty))
+(c:/texlive/2022/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+(c:/texlive/2022/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+(c:/texlive/2022/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+(c:/texlive/2022/texmf-dist/tex/generic/xkeyval/keyval.tex))))
+(c:/texlive/2022/texmf-dist/tex/latex/standalone/standalone.cfg)
+(c:/texlive/2022/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2021/10/04 v1.4n Standard LaTeX document class
+(c:/texlive/2022/texmf-dist/tex/latex/base/size12.clo))
+(c:/texlive/2022/texmf-dist/tex/latex/preview/preview.sty
+(c:/texlive/2022/texmf-dist/tex/latex/preview/prtightpage.def)))
+(c:/texlive/2022/texmf-dist/tex/latex/base/inputenc.sty
+
+! LaTeX Error: File `utf8x.def' not found.
+
+Type X to quit or <return> to proceed,
+or enter new name. (Default extension: def)
+
+Enter file name: 
+! Emergency stop.
+<read *=""> 
+         
+l.165 \endinput
+               ^^M
+No pages of output.
+Transcript written on input.log.
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=latex)
+ restricted \write18 enabled.
+entering extended mode
+(./input.tex
+LaTeX2e &lt;2021-11-15&gt; patch level 1
+L3 programming layer &lt;2022-02-24&gt;
+(c:/texlive/2022/texmf-dist/tex/latex/standalone/standalone.cls
+Document Class: standalone 2018/03/26 v1.3a Class to compile TeX sub-files stan
+dalone
+(c:/texlive/2022/texmf-dist/tex/latex/tools/shellesc.sty)
+(c:/texlive/2022/texmf-dist/tex/generic/iftex/ifluatex.sty
+(c:/texlive/2022/texmf-dist/tex/generic/iftex/iftex.sty))
+(c:/texlive/2022/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+(c:/texlive/2022/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+(c:/texlive/2022/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+(c:/texlive/2022/texmf-dist/tex/generic/xkeyval/keyval.tex))))
+(c:/texlive/2022/texmf-dist/tex/latex/standalone/standalone.cfg)
+(c:/texlive/2022/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2021/10/04 v1.4n Standard LaTeX document class
+(c:/texlive/2022/texmf-dist/tex/latex/base/size12.clo))
+(c:/texlive/2022/texmf-dist/tex/latex/preview/preview.sty
+(c:/texlive/2022/texmf-dist/tex/latex/preview/prtightpage.def)))
+(c:/texlive/2022/texmf-dist/tex/latex/base/inputenc.sty
+
+! LaTeX Error: File `utf8x.def' not found.
+
+Type X to quit or <return> to proceed,
+or enter new name. (Default extension: def)
+
+Enter file name: 
+! Emergency stop.
+<read *=""> 
+         
+l.165 \endinput
+               ^^M
+No pages of output.
+Transcript written on input.log.
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=latex)
+ restricted \write18 enabled.
+entering extended mode
+(./input.tex
+LaTeX2e &lt;2021-11-15&gt; patch level 1
+L3 programming layer &lt;2022-02-24&gt;
+(c:/texlive/2022/texmf-dist/tex/latex/standalone/standalone.cls
+Document Class: standalone 2018/03/26 v1.3a Class to compile TeX sub-files stan
+dalone
+(c:/texlive/2022/texmf-dist/tex/latex/tools/shellesc.sty)
+(c:/texlive/2022/texmf-dist/tex/generic/iftex/ifluatex.sty
+(c:/texlive/2022/texmf-dist/tex/generic/iftex/iftex.sty))
+(c:/texlive/2022/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+(c:/texlive/2022/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+(c:/texlive/2022/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+(c:/texlive/2022/texmf-dist/tex/generic/xkeyval/keyval.tex))))
+(c:/texlive/2022/texmf-dist/tex/latex/standalone/standalone.cfg)
+(c:/texlive/2022/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2021/10/04 v1.4n Standard LaTeX document class
+(c:/texlive/2022/texmf-dist/tex/latex/base/size12.clo))
+(c:/texlive/2022/texmf-dist/tex/latex/preview/preview.sty
+(c:/texlive/2022/texmf-dist/tex/latex/preview/prtightpage.def)))
+(c:/texlive/2022/texmf-dist/tex/latex/base/inputenc.sty
+
+! LaTeX Error: File `utf8x.def' not found.
+
+Type X to quit or <return> to proceed,
+or enter new name. (Default extension: def)
+
+Enter file name: 
+! Emergency stop.
+<read *=""> 
+         
+l.165 \endinput
+               ^^M
+No pages of output.
+Transcript written on input.log.
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=latex)
+ restricted \write18 enabled.
+entering extended mode
+(./input.tex
+LaTeX2e &lt;2021-11-15&gt; patch level 1
+L3 programming layer &lt;2022-02-24&gt;
+(c:/texlive/2022/texmf-dist/tex/latex/standalone/standalone.cls
+Document Class: standalone 2018/03/26 v1.3a Class to compile TeX sub-files stan
+dalone
+(c:/texlive/2022/texmf-dist/tex/latex/tools/shellesc.sty)
+(c:/texlive/2022/texmf-dist/tex/generic/iftex/ifluatex.sty
+(c:/texlive/2022/texmf-dist/tex/generic/iftex/iftex.sty))
+(c:/texlive/2022/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+(c:/texlive/2022/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+(c:/texlive/2022/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+(c:/texlive/2022/texmf-dist/tex/generic/xkeyval/keyval.tex))))
+(c:/texlive/2022/texmf-dist/tex/latex/standalone/standalone.cfg)
+(c:/texlive/2022/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2021/10/04 v1.4n Standard LaTeX document class
+(c:/texlive/2022/texmf-dist/tex/latex/base/size12.clo))
+(c:/texlive/2022/texmf-dist/tex/latex/preview/preview.sty
+(c:/texlive/2022/texmf-dist/tex/latex/preview/prtightpage.def)))
+(c:/texlive/2022/texmf-dist/tex/latex/base/inputenc.sty
+
+! LaTeX Error: File `utf8x.def' not found.
+
+Type X to quit or <return> to proceed,
+or enter new name. (Default extension: def)
+
+Enter file name: 
+! Emergency stop.
+<read *=""> 
+         
+l.165 \endinput
+               ^^M
+No pages of output.
+Transcript written on input.log.
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=latex)
+ restricted \write18 enabled.
+entering extended mode
+(./input.tex
+LaTeX2e &lt;2021-11-15&gt; patch level 1
+L3 programming layer &lt;2022-02-24&gt;
+(c:/texlive/2022/texmf-dist/tex/latex/standalone/standalone.cls
+Document Class: standalone 2018/03/26 v1.3a Class to compile TeX sub-files stan
+dalone
+(c:/texlive/2022/texmf-dist/tex/latex/tools/shellesc.sty)
+(c:/texlive/2022/texmf-dist/tex/generic/iftex/ifluatex.sty
+(c:/texlive/2022/texmf-dist/tex/generic/iftex/iftex.sty))
+(c:/texlive/2022/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+(c:/texlive/2022/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+(c:/texlive/2022/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+(c:/texlive/2022/texmf-dist/tex/generic/xkeyval/keyval.tex))))
+(c:/texlive/2022/texmf-dist/tex/latex/standalone/standalone.cfg)
+(c:/texlive/2022/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2021/10/04 v1.4n Standard LaTeX document class
+(c:/texlive/2022/texmf-dist/tex/latex/base/size12.clo))
+(c:/texlive/2022/texmf-dist/tex/latex/preview/preview.sty
+(c:/texlive/2022/texmf-dist/tex/latex/preview/prtightpage.def)))
+(c:/texlive/2022/texmf-dist/tex/latex/base/inputenc.sty
+
+! LaTeX Error: File `utf8x.def' not found.
+
+Type X to quit or <return> to proceed,
+or enter new name. (Default extension: def)
+
+Enter file name: 
+! Emergency stop.
+<read *=""> 
+         
+l.165 \endinput
+               ^^M
+No pages of output.
+Transcript written on input.log.
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=latex)
+ restricted \write18 enabled.
+entering extended mode
+(./input.tex
+LaTeX2e &lt;2021-11-15&gt; patch level 1
+L3 programming layer &lt;2022-02-24&gt;
+(c:/texlive/2022/texmf-dist/tex/latex/standalone/standalone.cls
+Document Class: standalone 2018/03/26 v1.3a Class to compile TeX sub-files stan
+dalone
+(c:/texlive/2022/texmf-dist/tex/latex/tools/shellesc.sty)
+(c:/texlive/2022/texmf-dist/tex/generic/iftex/ifluatex.sty
+(c:/texlive/2022/texmf-dist/tex/generic/iftex/iftex.sty))
+(c:/texlive/2022/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+(c:/texlive/2022/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+(c:/texlive/2022/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+(c:/texlive/2022/texmf-dist/tex/generic/xkeyval/keyval.tex))))
+(c:/texlive/2022/texmf-dist/tex/latex/standalone/standalone.cfg)
+(c:/texlive/2022/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2021/10/04 v1.4n Standard LaTeX document class
+(c:/texlive/2022/texmf-dist/tex/latex/base/size12.clo))
+(c:/texlive/2022/texmf-dist/tex/latex/preview/preview.sty
+(c:/texlive/2022/texmf-dist/tex/latex/preview/prtightpage.def)))
+(c:/texlive/2022/texmf-dist/tex/latex/base/inputenc.sty
+
+! LaTeX Error: File `utf8x.def' not found.
+
+Type X to quit or <return> to proceed,
+or enter new name. (Default extension: def)
+
+Enter file name: 
+! Emergency stop.
+<read *=""> 
+         
+l.165 \endinput
+               ^^M
+No pages of output.
+Transcript written on input.log.
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=latex)
+ restricted \write18 enabled.
+entering extended mode
+(./input.tex
+LaTeX2e &lt;2021-11-15&gt; patch level 1
+L3 programming layer &lt;2022-02-24&gt;
+(c:/texlive/2022/texmf-dist/tex/latex/standalone/standalone.cls
+Document Class: standalone 2018/03/26 v1.3a Class to compile TeX sub-files stan
+dalone
+(c:/texlive/2022/texmf-dist/tex/latex/tools/shellesc.sty)
+(c:/texlive/2022/texmf-dist/tex/generic/iftex/ifluatex.sty
+(c:/texlive/2022/texmf-dist/tex/generic/iftex/iftex.sty))
+(c:/texlive/2022/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+(c:/texlive/2022/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+(c:/texlive/2022/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+(c:/texlive/2022/texmf-dist/tex/generic/xkeyval/keyval.tex))))
+(c:/texlive/2022/texmf-dist/tex/latex/standalone/standalone.cfg)
+(c:/texlive/2022/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2021/10/04 v1.4n Standard LaTeX document class
+(c:/texlive/2022/texmf-dist/tex/latex/base/size12.clo))
+(c:/texlive/2022/texmf-dist/tex/latex/preview/preview.sty
+(c:/texlive/2022/texmf-dist/tex/latex/preview/prtightpage.def)))
+(c:/texlive/2022/texmf-dist/tex/latex/base/inputenc.sty
+
+! LaTeX Error: File `utf8x.def' not found.
+
+Type X to quit or <return> to proceed,
+or enter new name. (Default extension: def)
+
+Enter file name: 
+! Emergency stop.
+<read *=""> 
+         
+l.165 \endinput
+               ^^M
+No pages of output.
+Transcript written on input.log.
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=latex)
+ restricted \write18 enabled.
+entering extended mode
+(./input.tex
+LaTeX2e &lt;2021-11-15&gt; patch level 1
+L3 programming layer &lt;2022-02-24&gt;
+(c:/texlive/2022/texmf-dist/tex/latex/standalone/standalone.cls
+Document Class: standalone 2018/03/26 v1.3a Class to compile TeX sub-files stan
+dalone
+(c:/texlive/2022/texmf-dist/tex/latex/tools/shellesc.sty)
+(c:/texlive/2022/texmf-dist/tex/generic/iftex/ifluatex.sty
+(c:/texlive/2022/texmf-dist/tex/generic/iftex/iftex.sty))
+(c:/texlive/2022/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+(c:/texlive/2022/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+(c:/texlive/2022/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+(c:/texlive/2022/texmf-dist/tex/generic/xkeyval/keyval.tex))))
+(c:/texlive/2022/texmf-dist/tex/latex/standalone/standalone.cfg)
+(c:/texlive/2022/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2021/10/04 v1.4n Standard LaTeX document class
+(c:/texlive/2022/texmf-dist/tex/latex/base/size12.clo))
+(c:/texlive/2022/texmf-dist/tex/latex/preview/preview.sty
+(c:/texlive/2022/texmf-dist/tex/latex/preview/prtightpage.def)))
+(c:/texlive/2022/texmf-dist/tex/latex/base/inputenc.sty
+
+! LaTeX Error: File `utf8x.def' not found.
+
+Type X to quit or <return> to proceed,
+or enter new name. (Default extension: def)
+
+Enter file name: 
+! Emergency stop.
+<read *=""> 
+         
+l.165 \endinput
+               ^^M
+No pages of output.
+Transcript written on input.log.
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=latex)
+ restricted \write18 enabled.
+entering extended mode
+(./input.tex
+LaTeX2e &lt;2021-11-15&gt; patch level 1
+L3 programming layer &lt;2022-02-24&gt;
+(c:/texlive/2022/texmf-dist/tex/latex/standalone/standalone.cls
+Document Class: standalone 2018/03/26 v1.3a Class to compile TeX sub-files stan
+dalone
+(c:/texlive/2022/texmf-dist/tex/latex/tools/shellesc.sty)
+(c:/texlive/2022/texmf-dist/tex/generic/iftex/ifluatex.sty
+(c:/texlive/2022/texmf-dist/tex/generic/iftex/iftex.sty))
+(c:/texlive/2022/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+(c:/texlive/2022/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+(c:/texlive/2022/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+(c:/texlive/2022/texmf-dist/tex/generic/xkeyval/keyval.tex))))
+(c:/texlive/2022/texmf-dist/tex/latex/standalone/standalone.cfg)
+(c:/texlive/2022/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2021/10/04 v1.4n Standard LaTeX document class
+(c:/texlive/2022/texmf-dist/tex/latex/base/size12.clo))
+(c:/texlive/2022/texmf-dist/tex/latex/preview/preview.sty
+(c:/texlive/2022/texmf-dist/tex/latex/preview/prtightpage.def)))
+(c:/texlive/2022/texmf-dist/tex/latex/base/inputenc.sty
+
+! LaTeX Error: File `utf8x.def' not found.
+
+Type X to quit or <return> to proceed,
+or enter new name. (Default extension: def)
+
+Enter file name: 
+! Emergency stop.
+<read *=""> 
+         
+l.165 \endinput
+               ^^M
+No pages of output.
+Transcript written on input.log.
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=latex)
+ restricted \write18 enabled.
+entering extended mode
+(./input.tex
+LaTeX2e &lt;2021-11-15&gt; patch level 1
+L3 programming layer &lt;2022-02-24&gt;
+(c:/texlive/2022/texmf-dist/tex/latex/standalone/standalone.cls
+Document Class: standalone 2018/03/26 v1.3a Class to compile TeX sub-files stan
+dalone
+(c:/texlive/2022/texmf-dist/tex/latex/tools/shellesc.sty)
+(c:/texlive/2022/texmf-dist/tex/generic/iftex/ifluatex.sty
+(c:/texlive/2022/texmf-dist/tex/generic/iftex/iftex.sty))
+(c:/texlive/2022/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+(c:/texlive/2022/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+(c:/texlive/2022/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+(c:/texlive/2022/texmf-dist/tex/generic/xkeyval/keyval.tex))))
+(c:/texlive/2022/texmf-dist/tex/latex/standalone/standalone.cfg)
+(c:/texlive/2022/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2021/10/04 v1.4n Standard LaTeX document class
+(c:/texlive/2022/texmf-dist/tex/latex/base/size12.clo))
+(c:/texlive/2022/texmf-dist/tex/latex/preview/preview.sty
+(c:/texlive/2022/texmf-dist/tex/latex/preview/prtightpage.def)))
+(c:/texlive/2022/texmf-dist/tex/latex/base/inputenc.sty
+
+! LaTeX Error: File `utf8x.def' not found.
+
+Type X to quit or <return> to proceed,
+or enter new name. (Default extension: def)
+
+Enter file name: 
+! Emergency stop.
+<read *=""> 
+         
+l.165 \endinput
+               ^^M
+No pages of output.
+Transcript written on input.log.
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+<h2 id="知识聚焦">知识聚焦</h2>
+<h3 id="一有机化合物的分类方法">一、有机化合物的分类方法</h3>
+<h4 id="按照碳骨架分类">1. 按照碳骨架分类</h4>
+<p>​
+根据碳原子组成的分子骨架，有机化合物可以分成链状化合物和环状化合物。链状化合物可以继续细分为脂肪烃和脂肪烃衍生物，脂环化合物包括脂环烃和脂环烃衍生物，芳香族化合物包括芳香烃和芳香烃衍生物。</p>
+<pre class="mermaid">graph LR;
+有机化合物 --&gt; 链状化合物
+链状化合物 --&gt; 脂肪烃
+链状化合物 --&gt; 脂肪烃衍生物
+有机化合物 --&gt; 环状化合物
+环状化合物 --&gt; 脂环化合物
+环状化合物 --&gt; 芳香族化合物
+脂环化合物 --&gt; 脂环烃
+脂环化合物 --&gt; 脂环烃衍生物
+芳香族化合物 --&gt; 芳香烃
+芳香族化合物 --&gt; 芳香烃衍生物</pre>
+<h4 id="按照官能团分类">2. 按照官能团分类</h4>
+<p>​
+烃分子中的氢原子可以被其他原子或原子团取代，得到烃的衍生物。像甲醇羟基决定其常温下为液体，与水互溶，与羧酸反应生成酯这样有机化合物特性的原子或原子团叫<strong>官能团</strong>，如下是常见官能团：</p>
+<table>
+<colgroup>
+<col style="width: 5%">
+<col style="width: 4%">
+<col style="width: 32%">
+<col style="width: 26%">
+<col style="width: 32%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>类别</th>
+<th>具体名称</th>
+<th>官能团</th>
+<th>代表物</th>
+<th>鉴别方法</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>烃</td>
+<td>烷烃</td>
+<td>-</td>
+<td>甲烷 <span class="math inline">$\ce{CH4}$</span></td>
+<td>-</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>烯烃</td>
+<td>碳碳双键 <span class="math inline">$\chemfig{C(-[3,0.5])(-[5,0.5])=[0,.7]C(-[7,0.5])(-[9,0.5])}$</span></td>
+<td>乙烯 <span class="math inline">$\ce{CH2\bond{=}CH2}$</span></td>
+<td><span class="math inline">$\ce{Br2}$</span>
+的四氯化碳溶液：红棕色退去；<br>酸性 <span class="math inline">$\ce{KMnO4}$</span> 溶液：紫红色退去。</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>炔烃</td>
+<td>碳碳三键 <span class="math inline">$\chemfig{C(-[8,.5])~[4,.7]C(-[4,.5])}$</span></td>
+<td>乙炔 <span class="math inline">$\ce{CH\bond{3}CH}$</span></td>
+<td><span class="math inline">$\ce{Br2}$</span>
+的四氯化碳溶液：红棕色退去<br>酸性 <span class="math inline">$\ce{KMnO4}$</span> 溶液：紫红色退去。</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>芳香烃</td>
+<td>-</td>
+<td>苯<br><span class="math inline">$\chemfig{*6([0,.5]-=-=-=)}$</span></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>烃的衍生物</td>
+<td>卤代烃</td>
+<td>碳卤键 <span class="math inline">$\chemfig{C(-[8,.7]X)(-[2,.5])(-[6,.5])(-[4,.3])}$</span></td>
+<td>溴乙烷 <span class="math inline">$\ce{CH3CH2Br}$</span></td>
+<td><span class="math inline">$\ce{NaOH}$</span>
+溶液、稀硝酸和硝酸银溶液：生成沉淀。</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>醇</td>
+<td>羟基 <span class="math inline">$\ce{-OH}$</span></td>
+<td>乙醇 <span class="math inline">$\ce{CH3CH2OH}$</span></td>
+<td><span class="math inline">$\ce{Na}$</span>：有氢气放出；<br>与乙酸、浓硫酸反应：有水果香味物质生成。</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>酚</td>
+<td>羟基 <span class="math inline">$\ce{-OH}$</span></td>
+<td>苯酚<br><span class="math inline">$\chemfig{*6([0,.5]-=-=(-[2,.5]OH)-=)}$</span></td>
+<td><span class="math inline">$\ce{FeCl3}$</span>
+溶液：紫色；<br>与浓溴水反应：生成白色沉淀。</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>醚</td>
+<td>醚键<br><span class="math inline">$\chemfig{O(-[7,.7]R)(-[5,.7]R)}$</span></td>
+<td>乙醚 <span class="math inline">$\ce{CH3CH2OCH2CH3}$</span></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>醛</td>
+<td>醛基<br><span class="math inline">$\chemfig{C(-[0,.7]H)(=[2,.7]O)}$</span></td>
+<td>乙醛 <span class="math inline">$\ce{CH3CHO}$</span></td>
+<td>银氨溶液：有银镜生成；<br>新制 <span class="math inline">$\ce{Cu(OH)2}$</span> 溶液：砖红色沉淀。</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>酮</td>
+<td>酮羰基<br><span class="math inline">$\chemfig{C(=[2,.7]O)(-[7,.7]C)(-[5,.7]C)}$</span></td>
+<td>丙酮 <span class="math inline">$\ce{CH3COCH3}$</span></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>羧酸</td>
+<td>羧基<br><span class="math inline">$\chemfig{C(=[2,.7]O)(-[7,.7]OH)(-[5,.7]R)}$</span></td>
+<td>乙酸 <span class="math inline">$\ce{CH3COOH}$</span></td>
+<td>紫色石蕊试剂：变红；<br><span class="math inline">$\ce{NaHCO3}$</span> 溶液：生成 <span class="math inline">$\ce{CO2}$</span> 气体。</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>酯</td>
+<td>酯基<br><span class="math inline">$\chemfig{C(=[2,.7]O)(-[7,.7]OR)(-[5,.7]R')}$</span></td>
+<td>乙酸乙酯 <span class="math inline">$\ce{CH3COOCH2CH3}$</span></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>胺</td>
+<td>氨基<span class="math inline">$\ce{-NH2}$</span></td>
+<td>甲胺 <span class="math inline">$\ce{CH3NH2}$</span></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>酰胺</td>
+<td>酰胺基（酰胺基的胺基可以被取代氢）<br><span class="math inline">$\chemfig{C(=[2,.7]O)(-[7,.7]NH_2)(-[5,.7]R)}$</span></td>
+<td>乙酰胺 <span class="math inline">$\ce{CH3CONH2}$</span></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>氰</td>
+<td>氰基 <span class="math inline">$\ce{-CN}$</span></td>
+<td>氰化钾 <span class="math inline">$\ce{KCN}$</span></td>
+<td>稀碱溶液，加热：有 <span class="math inline">$\ce{NH3}$</span>
+放出。</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<h4 id="有机化合物结构的表示方法">有机化合物结构的表示方法</h4>
+<table>
+<colgroup>
+<col style="width: 6%">
+<col style="width: 24%">
+<col style="width: 24%">
+<col style="width: 24%">
+<col style="width: 19%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>表示方法</th>
+<th>实例</th>
+<th>含义</th>
+<th>优点</th>
+<th>缺点</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>分子式</td>
+<td><span class="math inline">$\ce{C3H8}$</span></td>
+<td>用元素符号和数字表示物质组成的式子</td>
+<td>反映一个分子中原子的种类和数目</td>
+<td>无法体现有机化合物的实际结构</td>
+</tr>
+<tr class="even">
+<td>最简式（实验式）</td>
+<td><span class="math inline">$\ce{C3H8}$</span></td>
+<td>表示组成物质各元素原子最简整数比的式子</td>
+<td>能表明分子组成中原子数目比，用于研究有相同组成的物质</td>
+<td>不能真实反映物质的分子组成</td>
+</tr>
+<tr class="odd">
+<td>电子式</td>
+<td><img src="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/%E4%B8%99%E7%83%B7%E7%94%B5%E5%AD%90%E5%BC%8F.png" alt="丙烷电子式" style="width:96px;"></td>
+<td>用小黑点或 <span class="math inline">×</span>
+等符号代替电子，表示原子最外层电子成键情况的式子</td>
+<td>能够表明分子的组成、分子中原子间的成键数目、原子是否能形成稳定的电子层结构</td>
+<td>不能表明分子的空间结构</td>
+</tr>
+<tr class="even">
+<td>结构式</td>
+<td><span class="math inline">$\chemfig{C(-[3,.5]H)(-[5,.5]H)-[0,.7]C(-[2,.5]H)(-[6,.5]H)-[0,.7]C(-[1,.5]H)(-[7,.5]H)}$</span></td>
+<td>用短线代替原子间公用电子对</td>
+<td>表示分子的组成以及分子中原子的结合或排列顺序</td>
+<td>不能表明分子的空间结构，难以书写复杂的分子结构</td>
+</tr>
+<tr class="odd">
+<td>结构简式</td>
+<td><span class="math inline">$\ce{CH3CH2CH3}$</span></td>
+<td>将结构式中表示共价键的短线删去，把碳原子连接的氢原子合并为碳氢原子团</td>
+<td>书写方便，能够表示出分子结构的情况，适用范围广</td>
+<td>无法表示各原子间空间位置关系</td>
+</tr>
+<tr class="even">
+<td>键线式</td>
+<td><span class="math inline">$\chemfig{-[1,.5]-[7,.5]}$</span></td>
+<td>将碳氢元素符号省略，只保留键的连接情况与官能团。<strong>不能省略碳卤键等键的短线</strong>。</td>
+<td>比结构简式更为简单明了</td>
+<td>无法表示各原子间空间位置关系</td>
+</tr>
+<tr class="odd">
+<td>球棍模型</td>
+<td><img src="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/%E4%B8%99%E7%83%B7%E7%90%83%E6%A3%8D%E6%A8%A1%E5%9E%8B.png" alt="丙烷球棍模型" style="width:96px;"></td>
+<td>用球棍表示原子间的结构。</td>
+<td>能够清楚地表示出分子内原子间的化学键和键型</td>
+<td>较难绘画</td>
+</tr>
+<tr class="even">
+<td>空间填充模型</td>
+<td><img src="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/%E4%B8%99%E7%83%B7%E7%A9%BA%E9%97%B4%E5%A1%AB%E5%85%85%E6%A8%A1%E5%9E%8B.png" alt="丙烷空间填充模型" style="width:96px;"></td>
+<td>用球表示原子间的连接方式</td>
+<td>表示出分子内原子的体积相对大小以及原子间的相对位置</td>
+<td>较难绘画</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<h3 id="二有机化合物中的共价键">二、有机化合物中的共价键</h3>
+<h4 id="共价键的类型">1. 共价键的类型</h4>
+<p>​ 有机化合物中的共价键有两种基本类型：<span class="math inline"><em>σ</em></span>键和<span class="math inline"><em>π</em></span>键，有机化合物中不管以何种方式成键，碳原子总是形成
+4 条共价键，氢原子只能形成一条，氧原子形成 2 条，氮原子形成 3
+条。<em>碳原子成键方式的多样性导致了有机物的结构多样性，是有机物种类繁多、数量巨大的主要原因</em>。</p>
+<blockquote>
+<h3 id="成键数目">成键数目</h3>
+<p>​ 有机物中，<span class="math inline">$\ce{C}$</span>成四个价键，<span class="math inline">$\ce{H,X}$</span>成一个价键，<span class="math inline">$\ce{O}$</span>成两个价键，<span class="math inline">$\ce{N}$</span>成三个价键。</p>
+</blockquote>
+<blockquote>
+<h3 id="共面共线">共面共线</h3>
+<p>​ 与碳碳三键直接相连的原子有四个（<span class="math inline">$\ce{R-C\bond{3}C-R}$</span>），共线。</p>
+<p>​ 与碳碳双键直接相连的碳原子共面。</p>
+</blockquote>
+<h4 id="共价键的极性与有机反应">2. 共价键的极性与有机反应</h4>
+<p>​
+由于不同成键原子间电负性的差异，共用电子对会发生偏移，偏移程度越大，共价键的极性越强，在反应中越容易发生断裂，因此有机化合物的官能团及其邻近的化合键往往是发生化学反应的活性部位。</p>
+<p>​
+共价键的断裂需要吸收能量，且有机化合物分子中共价键断裂的位置存在多种可能，相比无机反应，有机反应一般速率小，副反应多，产物复杂。</p>
+<h3 id="三有机化合物的同系物和同分异构现象">三、有机化合物的同系物和同分异构现象</h3>
+<p>​
+我们把结构、化学性质相似（<strong>官能团数量种类一致</strong>），通式相同，组成上相差
+1 个或若干个<span class="math inline">$\ce{CH2}$</span>原子团，具有相同官能团的化合物称为同系物。</p>
+<p>​
+化合物具有相同的分子式，但有不同的结构的现象即为<strong>同分异构现象</strong>，具有同分异构现象的化合物互称同分异构体。有机化合物的同分异构现象主要包括<strong>构造异构（碳架异构与位置异构）和立体异构（顺反异构和对映异构）</strong>。同分异构现象在有机化合物中十分普遍，也是有机化合物数量非常庞大的原因之一。</p>
+<blockquote>
+<h4 id="同分异构现象">同分异构现象</h4>
+<h5 id="碳架异构">碳架异构</h5>
+<p>​ 由于分子中碳原子排列顺序不同而产生的同分异构体。</p>
+<h5 id="位置异构">位置异构</h5>
+<p>​ 由于官能团位置不同而产生的同分异构体。</p>
+<h5 id="官能团异构">官能团异构</h5>
+<p>​ 由于官能团不同而产生的同分异构体。</p>
+<h5 id="顺反异构">顺反异构</h5>
+<p>​ 当烯烃中<span class="math inline">$\ce{C=C}$</span>两个碳原子都连有两个不同原子或基团，由于双键不能自由旋转而产生的同分异构体。</p>
+<h5 id="对映异构">对映异构</h5>
+<p>​ 构造相同，构型不同，互成镜像对映关系的立体异构现象。</p>
+</blockquote>
+<blockquote>
+<h3 id="确定同分异构体数量与书写同分异构体的常用方法">确定同分异构体数量与书写同分异构体的常用方法</h3>
+<h5 id="取代法等效氢">==1. 取代法==（<strong>等效氢</strong>）</h5>
+<p>​
+本质是将同分异构体看作是由官能团取代烃中的不同氢而形成的（适用于卤代烃、醇、醛、羧酸等有机物）：</p>
+<ol type="1">
+<li>写出有机物的碳链结构。</li>
+<li>利用等效氢规律判断可以被取代的氢的种类（=取代位置数=同分异构体数）。</li>
+</ol>
+<hr>
+<h5 id="插入法类似">2. 插入法（类似）</h5>
+<p>​
+适用于酯、醚、酮、烯、炔等官能团镶在碳链中的有机物同分异构体的书写。</p>
+<ol type="1">
+<li>将官能团取出。</li>
+<li>写出剩下部分的碳链结构。</li>
+<li>利用对称规律找出可插入官能团的位置（对称位置不重复插入）。</li>
+</ol>
+<hr>
+<h5 id="基团组装法适用于特殊题目">3. 基团组装法（适用于特殊题目）</h5>
+<p>​
+通常在给出组成有机物的基团，按照题意推出有机物的可能结构种类或结构简式的题目中方便。</p>
+<p>​ 首先，先确定基团等级，按游离键多少可将基团分为三类：</p>
+<ol type="1">
+<li><p>端点基（只含一个游离键 ，如卤原子、<span class="math inline">$\ce{-CH3}$</span>、<span class="math inline">$\ce{-OH}$</span> ……）</p></li>
+<li><p>桥梁基（含二个游离键，如<span class="math inline">$\ce{-CH2-}$</span>、<span class="math inline">$\ce{-O-}$</span>、<span class="math inline">$\ce{-⏣-}$</span>……）</p></li>
+<li><p>中央基（含三个及以上游离键，如<span class="math inline">$\chemfig{C(-[0,.5]H)(-[2,.5]H)(-[4,.5]H)(-[6,.5]H)}$</span>）</p></li>
+</ol>
+<p>​
+随后构建分子雏形，将所有端点基与中央基连接。若含有多个中央基，则先彼此连接，再接端点基。</p>
+<p>​ 第三编号定位，对可插入桥梁基的碳碳键位置进行编号，以示区别。</p>
+<p>​
+最后插入组合，按一定的方式将桥梁基插入端点基与中央基之间，即得可能的结构。</p>
+<hr>
+<h5 id="基元法适用于烃的简单衍生物">==4.
+基元法==（适用于烃的简单衍生物）</h5>
+<p>​ 醇、醛、酸、卤代烃等烃的衍生物，均可以表示为<span class="math inline">$\ce{R-A}$</span>的形式，则其同分异构体就是烃基（<span class="math inline">$\ce{R-}$</span>）变化造成的，烃基的种数就是同分异构体数。</p>
+<p>​ 甲基(<span class="math inline">$\ce{-CH3}$</span>)、乙基(<span class="math inline">$\ce{-C2H5}$</span>) 、丙基(<span class="math inline">$\ce{-C3H7}$</span>) 、丁基(<span class="math inline">$\ce{-C4H9}$</span>)、戊基(<span class="math inline">$\ce{-C5H11}$</span>)的同分异构体数目分别为１、１、２、４、８。</p>
+<p>​ 例子：判断<span class="math inline">$\ce{C5H11Br}$</span>的同分异构体数目：先分离出戊基，有
+8 个同分异构体数，即为<span class="math inline">$\ce{C5H11Br}$</span>的同分异构体数了。</p>
+<hr>
+<h5 id="定一移二法有序思维">==5.
+定一移二法==（<strong>有序思维</strong>）</h5>
+<p>​
+含有两个或两个以上取代基的同分异构体的书写，只凭想象可能会重、漏，使用定一议二法会更为方便。</p>
+<p>​
+定一移二法是指当有机物有２个取代基时，先固定一个取代基的位置，再移动另一取代基的位置，从而可确定同分异构体的数目。分析二元取代物时，先写出一元取代物的结构简式，再在一元取代物的基础上移动第二个取代基位置。注意位置不能重复计算。</p>
+<hr>
+<h5 id="不饱和度法不推荐"><del>6. 不饱和度法</del>（不推荐）</h5>
+<p>​ 计算分子不饱和度，根据不饱和度分析可能存在的结构。</p>
+<p>​ 不饱和度：对于有机物 <span class="math inline">$\ce{C_xH_yO_m(NH)_n}$</span>，<span class="math inline">$\Omega =
+x+1-\dfrac{y}{2}$</span>（不考虑氧，卤素当做 <span class="math inline">$\ce{H}$</span>，氮同时划去 <span class="math inline">$\ce{NH}$</span>）。</p>
+<p>​ 同时，对于有机物，<span class="math inline"><em>Ω</em> = <em>x</em> + 2<em>y</em> + <em>z</em></span>，<span class="math inline"><em>x</em></span>：双键数；<span class="math inline"><em>y</em></span>：三键数；<span class="math inline"><em>z</em></span>：环数。</p>
+<p>​
+==通过不饱和度可以快速计算分子式（用饱和氢数减不饱和度的两倍）==。</p>
+<hr>
+<h5 id="等价代换法等效替代">7.
+等价代换法（<strong>等效替代</strong>）</h5>
+<p>​
+用相关联的等量关系或对应因子代替，进行推理分析或计算的方法。若有机物分子可被取代的氢原子有<span class="math inline"><em>y</em></span>个，一取代物数量与<span class="math inline">(<em>y</em>−1)</span>取代物的数量相同，<span class="math inline"><em>n</em></span>取代物的数目与<span class="math inline">(<em>y</em>−<em>n</em>)</span>取代物的数目相同。如：<span class="math inline"><em>n</em> = 2</span>，丙烷（<span class="math inline"><em>y</em> = 8</span>）<span class="math inline">$\ce{CH3CH2CH3}$</span>的二氯取代物<span class="math inline">$\ce{C3H6Cl2}$</span>的同分异构体的数目同六氯取代物<span class="math inline">$\ce{C3H2Cl6}$</span>相同。</p>
+</blockquote>
+</read></return></read></return></read></return></read></return></read></return></read></return></read></return></read></return></read></return></read></return></read></return></read></return></read></return></read></return>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://hoarfroster.github.io/2022/02/07/chemistry/BK%209%20%E6%9C%89%E6%9C%BA%E7%BB%93%E6%9E%84/P2%20%E7%A0%94%E7%A9%B6%E6%9C%89%E6%9C%BA%E5%8C%96%E5%90%88%E7%89%A9%E7%9A%84%E4%B8%80%E8%88%AC%E6%96%B9%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Hoarfroster">
+      <meta itemprop="description" content="这里是霜羽~~咕咕咕">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hoarfroster 的小窝">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/02/07/chemistry/BK%209%20%E6%9C%89%E6%9C%BA%E7%BB%93%E6%9E%84/P2%20%E7%A0%94%E7%A9%B6%E6%9C%89%E6%9C%BA%E5%8C%96%E5%90%88%E7%89%A9%E7%9A%84%E4%B8%80%E8%88%AC%E6%96%B9%E6%B3%95/" class="post-title-link" itemprop="url">研究有机化合物的一般方法</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-02-07 01:40:04" itemprop="dateCreated datePublished" datetime="2022-02-07T01:40:04+08:00">2022-02-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-05-28 23:43:08" itemprop="dateModified" datetime="2022-05-28T23:43:08+08:00">2022-05-28</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/High-School/" itemprop="url" rel="index"><span itemprop="name">High School</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/High-School/Chemistry/" itemprop="url" rel="index"><span itemprop="name">Chemistry</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span><br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+              <span>612</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+              <span>1 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="知识聚焦">知识聚焦</h2>
+<h3 id="一研究方法">一、研究方法</h3>
+<h4 id="分离提纯">1. 分离提纯</h4>
+<p>​
+为了研究有机物，首先要获得纯净的有机化合物，我们需要分离、提纯粗品，常见的方法有<strong>蒸馏、萃取和重结晶</strong>。</p>
+<p>​
+蒸馏是分离和提纯液态有机化合物的常用方法，当液态有机化合物有少量杂质，且该有机化合物热稳定性较高，沸点与杂质的沸点有较大差异时，我们可以用蒸馏法提纯。</p>
+<p>​
+萃取包括液液萃取和固液萃取。液液萃取是利用待分离组在两种不互溶的溶剂中的溶解度不同，将其从一种溶剂转移到另一种溶剂的过程，可使用有机溶剂从水中萃取有机化合物，萃取用剂称为萃取剂（常用：乙醚、乙酸乙酯、二氯甲烷），将萃取后的两层液体分开的操作称为分液（常用分液漏斗）。固液萃取是用溶剂从固体物质中溶解出待分离组分的过程。</p>
+<p>​
+重结晶是提纯固体有机化合物常用的方法，是利用被提纯物质与杂质在同一溶剂的溶解度不同而除杂，溶剂要求为杂质在其中的溶解度很小火很大，被提纯的有机化合物在此溶剂中溶解度受温度影响要很大，能够冷却结晶。</p>
+<h4 id="确定实验式">2. 确定实验式</h4>
+<p>​
+实验式也称为最简式，一般通过燃烧转化为简单的无机物，通过测定无机物的质量推算出该有机化合物中各元素的质量分数。</p>
+<h4 id="确定分子式">3. 确定分子式</h4>
+<p>​
+质谱法是快速精确测定相对分子质量的重要方法，通过高速电力流等轰击样品，使有机分子失去电子，形成带正电荷的分子离子和碎片离子，再通过电磁场的运动差异得到质合比与相对丰度的质谱图。</p>
+<h4 id="确定分子结构">4. 确定分子结构</h4>
+<p>​ 为了确定分子结构，我们需要依靠红外光谱、核磁共振氢谱和 X
+射线衍射等分析。</p>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://hoarfroster.github.io/2022/02/05/chemistry/BK%204%20%E5%88%86%E5%AD%90%E7%BB%93%E6%9E%84%20%E6%99%B6%E4%BD%93%E7%BB%93%E6%9E%84/P3%20%E6%99%B6%E4%BD%93%E7%BB%93%E6%9E%84%E4%B8%8E%E6%80%A7%E8%B4%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Hoarfroster">
+      <meta itemprop="description" content="这里是霜羽~~咕咕咕">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hoarfroster 的小窝">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/02/05/chemistry/BK%204%20%E5%88%86%E5%AD%90%E7%BB%93%E6%9E%84%20%E6%99%B6%E4%BD%93%E7%BB%93%E6%9E%84/P3%20%E6%99%B6%E4%BD%93%E7%BB%93%E6%9E%84%E4%B8%8E%E6%80%A7%E8%B4%A8/" class="post-title-link" itemprop="url">晶体结构与性质</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-02-05 01:46:12" itemprop="dateCreated datePublished" datetime="2022-02-05T01:46:12+08:00">2022-02-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-05-28 23:43:07" itemprop="dateModified" datetime="2022-05-28T23:43:07+08:00">2022-05-28</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/High-School/" itemprop="url" rel="index"><span itemprop="name">High School</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/High-School/Chemistry/" itemprop="url" rel="index"><span itemprop="name">Chemistry</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span><br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+              <span>4.6k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+              <span>8 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+<h2 id="知识聚焦">知识聚焦</h2>
+<h3 id="一晶体类型">一、晶体类型</h3>
+<table>
+<colgroup>
+<col style="width: 14%">
+<col style="width: 23%">
+<col style="width: 23%">
+<col style="width: 22%">
+<col style="width: 15%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>比较</th>
+<th>分子晶体</th>
+<th>共价晶体</th>
+<th>金属晶体</th>
+<th>离子晶体</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>概念</td>
+<td>只含分子的晶体</td>
+<td>微观空间中不含分子的晶体</td>
+<td>金属（除<span class="math inline">$\ce{Hg}$</span>）在常温下都是晶体</td>
+<td>阴阳离子相互结合而形成的晶体</td>
+</tr>
+<tr class="even">
+<td>构成原理</td>
+<td>分子间靠分子间作用力结合而形成的晶体</td>
+<td>内部原子以共价键的形式连接并形成空间网状结构的晶体</td>
+<td>金属阳离子和自由电子以金属键结合而形成的晶体（电子气理论）</td>
+<td>阴离子和阳离子通过离子键结合而形成的晶体</td>
+</tr>
+<tr class="odd">
+<td>构成粒子</td>
+<td>分子</td>
+<td>原子</td>
+<td>金属阳离子、自由电子</td>
+<td>阴阳离子</td>
+</tr>
+<tr class="even">
+<td>粒子间相互作用力<br>（主要作用力）</td>
+<td>分子间作用力</td>
+<td>共价键</td>
+<td>金属键（粒子的静电作用）</td>
+<td>离子键</td>
+</tr>
+<tr class="odd">
+<td>密度</td>
+<td>较小</td>
+<td>较大</td>
+<td>有的很大、有的很小</td>
+<td>较大</td>
+</tr>
+<tr class="even">
+<td>硬度</td>
+<td>较小</td>
+<td>很大</td>
+<td>有的很大、有的很小</td>
+<td>较大</td>
+</tr>
+<tr class="odd">
+<td>熔沸点</td>
+<td>较低</td>
+<td>很高</td>
+<td>有的很高、有的很低</td>
+<td>较高</td>
+</tr>
+<tr class="even">
+<td>溶解性</td>
+<td>相似相溶</td>
+<td>难溶于任何溶剂</td>
+<td>难溶于常见溶剂</td>
+<td>大多易溶于水等极性溶剂</td>
+</tr>
+<tr class="odd">
+<td>导电、传热性</td>
+<td>一般不导电，溶于水后有的导电</td>
+<td>一般不具有导电性</td>
+<td>电和热的良导体</td>
+<td>晶体不导电，水溶液或熔融态导电</td>
+</tr>
+<tr class="even">
+<td>延展性</td>
+<td>无</td>
+<td>无</td>
+<td>良好</td>
+<td>无</td>
+</tr>
+<tr class="odd">
+<td>物质类别</td>
+<td>大多数非金属单质、气态氢化物、部分非金属氧化物（如<span class="math inline">$\ce{SO2}$</span>、<span class="math inline">$\ce{CO2}$</span>，<span class="math inline">$\ce{SiO2}$</span>除外）、几乎所有的酸、绝大多数有机物（有机盐除外）</td>
+<td>一部分非金属单质（金刚石、硅、晶体硼）、部分氧化物（<span class="math inline">$\ce{SiC}$</span>、<span class="math inline">$\ce{SiO2}$</span>、<span class="math inline">$\ce{Al2O3}$</span>）</td>
+<td>金属单质和合金</td>
+<td>大部分金属氧化物、强碱、绝大部分盐</td>
+</tr>
+<tr class="even">
+<td>物质举例（一一对应物质类别）</td>
+<td>1. <span class="math inline">$\ce{X2}$</span>（卤素）,<span class="math inline">$\ce{O2, S8, N2, P4,
+C60}$</span>以及稀有气体<br>2. <span class="math inline">$\ce{H2O,
+H2S, NH3, CH4}\cdots$</span><br>3. <span class="math inline">$\ce{CO2,
+P4O6, P4O10, SO2}$</span><br>4. -<br>5. -</td>
+<td>1. <span class="math inline">$\ce{B, Si, Ge}$</span>以及灰锡<span class="math inline">$\ce{Sn}$</span><br>2. <span class="math inline">$\ce{SiC, SiO2, Si3N4, Al2O3}$</span></td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="二过渡晶体与混合型晶体">二、过渡晶体与混合型晶体</h3>
+<h4 id="过渡晶体">1. 过渡晶体</h4>
+<p>​
+纯粹的典型晶体在现实中是不多的，大多数晶体是他们之间的<strong>过渡晶体</strong>。</p>
+<p>​ 在离子晶体与共价晶体之间的过渡中，从<span class="math inline">$\ce{Na2O -&gt; MgO -&gt; Al2O3 -&gt; SiO2 -&gt;
+P2O5 -&gt; SO3 -&gt;
+Cl2O7}$</span>，离子键的百分数不断降低，前两者偏向离子晶体的在性质上与纯粹的离子晶体相近，所以我们通常将它们当做离子晶体处理；<span class="math inline">$\ce{Al2O3,
+SiO2}$</span>在性质上与共价晶体相近，而最后三个都是分子晶体，它们的离子键百分数更小，共价键也不再贯穿整个晶体了。</p>
+<p>​ 四类晶体都有过渡型。</p>
+<h4 id="混合型晶体">2. 混合型晶体</h4>
+<ol type="1">
+<li><p>石墨（<span class="math inline">$\ce{sp^2}$</span>杂化），呈层状结构，层间靠分子间作用力维系，但是<span class="math inline">$\ce{p}$</span>轨道的电子可以在层内自由移动（<span class="math inline">$\ce{p}$</span>轨道相互平行重叠），有类似金属键的非定域键，而在层内则以共价键维系。</p></li>
+<li><p>硅酸盐，有环状结构、岛状结构（结构单元间依赖离子来联系），也有以硅氧四面体为结构单元组成的链状骨架（链间依赖离子来联系）。</p></li>
+</ol>
+<h3 id="三配合物与超分子">三、配合物与超分子</h3>
+<h4 id="配合物">1. 配合物</h4>
+<p>​
+类似铜离子接收水分子的孤电子对形成的这类“电子对给予-接受”键被称为<strong>配位键</strong>。我们通常把金属离子或原子（称为中心离子或原子）与某些分子或离子（称为配体或配位体）以配位键结合形成的化合物称为配位化合物，简称配合物。</p>
+<ol type="1">
+<li><span class="math inline">$\ce{Cu^2+ + 2NH3\cdot H2O -&gt; Cu(OH)2 +
+2NH+4}$</span>、<span class="math inline">$\ce{Cu(OH)2 + 4NH3 -&gt;
+[Cu(NH3)4](OH)2}$</span>。</li>
+<li><span class="math inline">$\ce{Fe^3+ +3SCN- -&gt;
+Fe(SCN)3}$</span>（<span class="math inline">$\ce{SCN-}$</span>形成配离子的血红色用于鉴定三价铁，硫氰化铁的配合物离子为<span class="math inline">$\ce{Fe(SCN)^3-_6}$</span>）。</li>
+<li><span class="math inline">$\ce{AgCl + 2NH3 -&gt;
+[Ag(NH3)2]Cl}$</span>。</li>
+</ol>
+<blockquote>
+<h3 id="配合物的判断与注意事项">配合物的判断与注意事项</h3>
+<p>​ 一般来说，中心离子的化合价与配体的个数之比是 1:2
+，且形成配位化合物时电荷守恒。</p>
+<p>​
+值得注意的是，==配合物内界的中心原子或离子与配体通过配位键结合很牢固，外界与内界之间以离子键结合不够牢固，所以配合物外界的离子可以电离而内界的离子不能电离==。举个例子而言，配位化合物中外界氯离子能与硝酸银溶液沉淀，配体氯离子不能与硝酸应反应生成氯化银沉淀。如配合物<span class="math inline">$\ce{[Co(NH3)4Cl2]Cl}$</span>中只有 1
+个氯离子可以与硝酸银反应。</p>
+</blockquote>
+<h4 id="超分子">2. 超分子</h4>
+<p>​
+超分子是由两种或两种以上的分子通过分子间相互作用形成的分子聚集体。</p>
+<ol type="1">
+<li>杯酚与<span class="math inline">$\ce{C60}$</span>聚集，甲苯溶解<span class="math inline">$\ce{C70}$</span>，氯仿溶解杯酚而沉淀<span class="math inline">$\ce{C60}$</span>（分子识别）。</li>
+<li>冠醚识别碱金属离子：不同的冠醚（不同尺寸）可以识别不同的离子。</li>
+<li>细胞膜（双分子膜，即磷脂双分子层）可以由磷脂分子自行组装而成（自组装）。</li>
+</ol>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://hoarfroster.github.io/2022/02/05/chemistry/BK%204%20%E5%88%86%E5%AD%90%E7%BB%93%E6%9E%84%20%E6%99%B6%E4%BD%93%E7%BB%93%E6%9E%84/P2%20%E7%89%A9%E8%B4%A8%E7%9A%84%E8%81%9A%E9%9B%86%E7%8A%B6%E6%80%81%E4%B8%8E%E6%99%B6%E4%BD%93%E7%BB%93%E6%9E%84%E7%9A%84%E5%B8%B8%E8%AF%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Hoarfroster">
+      <meta itemprop="description" content="这里是霜羽~~咕咕咕">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hoarfroster 的小窝">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/02/05/chemistry/BK%204%20%E5%88%86%E5%AD%90%E7%BB%93%E6%9E%84%20%E6%99%B6%E4%BD%93%E7%BB%93%E6%9E%84/P2%20%E7%89%A9%E8%B4%A8%E7%9A%84%E8%81%9A%E9%9B%86%E7%8A%B6%E6%80%81%E4%B8%8E%E6%99%B6%E4%BD%93%E7%BB%93%E6%9E%84%E7%9A%84%E5%B8%B8%E8%AF%86/" class="post-title-link" itemprop="url">物质的聚集状态与晶体结构</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-02-05 01:46:12" itemprop="dateCreated datePublished" datetime="2022-02-05T01:46:12+08:00">2022-02-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-05-28 23:43:07" itemprop="dateModified" datetime="2022-05-28T23:43:07+08:00">2022-05-28</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/High-School/" itemprop="url" rel="index"><span itemprop="name">High School</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/High-School/Chemistry/" itemprop="url" rel="index"><span itemprop="name">Chemistry</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span><br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+              <span>984</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+              <span>2 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+<h2 id="知识聚焦">知识聚焦</h2>
+<h3 id="一物质的聚集状态">一、物质的聚集状态</h3>
+<ol type="1">
+<li>物质不止三态，而有更多的聚集状态类别。</li>
+<li>许多常见的晶体中并无分子（氯化钠、石墨、二氧化硅、金刚石和各种金属）。</li>
+<li>气态和液态物质也不一定都由分子构成（等离子体：电子+阳离子+分子或原子，离子液体：熔点不高的仅由离子构成的液体物质）。</li>
+<li>晶态、液晶态、塑晶态、非晶态。</li>
+</ol>
+<h3 id="二晶体与非晶体">二、晶体与非晶体</h3>
+<h4 id="晶体与非晶体">1. 晶体与非晶体</h4>
+<table>
+<colgroup>
+<col style="width: 9%">
+<col style="width: 42%">
+<col style="width: 48%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>固体</th>
+<th>自范性</th>
+<th>微观结构</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>晶体</td>
+<td>有（能自发呈现多面体外形）</td>
+<td>原子在三维空间里呈周期性有序排列</td>
+</tr>
+<tr class="even">
+<td>非晶体</td>
+<td>无（不能自发呈现多面体外形）</td>
+<td>原子排列相对无序</td>
+</tr>
+</tbody>
+</table>
+<p>​
+晶体的<strong>自范性</strong>指晶体能自发地呈现多面体外形的性质，但是实现可能需要一定条件，如晶体生长的速率适当。晶体在物理性质上也存在各向异性，如石蜡熔化不同方向速度不同。</p>
+<p>​
+一般来说，得到晶体有三条途径，==熔融态物质凝固、气态物质冷却不经液态直接凝固（凝华）、溶质从溶液中析出==。区分晶体与非晶体最科学可靠的方法是对固体进行<strong>X
+射线衍射实验</strong>（使用<strong>X
+射线衍射仪</strong>）（除此之外，可以通过是否有固定熔沸点、物理性质的各向异性、是否均一等判断）。</p>
+<h4 id="晶胞">2. 晶胞</h4>
+<p>​
+为了描述晶体在微观空间里原子的排列，我们用<strong>晶胞</strong>即一个基本单元来描述。常见的晶胞都是平行六面体，整块晶体可以看作是数量巨大的晶胞无隙并置而成。在数晶胞内原子时，我们只取一个顶角和三条侧棱以及平行六面体内部的原子数。</p>
+<blockquote>
+<h3 id="晶胞相关计算">晶胞相关计算</h3>
+<p>​ 在计算晶胞中的平均微粒时，我们通常使用均摊法进行计算：若微粒为 n
+个晶胞共有，则该微粒有<span class="math inline">$\frac{1}{n}$</span>属于该晶胞。</p>
+<p>​
+值得注意的是，一定要注意题目给出的物质是晶体还是非晶体，如果给出的是团簇分子或纳米颗粒，则所含微粒是独有的，不与其他分子或颗粒所共用。</p>
+<p>​ 如果需要计算晶体的密度，可以按两个思路：计算 1 个晶胞；计算 1mol
+晶胞。首先通过一个晶胞拥有的微粒数目计算一个晶胞的平均质量，再根据给出的核间距、键参等计算体积。
+<span class="math display">$$
+$\rho=\frac{n_0M}{a^3N_A}$
+$$</span></p>
+</blockquote>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://hoarfroster.github.io/2022/02/04/chemistry/BK%204%20%E5%88%86%E5%AD%90%E7%BB%93%E6%9E%84%20%E6%99%B6%E4%BD%93%E7%BB%93%E6%9E%84/P1%20%E5%88%86%E5%AD%90%E7%BB%93%E6%9E%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Hoarfroster">
+      <meta itemprop="description" content="这里是霜羽~~咕咕咕">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hoarfroster 的小窝">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/02/04/chemistry/BK%204%20%E5%88%86%E5%AD%90%E7%BB%93%E6%9E%84%20%E6%99%B6%E4%BD%93%E7%BB%93%E6%9E%84/P1%20%E5%88%86%E5%AD%90%E7%BB%93%E6%9E%84/" class="post-title-link" itemprop="url">分子结构</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-02-04 14:56:55" itemprop="dateCreated datePublished" datetime="2022-02-04T14:56:55+08:00">2022-02-04</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-05-28 23:43:07" itemprop="dateModified" datetime="2022-05-28T23:43:07+08:00">2022-05-28</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/High-School/" itemprop="url" rel="index"><span itemprop="name">High School</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/High-School/Chemistry/" itemprop="url" rel="index"><span itemprop="name">Chemistry</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span><br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+              <span>7k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+              <span>13 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+<h2 id="知识聚焦">知识聚焦</h2>
+<h3 id="一化学键与分子间作用力">一、化学键与分子间作用力</h3>
+<h4 id="化学键与分子间作用力">1. 化学键与分子间作用力</h4>
+<table>
+<colgroup>
+<col style="width: 14%">
+<col style="width: 35%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>化学键</th>
+<th>分子间作用力</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>概念</td>
+<td>相邻原子间强烈的相互作用</td>
+<td>把分子聚集在一起的力，又称范德华力</td>
+</tr>
+<tr class="even">
+<td>作用范围</td>
+<td>分子或晶体内</td>
+<td>分子间</td>
+</tr>
+<tr class="odd">
+<td>作用力强弱</td>
+<td>较强</td>
+<td>比化学键弱得多</td>
+</tr>
+<tr class="even">
+<td>影响的性质</td>
+<td>主要影响化学性质</td>
+<td>主要影响物理性质（如熔沸点）</td>
+</tr>
+<tr class="odd">
+<td>特征</td>
+<td>有方向性，有饱和性</td>
+<td>无方向性，无饱和性</td>
+</tr>
+</tbody>
+</table>
+<ol type="1">
+<li>分子间作用力存在于由共价键形成的多数共价化合物和绝大多数非金属单质及稀有气体之间。</li>
+<li>一般来说，组成和结构相似的物质，相对分子质量越大，分子间作用力越大，物质熔沸点越高；分子的极性越大，分子间作用力越大。</li>
+</ol>
+<h4 id="化学键的分类">2. 化学键的分类</h4>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 8%">
+<col style="width: 27%">
+<col style="width: 25%">
+<col style="width: 38%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>化学键类型</th>
+<th>离子键</th>
+<th>共价键</th>
+<th>金属键</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>概念</td>
+<td>阴阳离子间通过静电作用形成的化学键</td>
+<td>原子间通过共用电子对形成的化学键</td>
+<td>金属<strong>阳离子与自由电子</strong>通过相互作用形成的化学键</td>
+</tr>
+<tr class="even">
+<td>成键微粒</td>
+<td>阴阳离子</td>
+<td>原子</td>
+<td>金属阳离子和自由电子</td>
+</tr>
+<tr class="odd">
+<td>成键性质</td>
+<td>静电作用</td>
+<td>共用电子对</td>
+<td>电性作用</td>
+</tr>
+<tr class="even">
+<td>形成条件</td>
+<td>活泼金属元素与活泼非金属元素</td>
+<td>非金属元素与金属元素</td>
+<td>金属内部</td>
+</tr>
+<tr class="odd">
+<td>实例</td>
+<td><span class="math inline">$\ce{NaCl, MgO}$</span></td>
+<td><span class="math inline">$\ce{HCl, H2SO4}$</span></td>
+<td><span class="math inline">$\ce{Fe, Mg}$</span></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<h5 id="有阴离子一定有阳离子有阳离子不一定有阴离子如金属单质或合金">有阴离子一定有阳离子，有阳离子不一定有阴离子（如金属单质或合金）。</h5>
+</blockquote>
+<h4 id="共价键">3. 共价键</h4>
+<table>
+<colgroup>
+<col style="width: 13%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 36%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>非极性共价键</th>
+<th>极性共价键</th>
+<th>配位键（配位共价键）</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>形成微粒</td>
+<td>同种原子</td>
+<td>不同种原子</td>
+<td>不同种原子</td>
+</tr>
+<tr class="even">
+<td>成键方式</td>
+<td>双方原子共同提供电子形成共用电子对</td>
+<td>双方原子共同提供电子形成共用电子对</td>
+<td>一方原子提供孤电子对，一方院子提供空轨道</td>
+</tr>
+<tr class="odd">
+<td>表示</td>
+<td><span class="math inline">$\ce{A-B}$</span></td>
+<td><span class="math inline">$\ce{A-B}$</span></td>
+<td><span class="math inline">$\ce{A:\bond{-&gt;}\square
+B}$</span>（<span class="math inline">$\ce{A\bond{-&gt;}B}$</span>）</td>
+</tr>
+<tr class="even">
+<td>原子吸引电子对能力</td>
+<td>相同</td>
+<td>不同</td>
+<td>不同</td>
+</tr>
+<tr class="odd">
+<td>共用电子对位置</td>
+<td>不偏向任何一个原子</td>
+<td>偏向吸引电子能力强的原子一方</td>
+<td>偏向吸引电子能力强的原子一方</td>
+</tr>
+<tr class="even">
+<td>举例</td>
+<td><span class="math inline">$\ce{H2, N2, H2O2}$</span></td>
+<td><span class="math inline">$\ce{HCl, OH-, H2O}$</span></td>
+<td><span class="math inline">$\ce{NH+4, H3O+, H3N-BF3}$</span></td>
+</tr>
+</tbody>
+</table>
+<p>​
+共价键业可以按照共用电子对的数目分为单键、双键、三键，也可以按照原子轨道的重叠方式分为<span class="math inline"><em>σ</em></span>键和<span class="math inline"><em>π</em></span>键（前者电子云具有轴对称性，后者电子云具有镜像对称性）。</p>
+<h4 id="化学键的键参数">4. 化学键的键参数</h4>
+<ol type="1">
+<li>键能：气态基态原子形成<span class="math inline">$\ce{1mol}$</span>化学键释放的最低能量。键能越大，化学键越稳定。</li>
+<li>键长：形成共价键的两个原子之间的核间距。键长越短，化学键越稳定。</li>
+<li>键角：在原子数超过 2 的分子中，两个共价键之间的夹角。</li>
+</ol>
+<pre class="mermaid">graph LR
+键能 --决定--&gt; 分子的稳定性
+键长 --决定--&gt; 分子的稳定性
+键长 --决定--&gt; 分子的空间构型
+键角 --决定--&gt; 分子的空间构型
+分子的稳定性 --决定--&gt; 分子的性质
+分子的空间构型 --决定--&gt; 分子的性质</pre>
+<h4 id="离子化合物和共价化合物">5. 离子化合物和共价化合物</h4>
+<table>
+<colgroup>
+<col style="width: 11%">
+<col style="width: 44%">
+<col style="width: 44%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>类别</th>
+<th>离子化合物</th>
+<th>共价化合物</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>定义</td>
+<td>含有离子键的化合物</td>
+<td>只含有共价键的化合物</td>
+</tr>
+<tr class="even">
+<td>结构粒子</td>
+<td>阴阳离子</td>
+<td>原子</td>
+</tr>
+<tr class="odd">
+<td>化学键类型</td>
+<td>一定含有离子键，可能含有共价键</td>
+<td>只含共价键</td>
+</tr>
+<tr class="even">
+<td>与物质类别的关系</td>
+<td>1. 强碱<br>2. 绝大多数盐<br>3. 活泼金属氧化物</td>
+<td>1. 所有的酸<br>2. 弱碱<br>3. 气态氢化物<br>4.
+非金属氧化物<br>5. 极少数盐</td>
+</tr>
+<tr class="odd">
+<td>主要物理性质</td>
+<td>1. 熔沸点较高，硬度较大，通常呈固态<br>2.
+固态不导电，熔融态或溶于水后导电</td>
+<td>1. 熔沸点、硬度差异较大<br>2. 熔融态不导电，某些溶于水后导电</td>
+</tr>
+</tbody>
+</table>
+<h3 id="二分子的极性">二、分子的极性</h3>
+<h4 id="非极性分子与极性分子">1. 非极性分子与极性分子</h4>
+<table>
+<colgroup>
+<col style="width: 19%">
+<col style="width: 36%">
+<col style="width: 44%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>非极性分子</th>
+<th>极性分子</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>形成原因</td>
+<td>整个分子的电荷分布均匀对称</td>
+<td>整个分子的电荷分布不均匀、不对称</td>
+</tr>
+<tr class="even">
+<td>存在的共价键</td>
+<td>非极性键或极性键</td>
+<td>极性键</td>
+</tr>
+<tr class="odd">
+<td>分子内原子排列</td>
+<td>对称</td>
+<td>不对称</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<h3 id="分子极性的判断">分子极性的判断</h3>
+<ol type="1">
+<li>除了<span class="math inline">$\ce{O3}$</span>，只含有非极性键的单质分子是非极性分子。</li>
+<li>含有极性键的双原子化合物分子都是极性分子。</li>
+<li>含有极性键的多原子分子，空间结构对称的是非极性分子，不对称的是极性分子。</li>
+<li>使用向量和进行计算，如果分子极性的向量和为 0
+，则分子是极性分子。</li>
+<li>判断分子是否是极性分子不能只看分子式，需要看具体结构，如<span class="math inline">$\ce{H2O2}$</span>不是平面构象，而是一个具有二面角的构象<span class="citation" data-cites="Why_H2O2_polar_molecules">[@Why_H2O2_polar_molecules]</span>。</li>
+</ol>
+</blockquote>
+<blockquote>
+<h4 id="相似相容原理">相似相容原理</h4>
+<p>​
+相似相容规律：凡是分子结构相似的物质，都是易于互相溶解的。（非极性溶质一般能溶于非极性溶剂，极性溶质一般能溶于极性溶剂；如果存在氢键，溶剂与溶质间氢键作用力越大，溶解效果越好）</p>
+</blockquote>
+<blockquote>
+<h4 id="键的极性对有机酸酸性的影响">键的极性对有机酸酸性的影响</h4>
+<p>​
+有机酸中羟基可以电离出氢离子，羟基的极性越大，有机酸的酸性越大。</p>
+<ol type="1">
+<li>因为<span class="math inline">$\ce{F}$</span>的电负性大于<span class="math inline">$\ce{Cl}$</span>，故而三氟乙酸中羟基基团的极性大于三氯乙酸的极性，酸性更强。</li>
+<li>烃基是推电子基团，烃基越长推电子效应越大，羟基极性越小，酸性越弱，所以甲酸酸性强于乙酸强于丙酸。</li>
+</ol>
+</blockquote>
+<h4 id="分子的空间构型">2. 分子的空间构型</h4>
+<h5 id="vsepr-价层电子对互斥模型">VSEPR 价层电子对互斥模型</h5>
+<p>​
+价层电子对互斥模型认为，分子的空间结构是中心原子周围的价层电子对相互排斥的结果。价层电子对指分子中的中心原子与结合原子间的<span class="math inline"><em>σ</em></span>键电子对和中心原子上的孤电子对（不计<span class="math inline"><em>π</em></span>键电子对）。</p>
+<p>​ 中心原子上的<span class="math inline"><em>σ</em></span>键电子对数可以由化学式确定，而孤电子对数需要用计算式<span class="math inline">0.5(<em>a</em>−<em>x</em><em>b</em>)</span>得出（<span class="math inline"><em>a</em></span>为中心原子的价电子数，<span class="math inline"><em>x</em></span>为与中心原子结合的原子数，<span class="math inline"><em>b</em></span>为与中心原子结合的原子最多能接受的电子数）。</p>
+<p>​ 在计算得出价层电子对数后，我们可以构建一个含有孤电子对的分子的
+VSEPR
+模型，然后略去中心原子的孤电子对，我们就可以得到分子的空间构型。但由于孤电子对有较大斥力，中心原子含孤电子对分子的键角几乎都小于预测值，如<span class="math inline">$\ce{H2O=105\degree, NH3=107\degree,
+NO^-2=115\degree}$</span>，虽然 VSEPR
+预测少有失误，但它不能用来预测以过渡金属为中心原子的分子。</p>
+<h5 id="杂化轨道理论">杂化轨道理论</h5>
+<p>​
+杂化轨道理论是一种价键理论，是鲍林为了解释分子空间结构而提出的，要点在于，如<span class="math inline">$\ce{CH4}$</span>的碳原子与氢原子成键时，碳原子的<span class="math inline">$\ce{2s}$</span>轨道和 3 个<span class="math inline">$\ce{2p}$</span>轨道会发生混杂，形成四个能量一样，指向正四面体四个顶角的轨道，夹角<span class="math inline">$109\degree28
+’$</span>。这种成键中心原子轨道杂化合并形成新的键长、键角、键能完全一致的轨道的理论即为杂化轨道理论。</p>
+<blockquote>
+<h5 id="判断杂化类型">判断杂化类型</h5>
+<p>​ 大多情况可以简化运算为<span class="math inline">$\ce{sp^{lp +
+\sigma -
+1}}$</span>（一般来说，杂化轨道数=中心原子上的孤电子对数+中心原子的<span class="math inline"><em>σ</em></span>键数）。</p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/vsepr-chart-table.png" alt="vsepr-chart-table" style="zoom: 50%;"></p>
+<table>
+<thead>
+<tr class="header">
+<th>价层电子对数</th>
+<th>VSEPR</th>
+<th>成键电子对</th>
+<th>孤电子对</th>
+<th>分子或离子结构</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2</td>
+<td>直线形</td>
+<td>2</td>
+<td>0</td>
+<td>直线形</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>平面三角形</td>
+<td>3</td>
+<td>0</td>
+<td>平面三角形</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>平面三角形</td>
+<td>2</td>
+<td>1</td>
+<td>V 形</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>四面体形</td>
+<td>4</td>
+<td>0</td>
+<td>正四面体形</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td>四面体形</td>
+<td>3</td>
+<td>1</td>
+<td>三角锥形</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>四面体形</td>
+<td>2</td>
+<td>2</td>
+<td>V 形</td>
+</tr>
+</tbody>
+</table>
+<h3 id="三氢键">三、氢键</h3>
+<h4 id="定义">1. 定义</h4>
+<p>​ 当氢与电负性很大而原子半径很小的元素<span class="math inline">$\ce{X}$</span>（如<span class="math inline">$\ce{N,
+O,
+F}$</span>）以共价键结合时，使共用电子对强烈偏向电负性大的原子一端，使氢原子几乎裸露在外面，这时氢原子核与另一个电负性很大，同时原子半径很小，且带有孤对电子的元素<span class="math inline">$\ce{Y}$</span>接近时产生比较大的吸引力（强度约为一般共价键的
+5%~10%），这种原子间作用力称为<strong>氢键</strong>。氢键通常可以表示为<span class="math inline">$\ce{X-H\bond{...}Y}$</span>。</p>
+<p>​ 简单来说，就是==氢原子被电负性很高的原子吸走了电子呈<span class="math inline"><em>δ</em><sup>+</sup></span>，此时与另一个电负性很高的原子就能形成氢键==。</p>
+<h4 id="特点">2. 特点</h4>
+<ol type="1">
+<li>氢键具有方向性和饱和性。</li>
+<li>氢键只存在于某些含有氢原子的分子之间。</li>
+<li>作用力大小：==化学键&gt;氢键&gt;分子间作用力==。</li>
+<li>分子中心必须有一个电负性很大的元素形成强极性键的氢原子。</li>
+<li>电负性大的元素必须有孤对电子，且半径要小（通常为<span class="math inline">$\ce{F, O, N}$</span>）。</li>
+</ol>
+<h4 id="影响">3. 影响</h4>
+<p>​ 氢键对物质的熔点、沸点、密度、黏度、硬度等均有影响。</p>
+<ol type="1">
+<li>若分子间存在氢键，晶体熔化或液体汽化时，需要克服的阻力增大，所以熔沸点升高。</li>
+<li>若分子内存在氢键，分子间不再缔合而凝聚力小，熔沸点低。</li>
+<li>极性溶剂中，如果溶质分子与溶剂分子间形成氢键，会促进分子间的结合，溶解度增大。</li>
+<li>极性溶剂中，如果溶质分子内形成氢键，会与水（溶剂）难以形成分子间氢键，进而难溶于水（溶剂），溶解度低。</li>
+<li>溶液中形成分子间氢键，使分子间结合更加紧密，进而增加密度与黏度。</li>
+</ol>
+<h3 id="四分子的手性">四、分子的手性</h3>
+<p>​
+具有完全相同的组成和原子排列的一对分子，如同左右手一样互为镜像，在三维空间内不能叠合，互称手性异构体（或对映异构体）。有手性异构体的分子叫做<strong>手性分子</strong>。</p>
+<blockquote>
+<h3 id="判断是否是手性碳原子">判断是否是手性碳原子</h3>
+<ol type="1">
+<li>手性碳原子必须饱和，连有 4 个不同原子或原子团。</li>
+<li><span class="math inline">$\ce{-CH2-,
+-CH3-}$</span>一定不是手性碳原子。</li>
+<li>双键、三键以及苯环上的碳原子一定不是手性碳原子。</li>
+</ol>
+</blockquote>
+<p>​ 手性分子在生命科学和药物生产中有广泛应用，现今使用的药物有
+50%以上是手性药物，它们的一个异构体可能是有效的，另一个异构体可能是无效甚至有害的。使用手性催化剂可以只得到或主要得到一种手性分子，这种合成方式是手性合成。</p>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/19/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><span class="page-number current">20</span><a class="page-number" href="/page/21/">21</a><span class="space">&hellip;</span><a class="page-number" href="/page/39/">39</a><a class="extend next" rel="next" href="/page/21/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Hoarfroster"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Hoarfroster</p>
+  <div class="site-description" itemprop="description">这里是霜羽~~咕咕咕</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">193</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">53</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">58</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <ul class="links-of-author motion-element">
+      <li class="links-of-author-item">
+        <a href="https://github.com/PassionPenguin" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;PassionPenguin" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        <span> PassionPenguin</span>
+      </li>
+      <li class="links-of-author-item">
+        <a href="mailto:hoarfroster@outlook.com" title="E-Mail → mailto:hoarfroster@outlook.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+        <span> hoarfroster@outlook.com</span>
+      </li>
+      <li class="links-of-author-item">
+        <a href="https://twitter.com/zhangqizhe" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;zhangqizhe" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+        <span> @zhangqizhe</span>
+      </li>
+      <li class="links-of-author-item">
+        <a href="https://www.instagram.com/glacierpenguin/" title="Instagram → https:&#x2F;&#x2F;www.instagram.com&#x2F;glacierpenguin&#x2F;" rel="noopener" target="_blank"><i class="fab fa-instagram fa-fw"></i>Instagram</a>
+        <span> @glacierpenguin</span>
+      </li>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hoarfroster</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="Symbols count total">1.1m</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">34:12</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT</a>
+  </div>
+
+        
+
+
+
+
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-firestore.js"></script>
+  <script>
+    firebase.initializeApp({
+      apiKey   : 'AIzaSyDqM81uUD8yWHAvsGasJzvWBHhpBYnRttI',
+      projectId: 'hoar-froster'
+    });
+
+    function getCount(doc, increaseCount) {
+      // IncreaseCount will be false when not in article page
+      return doc.get().then(d => {
+        var count = 0;
+        if (!d.exists) { // Has no data, initialize count
+          if (increaseCount) {
+            doc.set({
+              count: 1
+            });
+            count = 1;
+          }
+        } else { // Has data
+          count = d.data().count;
+          if (increaseCount) {
+            // If first view this article
+            doc.set({ // Increase count
+              count: count + 1
+            });
+            count++;
+          }
+        }
+
+        return count;
+      });
+    }
+
+    function appendCountTo(el) {
+      return count => {
+        el.innerText = count;
+      }
+    }
+  </script>
+  <script>
+    (function() {
+      var db = firebase.firestore();
+      var articles = db.collection('articles-info');
+
+      if (CONFIG.page.isPost) { // Is article page
+        var title = document.querySelector('.post-title').innerText.trim();
+        var doc = articles.doc(title);
+        var increaseCount = CONFIG.hostname === location.hostname;
+        if (localStorage.getItem(title)) {
+          increaseCount = false;
+        } else {
+          // Mark as visited
+          localStorage.setItem(title, true);
+        }
+        getCount(doc, increaseCount).then(appendCountTo(document.querySelector('.firestore-visitors-count')));
+      } else if (CONFIG.page.isHome) { // Is index page
+        var promises = [...document.querySelectorAll('.post-title')].map(element => {
+          var title = element.innerText.trim();
+          var doc = articles.doc(title);
+          return getCount(doc);
+        });
+        Promise.all(promises).then(counts => {
+          var metas = document.querySelectorAll('.firestore-visitors-count');
+          counts.forEach((val, idx) => {
+            appendCountTo(metas[idx])(val);
+          });
+        });
+      }
+    })();
+  </script>
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var canonicalURL, curProtocol;
+      //Get the <link> tag
+      var x=document.getElementsByTagName("link");
+		//Find the last canonical URL
+		if(x.length > 0){
+			for (i=0;i<x.length;i++){
+				if(x[i].rel.toLowerCase() == 'canonical' && x[i].href){
+					canonicalURL=x[i].href;
+				}
+			}
+		}
+    //Get protocol
+	    if (!canonicalURL){
+	    	curProtocol = window.location.protocol.split(':')[0];
+	    }
+	    else{
+	    	curProtocol = canonicalURL.split(':')[0];
+	    }
+      //Get current URL if the canonical URL does not exist
+	    if (!canonicalURL) canonicalURL = window.location.href;
+	    //Assign script content. Replace current URL with the canonical URL
+      !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=canonicalURL,t=document.referrer;if(!e.test(r)){var n=(String(curProtocol).toLowerCase() === 'https')?"https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif":"//api.share.baidu.com/s.gif";t?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var i=new Image;i.src=n}}(window);})();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme    : 'default',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+  
+
+  
+
+
+</body>
+</html>

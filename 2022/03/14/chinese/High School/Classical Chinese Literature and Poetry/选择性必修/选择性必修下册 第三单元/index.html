@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/avatar.png" color="#222">
+  <meta name="google-site-verification" content="iFMbHL1JuWjTlNFq5Rv96vDzpsqakxTpdE2nw7Crr6o">
+  <meta name="msvalidate.01" content="EF6D8CD8A3335E66AB96B4D544FCD96C">
+  <meta name="baidu-site-verification" content="code-80b80Pbzs2">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link href="/lib/fontawesome/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<script>
+
+  window.onload = function() {
+    document.querySelectorAll("p").forEach(e=>{
+      e.innerHTML = e.innerHTML.replaceAll(/==(.+?)==/g, "<mark>$1</mark>").replaceAll(/​\s+?/g, "<span class='tab'></span>");
+    });
+    
+    [...document.querySelectorAll("pre > code")].forEach(e=> {
+        var codeClass = e.parentElement.classList.value;
+        if (codeClass == null || codeClass === "") {
+            e.classList.add("hljs");
+        } else {
+            var map = {
+                js: "javascript"
+            };
+            if (map[codeClass]) {
+                codeClass = map[codeClass];
+            }
+            codeClass.split(" ").forEach(i=>e.classList.add(i));
+            hljs.highlightElement(e);
+        }
+    });
+
+    [...document.querySelectorAll('.classcial-chinese-literature-and-poetry-translation')].forEach(i=>{
+      let el = document.createElement('div');
+      el.setAttribute('class', 'fa-solid fa-eye');
+      i.prepend(el);
+      el.addEventListener('click', ()=>{
+        let status = el.classList.contains('fa-eye');
+        [...i.querySelectorAll('.translation')].forEach(j=>{
+          j.classList.remove('hide');
+          if(status) {
+            j.classList.add('hide');
+          }
+        });
+        el.attributes['class'].value = el.attributes['class'].value.replace('fa-eye-slash', 'fa-0').replace('fa-eye', 'fa-eye-slash').replace('fa-0', 'fa-eye');
+      });
+
+      [...i.querySelectorAll('.original-text')].forEach(e=>{
+        let el = document.createElement('div');
+        el.setAttribute('class', 'fa-solid fa-eye-slash');
+        e.prepend(el);
+        el.addEventListener('click', ()=>{
+            e.nextSibling.classList.toggle('hide');
+            el.attributes['class'].value = el.attributes['class'].value.replace('fa-eye-slash', 'fa-0').replace('fa-eye', 'fa-eye-slash').replace('fa-0', 'fa-eye');
+        });
+      })
+    });
+  }
+</script>
+<script async src="/js/highlight.min.js"></script>
+<script async src="/js/cursor.js"></script>
+<script data-ad-client="ca-pub-2275811890061218" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"hoarfroster.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqusjs","storage":true,"lazyload":false,"nav":null,"activeClass":"disqusjs"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="部编版高中语文课本选择性必修下册第三单元古诗文笔记与教学内容整理。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="高中文言文：选择性必修下 第三单元">
+<meta property="og:url" content="https://hoarfroster.github.io/2022/03/14/chinese/High%20School/Classical%20Chinese%20Literature%20and%20Poetry/%E9%80%89%E6%8B%A9%E6%80%A7%E5%BF%85%E4%BF%AE/%E9%80%89%E6%8B%A9%E6%80%A7%E5%BF%85%E4%BF%AE%E4%B8%8B%E5%86%8C%20%E7%AC%AC%E4%B8%89%E5%8D%95%E5%85%83/index.html">
+<meta property="og:site_name" content="Hoarfroster 的小窝">
+<meta property="og:description" content="部编版高中语文课本选择性必修下册第三单元古诗文笔记与教学内容整理。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-03-13T17:10:43.000Z">
+<meta property="article:modified_time" content="2022-05-28T15:43:08.140Z">
+<meta property="article:author" content="Hoarfroster">
+<meta property="article:tag" content="School Notes">
+<meta property="article:tag" content="High School">
+<meta property="article:tag" content="Chinese">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://hoarfroster.github.io/2022/03/14/chinese/High%20School/Classical%20Chinese%20Literature%20and%20Poetry/%E9%80%89%E6%8B%A9%E6%80%A7%E5%BF%85%E4%BF%AE/%E9%80%89%E6%8B%A9%E6%80%A7%E5%BF%85%E4%BF%AE%E4%B8%8B%E5%86%8C%20%E7%AC%AC%E4%B8%89%E5%8D%95%E5%85%83/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>高中文言文：选择性必修下 第三单元 | Hoarfroster 的小窝</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <!--<div class="headband"></div>-->
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hoarfroster 的小窝</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section">Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section">About</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section">Categories</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger">
+          Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://hoarfroster.github.io/2022/03/14/chinese/High%20School/Classical%20Chinese%20Literature%20and%20Poetry/%E9%80%89%E6%8B%A9%E6%80%A7%E5%BF%85%E4%BF%AE/%E9%80%89%E6%8B%A9%E6%80%A7%E5%BF%85%E4%BF%AE%E4%B8%8B%E5%86%8C%20%E7%AC%AC%E4%B8%89%E5%8D%95%E5%85%83/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Hoarfroster">
+      <meta itemprop="description" content="这里是霜羽~~咕咕咕">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hoarfroster 的小窝">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          高中文言文：选择性必修下 第三单元
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-03-14 01:10:43" itemprop="dateCreated datePublished" datetime="2022-03-14T01:10:43+08:00">2022-03-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-05-28 23:43:08" itemprop="dateModified" datetime="2022-05-28T23:43:08+08:00">2022-05-28</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/High-School/" itemprop="url" rel="index"><span itemprop="name">High School</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/High-School/Chinese/" itemprop="url" rel="index"><span itemprop="name">Chinese</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/High-School/Chinese/Classical-Chinese-Literature-and-Poetry/" itemprop="url" rel="index"><span itemprop="name">Classical Chinese Literature and Poetry</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span><br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+              <span>8.5k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+              <span>15 mins.</span>
+            </span>
+            <div class="post-description">部编版高中语文课本选择性必修下册第三单元古诗文笔记与教学内容整理。</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="单元内容">单元内容</h2>
+<h3 id="课文目录">课文目录</h3>
+<pre class="template:contents"><code>[[High School, Chinese, Classical Chinese Literature and Poetry, 陈情表-李密], 陈情表-李密]
+[[High School, Chinese, Classical Chinese Literature and Poetry, 项脊轩志-归有光], 项脊轩志-归有光]
+[[High School, Chinese, Classical Chinese Literature and Poetry, 兰亭集序-王羲之], 兰亭集序-王羲之]
+[[High School, Chinese, Classical Chinese Literature and Poetry, 归去来兮辞并序-陶渊明], 归去来兮辞并序-陶渊明]
+[[High School, Chinese, Classical Chinese Literature and Poetry, 种树郭橐驼传-柳宗元], 种树郭橐驼传-柳宗元]
+[[High School, Chinese, Classical Chinese Literature and Poetry, 石钟山记-苏轼], 石钟山记-苏轼]</code></pre>
+<h3 id="单元目标">单元目标</h3>
+<ol type="1">
+<li><p>阅读古代散文佳作，体会古人的情感、思想和人生感悟，把握文章承载的文化观念，从中受到陶治，汲取智慧，感受民族文化的无穷魅力，增进对中华优秀传统文化的理解和认同。</p></li>
+<li><p>深入研读单元选文，在反复诵读涵泳的基础上，领会不同作者在审美上的独特追求；理解作者抒发情怀、表达思想的个性化手法，赏析文章的章法和细节；学习自主选择角度欣赏古代散文作品。</p></li>
+<li><p>结合体验与思考，进行对比与联系，集中研习古代散文；全面、深人地认识古代散文的体裁特点、艺术手法和多样风格，并尝试接触、运用相关的研究方法。</p></li>
+<li><p>在研习单元选文的过程中，理解古人是怎样“修辞立其诚”的；结合生活实际，写一封书信，做到说真话，述真知，抒真情。</p></li>
+</ol>
+<h2 id="编写意图">编写意图</h2>
+<h3 id="编写意图-1">编写意图</h3>
+<p>​
+本单元属于“中华传统文化经典研习”学习任务群，意在让学生集中阅读经典作品，积累文言阅读经验，培养民族审美趣味，增进对中华优秀传统文化的理解和认同。这一理念为统编高中语文教材中所有以文言诗文为主体的单元所共有，是“文化传承与理解”这一学科核心素养在统编高中语文教材中的具体落实。</p>
+<p>​
+选择性必修教材中共有四个文言诗文单元，与必修教材一样覆盖了经史子集四部：选择性必修上册教材第二单元以先秦诸子的作品为主（《礼记》虽为西汉人所编纂，但反映的主要还是先秦礼制），可以视为必修下册教材第1课的拓展与深化；选择性必修中册教材第三单元是史传和史论，可以视为必修下册教材第2、第3两课和第16课的整合与延伸；本册教材第一单元所选诗词从《诗经》直至两宋，与必修上册教材第三单元同样具有反映“古代诗歌史”的意味，但时间跨度更大；本单元则综合选择了从西晋到明中期的六篇古代散文名作，体式变化多样，也略有“古代散文史”的模样。由此可见，在课程标准的框架下，选择性必修教材的文言诗文单元都带有加深拓宽、比对归结的多重意图。值得一提的是，非议论类的文言散文是学生文言文学习中的大宗，但在前四册统编教材中并未设置专门的单元，相关选文也较少，作为统编高中语文教材的第一个文言散文单元，也是统编初高中语文教材的最后一个文言诗文单元，本单元应引起教师的高度关注。</p>
+<p>​
+按照课程标准的要求，教材选择了“不同时期、不同类型的一些代表性作品”来组织本单元，所选古代散文作品都是“事”“情”“理”融为一体的佳作，在课程标准特别强调的“精神内涵、审美追求和文化价值”方面都有着突出的表现。作为一个归结性的单元，古代散文的诸体皆是题中应有之意。本单元的选文分属“表”“志”“序”“辞”“传”“记”六种，基本涵盖了中学生常见的古代散文（议论类散文除外）体式。除了《陈情表》《兰亭集序》带有实用文的特点，其他几篇都是以抒发情感、表达思想为主的作品。即使是《兰亭集序》，也并非以“序所以为作者之意”（孔安国《古文尚书序》）为主，而是以序文抒发作序者自己的感思，属于“疏通圆美，而随所序之事变化”（陈绎曾《文说·明体法》）的作品，与纯实用性的序文有所区别。</p>
+<p>​
+从风格来看，这六篇文章大致可以分为两个类型。《陈情表》《兰亭集序》《归去来兮辞并序》都是晋代作品，其中《陈情表》《归去来兮辞并序》都曾被选入《文选》，虽然带有重视“辞采”“文华”的特点，却并不堆砌、浮华，属于能得文辞之助而不为辞所累的佳作。《种树郭橐驼传》《石钟山记》是唐宋八大家的古文，柳文清朗有力、不乏文采，苏文晓畅平易、不事雕琢，可谓各臻其妙。《项脊轩志》是归有光的名作，即事抒情，真切动人。八大家的古文一般而言被认为是魏晋以来文风的对立面，而归有光是明代“唐宋派”代表，继承了唐宋古文运动的传统，因此，在这个单元中学生可以在一定程度上感受到古代散文发展史上的重大转折，即由骈而散，由华而实，由踵事增华而不尚雕彩。当然，由于三篇晋文本是佳作，不属于古文运动要抨击、批判的浮摩已极的骈文，所以学生只能约略感觉到这一转折，但作为一个归结性的单元，这样的内在理路是具备的。</p>
+<p>​
+教材在选文和安排时除考虑文学史的脉络外，也兼顾了主题、风格等方面的特点。</p>
+<p>​
+《陈情表》是西晋李密写给晋武帝的奏疏，开篇陈述祖母抚养自已、自己奉养祖母的情况；接下来备述守臣推举、天子征辟与祖孙两人相依为命、不可分离的矛盾，表示自己并非不知满足、别有所图；最后再次强调祖母朝不保夕、自己不能远离的事实，祈请皇帝以孝道为重，容许自己先孝后忠。从实用文的角度来看，本文的主要目的是推辞征辟、保全自己，但文章写得恳切真挚，感人至深。千载而下，读之仍令人动容。</p>
+<p>​
+《项脊轩志》借记物以叙事、抒情，在描述项脊轩景物变迁的同时，以简洁的笔法记述自己在其中的生活以及与亲人朝夕相处“多可喜，亦多可悲”的往事，表达了自已对祖母、母亲、妻子的深深怀念，把一段悲喜交加、令人感喟不尽的人生呈现在这个“室仅方丈”的微缩舞台上。全文以平淡的词句、平静的笔调描述平凡的往事，令读者感怀想象，偶尔一两句抒情点染，就会打开他们的情感闸门，使其受到深深的感动，正所谓“不俟修饰，而情辞并得，使览者恻然有隐”（方苞《书归震川文集后》）是也。</p>
+<p>​
+就本单元来说，这两篇文章的写作时代分居首尾，但合为一课，除了其中包含着孝老爱亲的传统价值观这一重要原因之外，也因为两篇文章存在着其他一些相似点或可对照点。例如，两篇文章都写得情真事实，凄切动人，事为情之始，情为事之华。又如，两篇文章在语言方面都较少华丽的雕饰，以传情达意为主，相较而言，《陈情表》较为整饬修洁，《项脊轩志》则将典雅的叙述与口语化的描写融为一体，等等。</p>
+<p>​
+《兰亭集序》是序文，记时地、述人物、叙事由都很简略明快，在简洁清丽的景物描写之后是对人生苦短、欢愉难期的感叹，是对人生苦短、欢愉难期的感叹，是对死生至大、不可轻忽的觉悟，最后再回到对诗集内容的简要介绍，仍不离“其致一也”。文中那宇宙自然与诗意生命的交响，乘时作乐与人生苦短的变奏，引发了不同时代读者的共鸣与沉思。与这篇流传千载的序文相比，作为诗集主体的众多名士的诗作反倒流传不广了。</p>
+<p>​
+《归去来兮辞并序》是作者辞官归里，复返自然后的作品，充满对污浊官场的厌恶和对田园生活的热爱。作者投身自然山水，将自身的生命融人林泉之中，在对登皋吟啸、临流赋诗的吟咏中平静地看待时光流逝、岁月渐老。在与世俗生活决绝之后，陶渊明用欣赏的眼光看待田园生活的一切，用敏锐的心灵体验万物的律动，他的快乐来自很多地方。但最根本的则在于他那向往自由、品味孤独的内心终于能摆脱桎梏，有所寄托，获得安顿。</p>
+<p>​
+将这两篇文章合为一课，并不仅因时代的相近，而是因为它们都有着对生命的深刻认识，有着对人与自然关系的深切体悟，能给予今天的人们很多启发。同时，这两篇文章能够将语言锤炼得不失素朴淡雅之美，打磨得颇具自然生动之致，清雅精致，节奏感强，收放自如。这是后世那些浮华作品所难以比拟的。从文章写法来看《兰亭集序》一气而下，是比较标准的散文笔法，《归去来兮辞并序》则“自首至尾，凡五易韵，为《骚》之变体”（林云铭《古文析义》卷九），两篇文章放在一起，方便师生进行比较阅读。</p>
+<p>​
+《种树郭囊驼传》是一篇设事明理的散文，虽然文体是“传”，但用意并不全在记述人物的言行，而在于因事明理、针砭时弊。文章从郭橐驼擅长种树写起，很快过渡到他的种树之道——“顺木之天，以致其性”，这与其他植树人过分干预树木生长。“虽曰爱之，其实害之”形成了鲜明对比。作者接着又借郭橐驼之口，以种树类比养民、批评了当时官吏繁政扰民的现象。委婉而又明确地提出了为政者应宽政解缚、与民休养生息的观点。这种传记文中的说理只作类比而不作逻辑推论，但由于种树之术与养民之术确有很多相似之处，所以作者要讲的道理仍然令人信服。</p>
+<p>​
+《石钟山记》是一篇记游说理的散文，虽然文体是“记”，却“以辩体为记体”（浦起龙《古文眉诠》卷六十九）把论断、说理与叙事、写景融为一体。文章围绕着“石钟山因何得名”的问题。从对前人说法的怀疑写起，进而写自己和苏迈同游石钟山，探究其得命名原因的经过和自己的结论，最后得出“事不目见耳闻，而臆断其有无，可乎？”的感想，并推测石钟山得名向题长期没有“正解”的原因。其中父子深夜乘舟“至绝壁下”一段，不仅是绝妙的“绘声”文字。也是详尽的探究记录，近人说“东坡此文，直以记为考”（林纾批《古文辞类篡》卷九），是很有见地的。</p>
+<p>​
+这两篇散文并未合为一课，但教师在教学时除落实各课的教学目标外，也不妨做些跨课的比较阅读，引导学生适当地做些研究。例如两篇文章都有比较多的说理成分，但所说之理不同文章写法也各有差别。《种树郭素驼传》所说的是养民之术，所论在政事，切中时弊，针对性强文章写得委婉深隽，耐人寻味。《石钟山记》所说的是名实之理，所论在事理及明理之道，由事入，由理出，文章写得潇洒自如，虽无大起大落却自有内在起伏。</p>
+<p>​
+本单元的单元学习任务有四项均紧扣“中华传统文化经典研习”学习任务群的学习目标与内容展开。其中，任务一指向课程标准要求的对作品“精神内涵”“文化价值”的体会与理解；任务二紧扣课程标准“学习传统文化经典作品的表达艺术”的任务，兼有读与写，有关阅读的任务，抓住古代散文语言、结构上的特点进行研习，有关评点的任务其实仍然是对经典文本的鉴赏，是以写促读、以评助赏；任务三是文言语法现象的梳理总结（词类活用），也是课程标准反复强调的内容；任务四是单元写作跳脱开对技法、套路的过度关注，返璞归真，强调“说真话、抒真情”，与前一单元的写作任务语言的锤炼”形成呼应，带有总括高中阶段写作学习任务的意图。</p>
+<h3 id="教学指导">教学指导</h3>
+<p>​
+本单元学习的主要内容是古代散文作品的研习。所谓“研习”，既包括了一般意义上的学习，又增加了研究的意味和任务，这是本单元教学时应当首先加以关注的。这一学习方式性质的转变究竞意味着教学方式需要进行哪些具体转变，课程标准没有进行集中解说，但是在相关学习任务群的描述中都有比较明确的提示。总的来说，无论具体做法如何，都要注意结合教学内容的特点，体现课程标准的精神，做到扎实、深入、有价值。</p>
+<p>​
+从教学的角度来看，本单元的选文都是经典名篇，长期以来都是语文教材的常选篇目，文言词句的把握、基本内容的理解都有基础可依托，教师在指导学生阅读文本方面有较多可借鉴的资源。但是，这并不意味着教师可以“新瓶装旧酒”，其实，教师仍然面临着教学方式转变的任务，包括教法的转变和新的教学点的开发。</p>
+<p>​
+在本单元的教学中，要高度重视单篇文章的阅读，应结合丰富的情境，设置具有研究性的学习任务。在统编必修教材的教师教学用书中，对大情境、大任务设置的关注往往超过对单篇文章阅读的关注，编写者常常用“既要……又要……”一类的句式，表达“二者不可偏废”的意思。随着课程结构板块的变化，在选择性必修部分，课程标准开始更多地强调对具体作品要“精读”“考察”“研读”，将学生的梳理、讨论、研究建立在对作品的深入阅读的基础上。这是一个非常切实的转变，它意味着必修阶段的学习需要在大情境、大任务的背景下对教学内容丰富的经典文本进行取舍、选取，而选择性必修阶段的学习就要特别重视阅读的精细度和深刻度，不然就谈不上研究。本单元是纯文言文单元，所选文章大都有相当的理解难度，在教学中不仅要就作品的思想、感情、脉络、笔法等作细致的解读与全面的把握，还要适当旁及作品的文学史、文化史地位，还有相关的社会，历史、文化背景等，为展开较有学科特点的研究做好准备。</p>
+<p>​
+在学习情境设置方面，选择性必修阶段的教学也与必修阶段有所不同。从课程标准的表述来看，“中华传统文化经典研习”学习任务群比较看重“特定的社会文化场景”、文化史地位、以今视古的探究视角等，遵循这些思路设置的学习情境，可以更多地体现人文学科本身的特点，体现学科研究的概括、推理、价值判断等，而逐步远离具体的生活。甚至有些研究问题就带有一定的情境，如“柳宗元平民传记有怎样的思想价值与艺术特点”。既是具体的问题，又可以从属于“中国文学史上的平民主题散文”或“中国古代散文中的讽喻性表达”等比较宏大的语境。其实这体现的是一种学习规律。学习者的学习逐渐偏重学科内部的理解和有学科特点的探讨，是其走向选修阶段的专题研讨乃至未来的专业学习的重要准备。在基础教育阶段，其意图并不在培养专门的文史工作者，而在于使学生感受人文学科的基本特点、一般方法、价值追求等。</p>
+<p>​
+同时，教师仍然要注意处理好文言文内容理解和语言现象梳理之间的关系。这是一个老问题，课程标准的表述可能会为我们重新审视这一问题提供帮助。这些文章的内容理解，首先应该依靠反复诵读而不是让学生背诵译文。课程标准在“教学提示”中首先指出“重视诵读在培养学生语感、增进文本理解中的作用”，这是非常重要的。通过反复诵读，借助教材中的注释、学习提示。学生一般能对文章内容有基本的理解。教师需要做的，是帮助学生进一步具体、准确、深人地理解文本内容，这并不等于要对文中的文言语法现象进行穷尽式的搜罗与归结，也不等于要对大量词语深挖死抠，个个都要明确词性、界定用法甚至搞清源流。课程标准提到的“梳理常用文言实词、虚词和特殊句式”，前提是“联系学过的古代作品”。目的是“提高阅读古代作品的能力”。也就是说。梳理总结要建立在足够量的阅读基础上，目的是培养一定的词汇基础和语言敏感度，帮助阅读文言文。这并不等于说在教学中一定要先把实词、虚词、句式梳理总结好了，才能进行内容理解；更不等于说教学每篇文言课文时都要先将“通假字、词类活用、一词多义、特殊句式、重点实词、重点虚词”这“六大件”先梳理记诵一遍。在文言语法现象的学习方面，应该坚持“随文把握”“精选重点”“课后总结”“有意识运用”相结合的思路，不能占用大量时间和精力搞“地毯式轰炸”。研习比起一般的学习更强调研究，思考的过程，教师也更需要对教学内容和方式进行选择。</p>
+<p>​
+比起上面所说的教学方式的转变，对于研习来说，新教学点（尤其是带有研究性的教学点）的开发可能更为重要。所谓的新教学点不见得都是前所未见，人所未发的，而常常是被过度的文言语法现象教学和一般性的串讲翻译“挤”得难以展开的。这些教学点都具有一定的研究属性，在具体教学中，是融入日常的课堂教学来处理，还是布置专门的研充任务，需要教师根据学情自主决定。这里举一些例子供老师们参考。</p>
+<p>​
+有些研究性的教学点比较具体，或偏于赏析评价，或偏于考证理解。例如，《陈情表》的语言究竟是如古人所说的“不事雕饰”，还是“雕而不饰”？《项脊轩志》以“项脊”为名是什么意思？“亭亭如盖”的枇杷树是何人所植？解决这两个问题对我们理解文章有什么价值？《兰亭集序》中的生命反思究竞深刻在哪里？郭橐驼种树重视培元固本，与所谓的“养人之术”有何关系？从中能读出哪些其他道理？等等。对这些问题进行研究，能够帮助学生更准确地把握文章的思想内容与语言特点，特别是突破一股性的大致理解，发现经典名篇的独到之处和多重意蕴。</p>
+<p>​
+有些研究性的教学点涉及教材选文之间的比较，或是写法、语言，或是思想、感情。例如，《陈情表》与《项脊轩志》都以情真见长，但一篇有明确对象和实际目的，一篇以自我表现、自我抒发为主，在情感表达方面有何不同之处？《兰亭集序》《归去来兮辞并序》都体现了对人生有限的思考，其思考的方式和得到的感悟有什么不同之处？等等。通过比较，既可以明确、深化对每篇文章的认识，也有助于得出带有一定规律性的认识。</p>
+<p>​
+有些研究性的教学点则不局限于文本本身，常常与文章的历史背景、思想背景，作者的具体情况等相关。例如，《陈情表》能够打动（至少是说服）晋武帝。究竟主要是因为文中的一片真情，还是因为内容合情合理，切合晋武帝的政策主张？《兰亭集序》表达的对生命的思考，与当时（甚至魏晋时期）关于生死的常见观点有何异同？陶渊明写《归去来兮辞并序》时尚在壮年（距他去世还有十多年），为什么会有那么强烈的人生“行休”之感？等等。这些问题遵循“知人论世”的文学研究传统，既可以进行独立的研究，也可以作为更具综合性的研究的基础。</p>
+<p>​
+有些研究性的教学点涉及贯通性的观照、文学史问题、文化史论题等，往往要进行拓展，可以作为独立的研究性学习任务。例如，从《陈情表》出发，联系初高中教材中的“表”“疏”“书”等带有书函性质的文章（甚至还可以包括赠序、史传中的“讽”“说”），适当拓展，探讨其如何围绕实际目的去布局谋篇、组织语言；综合初高中语文教材中的陶渊明诗文，适当拓展，探究陶渊明诗文独特的审美特质及其思想特征；初高中语文教材中有不少“记”，类型写法有所不同，其中的游记，从南北朝时期吴均等人的写景短章到带有浓重说理成分的《石钟山记》，似乎也颇有可梳理总结之处。又如，关于《兰亭集序》为何没有人选《文选》这个文学史上的传统问题，前人的论述有多个思路，可以做些综述归纳。也可以尝试得出自己的结论；柳宗元（包括韩愈）以普通劳动者为主人公的传记在古代传记发展史上有较重要的意义，可以与学生熟悉的史传做些比较，研究其选材、立意、语言等方面的差异。再如，孝长思亲和生命沉思都是中国文学史上的重要主题，这两个主题的表现角度和表达特点，可以由《陈情表》《项脊轩志》和《兰亭集序》《归去来兮辞并序》这两组文章出发，回忆、拓展，梳理、总结，做些研究，得出自已的结论。以上所举的这些教学点都有比较强的综合性，难度较大，比较适合学生小组合作进行研究。</p>
+<p>​
+值得一提的是，研究有两个基本要素，即占有资料和分析判断，没有资料只谈个人感觉，或者罗列材料不去分析判断，都不是研究。在信息时代，学生自主搜集资料的能力已经有了很大提高，教师可以鼓励他们利用不同渠道自主搜集资料。当然，教师要注意提供支持，向学生指示搜集资料的途径，示范如何辨别资料的价值、评判资料的作用，提供一些难以获取的资料，等等，而不是完全由学生自行搜集资料。更重要的是，教师要在学生的研究过程中进行过程指导，帮助他们分析资料与问题之间、资料与作品之间、资料与资料之间的关系，通过合理的逻辑推理、辨析、归纳等得出自己的结论。在资料搜集方面，要注意不必求新、求奇、求多，要让学生尝试以文本内证为主，以外部资料为辅，学习从利用常见资料发现问题。在研究结论方面，也不必过分追求其独创性、深刻性，只要有道理、合逻辑、不违背常识就可以了。</p>
+<p>​
+课程标准重视让学生搜集评点类的资料，并要求学生“学习运用评点方法，记录自己的感受和见解，不断提高独立阅读能力”，这是非常重要的提示，它提示我们要充分重视古人积累下来的文本解读成果（其中不乏带有比较意识、历史眼光的解读）。这些评点包含着多元的视角、开阔的视野、独特的方法和敏锐的感受，恰当使用，将前贤引入语文学习的多元对话中，不仅能帮助学生理解、赏析文本，还能帮助学生获得研究的线索和灵感，一些优秀的评点本身也是宝贵的语言学习对象。另一方面，现当代的研究成果也不可忽视，比起古人的研究，它们的长处在于使用新的研究范式、体现新的思考方法。比起重视主观感受，集中关注某一局部或某篇文章的评点，现当代的研究可能更多客观性、历史性的分析。同时，这些研究的呈现方式也是学生需要学习的。</p>
+<p>​
+最后需要提示的一点是：“研习”与选修课程的“专题研讨”和专业性的研究有所不同。虽然都要进行研究，但“研习”仍然属于“学习”范畴，它在资料占有和理性分析的水平要求上都要低于后两者，且研究的方式更加灵活。从一些非常具体的质疑反思，到程度较深、涉及面较大的综合性研究都可以纳入“研习”之中。因此，教师应充分考虑学情来确定指导学生进行研习的“量”与“度”，突出文本阅读的基础地位。同时，教师也不必把一般性的学习与研究性的学习割裂开来：一些点状的、具体的研究任务，完全可以融人对文本的细读、精读中；一些综合性较强的任务，也可以在理解、赏析文本时开其端绪、略见端倪，引发学生的研究兴趣，并给出适当的提示。</p>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/School-Notes/" rel="tag"># School Notes</a>
+              <a href="/tags/High-School/" rel="tag"># High School</a>
+              <a href="/tags/Chinese/" rel="tag"># Chinese</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/03/14/chinese/High%20School/Classical%20Chinese%20Literature%20and%20Poetry/%E9%80%89%E6%8B%A9%E6%80%A7%E5%BF%85%E4%BF%AE/%E9%80%89%E6%8B%A9%E6%80%A7%E5%BF%85%E4%BF%AE%E4%B8%8B%E5%86%8C%20%E7%AC%AC%E4%B8%80%E5%8D%95%E5%85%83/" rel="prev" title="高中文言文：选择性必修下 第一单元">
+      <i class="fa fa-chevron-left"></i> 高中文言文：选择性必修下 第一单元
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/03/14/chinese/High%20School/Classical%20Chinese%20Literature%20and%20Poetry/%E9%80%89%E6%8B%A9%E6%80%A7%E5%BF%85%E4%BF%AE/%E5%A4%A7%E5%AD%A6%E4%B9%8B%E9%81%93-%E3%80%8A%E7%A4%BC%E8%AE%B0%E3%80%8B/" rel="next" title="大学之道-《礼记》">
+      大学之道-《礼记》 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%95%E5%85%83%E5%86%85%E5%AE%B9"><span class="nav-text">单元内容</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%BE%E6%96%87%E7%9B%AE%E5%BD%95"><span class="nav-text">课文目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%95%E5%85%83%E7%9B%AE%E6%A0%87"><span class="nav-text">单元目标</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E5%86%99%E6%84%8F%E5%9B%BE"><span class="nav-text">编写意图</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%96%E5%86%99%E6%84%8F%E5%9B%BE-1"><span class="nav-text">编写意图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%99%E5%AD%A6%E6%8C%87%E5%AF%BC"><span class="nav-text">教学指导</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Hoarfroster"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Hoarfroster</p>
+  <div class="site-description" itemprop="description">这里是霜羽~~咕咕咕</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">193</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">53</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">58</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <ul class="links-of-author motion-element">
+      <li class="links-of-author-item">
+        <a href="https://github.com/PassionPenguin" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;PassionPenguin" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        <span> PassionPenguin</span>
+      </li>
+      <li class="links-of-author-item">
+        <a href="mailto:hoarfroster@outlook.com" title="E-Mail → mailto:hoarfroster@outlook.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+        <span> hoarfroster@outlook.com</span>
+      </li>
+      <li class="links-of-author-item">
+        <a href="https://twitter.com/zhangqizhe" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;zhangqizhe" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+        <span> @zhangqizhe</span>
+      </li>
+      <li class="links-of-author-item">
+        <a href="https://www.instagram.com/glacierpenguin/" title="Instagram → https:&#x2F;&#x2F;www.instagram.com&#x2F;glacierpenguin&#x2F;" rel="noopener" target="_blank"><i class="fab fa-instagram fa-fw"></i>Instagram</a>
+        <span> @glacierpenguin</span>
+      </li>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hoarfroster</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="Symbols count total">1.1m</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">34:12</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT</a>
+  </div>
+
+        
+
+
+
+
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-firestore.js"></script>
+  <script>
+    firebase.initializeApp({
+      apiKey   : 'AIzaSyDqM81uUD8yWHAvsGasJzvWBHhpBYnRttI',
+      projectId: 'hoar-froster'
+    });
+
+    function getCount(doc, increaseCount) {
+      // IncreaseCount will be false when not in article page
+      return doc.get().then(d => {
+        var count = 0;
+        if (!d.exists) { // Has no data, initialize count
+          if (increaseCount) {
+            doc.set({
+              count: 1
+            });
+            count = 1;
+          }
+        } else { // Has data
+          count = d.data().count;
+          if (increaseCount) {
+            // If first view this article
+            doc.set({ // Increase count
+              count: count + 1
+            });
+            count++;
+          }
+        }
+
+        return count;
+      });
+    }
+
+    function appendCountTo(el) {
+      return count => {
+        el.innerText = count;
+      }
+    }
+  </script>
+  <script>
+    (function() {
+      var db = firebase.firestore();
+      var articles = db.collection('articles-info');
+
+      if (CONFIG.page.isPost) { // Is article page
+        var title = document.querySelector('.post-title').innerText.trim();
+        var doc = articles.doc(title);
+        var increaseCount = CONFIG.hostname === location.hostname;
+        if (localStorage.getItem(title)) {
+          increaseCount = false;
+        } else {
+          // Mark as visited
+          localStorage.setItem(title, true);
+        }
+        getCount(doc, increaseCount).then(appendCountTo(document.querySelector('.firestore-visitors-count')));
+      } else if (CONFIG.page.isHome) { // Is index page
+        var promises = [...document.querySelectorAll('.post-title')].map(element => {
+          var title = element.innerText.trim();
+          var doc = articles.doc(title);
+          return getCount(doc);
+        });
+        Promise.all(promises).then(counts => {
+          var metas = document.querySelectorAll('.firestore-visitors-count');
+          counts.forEach((val, idx) => {
+            appendCountTo(metas[idx])(val);
+          });
+        });
+      }
+    })();
+  </script>
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var canonicalURL, curProtocol;
+      //Get the <link> tag
+      var x=document.getElementsByTagName("link");
+		//Find the last canonical URL
+		if(x.length > 0){
+			for (i=0;i<x.length;i++){
+				if(x[i].rel.toLowerCase() == 'canonical' && x[i].href){
+					canonicalURL=x[i].href;
+				}
+			}
+		}
+    //Get protocol
+	    if (!canonicalURL){
+	    	curProtocol = window.location.protocol.split(':')[0];
+	    }
+	    else{
+	    	curProtocol = canonicalURL.split(':')[0];
+	    }
+      //Get current URL if the canonical URL does not exist
+	    if (!canonicalURL) canonicalURL = window.location.href;
+	    //Assign script content. Replace current URL with the canonical URL
+      !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=canonicalURL,t=document.referrer;if(!e.test(r)){var n=(String(curProtocol).toLowerCase() === 'https')?"https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif":"//api.share.baidu.com/s.gif";t?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var i=new Image;i.src=n}}(window);})();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme    : 'default',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/disqusjs@1/dist/disqusjs.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/disqusjs@1/dist/disqus.js', () => {
+    window.dsqjs = new DisqusJS({
+      api       : 'https://disqus.skk.moe/disqus/' || 'https://disqus.com/api/',
+      apikey    : 'Lo65MITAya5vcdTm6cJ8V5qCBNx3PVErvDOsfJ5tUPtEbw3DMS3EIzEx6vrmTzCN',
+      shortname : 'hoarfroster',
+      url       : "https://hoarfroster.github.io/2022/03/14/chinese/High%20School/Classical%20Chinese%20Literature%20and%20Poetry/%E9%80%89%E6%8B%A9%E6%80%A7%E5%BF%85%E4%BF%AE/%E9%80%89%E6%8B%A9%E6%80%A7%E5%BF%85%E4%BF%AE%E4%B8%8B%E5%86%8C%20%E7%AC%AC%E4%B8%89%E5%8D%95%E5%85%83/",
+      identifier: "2022/03/14/chinese/High School/Classical Chinese Literature and Poetry/选择性必修/选择性必修下册 第三单元/",
+      title     : "高中文言文：选择性必修下 第三单元",
+    });
+  }, window.DisqusJS);
+});
+</script>
+
+</body>
+</html>

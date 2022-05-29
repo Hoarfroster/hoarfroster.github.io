@@ -1,0 +1,1432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/avatar.png" color="#222">
+  <meta name="google-site-verification" content="iFMbHL1JuWjTlNFq5Rv96vDzpsqakxTpdE2nw7Crr6o">
+  <meta name="msvalidate.01" content="EF6D8CD8A3335E66AB96B4D544FCD96C">
+  <meta name="baidu-site-verification" content="code-80b80Pbzs2">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link href="/lib/fontawesome/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<script>
+
+  window.onload = function() {
+    document.querySelectorAll("p").forEach(e=>{
+      e.innerHTML = e.innerHTML.replaceAll(/==(.+?)==/g, "<mark>$1</mark>").replaceAll(/​\s+?/g, "<span class='tab'></span>");
+    });
+    
+    [...document.querySelectorAll("pre > code")].forEach(e=> {
+        var codeClass = e.parentElement.classList.value;
+        if (codeClass == null || codeClass === "") {
+            e.classList.add("hljs");
+        } else {
+            var map = {
+                js: "javascript"
+            };
+            if (map[codeClass]) {
+                codeClass = map[codeClass];
+            }
+            codeClass.split(" ").forEach(i=>e.classList.add(i));
+            hljs.highlightElement(e);
+        }
+    });
+
+    [...document.querySelectorAll('.classcial-chinese-literature-and-poetry-translation')].forEach(i=>{
+      let el = document.createElement('div');
+      el.setAttribute('class', 'fa-solid fa-eye');
+      i.prepend(el);
+      el.addEventListener('click', ()=>{
+        let status = el.classList.contains('fa-eye');
+        [...i.querySelectorAll('.translation')].forEach(j=>{
+          j.classList.remove('hide');
+          if(status) {
+            j.classList.add('hide');
+          }
+        });
+        el.attributes['class'].value = el.attributes['class'].value.replace('fa-eye-slash', 'fa-0').replace('fa-eye', 'fa-eye-slash').replace('fa-0', 'fa-eye');
+      });
+
+      [...i.querySelectorAll('.original-text')].forEach(e=>{
+        let el = document.createElement('div');
+        el.setAttribute('class', 'fa-solid fa-eye-slash');
+        e.prepend(el);
+        el.addEventListener('click', ()=>{
+            e.nextSibling.classList.toggle('hide');
+            el.attributes['class'].value = el.attributes['class'].value.replace('fa-eye-slash', 'fa-0').replace('fa-eye', 'fa-eye-slash').replace('fa-0', 'fa-eye');
+        });
+      })
+    });
+  }
+</script>
+<script async src="/js/highlight.min.js"></script>
+<script async src="/js/cursor.js"></script>
+<script data-ad-client="ca-pub-2275811890061218" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"hoarfroster.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqusjs","storage":true,"lazyload":false,"nav":null,"activeClass":"disqusjs"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="Deleting input.tex Deleting input.aux Deleting input.dvi Deleting input.log Deleting output.svg Deleting input.tex Deleting input.aux Deleting input.dvi Deleting input.log Deleting output.svg Deleting">
+<meta property="og:type" content="article">
+<meta property="og:title" content="静电场">
+<meta property="og:url" content="https://hoarfroster.github.io/2022/03/17/physics/High%20School/S2%20Electricity%20and%20Electromagnetism/%E9%9D%99%E7%94%B5%E5%9C%BA/index.html">
+<meta property="og:site_name" content="Hoarfroster 的小窝">
+<meta property="og:description" content="Deleting input.tex Deleting input.aux Deleting input.dvi Deleting input.log Deleting output.svg Deleting input.tex Deleting input.aux Deleting input.dvi Deleting input.log Deleting output.svg Deleting">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/image-20220317184450248.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/image-20220317190117199.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/image-20220317190141162.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/image-20220317190638211.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/image-20220317191025032.png">
+<meta property="og:image" content="c:/Users/hoarfroster/AppData/Roaming/Typora/typora-user-images/image-20220317215947882.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/image-20220317220540382.png">
+<meta property="article:published_time" content="2022-03-17T10:24:42.000Z">
+<meta property="article:modified_time" content="2022-05-28T15:43:08.351Z">
+<meta property="article:author" content="Hoarfroster">
+<meta property="article:tag" content="School Notes">
+<meta property="article:tag" content="High School">
+<meta property="article:tag" content="Physics">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/image-20220317184450248.png">
+
+<link rel="canonical" href="https://hoarfroster.github.io/2022/03/17/physics/High%20School/S2%20Electricity%20and%20Electromagnetism/%E9%9D%99%E7%94%B5%E5%9C%BA/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>静电场 | Hoarfroster 的小窝</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <!--<div class="headband"></div>-->
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hoarfroster 的小窝</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section">Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section">About</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section">Categories</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger">
+          Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://hoarfroster.github.io/2022/03/17/physics/High%20School/S2%20Electricity%20and%20Electromagnetism/%E9%9D%99%E7%94%B5%E5%9C%BA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Hoarfroster">
+      <meta itemprop="description" content="这里是霜羽~~咕咕咕">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hoarfroster 的小窝">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          静电场
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-03-17 18:24:42" itemprop="dateCreated datePublished" datetime="2022-03-17T18:24:42+08:00">2022-03-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-05-28 23:43:08" itemprop="dateModified" datetime="2022-05-28T23:43:08+08:00">2022-05-28</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/High-School/" itemprop="url" rel="index"><span itemprop="name">High School</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/High-School/Physics/" itemprop="url" rel="index"><span itemprop="name">Physics</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/High-School/Physics/Electricity-and-Electromagnetism/" itemprop="url" rel="index"><span itemprop="name">Electricity and Electromagnetism</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span><br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+              <span>15k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+              <span>27 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+<h2 id="课程标准">课程标准</h2>
+<h3 id="课程标准内容">课程标准内容</h3>
+<h4 id="静电场必修">3.3 静电场（必修）</h4>
+<blockquote>
+<p>3.1.1
+通过实验，了解静电现象。能用原子结构模型和电荷守恒的知识分析静电现象。</p>
+<p>例1 通过多种方式使物体带电，观察静电现象。</p>
+<p>例2 演示并分析静电感应现象。</p>
+</blockquote>
+<p>​
+本条目要求学生：通过对摩擦起电、感应起电、电荷之间的相互作用等实验的观察，了解静电现象。教师应基于静电现象的实验事实，用原子结构模型和电荷守恒的知识构建物理模型解释现象，培养学生基于事实证据进行科学推理的核心素养。</p>
+<blockquote>
+<p>3.1.2
+知道点电荷模型。知道两个点电荷间相互作用的规律。体会探究库仑定律过程中的科学思想和方法。</p>
+<p>例3 与质点模型类比，体会在什么情境下可将带电体抽象为点电荷。</p>
+<p>例4 体会库仑扭秤实验设计的巧妙之处。</p>
+</blockquote>
+<p>​
+本条目要求学生：体验在研究带电体之间相互作用力的定量关系时，建立带电体理想模型一一点电荷，体会构建物理模型的方法在科学研究中的作用。通过与质点模型的类比，知道将带电物体看成点电荷的条件，体验类比法在科学研究中的作用，并能在其他场合中尝试运用理想化模型的方法研究物理问题。知道库仑定律和静电力常量，知道真空中的库仑定律及其应用，了解电介质对静电作用有影响。通过具体实例知道利用点电荷之间的相互作用规律处理复杂带电体之间的静电力作用的思想和方法。了解科学家在探究库仑定律过程中利用库仑扭秤实验和扭摆实验巧妙解决电量测量问题、微小库仑力测量问题，领会在研究库仑力与电荷之间距离的平方成反比问题中采用的对称、微小力放大和类比等思想方法，体验科学思想和方法在科学研究中的重要作用。通过静电力与万有引力的对比，体会自然规律的多样性和统一性，体会自然界和谐的多样美。通过认识库仑扭秤实验和扭摆实验在建立库仑定律过程中所起的重要作用，了解科学家是如何巧妙解决实验过程中的诸多间题的，提升学生的科学态度和责任素养。</p>
+<blockquote>
+<p>3.1.3
+知道电场是一种物质。了解电场强度，体会用物理量之比定义新物理量的方法。会用电场线描述电场。</p>
+<p>例5 用电场线描绘两个等量异种点电荷周围的电场。</p>
+</blockquote>
+<p>​
+本条目要求学生：通过电场对电荷的作用来检验电场的存在，了解电场是物质存在的形式之一，知道电场对位于其中的电荷有作用力。通过检验电荷在具体电场受到电场力情况，了解电场强度是描述电场强弱的物理量，是描述电场力的性质的物理量；知道用物理量比值法定义新物理量电场强度，知道电场强度的客观性和矢量性。通过比值法定义电场强度，体会比值法定义物理量的重要方法。通过对等量异种电荷电场强度的计算，了解电场强度的叠加原理。知道电场线是为了形象描述电场而引入的，能通过电场线的分布了解两个等量异种点电荷周围的电场线。通过电场线描述电场强弱分布，体会使概念具体化、形象化是科学研究中的一种重要方法。</p>
+<blockquote>
+<p>3.1.4 了解生产生活中关于静电的利用与防护。</p>
+<p>例6
+分析讨论静电在激光打印、静电喷雾和静电除尘等技术中的应用。知道在有可燃气体、粉尘的环境中如何防止静电事故。</p>
+</blockquote>
+<p>​
+本条目要求学生：对激光打印、静电喷雾和静电除尘等技术应用中的静电现象进行分析，了解静电在生产生活中的应用。通过在有可燃气体、粉尘的环境中防止静电的方法，了解静电防护的原理。</p>
+<blockquote>
+<p>3.1.5
+知道静电场中的电荷具有电势能。了解电势能、电势和电势差的含义。知道匀强电场中电势差与电场强度的关系。能分析带电粒子在电场中的运动情况，能解释相关的物理现象。</p>
+</blockquote>
+<p>​
+本条目要求学生：通过与重力势能引入的对比，了解电荷在电场中的电势能，知道电场力做功与电势能变化的关系。体验类比法在科学研究中的作用。通过用电场力做功与电势能变化的关系来计算电荷在电场中的电势能，了解电势能的系统性和相对性。通过对检验电荷在具体电场中电势能的分析，知道用比值法定义表示电场另一方面的性质一一能的性质一电势，体会类比方法也是科学研究的一种重要方法。通过具体电场中电势的分析，了解电势的客观性、标量性和相对性；理解电势差概念，知道电势差与零电势的选择无关，具有绝对性。通过对匀强电场中电势差与电场强度关系的分析研究，知道电场力做功与电势差的定量关系。会用等势面描绘静电场，了解电场线和等势面的关系。知道匀强电场中电势差与电场强度的定量关系，了解非匀强电场中电势差与电场强度的定性关系。通过分析电场线和等势面之间的关系、电势差与电场强度的关系，体会科学研究应该从不同角度展开。通过对电场加速器、减速器、示波管等仪器的工作原理的初步了解，认识电场对带电粒子的作用，会计算带电粒子在电场中的运动问题。</p>
+<blockquote>
+<p>3.1.6
+观察常见的电容器，了解电容器的电容，观察电容器的充、放电现象。能举例说明电容器的应用。</p>
+<p>例7 查阅资料，了解电容器在照相机闪光灯电路中的作用。</p>
+</blockquote>
+<p>​
+本条目要求学生：通过观察和解剖常见的电容器，了解电容器的构造。通过电容器的充、放电实验，了解电容器的作用，了解电容器电容的物理含义。知道用比值法来定义电容器的电容，体会比值法在定义物理量中的重要作用。通过平行板电容器的电容与哪些因素有关的实验，了解电容器电容与电容器结构及绝缘介质有关。</p>
+<p>​
+“能举例说明电容器的应用”是指让学生查阅资料，了解电容器在照相机闪光灯电路等电子技术中的应用，体会科学·技术·社会·环境的关系。</p>
+<h4 id="教学活动要求">教学活动要求</h4>
+<ol type="1">
+<li>通过观察、查阅资料等方式，了解避雷针的结构和基本原理，撰写一篇研究报告。</li>
+<li>收集资料，综述静电的危害，了解预防的方法。</li>
+<li>通过观察、查阅资料等方式，了解并分析电容器应用的实例，撰写研究报告。</li>
+</ol>
+<h2 id="知识聚焦">知识聚焦</h2>
+<h3 id="一电荷">一、电荷</h3>
+<h4 id="电荷">1. 电荷</h4>
+<p>​ 16 世纪英国科学家吉尔伯特用希腊文的琥珀创造了英语中的
+<code>electricity</code>
+一词，表示琥珀经过摩擦后具有的性质，并且认为摩擦过的琥珀带有<strong>电荷</strong>。</p>
+<p>​
+自然界中只存在正负两种电荷，电荷的多少叫作<strong>电荷量</strong>，符号
+<span class="math inline"><em>Q</em>/<em>q</em></span>，单位库伦（简称库），符号
+<span class="math inline"><em>C</em></span>。<strong>离子</strong>指带电的粒子，<strong>电子</strong>和<strong>质子</strong>是带电量最小的离子，所带电量的<strong>大小</strong>为元电荷
+<span class="math inline"><em>e</em> = 1.6 × 10<sup>−19</sup><em>C</em></span>。一个离子所带电量与质量之比称为<strong>比荷</strong>。</p>
+<blockquote>
+<h4 id="密立根油滴实验">密立根油滴实验</h4>
+<p>​
+密立根所用方法原理为平衡重力与库仑力，使油滴悬浮于两片金属电极之间。并根据已知的电场强度，计算出整颗油滴的总电荷量。重复对许多油滴进行实验之后，密立根发现所有油滴的总电荷值皆为同一数字的倍数，确定该数值为元电荷量。</p>
+</blockquote>
+<h4 id="电荷的转移">2. 电荷的转移</h4>
+<p>​
+起电的方式有<strong>摩擦起电</strong>（对电子的束缚能力不同导致的）、<strong>接触起电</strong>（电荷转移到另一物体）、<strong>感应起电</strong>（电荷的重新分布）。<strong>电荷守恒定律</strong>的内容是电荷不能创造，不能被消灭，只能在物体间或物体内转移，或者说，==一个与外界没有电荷交换的系统，电荷的代数和保持不变。==。</p>
+<p>​
+当一个带电体靠近导体时，由于电荷间相互吸引或排斥，导体中的自由电荷便会趋向或远离带电体，使导体靠近带电体的一端带异种电荷，远离带电体的一端带同种电荷。这种现象叫作<strong>静电感应</strong>。利用静电感应使金属导体带电的过程叫作<strong>感应起电</strong>。</p>
+<h4 id="电荷间的作用力">3. 电荷间的作用力</h4>
+<p>​
+法国科学家库伦设计了库伦扭称实验，确认了==真空中（空气近似真空）两个静止点电荷之间的相互作用力，与它们的电荷量的乘积成正比，与它们的距离的二次方成反比，作用力的方向在它们的连线上==，也即<strong>库仑定律</strong>。这种电荷之间的相互作用力称为<strong>静电力</strong>或库仑力。两个点电荷所带电荷量为同种时它们间作用力为斥力，反之为吸力。</p>
+<p>​
+当带电体之间的距离比它们自身的大小大得多，以致带电体的形状、大小及电荷分布状况对它们之间的作用力的影响可以忽略时，这样的带电体可以看作带电的点，叫作<strong>点电荷</strong>。</p>
+<blockquote>
+<h4 id="库伦扭称实验">库伦扭称实验</h4>
+<p>​
+库仑做实验用的装置叫作库仑扭秤。细银丝的下端悬挂一根绝缘棒，棒的一端是一个小球
+<span class="math inline"><em>A</em></span>，另一端通过物体B使绝缘棒平衡，悬丝处于自然状态。把另一个带电的金属小球
+<span class="math inline"><em>C</em></span> 插入容器并使它接触 <span class="math inline"><em>A</em></span>，从而使 <span class="math inline"><em>A</em></span> 与 <span class="math inline"><em>C</em></span> 带同种电荷。将 <span class="math inline"><em>C</em></span> 和 <span class="math inline"><em>A</em></span> 分开，再使 <span class="math inline"><em>C</em></span> 靠近 <span class="math inline"><em>A</em></span>，<span class="math inline"><em>A</em></span> 和 <span class="math inline"><em>C</em></span> 之间的作用力使 <span class="math inline"><em>A</em></span> 远离。扭转悬丝，使 <span class="math inline"><em>A</em></span>
+回到初始位置并静止，通过悬丝扭转的角度可以比较力的大小。改变 <span class="math inline"><em>A</em></span> 和 <span class="math inline"><em>C</em></span> 之间的距离 <span class="math inline"><em>r</em></span>，记录每次悬丝扭转的角度，就可以找到力
+<span class="math inline"><em>F</em></span> 与距离 <span class="math inline"><em>r</em></span> 的关系，结果是力 <span class="math inline"><em>F</em></span> 与距离 <span class="math inline"><em>r</em></span> 的二次方成反比，即 <span class="math display">$$
+$F\propto\dfrac{1}{r^2}$
+$$</span> ​
+在库仑那个年代，还不知道怎样测量物体所带的电荷量，甚至连电荷量的单位都没有。不过两个相同的金属小球，一个带电、一个不带电，互相接触后，它们对相隔同
+样距离的第三个带电小球的作用力相等，因此，可以断定这两个小球接触后所带的电荷量相等。这意味着，如果使一个带电金属小球与另一个不带电的完全相同的金属小球接触，前者的电荷量就会分给后者一半。多次重复，可以把带电小球的电荷量
+<span class="math inline"><em>q</em></span> 分为： <span class="math display">$$
+$\dfrac{q}{2},\dfrac{q}{4},\dfrac{q}{8},\dfrac{q}{16}\cdots$
+$$</span> ​ 这样又可以得出电荷之间的作用力与电荷量的关系：力 <span class="math inline"><em>F</em></span> 与 <span class="math inline"><em>q</em><sub>1</sub></span> 和 <span class="math inline"><em>q</em><sub>2</sub></span> 的乘积成正比，即：
+<span class="math display">$$
+$F\propto q_1q_2$
+$$</span> <img src="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/image-20220317184450248.png" alt="image-20220317184450248"></p>
+<p>​ 根据上述实验，得出： <span class="math display">$$
+$F=k\dfrac{q_1q_2}{r^2}$
+$$</span> ​ 注：库仑最初的实验是用带电木髓小球进行的，
+并非金属小球。关系式 <span class="math inline"><em>F</em> ∝ <em>q</em><sub>1</sub><em>q</em><sub>2</sub></span>
+是由库仑作为假设提出的。文中所说的实验可以看作对这个假设的检验。</p>
+</blockquote>
+<p>​ 式中的 <span class="math inline"><em>k</em></span>
+是比例系数，叫作<strong>静电力常量</strong>，实验测得为 <span class="math inline"><em>k</em> = 9.0 × 10<sup>9</sup><em>N</em> ⋅ <em>m</em><sup>2</sup>/<em>C</em><sup>2</sup></span>。</p>
+<blockquote>
+<h3 id="三点平衡问题两同夹异两大夹小近小远大">三点平衡问题：两同夹异、两大夹小、近小远大。</h3>
+</blockquote>
+<h3 id="二电场">二、电场</h3>
+<h4 id="电场与场强">1. 电场与场强</h4>
+<p>​
+电荷周围存在<strong>电场</strong>，库仑力通过电场发生。高中阶段只讨论静止电荷产生的电场，即<strong>静电场</strong>。激发电场的带电体所带电荷叫<strong>场源电荷</strong>或<strong>源电荷</strong>。</p>
+<p>​
+电场以及磁场已被证明是一种<strong>客观存在</strong>。场像分子、原子等实物粒子一样具有能量，因而场也是物质存在的一种形式。</p>
+<p>​
+电场的性质用电场强度来描述，借助<strong>试探电荷</strong>在电场中所受到的电场力
+<span class="math inline"><em>F</em></span> 与带电量 <span class="math inline"><em>q</em></span>
+之比定义<strong>电场强度</strong>，符号 <span class="math inline"><em>E</em></span>，单位牛每库，符号 <span class="math inline"><em>N</em>/<em>C</em></span>，定义式 <span class="math inline">$E=\dfrac{F}{q}$</span>。点电荷是最简单的场源电荷，带电量
+<span class="math inline"><em>Q</em></span> 的点电荷在与之相距 <span class="math inline"><em>r</em></span> 处的电场强度为 <span class="math inline">$E=k\dfrac{Q}{r^2}$</span>。</p>
+<p>​
+因为定义式中是矢量的运算，场强是一个矢量，在一点处场强的大小等于各电场在该点的场强的矢量叠加。</p>
+<p>​
+如果电场中各点的电场强度的大小相等、方向相同，这个电场就叫作<strong>匀强电场</strong>。</p>
+<h4 id="电场线">2. 电场线</h4>
+<p>​
+为了描述电场，法拉第采用了绘制<strong>电场线</strong>的方法。电场线是在电场中无数条有向曲线，各点处的切线方向表示该点的场强方向。==电场线从正电荷或无限远出发，终止于无限远或负电荷；同一电场的电场线在电场中不相交，这是因为在电场中任意一点的电场强度不可能有两个方向。==</p>
+<p><img src="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/image-20220317190117199.png" alt="点电荷的电场线呈辐射状" style="zoom:67%;"></p>
+<p><img src="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/image-20220317190141162.png" alt="等量异种点电荷的电场线和等量同种点电荷的电场线" style="zoom:67%;"></p>
+<h4 id="电场力-vs.-万有引力">3. 电场力 vs.&nbsp;万有引力</h4>
+<table>
+<colgroup>
+<col style="width: 8%">
+<col style="width: 45%">
+<col style="width: 45%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>电场力</th>
+<th>万有引力</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>表达式</td>
+<td><span class="math inline">$F=k\dfrac{q_1q_2}{r^2}$</span></td>
+<td><span class="math inline">$F=G\dfrac{m_1m_2}{r^2}$</span></td>
+</tr>
+<tr class="even">
+<td>场强</td>
+<td><span class="math inline">$E_E=\dfrac{F}{q}=k\dfrac{q}{r^2}$</span></td>
+<td><span class="math inline">$E_G=\dfrac{F}{m}=G\dfrac{m}{r^2}$</span></td>
+</tr>
+<tr class="odd">
+<td>特殊场</td>
+<td>匀强场：E</td>
+<td>重力场：g</td>
+</tr>
+<tr class="even">
+<td>距离</td>
+<td><span class="math inline"><em>r</em></span> 不能极小</td>
+<td><span class="math inline"><em>r</em></span> 可以极小</td>
+</tr>
+<tr class="odd">
+<td>做功</td>
+<td>与路径无关</td>
+<td>与路径无关</td>
+</tr>
+</tbody>
+</table>
+<h3 id="三静电的防止与利用">三、静电的防止与利用</h3>
+<h4 id="静电平衡">1. 静电平衡</h4>
+<p>​
+将不带电金属导体放入电场中，因为静电感应，在导体两端会感应出正负电荷，在导体内部产生与外电场相反的电场，叠加后使内部电场减弱，最终会使导体内部各点场强都为
+0，此时处于<strong>静电平衡</strong>。</p>
+<figure>
+<img src="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/image-20220317190638211.png" alt="静电场中的导体">
+<figcaption aria-hidden="true">静电场中的导体</figcaption>
+</figure>
+<h4 id="尖端放电">2. 尖端放电</h4>
+<p>​
+在强电场下是空气中残留的带电粒子剧烈运动与空气分子碰撞，使空气分子中的正负电荷分离的现象称为空气的<strong>电离</strong>。导体的尖端部位所感应出的电荷与空气中电离的电荷相互中和，使导体失去电荷的现象叫作<strong>尖端放电</strong>，常见用例为避雷针。</p>
+<h4 id="静电屏蔽">3. 静电屏蔽</h4>
+<p>​
+把一个电学仪器放在封闭的金属壳里，即使壳外有电场，但由于壳内电场强度保持为
+<span class="math inline">0</span>，外电场对壳内的仪器不会产生影响。金属壳的这种作用叫作<strong>静电屏蔽</strong>。常见例子为高压线的屏蔽等。</p>
+<figure>
+<img src="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/image-20220317191025032.png" alt="导体腔内的电场为 0">
+<figcaption aria-hidden="true">导体腔内的电场为 <span class="math inline">0</span></figcaption>
+</figure>
+<h4 id="静电吸附">4. 静电吸附</h4>
+<p>​
+电场中，带电粒子受到静电力的作用，向着电极运动，最后会被吸附在电极上的原理称为<strong>静电吸附</strong>，被用于<strong>静电除尘、静电喷漆、静电复印</strong>。</p>
+<h3 id="四电势能和电势">四、电势能和电势</h3>
+<h4 id="电势能与电势">1. 电势能与电势</h4>
+<p>​
+静电力做功具有跟重力做功一样的特点，即静电力做功的多少与路径无关，只与电荷在电场中的始、末位置有关。电荷在电场中也具有势能，我们称这种形式的能为<strong>电势能</strong>，用
+<span class="math inline"><em>E</em><sub><em>p</em></sub></span>
+表示。</p>
+<p>​
+电荷在电场中某一点的电势能与它的电荷量之比，叫作电场在这一点的<strong>电势</strong>，用
+<span class="math inline"><em>ϕ</em></span> 表示，有 <span class="math inline">$\phi=\dfrac{E_p}{q}$</span>，单位伏特，符号 <span class="math inline"><em>V</em></span>。==沿着电场线方向电势逐渐降低==。</p>
+<h4 id="电势差">2. 电势差</h4>
+<p>​
+在电场中，两点之间的电势差值称为<strong>电势差</strong>，又称<strong>电压</strong>，<span class="math inline">$U_{AB}=\phi_A-\phi_B=\dfrac{W_{AB}}{q}$</span>。电势相同的各点构成的面叫作<strong>等势面</strong>，==电场线与等势面垂直，并且由电势高的等势面指向电势低的等势面==。</p>
+<figure>
+<img src="C:\Users\hoarfroster\AppData\Roaming\Typora\typora-user-images\image-20220317215947882.png" alt="常见电场的等势面">
+<figcaption aria-hidden="true">常见电场的等势面</figcaption>
+</figure>
+<p>​ 根据上述公式，我们可以得到 <span class="math inline"><em>U</em><sub><em>A</em><em>B</em></sub> = <em>E</em><em>d</em></span>，即==匀强电场中两点间的电势差等于电场强度与这两点沿电场方向的距离的乘积。==同样，可以推出
+<span class="math inline">$E=\dfrac{U_AB}{d}$</span>。</p>
+<p>​ 对于一般场，有 <span class="math inline">$E=\dfrac{\Delta\phi}{\Delta
+x}$</span>（梯度）。</p>
+<h4 id="电容器">3. 电容器</h4>
+<p>​
+<strong>电容器</strong>是一种重要的电学元件。在两个相距很近的平行金属板中间夹上一层绝缘物质——<strong>电介质</strong>（空气也是一种电介质），就组成一个最简单的电容器，叫作<strong>平行板电容器</strong>。这两个金属板叫作电容器的极板。实际上，任何两个彼此绝缘又相距很近的导体，都可以看成一个电容器。</p>
+<p>​
+电容器充电的过程中，两极板的电荷量增加，极板间的电场强度增大，电源的能量不断储存在电容器中；放电的过程中，电容器把储存的能量通过电流做功转化为电路中其他形式的能量。</p>
+<p>​ 精确的实验表明，一个电容器所带的电荷量 <span class="math inline"><em>Q</em></span> 与两极板之间的电势差 <span class="math inline"><em>U</em></span>
+之比是不变的。不同的电容器，这个比一般是不同的，可见电荷量 <span class="math inline"><em>Q</em></span> 与电势差 <span class="math inline"><em>U</em></span>
+之比表征了电容器储存电荷的特性。</p>
+<p>​ 电容器所带的电荷量 <span class="math inline"><em>Q</em></span>
+与电容器两极板之间的电势差 <span class="math inline"><em>U</em></span>
+之比，叫作电容器的<strong>电容</strong>，单位法拉，简称法，符号 <span class="math inline"><em>F</em></span>。用 <span class="math inline"><em>C</em></span> 表示，则有 <span class="math inline">$C=\dfrac{Q}{U}$</span>。</p>
+<p>​ 对于平行板电容器，电容是一个定值 <span class="math inline">$C=\dfrac{\epsilon_rS}{4\pi kd}$</span>。</p>
+<h4 id="实验探究电容器两极板间电势差跟所带电荷量的关系-exp-探究电容器两极板间电势差跟所带电荷量的关系">4.
+实验：探究电容器两极板间电势差跟所带电荷量的关系 |
+#exp-探究电容器两极板间电势差跟所带电荷量的关系</h4>
+<h5 id="一实验原理">一、实验原理</h5>
+<p>​ 电容器充放电原理。</p>
+<h5 id="二实验思路">二、实验思路</h5>
+<p>​
+使用两个完全一致的电容器，先充满一个电容器，再用另一个完全一样的电容器放电，在不断放电中测量电容器两端的电势差。</p>
+<figure>
+<img src="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/image-20220317220540382.png" alt="image-20220317220540382">
+<figcaption aria-hidden="true">image-20220317220540382</figcaption>
+</figure>
+<h5 id="三实验操作">三、实验操作</h5>
+<ol type="1">
+<li>取电容器 <span class="math inline"><em>A</em></span>
+与数字电压表相连，将开关 <span class="math inline"><em>S</em><sub>1</sub></span> 接
+1，用几节干电池串联后给 <span class="math inline"><em>A</em></span>
+充电，可以看到 <span class="math inline"><em>A</em></span>
+充电后两极板具有一定的电压。</li>
+<li>将开关 <span class="math inline"><em>S</em><sub>1</sub></span> 接
+2，使另一个相同但不带电的电容器 <span class="math inline"><em>B</em></span> 与 <span class="math inline"><em>A</em></span>
+并联，可以看到电压表示数减半。</li>
+<li>断开开关 <span class="math inline"><em>S</em><sub>1</sub></span>，闭合 <span class="math inline"><em>S</em><sub>2</sub></span>，使 <span class="math inline"><em>B</em></span> 两极板完全放电，随后再断开开关
+<span class="math inline"><em>S</em><sub>2</sub></span>，重复（2）。</li>
+</ol>
+<h5 id="四测量物理量">四、测量物理量</h5>
+<p>​ 测量每一次操作后 <span class="math inline"><em>A</em></span>
+对应的电压 <span class="math inline"><em>U</em><sub><em>A</em></sub></span>。</p>
+<h5 id="五误差控制">五、误差控制</h5>
+<ol type="1">
+<li>步骤（2）中需要注意不然要让手或其他导体与电容器的两极板相接触，避免所带电荷漏失。</li>
+</ol>
+<h4 id="带电粒子在电场中的运动">5. 带电粒子在电场中的运动</h4>
+<p>​ 在电学中，<strong>基本粒子不计重力</strong>，有：<span class="math inline"><sub>1</sub><sup>1</sup><em>H</em></span>（质子）、<span class="math inline"><sub>2</sub><sup>4</sup><em>H</em><em>e</em></span>（<span class="math inline"><em>α</em></span>粒子）、<span class="math inline"><sub>+</sub><sup>0</sup><em>e</em><sup>−</sup></span>（电子）。其他带电粒子重力不可忽略。</p>
+<ol type="1">
+<li><p>带正电粒子在电容器中速度（正极板⇒负极板）：</p>
+<p><span class="math inline">$\displaystyle
+v=\sqrt{\frac{2qU}{m}}$</span>，即速度与比荷有关。</p></li>
+<li><p>带电粒子的偏转问题：</p></li>
+</ol>
+<p>​ 带电粒子在电场中运动时间：</p>
+<p>​ <span class="math inline">$t=\dfrac{l}{v}$</span>。</p>
+<p>​ 忽略带电粒子重力，加速度为：</p>
+<p>​ <span class="math inline">$a=\dfrac{F}{m}=\dfrac{Uq}{dm}$</span>。</p>
+<p>​ 穿出电场，竖直方向位移：</p>
+<p>​ <span class="math inline">$y=\dfrac{1}{2}at^2=\dfrac{ql^2}{2dmv_0^2}U$</span>。</p>
+<p>​ 穿出电场，竖直方向分速度：</p>
+<p>​ <span class="math inline">$v_y=at=\dfrac{ql}{dmv_0^2}U$</span>。</p>
+<p>​ 结合数学知识，可得：</p>
+<p>​ <span class="math inline">$\tan{\theta}=\dfrac{v_y}{v_0}=\dfrac{ql}{dmv_0^2}U$</span>。</p>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/School-Notes/" rel="tag"># School Notes</a>
+              <a href="/tags/High-School/" rel="tag"># High School</a>
+              <a href="/tags/Physics/" rel="tag"># Physics</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/03/15/physics/High%20School/S2%20Electricity%20and%20Electromagnetism/%E7%94%B5%E7%A3%81%E6%84%9F%E5%BA%94%E5%8F%8A%E5%85%B6%E5%BA%94%E7%94%A8/" rel="prev" title="电磁感应及其应用">
+      <i class="fa fa-chevron-left"></i> 电磁感应及其应用
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/03/18/physics/High%20School/S2%20Electricity%20and%20Electromagnetism/%E7%94%B5%E8%B7%AF%E5%8F%8A%E5%85%B6%E5%BA%94%E7%94%A8/" rel="next" title="电路及其应用">
+      电路及其应用 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%BE%E7%A8%8B%E6%A0%87%E5%87%86"><span class="nav-text">课程标准</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%BE%E7%A8%8B%E6%A0%87%E5%87%86%E5%86%85%E5%AE%B9"><span class="nav-text">课程标准内容</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9D%99%E7%94%B5%E5%9C%BA%E5%BF%85%E4%BF%AE"><span class="nav-text">3.3 静电场（必修）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%99%E5%AD%A6%E6%B4%BB%E5%8A%A8%E8%A6%81%E6%B1%82"><span class="nav-text">教学活动要求</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9F%A5%E8%AF%86%E8%81%9A%E7%84%A6"><span class="nav-text">知识聚焦</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E7%94%B5%E8%8D%B7"><span class="nav-text">一、电荷</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%B5%E8%8D%B7"><span class="nav-text">1. 电荷</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AF%86%E7%AB%8B%E6%A0%B9%E6%B2%B9%E6%BB%B4%E5%AE%9E%E9%AA%8C"><span class="nav-text">密立根油滴实验</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%B5%E8%8D%B7%E7%9A%84%E8%BD%AC%E7%A7%BB"><span class="nav-text">2. 电荷的转移</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%B5%E8%8D%B7%E9%97%B4%E7%9A%84%E4%BD%9C%E7%94%A8%E5%8A%9B"><span class="nav-text">3. 电荷间的作用力</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BA%93%E4%BC%A6%E6%89%AD%E7%A7%B0%E5%AE%9E%E9%AA%8C"><span class="nav-text">库伦扭称实验</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E7%82%B9%E5%B9%B3%E8%A1%A1%E9%97%AE%E9%A2%98%E4%B8%A4%E5%90%8C%E5%A4%B9%E5%BC%82%E4%B8%A4%E5%A4%A7%E5%A4%B9%E5%B0%8F%E8%BF%91%E5%B0%8F%E8%BF%9C%E5%A4%A7"><span class="nav-text">三点平衡问题：两同夹异、两大夹小、近小远大。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E7%94%B5%E5%9C%BA"><span class="nav-text">二、电场</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%B5%E5%9C%BA%E4%B8%8E%E5%9C%BA%E5%BC%BA"><span class="nav-text">1. 电场与场强</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%B5%E5%9C%BA%E7%BA%BF"><span class="nav-text">2. 电场线</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%B5%E5%9C%BA%E5%8A%9B-vs.-%E4%B8%87%E6%9C%89%E5%BC%95%E5%8A%9B"><span class="nav-text">3. 电场力 vs. 万有引力</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E9%9D%99%E7%94%B5%E7%9A%84%E9%98%B2%E6%AD%A2%E4%B8%8E%E5%88%A9%E7%94%A8"><span class="nav-text">三、静电的防止与利用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9D%99%E7%94%B5%E5%B9%B3%E8%A1%A1"><span class="nav-text">1. 静电平衡</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B0%96%E7%AB%AF%E6%94%BE%E7%94%B5"><span class="nav-text">2. 尖端放电</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9D%99%E7%94%B5%E5%B1%8F%E8%94%BD"><span class="nav-text">3. 静电屏蔽</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9D%99%E7%94%B5%E5%90%B8%E9%99%84"><span class="nav-text">4. 静电吸附</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9B%E7%94%B5%E5%8A%BF%E8%83%BD%E5%92%8C%E7%94%B5%E5%8A%BF"><span class="nav-text">四、电势能和电势</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%B5%E5%8A%BF%E8%83%BD%E4%B8%8E%E7%94%B5%E5%8A%BF"><span class="nav-text">1. 电势能与电势</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%B5%E5%8A%BF%E5%B7%AE"><span class="nav-text">2. 电势差</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%B5%E5%AE%B9%E5%99%A8"><span class="nav-text">3. 电容器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E6%8E%A2%E7%A9%B6%E7%94%B5%E5%AE%B9%E5%99%A8%E4%B8%A4%E6%9E%81%E6%9D%BF%E9%97%B4%E7%94%B5%E5%8A%BF%E5%B7%AE%E8%B7%9F%E6%89%80%E5%B8%A6%E7%94%B5%E8%8D%B7%E9%87%8F%E7%9A%84%E5%85%B3%E7%B3%BB-exp-%E6%8E%A2%E7%A9%B6%E7%94%B5%E5%AE%B9%E5%99%A8%E4%B8%A4%E6%9E%81%E6%9D%BF%E9%97%B4%E7%94%B5%E5%8A%BF%E5%B7%AE%E8%B7%9F%E6%89%80%E5%B8%A6%E7%94%B5%E8%8D%B7%E9%87%8F%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-text">4.
+实验：探究电容器两极板间电势差跟所带电荷量的关系 |
+#exp-探究电容器两极板间电势差跟所带电荷量的关系</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%80%E5%AE%9E%E9%AA%8C%E5%8E%9F%E7%90%86"><span class="nav-text">一、实验原理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BA%8C%E5%AE%9E%E9%AA%8C%E6%80%9D%E8%B7%AF"><span class="nav-text">二、实验思路</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%89%E5%AE%9E%E9%AA%8C%E6%93%8D%E4%BD%9C"><span class="nav-text">三、实验操作</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9B%9B%E6%B5%8B%E9%87%8F%E7%89%A9%E7%90%86%E9%87%8F"><span class="nav-text">四、测量物理量</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BA%94%E8%AF%AF%E5%B7%AE%E6%8E%A7%E5%88%B6"><span class="nav-text">五、误差控制</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%A6%E7%94%B5%E7%B2%92%E5%AD%90%E5%9C%A8%E7%94%B5%E5%9C%BA%E4%B8%AD%E7%9A%84%E8%BF%90%E5%8A%A8"><span class="nav-text">5. 带电粒子在电场中的运动</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Hoarfroster"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Hoarfroster</p>
+  <div class="site-description" itemprop="description">这里是霜羽~~咕咕咕</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">193</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">53</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">58</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <ul class="links-of-author motion-element">
+      <li class="links-of-author-item">
+        <a href="https://github.com/PassionPenguin" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;PassionPenguin" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        <span> PassionPenguin</span>
+      </li>
+      <li class="links-of-author-item">
+        <a href="mailto:hoarfroster@outlook.com" title="E-Mail → mailto:hoarfroster@outlook.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+        <span> hoarfroster@outlook.com</span>
+      </li>
+      <li class="links-of-author-item">
+        <a href="https://twitter.com/zhangqizhe" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;zhangqizhe" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+        <span> @zhangqizhe</span>
+      </li>
+      <li class="links-of-author-item">
+        <a href="https://www.instagram.com/glacierpenguin/" title="Instagram → https:&#x2F;&#x2F;www.instagram.com&#x2F;glacierpenguin&#x2F;" rel="noopener" target="_blank"><i class="fab fa-instagram fa-fw"></i>Instagram</a>
+        <span> @glacierpenguin</span>
+      </li>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hoarfroster</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="Symbols count total">1.1m</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">34:12</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT</a>
+  </div>
+
+        
+
+
+
+
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-firestore.js"></script>
+  <script>
+    firebase.initializeApp({
+      apiKey   : 'AIzaSyDqM81uUD8yWHAvsGasJzvWBHhpBYnRttI',
+      projectId: 'hoar-froster'
+    });
+
+    function getCount(doc, increaseCount) {
+      // IncreaseCount will be false when not in article page
+      return doc.get().then(d => {
+        var count = 0;
+        if (!d.exists) { // Has no data, initialize count
+          if (increaseCount) {
+            doc.set({
+              count: 1
+            });
+            count = 1;
+          }
+        } else { // Has data
+          count = d.data().count;
+          if (increaseCount) {
+            // If first view this article
+            doc.set({ // Increase count
+              count: count + 1
+            });
+            count++;
+          }
+        }
+
+        return count;
+      });
+    }
+
+    function appendCountTo(el) {
+      return count => {
+        el.innerText = count;
+      }
+    }
+  </script>
+  <script>
+    (function() {
+      var db = firebase.firestore();
+      var articles = db.collection('articles-info');
+
+      if (CONFIG.page.isPost) { // Is article page
+        var title = document.querySelector('.post-title').innerText.trim();
+        var doc = articles.doc(title);
+        var increaseCount = CONFIG.hostname === location.hostname;
+        if (localStorage.getItem(title)) {
+          increaseCount = false;
+        } else {
+          // Mark as visited
+          localStorage.setItem(title, true);
+        }
+        getCount(doc, increaseCount).then(appendCountTo(document.querySelector('.firestore-visitors-count')));
+      } else if (CONFIG.page.isHome) { // Is index page
+        var promises = [...document.querySelectorAll('.post-title')].map(element => {
+          var title = element.innerText.trim();
+          var doc = articles.doc(title);
+          return getCount(doc);
+        });
+        Promise.all(promises).then(counts => {
+          var metas = document.querySelectorAll('.firestore-visitors-count');
+          counts.forEach((val, idx) => {
+            appendCountTo(metas[idx])(val);
+          });
+        });
+      }
+    })();
+  </script>
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var canonicalURL, curProtocol;
+      //Get the <link> tag
+      var x=document.getElementsByTagName("link");
+		//Find the last canonical URL
+		if(x.length > 0){
+			for (i=0;i<x.length;i++){
+				if(x[i].rel.toLowerCase() == 'canonical' && x[i].href){
+					canonicalURL=x[i].href;
+				}
+			}
+		}
+    //Get protocol
+	    if (!canonicalURL){
+	    	curProtocol = window.location.protocol.split(':')[0];
+	    }
+	    else{
+	    	curProtocol = canonicalURL.split(':')[0];
+	    }
+      //Get current URL if the canonical URL does not exist
+	    if (!canonicalURL) canonicalURL = window.location.href;
+	    //Assign script content. Replace current URL with the canonical URL
+      !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=canonicalURL,t=document.referrer;if(!e.test(r)){var n=(String(curProtocol).toLowerCase() === 'https')?"https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif":"//api.share.baidu.com/s.gif";t?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var i=new Image;i.src=n}}(window);})();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme    : 'default',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/disqusjs@1/dist/disqusjs.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/disqusjs@1/dist/disqus.js', () => {
+    window.dsqjs = new DisqusJS({
+      api       : 'https://disqus.skk.moe/disqus/' || 'https://disqus.com/api/',
+      apikey    : 'Lo65MITAya5vcdTm6cJ8V5qCBNx3PVErvDOsfJ5tUPtEbw3DMS3EIzEx6vrmTzCN',
+      shortname : 'hoarfroster',
+      url       : "https://hoarfroster.github.io/2022/03/17/physics/High%20School/S2%20Electricity%20and%20Electromagnetism/%E9%9D%99%E7%94%B5%E5%9C%BA/",
+      identifier: "2022/03/17/physics/High School/S2 Electricity and Electromagnetism/静电场/",
+      title     : "静电场",
+    });
+  }, window.DisqusJS);
+});
+</script>
+
+</body>
+</html>

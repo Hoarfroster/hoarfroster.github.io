@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/avatar.png" color="#222">
+  <meta name="google-site-verification" content="iFMbHL1JuWjTlNFq5Rv96vDzpsqakxTpdE2nw7Crr6o">
+  <meta name="msvalidate.01" content="EF6D8CD8A3335E66AB96B4D544FCD96C">
+  <meta name="baidu-site-verification" content="code-80b80Pbzs2">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link href="/lib/fontawesome/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<script>
+
+  window.onload = function() {
+    document.querySelectorAll("p").forEach(e=>{
+      e.innerHTML = e.innerHTML.replaceAll(/==(.+?)==/g, "<mark>$1</mark>").replaceAll(/​\s+?/g, "<span class='tab'></span>");
+    });
+    
+    [...document.querySelectorAll("pre > code")].forEach(e=> {
+        var codeClass = e.parentElement.classList.value;
+        if (codeClass == null || codeClass === "") {
+            e.classList.add("hljs");
+        } else {
+            var map = {
+                js: "javascript"
+            };
+            if (map[codeClass]) {
+                codeClass = map[codeClass];
+            }
+            codeClass.split(" ").forEach(i=>e.classList.add(i));
+            hljs.highlightElement(e);
+        }
+    });
+
+    [...document.querySelectorAll('.classcial-chinese-literature-and-poetry-translation')].forEach(i=>{
+      let el = document.createElement('div');
+      el.setAttribute('class', 'fa-solid fa-eye');
+      i.prepend(el);
+      el.addEventListener('click', ()=>{
+        let status = el.classList.contains('fa-eye');
+        [...i.querySelectorAll('.translation')].forEach(j=>{
+          j.classList.remove('hide');
+          if(status) {
+            j.classList.add('hide');
+          }
+        });
+        el.attributes['class'].value = el.attributes['class'].value.replace('fa-eye-slash', 'fa-0').replace('fa-eye', 'fa-eye-slash').replace('fa-0', 'fa-eye');
+      });
+
+      [...i.querySelectorAll('.original-text')].forEach(e=>{
+        let el = document.createElement('div');
+        el.setAttribute('class', 'fa-solid fa-eye-slash');
+        e.prepend(el);
+        el.addEventListener('click', ()=>{
+            e.nextSibling.classList.toggle('hide');
+            el.attributes['class'].value = el.attributes['class'].value.replace('fa-eye-slash', 'fa-0').replace('fa-eye', 'fa-eye-slash').replace('fa-0', 'fa-eye');
+        });
+      })
+    });
+  }
+</script>
+<script async src="/js/highlight.min.js"></script>
+<script async src="/js/cursor.js"></script>
+<script data-ad-client="ca-pub-2275811890061218" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"hoarfroster.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqusjs","storage":true,"lazyload":false,"nav":null,"activeClass":"disqusjs"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="2010 年 9 月 23 日，Facebook 发生了迄今为止最严重的宕机事件之一。在这次事件中，Facebook 关闭了四个小时。情况如此严重，以至于工程师不得不让 Facebook 下线才能恢复。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="缓存踩踏事件是如何导致 Facebook 最大的宕机事件之一发生的">
+<meta property="og:url" content="https://hoarfroster.github.io/2021/07/28/computer%20science/cloud/how-a-cache-stampede-caused-one-of-facebooks-biggest-outages/index.html">
+<meta property="og:site_name" content="Hoarfroster 的小窝">
+<meta property="og:description" content="2010 年 9 月 23 日，Facebook 发生了迄今为止最严重的宕机事件之一。在这次事件中，Facebook 关闭了四个小时。情况如此严重，以至于工程师不得不让 Facebook 下线才能恢复。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn-images-1.medium.com/max/10368/0*FGGy038B4etUbHdm">
+<meta property="og:image" content="https://cdn-images-1.medium.com/max/2000/0*_-dYSO7eL_K9Qypi">
+<meta property="og:image" content="https://cdn-images-1.medium.com/max/2000/0*PYCftRvef9KfysGE.gif">
+<meta property="og:image" content="http://cdn-images-1.medium.com/max/2000/0*nhc5wYwVVERwqxlv.jpeg">
+<meta property="og:image" content="https://cdn-images-1.medium.com/max/3060/1*NBJp5l3dOMXcwNT7KCoZfg.gif">
+<meta property="og:image" content="https://cdn-images-1.medium.com/max/2000/0*KThIA3rqDvhQLXHp">
+<meta property="og:image" content="https://cdn-images-1.medium.com/max/2000/0*7DqZBIsf7BByzB3q.gif">
+<meta property="og:image" content="https://cdn-images-1.medium.com/max/2000/0*I28DPoMELLUV4QWN">
+<meta property="og:image" content="https://cdn-images-1.medium.com/max/2000/0*2Jn_bNJ6Vh2-Lwla.png">
+<meta property="og:image" content="https://cdn-images-1.medium.com/max/3076/1*8aT7_UKqYmXxdEkoMZBx4g.gif">
+<meta property="article:published_time" content="2021-07-28T11:53:00.000Z">
+<meta property="article:modified_time" content="2022-05-28T15:43:08.209Z">
+<meta property="article:author" content="Hoarfroster">
+<meta property="article:tag" content="Computer Science">
+<meta property="article:tag" content="Backend">
+<meta property="article:tag" content="Cloud">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn-images-1.medium.com/max/10368/0*FGGy038B4etUbHdm">
+
+<link rel="canonical" href="https://hoarfroster.github.io/2021/07/28/computer%20science/cloud/how-a-cache-stampede-caused-one-of-facebooks-biggest-outages/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>缓存踩踏事件是如何导致 Facebook 最大的宕机事件之一发生的 | Hoarfroster 的小窝</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <!--<div class="headband"></div>-->
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hoarfroster 的小窝</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section">Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section">About</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section">Categories</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger">
+          Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://hoarfroster.github.io/2021/07/28/computer%20science/cloud/how-a-cache-stampede-caused-one-of-facebooks-biggest-outages/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Hoarfroster">
+      <meta itemprop="description" content="这里是霜羽~~咕咕咕">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hoarfroster 的小窝">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          缓存踩踏事件是如何导致 Facebook 最大的宕机事件之一发生的
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-07-28 19:53:00" itemprop="dateCreated datePublished" datetime="2021-07-28T19:53:00+08:00">2021-07-28</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-05-28 23:43:08" itemprop="dateModified" datetime="2022-05-28T23:43:08+08:00">2022-05-28</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Computer-Science/" itemprop="url" rel="index"><span itemprop="name">Computer Science</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Computer-Science/Cloud/" itemprop="url" rel="index"><span itemprop="name">Cloud</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span><br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+              <span>5.6k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+              <span>10 mins.</span>
+            </span>
+            <div class="post-description">2010 年 9 月 23 日，Facebook 发生了迄今为止最严重的宕机事件之一。在这次事件中，Facebook 关闭了四个小时。情况如此严重，以至于工程师不得不让 Facebook 下线才能恢复。</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <blockquote>
+<ul>
+<li>原文地址：<a target="_blank" rel="noopener" href="https://medium.com/better-programming/how-a-cache-stampede-caused-one-of-facebooks-biggest-outages-dbb964ffc8ed">How
+A Cache Stampede Caused One Of Facebook’s Biggest Outages</a></li>
+<li>原文作者：<a target="_blank" rel="noopener" href="https://medium.com/@SunnyB">Sun-Li
+Beatteay</a></li>
+<li>译者：<a target="_blank" rel="noopener" href="https://github.com/PassionPenguin">霜羽
+Hoarfroster</a></li>
+<li>校对者：<a target="_blank" rel="noopener" href="https://github.com/kamly">kamly</a>、<a target="_blank" rel="noopener" href="https://github.com/JalanJiang">JalanJiang</a></li>
+</ul>
+</blockquote>
+<figure>
+<img src="https://cdn-images-1.medium.com/max/10368/0*FGGy038B4etUbHdm" alt="由 Susan Yin 上传至 Unsplash(https://unsplash.com)">
+<figcaption aria-hidden="true">由 <a target="_blank" rel="noopener" href="https://unsplash.com/@syinq">Susan Yin</a> 上传至 <a target="_blank" rel="noopener" href="https://unsplash.com">Unsplash</a>(https://unsplash.com)</figcaption>
+</figure>
+<p>2010 年 9 月 23 日，Facebook
+发生了迄今为止最严重的宕机事件之一。在这次事件中，Facebook
+关闭了四个小时。情况如此严重，以至于工程师不得不让 Facebook
+下线才能恢复。</p>
+<p>虽然 Facebook 那时候还没有现在那么庞大，但它仍然拥有超过 10
+亿的用户，并且它的宕机并没有被忽视。人们只是在 Twitter
+上抱怨或开玩笑这件事。</p>
+<figure>
+<img src="https://cdn-images-1.medium.com/max/2000/0*_-dYSO7eL_K9Qypi" alt="图片来源：https://www.businessinsider.com/how-we-weathered-the-great-facebook-outage-of-2010-2010-9#the-outage-had-far-reaching-consequences-7">
+<figcaption aria-hidden="true">图片来源：<a target="_blank" rel="noopener" href="https://www.businessinsider.com/how-we-weathered-the-great-facebook-outage-of-2010-2010-9#the-outage-had-far-reaching-consequences-7">https://www.businessinsider.com/how-we-weathered-the-great-facebook-outage-of-2010-2010-9#the-outage-had-far-reaching-consequences-7</a></figcaption>
+</figure>
+<p>那么，究竟是什么导致了 Facebook 的停运呢？<a target="_blank" rel="noopener" href="https://www.facebook.com/notes/facebook-engineering/more-details-on-todays-outage/431441338919">根据事件发生后的官方分析</a>：</p>
+<blockquote>
+<p>今天我们误改了一个配置。这意味着每个客户端都能看到这个错误配置并尝试修复它。由于修复操作涉及对数据库集群进行查询，因此该集群很快就被每秒数十万个查询所淹没。</p>
+</blockquote>
+<hr>
+<p>错误的配置更改导致大量请求被传送到他们的数据库。这种请求踩踏被恰当地称为
+<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Cache_stampede"><strong>缓存踩踏</strong></a>。这是困扰科技行业的一个普遍问题，它已经导致许多公司出现故障，例如
+2016 年的 <a target="_blank" rel="noopener" href="https://archive.org/index.php">Internet
+Archive</a>。许多大型应用程序每天都在与它作斗争，如 Instagram 和
+DoorDash 。</p>
+<h2 id="什么是缓存踩踏">什么是缓存踩踏？</h2>
+<p>当多个线程尝试并行访问一个缓存时，会发生缓存踩踏事件。如果缓存值不存在，线程将同时尝试从源获取数据。源通常是一个数据库，但也可以是
+Web 服务器、第三方 API 或任何其他返回数据的东西。</p>
+<p>缓存踩踏之所以如此具有破坏性的主要原因之一是因为它可能导致恶性故障循环：</p>
+<ol type="1">
+<li>大量并发线程缓存未命中，导致它们都请求数据库。</li>
+<li>由于 CPU 峰值过大导致数据库崩溃，并且导致超时错误。</li>
+<li>收到超时，所有线程重试他们的请求 —— 导致另一次踩踏。</li>
+<li>循环往复。</li>
+</ol>
+<p>并不需要拥有 Facebook
+那样规模的用户，你一样会遭其折磨。缓存踩踏与用户规模无关，因此它同时困扰着初创公司和科技巨头。</p>
+<hr>
+<figure>
+<img src="https://cdn-images-1.medium.com/max/2000/0*PYCftRvef9KfysGE.gif" alt="图片来源：https://engineering.fb.com/2015/12/03/ios/under-the-hood-broadcasting-live-video-to-millions/">
+<figcaption aria-hidden="true">图片来源：<a href="https://engineering.fb.%20com/2015/12/03/ios/under-the-hood-broadcasting-live-video-to-millions/">https://engineering.fb.com/2015/12/03/ios/under-the-hood-broadcasting-live-video-to-millions/</a></figcaption>
+</figure>
+<h2 id="如何防止缓存踩踏">如何防止缓存踩踏？</h2>
+<p>这是一个很好的问题，也是在我了解 Facebook
+宕机后询问自己的问题。不出所料，自 2010
+年以来，开发者们已经进行了大量防止缓存踩踏的研究。我通读了所有的这些研究。</p>
+<hr>
+<p>在本文中，我们将探讨防止和减轻缓存踩踏的不同策略。毕竟，我们可不想亡羊补牢。</p>
+<h2 id="添加更多缓存">添加更多缓存</h2>
+<p>一个简单的解决方案是添加更多缓存。虽然这似乎违反直觉，但这与操作系统的工作方式类似。</p>
+<p>操作系统采用了 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Cache_hierarchy">缓存层次结构</a>，其中每个组件都缓存自己的数据，因此访问速度被加快。</p>
+<figure>
+<img src="http://cdn-images-1.medium.com/max/2000/0*nhc5wYwVVERwqxlv.jpeg" alt="操作系统缓存（图片来源：https://www.sciencedirect.com）">
+<figcaption aria-hidden="true">操作系统缓存（图片来源：<a target="_blank" rel="noopener" href="https://www.sciencedirect.com/topics/computer-science/disks-and-data">https://www.sciencedirect.com</a>）</figcaption>
+</figure>
+<p>我们可以在我们的应用程序中通过合并内存缓存（第 1
+层（L1）缓存）采用类似的模式。任何远程缓存都将被视为第 2 层（L2）。</p>
+<p>！<a target="_blank" rel="noopener" href="https://cdn-images-1.medium.com/max/2000/0*_uJf2mjpAbCLw9hp">图片来源：[https://medium.com/<span class="citation" data-cites="DoorDash/avoiding-cache-stampede-at-doordash-55bbf596d94b">@DoorDash/avoiding-cache-stampede-at-doordash-55bbf596d94b</span>](https://medium.com/<span class="citation" data-cites="DoorDash/avoiding-cache-stampede-at-doordash">@DoorDash/avoiding-cache-stampede-at-doordash</span>
+-55bbf596d94b)</a></p>
+<p>这对于防止频繁访问数据时发生踩踏事件特别有用。即使第 2
+层缓存上的键过期，一些第 1
+层缓存可能仍存储该值。这将限制需要重新计算缓存值的线程数。</p>
+<p>但是，这种方法有一些方面需要注意权衡。如果您不小心，在应用程序服务器上缓存内存中的数据可能会导致
+<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Out_of_memory">内存不足</a>
+问题，尤其是在缓存大量数据时。</p>
+<p>此外，这种缓存策略仍然容易受到我所说的追随者踩踏的影响。</p>
+<figure>
+<img src="https://cdn-images-1.medium.com/max/3060/1*NBJp5l3dOMXcwNT7KCoZfg.gif" alt="图片来源：https://engineering.fb.com/2015/12/03/ios/under-the-hood-broadcasting-live-video-to-millions/">
+<figcaption aria-hidden="true">图片来源：<a target="_blank" rel="noopener" href="https://engineering.fb.com/2015/12/03/ios/under-the-hood-broadcasting-live-video-to-millions/">https://engineering.fb.com/2015/12/03/ios/under-the-hood-broadcasting-live-video-to-millions/</a></figcaption>
+</figure>
+<p>追随者踩踏的一个例子是当名人将新照片或视频上传到他们的社交媒体帐户。当所有关注者都收到新内容的通知时，他们会争先恐后地查看。由于内容太新，还没有被缓存，就会导致可怕的缓存踩踏事件。</p>
+<hr>
+<p>那么，对于追随者踩踏事件，我们能做些什么呢？</p>
+<h2 id="锁-和-promise">锁 和 Promise</h2>
+<p>从本质上讲，缓存踩踏是一种竞争状态 ——
+多个线程争夺共享资源。在这种情况下，共享的资源是缓存。</p>
+<figure>
+<img src="https://cdn-images-1.medium.com/max/2000/0*KThIA3rqDvhQLXHp" alt="图片来源：https://instagram-engineering.com/thundering-herds-promises-82191c8af57d">
+<figcaption aria-hidden="true">图片来源：<a target="_blank" rel="noopener" href="https://instagram-engineering.com/thundering-herds-promises-82191c8af57d">https://instagram-engineering.com/thundering-herds-promises-82191c8af57d</a></figcaption>
+</figure>
+<p>在高并发系统中很常见，一种防止共享资源竞争条件的方法是使用<strong>锁</strong>。虽然锁通常用于同一台机器上的线程，但也有一些方法可以使用
+<a target="_blank" rel="noopener" href="https://redis.io/topics/distlock">分布式锁</a>
+用于远程缓存。</p>
+<p>通过在缓存键上加锁，限制一次只有一个调用者能够访问缓存。如果缓存键丢失或过期，调用者就可以生成并缓存数据，同时持有锁。任何其他尝试从同一个缓存键读取的进程都必须等到锁空闲。</p>
+<figure>
+<img src="https://cdn-images-1.medium.com/max/2000/0*7DqZBIsf7BByzB3q.gif" alt="图片来源：https://engineering.fb.com/2015/12/03/ios/under-the-hood-broadcasting-live-video-to-millions/">
+<figcaption aria-hidden="true">图片来源：<a href="https://engineering.fb.%20com/2015/12/03/ios/under-the-hood-broadcasting-live-video-to-millions/">https://engineering.fb.com/2015/12/03/ios/under-the-hood-broadcasting-live-video-to-millions/</a></figcaption>
+</figure>
+<p>使用锁解决了竞争状态问题，但它会产生另一个问题。你如何处理所有等待锁释放的线程？</p>
+<p>不知道你是否使用过 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Spinlock">自旋锁</a>
+模式并让线程不断轮询锁？这将创建一个 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Busy_waiting">忙等待</a> 场景。</p>
+<p>在检查锁是否空闲之前，你是否让线程休眠了任意时间？这样你就会遇到 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Thundering_herd_problem">惊群效应问题</a>。</p>
+<p>你是否引入了 <a target="_blank" rel="noopener" href="https://www.baeldung.com/resilience4j-backoff-jitter">退避和抖动机制</a>
+以防止惊群效应问题？这可能有效，但还有一个更普遍的问题。拥有锁的线程必须在释放锁之前重新计算值并更新缓存键。</p>
+<p>这个过程可能需要一段时间。特别是如果该值的计算成本很高或存在网络问题。如果缓存耗尽其可用连接池并且用户请求被丢弃，这仍然可能导致宕机。</p>
+<p>幸运的是，一些顶级公司正在使用一种更简单的解决方案：<strong>Promise</strong>。</p>
+<h4 id="promise-如何防止自旋锁">Promise 如何防止自旋锁</h4>
+<p>引用 <strong><a target="_blank" rel="noopener" href="https://instagram-engineering.com/thundering-herds-promises-82191c8af57d">惊群效应问题与
+Promise</a></strong> 来自 Instagram 的工程博客：</p>
+<blockquote>
+<p>在 Instagram
+上，当建立一个新集群时，我们会遇到<strong>缓存踩踏</strong>问题，因为集群的缓存是空的。然后我们使用
+Promise
+来帮助解决这个问题：<strong>我们没有缓存实际值，而是缓存了一个最终会提供值的
+Promise</strong>。当我们以原子方式使用我们的缓存并出现未命中时，我们不会立即进入后端，而是会创建一个
+Promise 并将其插入缓存中。然后这个新的 Promise
+开始针对后端的工作。这样做的好处是其他并发请求不会错过，因为它们会找到现有的
+Promise —— 并且所有这些并发工作人员将等待单个后端请求。</p>
+</blockquote>
+<figure>
+<img src="https://cdn-images-1.medium.com/max/2000/0*I28DPoMELLUV4QWN" alt="图片来源：https://instagram-engineering.com/thundering-herds-promises-82191c8af57d">
+<figcaption aria-hidden="true">图片来源：<a target="_blank" rel="noopener" href="https://instagram-engineering.com/thundering-herds-promises-82191c8af57d">https://instagram-engineering.com/thundering-herds-promises-82191c8af57d</a></figcaption>
+</figure>
+<p>通过缓存 Promise
+而不是实际值，不需要自旋锁。获取缓存未命中的第一个线程将使用原子操作（例如
+Java 的 <a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/8/docs/api/java/util/Map.html#computeIfAbsent-K-java.util.function.Function-"><code>computeIfAbsent</code></a>）。所有顺序获取请求将立即返回
+Promise 。</p>
+<p>我们仍然需要使用锁来防止多个线程访问缓存键。但是假设创建一个 Promise
+是一个近乎即时的操作，线程在自旋锁中停留的时间长度可以忽略不计。</p>
+<p><a target="_blank" rel="noopener" href="https://medium.com/@DoorDash/avoiding-cache-stampede-at-doordash-55bbf596d94b">这正是
+DoorDash 避免缓存踩踏的方式</a>。</p>
+<p>但是如果重新计算缓存值需要相对较长的时间呢？即使线程能够立即获取缓存的
+Promise，它们仍然需要等待异步进程完成才能返回值。</p>
+<hr>
+<p>虽然这种情况不一定算作中断，但它会影响尾部延迟和整体用户体验。如果保持较低的尾部延迟对您的应用程序很重要，那么还有另一种策略需要考虑。</p>
+<h2 id="提前重新计算">提前重新计算</h2>
+<p>提前重新计算（Early Re-Computation，也称为提前到期 Early
+Expiration）背后的想法很简单。在缓存键正式过期之前，重新计算值并延长过期时间。这确保缓存始终是最新的，并且永远不会发生缓存未命中。</p>
+<p>早期重新计算的最简单实现是后台进程或定时任务。例如，假设有一个缓存键，其过期时间在一小时内到期，计算该值需要两分钟。定时任务可以在一个小时结束前运行五分钟，并在更新后将过期时间再延长一个小时。</p>
+<p>虽然这个想法在理论上很简单，但有一个明显的缺点。除非我们确切知道将使用哪些缓存键，否则我们需要重新计算缓存中的每个键。这可能是一个非常费力且成本高昂的过程。它还需要维护另一个活动部件，如果出现故障，则无法轻松追索。</p>
+<p>由于这些原因，我无法在生产环境中找到任何此类早期重新计算的示例。但是也有例外。</p>
+<h4 id="概率早期重新计算">概率早期重新计算</h4>
+<p>2015 年，一组研究人员发表了名为 「Optimal Probabilistic Cache
+Stampede Prevention」 的 <a target="_blank" rel="noopener" href="https://cseweb.ucsd.edu/~avattani/papers/cache_stampede.pdf">白皮书</a>。在其中，他们描述了一种算法，用于优化预测何时在缓存过期之前重新计算缓存值。</p>
+<p>研究论文中有很多数学理论，但算法归结为：</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>currentTime <span class="op">-</span> ( timeToCompute <span class="op">*</span> beta <span class="op">*</span> <span class="fu">log</span>(<span class="fu">rand</span>()) ) <span class="op">&gt;</span> expiry</span></code></pre></div>
+<ul>
+<li><code>currentTime</code> 是当前时间戳。</li>
+<li><code>timeToCompute</code> 是重新计算缓存值所需的时间。</li>
+<li><code>beta</code> 是一个大于 0 的非负值。它默认为
+1，但可以配置。</li>
+<li><code>rand()</code> 是一个返回 0 到 1 之间随机数的函数。</li>
+<li><code>expiry</code> 是缓存值设置为过期的未来时间戳。</li>
+</ul>
+<p>这个想法是每次线程从缓存中获取时，它都会运行这个算法。如果它返回
+<code>true</code>，那么该线程将自愿重新计算该值。越接近到期时间，此算法返回
+<code>true</code> 的几率就会显着增加。</p>
+<p>虽然这个策略不是最容易理解的，但它实施起来相当简单，不需要任何额外的移动部件。它也不需要重新计算缓存中的每个值。</p>
+<p><a target="_blank" rel="noopener" href="https://archive.org/index.php">互联网档案馆</a> 在 2016
+年总统辩论的一次宕机后开始使用这种方法。这个 <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=1sKn4gWesTw">RedisConf17
+的演讲</a>
+更深入地讲述了这个故事，并很好地概述了概率早期重新计算的工作原理。我<strong>强烈</strong>推荐<a target="_blank" rel="noopener" href="https://youtu.be/1sKn4gWesTw">看看这个视频</a></p>
+<hr>
+<p>然而，早期重新计算假设有重新计算的价值 ——
+它不会单独阻止追随者踩踏。为此，我们需要将它与锁和 Promise
+结合起来。</p>
+<h2 id="如何阻止正在进行的踩踏事件">如何阻止正在进行的踩踏事件</h2>
+<p>Facebook
+的缓存踩踏事件如此具有破坏性的原因之一是，即使工程师找到了解决方案，他们也无法部署它，因为踩踏事件仍在继续。</p>
+<p>来自 <a target="_blank" rel="noopener" href="https://www.facebook.com/notes/facebook-engineering/more-details-on-todays-outage/431441338919">事后分析</a>：</p>
+<blockquote>
+<p>更糟糕的是，每次客户端在尝试查询其中一个数据库时出错，它都会将其解释为无效值，并删除相应的缓存键。这意味着即使在解决了原始问题之后，查询流仍在继续。只要数据库无法为某些请求提供服务，它们就会对自己造成更多请求。我们进入了一个不允许数据库恢复的反馈循环。</p>
+</blockquote>
+<p>现实情况是，无法保证预防永远有效 —— 我们还需要缓解。<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Defensive_programming">防御性编程</a>
+规定应该制定一个计划，以防踩踏事件绕过我们设置的限制。</p>
+<p>幸运的是，有一个已知的模式来处理这个问题。</p>
+<h4 id="熔断器">熔断器</h4>
+<p>在编程中使用熔断器的想法并不新鲜。在 Michael Nygard 于 2007 年发表 <a target="_blank" rel="noopener" href="https://www.amazon.com/gp/product/0978739213"><strong>Release
+It!</strong></a> 后，它开始流行。正如 Martin Fowler 在他的文章
+<strong><a target="_blank" rel="noopener" href="https://www.martinfowler.com/bliki/CircuitBreaker.html">CircuitBreaker</a></strong>
+所写的那样：</p>
+<blockquote>
+<p>熔断器背后的基本思想非常简单。您将受保护的函数调用包装在熔断器对象中，该对象监视故障。一旦故障达到某个阈值，熔断器就会熔断，并且所有对熔断器的进一步调用都会返回错误，而不会调用到受到熔断器保护的地方。</p>
+</blockquote>
+<figure>
+<img src="https://cdn-images-1.medium.com/max/2000/0*2Jn_bNJ6Vh2-Lwla.png" alt="图片来源：https://www.martinfowler.com/bliki/CircuitBreaker.html">
+<figcaption aria-hidden="true">图片来源：<a target="_blank" rel="noopener" href="https://www.martinfowler.com/bliki/CircuitBreaker.html">https://www.martinfowler.com/bliki/CircuitBreaker.html</a></figcaption>
+</figure>
+<p>熔断器是被动的，这意味着它们不会阻止宕机，但它们将防止级联故障。当事情失控时，它提供了一个终止开关。如果
+Facebook 使用熔断器，他们本可以避免让整个网站脱机。</p>
+<hr>
+<p>诚然，熔断器在 2010 年并不那么流行。如今，有几个带有熔断器的库，例如
+<a target="_blank" rel="noopener" href="https://resilience4j.readme.io/">Resilience4j</a>、<a target="_blank" rel="noopener" href="https://istio.io/">Istio</a> 和 <a target="_blank" rel="noopener" href="https://www.envoyproxy.io/">Envoy</a>。一些组织在生产中使用这些服务，例如
+<a target="_blank" rel="noopener" href="https://netflixtechblog.com/making-the-netflix-api-more-resilient-a8ec62159c2d">Netflix</a>
+和 [Lyft](https://www.getambassador.io
+/resources/mechanics-deploying-envoy-lyft-matt-klein/）。</p>
+<h2 id="facebook-买来了什么教训">Facebook 买来了什么教训？</h2>
+<p>我在这篇文章中谈了很多关于解决缓存踩踏的不同策略以及其他科技公司如何使用它们。但是
+Facebook 本身呢？</p>
+<p>他们从故障中吸取了哪些教训，他们采取了哪些保护措施来防止再次发生这种情况？</p>
+<p>他们的工程帖子，<a target="_blank" rel="noopener" href="https://engineering.fb.com/2015/12/03/ios/under-the-hood-broadcasting-live-video-to-millions/"><strong>幕后：向数百万人广播直播视频</strong></a>，讨论他们对架构所做的改进。它讨论了我们已经讨论过的内容，例如缓存层次结构，但也包括一些新颖的方法，例如
+HTTP 请求合并。这篇文章值得一读，但如果你时间不够，这个 <a target="_blank" rel="noopener" href="https://www.facebook.com/Engineering/videos/10153675295382200/?t=0">视频提供了一个全面的概述</a>。</p>
+<p>可以说 Facebook 从他们过去的错误中吸取了教训。</p>
+<hr>
+<figure>
+<img src="https://cdn-images-1.medium.com/max/3076/1*8aT7_UKqYmXxdEkoMZBx4g.gif" alt="图片来源：https://engineering.fb.com/2015/12/03/ios/under-the-hood-broadcasting-live-video-to-millions/">
+<figcaption aria-hidden="true">图片来源：<a href="https://engineering.fb.%20com/2015/12/03/ios/under-the-hood-broadcasting-live-video-to-millions/">https://engineering.fb.com/2015/12/03/ios/under-the-hood-broadcasting-live-video-to-millions/</a></figcaption>
+</figure>
+<h2 id="部分感想">部分感想</h2>
+<p>虽然我相信了解缓存踩踏事件如何对系统造成严重破坏，但我不认为每个技术团队都必须立即添加这些措施。我们选择如何处理缓存踩踏将取决于我们项目的用例、架构和流量负载。</p>
+<p>但是，当我们发现自己正在与惊群效应问题作斗争，那么了解缓存踩踏事件并了解可能的解决方案将使我们在未来受益。</p>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Computer-Science/" rel="tag"># Computer Science</a>
+              <a href="/tags/Backend/" rel="tag"># Backend</a>
+              <a href="/tags/Cloud/" rel="tag"># Cloud</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/07/19/computer%20science/backend/speed-of-rust-vs-c/" rel="prev" title="Rust 与 C 的速度比较">
+      <i class="fa fa-chevron-left"></i> Rust 与 C 的速度比较
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/08/10/computer%20science/backend/a-new-standard-for-mobile-app-security/" rel="next" title="移动应用安全的新标准">
+      移动应用安全的新标准 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E7%BC%93%E5%AD%98%E8%B8%A9%E8%B8%8F"><span class="nav-text">什么是缓存踩踏？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E9%98%B2%E6%AD%A2%E7%BC%93%E5%AD%98%E8%B8%A9%E8%B8%8F"><span class="nav-text">如何防止缓存踩踏？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E6%9B%B4%E5%A4%9A%E7%BC%93%E5%AD%98"><span class="nav-text">添加更多缓存</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%94%81-%E5%92%8C-promise"><span class="nav-text">锁 和 Promise</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#promise-%E5%A6%82%E4%BD%95%E9%98%B2%E6%AD%A2%E8%87%AA%E6%97%8B%E9%94%81"><span class="nav-text">Promise 如何防止自旋锁</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8F%90%E5%89%8D%E9%87%8D%E6%96%B0%E8%AE%A1%E7%AE%97"><span class="nav-text">提前重新计算</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A6%82%E7%8E%87%E6%97%A9%E6%9C%9F%E9%87%8D%E6%96%B0%E8%AE%A1%E7%AE%97"><span class="nav-text">概率早期重新计算</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E9%98%BB%E6%AD%A2%E6%AD%A3%E5%9C%A8%E8%BF%9B%E8%A1%8C%E7%9A%84%E8%B8%A9%E8%B8%8F%E4%BA%8B%E4%BB%B6"><span class="nav-text">如何阻止正在进行的踩踏事件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%86%94%E6%96%AD%E5%99%A8"><span class="nav-text">熔断器</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#facebook-%E4%B9%B0%E6%9D%A5%E4%BA%86%E4%BB%80%E4%B9%88%E6%95%99%E8%AE%AD"><span class="nav-text">Facebook 买来了什么教训？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%83%A8%E5%88%86%E6%84%9F%E6%83%B3"><span class="nav-text">部分感想</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Hoarfroster"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Hoarfroster</p>
+  <div class="site-description" itemprop="description">这里是霜羽~~咕咕咕</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">193</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">53</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">58</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <ul class="links-of-author motion-element">
+      <li class="links-of-author-item">
+        <a href="https://github.com/PassionPenguin" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;PassionPenguin" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        <span> PassionPenguin</span>
+      </li>
+      <li class="links-of-author-item">
+        <a href="mailto:hoarfroster@outlook.com" title="E-Mail → mailto:hoarfroster@outlook.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+        <span> hoarfroster@outlook.com</span>
+      </li>
+      <li class="links-of-author-item">
+        <a href="https://twitter.com/zhangqizhe" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;zhangqizhe" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+        <span> @zhangqizhe</span>
+      </li>
+      <li class="links-of-author-item">
+        <a href="https://www.instagram.com/glacierpenguin/" title="Instagram → https:&#x2F;&#x2F;www.instagram.com&#x2F;glacierpenguin&#x2F;" rel="noopener" target="_blank"><i class="fab fa-instagram fa-fw"></i>Instagram</a>
+        <span> @glacierpenguin</span>
+      </li>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hoarfroster</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="Symbols count total">1.1m</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">34:12</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT</a>
+  </div>
+
+        
+
+
+
+
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-firestore.js"></script>
+  <script>
+    firebase.initializeApp({
+      apiKey   : 'AIzaSyDqM81uUD8yWHAvsGasJzvWBHhpBYnRttI',
+      projectId: 'hoar-froster'
+    });
+
+    function getCount(doc, increaseCount) {
+      // IncreaseCount will be false when not in article page
+      return doc.get().then(d => {
+        var count = 0;
+        if (!d.exists) { // Has no data, initialize count
+          if (increaseCount) {
+            doc.set({
+              count: 1
+            });
+            count = 1;
+          }
+        } else { // Has data
+          count = d.data().count;
+          if (increaseCount) {
+            // If first view this article
+            doc.set({ // Increase count
+              count: count + 1
+            });
+            count++;
+          }
+        }
+
+        return count;
+      });
+    }
+
+    function appendCountTo(el) {
+      return count => {
+        el.innerText = count;
+      }
+    }
+  </script>
+  <script>
+    (function() {
+      var db = firebase.firestore();
+      var articles = db.collection('articles-info');
+
+      if (CONFIG.page.isPost) { // Is article page
+        var title = document.querySelector('.post-title').innerText.trim();
+        var doc = articles.doc(title);
+        var increaseCount = CONFIG.hostname === location.hostname;
+        if (localStorage.getItem(title)) {
+          increaseCount = false;
+        } else {
+          // Mark as visited
+          localStorage.setItem(title, true);
+        }
+        getCount(doc, increaseCount).then(appendCountTo(document.querySelector('.firestore-visitors-count')));
+      } else if (CONFIG.page.isHome) { // Is index page
+        var promises = [...document.querySelectorAll('.post-title')].map(element => {
+          var title = element.innerText.trim();
+          var doc = articles.doc(title);
+          return getCount(doc);
+        });
+        Promise.all(promises).then(counts => {
+          var metas = document.querySelectorAll('.firestore-visitors-count');
+          counts.forEach((val, idx) => {
+            appendCountTo(metas[idx])(val);
+          });
+        });
+      }
+    })();
+  </script>
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var canonicalURL, curProtocol;
+      //Get the <link> tag
+      var x=document.getElementsByTagName("link");
+		//Find the last canonical URL
+		if(x.length > 0){
+			for (i=0;i<x.length;i++){
+				if(x[i].rel.toLowerCase() == 'canonical' && x[i].href){
+					canonicalURL=x[i].href;
+				}
+			}
+		}
+    //Get protocol
+	    if (!canonicalURL){
+	    	curProtocol = window.location.protocol.split(':')[0];
+	    }
+	    else{
+	    	curProtocol = canonicalURL.split(':')[0];
+	    }
+      //Get current URL if the canonical URL does not exist
+	    if (!canonicalURL) canonicalURL = window.location.href;
+	    //Assign script content. Replace current URL with the canonical URL
+      !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=canonicalURL,t=document.referrer;if(!e.test(r)){var n=(String(curProtocol).toLowerCase() === 'https')?"https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif":"//api.share.baidu.com/s.gif";t?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var i=new Image;i.src=n}}(window);})();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme    : 'default',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/disqusjs@1/dist/disqusjs.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/disqusjs@1/dist/disqus.js', () => {
+    window.dsqjs = new DisqusJS({
+      api       : 'https://disqus.skk.moe/disqus/' || 'https://disqus.com/api/',
+      apikey    : 'Lo65MITAya5vcdTm6cJ8V5qCBNx3PVErvDOsfJ5tUPtEbw3DMS3EIzEx6vrmTzCN',
+      shortname : 'hoarfroster',
+      url       : "https://hoarfroster.github.io/2021/07/28/computer%20science/cloud/how-a-cache-stampede-caused-one-of-facebooks-biggest-outages/",
+      identifier: "2021/07/28/computer science/cloud/how-a-cache-stampede-caused-one-of-facebooks-biggest-outages/",
+      title     : "缓存踩踏事件是如何导致 Facebook 最大的宕机事件之一发生的",
+    });
+  }, window.DisqusJS);
+});
+</script>
+
+</body>
+</html>

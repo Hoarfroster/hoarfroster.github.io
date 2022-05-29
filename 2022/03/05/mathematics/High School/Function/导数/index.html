@@ -1,0 +1,1987 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/avatar.png" color="#222">
+  <meta name="google-site-verification" content="iFMbHL1JuWjTlNFq5Rv96vDzpsqakxTpdE2nw7Crr6o">
+  <meta name="msvalidate.01" content="EF6D8CD8A3335E66AB96B4D544FCD96C">
+  <meta name="baidu-site-verification" content="code-80b80Pbzs2">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link href="/lib/fontawesome/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<script>
+
+  window.onload = function() {
+    document.querySelectorAll("p").forEach(e=>{
+      e.innerHTML = e.innerHTML.replaceAll(/==(.+?)==/g, "<mark>$1</mark>").replaceAll(/​\s+?/g, "<span class='tab'></span>");
+    });
+    
+    [...document.querySelectorAll("pre > code")].forEach(e=> {
+        var codeClass = e.parentElement.classList.value;
+        if (codeClass == null || codeClass === "") {
+            e.classList.add("hljs");
+        } else {
+            var map = {
+                js: "javascript"
+            };
+            if (map[codeClass]) {
+                codeClass = map[codeClass];
+            }
+            codeClass.split(" ").forEach(i=>e.classList.add(i));
+            hljs.highlightElement(e);
+        }
+    });
+
+    [...document.querySelectorAll('.classcial-chinese-literature-and-poetry-translation')].forEach(i=>{
+      let el = document.createElement('div');
+      el.setAttribute('class', 'fa-solid fa-eye');
+      i.prepend(el);
+      el.addEventListener('click', ()=>{
+        let status = el.classList.contains('fa-eye');
+        [...i.querySelectorAll('.translation')].forEach(j=>{
+          j.classList.remove('hide');
+          if(status) {
+            j.classList.add('hide');
+          }
+        });
+        el.attributes['class'].value = el.attributes['class'].value.replace('fa-eye-slash', 'fa-0').replace('fa-eye', 'fa-eye-slash').replace('fa-0', 'fa-eye');
+      });
+
+      [...i.querySelectorAll('.original-text')].forEach(e=>{
+        let el = document.createElement('div');
+        el.setAttribute('class', 'fa-solid fa-eye-slash');
+        e.prepend(el);
+        el.addEventListener('click', ()=>{
+            e.nextSibling.classList.toggle('hide');
+            el.attributes['class'].value = el.attributes['class'].value.replace('fa-eye-slash', 'fa-0').replace('fa-eye', 'fa-eye-slash').replace('fa-0', 'fa-eye');
+        });
+      })
+    });
+  }
+</script>
+<script async src="/js/highlight.min.js"></script>
+<script async src="/js/cursor.js"></script>
+<script data-ad-client="ca-pub-2275811890061218" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"hoarfroster.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqusjs","storage":true,"lazyload":false,"nav":null,"activeClass":"disqusjs"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="使用导数判断函数的单调性、极值、最值">
+<meta property="og:type" content="article">
+<meta property="og:title" content="导数">
+<meta property="og:url" content="https://hoarfroster.github.io/2022/03/05/mathematics/High%20School/Function/%E5%AF%BC%E6%95%B0/index.html">
+<meta property="og:site_name" content="Hoarfroster 的小窝">
+<meta property="og:description" content="使用导数判断函数的单调性、极值、最值">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-03-05T14:31:42.000Z">
+<meta property="article:modified_time" content="2022-05-28T15:43:08.330Z">
+<meta property="article:author" content="Hoarfroster">
+<meta property="article:tag" content="School Notes">
+<meta property="article:tag" content="High School">
+<meta property="article:tag" content="Mathematics">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://hoarfroster.github.io/2022/03/05/mathematics/High%20School/Function/%E5%AF%BC%E6%95%B0/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>导数 | Hoarfroster 的小窝</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <!--<div class="headband"></div>-->
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hoarfroster 的小窝</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section">Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section">About</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section">Categories</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger">
+          Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://hoarfroster.github.io/2022/03/05/mathematics/High%20School/Function/%E5%AF%BC%E6%95%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Hoarfroster">
+      <meta itemprop="description" content="这里是霜羽~~咕咕咕">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hoarfroster 的小窝">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          导数
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-03-05 22:31:42" itemprop="dateCreated datePublished" datetime="2022-03-05T22:31:42+08:00">2022-03-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-05-28 23:43:08" itemprop="dateModified" datetime="2022-05-28T23:43:08+08:00">2022-05-28</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/High-School/" itemprop="url" rel="index"><span itemprop="name">High School</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/High-School/Mathematics/" itemprop="url" rel="index"><span itemprop="name">Mathematics</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/High-School/Mathematics/Function/" itemprop="url" rel="index"><span itemprop="name">Function</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span><br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+              <span>23k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+              <span>42 mins.</span>
+            </span>
+            <div class="post-description">使用导数判断函数的单调性、极值、最值</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+<h2 id="知识聚焦">知识聚焦</h2>
+<h3 id="一导数">一、导数</h3>
+<h4 id="导数与变化率">1. 导数与变化率</h4>
+<p>​ 对于函数<span class="math inline"><em>y</em> = <em>f</em>(<em>x</em>)</span>，设自变量<span class="math inline"><em>x</em></span>从<span class="math inline"><em>x</em><sub>0</sub></span>变化到<span class="math inline"><em>x</em><sub>0</sub> + <em>Δ</em><em>x</em></span>，相应地函数值从<span class="math inline"><em>f</em>(<em>x</em><sub>0</sub>)</span>变化为<span class="math inline"><em>f</em>(<em>x</em><sub>0</sub>+<em>Δ</em><em>x</em>)</span>，此时我们把比值<span class="math inline">$\frac{\Delta x}{\Delta y}$</span>，也即 <span class="math display">$$
+\notag\begin{align}
+\frac{\Delta x}{\Delta y} = \frac{f(x_0 + \Delta x)-f(x_0)}{\Delta x}
+\end{align}
+$$</span> 称为函数从<span class="math inline"><em>x</em><sub>0</sub></span>到<span class="math inline"><em>x</em><sub>0</sub> + <em>Δ</em><em>x</em></span>的平均变化率。如果当<span class="math inline"><em>Δ</em><em>x</em> → 0</span>时平均变化率无穷趋近于一个确值（即<span class="math inline">$\frac{\Delta y}{\Delta
+x}$</span>有极限），则称<span class="math inline"><em>y</em> = <em>f</em>(<em>x</em>)</span>在<span class="math inline"><em>x</em> = <em>x</em><sub>0</sub></span>处可导，并把这个定值称为<span class="math inline"><em>y</em> = <em>f</em>(<em>x</em>)</span>在<span class="math inline"><em>x</em> = <em>x</em><sub>0</sub></span>处的<strong>导数</strong>（也称<strong>瞬时变化率</strong>），记作<span class="math inline"><em>f</em>′(<em>x</em>)</span>或<span class="math inline"><em>y</em>′|<sub><em>x</em> = <em>x</em><sub>0</sub></sub></span>，即
+<span class="math display">$$
+\notag\begin{align}
+f'(x)=y'=\lim_{\Delta x\rightarrow0}{\frac{f(x_0+\Delta x)}{\Delta x}}
+\end{align}
+$$</span> ​
+导数的物理意义可以代表速度、加速度等，数学意义可以代表函数的变化率与切割线斜率。因为导数是定义域上每一个点与其瞬时变化率的映射，我们可以把<span class="math inline"><em>y</em> = <em>f</em>(<em>x</em>)</span>当做一个函数，也即<strong>导函数</strong>（简称<strong>导数</strong>）。</p>
+<h4 id="基本初等函数的导数四则运算与复合函数的导数">2.
+基本初等函数的导数、四则运算与复合函数的导数</h4>
+<p>​ 根据导数的定义，基本初等函数的导数如下：</p>
+<table>
+<thead>
+<tr class="header">
+<th>原函数</th>
+<th>导数</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline"><em>f</em>(<em>x</em>) = <em>c</em></span>（<span class="math inline"><em>c</em></span>为常数）</td>
+<td><span class="math inline"><em>f</em>′(<em>x</em>) = 0</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline"><em>f</em>(<em>x</em>) = <em>x</em><sup><em>a</em></sup></span>（<span class="math inline"><em>a</em> ∈ ℚ, <em>a</em> ≠ 0</span>）</td>
+<td><span class="math inline"><em>f</em>′(<em>x</em>) = <em>a</em><em>x</em><sup><em>a</em> − 1</sup></span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline"><em>f</em>(<em>x</em>) = sin <em>x</em></span></td>
+<td><span class="math inline"><em>f</em>′(<em>x</em>) = cos <em>x</em></span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline"><em>f</em>(<em>x</em>) = cos <em>x</em></span></td>
+<td><span class="math inline"><em>f</em>′(<em>x</em>) =  − sin <em>x</em></span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline"><em>f</em>(<em>x</em>) = <em>a</em><sup><em>x</em></sup></span>（<span class="math inline"><em>a</em> &gt; 0, <em>a</em> ≠ 1</span>）</td>
+<td><span class="math inline"><em>f</em>′(<em>x</em>) = <em>a</em><sup><em>x</em></sup>ln <em>a</em></span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline"><em>f</em>(<em>x</em>) = log<sub><em>a</em></sub><em>x</em></span>（<span class="math inline"><em>a</em> &gt; 0, <em>a</em> ≠ 1</span>）</td>
+<td><span class="math inline">$f'(x)=\dfrac{1}{x\ln{a}}$</span></td>
+</tr>
+</tbody>
+</table>
+<p>​ 对于导数，有如下四则运算、复合函数导数法则：</p>
+<table>
+<colgroup>
+<col style="width: 45%">
+<col style="width: 54%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>运算法则</th>
+<th>导数结果</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline"><em>h</em>(<em>x</em>) = <em>f</em>(<em>x</em>) ± <em>g</em>(<em>x</em>)</span></td>
+<td><span class="math inline"><em>h</em>′(<em>x</em>) = <em>f</em>′(<em>x</em>) ± <em>g</em>′(<em>x</em>)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline"><em>h</em>(<em>x</em>) = <em>f</em>(<em>x</em>) ⋅ <em>g</em>(<em>x</em>)</span></td>
+<td><span class="math inline"><em>h</em>′(<em>x</em>) = <em>f</em>′(<em>x</em>) ⋅ <em>g</em>(<em>x</em>) + <em>f</em>(<em>x</em>) ⋅ <em>g</em>′(<em>x</em>)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">$h(x)=\dfrac{f(x)}{g(x)}$</span>（<span class="math inline"><em>g</em>(<em>x</em>) ≠ 0</span>）</td>
+<td><span class="math inline">$h'(x)=\dfrac{f'(x)\cdot g(x) - f(x)\cdot
+g'(x)}{(g(x))^2}$</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline"><em>h</em>(<em>x</em>) = <em>c</em><em>f</em>(<em>x</em>)</span></td>
+<td><span class="math inline"><em>h</em>′(<em>x</em>) = <em>c</em><em>f</em>′(<em>x</em>)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline"><em>h</em>(<em>x</em>) = <em>f</em>(<em>g</em>(<em>x</em>))</span></td>
+<td><span class="math inline"><em>h</em>′(<em>x</em>) = <em>f</em>′(<em>x</em>) ⋅ <em>g</em>′(<em>x</em>)</span></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<h4 id="证明指对数函数的导数">证明指对数函数的导数</h4>
+<p>​ 已知<span class="math inline">$e=\log_a{(x+1)}^\frac{1}{x}$</span>，对于函数<span class="math inline"><em>g</em>(<em>x</em>) = <em>a</em><sup><em>x</em></sup></span>与<span class="math inline"><em>g</em>(<em>x</em>) = log<sub><em>a</em></sub><em>x</em></span>，求证<span class="math inline"><em>f</em>′(<em>x</em>) = <em>a</em><sup><em>x</em></sup>ln <em>a</em></span>与<span class="math inline">$g'(x)=\frac{1}{x\ln{x}}$</span>。</p>
+<p>​ 证明<span class="math inline"><em>f</em>′(<em>x</em>) = <em>a</em><sup><em>x</em></sup>ln <em>x</em></span>：
+<span class="math display">$$
+\notag\begin{align}
+f'(x)&amp;=\lim_{\Delta\rightarrow 0}{\frac{a^{x_0 + \Delta
+x}-a^{x_0}}{\Delta x}}\\
+&amp;=\lim_{\Delta\rightarrow 0}{\frac{a^{x_0}(a^{\Delta x}-1)}{\Delta
+x}}\\
+\end{align}
+$$</span> ​ 令<span class="math inline"><em>k</em> = <em>a</em><sup><em>Δ</em><em>x</em></sup> − 1</span>，则<span class="math inline"><em>Δ</em><em>x</em> = log<sub><em>a</em></sub>(<em>k</em>+1)</span>，则
+<span class="math display">$$
+\notag\begin{align}
+f'(x_0)&amp;=\lim_{\Delta x\rightarrow0}{\frac{a^{x_0}\cdot
+k}{log_a{(k+1)}}}\\
+&amp;=a^{x_0}\cdot\lim_{\Delta
+x\rightarrow0}{\frac{1}{log_a{(k+1)}^{\frac{1}{k}}}}\\
+&amp;=a^{x_0}\cdot\frac{1}{log_a{e}}\\
+&amp;=a^{x_0}\cdot\ln{a}
+\end{align}
+\begin{proof}
+\end{proof}
+$$</span> ​ 证明<span class="math inline">$g'(x)=\frac{1}{x\ln{x}}$</span>： <span class="math display">$$
+\notag\begin{align}
+g'(x)&amp;=\lim_{\Delta x\rightarrow0}{\frac{\log_a{(x_0+\Delta
+x)}-\log_a{x_0}}{\Delta x}}\\
+&amp;=\lim_{\Delta x\rightarrow0}{\frac{1}{\Delta
+x}\log_a{\frac{x_0+\Delta x}{x_0}}}\\
+&amp;=\lim_{\Delta x\rightarrow0}{\log_a{(1+\frac{\Delta
+x}{x_0})^{\frac{1}{\Delta x}}}}\\
+&amp;=\lim_{\Delta x\rightarrow0}{\frac{1}{x_0}\log_a{(1+\frac{\Delta
+x}{x_0})^{\frac{x_0}{\Delta x}}}}\\
+&amp;=\frac{1}{x_0}log_a{e}\\
+&amp;=\frac{1}{x_0\ln{a}}
+\end{align}
+\begin{proof}
+\end{proof}
+$$</span></p>
+</blockquote>
+<blockquote>
+<h3 id="函数切线问题">函数切线问题</h3>
+<ol type="1">
+<li>直线 <span class="math inline"><em>l</em></span> 是函数 <span class="math inline"><em>y</em> = <em>f</em>(<em>x</em>)</span> 在 <span class="math inline">(<em>a</em>,<em>b</em>)</span> 处的切线，则点 <span class="math inline">(<em>a</em>,<em>b</em>)</span> 为切点，<span class="math inline"><em>k</em> = <em>f</em>′(<em>a</em>)</span>。</li>
+<li>直线 <span class="math inline"><em>l</em></span> 是函数 <span class="math inline"><em>y</em> = <em>f</em>(<em>x</em>)</span> 过 <span class="math inline">(<em>a</em>,<em>b</em>)</span> 点的切线，<span class="math inline">(<em>a</em>,<em>b</em>)</span>
+未必是切点，需要设切点 <span class="math inline">(<em>x</em><sub>0</sub>,<em>f</em>(<em>x</em><sub>0</sub>))</span>。</li>
+</ol>
+</blockquote>
+<h3 id="二导数与奇偶性单调性最值和极值">二、导数与奇偶性、单调性、最值和极值</h3>
+<h4 id="导数与奇偶性单调性最值和极值">1.
+导数与奇偶性、单调性、最值和极值</h4>
+<p>​
+一般地，如果函数可导，<strong>原函数的奇偶性与导函数的奇偶性相反</strong>。</p>
+<p>​ 函数<span class="math inline"><em>f</em>(<em>x</em>)</span>的单调性与导函数<span class="math inline"><em>f</em>′(<em>x</em>)</span>的正负之间具有如下关系：</p>
+<p>​ ==在某个区间<span class="math inline">(<em>a</em>,<em>b</em>)</span>，如果<span class="math inline"><em>f</em>′(<em>x</em>) &gt; 0</span>，那么函数<span class="math inline"><em>f</em>(<em>x</em>)</span>在<span class="math inline">(<em>a</em>,<em>b</em>)</span>上单调递增==。</p>
+<p>​ ==在某个区间<span class="math inline">(<em>a</em>,<em>b</em>)</span>，如果<span class="math inline"><em>f</em>′(<em>x</em>) &lt; 0</span>，那么函数<span class="math inline"><em>f</em>(<em>x</em>)</span>在<span class="math inline">(<em>a</em>,<em>b</em>)</span>上单调递减==。</p>
+<p>​
+如果一个函数在某一范围内导数的绝对值较大，那么函数在这个范围内变化得较快，反之较慢。</p>
+<p>​ 如果<span class="math inline"><em>f</em>′(<em>x</em><sub>0</sub>) = 0</span>，且<span class="math inline"><em>f</em>′(<em>x</em><sub>0</sub>)</span>比其附近左侧函数值大，比其附近右侧函数值小，则<span class="math inline"><em>f</em>′(<em>x</em>)</span>在<span class="math inline"><em>x</em> = <em>x</em><sub>0</sub></span>取得<strong>极小值</strong>为<span class="math inline"><em>f</em>(<em>x</em><sub>0</sub>)</span>，<strong>极小值点</strong><span class="math inline"><em>x</em> = <em>x</em><sub>0</sub></span>；如果<span class="math inline"><em>f</em>′(<em>x</em><sub>0</sub>) = 0</span>且<span class="math inline"><em>f</em>′(<em>x</em><sub>0</sub>)</span>比其附近左侧函数值小，比其附近右侧函数值大，则<span class="math inline"><em>f</em>′(<em>x</em>)</span>在<span class="math inline"><em>x</em> = <em>x</em><sub>0</sub></span>取得<strong>极大值</strong>为<span class="math inline"><em>f</em>(<em>x</em><sub>0</sub>)</span>，极大值点<span class="math inline"><em>x</em> = <em>x</em><sub>0</sub></span>。极大值与极小值统称<strong>极值</strong>，极大值点与极小值点统称<strong>极值点</strong>。极值反映的是函数在某一点附近的大小情况，刻画函数的局部性质。</p>
+<p>​ 如果在区间<span class="math inline">[<em>a</em>,<em>b</em>]</span>，函数的图像是一条连续的曲线，则函数一定有最大最小值。使用导数求函数最大最小值的方法如下：</p>
+<ol type="1">
+<li>求函数在<span class="math inline">(<em>a</em>,<em>b</em>)</span>上的极值；</li>
+<li>将函数<span class="math inline"><em>f</em>(<em>x</em>)</span>各极值与端点处的函数值<span class="math inline"><em>f</em>(<em>a</em>)</span>、<span class="math inline"><em>f</em>(<em>b</em>)</span>比较，最大者为极大值，最小者为极小值。</li>
+</ol>
+<p>​ 对于三次函数 <span class="math inline"><em>y</em> = <em>a</em><em>x</em><sup>3</sup> + <em>b</em><em>x</em><sup>2</sup> + <em>c</em><em>x</em> + <em>d</em></span>，其为中心对称图形，对称中心
+<span class="math inline">$(-\dfrac{b}{3a},f(-\dfrac{b}{3a}))$</span>（由其导函数推出）。</p>
+<h4 id="导数与单调性">2. 导数与单调性</h4>
+<blockquote>
+<h3 id="解决导数与单调性问题">解决导数与单调性问题</h3>
+<ol type="1">
+<li>==判断定义域==；</li>
+<li>求导，简并导数，使导数可以判断正负；
+<ol type="1">
+<li>如果不含参，令导数为零，求极值点，根据导数正负判断增减性区间。</li>
+<li>如果含参，可以参考 3 与 4 ：</li>
+</ol></li>
+<li>参数分离法：适合已知增减性判断参数取值，且可以提取参数，并且提取出的等式可以简单判断正负。</li>
+<li>分类讨论满足导数为零，根据导数正负判断增减性区间。</li>
+</ol>
+</blockquote>
+<h4 id="导数与极值最值">3. 导数与极值、最值</h4>
+<blockquote>
+<h3 id="解决导数与极值最值问题">解决导数与极值、最值问题</h3>
+<h5 id="已知定义域求函数恒成立问题">1.已知定义域求函数恒成立问题</h5>
+<ol type="1">
+<li>==判断定义域==；</li>
+<li>求导，求极值点，求出极值与定义域边界值；</li>
+<li>判断极值与边界值大小。</li>
+</ol>
+<h5 id="已知函数与另一函数有交点问题">2.
+已知函数与另一函数有交点问题</h5>
+<ol type="1">
+<li>令新函数，判断定义域，求导数；</li>
+<li>有 n 个交点实际就是==原函数有<span class="math inline">(<em>n</em>−1)</span>个增减区间（<span class="math inline"><em>n</em> − 1</span>个极值点）的问题，转换为求极值的正负问题==。</li>
+<li>如果对于一个干净的二、三次函数，可以转换为二次函数的根的数量问题，如<span class="math inline"><em>f</em>(<em>x</em>) = <em>x</em><sup>3</sup> − 4<em>x</em><sup>2</sup> − (3+<em>b</em>)<em>x</em></span>，求导<span class="math inline"><em>f</em>′(<em>x</em>) = 3<em>x</em><sup>2</sup> − 8<em>x</em> − 3 − <em>b</em></span>，如果<span class="math inline"><em>f</em>(<em>x</em>)</span>有三个根，对于<span class="math inline"><em>f</em>(<em>x</em>) = <em>x</em>(<em>x</em><sup>2</sup>−4<em>x</em>−3−<em>b</em>)</span>，满足<span class="math inline"><em>g</em>(<em>x</em>) = <em>x</em><sup>2</sup> − 4<em>x</em> − 3 − <em>b</em></span>函数<span class="math inline"><em>x</em><sub>1</sub><em>x</em><sub>2</sub> ≠ 0</span>及<span class="math inline"><em>Δ</em> &gt; 0</span>即可。</li>
+</ol>
+<h5 id="已知函数始终在另一个函数的上面或下面">3.
+已知函数始终在另一个函数的上面或下面</h5>
+<ol type="1">
+<li>方法一：
+<ol type="1">
+<li>求两个函数定义域与导数，求最值；</li>
+<li>例如：如果对于<span class="math inline">(<em>a</em>,<em>b</em>)</span>存在<span class="math inline"><em>f</em>′(<em>x</em>) &lt; 0</span>，<span class="math inline"><em>g</em>′(<em>x</em>) &gt; 0</span>，对于<span class="math inline">(<em>b</em>,<em>c</em>)</span>存在<span class="math inline"><em>f</em>′(<em>x</em>) &gt; 0</span>，<span class="math inline"><em>g</em>′(<em>x</em>) &lt; 0</span>，且满足<span class="math inline"><em>f</em>′(<em>x</em><sub>0</sub>) = <em>g</em>′(<em>x</em><sub>1</sub>) = 0</span>，<span class="math inline"><em>f</em>(<em>x</em>)<sub><em>极</em><em>小</em></sub> &gt; <em>g</em>(<em>x</em>)<sub><em>极</em><em>大</em></sub></span>，<span class="math inline"><em>x</em><sub>0</sub> &lt; <em>x</em><sub>1</sub></span>，根据图像可以判断在<span class="math inline"><em>x</em> ∈ (<em>a</em>,<em>c</em>)</span>，<span class="math inline"><em>f</em>(<em>x</em>)</span>恒在<span class="math inline"><em>g</em>(<em>x</em>)</span>上方。</li>
+</ol></li>
+<li>方法二（<strong>常用</strong>）：
+<ol type="1">
+<li>令新函数为两个函数的差，求导；</li>
+<li>判断新函数的最小值与某个数的大小恒成立关系。</li>
+</ol></li>
+</ol>
+<p>==更多恒成立内容见[[High School, Mathematics, Function],
+使用导数判断函数的单调性、极值、最值, 简单的恒成立问题]</p>
+</blockquote>
+<h3 id="三导数作图">三、导数作图</h3>
+<h4 id="导数作图">1. 导数作图</h4>
+<p>​
+根据导数判断原函数图形、根据原函数判断导函数图形等题目中常用<strong>特殊值、单调性、增减性、对称性</strong>判断。</p>
+<h4 id="分式型导数作图">2. 分式型导数作图</h4>
+<p>​
+对于分式型函数的极限，法国数学家洛必达给出如下结论（<strong>洛必达法则</strong>）：如果<span class="math inline"><em>x</em> → <em>a</em></span>，<span class="math inline"><em>f</em>(<em>x</em>)</span>与<span class="math inline"><em>g</em>(<em>x</em>)</span>同时趋近 0 或<span class="math inline">∞</span>，有： <span class="math display">$$
+\notag\begin{align}\lim_{\Delta
+x\rightarrow0}{\frac{f(x)}{g(x)}}=\lim_{\Delta
+x\rightarrow0}{\frac{f'(x)}{g'(x)}}\end{align}
+$$</span> ​ 另外，对于分式函数<span class="math inline">$\frac{f(x)}{g(x)}$</span>，如果<span class="math inline"><em>f</em>(<em>a</em>) ≠ 0</span>且<span class="math inline"><em>g</em>(<em>a</em>) = 0</span>，则<span class="math inline"><em>x</em> = <em>a</em></span>为函数的一条渐近线。</p>
+<h3 id="四简单的恒成立问题">四、简单的恒成立问题</h3>
+<p>​ 恒成立问题归纳如下：</p>
+<table>
+<colgroup>
+<col style="width: 55%">
+<col style="width: 44%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>命题</th>
+<th>思路</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline"><em>f</em>(<em>x</em>) ≥ 0</span>在定义域内恒成立</td>
+<td><span class="math inline"><em>f</em>(<em>x</em>)<sub><em>m</em><em>i</em><em>n</em></sub> ≥ 0</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline"><em>f</em>(<em>x</em>) ≤ 0</span>在定义域内恒成立</td>
+<td><span class="math inline"><em>f</em>(<em>x</em>)<sub><em>m</em><em>i</em><em>n</em></sub> ≤ 0</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline"><em>f</em>(<em>x</em>) ≥ <em>g</em>(<em>x</em>)</span>在定义域内恒成立</td>
+<td><span class="math inline">(<em>f</em>(<em>x</em>)−<em>g</em>(<em>x</em>))<sub><em>m</em><em>i</em><em>n</em></sub> ≥ 0</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline"><em>f</em>(<em>x</em>) ≤ <em>g</em>(<em>x</em>)</span>在定义域内恒成立</td>
+<td><span class="math inline">(<em>f</em>(<em>x</em>)−<em>g</em>(<em>x</em>))<sub><em>m</em><em>i</em><em>n</em></sub> ≤ 0</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">∀<em>x</em> ∈ <em>D</em>, <em>f</em>(<em>x</em>) &gt; <em>m</em></span></td>
+<td><span class="math inline"><em>f</em>(<em>x</em>)<sub><em>m</em><em>a</em><em>x</em></sub> &gt; <em>m</em></span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">∀<em>x</em> ∈ <em>D</em>, <em>f</em>(<em>x</em>) &lt; <em>m</em></span></td>
+<td><span class="math inline"><em>f</em>(<em>x</em>)<sub><em>m</em><em>a</em><em>x</em></sub> &lt; <em>m</em></span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">∀<em>x</em><sub>1</sub> ∈ <em>A</em>, ∃<em>x</em><sub>2</sub> ∈ <em>B</em>, <em>f</em>(<em>x</em><sub>1</sub>) = <em>g</em>(<em>x</em><sub>2</sub>)</span></td>
+<td><span class="math inline"><em>f</em>(<em>A</em>) ⊆ <em>g</em>(<em>B</em>)</span>（<span class="math inline"><em>f</em>(<em>x</em>)</span>的值域是<span class="math inline"><em>g</em>(<em>x</em>)</span>值域的子集）</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">∃<em>x</em><sub>1</sub> ∈ <em>A</em>, ∃<em>x</em><sub>2</sub> ∈ <em>B</em>, <em>f</em>(<em>x</em><sub>1</sub>) = <em>g</em>(<em>x</em><sub>2</sub>)</span></td>
+<td><span class="math inline"><em>f</em>(<em>A</em>) ∩ <em>g</em>(<em>B</em>) ≠ ⌀</span>（<span class="math inline"><em>f</em>(<em>x</em>)</span>的值域与<span class="math inline"><em>g</em>(<em>x</em>)</span>值域有非空交集）</td>
+</tr>
+<tr class="odd">
+<td>任意小求最大</td>
+<td>任意大求最小</td>
+</tr>
+<tr class="even">
+<td>存在大求最大</td>
+<td>存在小求最小</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">∀<em>x</em><sub>1</sub> ∈ <em>A</em>, ∀<em>x</em><sub>2</sub> ∈ <em>B</em>, <em>f</em>(<em>x</em><sub>1</sub>) ≤ <em>g</em>(<em>x</em><sub>2</sub>)</span></td>
+<td><span class="math inline"><em>f</em>(<em>x</em>)<sub><em>m</em><em>a</em><em>x</em></sub> ≤ <em>g</em>(<em>x</em>)<sub><em>m</em><em>i</em><em>n</em></sub></span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">∀<em>x</em><sub>1</sub> ∈ <em>A</em>, ∀<em>x</em><sub>2</sub> ∈ <em>B</em>, <em>f</em>(<em>x</em><sub>1</sub>) ≥ <em>g</em>(<em>x</em><sub>2</sub>)</span></td>
+<td><span class="math inline"><em>f</em>(<em>x</em>)<sub><em>m</em><em>i</em><em>n</em></sub> ≥ <em>g</em>(<em>x</em>)<sub><em>m</em><em>a</em><em>x</em></sub></span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">∀<em>x</em><sub>1</sub> ∈ <em>A</em>, ∃<em>x</em><sub>2</sub> ∈ <em>B</em>, <em>f</em>(<em>x</em><sub>1</sub>) ≤ <em>g</em>(<em>x</em><sub>2</sub>)</span></td>
+<td><span class="math inline"><em>f</em>(<em>x</em>)<sub><em>m</em><em>a</em><em>x</em></sub> ≤ <em>g</em>(<em>x</em>)<sub><em>m</em><em>a</em><em>x</em></sub></span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">∀<em>x</em><sub>1</sub> ∈ <em>A</em>, ∃<em>x</em><sub>2</sub> ∈ <em>B</em>, <em>f</em>(<em>x</em><sub>1</sub>) ≥ <em>g</em>(<em>x</em><sub>2</sub>)</span></td>
+<td><span class="math inline"><em>f</em>(<em>x</em>)<sub><em>m</em><em>i</em><em>n</em></sub> ≥ <em>g</em>(<em>x</em>)<sub><em>m</em><em>i</em><em>n</em></sub></span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">∃<em>x</em><sub>1</sub> ∈ <em>A</em>, ∃<em>x</em><sub>2</sub> ∈ <em>B</em>, <em>f</em>(<em>x</em><sub>1</sub>) ≤ <em>g</em>(<em>x</em><sub>2</sub>)</span></td>
+<td><span class="math inline"><em>f</em>(<em>x</em>)<sub><em>m</em><em>i</em><em>n</em></sub> ≤ <em>g</em>(<em>x</em>)<sub><em>m</em><em>a</em><em>x</em></sub></span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">∃<em>x</em><sub>1</sub> ∈ <em>A</em>, ∃<em>x</em><sub>2</sub> ∈ <em>B</em>, <em>f</em>(<em>x</em><sub>1</sub>) ≥ <em>g</em>(<em>x</em><sub>2</sub>)</span></td>
+<td><span class="math inline"><em>f</em>(<em>x</em>)<sub><em>m</em><em>a</em><em>x</em></sub> ≥ <em>g</em>(<em>x</em>)<sub><em>m</em><em>i</em><em>n</em></sub></span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">∀<em>x</em><sub>1</sub> ∈ <em>A</em>, ∀<em>x</em><sub>2</sub> ∈ <em>B</em>, |<em>f</em>(<em>x</em><sub>1</sub>)−<em>g</em>(<em>x</em><sub>2</sub>)| ≤ <em>a</em></span></td>
+<td><span class="math inline"><em>g</em>(<em>x</em>)<sub><em>m</em><em>a</em><em>x</em></sub> − <em>f</em>(<em>x</em>)<sub><em>m</em><em>i</em><em>n</em></sub> ≤ <em>a</em></span>
++ <span class="math inline"><em>f</em>(<em>x</em>)<sub><em>m</em><em>a</em><em>x</em></sub> − <em>g</em>(<em>x</em>)<sub><em>m</em><em>i</em><em>n</em></sub> ≤ <em>a</em></span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">∀<em>x</em><sub>1</sub> ∈ <em>A</em>, ∀<em>x</em><sub>2</sub> ∈ <em>B</em>, |<em>f</em>(<em>x</em><sub>1</sub>)−<em>g</em>(<em>x</em><sub>2</sub>)| ≥ <em>a</em></span></td>
+<td><span class="math inline"><em>g</em>(<em>x</em>)<sub><em>m</em><em>i</em><em>n</em></sub> − <em>f</em>(<em>x</em>)<sub><em>m</em><em>a</em><em>x</em></sub> ≥ <em>a</em></span>
+/ <span class="math inline"><em>f</em>(<em>x</em>)<sub><em>m</em><em>i</em><em>n</em></sub> − <em>g</em>(<em>x</em>)<sub><em>m</em><em>a</em><em>x</em></sub> ≥ <em>a</em></span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">∃<em>x</em><sub>1</sub> ∈ <em>A</em>, ∃<em>x</em><sub>2</sub> ∈ <em>B</em>, |<em>f</em>(<em>x</em><sub>1</sub>)−<em>g</em>(<em>x</em><sub>2</sub>)| ≤ <em>a</em></span></td>
+<td><span class="math inline"><em>g</em>(<em>x</em>)<sub><em>m</em><em>i</em><em>n</em></sub> − <em>f</em>(<em>x</em>)<sub><em>m</em><em>a</em><em>x</em></sub> ≤ <em>a</em></span>
++ <span class="math inline"><em>f</em>(<em>x</em>)<sub><em>m</em><em>i</em><em>n</em></sub> − <em>g</em>(<em>x</em>)<sub><em>m</em><em>a</em><em>x</em></sub> ≤ <em>a</em></span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">∃<em>x</em><sub>1</sub> ∈ <em>A</em>, ∃<em>x</em><sub>2</sub> ∈ <em>B</em>, |<em>f</em>(<em>x</em><sub>1</sub>)−<em>g</em>(<em>x</em><sub>2</sub>)| ≥ <em>a</em></span></td>
+<td><span class="math inline"><em>g</em>(<em>x</em>)<sub><em>m</em><em>a</em><em>x</em></sub> − <em>f</em>(<em>x</em>)<sub><em>m</em><em>i</em><em>n</em></sub> ≥ <em>a</em></span>
+/ <span class="math inline"><em>f</em>(<em>x</em>)<sub><em>m</em><em>a</em><em>x</em></sub> − <em>g</em>(<em>x</em>)<sub><em>m</em><em>i</em><em>n</em></sub> ≥ <em>a</em></span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">∀<em>x</em><sub>1</sub> ∈ <em>A</em>, ∃<em>x</em><sub>2</sub> ∈ <em>B</em>, |<em>f</em>(<em>x</em><sub>1</sub>)−<em>f</em>(<em>x</em><sub>2</sub>)| ≤ <em>a</em></span></td>
+<td><span class="math inline"><em>g</em>(<em>x</em>)<sub><em>m</em><em>i</em><em>n</em></sub> − <em>f</em>(<em>x</em>)<sub><em>m</em><em>i</em><em>n</em></sub> ≤ <em>a</em></span>
++ <span class="math inline"><em>f</em>(<em>x</em>)<sub><em>m</em><em>a</em><em>x</em></sub> − <em>g</em>(<em>x</em>)<sub><em>m</em><em>a</em><em>x</em></sub> ≤ <em>a</em></span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">∀<em>x</em><sub>1</sub> ∈ <em>A</em>, ∃<em>x</em><sub>2</sub> ∈ <em>B</em>, |<em>f</em>(<em>x</em><sub>1</sub>)−<em>f</em>(<em>x</em><sub>2</sub>)| ≥ <em>a</em></span></td>
+<td><span class="math inline"><em>g</em>(<em>x</em>)<sub><em>m</em><em>a</em><em>x</em></sub> − <em>f</em>(<em>x</em>)<sub><em>m</em><em>a</em><em>x</em></sub> ≥ <em>a</em></span>
+/ <span class="math inline"><em>f</em>(<em>x</em>)<sub><em>m</em><em>i</em><em>n</em></sub> − <em>g</em>(<em>x</em>)<sub><em>m</em><em>i</em><em>n</em></sub> ≥ <em>a</em></span></td>
+</tr>
+</tbody>
+</table>
+<p>​ 恒成立问题思路归纳如下：</p>
+<table>
+<colgroup>
+<col style="width: 14%">
+<col style="width: 85%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>方法</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>分离变量法</td>
+<td>将参数与变量分开，使不等式一边只有参数，一边只有变量（且该部分可以求得最值）。<br>分离变量法能够成功的前提是分离后的函数的最值可求，需要先分离再验证。</td>
+</tr>
+<tr class="even">
+<td>指数找队友</td>
+<td>与指数相关的恒成立问题，==如果很难求导数的零点==，优先考虑将函数变成<span class="math inline"><em>e</em><sup><em>x</em></sup><em>f</em>(<em>x</em>)</span>或<span class="math inline"><em>e</em><sup>−<em>x</em></sup><em>f</em>(<em>x</em>)</span>的形式。<br>原因：对函数<span class="math inline"><em>h</em>(<em>x</em>)</span>变形后的函数<span class="math inline"><em>g</em>(<em>x</em>)</span>求导，发现导数的零点与指数函数毫无关系，只与<span class="math inline"><em>f</em>(<em>x</em>)</span>有关。<br>注意事项：1.
+不要看到导数就变形，有些本身就可以提取公因式、因式分解求解；<br>2.
+求最值、极值、单调性不可以变形，否则就改变了原式。</td>
+</tr>
+<tr class="odd">
+<td>对数单身狗</td>
+<td>与对数相关的恒成立问题，==如果很难求导数的零点==，则优先考虑将函数变形为<span class="math inline"><em>f</em>(<em>x</em>) + ln <em>g</em>(<em>x</em>)</span>或<span class="math inline"><em>f</em>(<em>x</em>)(ln<em>f</em>(<em>x</em>)+<em>C</em>)</span>的形式。<br>原因：对函数<span class="math inline"><em>h</em>(<em>x</em>)</span>变形后的函数<span class="math inline"><em>g</em>(<em>x</em>)</span>求导，发现导数的零点与指数函数毫无关系，只与<span class="math inline"><em>f</em>(<em>x</em>)</span>有关。</td>
+</tr>
+</tbody>
+</table>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/School-Notes/" rel="tag"># School Notes</a>
+              <a href="/tags/High-School/" rel="tag"># High School</a>
+              <a href="/tags/Mathematics/" rel="tag"># Mathematics</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/03/05/computer%20science/source%20control/resign-all-commits-with-new-gpg-key/" rel="prev" title="Git 使用新 gpg 秘钥重新 commit">
+      <i class="fa fa-chevron-left"></i> Git 使用新 gpg 秘钥重新 commit
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/03/06/biology/High%20School/b5%20bioengineering/P2%20%E7%BB%86%E8%83%9E%E5%B7%A5%E7%A8%8B/" rel="next" title="细胞工程">
+      细胞工程 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9F%A5%E8%AF%86%E8%81%9A%E7%84%A6"><span class="nav-text">知识聚焦</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E5%AF%BC%E6%95%B0"><span class="nav-text">一、导数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AF%BC%E6%95%B0%E4%B8%8E%E5%8F%98%E5%8C%96%E7%8E%87"><span class="nav-text">1. 导数与变化率</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E5%88%9D%E7%AD%89%E5%87%BD%E6%95%B0%E7%9A%84%E5%AF%BC%E6%95%B0%E5%9B%9B%E5%88%99%E8%BF%90%E7%AE%97%E4%B8%8E%E5%A4%8D%E5%90%88%E5%87%BD%E6%95%B0%E7%9A%84%E5%AF%BC%E6%95%B0"><span class="nav-text">2.
+基本初等函数的导数、四则运算与复合函数的导数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AF%81%E6%98%8E%E6%8C%87%E5%AF%B9%E6%95%B0%E5%87%BD%E6%95%B0%E7%9A%84%E5%AF%BC%E6%95%B0"><span class="nav-text">证明指对数函数的导数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E5%88%87%E7%BA%BF%E9%97%AE%E9%A2%98"><span class="nav-text">函数切线问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E5%AF%BC%E6%95%B0%E4%B8%8E%E5%A5%87%E5%81%B6%E6%80%A7%E5%8D%95%E8%B0%83%E6%80%A7%E6%9C%80%E5%80%BC%E5%92%8C%E6%9E%81%E5%80%BC"><span class="nav-text">二、导数与奇偶性、单调性、最值和极值</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AF%BC%E6%95%B0%E4%B8%8E%E5%A5%87%E5%81%B6%E6%80%A7%E5%8D%95%E8%B0%83%E6%80%A7%E6%9C%80%E5%80%BC%E5%92%8C%E6%9E%81%E5%80%BC"><span class="nav-text">1.
+导数与奇偶性、单调性、最值和极值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AF%BC%E6%95%B0%E4%B8%8E%E5%8D%95%E8%B0%83%E6%80%A7"><span class="nav-text">2. 导数与单调性</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E5%AF%BC%E6%95%B0%E4%B8%8E%E5%8D%95%E8%B0%83%E6%80%A7%E9%97%AE%E9%A2%98"><span class="nav-text">解决导数与单调性问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AF%BC%E6%95%B0%E4%B8%8E%E6%9E%81%E5%80%BC%E6%9C%80%E5%80%BC"><span class="nav-text">3. 导数与极值、最值</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E5%AF%BC%E6%95%B0%E4%B8%8E%E6%9E%81%E5%80%BC%E6%9C%80%E5%80%BC%E9%97%AE%E9%A2%98"><span class="nav-text">解决导数与极值、最值问题</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%B7%B2%E7%9F%A5%E5%AE%9A%E4%B9%89%E5%9F%9F%E6%B1%82%E5%87%BD%E6%95%B0%E6%81%92%E6%88%90%E7%AB%8B%E9%97%AE%E9%A2%98"><span class="nav-text">1.已知定义域求函数恒成立问题</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%B7%B2%E7%9F%A5%E5%87%BD%E6%95%B0%E4%B8%8E%E5%8F%A6%E4%B8%80%E5%87%BD%E6%95%B0%E6%9C%89%E4%BA%A4%E7%82%B9%E9%97%AE%E9%A2%98"><span class="nav-text">2.
+已知函数与另一函数有交点问题</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%B7%B2%E7%9F%A5%E5%87%BD%E6%95%B0%E5%A7%8B%E7%BB%88%E5%9C%A8%E5%8F%A6%E4%B8%80%E4%B8%AA%E5%87%BD%E6%95%B0%E7%9A%84%E4%B8%8A%E9%9D%A2%E6%88%96%E4%B8%8B%E9%9D%A2"><span class="nav-text">3.
+已知函数始终在另一个函数的上面或下面</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E5%AF%BC%E6%95%B0%E4%BD%9C%E5%9B%BE"><span class="nav-text">三、导数作图</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AF%BC%E6%95%B0%E4%BD%9C%E5%9B%BE"><span class="nav-text">1. 导数作图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%86%E5%BC%8F%E5%9E%8B%E5%AF%BC%E6%95%B0%E4%BD%9C%E5%9B%BE"><span class="nav-text">2. 分式型导数作图</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9B%E7%AE%80%E5%8D%95%E7%9A%84%E6%81%92%E6%88%90%E7%AB%8B%E9%97%AE%E9%A2%98"><span class="nav-text">四、简单的恒成立问题</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Hoarfroster"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Hoarfroster</p>
+  <div class="site-description" itemprop="description">这里是霜羽~~咕咕咕</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">193</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">53</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">58</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <ul class="links-of-author motion-element">
+      <li class="links-of-author-item">
+        <a href="https://github.com/PassionPenguin" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;PassionPenguin" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        <span> PassionPenguin</span>
+      </li>
+      <li class="links-of-author-item">
+        <a href="mailto:hoarfroster@outlook.com" title="E-Mail → mailto:hoarfroster@outlook.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+        <span> hoarfroster@outlook.com</span>
+      </li>
+      <li class="links-of-author-item">
+        <a href="https://twitter.com/zhangqizhe" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;zhangqizhe" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+        <span> @zhangqizhe</span>
+      </li>
+      <li class="links-of-author-item">
+        <a href="https://www.instagram.com/glacierpenguin/" title="Instagram → https:&#x2F;&#x2F;www.instagram.com&#x2F;glacierpenguin&#x2F;" rel="noopener" target="_blank"><i class="fab fa-instagram fa-fw"></i>Instagram</a>
+        <span> @glacierpenguin</span>
+      </li>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hoarfroster</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="Symbols count total">1.1m</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">34:12</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT</a>
+  </div>
+
+        
+
+
+
+
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-firestore.js"></script>
+  <script>
+    firebase.initializeApp({
+      apiKey   : 'AIzaSyDqM81uUD8yWHAvsGasJzvWBHhpBYnRttI',
+      projectId: 'hoar-froster'
+    });
+
+    function getCount(doc, increaseCount) {
+      // IncreaseCount will be false when not in article page
+      return doc.get().then(d => {
+        var count = 0;
+        if (!d.exists) { // Has no data, initialize count
+          if (increaseCount) {
+            doc.set({
+              count: 1
+            });
+            count = 1;
+          }
+        } else { // Has data
+          count = d.data().count;
+          if (increaseCount) {
+            // If first view this article
+            doc.set({ // Increase count
+              count: count + 1
+            });
+            count++;
+          }
+        }
+
+        return count;
+      });
+    }
+
+    function appendCountTo(el) {
+      return count => {
+        el.innerText = count;
+      }
+    }
+  </script>
+  <script>
+    (function() {
+      var db = firebase.firestore();
+      var articles = db.collection('articles-info');
+
+      if (CONFIG.page.isPost) { // Is article page
+        var title = document.querySelector('.post-title').innerText.trim();
+        var doc = articles.doc(title);
+        var increaseCount = CONFIG.hostname === location.hostname;
+        if (localStorage.getItem(title)) {
+          increaseCount = false;
+        } else {
+          // Mark as visited
+          localStorage.setItem(title, true);
+        }
+        getCount(doc, increaseCount).then(appendCountTo(document.querySelector('.firestore-visitors-count')));
+      } else if (CONFIG.page.isHome) { // Is index page
+        var promises = [...document.querySelectorAll('.post-title')].map(element => {
+          var title = element.innerText.trim();
+          var doc = articles.doc(title);
+          return getCount(doc);
+        });
+        Promise.all(promises).then(counts => {
+          var metas = document.querySelectorAll('.firestore-visitors-count');
+          counts.forEach((val, idx) => {
+            appendCountTo(metas[idx])(val);
+          });
+        });
+      }
+    })();
+  </script>
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var canonicalURL, curProtocol;
+      //Get the <link> tag
+      var x=document.getElementsByTagName("link");
+		//Find the last canonical URL
+		if(x.length > 0){
+			for (i=0;i<x.length;i++){
+				if(x[i].rel.toLowerCase() == 'canonical' && x[i].href){
+					canonicalURL=x[i].href;
+				}
+			}
+		}
+    //Get protocol
+	    if (!canonicalURL){
+	    	curProtocol = window.location.protocol.split(':')[0];
+	    }
+	    else{
+	    	curProtocol = canonicalURL.split(':')[0];
+	    }
+      //Get current URL if the canonical URL does not exist
+	    if (!canonicalURL) canonicalURL = window.location.href;
+	    //Assign script content. Replace current URL with the canonical URL
+      !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=canonicalURL,t=document.referrer;if(!e.test(r)){var n=(String(curProtocol).toLowerCase() === 'https')?"https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif":"//api.share.baidu.com/s.gif";t?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var i=new Image;i.src=n}}(window);})();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme    : 'default',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/disqusjs@1/dist/disqusjs.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/disqusjs@1/dist/disqus.js', () => {
+    window.dsqjs = new DisqusJS({
+      api       : 'https://disqus.skk.moe/disqus/' || 'https://disqus.com/api/',
+      apikey    : 'Lo65MITAya5vcdTm6cJ8V5qCBNx3PVErvDOsfJ5tUPtEbw3DMS3EIzEx6vrmTzCN',
+      shortname : 'hoarfroster',
+      url       : "https://hoarfroster.github.io/2022/03/05/mathematics/High%20School/Function/%E5%AF%BC%E6%95%B0/",
+      identifier: "2022/03/05/mathematics/High School/Function/导数/",
+      title     : "导数",
+    });
+  }, window.DisqusJS);
+});
+</script>
+
+</body>
+</html>

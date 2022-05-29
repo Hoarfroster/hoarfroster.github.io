@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/avatar.png" color="#222">
+  <meta name="google-site-verification" content="iFMbHL1JuWjTlNFq5Rv96vDzpsqakxTpdE2nw7Crr6o">
+  <meta name="msvalidate.01" content="EF6D8CD8A3335E66AB96B4D544FCD96C">
+  <meta name="baidu-site-verification" content="code-80b80Pbzs2">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link href="/lib/fontawesome/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<script>
+
+  window.onload = function() {
+    document.querySelectorAll("p").forEach(e=>{
+      e.innerHTML = e.innerHTML.replaceAll(/==(.+?)==/g, "<mark>$1</mark>").replaceAll(/​\s+?/g, "<span class='tab'></span>");
+    });
+    
+    [...document.querySelectorAll("pre > code")].forEach(e=> {
+        var codeClass = e.parentElement.classList.value;
+        if (codeClass == null || codeClass === "") {
+            e.classList.add("hljs");
+        } else {
+            var map = {
+                js: "javascript"
+            };
+            if (map[codeClass]) {
+                codeClass = map[codeClass];
+            }
+            codeClass.split(" ").forEach(i=>e.classList.add(i));
+            hljs.highlightElement(e);
+        }
+    });
+
+    [...document.querySelectorAll('.classcial-chinese-literature-and-poetry-translation')].forEach(i=>{
+      let el = document.createElement('div');
+      el.setAttribute('class', 'fa-solid fa-eye');
+      i.prepend(el);
+      el.addEventListener('click', ()=>{
+        let status = el.classList.contains('fa-eye');
+        [...i.querySelectorAll('.translation')].forEach(j=>{
+          j.classList.remove('hide');
+          if(status) {
+            j.classList.add('hide');
+          }
+        });
+        el.attributes['class'].value = el.attributes['class'].value.replace('fa-eye-slash', 'fa-0').replace('fa-eye', 'fa-eye-slash').replace('fa-0', 'fa-eye');
+      });
+
+      [...i.querySelectorAll('.original-text')].forEach(e=>{
+        let el = document.createElement('div');
+        el.setAttribute('class', 'fa-solid fa-eye-slash');
+        e.prepend(el);
+        el.addEventListener('click', ()=>{
+            e.nextSibling.classList.toggle('hide');
+            el.attributes['class'].value = el.attributes['class'].value.replace('fa-eye-slash', 'fa-0').replace('fa-eye', 'fa-eye-slash').replace('fa-0', 'fa-eye');
+        });
+      })
+    });
+  }
+</script>
+<script async src="/js/highlight.min.js"></script>
+<script async src="/js/cursor.js"></script>
+<script data-ad-client="ca-pub-2275811890061218" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"hoarfroster.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqusjs","storage":true,"lazyload":false,"nav":null,"activeClass":"disqusjs"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="Deleting input.tex Deleting input.aux Deleting input.dvi Deleting input.log Deleting output.svg Deleting input.tex Deleting input.aux Deleting input.dvi Deleting input.log Deleting output.svg Deleting">
+<meta property="og:type" content="article">
+<meta property="og:title" content="细胞的能量供应与利用">
+<meta property="og:url" content="https://hoarfroster.github.io/2022/02/26/biology/High%20School/b1%20cell%20biology/P5%20%E7%BB%86%E8%83%9E%E7%9A%84%E8%83%BD%E9%87%8F%E4%BE%9B%E5%BA%94%E4%B8%8E%E5%88%A9%E7%94%A8/index.html">
+<meta property="og:site_name" content="Hoarfroster 的小窝">
+<meta property="og:description" content="Deleting input.tex Deleting input.aux Deleting input.dvi Deleting input.log Deleting output.svg Deleting input.tex Deleting input.aux Deleting input.dvi Deleting input.log Deleting output.svg Deleting">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/image-20220228214924523.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/49019765d2744ccbde68172e83914b27f6ee2a4c.svg">
+<meta property="article:published_time" content="2022-02-26T04:58:59.000Z">
+<meta property="article:modified_time" content="2022-05-28T15:43:07.758Z">
+<meta property="article:author" content="Hoarfroster">
+<meta property="article:tag" content="School Notes">
+<meta property="article:tag" content="High School">
+<meta property="article:tag" content="Biology">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/image-20220228214924523.png">
+
+<link rel="canonical" href="https://hoarfroster.github.io/2022/02/26/biology/High%20School/b1%20cell%20biology/P5%20%E7%BB%86%E8%83%9E%E7%9A%84%E8%83%BD%E9%87%8F%E4%BE%9B%E5%BA%94%E4%B8%8E%E5%88%A9%E7%94%A8/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>细胞的能量供应与利用 | Hoarfroster 的小窝</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <!--<div class="headband"></div>-->
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hoarfroster 的小窝</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section">Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section">About</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section">Categories</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger">
+          Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://hoarfroster.github.io/2022/02/26/biology/High%20School/b1%20cell%20biology/P5%20%E7%BB%86%E8%83%9E%E7%9A%84%E8%83%BD%E9%87%8F%E4%BE%9B%E5%BA%94%E4%B8%8E%E5%88%A9%E7%94%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Hoarfroster">
+      <meta itemprop="description" content="这里是霜羽~~咕咕咕">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hoarfroster 的小窝">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          细胞的能量供应与利用
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-02-26 12:58:59" itemprop="dateCreated datePublished" datetime="2022-02-26T12:58:59+08:00">2022-02-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-05-28 23:43:07" itemprop="dateModified" datetime="2022-05-28T23:43:07+08:00">2022-05-28</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/High-School/" itemprop="url" rel="index"><span itemprop="name">High School</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/High-School/Biology/" itemprop="url" rel="index"><span itemprop="name">Biology</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/High-School/Biology/Cell-Biology/" itemprop="url" rel="index"><span itemprop="name">Cell Biology</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span><br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+              <span>7.9k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+              <span>14 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+<h2 id="课程标准">课程标准</h2>
+<h4 id="细胞的功能绝大多数基于化学反应这些反应发生在细胞的特定区域">2.2
+细胞的功能绝大多数基于化学反应，这些反应发生在细胞的特定区域</h4>
+<p>2.2.1
+说明绝大多数酶是一类能催化生化反应的蛋白质，酶活性受到环境因素（如 pH
+和温度等）的影响。</p>
+<p>2.2.2 解释 ATP 是驱动细胞生命活动的直接能源物质。</p>
+<p>2.2.3
+说明植物细胞的叶绿体从太阳光中捕获能量，这些能量在二氧化碳和水转变为糖与氧气的过程中，转换并储存为糖分子中的化学能。</p>
+<p>2.2.4
+说明生物通过细胞呼吸将储存在有机分子中的能量转化为生命活动可以利用的能量。</p>
+<span id="more"></span>
+<h3 id="教学活动要求">教学活动要求</h3>
+<ol type="1">
+<li>探究酶催化的专一性、高效性及影响酶活性的因素；</li>
+<li>提取和分离叶绿体色素；</li>
+<li>探究不同环境因素对光合作用的影响；</li>
+<li>探究酵母菌的呼吸方式；</li>
+</ol>
+<h3 id="学业要求">学业要求</h3>
+<p>​
+从物质与能量视角，探索光合作用与呼吸作用，阐明细胞生命活动过程中贯穿着物质与能量的变化（生命观念、科学思维、科学探究）。</p>
+<h3 id="内容说明">内容说明</h3>
+<h4 id="物质和能量转换">物质和能量转换</h4>
+<ol type="1">
+<li>通过开展实验探究酶催化作用的高效性和专一性，探究温度、pH
+等因素对酶活性的影响，认识酶的作用特性以及影响酶作用的因素，进而理解酶在细胞内的物质和能量转变中地位和作用。</li>
+<li>通过分析相关资料，了解 ATP 的结构特点，能够解释 ATP 与 ADP
+之间相互转化所伴随的能量转化，理解这种转化在细胞内能量的储存和利用中的地位与作用。</li>
+<li>通过分析叶绿体结构和成分，开展提取和分离叶绿体色素，分析这些色素的吸收光谱和作用光谱，理解叶绿体的结构和成分与其光合作用的适应性。</li>
+<li>通过分析光合作用相关研究资料，认识光合作用的大致过程及发生的物质和能量转换的实质，理解光合作用在生物界乃至整个自然界物质和能量转换中的地位和作用，结合光合作用的原理并依据相关资料的研究结果，阐明影响光合速率的内外因素及其在生产实践中的应用。</li>
+<li>通过开展探究酵母菌的呼吸方式，阐述呼吸作用的过程和场所，理解其物质变化和能量转换的实质，理解细胞结构和成分与呼吸作用的统一性，了解有氧呼吸和无氧呼吸的异同，结合呼吸作用过程、相关研究资料和生活经验，分析影响呼吸作用速率的内外速率，了解人工控制呼吸速率的相关措施及在生产生活中的应用实例。</li>
+</ol>
+<h2 id="知识聚焦">知识聚焦</h2>
+<h3 id="一降低化学反应活化能的酶">一、降低化学反应活化能的酶</h3>
+<h4 id="细胞代谢与酶">1. 细胞代谢与酶</h4>
+<p>​
+<strong>细胞代谢</strong>是细胞中进行的化学反应。在所有的化学反应中，<strong>活化能</strong>指分子从常态转变为容易发生化学反应的活跃状态所需要的能量（见化学选择性必修一
+2.1
+化学反应速率）。使用催化剂可以显著降低化学反应的活化能，从而提升化学反应速率。在生物体内，<strong>酶</strong>是细胞产生的充当催化细胞代谢作用的有机物（多数为蛋白质，<strong>少部分
+RNA</strong>）。</p>
+<ol type="1">
+<li>细胞代谢离不开酶。</li>
+<li>酶降低活化能的作用更显著，催化效率更高。</li>
+<li>酶使细胞代谢能够在温和条件下进行。</li>
+<li>特性：高效性、专一性、作用条件温和。</li>
+</ol>
+<h4 id="探究实践比较过氧化氢在不同条件下的分解-exp-比较过氧化氢在不同条件下的分解">2.
+探究实践：比较过氧化氢在不同条件下的分解 |
+#exp-比较过氧化氢在不同条件下的分解</h4>
+<h4 id="探究实践淀粉酶对淀粉和蔗糖的水解作用-exp-淀粉酶对淀粉和蔗糖的水解作用">3.
+探究实践：淀粉酶对淀粉和蔗糖的水解作用 |
+#exp-淀粉酶对淀粉和蔗糖的水解作用</h4>
+<h4 id="探究实践影响酶活性的条件-exp-影响酶活性的条件">4.
+探究实践：影响酶活性的条件 | #exp-影响酶活性的条件</h4>
+<blockquote>
+<h3 id="设计酶活性的探究实验">设计酶活性的探究实验</h3>
+<p>​
+在设计研究酶活性的探究实验中，需要注意代谢反应相关物质是否会被设计的条件所影响，如：</p>
+<ol type="1">
+<li>淀粉实验，不能加酸。</li>
+<li>过氧化氢实验，不能升温。</li>
+</ol>
+</blockquote>
+<h3 id="二细胞的直接能源物质-atp">二、细胞的直接能源物质 ATP</h3>
+<p>​ 虽然说葡萄糖等有机物是细胞的能源物质，但是只有==ATP
+是直接供能的直接能源物质==。ATP
+的本质是腺苷三磷酸（一种高能磷酸化合物），结构简写为<span class="math inline"><em>A</em> − <em>P</em> ∼ <em>P</em> ∼ <em>P</em></span>（<span class="math inline">∼</span>指 ATP
+分子中的<strong>高能磷酸键</strong>）。</p>
+<p>​ ATP 可以发生水解，断裂高能磷酸键：</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode latex"><code class="sourceCode latex"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">\ce</span>&#123;ATP + H2O &lt;=&gt;[<span class="fu">\text</span>&#123;酶&#125;] ADP + P_i + energy&#125;</span></code></pre></div>
+<p>​ ADP（腺苷二磷酸）是 ATP 水解释放能量后转化得到的化合物。</p>
+<p>​ ATP
+的水解反应是一个可逆反应，两者<strong>动态平衡，不断反应</strong>。</p>
+<h3 id="三线粒体与细胞呼吸">三、线粒体与细胞呼吸</h3>
+<p>​
+细胞呼吸指细胞内的有机物氧化分解释放能量。呼吸作用发生在所有细胞中，可以按照是否需求氧分为有氧呼吸和无氧呼吸。</p>
+<h4 id="细胞的有氧呼吸">1. 细胞的有氧呼吸</h4>
+<p>​
+<strong>有氧呼吸</strong>指细胞<strong>氧的参与</strong>下，通过多种酶的催化作用，把有机物<strong>彻底</strong>氧化分解，产生二氧化碳和水，释放能量，生成<strong>大量</strong>ATP
+的过程。</p>
+<p>​
+简单概括有氧呼吸的全过程，第一阶段是在<strong>细胞质基质中</strong>，葡萄糖分解为丙酮酸并脱去
+4 个活化氢，释放少量能量，部分用于合成 ATP：</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode latex"><code class="sourceCode latex"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">\ce</span>&#123;C6H12O6 -&gt;[<span class="fu">\text</span>&#123;酶&#125;] <span class="ss">$</span><span class="sc">\underset</span><span class="ss">&#123;</span><span class="sc">\text</span>&#123;丙酮酸&#125;<span class="ss">&#125;&#123;</span><span class="sc">\ce</span><span class="ss">&#123;2C3H4O3&#125;&#125;$</span> + 4[H] + energy&#125;</span></code></pre></div>
+<p>​
+第二阶段在<strong>线粒体基质</strong>，是丙酮酸和六个水分子的脱氢反应，氧化生成二氧化碳，释放少量能量，部分用于合成
+ATP。</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode latex"><code class="sourceCode latex"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">\ce</span>&#123;2C3H4O3 + 6H2O -&gt;[<span class="fu">\text</span>&#123;酶&#125;] 6CO2 ^ + 20[H] + energy&#125;</span></code></pre></div>
+<blockquote>
+<h5 id="细胞呼吸中间体歧义">细胞呼吸中间体歧义</h5>
+<p>​ 与人教版（2019）生物学必修一指出活化氢均为氧化型辅酶 I-<span class="math inline">$\ce{NADH}$</span> <span class="citation" data-cites="BiologyTextbook_CellRespiration_TCA">[@BiologyTextbook_CellRespiration_TCA]</span>
+相异，在线粒体基质发生的丙酮酸脱氢反应中，生成的 20 个活化氢只有 16
+个是<span class="math inline">$\ce{NADH}$</span>，还有 2 个<span class="math inline">$\ce{FADH2}$</span> <span class="citation" data-cites="CellBiology_CellRespiration_TCA">[@CellBiology_CellRespiration_TCA]</span>
+<span class="citation" data-cites="MedicalCellBiology_CellRespiration_TCA">[@MedicalCellBiology_CellRespiration_TCA]</span>
+<span class="citation" data-cites="Wikipedia_CellRespiration">[@Wikipedia_CellRespiration]</span>
+<span class="citation" data-cites="Wikipedia_CitricAcidCycle">[@Wikipedia_CitricAcidCycle]</span>
+<span class="citation" data-cites="EssentialMicroBiology_CellRespiration_TCA">[@EssentialMicroBiology_CellRespiration_TCA]</span>
+<span class="citation" data-cites="MicroBiology_CellRespiration_TCA">[@MicroBiology_CellRespiration_TCA]</span>。在三羧酸循环（柠檬酸循环中，TCA）中，<span class="math inline">$\ce{FAD}$</span>作用使琥珀酸变为延胡素酸，同时自身变为<span class="math inline">$\ce{FADH2}$</span>。</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode latex"><code class="sourceCode latex"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">\schemestart</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">\chemname</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    &#123;<span class="fu">\chemfig</span>&#123;[2]OH-[4]CH_2-CH(-[0]OH)-CH_2(-[0]OH)&#125;&#125;</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    &#123;<span class="fu">\text</span>&#123;琥珀酸&#125;&#125;</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">\quad\quad\quad</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">\arrow</span>&#123;-u&gt;[<span class="fu">\ce</span>&#123;FAD&#125;][<span class="fu">\ce</span>&#123;FADH_2&#125;][][.5][]&#125;</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">\quad\quad\quad</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">\chemname</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    &#123;<span class="fu">\chemfig</span>&#123;CH(-[2,.7]COO^&#123;-&#125;)(-[6,.7]CH(-[6,.7]COO^&#123;-&#125;))&#125;&#125;</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    &#123;<span class="fu">\text</span>&#123;延胡素酸&#125;&#125;</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="fu">\schemestop</span></span></code></pre></div>
+<figure>
+<img src="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/image-20220228214924523.png" alt="三羧酸循环 [@MedicalCellBiology_CellRespiration_TCA]">
+<figcaption aria-hidden="true">三羧酸循环 <span class="citation" data-cites="MedicalCellBiology_CellRespiration_TCA">[@MedicalCellBiology_CellRespiration_TCA]</span></figcaption>
+</figure>
+</blockquote>
+<p>​ 第三阶段在<strong>线粒体内膜</strong>，前阶段共脱去的 24 个<span class="math inline">$\ce{[H]}$</span>与 6 个<span class="math inline">$\ce{O2}$</span>结合成水，释放大量能量，部分用于合成
+ATP。</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode latex"><code class="sourceCode latex"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">\ce</span>&#123;24[H] + 6O2 -&gt;[<span class="fu">\text</span>&#123;酶&#125;] 12H2O + energy&#125;</span></code></pre></div>
+<h4 id="细胞的无氧呼吸">2. 细胞的无氧呼吸</h4>
+<p>​
+<strong>无氧呼吸</strong>指细胞在没有氧气参与的情况下，有机物经过不完全分解，释放少量能量的过程。常见的无氧呼吸有酒精发酵、乳酸发酵两条途径。</p>
+<p>​ 细胞行酒精发酵的无氧呼吸途径中，丙酮酸在脱羧过程后不形成乙酰辅酶
+A，而形成乙醛，随后乙醛接受还原性氢被还原为酒精，通常发生在酵母菌中，全过程发生在细胞质基质：</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode latex"><code class="sourceCode latex"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>&#123;<span class="ex">align</span>&#125;</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="sc">\ce</span><span class="ss">&#123;C6H12O6 &amp;-&gt;[</span><span class="sc">\text</span>&#123;酶&#125;<span class="ss">] </span><span class="er">$</span><span class="sc">\underset</span><span class="ss">&#123;</span><span class="sc">\text</span>&#123;丙酮酸&#125;<span class="ss">&#125;&#123;</span><span class="sc">\ce</span><span class="ss">&#123;2C3H4O3&#125;&#125;</span><span class="er">$</span><span class="ss"> + 4[H] + energy&#125;</span><span class="sc">\\</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="sc">\ce</span><span class="ss">&#123;2C3H4O3 &amp;-&gt;[</span><span class="sc">\text</span>&#123;酶&#125;<span class="ss">] 2CO2 + </span><span class="er">$</span><span class="sc">\underset</span><span class="ss">&#123;</span><span class="sc">\text</span>&#123;乙醛&#125;<span class="ss">&#125;&#123;</span><span class="sc">\ce</span><span class="ss">&#123;2CH3CHO&#125;&#125;</span><span class="er">$</span><span class="ss">&#125;</span><span class="sc">\\</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="sc">\ce</span><span class="ss">&#123;2CH3CHO + 4[H] &amp;-&gt;[</span><span class="sc">\text</span>&#123;酶&#125;<span class="ss">] </span><span class="er">$</span><span class="sc">\underset</span><span class="ss">&#123;</span><span class="sc">\text</span>&#123;乙醇&#125;<span class="ss">&#125;&#123;</span><span class="sc">\ce</span><span class="ss">&#123;2CH3CH2OH&#125;&#125;</span><span class="er">$</span><span class="ss">&#125;</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>&#123;<span class="ex">align</span>&#125;</span></code></pre></div>
+<p>​
+细胞行乳酸发酵的无氧呼吸途中，丙酮酸直接被活化氢还原为乳酸，通常发生在乳酸菌或人体内，全过程发生在细胞质基质：</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode latex"><code class="sourceCode latex"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>&#123;<span class="ex">align</span>&#125;</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="sc">\ce</span><span class="ss">&#123;C6H12O6 &amp;-&gt;[</span><span class="sc">\text</span>&#123;酶&#125;<span class="ss">] </span><span class="er">$</span><span class="sc">\underset</span><span class="ss">&#123;</span><span class="sc">\text</span>&#123;丙酮酸&#125;<span class="ss">&#125;&#123;</span><span class="sc">\ce</span><span class="ss">&#123;2C3H4O3&#125;&#125;</span><span class="er">$</span><span class="ss"> + 4[H] + energy&#125;</span><span class="sc">\\</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="sc">\ce</span><span class="ss">&#123;2C3H4O3 + 4[H] &amp;-&gt;[</span><span class="sc">\text</span>&#123;酶&#125;<span class="ss">] </span><span class="er">$</span><span class="sc">\underset</span><span class="ss">&#123;</span><span class="sc">\text</span>&#123;乳酸&#125;<span class="ss">&#125;&#123;</span><span class="sc">\ce</span><span class="ss">&#123;2C3H6O3&#125;&#125;</span><span class="er">$</span><span class="ss">&#125;</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>&#123;<span class="ex">align</span>&#125;</span></code></pre></div>
+<p>​
+类似的，除了糖类存在呼吸作用外，氨基酸、脂质也可以被用于呼吸作用。</p>
+<blockquote>
+<h3 id="利用或抑制呼吸作用">利用或抑制呼吸作用</h3>
+<ol type="1">
+<li>现代发酵工业、传统发酵技术对微生物细胞呼吸原理的利用；</li>
+<li>中耕松土改善氧气含量，促进作物根系呼吸；</li>
+<li>储藏果实蔬菜时，低温少氧，减弱果蔬呼吸作用以减少有机物的消耗；</li>
+</ol>
+</blockquote>
+<h4 id="探究实践探究酵母菌细胞呼吸的方式-exp-探究酵母菌细胞呼吸的方式">3.
+探究实践：探究酵母菌细胞呼吸的方式 | #exp-探究酵母菌细胞呼吸的方式</h4>
+<h3 id="四叶绿体与光合作用">四、叶绿体与光合作用</h3>
+<p>​
+在自然界中光合作用是唯一能够捕获和转化光能的生物学途径，依赖与特定物质与结构。光合作用指绿色植物<strong>通过叶绿体</strong>，利用光能将二氧化碳和水转化成储存能量的有机物，并释放氧气的过程。</p>
+<h4 id="捕获光能的色素和结构">1. 捕获光能的色素和结构</h4>
+<p>​
+绿叶中的色素均分布在叶绿体中的<strong>类囊体薄膜</strong>上，可以分为四种并归为两大类：</p>
+<ol type="1">
+<li>叶绿素（<span class="math inline">$\frac{3}{4}$</span>，叶绿素
+a（蓝绿）、叶绿素 b（黄绿））；</li>
+<li>类胡萝卜素（<span class="math inline">$\frac{1}{4}$</span>，胡萝卜素（橙黄）、叶黄素（黄色））；</li>
+</ol>
+<p>​ <strong>叶绿素 a 和叶绿素 b
+主要吸收蓝紫光、红光，胡萝卜素和叶黄素主要吸收蓝紫光</strong>，都可以用于光合作用。</p>
+<p>​
+叶绿体由双层膜包被，里面有囊状结构类囊体堆叠而成，是细胞光合作用的反应场所。</p>
+<h4 id="探究实践绿叶中色素的提取和分离-exp-绿叶中色素的提取与分离">2.
+探究实践：绿叶中色素的提取和分离 | #exp-绿叶中色素的提取与分离</h4>
+<figure>
+<img src="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/49019765d2744ccbde68172e83914b27f6ee2a4c.svg" alt="img">
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
+<h4 id="光合作用的原理">3. 光合作用的原理</h4>
+<p>​
+光合作用分为两个阶段，光反应阶段和碳反应（暗反应）阶段，高中阶段只考察卡尔文循环。</p>
+<blockquote>
+<p>​ 高等植物的碳同化有三条途径：卡尔文循环、<span class="math inline">$\ce{C4}$</span>途径和景天酸代谢，其中卡尔文循环是碳同化的基本途径，是唯一能够合成碳类的途径，其他两个途径只能固定、浓缩和转运<span class="math inline">$\ce{CO2}$</span>，最终转运至卡尔文循环，是植物在高温或干旱地区固定低浓度<span class="math inline">$\ce{CO2}$</span>并择机转运至卡尔文循环，维持光合作用的途径。</p>
+</blockquote>
+<p>​ 在第一个阶段中，叶绿体中光合色素吸收的光能分解水并提供能量生成
+ATP，其中氢离子形成 NADPH：</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode latex"><code class="sourceCode latex"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">\ce</span>&#123;2H2O -&gt;[<span class="fu">\text</span>&#123;uv&#125;][<span class="fu">\text</span>&#123;类囊体薄膜&#125;] O2 + 4H+&#125;</span></code></pre></div>
+<p>​ 在碳反应阶段中，第一阶段的物质通过卡尔文循环固定<span class="math inline">$\ce{CO2}$</span>形成糖类：</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode latex"><code class="sourceCode latex"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>&#123;<span class="ex">align</span>&#125;</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="sc">\ce</span><span class="ss">&#123;</span><span class="er">$</span><span class="sc">\underset</span><span class="ss">&#123;</span><span class="sc">\ce</span><span class="ss">&#123;CO2&#125;&#125;&#123;</span><span class="sc">\ce</span><span class="ss">&#123;6[1C]&#125;&#125;</span><span class="er">$</span><span class="ss"> + 6[5C] &amp;-&gt; </span><span class="er">$</span><span class="sc">\underset</span><span class="ss">&#123;</span><span class="sc">\text</span>&#123;3-磷酸甘油酸&#125;<span class="ss">&#125;&#123;</span><span class="sc">\ce</span><span class="ss">&#123;12[3C]&#125;&#125;</span><span class="er">$</span><span class="ss">&#125;</span><span class="sc">\\</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="sc">\ce</span><span class="ss">&#123;12[3C] &amp;-&gt;[ATP] </span><span class="er">$</span><span class="sc">\underset</span><span class="ss">&#123;</span><span class="sc">\text</span>&#123;1,3-二磷酸甘油酸&#125;<span class="ss">&#125;&#123;</span><span class="sc">\ce</span><span class="ss">&#123;12[3C]&#125;&#125;</span><span class="er">$</span><span class="ss">&#125;</span><span class="sc">\\</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="sc">\ce</span><span class="ss">&#123;12[3C] &amp;-&gt;[NaDPH] </span><span class="er">$</span><span class="sc">\underset</span><span class="ss">&#123;</span><span class="sc">\text</span>&#123;3-磷酸甘油醛/二羟丙酮磷酸&#125;<span class="ss">&#125;&#123;</span><span class="sc">\ce</span><span class="ss">&#123;12[3C]&#125;&#125;</span><span class="er">$</span><span class="ss">&#125;</span><span class="sc">\\</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="sc">\ce</span><span class="ss">&#123;</span><span class="er">$</span><span class="sc">\underset</span><span class="ss">&#123;3-磷酸甘油醛&#125;&#123;</span><span class="sc">\ce</span><span class="ss">&#123;2[3C]&#125;&#125;</span><span class="er">$</span><span class="ss"> &amp;-&gt;[</span><span class="sc">\text</span>&#123;酶&#125;<span class="ss">] </span><span class="er">$</span><span class="sc">\underset</span><span class="ss">&#123;</span><span class="sc">\text</span>&#123;葡萄糖&#125;<span class="ss">&#125;&#123;</span><span class="sc">\ce</span><span class="ss">&#123;1[6C]&#125;&#125;</span><span class="er">$</span><span class="ss">&#125;</span><span class="sc">\\</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="sc">\ce</span><span class="ss">&#123;10[3C] &amp;-&gt;[</span><span class="sc">\text</span>&#123;酶&#125;<span class="ss">][ATP] 6[5C]&#125;</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>&#123;<span class="ex">align</span>&#125;</span></code></pre></div>
+<p>​ 卡尔文净反应（式 1）和光反应的通式（式 2）如下：</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode latex"><code class="sourceCode latex"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>&#123;<span class="ex">align</span>&#125;</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="sc">\ce</span><span class="ss">&#123;6CO2 + 18ATP + 12NADPH &amp;-&gt; C6H12O6 +12NADP+ + 18ADP + 18P_i&#125;</span><span class="sc">\\</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="sc">\ce</span><span class="ss">&#123;CO2 + H2O &amp;-&gt;[uv][</span><span class="sc">\text</span>&#123;酶&#125;<span class="ss">] (CH_2O) + O2&#125;</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>&#123;<span class="ex">align</span>&#125;</span></code></pre></div>
+<h4 id="探究实践探究环境因素对光合作用强度的影响-exp-探究环境因素对光合作用强度的影响">4.
+探究实践：探究环境因素对光合作用强度的影响 |
+#exp-探究环境因素对光合作用强度的影响</h4>
+<blockquote>
+<h4 id="影响光合作用的因素">影响光合作用的因素</h4>
+<ol type="1">
+<li>叶片气孔开闭（<span class="math inline">$\ce{CO2}$</span>摄入量）；</li>
+<li>环境<span class="math inline">$\ce{CO2}$</span>浓度；</li>
+<li>无机营养（叶绿素为以<span class="math inline">$\ce{Mg}$</span>原子为中心原子与卟啉配位形成的配合物）；</li>
+<li>光线强度；</li>
+<li>环境温度；</li>
+<li>环境 pH；</li>
+</ol>
+</blockquote>
+<blockquote>
+<h4 id="光补偿点和光饱和点">光补偿点和光饱和点</h4>
+<p>​ <strong>光补偿点</strong>指植物净吸收<span class="math inline">$\ce{CO2}$</span>为 0
+时候的光强，<strong>光饱和点</strong>指植物光合速率不再升高时的光强。</p>
+</blockquote>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/School-Notes/" rel="tag"># School Notes</a>
+              <a href="/tags/High-School/" rel="tag"># High School</a>
+              <a href="/tags/Biology/" rel="tag"># Biology</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/02/26/biology/High%20School/b1%20cell%20biology/P4%20%E7%BB%86%E8%83%9E%E7%9A%84%E7%89%A9%E8%B4%A8%E8%BE%93%E5%85%A5%E5%92%8C%E8%BE%93%E5%87%BA/" rel="prev" title="细胞的物质输入和输出">
+      <i class="fa fa-chevron-left"></i> 细胞的物质输入和输出
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/02/27/biology/High%20School/b1%20cell%20biology/P6%20%E7%BB%86%E8%83%9E%E7%9A%84%E7%94%9F%E5%91%BD%E5%8E%86%E7%A8%8B/" rel="next" title="细胞的生命历程">
+      细胞的生命历程 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%BE%E7%A8%8B%E6%A0%87%E5%87%86"><span class="nav-text">课程标准</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%86%E8%83%9E%E7%9A%84%E5%8A%9F%E8%83%BD%E7%BB%9D%E5%A4%A7%E5%A4%9A%E6%95%B0%E5%9F%BA%E4%BA%8E%E5%8C%96%E5%AD%A6%E5%8F%8D%E5%BA%94%E8%BF%99%E4%BA%9B%E5%8F%8D%E5%BA%94%E5%8F%91%E7%94%9F%E5%9C%A8%E7%BB%86%E8%83%9E%E7%9A%84%E7%89%B9%E5%AE%9A%E5%8C%BA%E5%9F%9F"><span class="nav-text">2.2
+细胞的功能绝大多数基于化学反应，这些反应发生在细胞的特定区域</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%99%E5%AD%A6%E6%B4%BB%E5%8A%A8%E8%A6%81%E6%B1%82"><span class="nav-text">教学活动要求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%A6%E4%B8%9A%E8%A6%81%E6%B1%82"><span class="nav-text">学业要求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%85%E5%AE%B9%E8%AF%B4%E6%98%8E"><span class="nav-text">内容说明</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%89%A9%E8%B4%A8%E5%92%8C%E8%83%BD%E9%87%8F%E8%BD%AC%E6%8D%A2"><span class="nav-text">物质和能量转换</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9F%A5%E8%AF%86%E8%81%9A%E7%84%A6"><span class="nav-text">知识聚焦</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E9%99%8D%E4%BD%8E%E5%8C%96%E5%AD%A6%E5%8F%8D%E5%BA%94%E6%B4%BB%E5%8C%96%E8%83%BD%E7%9A%84%E9%85%B6"><span class="nav-text">一、降低化学反应活化能的酶</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%86%E8%83%9E%E4%BB%A3%E8%B0%A2%E4%B8%8E%E9%85%B6"><span class="nav-text">1. 细胞代谢与酶</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8E%A2%E7%A9%B6%E5%AE%9E%E8%B7%B5%E6%AF%94%E8%BE%83%E8%BF%87%E6%B0%A7%E5%8C%96%E6%B0%A2%E5%9C%A8%E4%B8%8D%E5%90%8C%E6%9D%A1%E4%BB%B6%E4%B8%8B%E7%9A%84%E5%88%86%E8%A7%A3-exp-%E6%AF%94%E8%BE%83%E8%BF%87%E6%B0%A7%E5%8C%96%E6%B0%A2%E5%9C%A8%E4%B8%8D%E5%90%8C%E6%9D%A1%E4%BB%B6%E4%B8%8B%E7%9A%84%E5%88%86%E8%A7%A3"><span class="nav-text">2.
+探究实践：比较过氧化氢在不同条件下的分解 |
+#exp-比较过氧化氢在不同条件下的分解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8E%A2%E7%A9%B6%E5%AE%9E%E8%B7%B5%E6%B7%80%E7%B2%89%E9%85%B6%E5%AF%B9%E6%B7%80%E7%B2%89%E5%92%8C%E8%94%97%E7%B3%96%E7%9A%84%E6%B0%B4%E8%A7%A3%E4%BD%9C%E7%94%A8-exp-%E6%B7%80%E7%B2%89%E9%85%B6%E5%AF%B9%E6%B7%80%E7%B2%89%E5%92%8C%E8%94%97%E7%B3%96%E7%9A%84%E6%B0%B4%E8%A7%A3%E4%BD%9C%E7%94%A8"><span class="nav-text">3.
+探究实践：淀粉酶对淀粉和蔗糖的水解作用 |
+#exp-淀粉酶对淀粉和蔗糖的水解作用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8E%A2%E7%A9%B6%E5%AE%9E%E8%B7%B5%E5%BD%B1%E5%93%8D%E9%85%B6%E6%B4%BB%E6%80%A7%E7%9A%84%E6%9D%A1%E4%BB%B6-exp-%E5%BD%B1%E5%93%8D%E9%85%B6%E6%B4%BB%E6%80%A7%E7%9A%84%E6%9D%A1%E4%BB%B6"><span class="nav-text">4.
+探究实践：影响酶活性的条件 | #exp-影响酶活性的条件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%BE%E8%AE%A1%E9%85%B6%E6%B4%BB%E6%80%A7%E7%9A%84%E6%8E%A2%E7%A9%B6%E5%AE%9E%E9%AA%8C"><span class="nav-text">设计酶活性的探究实验</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E7%BB%86%E8%83%9E%E7%9A%84%E7%9B%B4%E6%8E%A5%E8%83%BD%E6%BA%90%E7%89%A9%E8%B4%A8-atp"><span class="nav-text">二、细胞的直接能源物质 ATP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E7%BA%BF%E7%B2%92%E4%BD%93%E4%B8%8E%E7%BB%86%E8%83%9E%E5%91%BC%E5%90%B8"><span class="nav-text">三、线粒体与细胞呼吸</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%86%E8%83%9E%E7%9A%84%E6%9C%89%E6%B0%A7%E5%91%BC%E5%90%B8"><span class="nav-text">1. 细胞的有氧呼吸</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BB%86%E8%83%9E%E5%91%BC%E5%90%B8%E4%B8%AD%E9%97%B4%E4%BD%93%E6%AD%A7%E4%B9%89"><span class="nav-text">细胞呼吸中间体歧义</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%86%E8%83%9E%E7%9A%84%E6%97%A0%E6%B0%A7%E5%91%BC%E5%90%B8"><span class="nav-text">2. 细胞的无氧呼吸</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A9%E7%94%A8%E6%88%96%E6%8A%91%E5%88%B6%E5%91%BC%E5%90%B8%E4%BD%9C%E7%94%A8"><span class="nav-text">利用或抑制呼吸作用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8E%A2%E7%A9%B6%E5%AE%9E%E8%B7%B5%E6%8E%A2%E7%A9%B6%E9%85%B5%E6%AF%8D%E8%8F%8C%E7%BB%86%E8%83%9E%E5%91%BC%E5%90%B8%E7%9A%84%E6%96%B9%E5%BC%8F-exp-%E6%8E%A2%E7%A9%B6%E9%85%B5%E6%AF%8D%E8%8F%8C%E7%BB%86%E8%83%9E%E5%91%BC%E5%90%B8%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="nav-text">3.
+探究实践：探究酵母菌细胞呼吸的方式 | #exp-探究酵母菌细胞呼吸的方式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9B%E5%8F%B6%E7%BB%BF%E4%BD%93%E4%B8%8E%E5%85%89%E5%90%88%E4%BD%9C%E7%94%A8"><span class="nav-text">四、叶绿体与光合作用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8D%95%E8%8E%B7%E5%85%89%E8%83%BD%E7%9A%84%E8%89%B2%E7%B4%A0%E5%92%8C%E7%BB%93%E6%9E%84"><span class="nav-text">1. 捕获光能的色素和结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8E%A2%E7%A9%B6%E5%AE%9E%E8%B7%B5%E7%BB%BF%E5%8F%B6%E4%B8%AD%E8%89%B2%E7%B4%A0%E7%9A%84%E6%8F%90%E5%8F%96%E5%92%8C%E5%88%86%E7%A6%BB-exp-%E7%BB%BF%E5%8F%B6%E4%B8%AD%E8%89%B2%E7%B4%A0%E7%9A%84%E6%8F%90%E5%8F%96%E4%B8%8E%E5%88%86%E7%A6%BB"><span class="nav-text">2.
+探究实践：绿叶中色素的提取和分离 | #exp-绿叶中色素的提取与分离</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%89%E5%90%88%E4%BD%9C%E7%94%A8%E7%9A%84%E5%8E%9F%E7%90%86"><span class="nav-text">3. 光合作用的原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8E%A2%E7%A9%B6%E5%AE%9E%E8%B7%B5%E6%8E%A2%E7%A9%B6%E7%8E%AF%E5%A2%83%E5%9B%A0%E7%B4%A0%E5%AF%B9%E5%85%89%E5%90%88%E4%BD%9C%E7%94%A8%E5%BC%BA%E5%BA%A6%E7%9A%84%E5%BD%B1%E5%93%8D-exp-%E6%8E%A2%E7%A9%B6%E7%8E%AF%E5%A2%83%E5%9B%A0%E7%B4%A0%E5%AF%B9%E5%85%89%E5%90%88%E4%BD%9C%E7%94%A8%E5%BC%BA%E5%BA%A6%E7%9A%84%E5%BD%B1%E5%93%8D"><span class="nav-text">4.
+探究实践：探究环境因素对光合作用强度的影响 |
+#exp-探究环境因素对光合作用强度的影响</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BD%B1%E5%93%8D%E5%85%89%E5%90%88%E4%BD%9C%E7%94%A8%E7%9A%84%E5%9B%A0%E7%B4%A0"><span class="nav-text">影响光合作用的因素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%89%E8%A1%A5%E5%81%BF%E7%82%B9%E5%92%8C%E5%85%89%E9%A5%B1%E5%92%8C%E7%82%B9"><span class="nav-text">光补偿点和光饱和点</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Hoarfroster"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Hoarfroster</p>
+  <div class="site-description" itemprop="description">这里是霜羽~~咕咕咕</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">193</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">53</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">58</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <ul class="links-of-author motion-element">
+      <li class="links-of-author-item">
+        <a href="https://github.com/PassionPenguin" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;PassionPenguin" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        <span> PassionPenguin</span>
+      </li>
+      <li class="links-of-author-item">
+        <a href="mailto:hoarfroster@outlook.com" title="E-Mail → mailto:hoarfroster@outlook.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+        <span> hoarfroster@outlook.com</span>
+      </li>
+      <li class="links-of-author-item">
+        <a href="https://twitter.com/zhangqizhe" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;zhangqizhe" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+        <span> @zhangqizhe</span>
+      </li>
+      <li class="links-of-author-item">
+        <a href="https://www.instagram.com/glacierpenguin/" title="Instagram → https:&#x2F;&#x2F;www.instagram.com&#x2F;glacierpenguin&#x2F;" rel="noopener" target="_blank"><i class="fab fa-instagram fa-fw"></i>Instagram</a>
+        <span> @glacierpenguin</span>
+      </li>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hoarfroster</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="Symbols count total">1.1m</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">34:12</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT</a>
+  </div>
+
+        
+
+
+
+
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-firestore.js"></script>
+  <script>
+    firebase.initializeApp({
+      apiKey   : 'AIzaSyDqM81uUD8yWHAvsGasJzvWBHhpBYnRttI',
+      projectId: 'hoar-froster'
+    });
+
+    function getCount(doc, increaseCount) {
+      // IncreaseCount will be false when not in article page
+      return doc.get().then(d => {
+        var count = 0;
+        if (!d.exists) { // Has no data, initialize count
+          if (increaseCount) {
+            doc.set({
+              count: 1
+            });
+            count = 1;
+          }
+        } else { // Has data
+          count = d.data().count;
+          if (increaseCount) {
+            // If first view this article
+            doc.set({ // Increase count
+              count: count + 1
+            });
+            count++;
+          }
+        }
+
+        return count;
+      });
+    }
+
+    function appendCountTo(el) {
+      return count => {
+        el.innerText = count;
+      }
+    }
+  </script>
+  <script>
+    (function() {
+      var db = firebase.firestore();
+      var articles = db.collection('articles-info');
+
+      if (CONFIG.page.isPost) { // Is article page
+        var title = document.querySelector('.post-title').innerText.trim();
+        var doc = articles.doc(title);
+        var increaseCount = CONFIG.hostname === location.hostname;
+        if (localStorage.getItem(title)) {
+          increaseCount = false;
+        } else {
+          // Mark as visited
+          localStorage.setItem(title, true);
+        }
+        getCount(doc, increaseCount).then(appendCountTo(document.querySelector('.firestore-visitors-count')));
+      } else if (CONFIG.page.isHome) { // Is index page
+        var promises = [...document.querySelectorAll('.post-title')].map(element => {
+          var title = element.innerText.trim();
+          var doc = articles.doc(title);
+          return getCount(doc);
+        });
+        Promise.all(promises).then(counts => {
+          var metas = document.querySelectorAll('.firestore-visitors-count');
+          counts.forEach((val, idx) => {
+            appendCountTo(metas[idx])(val);
+          });
+        });
+      }
+    })();
+  </script>
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var canonicalURL, curProtocol;
+      //Get the <link> tag
+      var x=document.getElementsByTagName("link");
+		//Find the last canonical URL
+		if(x.length > 0){
+			for (i=0;i<x.length;i++){
+				if(x[i].rel.toLowerCase() == 'canonical' && x[i].href){
+					canonicalURL=x[i].href;
+				}
+			}
+		}
+    //Get protocol
+	    if (!canonicalURL){
+	    	curProtocol = window.location.protocol.split(':')[0];
+	    }
+	    else{
+	    	curProtocol = canonicalURL.split(':')[0];
+	    }
+      //Get current URL if the canonical URL does not exist
+	    if (!canonicalURL) canonicalURL = window.location.href;
+	    //Assign script content. Replace current URL with the canonical URL
+      !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=canonicalURL,t=document.referrer;if(!e.test(r)){var n=(String(curProtocol).toLowerCase() === 'https')?"https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif":"//api.share.baidu.com/s.gif";t?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var i=new Image;i.src=n}}(window);})();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme    : 'default',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/disqusjs@1/dist/disqusjs.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/disqusjs@1/dist/disqus.js', () => {
+    window.dsqjs = new DisqusJS({
+      api       : 'https://disqus.skk.moe/disqus/' || 'https://disqus.com/api/',
+      apikey    : 'Lo65MITAya5vcdTm6cJ8V5qCBNx3PVErvDOsfJ5tUPtEbw3DMS3EIzEx6vrmTzCN',
+      shortname : 'hoarfroster',
+      url       : "https://hoarfroster.github.io/2022/02/26/biology/High%20School/b1%20cell%20biology/P5%20%E7%BB%86%E8%83%9E%E7%9A%84%E8%83%BD%E9%87%8F%E4%BE%9B%E5%BA%94%E4%B8%8E%E5%88%A9%E7%94%A8/",
+      identifier: "2022/02/26/biology/High School/b1 cell biology/P5 细胞的能量供应与利用/",
+      title     : "细胞的能量供应与利用",
+    });
+  }, window.DisqusJS);
+});
+</script>
+
+</body>
+</html>

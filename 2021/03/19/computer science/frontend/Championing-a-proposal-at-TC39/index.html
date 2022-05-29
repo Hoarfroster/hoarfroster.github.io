@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/avatar.png" color="#222">
+  <meta name="google-site-verification" content="iFMbHL1JuWjTlNFq5Rv96vDzpsqakxTpdE2nw7Crr6o">
+  <meta name="msvalidate.01" content="EF6D8CD8A3335E66AB96B4D544FCD96C">
+  <meta name="baidu-site-verification" content="code-80b80Pbzs2">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link href="/lib/fontawesome/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<script>
+
+  window.onload = function() {
+    document.querySelectorAll("p").forEach(e=>{
+      e.innerHTML = e.innerHTML.replaceAll(/==(.+?)==/g, "<mark>$1</mark>").replaceAll(/​\s+?/g, "<span class='tab'></span>");
+    });
+    
+    [...document.querySelectorAll("pre > code")].forEach(e=> {
+        var codeClass = e.parentElement.classList.value;
+        if (codeClass == null || codeClass === "") {
+            e.classList.add("hljs");
+        } else {
+            var map = {
+                js: "javascript"
+            };
+            if (map[codeClass]) {
+                codeClass = map[codeClass];
+            }
+            codeClass.split(" ").forEach(i=>e.classList.add(i));
+            hljs.highlightElement(e);
+        }
+    });
+
+    [...document.querySelectorAll('.classcial-chinese-literature-and-poetry-translation')].forEach(i=>{
+      let el = document.createElement('div');
+      el.setAttribute('class', 'fa-solid fa-eye');
+      i.prepend(el);
+      el.addEventListener('click', ()=>{
+        let status = el.classList.contains('fa-eye');
+        [...i.querySelectorAll('.translation')].forEach(j=>{
+          j.classList.remove('hide');
+          if(status) {
+            j.classList.add('hide');
+          }
+        });
+        el.attributes['class'].value = el.attributes['class'].value.replace('fa-eye-slash', 'fa-0').replace('fa-eye', 'fa-eye-slash').replace('fa-0', 'fa-eye');
+      });
+
+      [...i.querySelectorAll('.original-text')].forEach(e=>{
+        let el = document.createElement('div');
+        el.setAttribute('class', 'fa-solid fa-eye-slash');
+        e.prepend(el);
+        el.addEventListener('click', ()=>{
+            e.nextSibling.classList.toggle('hide');
+            el.attributes['class'].value = el.attributes['class'].value.replace('fa-eye-slash', 'fa-0').replace('fa-eye', 'fa-eye-slash').replace('fa-0', 'fa-eye');
+        });
+      })
+    });
+  }
+</script>
+<script async src="/js/highlight.min.js"></script>
+<script async src="/js/cursor.js"></script>
+<script data-ad-client="ca-pub-2275811890061218" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"hoarfroster.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqusjs","storage":true,"lazyload":false,"nav":null,"activeClass":"disqusjs"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="你想为 JavaScript 提出一个新功能吗？不过提出提案需要一个 TC39 代表作为提案发起人，来推动提案通过各个[阶段流程](https:&#x2F;&#x2F;tc39.es&#x2F;process-document&#x2F;)。本文将为你描述如何做到这一点。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何在 TC39 提起一项提案？">
+<meta property="og:url" content="https://hoarfroster.github.io/2021/03/19/computer%20science/frontend/Championing-a-proposal-at-TC39/index.html">
+<meta property="og:site_name" content="Hoarfroster 的小窝">
+<meta property="og:description" content="你想为 JavaScript 提出一个新功能吗？不过提出提案需要一个 TC39 代表作为提案发起人，来推动提案通过各个[阶段流程](https:&#x2F;&#x2F;tc39.es&#x2F;process-document&#x2F;)。本文将为你描述如何做到这一点。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-03-19T08:44:00.000Z">
+<meta property="article:modified_time" content="2022-05-28T15:43:08.245Z">
+<meta property="article:author" content="Hoarfroster">
+<meta property="article:tag" content="Computer Science">
+<meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="Frontend">
+<meta property="article:tag" content="tc39">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://hoarfroster.github.io/2021/03/19/computer%20science/frontend/Championing-a-proposal-at-TC39/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>如何在 TC39 提起一项提案？ | Hoarfroster 的小窝</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <!--<div class="headband"></div>-->
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hoarfroster 的小窝</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section">Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section">About</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section">Categories</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger">
+          Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://hoarfroster.github.io/2021/03/19/computer%20science/frontend/Championing-a-proposal-at-TC39/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Hoarfroster">
+      <meta itemprop="description" content="这里是霜羽~~咕咕咕">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hoarfroster 的小窝">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          如何在 TC39 提起一项提案？
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-03-19 16:44:00" itemprop="dateCreated datePublished" datetime="2021-03-19T16:44:00+08:00">2021-03-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-05-28 23:43:08" itemprop="dateModified" datetime="2022-05-28T23:43:08+08:00">2022-05-28</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Computer-Science/" itemprop="url" rel="index"><span itemprop="name">Computer Science</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Computer-Science/Frontend/" itemprop="url" rel="index"><span itemprop="name">Frontend</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Computer-Science/Frontend/tc39/" itemprop="url" rel="index"><span itemprop="name">tc39</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span><br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+              <span>4.4k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+              <span>8 mins.</span>
+            </span>
+            <div class="post-description">你想为 JavaScript 提出一个新功能吗？不过提出提案需要一个 TC39 代表作为提案发起人，来推动提案通过各个[阶段流程](https://tc39.es/process-document/)。本文将为你描述如何做到这一点。</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <blockquote>
+<ul>
+<li>原文地址：<a target="_blank" rel="noopener" href="https://github.com/tc39/how-we-work/blob/master/champion.md">Championing
+a proposal at TC39</a></li>
+<li>原文作者：<a target="_blank" rel="noopener" href="https://github.com/tc39/how-we-work">ECMA
+TC39</a></li>
+<li>译者：<a target="_blank" rel="noopener" href="https://github.com/PassionPenguin">霜羽
+Hoarfroster</a></li>
+<li>校对者：<a target="_blank" rel="noopener" href="https://github.com/Kimhooo">Kimhooo</a>，<a target="_blank" rel="noopener" href="https://github.com/KimYangOfCat">KimYangOfCat</a></li>
+</ul>
+</blockquote>
+<p>你想为 JavaScript 提出一个新功能吗？不过提出提案需要一个 TC39
+代表作为提案发起人，来推动提案通过各个<a target="_blank" rel="noopener" href="https://tc39.es/process-document/">阶段流程</a>。本文将为你描述如何做到这一点。</p>
+<p>提出一项提案是一项在委员会以外改进维护提案中的平行工作，同样的是平行工作的还有向委员会在关于收集更多的想法、反馈，并最终通过阶段推进提案等方面的演示。委员会以外的工作很少会有需要暂缓委员会内部的进展以帮助委员会以外的工作的推进，但委员会会对其进行阶段的提升，而这一进步会是对里程碑和支持的良好致谢。想要将提案添加到
+JavaScript 规范的功能之中，需要该提案步入第四阶段。</p>
+<h2 id="委员会之外的工作">委员会之外的工作</h2>
+<p>支持提案工作的大部分都可以在 TC39
+之外完成，而不会影响委员会的批准。推进这项工作可以为晋升 TC39
+中的阶段提供更多的依据，而这项工作的一些组成部分是：</p>
+<ul>
+<li><strong><a target="_blank" rel="noopener" href="https://github.com/tc39/wwe-work/blob/master/explainer.md">解释内容</a></strong>
+：在您的提案的仓库中存放一份写好的 README
+文件，在更高层面解释该提案的目的和当前状况。</li>
+<li><strong><a target="_blank" rel="noopener" href="https://github.com/tc39/how-we-work/issues/49">文档</a></strong>
+：为 JavaScript 开发者编写的解释，以方便开发者使用该提案。</li>
+<li><strong><a target="_blank" rel="noopener" href="https://github.com/tc39/how-we-work/blob/master/implement.md">实现方式</a></strong>
+：允许程序员对提案进行试验，无论借助是 Transpilers 或是
+polyfills，还是需要开启一个 Flag 或使用一个原生实现的分支。</li>
+<li><strong><a target="_blank" rel="noopener" href="https://github.com/tc39/how-we-work/issues/6">测试</a></strong>
+：检查实现的正确性的测试 ——
+这些最初可以沿着实施方式检查，但最有用会最终迁移到 test262。</li>
+<li><strong>收集反馈</strong>：了解人们通过与他们交谈的人们对该提案的看法，看看他们对使用这个功能的体验的感受。这可以有助于从委员会内外获得
+JavaScript 开发者、实施者、学者、教育工作者、社区领导者等等的反馈。</li>
+</ul>
+<h3 id="管理-github-仓库">管理 GitHub 仓库</h3>
+<p>一旦提案向委员会提交，每个阶段提案都应有一个属于 TC39 组织中的 GitHub
+仓库。此仓库需要包括说明程序、规范文本草稿文本，而有时还会需要草稿实施或示例程序的资源。仓库的问题跟踪人员可用于讨论委员会和社区的设计问题。这些提案仓库需要根据
+<a target="_blank" rel="noopener" href="https://tc39.es/code-of-conde/">TC39
+的行为准则</a>进行管理。</p>
+<h4 id="阶段流程跟踪问题">阶段流程跟踪问题</h4>
+<p>要通过各阶段流程，GitHub
+仓库中的跟踪问题可能很有用。以下是您可以用于此类跟踪问题的模板：</p>
+<h2 id="第四阶段">第四阶段</h2>
+<ul class="task-list">
+<li><input type="checkbox" disabled="">
+委员会批准</li>
+<li><input type="checkbox" disabled="">
+在两个浏览器中实现</li>
+<li><input type="checkbox" disabled="">
+显着的现场体验</li>
+<li><input type="checkbox" disabled="">
+合并 Test262 测试</li>
+<li><input type="checkbox" disabled="">
+编写 Test262 测试</li>
+<li><input type="checkbox" disabled="">
+准备 ECMA262 PR</li>
+<li><input type="checkbox" disabled="">
+编辑批准的 ECMA262 Pr ## 第三阶段</li>
+<li><input type="checkbox" disabled="">
+委员会批准</li>
+<li><input type="checkbox" disabled="">
+规范编辑器签名</li>
+<li><input type="checkbox" disabled="">
+规范审稿人签名</li>
+<li><input type="checkbox" disabled="">
+接收开发者/实现者反馈 ## 第二阶段</li>
+<li><input type="checkbox" disabled="">
+委员会批准</li>
+<li><input type="checkbox" disabled="">
+编写的规范文本</li>
+<li><input type="checkbox" disabled="">
+选择规范审稿人 ## 第一阶段</li>
+<li><input type="checkbox" disabled="">
+引入 TC39</li>
+<li><input type="checkbox" disabled="">
+确定提议者</li>
+<li><input type="checkbox" disabled="">
+初始解释内容</li>
+</ul>
+<h2 id="在委员会阶段的晋升">在委员会阶段的晋升</h2>
+<p>这部分建立在<a target="_blank" rel="noopener" href="https://tc39.es/process-document/">阶段过程文档</a>的基础上，提出了一些可能会对各自阶段有利的做法。</p>
+<p>阶段的晋升出现在 TC39
+会议上，委员会将基于向委员会提交的提案，在全体投票决定后将决定该提案应该向哪一个具体的阶段推进。有关更多详细信息，请参阅<a target="_blank" rel="noopener" href="https://github.com/tc39/how-we-work/blob/master/presenting.md">演示建议</a>。</p>
+<h3 id="第一阶段">第一阶段</h3>
+<p>流程文件的入场标准： &gt; - 确定将助力推进提案的“发起人” &gt; -
+概述问题需要，并提出解决方案的轮廓大纲 &gt; - 使用的说明性示例 &gt; -
+高级 API &gt; - 讨论关键算法、抽象和语义 &gt; -
+识别潜在的“交叉”关注和实施挑战/复杂性</p>
+<p>验收意味着： &gt;
+委员会预计将有时间审查问题空间、解决方案和交叉削减问题</p>
+<p>进入第一阶段 -
+<strong>确定委员会中的发起人（或提议团体）</strong>。不幸的是，TC39
+没有为非委员会成员找到一个合适的委员会导师/发起人的方法，但是现有的论坛包括
+<a target="_blank" rel="noopener" href="https://es.discourse.group">TC39 讨论论坛</a>和 <a target="_blank" rel="noopener" href="https://esdiscuss.org">es-discuss
+邮件列表</a>可能会对此有所帮助；另一个是 Freenode 上的 IRC 频道
+<code>#tc39</code>（<a target="_blank" rel="noopener" href="https://freenode.net/kb/answer/chat">详细信息</a>）。当然，你也可以在
+Twitter 上找到许多的 TC39 代表。 -
+<strong>写一个解释文档</strong>。请参阅 <a target="_blank" rel="noopener" href="https://github.com/tc39/how-we-work/blob/master/explainer.md">explainer.md</a>，以获取有关如何编写入门文档以满足第一阶段其余要求的建议。
+-
+<strong>准备演示文稿</strong>，以使委员会考虑他们在该设计领域中想要做的事情，如果您有特定的想法，请向该方向发展。有关演示文稿的建议，请参见<a target="_blank" rel="noopener" href="https://github.com/tc39/how-we-work/blob/master/presenting.md">presenting.md</a>。</p>
+<p>第一阶段更多地表明委员会正在考虑进入此设计领域，而不是就将 JavaScript
+朝特定方向发展达成任何共识。</p>
+<p>在第一阶段之后（甚至之前），执行以下一些操作可能会很有用： -
+<strong>与 JavaScript
+开发者讨论</strong>，以了解他们在该领域面临的种种问题，以及在语言级别上有哪些解决方案可能对他们有帮助。
+- 如果在某些方面存在分歧，请<strong>在 GitHub
+问题中进行讨论</strong>，并考虑对多种解决方案进行详细分析。 -
+<strong>编写有关早期建议的解决方案的文档，实施草案，测试</strong>等。 -
+<strong>在 GitHub
+上响应</strong>，回答提出的问题并考虑评论者提出的观点。 - <strong>按照<a target="_blank" rel="noopener" href="https://github.com/tc39/proposals#onboarding-existing-proposals">这些说明</a>将提案仓库移至
+tc39 组织中 </strong>。</p>
+<h3 id="第二阶段">第二阶段</h3>
+<p>流程文档的准入标准： &gt; - 初版规范文字</p>
+<p>接受表示： &gt; 委员会希望该功能得以开发并最终纳入标准</p>
+<p>进入第二阶段 -
+<strong>制定解决方案的完整初稿</strong>。这些并不一定是所有有关语法或语义问题的最终答案，但应该有一个连贯的初始建议，您对此有一定的信心。应该对解释器进行更新，以记录第二阶段的解决方案。
+- <strong>写初始规范文本</strong>。该文本不需要 100％
+完整，但应大致覆盖解决方案的表面。 <!-- TODO：链接到规范编写建议文档 -->
+-
+<strong>准备演示文稿</strong>，概述提案以及委员会为何同意将其纳入标准。</p>
+<p>在提案进入第二阶段时，我们已经达成共识，我们希望继续进行类似该提案的工作，最终成为
+JavaScript 的标准。</p>
+<p>在第二阶段之后（甚至之前），执行以下某些操作可能会很有用： -
+<strong>继续与 JavaScript 开发者交谈</strong>，并努力寻求解决方案。 -
+如果要研究多个解决方案，争取在第三阶段之前的某个时间（可能在第二阶段之前）将它们<strong>解决掉</strong>。
+-
+在第二阶段中，<strong>具有良好的测试实现</strong>显得尤为重要。这不是阶段过程的要求，但是在进入第三阶段并为提案声明一定的完成度之前从实际使用中获取反馈非常有用。完善文档的过程也是如此。
+-
+理想情况下，重大问题应尽早解决，可能在第二阶段之前，或者在第二阶段中，<strong>精益求精</strong>是
+TC39 会议讨论的议题和要解决的问题。 - 在 TC39
+会议上，提案已进入第二阶段，一般来说应该“选择第三阶段的审核者”了。</p>
+<h3 id="第三阶段">第三阶段</h3>
+<p>流程文档的准入标准： &gt; - 完整的规范文本 &gt; -
+指定的审核者已经签署同意了当前的规范文本 &gt; - 所有 ECMAScript
+编者均已签署当前的规范文本</p>
+<p>接受表示： &gt;
+该解决方案是完整的，并且尚缺实施经验、大量的应用和外部反馈，以进行进一步的工作。</p>
+<p>进入第三阶段， -
+<strong>尽可能解决有关规范的所有语法和语义问题</strong>。在第三阶段中，设计应尽可能完整。这意味着扩展到
+JavaScript 开发者，并尝试使用 Transpiler /
+polyfills，足以在设计上得出这样的结论。仍然可能存在仅由实施方式回答的未解决问题，例如在无法进行多填充/转译的提案中，或在有关实施效率的问题中。
+-
+<strong>填写规范文本</strong>。规范文本应基于已发生的所有设计讨论，以全部细节描述整个建议。
+- <strong>从指定的评论者和编辑那里获得第三阶段的评论</strong>。在 TC39
+会议召开前几周，通过电子邮件将审稿人和编辑者的电子邮件发给您，询问您的评论进行得如何，如果您还没有收到回复的话。
+-
+<strong>准备演示文稿</strong>，解释提案的详细信息及其依据，要求进入第三阶段。</p>
+<p>在第三阶段之后（甚至更早）， - <strong>编写 test262
+测试</strong>。这些测试可以合并到第三阶段的提案中。确保包括指示它们是哪个提案的功能标志。编写这些测试的过程通常会暴露规范文本中的错误，并且对于确保实现的一致性非常有用。
+-
+<strong>致力于各种实现</strong>。至关重要的是，在这一点上，弄清所有实现约束很重要。例如，某些设计可能满足第三阶段的要求，但具有使现有
+JavaScript 程序变慢的副作用 ——
+这可能是不被看好，也不是想要的。即使您没有在每个地方都完成一个实现，与各种
+JavaScript
+引擎的实现者讨论细节以了解他们对可行和可优化事物的约束对于理解是否需要进一步的更改都是非常有用的。
+-
+<strong>将决策传达给更广泛的社区</strong>。理想情况下，此时，已经收集并考虑了广泛的社区反馈，并且不再需要进行进一步的设计辩论。</p>
+<h3 id="第四阶段-1">第四阶段</h3>
+<p>流程文档的准入标准： &gt; - 已针对主线使用场景编写了 Test262
+验收测试，并将其合并 &gt; - 两个兼容的实现通过了验收测试 &gt; -
+在实施方面具有丰富的现场经验，例如由两个独立的 VM 向该提案提供经验 &gt;
+- 带有集成规范文本的拉取请求已发送到 TC39 / ECMA262 &gt; - 所有
+ECMAScript 编者均已对拉取请求进行了签名</p>
+<p>接受表示： &gt; 新增内容将包含在最快的实用标准修订版中</p>
+<p>进行到第四阶段，创建以下内容 -
+<strong>至少有两个符合规范的实现</strong>。要做到两个符合规范的实现，一个努力的好方向是那些支持
+Web 浏览器和 Node.js 的 JavaScript <a target="_blank" rel="noopener" href="https://v8.dev/">V8</a>、<a target="_blank" rel="noopener" href="https://trac.webkit.org/wiki/JavaScriptCore">JavaScriptCore</a> 和
+<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Mozilla/Projects/SpiderMonkey">SpiderMonkey</a>
+引擎。这是将实现交付给许多 JavaScript
+开发者的好方法，并且它对性能有了约束。如果所有实现都在例如编译器中进行，则委员会可能不会被说服，不会认为该提案有了丰富的实施经验，例如，由于编译器没有实现通常会带来特殊困难的
+<code>eval</code> 之类的功能。 - <strong>完整 Test262
+测试</strong>。如果可能，这些测试应旨在覆盖整个规范。 -
+<strong>针对主要规范的
+PR</strong>。较早的规范文本可能有一些捷径，但这对于最终的 PR
+来说是不可接受的。例如，这可能涉及为某些重复的规范算法写出详细信息。早期草稿中出现的编辑者注释应转换为普通注释或被删除。
+-
+<strong>准备演示文稿</strong>，总结积极的实施和测试经验，并要求委员会晋升该提案到第四阶段。</p>
+<p>提案到达第四阶段后， - <strong>Archive
+提案仓库</strong>。第四阶段的提案将不会有进一步的更改，将来的任何更改都将是针对主要规范的单独提案。
+-
+<strong>确保提供了良好的文档</strong>。理想情况下，您在投标过程的早期就开发了文档。现在，至关重要的是，各个级别的文档都必须具有良好的质量，以供广大
+JavaScript 开发者使用。 - <strong>确保在可能的情况下有条件地使用
+polyfills 或
+shims</strong>。一旦提案进入第四阶段，则在可行且正确的情况下，请顺应内置的实现。这使开发者可以在不牺牲正确性的情况下，尽可能地受益于原生实现的更好性能。对于
+polyfills 或
+shims，如果存在已知的错误和偏差，则严格检查原生实现是否有用，而不是仅检查原生实现的存在是很有帮助的。但是，以依赖于修改全局环境的形式进行广泛部署存在兼容性风险，尤其是在提案成为标准之前
+—— 使用不内置于运行环境中的 polyfill 可能会有所帮助。</p>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Computer-Science/" rel="tag"># Computer Science</a>
+              <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+              <a href="/tags/Frontend/" rel="tag"># Frontend</a>
+              <a href="/tags/tc39/" rel="tag"># tc39</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/03/19/computer%20science/frontend/Reading-a-proposal-draft/" rel="prev" title="如何阅读一份提案草案？">
+      <i class="fa fa-chevron-left"></i> 如何阅读一份提案草案？
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/03/19/computer%20science/frontend/How-to-experiment-with-a-proposal-before-Stage-4/" rel="next" title="如何在第 4 阶段之前体验一个提案">
+      如何在第 4 阶段之前体验一个提案 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A7%94%E5%91%98%E4%BC%9A%E4%B9%8B%E5%A4%96%E7%9A%84%E5%B7%A5%E4%BD%9C"><span class="nav-text">委员会之外的工作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%A1%E7%90%86-github-%E4%BB%93%E5%BA%93"><span class="nav-text">管理 GitHub 仓库</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%98%B6%E6%AE%B5%E6%B5%81%E7%A8%8B%E8%B7%9F%E8%B8%AA%E9%97%AE%E9%A2%98"><span class="nav-text">阶段流程跟踪问题</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E5%9B%9B%E9%98%B6%E6%AE%B5"><span class="nav-text">第四阶段</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8%E5%A7%94%E5%91%98%E4%BC%9A%E9%98%B6%E6%AE%B5%E7%9A%84%E6%99%8B%E5%8D%87"><span class="nav-text">在委员会阶段的晋升</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E9%98%B6%E6%AE%B5"><span class="nav-text">第一阶段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E9%98%B6%E6%AE%B5"><span class="nav-text">第二阶段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E9%98%B6%E6%AE%B5"><span class="nav-text">第三阶段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E5%9B%9B%E9%98%B6%E6%AE%B5-1"><span class="nav-text">第四阶段</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Hoarfroster"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Hoarfroster</p>
+  <div class="site-description" itemprop="description">这里是霜羽~~咕咕咕</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">193</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">53</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">58</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <ul class="links-of-author motion-element">
+      <li class="links-of-author-item">
+        <a href="https://github.com/PassionPenguin" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;PassionPenguin" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        <span> PassionPenguin</span>
+      </li>
+      <li class="links-of-author-item">
+        <a href="mailto:hoarfroster@outlook.com" title="E-Mail → mailto:hoarfroster@outlook.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+        <span> hoarfroster@outlook.com</span>
+      </li>
+      <li class="links-of-author-item">
+        <a href="https://twitter.com/zhangqizhe" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;zhangqizhe" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+        <span> @zhangqizhe</span>
+      </li>
+      <li class="links-of-author-item">
+        <a href="https://www.instagram.com/glacierpenguin/" title="Instagram → https:&#x2F;&#x2F;www.instagram.com&#x2F;glacierpenguin&#x2F;" rel="noopener" target="_blank"><i class="fab fa-instagram fa-fw"></i>Instagram</a>
+        <span> @glacierpenguin</span>
+      </li>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hoarfroster</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="Symbols count total">1.1m</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">34:12</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT</a>
+  </div>
+
+        
+
+
+
+
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-firestore.js"></script>
+  <script>
+    firebase.initializeApp({
+      apiKey   : 'AIzaSyDqM81uUD8yWHAvsGasJzvWBHhpBYnRttI',
+      projectId: 'hoar-froster'
+    });
+
+    function getCount(doc, increaseCount) {
+      // IncreaseCount will be false when not in article page
+      return doc.get().then(d => {
+        var count = 0;
+        if (!d.exists) { // Has no data, initialize count
+          if (increaseCount) {
+            doc.set({
+              count: 1
+            });
+            count = 1;
+          }
+        } else { // Has data
+          count = d.data().count;
+          if (increaseCount) {
+            // If first view this article
+            doc.set({ // Increase count
+              count: count + 1
+            });
+            count++;
+          }
+        }
+
+        return count;
+      });
+    }
+
+    function appendCountTo(el) {
+      return count => {
+        el.innerText = count;
+      }
+    }
+  </script>
+  <script>
+    (function() {
+      var db = firebase.firestore();
+      var articles = db.collection('articles-info');
+
+      if (CONFIG.page.isPost) { // Is article page
+        var title = document.querySelector('.post-title').innerText.trim();
+        var doc = articles.doc(title);
+        var increaseCount = CONFIG.hostname === location.hostname;
+        if (localStorage.getItem(title)) {
+          increaseCount = false;
+        } else {
+          // Mark as visited
+          localStorage.setItem(title, true);
+        }
+        getCount(doc, increaseCount).then(appendCountTo(document.querySelector('.firestore-visitors-count')));
+      } else if (CONFIG.page.isHome) { // Is index page
+        var promises = [...document.querySelectorAll('.post-title')].map(element => {
+          var title = element.innerText.trim();
+          var doc = articles.doc(title);
+          return getCount(doc);
+        });
+        Promise.all(promises).then(counts => {
+          var metas = document.querySelectorAll('.firestore-visitors-count');
+          counts.forEach((val, idx) => {
+            appendCountTo(metas[idx])(val);
+          });
+        });
+      }
+    })();
+  </script>
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var canonicalURL, curProtocol;
+      //Get the <link> tag
+      var x=document.getElementsByTagName("link");
+		//Find the last canonical URL
+		if(x.length > 0){
+			for (i=0;i<x.length;i++){
+				if(x[i].rel.toLowerCase() == 'canonical' && x[i].href){
+					canonicalURL=x[i].href;
+				}
+			}
+		}
+    //Get protocol
+	    if (!canonicalURL){
+	    	curProtocol = window.location.protocol.split(':')[0];
+	    }
+	    else{
+	    	curProtocol = canonicalURL.split(':')[0];
+	    }
+      //Get current URL if the canonical URL does not exist
+	    if (!canonicalURL) canonicalURL = window.location.href;
+	    //Assign script content. Replace current URL with the canonical URL
+      !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=canonicalURL,t=document.referrer;if(!e.test(r)){var n=(String(curProtocol).toLowerCase() === 'https')?"https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif":"//api.share.baidu.com/s.gif";t?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var i=new Image;i.src=n}}(window);})();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme    : 'default',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/disqusjs@1/dist/disqusjs.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/disqusjs@1/dist/disqus.js', () => {
+    window.dsqjs = new DisqusJS({
+      api       : 'https://disqus.skk.moe/disqus/' || 'https://disqus.com/api/',
+      apikey    : 'Lo65MITAya5vcdTm6cJ8V5qCBNx3PVErvDOsfJ5tUPtEbw3DMS3EIzEx6vrmTzCN',
+      shortname : 'hoarfroster',
+      url       : "https://hoarfroster.github.io/2021/03/19/computer%20science/frontend/Championing-a-proposal-at-TC39/",
+      identifier: "2021/03/19/computer science/frontend/Championing-a-proposal-at-TC39/",
+      title     : "如何在 TC39 提起一项提案？",
+    });
+  }, window.DisqusJS);
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,2553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/avatar.png" color="#222">
+  <meta name="google-site-verification" content="iFMbHL1JuWjTlNFq5Rv96vDzpsqakxTpdE2nw7Crr6o">
+  <meta name="msvalidate.01" content="EF6D8CD8A3335E66AB96B4D544FCD96C">
+  <meta name="baidu-site-verification" content="code-80b80Pbzs2">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link href="/lib/fontawesome/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<script>
+
+  window.onload = function() {
+    document.querySelectorAll("p").forEach(e=>{
+      e.innerHTML = e.innerHTML.replaceAll(/==(.+?)==/g, "<mark>$1</mark>").replaceAll(/​\s+?/g, "<span class='tab'></span>");
+    });
+    
+    [...document.querySelectorAll("pre > code")].forEach(e=> {
+        var codeClass = e.parentElement.classList.value;
+        if (codeClass == null || codeClass === "") {
+            e.classList.add("hljs");
+        } else {
+            var map = {
+                js: "javascript"
+            };
+            if (map[codeClass]) {
+                codeClass = map[codeClass];
+            }
+            codeClass.split(" ").forEach(i=>e.classList.add(i));
+            hljs.highlightElement(e);
+        }
+    });
+
+    [...document.querySelectorAll('.classcial-chinese-literature-and-poetry-translation')].forEach(i=>{
+      let el = document.createElement('div');
+      el.setAttribute('class', 'fa-solid fa-eye');
+      i.prepend(el);
+      el.addEventListener('click', ()=>{
+        let status = el.classList.contains('fa-eye');
+        [...i.querySelectorAll('.translation')].forEach(j=>{
+          j.classList.remove('hide');
+          if(status) {
+            j.classList.add('hide');
+          }
+        });
+        el.attributes['class'].value = el.attributes['class'].value.replace('fa-eye-slash', 'fa-0').replace('fa-eye', 'fa-eye-slash').replace('fa-0', 'fa-eye');
+      });
+
+      [...i.querySelectorAll('.original-text')].forEach(e=>{
+        let el = document.createElement('div');
+        el.setAttribute('class', 'fa-solid fa-eye-slash');
+        e.prepend(el);
+        el.addEventListener('click', ()=>{
+            e.nextSibling.classList.toggle('hide');
+            el.attributes['class'].value = el.attributes['class'].value.replace('fa-eye-slash', 'fa-0').replace('fa-eye', 'fa-eye-slash').replace('fa-0', 'fa-eye');
+        });
+      })
+    });
+  }
+</script>
+<script async src="/js/highlight.min.js"></script>
+<script async src="/js/cursor.js"></script>
+<script data-ad-client="ca-pub-2275811890061218" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"hoarfroster.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqusjs","storage":true,"lazyload":false,"nav":null,"activeClass":"disqusjs"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="这里是霜羽~~咕咕咕">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Hoarfroster 的小窝">
+<meta property="og:url" content="https://hoarfroster.github.io/page/6/index.html">
+<meta property="og:site_name" content="Hoarfroster 的小窝">
+<meta property="og:description" content="这里是霜羽~~咕咕咕">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="Hoarfroster">
+<meta property="article:tag" content="notes, blog">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://hoarfroster.github.io/page/6/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'en'
+  };
+</script>
+
+  <title>Hoarfroster 的小窝</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <!--<div class="headband"></div>-->
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hoarfroster 的小窝</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section">Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section">About</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section">Categories</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger">
+          Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content index posts-expand">
+            
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://hoarfroster.github.io/2022/03/25/chinese/High%20School/Classical%20Chinese%20Literature%20and%20Poetry/%E9%80%89%E6%8B%A9%E6%80%A7%E5%BF%85%E4%BF%AE/%E5%AD%94%E9%9B%80%E4%B8%9C%E5%8D%97%E9%A3%9E%E5%B9%B6%E5%BA%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Hoarfroster">
+      <meta itemprop="description" content="这里是霜羽~~咕咕咕">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hoarfroster 的小窝">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/03/25/chinese/High%20School/Classical%20Chinese%20Literature%20and%20Poetry/%E9%80%89%E6%8B%A9%E6%80%A7%E5%BF%85%E4%BF%AE/%E5%AD%94%E9%9B%80%E4%B8%9C%E5%8D%97%E9%A3%9E%E5%B9%B6%E5%BA%8F/" class="post-title-link" itemprop="url">孔雀东南飞并序</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-03-25 19:38:00" itemprop="dateCreated datePublished" datetime="2022-03-25T19:38:00+08:00">2022-03-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-05-28 23:43:08" itemprop="dateModified" datetime="2022-05-28T23:43:08+08:00">2022-05-28</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/High-School/" itemprop="url" rel="index"><span itemprop="name">High School</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/High-School/Chinese/" itemprop="url" rel="index"><span itemprop="name">Chinese</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/High-School/Chinese/Classical-Chinese-Literature-and-Poetry/" itemprop="url" rel="index"><span itemprop="name">Classical Chinese Literature and Poetry</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span><br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+              <span>10k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+              <span>19 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>部编版高中语文课本选择性必修下册第一单元课文：孔雀东南飞并序。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/03/25/chinese/High%20School/Classical%20Chinese%20Literature%20and%20Poetry/%E9%80%89%E6%8B%A9%E6%80%A7%E5%BF%85%E4%BF%AE/%E5%AD%94%E9%9B%80%E4%B8%9C%E5%8D%97%E9%A3%9E%E5%B9%B6%E5%BA%8F/">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://hoarfroster.github.io/2022/03/25/chinese/High%20School/Classical%20Chinese%20Literature%20and%20Poetry/%E9%80%89%E6%8B%A9%E6%80%A7%E5%BF%85%E4%BF%AE/%E7%A6%BB%E9%AA%9A%EF%BC%88%E8%8A%82%E9%80%89%EF%BC%89-%E5%B1%88%E5%8E%9F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Hoarfroster">
+      <meta itemprop="description" content="这里是霜羽~~咕咕咕">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hoarfroster 的小窝">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/03/25/chinese/High%20School/Classical%20Chinese%20Literature%20and%20Poetry/%E9%80%89%E6%8B%A9%E6%80%A7%E5%BF%85%E4%BF%AE/%E7%A6%BB%E9%AA%9A%EF%BC%88%E8%8A%82%E9%80%89%EF%BC%89-%E5%B1%88%E5%8E%9F/" class="post-title-link" itemprop="url">离骚（节选）-屈原</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-03-25 19:37:43" itemprop="dateCreated datePublished" datetime="2022-03-25T19:37:43+08:00">2022-03-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-05-28 23:43:08" itemprop="dateModified" datetime="2022-05-28T23:43:08+08:00">2022-05-28</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/High-School/" itemprop="url" rel="index"><span itemprop="name">High School</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/High-School/Chinese/" itemprop="url" rel="index"><span itemprop="name">Chinese</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/High-School/Chinese/Classical-Chinese-Literature-and-Poetry/" itemprop="url" rel="index"><span itemprop="name">Classical Chinese Literature and Poetry</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span><br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+              <span>7.2k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+              <span>13 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>部编版高中语文课本选择性必修下册第一单元课文：离骚（节选）-屈原。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/03/25/chinese/High%20School/Classical%20Chinese%20Literature%20and%20Poetry/%E9%80%89%E6%8B%A9%E6%80%A7%E5%BF%85%E4%BF%AE/%E7%A6%BB%E9%AA%9A%EF%BC%88%E8%8A%82%E9%80%89%EF%BC%89-%E5%B1%88%E5%8E%9F/">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://hoarfroster.github.io/2022/03/25/chinese/High%20School/Classical%20Chinese%20Literature%20and%20Poetry/%E9%80%89%E6%8B%A9%E6%80%A7%E5%BF%85%E4%BF%AE/%E6%B0%93-%E3%80%8A%E8%AF%97%E7%BB%8F%C2%B7%E5%8D%AB%E9%A3%8E%E3%80%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Hoarfroster">
+      <meta itemprop="description" content="这里是霜羽~~咕咕咕">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hoarfroster 的小窝">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/03/25/chinese/High%20School/Classical%20Chinese%20Literature%20and%20Poetry/%E9%80%89%E6%8B%A9%E6%80%A7%E5%BF%85%E4%BF%AE/%E6%B0%93-%E3%80%8A%E8%AF%97%E7%BB%8F%C2%B7%E5%8D%AB%E9%A3%8E%E3%80%8B/" class="post-title-link" itemprop="url">氓-《诗经·卫风》</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-03-25 19:36:55" itemprop="dateCreated datePublished" datetime="2022-03-25T19:36:55+08:00">2022-03-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-05-28 23:43:08" itemprop="dateModified" datetime="2022-05-28T23:43:08+08:00">2022-05-28</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/High-School/" itemprop="url" rel="index"><span itemprop="name">High School</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/High-School/Chinese/" itemprop="url" rel="index"><span itemprop="name">Chinese</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/High-School/Chinese/Classical-Chinese-Literature-and-Poetry/" itemprop="url" rel="index"><span itemprop="name">Classical Chinese Literature and Poetry</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span><br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+              <span>3.2k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+              <span>6 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>部编版高中语文课本选择性必修下册第一单元课文：氓-《诗经·卫风》。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/03/25/chinese/High%20School/Classical%20Chinese%20Literature%20and%20Poetry/%E9%80%89%E6%8B%A9%E6%80%A7%E5%BF%85%E4%BF%AE/%E6%B0%93-%E3%80%8A%E8%AF%97%E7%BB%8F%C2%B7%E5%8D%AB%E9%A3%8E%E3%80%8B/">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://hoarfroster.github.io/2022/03/23/computer%20science/frontend/css-custom-highlight-api/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Hoarfroster">
+      <meta itemprop="description" content="这里是霜羽~~咕咕咕">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hoarfroster 的小窝">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/03/23/computer%20science/frontend/css-custom-highlight-api/" class="post-title-link" itemprop="url">你不会不知道最新的 CSS API 可以给选中的文本添加样式吧？</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-03-23 23:42:00" itemprop="dateCreated datePublished" datetime="2022-03-23T23:42:00+08:00">2022-03-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-05-28 23:43:08" itemprop="dateModified" datetime="2022-05-28T23:43:08+08:00">2022-05-28</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Computer-Science/" itemprop="url" rel="index"><span itemprop="name">Computer Science</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Computer-Science/Frontend/" itemprop="url" rel="index"><span itemprop="name">Frontend</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Computer-Science/Frontend/Styling/" itemprop="url" rel="index"><span itemprop="name">Styling</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span><br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+              <span>5.7k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+              <span>10 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>给选中的文本添加样式并不是没用的行为，而值得开心的是，CSS Custom Highlight API 即将到来，而且它将会成为未来 Web 上样式化选中文本的不二法门！</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/03/23/computer%20science/frontend/css-custom-highlight-api/">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://hoarfroster.github.io/2022/03/18/physics/High%20School/S2%20Electricity%20and%20Electromagnetism/%E7%94%B5%E8%B7%AF%E5%8F%8A%E5%85%B6%E5%BA%94%E7%94%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Hoarfroster">
+      <meta itemprop="description" content="这里是霜羽~~咕咕咕">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hoarfroster 的小窝">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/03/18/physics/High%20School/S2%20Electricity%20and%20Electromagnetism/%E7%94%B5%E8%B7%AF%E5%8F%8A%E5%85%B6%E5%BA%94%E7%94%A8/" class="post-title-link" itemprop="url">电路及其应用</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-03-18 18:11:43" itemprop="dateCreated datePublished" datetime="2022-03-18T18:11:43+08:00">2022-03-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-05-28 23:43:08" itemprop="dateModified" datetime="2022-05-28T23:43:08+08:00">2022-05-28</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/High-School/" itemprop="url" rel="index"><span itemprop="name">High School</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/High-School/Physics/" itemprop="url" rel="index"><span itemprop="name">Physics</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/High-School/Physics/Electricity-and-Electromagnetism/" itemprop="url" rel="index"><span itemprop="name">Electricity and Electromagnetism</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span><br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+              <span>26k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+              <span>47 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+<h2 id="课程标准">课程标准</h2>
+<h3 id="课程标准内容">课程标准内容</h3>
+<h4 id="电路及其应用必修">3.2 电路及其应用（必修）</h4>
+<blockquote>
+<p>3.2.1
+观察并能识别常见的电路元器件，了解它们在电路中的作用。会使用多用电表。</p>
+</blockquote>
+<p>​
+本条目要求学生：通过观察常见的电路元器件实物，识别生活与技术中应用较多的电路元器件，知道相应的电路元器件在电路中的符号，并通过具体的电路和实验了解这些电路元器件在电路中的作用。通过对电压表、电流表改装原理和欧姆表工作原理的分析，了解多用电表的工作原理。在实际操作中学习使用多用电表测量直流电压、电流、电阻等物理量的方法，在测量中学会换挡，知道怎样减小测量误差等。建议以多用电表作为测量工具，组织一些探究实验，如判断二极管的正负极、光敏电阻和热敏电阻的电阻特性、电容器的电容和漏电现象等，还可以练习用多用电表判断电路的故障。</p>
+<blockquote>
+<p>3.2.2
+通过实验，探究并了解金属导体的电阻与材料、长度和横截面积的定量关系。会测量金属丝的电阻率。</p>
+<p>例1 知道滑动变阻器的工作原理。</p>
+<p>例2 通过 <span class="math inline"><em>I</em> − <em>U</em></span>
+图像了解材料的电阻特性。</p>
+</blockquote>
+<p>​
+本条目要求学生：通过实验探究了解金属导体的电阻与材料、长度和横截面积之间的定量关系，理解电阻定律及其表达式，在实验探究中经历提出间题、寻找证据、解释与交流等科学探究的过程，体验用图像法处理数据的科学方法，促进实验探究能力的提升。学生能设计出测量金属电阻率的实验方案，并通过实验测量金属的电阻率，体验用图像法处理数据的科学方法。通过对不同导体的电阻率测量，了解电阻率的概念，知道常见金属导体电阻率的大小。在实验过程中，了解螺旋测微器的工作原理，在测量导体直径的实验中，学会正确使用螺旋测微器，培养在科学实验中严谨的科学态度。</p>
+<blockquote>
+<p>3.2.3 了解串、并联电路电阻的特点。</p>
+</blockquote>
+<p>​
+本条目要求学生：了解电阻串、并联电路电压、电流、功率的分配原则；知道串联电路具有分压作用，并联电路具有分流作用；知道串联电路等效电阻等于各电阻之和，大于各个电阻值；知道并联电路等效电阻值倒数等于每条支路电阻值倒数之和，小于各支路电阻值。在串并联电路的探究过程中，教师应让学生体会等效方法来处理复杂问题的思想，让学生通过电压表、电流表改装，加深对串、并联电路特点的理解。</p>
+<blockquote>
+<p>3.2.4 理解闭合电路欧姆定律。会测量电源的电动势和内阻。</p>
+<p>例3
+通过探究电源两端电压与电流的关系，体会图像法在研究物理问题中的作用。</p>
+</blockquote>
+<p>​
+本条目要求学生：通过探究实验理解闭合电路欧姆定律，掌握电源电动势与路电压和内电压的关系金并能用能量点解释。通过对实验现象的观察和解释。理电动势的概念和物理合知道电源电动劳和内阻是标志电源性能的重要参数。闭合电路欧如定律释绒对路端电压和电源输出功率的影响等实际问题。能利用闭合电路欧姆定律设计内测量电源电动势和内阻”的实验方案，并能通过实际操作测量出电源电动势和内阻，学习有关的电路连接、测量方面的实验操作技能和规范，通过对实验数据的处理，体会图像在研究物理中的作用。</p>
+<blockquote>
+<p>3.2.5
+理解电功、电功率及焦耳定律，能用焦耳定律解释生产生活中的电热现象。</p>
+</blockquote>
+<p>​
+本条目要求学生：理解电功、电功率的概念和物理含义，掌握电功和电功率的计算公式；通过实验理解焦耳定律，能用焦耳定律计算电路中的电热，能区分电功和电热，能从能量转化和守恒的角度理解非纯电阻电路中电功和电热的关系，提升用能量的观点来理解、解释物理现象的能力。通过分析电流热效应在生产生活中的应用，提升应用物理知识解决实际问题的能力。</p>
+<blockquote>
+<p>3.2.6
+能分析和解决家庭电路中的简单问题，能将安全用电和节约用电的知识应用于生活实际。</p>
+<p>例4 根据某家庭的电器设施，估算该家庭电路中所需导线的规格。</p>
+</blockquote>
+<p>​
+本条目要求学生：通过估算家庭电路中所需导线的规格，分析电路故障等简单电路问题，提升物理观念，发展科学思维；通过检查电路是否存在安全隐患，知道安全用电的基本方法；通过调查近年来家庭用电的情况，讨论节约用电如何从自己做起，具有节约用电的意识，养成节约用电的习惯。</p>
+<h4 id="教学活动要求">教学活动要求</h4>
+<ol type="1">
+<li>分别描绘电炉丝、小灯泡、半导体二极管的I-U特性曲线，对比它们导电性能的特点。</li>
+<li>收集新型电热器的资料，了解其发热原理。</li>
+<li>观察家庭用电器的工作状况，检查是否存在安全隐患，知道安全用电的基本方法。</li>
+<li>调查近年来家庭用电的情况，讨论节约用电如何从自己做起，养成节约用电的习惯。</li>
+</ol>
+<h2 id="知识聚焦">知识聚焦</h2>
+<h3 id="一电源和电流电阻">一、电源和电流、电阻</h3>
+<h4 id="电源">1. 电源</h4>
+<p>​ 能把电子从 <span class="math inline"><em>A</em></span> 搬运到 <span class="math inline"><em>B</em></span> 的装置 <span class="math inline"><em>P</em></span> 就是<strong>电源</strong>，<span class="math inline"><em>A</em></span> 和 <span class="math inline"><em>B</em></span>
+是电源的两个电极。电源中存在由稳定分布的电荷所产生的稳定的电场，叫作<strong>恒定电场</strong>，让导体中的自由电荷做定向运动，形成一个大小、方向都不随时间变化的电流（<strong>恒定电流</strong>）。</p>
+<h4 id="电流">2. 电流</h4>
+<p>​
+电流的强弱用<strong>电流</strong>这一物理量描述，==反应单位时间内通过导体横截面的电荷数量多少==，用符号
+<span class="math inline"><em>I</em></span> 描述，单位安培，简称安，符号
+<span class="math inline"><em>A</em></span>，有 <span class="math inline">$I=\dfrac{q}{t}=nqSv$</span>。</p>
+<h4 id="电阻">3. 电阻</h4>
+<p>​ 同一个金属导体的<strong>伏安特性曲线</strong>即 <span class="math inline"><em>U</em> − <em>I</em></span>
+图像是一条过原点的直线，不管电流电压怎样变化，同一导体电压跟电流之比都是一个常量，我们称之为<strong>电阻</strong>，==反应导体对电流的阻碍作用==，用符号
+<span class="math inline"><em>R</em></span>
+表示，单位欧姆，简称欧，符号<span class="math inline"><em>ω</em></span>。</p>
+<p>​ ==同种材料的导体，其电阻 <span class="math inline"><em>R</em></span> 与它的长度 <span class="math inline"><em>l</em></span> 成正比，与它的横截面积 <span class="math inline"><em>S</em></span>
+成反比；导体电阻还与构成它的材料有关==，也即 <span class="math inline">$R=\rho\dfrac{l}{S}$</span>。同种材料的 <span class="math inline"><em>ρ</em></span>
+不变，称为该材料的<strong>电阻率</strong>。一些金属在温度特别低时电阻可以降为
+<span class="math inline">0</span>，该现象称为<strong>超导现象</strong>。</p>
+<h4 id="实验研究影响导体电阻的因素-exp-研究影响导体电阻的因素">4.
+实验：研究影响导体电阻的因素 | #exp-研究影响导体电阻的因素</h4>
+<h5 id="一实验原理">一、实验原理</h5>
+<p>​
+电压表测量电压比较电压之比，根据串联电路电流关系可以得出电阻关系。</p>
+<h5 id="二实验思路">二、实验思路</h5>
+<p>​ <span class="math inline"><em>a</em></span>、<span class="math inline"><em>b</em></span>、<span class="math inline"><em>c</em></span>、<span class="math inline"><em>d</em></span>
+是四段不同的金属导体。在长度、横截面积和材料三个因素中，<span class="math inline"><em>b</em></span>、<span class="math inline"><em>c</em></span>、<span class="math inline"><em>d</em></span> 跟 <span class="math inline"><em>a</em></span> 相比，分别只有一个因素不同。</p>
+<p>​
+图中四段导体是串联的，每段导体两端的电压与它们的电阻成正比，因研究影响导体电阻的因素此，用电压表分别测量<span class="math inline"><em>a</em></span>、<span class="math inline"><em>b</em></span>、<span class="math inline"><em>c</em></span>、<span class="math inline"><em>d</em></span>
+两端的电压，就能知道它们的电阻之比。这样就可以得出长度、横截面积和材料这三个因素与导体电阻的关系。</p>
+<figure>
+<img src="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/image-20220319100527608.png" alt="影响导体电阻的因素">
+<figcaption aria-hidden="true">影响导体电阻的因素</figcaption>
+</figure>
+<h5 id="三实验操作">三、实验操作</h5>
+<ol type="1">
+<li><strong>导体电阻与长度的关系</strong>：<span class="math inline"><em>b</em></span> 与 <span class="math inline"><em>a</em></span>，长度不同，横截面积、材料相同。比较
+<span class="math inline"><em>a</em></span>、<span class="math inline"><em>b</em></span> 的电阻之比与它们的长度之比。</li>
+<li><strong>导体电阻与横截面积的关系</strong>：<span class="math inline"><em>c</em></span> 与 <span class="math inline"><em>a</em></span>，横截面积不同，长度、材料相同。比较
+<span class="math inline"><em>a</em></span>、<span class="math inline"><em>c</em></span>
+的电阻之比与它们的横截面积之比。</li>
+<li><strong>导体电阻与材料的关系</strong>：<span class="math inline"><em>d</em></span> 与 <span class="math inline"><em>a</em></span>，材料不同，长度、横截面积相同。比较
+<span class="math inline"><em>a</em></span>、<span class="math inline"><em>d</em></span> 的电阻 是否相等。</li>
+<li>改变滑动变阻器滑片的位置，重复上述步骤，可以获得多组实验数据以得到更可靠的结论。</li>
+</ol>
+<h5 id="四测量物理量">四、测量物理量</h5>
+<p>​ 测量 <span class="math inline"><em>a</em></span>、<span class="math inline"><em>b</em></span>、<span class="math inline"><em>c</em></span>、<span class="math inline"><em>d</em></span>
+四段电压，记录数据以比较电阻关系。</p>
+<!--##### 五、误差分析-->
+<h4 id="实验导体电阻率的测量-exp-导体电阻率的测量">5.
+实验：导体电阻率的测量 | #exp-导体电阻率的测量</h4>
+<h5 id="长度的测量">1. 长度的测量</h5>
+<h6 id="游标卡尺">游标卡尺</h6>
+<p><img src="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/vernier_caliper.png" alt="游标卡尺示例图" style="max-width: 480px"></p>
+<p>游标卡尺各部分：</p>
+<ol type="1">
+<li>外测量爪</li>
+<li>内测量爪</li>
+<li>深度尺</li>
+<li>主尺（单位英尺）</li>
+<li>主尺（单位厘米）</li>
+<li>游标尺（单位厘米）</li>
+<li>游标尺（单位英尺）</li>
+<li>紧固螺丝</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/vernier_caliper_reading.png" alt="游标卡尺读数示例图" style="max-width:480px"></p>
+<ol type="1">
+<li>主尺读数：读游标尺，看零刻度线位于主尺哪两个刻度之间：
+<ul>
+<li>图例：零刻度线位于 2.4 与 2.5 之间，见 <strong>①</strong>
+处，则主尺刻度为 <strong>24mm</strong>。</li>
+</ul></li>
+<li>游标尺读数：读游标尺，找游标尺上与主尺相重叠的刻度线：
+<ul>
+<li>图例：恰好第 15 条刻度线与主尺刻度线 5.4 相重叠，见
+<strong>②</strong> 处，则游标尺刻度为刻度线数与分度的积 <strong>15 ×
+0.05 = 0.75mm</strong>。</li>
+</ul></li>
+<li>读数为主尺读数与游标尺读数之和：
+<ul>
+<li>图例：<strong>24 + 0.75 = 24.75mm</strong>。</li>
+</ul></li>
+</ol>
+<h6 id="螺旋测微计">螺旋测微计</h6>
+<p><img src="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/micrometer.png" alt="螺旋测微计示例图" style="zoom:25%;"></p>
+<p>螺旋测微器各部分：</p>
+<ol type="1">
+<li>螺旋测微器框架，决定<strong>测量的最大长度</strong></li>
+<li>小砧</li>
+<li>测微螺杆</li>
+<li>紧固螺丝</li>
+<li>主轴 固定刻度</li>
+<li>旋轴 可动刻度</li>
+<li>旋钮</li>
+<li>微调旋钮</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/micrometer_reading.png" alt="螺旋测微计读数示例图" style="zoom:25%;"></p>
+<p>螺旋测微器的读数分为以下步骤：</p>
+<ol type="1">
+<li><strong>查零：检查小砧与测微螺杆紧靠时，可动刻度的零刻度线</strong>是否与<strong>固定刻度</strong>所在轴直线平齐。</li>
+<li><strong>测量</strong>：物体放入<strong>小砧</strong>与<strong>测微螺杆</strong>之间，旋转<strong>旋钮</strong>到接近物体长度，再旋转<strong>微调旋钮</strong>到“<strong>咔嗒</strong>声”。</li>
+<li><strong>读数</strong>：先读固定刻度，单位 1mm，分度
+0.5mm。再读可动刻度，单位 0.01mm，分度 0.001mm。</li>
+<li>记录：读数=固定刻度+可动刻度。
+<ul>
+<li>图例：<strong>20.5 + 0.13 = 20.63mm</strong>。</li>
+</ul></li>
+</ol>
+<h5 id="二实验原理">二、实验原理</h5>
+<p>​ 电阻大小与长度、横截面积、电阻率的关系：<span class="math inline">$R=\rho\dfrac{l}{S}$</span>，可以推出 <span class="math inline">$\rho=\dfrac{\pi d^2U}{4Il}$</span>。</p>
+<h5 id="三实验操作-1">三、实验操作</h5>
+<figure>
+<img src="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/image-20220319111344431.png" alt="image-20220319111344431">
+<figcaption aria-hidden="true">image-20220319111344431</figcaption>
+</figure>
+<ol type="1">
+<li>用螺旋测微器或游标卡尺在被测金属丝三个不同位置各测一次直径，求平均值
+<span class="math inline"><em>d</em></span>。</li>
+<li>按实验电路图连接实物电路。</li>
+<li>用毫米刻度尺测量接入电路中的被测金属丝的有效长度，反复测量三次，求平均值
+<span class="math inline"><em>L</em></span>。</li>
+<li>闭合开关，改变滑动变阻器滑片的位置， 读取多组电压、电流值， 通过
+<span class="math inline"><em>U</em> − <em>I</em></span> 图像求得电阻
+<span class="math inline"><em>R</em></span>。</li>
+<li>根据关系式计算电阻率</li>
+</ol>
+<h5 id="四测量物理量-1">四、测量物理量</h5>
+<p>​ 测量金属丝直径 <span class="math inline"><em>d</em></span>、接入电路有效长度 <span class="math inline"><em>L</em></span> 以及金属丝两端电压电流 <span class="math inline"><em>U</em>, <em>I</em></span>。根据关系式计算得到
+<span class="math inline">$\rho=\dfrac{\pi d^2U}{4lI}$</span>。</p>
+<h5 id="五误差分析">五、误差分析</h5>
+<ol type="1">
+<li>测量金属丝直径、有效长度时测量误差。</li>
+<li>伏安法测量电阻时，电压表分流产生误差。</li>
+<li>金属丝通电后发热，使电阻率升高。</li>
+</ol>
+<h3 id="二串联电路和并联电路">二、串联电路和并联电路</h3>
+<h4 id="电流电压和电阻的关系">1. 电流、电压和电阻的关系</h4>
+<table>
+<colgroup>
+<col style="width: 8%">
+<col style="width: 24%">
+<col style="width: 32%">
+<col style="width: 34%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th><span class="math inline"><em>I</em></span></th>
+<th><span class="math inline"><em>U</em></span></th>
+<th><span class="math inline"><em>R</em></span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>串联电路</td>
+<td>处处相等</td>
+<td>总电压等于各部分电路两端电压之和</td>
+<td>总电阻等于各部分电路电阻之和</td>
+</tr>
+<tr class="even">
+<td>并联电路</td>
+<td>总电流等于各支路电流之和</td>
+<td>总电压与各支路电压相等</td>
+<td>总电阻的倒数等于各支路电阻的倒数和</td>
+</tr>
+</tbody>
+</table>
+<h4 id="等效电路问题">2. 等效电路问题</h4>
+<p>​
+求解电路问题，首先要识别电路的结构，即串并联关系及特点；其次要掌握电路简化的方法和技巧。</p>
+<ol type="1">
+<li>凡是接在两个同样等势点上的用电器为并联关系，凡是同一电流流过的用电器为串联关系。</li>
+<li>用导线直接连接的各点电势一定相等（包括用不计电阻的电流表、没有电流通过的电阻连接的点）。</li>
+<li>在没有特殊说明下，不考虑电表对电路的影响，电流表视为短路，电压表、电容器视为断路。</li>
+</ol>
+<h4 id="电流表电压表的电路结构">3. 电流表、电压表的电路结构</h4>
+<p>​
+常用的电压表和电流表都是由小量程的电流表（表头）改装而成的。表头的工作原理涉及磁场对通电导线的作用（磁电式电流计）。</p>
+<p>​ 表头的电阻 <span class="math inline"><em>R</em><sub><em>g</em></sub></span>
+叫作电流表的<strong>内阻</strong>。指针偏转到最大刻度时的电流 <span class="math inline"><em>I</em><sub><em>g</em></sub></span>
+叫作<strong>满偏电流</strong>。表头通过满偏电流时，加在它两端的电压
+<span class="math inline"><em>U</em><sub><em>g</em></sub></span>
+叫作<strong>满偏电压</strong>。由欧姆定律可知 <span class="math inline"><em>U</em><sub><em>g</em></sub>＝<em>I</em><sub><em>g</em></sub><em>R</em><sub><em>g</em></sub></span>。表头的满偏电压
+<span class="math inline"><em>U</em><sub><em>g</em></sub></span>
+和满偏电流 <span class="math inline"><em>I</em><sub><em>g</em></sub></span>
+一般都比较小，测量大电压时需要串连一个分压电阻，测量大电流时需要并联一个分流电阻。</p>
+<blockquote>
+<h4 id="改装电压表">改装电压表</h4>
+<p>​ 下图为将表头改装为电压表的方式：串连一个较大电阻 <span class="math inline"><em>R</em></span>。</p>
+<figure>
+<img src="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/image-20220319113205989.png" alt="改装示例图">
+<figcaption aria-hidden="true">改装示例图</figcaption>
+</figure>
+<p>​ 最大量程由 <span class="math inline"><em>U</em><sub><em>g</em></sub></span> 变为 <span class="math inline"><em>U</em></span>，则 <span class="math inline"><em>U</em> = <em>U</em><sub><em>g</em></sub> + <em>U</em><sub><em>R</em></sub></span>；</p>
+<p>​ 由表头与 <span class="math inline"><em>R</em></span> 串联，有 <span class="math inline">$\dfrac{U_R}{R}=\dfrac{U_g}{R_g}\Rightarrow
+R=\dfrac{U_r}{U_g}R_g=\dfrac{U-U_g}{U_g}R_g$</span>；</p>
+<p>​ 故电表总电阻<span class="math inline">$R_V=R_g+R=\dfrac{U}{I_g}$</span>。</p>
+</blockquote>
+<blockquote>
+<h4 id="改装电流表">改装电流表</h4>
+<p>​ 下图为将表头改装为电压表的方式：并联一个较小电阻 <span class="math inline"><em>R</em></span>。</p>
+<figure>
+<img src="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/image-20220319113227077.png" alt="改装示例图">
+<figcaption aria-hidden="true">改装示例图</figcaption>
+</figure>
+<p>​ 最大量程由 <span class="math inline"><em>I</em><sub><em>g</em></sub></span> 变为 <span class="math inline"><em>I</em></span>，则 <span class="math inline"><em>I</em> = <em>I</em><sub><em>g</em></sub> + <em>I</em><sub><em>R</em></sub></span>；</p>
+<p>​ 由表头与 <span class="math inline"><em>R</em></span> 串联，有 <span class="math inline">$I_gR_g=I_RR\Rightarrow
+R=\dfrac{I_g}{I_R}R_g=\dfrac{I_g}{I-I_g}R_g$</span>；</p>
+<p>​ 故电表总电阻<span class="math inline">$R_A=\dfrac{R_gR}{R_g+R}=\dfrac{U_g}{I}$</span>。</p>
+</blockquote>
+<h3 id="三-电阻的测量">三、 电阻的测量</h3>
+<p>​
+测量电阻，一般使用伏安法（测量电阻的电压、电流），可拓展为电表的内外接、滑动变阻器的限流与分压。</p>
+<h4 id="内接法与外接法">1. 内接法与外接法</h4>
+<p>​
+电流表内外接的选择原则是<strong>大内小外</strong>，也即==测大电阻用内接法，测小电阻用外接法==，合并误差的大小关系，可以得出口诀<strong>大内大小外小</strong>。</p>
+<blockquote>
+<h4 id="电流表内接法">电流表内接法</h4>
+<p>​ 下图为电流表的内接法，<span class="math inline"><em>R</em><sub><em>测</em></sub> = <em>R</em><sub><em>A</em></sub> + <em>R</em></span>：</p>
+<figure>
+<img src="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/A_inside.svg" alt="电流表内接">
+<figcaption aria-hidden="true">电流表内接</figcaption>
+</figure>
+<ol type="1">
+<li>电压表示数 <span class="math inline"><em>U</em><sub><em>V</em></sub> = <em>U</em><sub><em>R</em></sub> + <em>U</em><sub><em>A</em></sub> &gt; <em>U</em><sub><em>R</em></sub></span>，电流表示数
+<span class="math inline"><em>I</em><sub><em>A</em></sub> = <em>I</em><sub><em>R</em></sub></span>；</li>
+<li><span class="math inline">$R_测=\dfrac{U_V}{I_A}&gt;\dfrac{U_R}{I_R}=R_真$</span>，<strong>测量值偏大</strong>，==误差来源于电流表的分压作用==。</li>
+</ol>
+</blockquote>
+<blockquote>
+<h4 id="电流表外接法">电流表外接法</h4>
+<p>​ 下图为电流表的外接法，<span class="math inline">$R_测=\dfrac{R_VR}{R_V+R}$</span>：</p>
+<figure>
+<img src="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/A_outside.svg" alt="电流表外接">
+<figcaption aria-hidden="true">电流表外接</figcaption>
+</figure>
+<ol type="1">
+<li>电压表示数 <span class="math inline"><em>U</em><sub><em>V</em></sub> = <em>U</em><sub><em>R</em></sub></span>，电流表示数
+<span class="math inline"><em>I</em><sub><em>A</em></sub> = <em>I</em><sub><em>R</em></sub> + <em>I</em><sub><em>V</em></sub> &gt; <em>I</em><sub><em>R</em></sub></span>；</li>
+<li><span class="math inline">$R_测=\dfrac{U_V}{I_A}&lt;\dfrac{U_R}{I_R}=R_真$</span>，<strong>测量值偏小</strong>，==误差来源于电压表的分流作用==。</li>
+</ol>
+</blockquote>
+<h4 id="限流法与分压法">2. 限流法与分压法</h4>
+<p>​
+滑动变阻器一般选择<strong>阻值范围小，额定电流大</strong>，使其调节起来更为灵敏。</p>
+<blockquote>
+<h4 id="滑动变阻器限流接法">滑动变阻器限流接法</h4>
+<p>下图为滑动变阻器的限流接法，电阻 <span class="math inline"><em>R</em><sub><em>x</em></sub></span>
+的电压变化范围为 <span class="math inline">$\dfrac{R_xU}{R+R_x}\to
+U$</span>。</p>
+<figure>
+<img src="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/limit_current.svg" alt="滑动变阻器限流">
+<figcaption aria-hidden="true">滑动变阻器限流</figcaption>
+</figure>
+<ol type="1">
+<li>电压不能从零开始调节，调节范围较小；</li>
+<li>电能损耗小。</li>
+</ol>
+</blockquote>
+<blockquote>
+<h4 id="滑动变阻器分压接法">滑动变阻器分压接法</h4>
+<p>​ 下图为滑动变阻器的分压接法，电阻 <span class="math inline"><em>R</em><sub><em>x</em></sub></span>
+的电压变化范围为 <span class="math inline">0 → <em>U</em></span>。</p>
+<figure>
+<img src="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/separate_voltage.svg" alt="滑动变阻器分压">
+<figcaption aria-hidden="true">滑动变阻器分压</figcaption>
+</figure>
+<ol type="1">
+<li>电压可以从零开始调节到等于电源两端电压，调节范围极大；</li>
+<li>电能损耗大。</li>
+</ol>
+</blockquote>
+<h4 id="替代法包括半偏法测量电阻">3. 替代法（包括半偏法）测量电阻</h4>
+<p>​
+测量电表内阻时，我们可以的认为它是一个能直接测量自身分得电压或通过电流的工具，需要测量的就是另一未知的物理量。</p>
+<blockquote>
+<h4 id="半偏法测量电流表内阻">半偏法测量电流表内阻</h4>
+<p>​ 下图为半偏法测量电流表内阻 <span class="math inline"><em>R</em><sub><em>A</em></sub></span>
+的示例图：</p>
+<ol type="1">
+<li>先闭合 <span class="math inline"><em>S</em><sub>1</sub></span>，断开
+<span class="math inline"><em>S</em><sub>2</sub></span>，调节滑动变阻器
+<span class="math inline"><em>R</em><sub>1</sub></span>
+使电流表读数达到满偏 <span class="math inline"><em>I</em><sub>0</sub></span>；</li>
+<li>保持 <span class="math inline"><em>R</em><sub>1</sub></span>
+不变，闭合 <span class="math inline"><em>S</em><sub>2</sub></span>，调节
+<span class="math inline"><em>R</em><sub>2</sub></span> 使电流表读数为
+<span class="math inline">$\dfrac{I_0}{2}$</span>，此时 <span class="math inline"><em>R</em><sub>2</sub> = <em>R</em><sub><em>A</em></sub></span>。</li>
+</ol>
+<figure>
+<img src="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/half_ammeter.svg" alt="半偏法测电流表内阻">
+<figcaption aria-hidden="true">半偏法测电流表内阻</figcaption>
+</figure>
+</blockquote>
+<blockquote>
+<h4 id="半偏法测量电压表内阻">半偏法测量电压表内阻</h4>
+<p>​ 下图为半偏法测量电压表内阻 <span class="math inline"><em>R</em><sub><em>V</em></sub></span>
+的示例图：</p>
+<ol type="1">
+<li>先闭合 <span class="math inline"><em>S</em></span>，将电阻箱 <span class="math inline"><em>R</em><sub>2</sub></span> 的阻值调为 <span class="math inline">0</span>，使电压表达到满偏 <span class="math inline"><em>U</em><sub>0</sub></span>；</li>
+<li>保持 <span class="math inline"><em>R</em><sub>1</sub></span>
+不变，调节 <span class="math inline"><em>R</em><sub>2</sub></span>，使电压表的示数为
+<span class="math inline">$\dfrac{U_0}{2}$</span>，此时 <span class="math inline"><em>R</em><sub>2</sub> = <em>R</em><sub><em>V</em></sub></span>。</li>
+</ol>
+<figure>
+<img src="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/half_voltmeter.svg" alt="半偏法测电压表内阻">
+<figcaption aria-hidden="true">半偏法测电压表内阻</figcaption>
+</figure>
+</blockquote>
+<blockquote>
+<h4 id="替代法测电阻">替代法测电阻</h4>
+<p>​ 下图为替代法测电阻 <span class="math inline"><em>R</em><sub><em>x</em></sub></span>
+的示例图：</p>
+<ol type="1">
+<li>先闭合 <span class="math inline"><em>S</em></span>，调节 <span class="math inline"><em>R</em><sub>1</sub></span> 使电压表示数为 <span class="math inline"><em>U</em><sub>0</sub></span>；</li>
+<li>保持 <span class="math inline"><em>R</em><sub>1</sub></span>
+不变，换接电阻箱 <span class="math inline"><em>R</em></span>，调节使电压表示数为 <span class="math inline"><em>U</em><sub>0</sub></span>，此时 <span class="math inline"><em>R</em><sub><em>x</em></sub> = <em>R</em></span>。</li>
+</ol>
+<figure>
+<img src="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/alternative_oh.svg" alt="替代法测电阻">
+<figcaption aria-hidden="true">替代法测电阻</figcaption>
+</figure>
+</blockquote>
+<h4 id="实验练习使用多用电表-exp-练习使用多用电表">4.
+实验：练习使用多用电表 | #exp-练习使用多用电表</h4>
+<figure>
+<img src="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/image-20220319112315612.png" alt="image-20220319112315612">
+<figcaption aria-hidden="true">image-20220319112315612</figcaption>
+</figure>
+<blockquote>
+<h5 id="注意事项">注意事项</h5>
+<ol type="1">
+<li>使用前应该调整<strong>指针定位螺丝</strong>进行<strong>机械调零</strong>操作，使指针指到零刻度。然后用红表笔和黑表笔分别插入正负孔，测试笔插孔。</li>
+<li>使用时，应先将选择开关旋转到与被测物理量对应的位置上并选择合适的量程。</li>
+<li>测量电阻时，需要注意：
+<ol type="1">
+<li>选档时<strong>尽可能让指针转到中央刻度附近</strong>。</li>
+<li>测量前短接表笔进行<strong>欧姆调零</strong>（每次换挡后都需要欧姆调零）。</li>
+</ol></li>
+<li>测量完成后调节选择开关至 <strong><span class="math inline"><em>O</em><em>F</em><em>F</em></span>
+或交流电压最高档</strong>。</li>
+<li>红表笔接触点的电势应该比黑表笔高，电流总是红入黑出。</li>
+</ol>
+</blockquote>
+<h3 id="四电功和电功率欧姆定律">四、电功和电功率、欧姆定律</h3>
+<h4 id="纯电阻电路电功和电功率">1. 纯电阻电路电功和电功率</h4>
+<p>​
+电流在一段电路中所做的功与通电时间之比叫作<strong>电功率</strong>，用
+<span class="math inline"><em>P</em></span> 表示，由 <span class="math inline">$P=\dfrac{W}{t}$</span>， 进而得到 <span class="math inline"><em>P</em> = <em>U</em><em>I</em></span>，即==电流在一段电路中做功的功率
+<span class="math inline"><em>P</em></span> 等于这段电路两端的电压 <span class="math inline"><em>U</em></span> 与电流 <span class="math inline"><em>I</em></span> 的乘积==。</p>
+<p>​ 同样，由欧姆定律我们可以得到热量 <span class="math inline"><em>Q</em></span> 的定义式 <span class="math inline"><em>Q</em> = <em>I</em><sup>2</sup><em>R</em><em>t</em></span>，即<strong>焦耳定律</strong>：==电流通过导体产生的热量跟电流的二次方成正比，跟导体的电阻及通电时间成正比==</p>
+<h4 id="闭合电路欧姆定律">2. 闭合电路欧姆定律</h4>
+<p>​
+由导线、电源和用电器连成的电路叫作<strong>闭合电路</strong>，分为<strong>外电路</strong>与<strong>内电路</strong>，如图：</p>
+<figure>
+<img src="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/image-20220318183340415.png" alt="image-20220318183340415">
+<figcaption aria-hidden="true">image-20220318183340415</figcaption>
+</figure>
+<p>​
+在电源内部要让正电荷定向移动到正极，需要有一种与静电力方向相反的力，即<strong>非静电力</strong>作用于电荷上，使电荷的电势能增加，即==电源是通过非静电力做功把其他形式的能转化为电势能的装置==。</p>
+<p>​
+在电源内部电源移动电荷，增加电荷的电势能，其做的功与移动的电荷量之比称为电源的<strong>电动势</strong>，即
+<span class="math inline">$E=\dfrac{W}{q}$</span>。</p>
+<p>​
+==在外电路中，沿电流方向电势降低。==在内电路中也存在电阻（<strong>内电阻</strong>，简称<strong>内阻</strong>），使其中电势也沿电流方向降低。</p>
+<p>​
+==闭合电路的电流跟电源的电动势成正比，跟内、外电路的电阻之和成反比==。这个结论叫<strong>闭合电路的欧姆定律</strong>，即
+<span class="math inline">$I=\dfrac{E}{R+r}$</span>，推出 <span class="math inline"><em>E</em> = <em>U</em><sub><em>外</em></sub> + <em>U</em><sub><em>内</em></sub></span>。</p>
+<p>​
+我们常将外电路的用电器称为<strong>负载</strong>，称外电路的电势降落为<strong>路端电压</strong>
+<span class="math inline"><em>U</em></span>，根据闭合电路的欧姆定律，有
+<span class="math inline"><em>U</em> = <em>E</em> − <em>I</em><em>r</em></span>。</p>
+<h4 id="实验电池电动势和内阻的测量-exp-电池电动势和内阻的测量">3.实验：电池电动势和内阻的测量
+| #exp-电池电动势和内阻的测量</h4>
+<h5 id="一实验原理-1">一、实验原理：</h5>
+<p>​ 实验原理为闭合电路欧姆定律。</p>
+<h5 id="二实验思路-1">二、实验思路</h5>
+<ol type="1">
+<li><p>思路一：<strong>伏安法</strong></p>
+<p>​ 根据闭合电路的欧姆定律，电源电动势 <span class="math inline"><em>E</em></span>、内阻 <span class="math inline"><em>r</em></span>，与路端电压 <span class="math inline"><em>U</em></span>、电流 <span class="math inline"><em>I</em></span> 的关系可以写成 <span class="math inline"><em>E</em> = <em>U</em> + <em>I</em><em>r</em></span>，如果能测出
+<span class="math inline"><em>U</em></span> 与 <span class="math inline"><em>I</em></span> 的两组数据，就可以解出 <span class="math inline"><em>E</em></span> 与 <span class="math inline"><em>r</em></span>​。因此，用电压表、电流表加上一个滑动变阻器
+<span class="math inline"><em>R</em></span>，就能测定电源的电动势 <span class="math inline"><em>E</em></span> 和内阻 <span class="math inline"><em>r</em></span>。</p>
+<figure>
+<img src="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/image-20220320142426857.png" alt="image-20220320142426857">
+<figcaption aria-hidden="true">image-20220320142426857</figcaption>
+</figure></li>
+<li><p>思路二：<strong>安阻法</strong></p>
+<p>​ 根据闭合电路欧姆定律的变式 <span class="math inline"><em>E</em> = <em>I</em><em>R</em> + <em>I</em><em>r</em></span>​，测出
+<span class="math inline"><em>I</em></span>、<span class="math inline"><em>R</em></span> 的两组数据，也可以得到关于 <span class="math inline"><em>E</em></span> 和 <span class="math inline"><em>r</em></span> 的两个方程，从中解出 <span class="math inline"><em>E</em></span> 和 <span class="math inline"><em>r</em></span>。这样，用电流表和电阻箱也可以测定电源的电动势
+<span class="math inline"><em>E</em></span> 和内阻 <span class="math inline"><em>r</em></span>。</p>
+<figure>
+<img src="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/image-20220320142612756.png" alt="image-20220320142612756">
+<figcaption aria-hidden="true">image-20220320142612756</figcaption>
+</figure></li>
+<li><p>思路三：<strong>伏阻法</strong></p>
+<p>​ 根据闭合电路欧姆定律的变式 <span class="math inline">$E=U+\dfrac{U}{R}r$</span>​，测出 <span class="math inline"><em>U</em></span>、<span class="math inline"><em>R</em></span> 的两组数据，同样能通过解方程组求出
+<span class="math inline"><em>E</em></span> 和 <span class="math inline"><em>r</em></span>。这样，除了以上两个方法外，还可以用电压表和电阻箱来测定电源的电动势
+<span class="math inline"><em>E</em></span> 和内阻 <span class="math inline"><em>r</em></span>。</p>
+<figure>
+<img src="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/image-20220320142719137.png" alt="image-20220320142719137">
+<figcaption aria-hidden="true">image-20220320142719137</figcaption>
+</figure></li>
+</ol>
+<h5 id="三实验操作-2">三、实验操作</h5>
+<p>​ 只测量两组数据，通过联立方程解得 <span class="math inline"><em>E</em></span> 和 <span class="math inline"><em>r</em></span>，看起来比较简单，误差却可能较大。只有多次测量，并对数据进行处理，才能减小误差。所以，应该使用滑动变阻器改变外电路的电阻，进行多次测量。</p>
+<h5 id="四测量物理量-2">四、测量物理量</h5>
+<p>​ 按照不同思路分别测量不同的物理量，代入式计算。</p>
+<ol type="1">
+<li>伏安法处理数据有以下两种方式：
+<ol type="1">
+<li>公式法：根据闭合电路欧姆定律，列方程组即可。</li>
+<li>作图法：根据 <span class="math inline"><em>U</em> =  − <em>I</em><em>r</em> + <em>E</em></span>（<span class="math inline"><em>y</em> = <em>k</em><em>x</em> + <em>b</em></span>），根据描点作图结果，直线的斜率的绝对值为内阻
+<span class="math inline"><em>r</em></span>，直线的 <span class="math inline"><em>y</em></span> 轴截距为电源电动势 <span class="math inline"><em>E</em></span>。</li>
+</ol></li>
+<li>安阻法处理数据有以下两种方式：
+<ol type="1">
+<li>公式法，根据闭合电路欧姆定律 <span class="math inline"><em>E</em> = <em>I</em>(<em>R</em>+<em>r</em>)</span>，有
+<span class="math inline">$E=\dfrac{(R_1-R_2)I_1I_2}{I_2-I_1}$</span>，<span class="math inline">$r=\dfrac{I_1R_1-I_2R_2}{I_2-I_1}$</span>。</li>
+<li>作图法：根据 <span class="math inline"><em>E</em> = <em>I</em>(<em>R</em>+<em>r</em>)</span>，有变式
+<span class="math inline">$\dfrac{1}{r}=\dfrac{R}{E}+\dfrac{r}{E}$</span>，即直线的斜率为
+<span class="math inline">$\dfrac{1}{E}$</span>，<span class="math inline"><em>y</em></span> 轴截距为 <span class="math inline">$\dfrac{r}{E}$</span>。</li>
+</ol></li>
+<li>伏阻法处理数据有以下两种方式：
+<ol type="1">
+<li>公式法：根据闭合电路欧姆定律 <span class="math inline">$E=U+\dfrac{U}{R}r$</span>，有 <span class="math inline">$E=\dfrac{U_1U_2(R_2-R_1)}{U_1R_2-U_2R_1}$</span>，<span class="math inline">$r=\dfrac{R_1R_2(U_1-U_2)}{U_2R_1-U_1R_2}$</span>。</li>
+<li>作图法：根据闭合电路欧姆定律 <span class="math inline">$E=U+\dfrac{U}{R}r$</span>，有变式 <span class="math inline">$\dfrac{1}{U}=\dfrac{1}{E}+\dfrac{r}{E}\cdot\dfrac{1}{R}$</span>，即直线的斜率为
+<span class="math inline">$\dfrac{r}{E}$</span>，在 <span class="math inline"><em>y</em></span> 轴上的截距为 <span class="math inline">$\dfrac{1}{E}$</span>。</li>
+</ol></li>
+</ol>
+<h5 id="五误差分析-1">五、误差分析</h5>
+<ol type="1">
+<li><p>伏安法测得的误差来源于电压表的分流时（电流表外接），测量值均偏小。伏安法测得的误差来源于电流表的分压时（电流表内接），电源电动势无系统误差，但电源内阻偏大。</p>
+<ol type="1">
+<li><p>电流表外接误差分析：<span class="math inline">$E_测=\dfrac{R_V}{R_V+r}E$</span>，<span class="math inline">$r_测=\dfrac{R_V}{R_V+r}r$</span>。</p>
+<p><img src="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/Electromotive-force-measurement-Ammeter-separate-voltage.svg" alt="电流表外接误差分析" style="max-width: 240px"></p></li>
+<li><p>电流表内接误差分析：<span class="math inline"><em>E</em><sub><em>测</em></sub> = <em>E</em></span>，<span class="math inline"><em>r</em><sub><em>测</em></sub> = <em>R</em><sub><em>A</em></sub> + <em>r</em></span>。</p>
+<p><img src="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/Electromotive-force-measurement-Voltmeter-separate-current.svg" alt="电流表内接误差分析" style="max-width: 240px"></p></li>
+</ol></li>
+<li><p>安阻法测得的电源电动势无系统误差，但电源内阻测量值偏大，误差来源于<strong>电流表的分压</strong>。</p></li>
+<li><p>伏阻法计算得到的的数据都偏小，误差来源于<strong>电压表的分流</strong>。</p></li>
+</ol>
+<h4 id="电源的最大输出功率">4. 电源的最大输出功率</h4>
+<p>​ 电源的输出功率 <span class="math inline"><em>P</em><sub><em>O</em></sub> = <em>U</em><em>I</em></span>，由闭合电路欧姆定律，<span class="math inline"><em>I</em></span> 与 <span class="math inline"><em>U</em></span> 成反比关系，证明 <span class="math inline"><em>U</em><em>I</em></span>
+有极值存在。如果外电路是纯电阻电路，则有 <span class="math inline">$P_O=UI=I^2R=(\dfrac{E}{R+r})^2\times
+R$</span>。</p>
+<p>​ 因为 <span class="math inline">(<em>R</em>+<em>r</em>)<sup>2</sup> = (<em>R</em>−<em>r</em>)<sup>2</sup> + 4<em>R</em><em>r</em></span>，故==当
+<span class="math inline"><em>R</em> = <em>r</em></span>（外电路电阻与内电阻相等时）功率有最大值==，<span class="math inline">$P_{Omax}=\dfrac{E^2}{4r}$</span>。</p>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/39/">39</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Hoarfroster"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Hoarfroster</p>
+  <div class="site-description" itemprop="description">这里是霜羽~~咕咕咕</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">193</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">53</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">58</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <ul class="links-of-author motion-element">
+      <li class="links-of-author-item">
+        <a href="https://github.com/PassionPenguin" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;PassionPenguin" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        <span> PassionPenguin</span>
+      </li>
+      <li class="links-of-author-item">
+        <a href="mailto:hoarfroster@outlook.com" title="E-Mail → mailto:hoarfroster@outlook.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+        <span> hoarfroster@outlook.com</span>
+      </li>
+      <li class="links-of-author-item">
+        <a href="https://twitter.com/zhangqizhe" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;zhangqizhe" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+        <span> @zhangqizhe</span>
+      </li>
+      <li class="links-of-author-item">
+        <a href="https://www.instagram.com/glacierpenguin/" title="Instagram → https:&#x2F;&#x2F;www.instagram.com&#x2F;glacierpenguin&#x2F;" rel="noopener" target="_blank"><i class="fab fa-instagram fa-fw"></i>Instagram</a>
+        <span> @glacierpenguin</span>
+      </li>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hoarfroster</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="Symbols count total">1.1m</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">34:12</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT</a>
+  </div>
+
+        
+
+
+
+
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-firestore.js"></script>
+  <script>
+    firebase.initializeApp({
+      apiKey   : 'AIzaSyDqM81uUD8yWHAvsGasJzvWBHhpBYnRttI',
+      projectId: 'hoar-froster'
+    });
+
+    function getCount(doc, increaseCount) {
+      // IncreaseCount will be false when not in article page
+      return doc.get().then(d => {
+        var count = 0;
+        if (!d.exists) { // Has no data, initialize count
+          if (increaseCount) {
+            doc.set({
+              count: 1
+            });
+            count = 1;
+          }
+        } else { // Has data
+          count = d.data().count;
+          if (increaseCount) {
+            // If first view this article
+            doc.set({ // Increase count
+              count: count + 1
+            });
+            count++;
+          }
+        }
+
+        return count;
+      });
+    }
+
+    function appendCountTo(el) {
+      return count => {
+        el.innerText = count;
+      }
+    }
+  </script>
+  <script>
+    (function() {
+      var db = firebase.firestore();
+      var articles = db.collection('articles-info');
+
+      if (CONFIG.page.isPost) { // Is article page
+        var title = document.querySelector('.post-title').innerText.trim();
+        var doc = articles.doc(title);
+        var increaseCount = CONFIG.hostname === location.hostname;
+        if (localStorage.getItem(title)) {
+          increaseCount = false;
+        } else {
+          // Mark as visited
+          localStorage.setItem(title, true);
+        }
+        getCount(doc, increaseCount).then(appendCountTo(document.querySelector('.firestore-visitors-count')));
+      } else if (CONFIG.page.isHome) { // Is index page
+        var promises = [...document.querySelectorAll('.post-title')].map(element => {
+          var title = element.innerText.trim();
+          var doc = articles.doc(title);
+          return getCount(doc);
+        });
+        Promise.all(promises).then(counts => {
+          var metas = document.querySelectorAll('.firestore-visitors-count');
+          counts.forEach((val, idx) => {
+            appendCountTo(metas[idx])(val);
+          });
+        });
+      }
+    })();
+  </script>
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var canonicalURL, curProtocol;
+      //Get the <link> tag
+      var x=document.getElementsByTagName("link");
+		//Find the last canonical URL
+		if(x.length > 0){
+			for (i=0;i<x.length;i++){
+				if(x[i].rel.toLowerCase() == 'canonical' && x[i].href){
+					canonicalURL=x[i].href;
+				}
+			}
+		}
+    //Get protocol
+	    if (!canonicalURL){
+	    	curProtocol = window.location.protocol.split(':')[0];
+	    }
+	    else{
+	    	curProtocol = canonicalURL.split(':')[0];
+	    }
+      //Get current URL if the canonical URL does not exist
+	    if (!canonicalURL) canonicalURL = window.location.href;
+	    //Assign script content. Replace current URL with the canonical URL
+      !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=canonicalURL,t=document.referrer;if(!e.test(r)){var n=(String(curProtocol).toLowerCase() === 'https')?"https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif":"//api.share.baidu.com/s.gif";t?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var i=new Image;i.src=n}}(window);})();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme    : 'default',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+  
+
+  
+
+
+</body>
+</html>

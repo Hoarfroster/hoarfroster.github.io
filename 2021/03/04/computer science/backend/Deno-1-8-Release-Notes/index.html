@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/avatar.png" color="#222">
+  <meta name="google-site-verification" content="iFMbHL1JuWjTlNFq5Rv96vDzpsqakxTpdE2nw7Crr6o">
+  <meta name="msvalidate.01" content="EF6D8CD8A3335E66AB96B4D544FCD96C">
+  <meta name="baidu-site-verification" content="code-80b80Pbzs2">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link href="/lib/fontawesome/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<script>
+
+  window.onload = function() {
+    document.querySelectorAll("p").forEach(e=>{
+      e.innerHTML = e.innerHTML.replaceAll(/==(.+?)==/g, "<mark>$1</mark>").replaceAll(/​\s+?/g, "<span class='tab'></span>");
+    });
+    
+    [...document.querySelectorAll("pre > code")].forEach(e=> {
+        var codeClass = e.parentElement.classList.value;
+        if (codeClass == null || codeClass === "") {
+            e.classList.add("hljs");
+        } else {
+            var map = {
+                js: "javascript"
+            };
+            if (map[codeClass]) {
+                codeClass = map[codeClass];
+            }
+            codeClass.split(" ").forEach(i=>e.classList.add(i));
+            hljs.highlightElement(e);
+        }
+    });
+
+    [...document.querySelectorAll('.classcial-chinese-literature-and-poetry-translation')].forEach(i=>{
+      let el = document.createElement('div');
+      el.setAttribute('class', 'fa-solid fa-eye');
+      i.prepend(el);
+      el.addEventListener('click', ()=>{
+        let status = el.classList.contains('fa-eye');
+        [...i.querySelectorAll('.translation')].forEach(j=>{
+          j.classList.remove('hide');
+          if(status) {
+            j.classList.add('hide');
+          }
+        });
+        el.attributes['class'].value = el.attributes['class'].value.replace('fa-eye-slash', 'fa-0').replace('fa-eye', 'fa-eye-slash').replace('fa-0', 'fa-eye');
+      });
+
+      [...i.querySelectorAll('.original-text')].forEach(e=>{
+        let el = document.createElement('div');
+        el.setAttribute('class', 'fa-solid fa-eye-slash');
+        e.prepend(el);
+        el.addEventListener('click', ()=>{
+            e.nextSibling.classList.toggle('hide');
+            el.attributes['class'].value = el.attributes['class'].value.replace('fa-eye-slash', 'fa-0').replace('fa-eye', 'fa-eye-slash').replace('fa-0', 'fa-eye');
+        });
+      })
+    });
+  }
+</script>
+<script async src="/js/highlight.min.js"></script>
+<script async src="/js/cursor.js"></script>
+<script data-ad-client="ca-pub-2275811890061218" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"hoarfroster.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqusjs","storage":true,"lazyload":false,"nav":null,"activeClass":"disqusjs"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="今天我们正式地发布了 Deno 1.8.0 版本。我们在这个版本中添加了大量的新功能，也同时优化了它的稳定性。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Deno 1.8 发行公告">
+<meta property="og:url" content="https://hoarfroster.github.io/2021/03/04/computer%20science/backend/Deno-1-8-Release-Notes/index.html">
+<meta property="og:site_name" content="Hoarfroster 的小窝">
+<meta property="og:description" content="今天我们正式地发布了 Deno 1.8.0 版本。我们在这个版本中添加了大量的新功能，也同时优化了它的稳定性。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/v2-85594ad0a400c1d77cbbbddb95d2d9b1_720w.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/v2-4fae6d12908d01b0d324f9594d7fae10_1440w.jpg">
+<meta property="article:published_time" content="2021-03-04T13:29:00.000Z">
+<meta property="article:modified_time" content="2022-05-28T15:43:08.164Z">
+<meta property="article:author" content="Hoarfroster">
+<meta property="article:tag" content="Computer Science">
+<meta property="article:tag" content="Backend">
+<meta property="article:tag" content="Deno">
+<meta property="article:tag" content="JavaScript">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/v2-85594ad0a400c1d77cbbbddb95d2d9b1_720w.png">
+
+<link rel="canonical" href="https://hoarfroster.github.io/2021/03/04/computer%20science/backend/Deno-1-8-Release-Notes/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>Deno 1.8 发行公告 | Hoarfroster 的小窝</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <!--<div class="headband"></div>-->
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hoarfroster 的小窝</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section">Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section">About</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section">Categories</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger">
+          Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://hoarfroster.github.io/2021/03/04/computer%20science/backend/Deno-1-8-Release-Notes/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Hoarfroster">
+      <meta itemprop="description" content="这里是霜羽~~咕咕咕">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hoarfroster 的小窝">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Deno 1.8 发行公告
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-03-04 21:29:00" itemprop="dateCreated datePublished" datetime="2021-03-04T21:29:00+08:00">2021-03-04</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-05-28 23:43:08" itemprop="dateModified" datetime="2022-05-28T23:43:08+08:00">2022-05-28</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Computer-Science/" itemprop="url" rel="index"><span itemprop="name">Computer Science</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Computer-Science/Backend/" itemprop="url" rel="index"><span itemprop="name">Backend</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Computer-Science/Backend/Deno/" itemprop="url" rel="index"><span itemprop="name">Deno</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span><br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+              <span>9.5k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+              <span>17 mins.</span>
+            </span>
+            <div class="post-description">今天我们正式地发布了 Deno 1.8.0 版本。我们在这个版本中添加了大量的新功能，也同时优化了它的稳定性。</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <blockquote>
+<ul>
+<li>原文地址：<a target="_blank" rel="noopener" href="https://deno.land/posts/v1.8">Deno 1.8 Release
+Notes</a></li>
+<li>原文作者：<a target="_blank" rel="noopener" href="https://deno.land/posts/v1.8">Deno官方</a></li>
+<li>译者：<a target="_blank" rel="noopener" href="https://github.com/PassionPenguin">霜羽
+Hoarfroster</a></li>
+<li>校对者：<a target="_blank" rel="noopener" href="https://github.com/zenblo">zenblo</a></li>
+</ul>
+</blockquote>
+<p>今天我们正式地发布了 Deno 1.8.0
+版本。我们在这个版本中添加了大量的新功能，也同时优化了它的稳定性：</p>
+<ul>
+<li><p><strong><a target="_blank" rel="noopener" href="https://deno.land/posts/v1.8#experimental-support-for-the-webgpu-api">对
+WebGPU API 的实验性功能支持</a></strong>：提供在 Deno 中开箱即用的使用
+GPU 去加速机器学习的路径。</p></li>
+<li><p><strong><a target="_blank" rel="noopener" href="https://deno.land/posts/v1.8#icu-support">内置国际化 API
+的启用</a></strong>：所有的 JS <code>Intl</code> API
+现在都支持开箱即用。</p></li>
+<li><p><strong><a target="_blank" rel="noopener" href="https://deno.land/posts/v1.8#revamped-coverage-tooling-codedeno-coveragecode">改进了的覆盖率工具</a></strong>：覆盖率工具现在支持输出
+<code>lcov</code> 格式的报告。</p></li>
+<li><p><strong><a target="_blank" rel="noopener" href="https://deno.land/posts/v1.8#import-maps-are-now-stable">导入映射功能现已稳定</a></strong>：我们已经发布了
+Web 兼容的依赖的重写。</p></li>
+<li><p><strong><a target="_blank" rel="noopener" href="https://deno.land/posts/v1.8#auth-token-support-for-fetching-modules">对引入私有模块的支持</a></strong>：通过使用验证
+token 来引入你的私有服务器上的远程模块。</p></li>
+</ul>
+<p>如果你已经安装了 Deno 那么你可以直接通过运行
+<code>deno upgrade</code> 命令更新到 1.8
+版本，而如果你是第一次使用，那么你可以用下面的方法去获取：</p>
+<pre class="shell"><code># 使用 Shell (macOS 和 Linux):
+curl -fsSL https://deno.land/x/install/install.sh | sh
+
+# 使用 PowerShell (Windows):
+iwr https://deno.land/x/install/install.ps1 -useb | iex
+
+# 使用 Homebrew (macOS):
+brew install deno
+
+# 使用 Scoop (Windows):
+scoop install deno
+
+# Using Chocolatey (Windows):
+choco install deno</code></pre>
+<h2 id="新功能和变化">新功能和变化</h2>
+<h3 id="对-webgpu-api-的实验性功能支持">对 WebGPU API
+的实验性功能支持</h3>
+<p>WebGPU API 为开发者们提供了一种更低级，高性能，跨体系结构的方式，通过
+JavaScript 去编写运行在 GPU 硬件上的程序。它是 WebGL 在 Web
+应用程序上的有效替代品，虽然尚未确定最终规范，但是目前 Firefox，Chromium
+和 Safari 都提供了支持，同样我们 Deno 也对其提供了支持。</p>
+<p>通过此 API，我们可以直接从 Deno 内部访问 GPU 的渲染和通用 GPU
+计算。一旦我们完成了移植且功能稳定取消标记后，这个方式将会让我们可以在
+Web 端、服务器和开发者的设备上实现可移植地去访问 GPU 资源。</p>
+<p>GPU
+能够帮助开发者实现高度并行某些数值算法，而不是局限于图形渲染和游戏。在机器学习中有效使用
+GPU，使得运行更复杂的神经网络 ——
+也就是我们所说的深度学习中能更有效地使用
+GPU，成为可能。计算机视觉、翻译、图像生成、强化学习等方面的飞速发展都源于
+GPU 硬件的有效利用。</p>
+<p>如今，大多数神经网络都是用 Python 编写的，而计算则转移到了 GPU
+上。但我们相信，如果存在适当的基础架构，JavaScript（而不是
+Python）也可以用作表达数学思想的理想语言。在 Deno 中我们提供的现成的
+WebGPU 支持就是我们朝这个方向迈出的一步。我们的目标是通过 GPU 加速在
+Deno 上运行 <a target="_blank" rel="noopener" href="https://www.tensorflow.org/js">Tensorflow.js</a>。我们预计这将在未来几周或几个月内实现。</p>
+<p>这是一个基本示例，演示了如何访问连接的 GPU
+设备以及读取名称和支持的功能：</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">// 使用 `deno run --unstable https://deno.land/posts/v1.8/webgpu_discover.ts` 运行</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">// 尝试去从 UserAgent 中获取一个适配器</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> adapter <span class="op">=</span> <span class="cf">await</span> <span class="bu">navigator</span><span class="op">.</span><span class="at">gpu</span><span class="op">.</span><span class="fu">requestAdapter</span>()<span class="op">;</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (adapter) &#123;</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 打印一些有关适配器的基础的信息</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="vs">`找到了适配器：</span><span class="sc">$&#123;</span>adapter<span class="op">.</span><span class="at">name</span><span class="sc">&#125;</span><span class="vs">`</span>)<span class="op">;</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> features <span class="op">=</span> [<span class="op">...</span>adapter<span class="op">.</span><span class="at">features</span><span class="op">.</span><span class="fu">values</span>()]<span class="op">;</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="vs">`支持的功能：</span><span class="sc">$&#123;</span>features<span class="op">.</span><span class="fu">join</span>(<span class="st">", "</span>)<span class="sc">&#125;</span><span class="vs">`</span>)<span class="op">;</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>&#125; <span class="cf">else</span> &#123;</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">console</span><span class="op">.</span><span class="fu">error</span>(<span class="st">"没找到适配器"</span>)<span class="op">;</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>&#125;</span></code></pre></div>
+<p>以下是一个小示例，演示了 GPU
+渲染着色器在一个简单的绿色背景上渲染红色三角形：</p>
+<pre class="shell"><code>$ deno run --unstable --allow-write=output.png https://raw.githubusercontent.com/crowlKats/webgpu-examples/f3b979f57fd471b11a28c5b0c91d0447221ba77b/hello-triangle/mod.ts</code></pre>
+<figure>
+<img src="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/v2-85594ad0a400c1d77cbbbddb95d2d9b1_720w.png" alt="一个简单的绿色背景的红色三角形">
+<figcaption aria-hidden="true">一个简单的绿色背景的红色三角形</figcaption>
+</figure>
+<p><a target="_blank" rel="noopener" href="https://github.com/crowlKats/webgpu-examples/blob/f3b979f57fd471b11a28c5b0c91d0447221ba77b/utils.ts#L77-L106">需要注意的是在输出
+PNG 上使用了 WebAssembly</a>。有关更多的信息请访问这一个 GitHub 仓库：<a target="_blank" rel="noopener" href="https://github.com/crowlKats/webgpu-examples">crowlKats/webgpu-examples</a>。</p>
+<p>最终的 PR 拉取请求有 15.5k 行的代码，我们花费了整整 5
+个月的时间进行审查以及并入仓库。我们十分感谢领导 Deno 中引入 WebGPU
+项目的 <a target="_blank" rel="noopener" href="https://github.com/crowlKats">crowlKats</a>。我们同样感谢所有对 <a target="_blank" rel="noopener" href="https://github.com/gfx-rs/wgpu">wgpu</a> 和 gfx-rs 这些加固了 Deno
+WebGPU 项目的贡献者。我们同样向 <a target="_blank" rel="noopener" href="https://github.com/kvark">kvark</a> 为他所在 WebGPu
+规范中作出的贡献以及 wgpu 和 gfx-rs 项目中的开发的引领（为我们做出了
+WebGPU 的模范）致以衷心的感谢。</p>
+<h3 id="icu-支持">ICU 支持</h3>
+<p>ICU 支持一直是 Deno 版本库中第二大需求的功能。我们很高兴地宣布，Deno
+v1.8 已经提供了完整的 ICU 支持。</p>
+<p>所有依赖于 ICU 的 JavaScript API 现在都能对应浏览器的 API 了。</p>
+<p>尝试在 REPL 中使用一下：</p>
+<pre class="shell"><code>$ deno
+Deno 1.8.0
+exit using ctrl+d or close()
+&gt; const d = new Date(Date.UTC(2020, 5, 26, 7, 0, 0));
+undefined
+&gt; d.toLocaleString("de-DE", &#123;
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+&#125;);
+"Freitag, 26. Juni 2020"</code></pre>
+<h3 id="改进了的覆盖率工具-deno-coverage">改进了的覆盖率工具
+<code>deno coverage</code></h3>
+<p>新的 Deno
+版本的发行扩大了我们的代码覆盖范围基础架构，添加了一些强大的新功能。此版本的主要变化是代码覆盖的处理现在分为覆盖集合和覆盖报告。</p>
+<p>以前，代码覆盖范围的收集和报告都将在单个子命令中进行，只需在启动
+<code>deno test</code> 时指定 <code>--coverage</code>
+标志即可。而现在，<code>deno test</code> 的<code>--coverage</code>
+标志带来了一个参数，用来存储收集的配置文件的目录的路径，即代码覆盖的集合。在第二步中，我们现在会去调用
+<code>deno coverage</code>，其路径指向存储代码覆盖配置文件的目录。此子命令可以直接在控制台上以美观的文本输出形式返回报告，也可以输出
+<a target="_blank" rel="noopener" href="https://manpages.debian.org/testing/lcov/lcov.1.en.html">lcov</a>
+文件（<code>--lcov</code> 标志），用于诸如
+<code>genhtml</code>，coveralls.io 或 codecov.io 之类的工具。</p>
+<p>最近几天，我们一直在 <a target="_blank" rel="noopener" href="https://github.com/denoland/deno_std"><code>deno_std</code></a>
+上对该功能进行测试。对于每次的提交，我们都将覆盖率报告上传到
+codecov.io，然后我们就可以在 <a target="_blank" rel="noopener" href="https://codecov.io/gh/denoland/deno_std">codecov.io</a>
+中查看这些内容。添加这些代码也很简单，我们的 GitHub Actions
+工作流配置中仅有 10 行的更改：</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode yml"><code class="sourceCode yaml"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="at">       </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Run tests</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="at">       </span><span class="kw">-</span><span class="at"> </span><span class="fu">run</span><span class="kw">:</span><span class="at"> deno test --unstable --allow-all</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="at">       </span><span class="fu">+        run</span><span class="kw">:</span><span class="at"> deno test --coverage=./cov --unstable --allow-all</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="at">         +</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="at">       </span><span class="fu">+      - name</span><span class="kw">:</span><span class="at"> Generate lcov</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="at">       </span><span class="fu">+        run</span><span class="kw">:</span><span class="at"> deno coverage --unstable --lcov ./cov &gt; cov.lcov</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="at">         +</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="at">       </span><span class="fu">+      - name</span><span class="kw">:</span><span class="at"> Upload coverage</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="at">       </span><span class="fu">+        uses</span><span class="kw">:</span><span class="at"> codecov/codecov-action@v1</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="at">       </span><span class="fu">+        with</span><span class="kw">:</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="fu">       +          name</span><span class="kw">: </span><span class="at">$&#123;&#123; matrix.os &#125;&#125;-$&lt;!--swig￼1--</span><span class="ch">&gt;</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="at">       </span><span class="fu">+          files</span><span class="kw">:</span><span class="at"> cov.lcov</span></span></code></pre></div>
+<p>要查看使用 coveralls.io 的例子，看看这个仓库即可：<a target="_blank" rel="noopener" href="https://github.com/lucacasonato/deno_s3">https://github.com/lucacasonato/deno_s3</a>。</p>
+<h3 id="导入映射功能现已稳定">导入映射功能现已稳定</h3>
+<p><a target="_blank" rel="noopener" href="https://github.com/WICG/import-maps">导入映射</a> 功能在
+Chrome 89
+版本是稳定的，之后，我们已经更新功能实现，以符合最新版本的规范，现在也被认为是稳定的。这意味着在使用
+<code>--import-map</code> 时候我们不必再提供 <code>--unstable</code>
+标志。</p>
+<pre class="shell"><code>$ deno run --import-map=./import_map.json ./mod.ts</code></pre>
+<p>同时，<code>--import-map</code>
+标记现在不仅支持本地路径，也支持其他超链接，让我们能够从远程服务器中导入映射。</p>
+<pre class="shell"><code>$ deno run --import-map=https://example.com/import_map.json ./mod.ts</code></pre>
+<p>导入映射功能允许开发者使用所谓的“裸露”说明符来代替相对或绝对的文件路径或者是
+HTTP URL 路径。</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Deno 默认不支持这样的说明符，</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co">// 但通过提供一个映射，我们就可以重新映射</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co">// 这些空白的说明符去其他的 URL</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> <span class="op">*</span> <span class="im">as</span> http <span class="im">from</span> <span class="st">"std/http"</span><span class="op">;</span></span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">&#123;</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"imports"</span><span class="fu">:</span> <span class="fu">&#123;</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"std/http"</span><span class="fu">:</span> <span class="st">"https://deno.land/std@0.85.0/http/mod.ts"</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">&#125;</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">&#125;</span></span></code></pre></div>
+<p>开发者应该注意，导入映射是不能组合的：这意味着你只能提供一个导入映射到
+<code>deno run</code> 或
+<code>deno test</code>。正因为如此，依赖库的作者应该仍然使用常规的、非裸露的说明符（相对或绝对的文件路径或者是
+http URL
+路径），否则依赖库的使用者将需要手动将依赖库（以及库的依赖）裸露说明符添加到他们的导入映射中。</p>
+<p>导入映射的一个更有用的功能是能够将常规说明符重新映射为完全不同的说明符。例如如果我们的模块图中嵌套了一些支离破碎的依赖关系，我们可以在将其固定到上游之前替换它为固定版本。或者如果我们使用将哈希添加到模块文件名的构建过程，我们可以在源代码中直接引用该文件而非哈希值，并且只需要在运行时使用一个导入的映射去重新映射说明符。</p>
+<p>有关更多示例和详细说明，请参考<a target="_blank" rel="noopener" href="https://github.com/WICG/import-maps#the-import-map">规范</a>。</p>
+<h3 id="支持使用-auth-token-获取模块">支持使用 Auth Token 获取模块</h3>
+<p>并非所有代码都可以在公共互联网上公开获得。以前，Deno
+无法从需要身份验证的服务器上下载代码。在此版本中，我们增加了用户指定第一次提取模块时使用的每个域身份验证令牌的功能。</p>
+<p>为此，Deno CLI 将查找名为 <code>DENO_AUTH_TOKENS</code>
+的环境变量，以确定在请求远程模块时应考虑使用的身份验证令牌。环境变量的值采用以分号（<code>;</code>）分隔的
+n 个令牌的格式，其中每个令牌的格式为
+<code>&#123;token&#125;@&#123;hostname[:port]&#125;</code>。</p>
+<p>例如，单个令牌看起来像这样：</p>
+<pre class="text"><code>DENO_AUTH_TOKENS=a1b2c3d4e5f6@deno.land</code></pre>
+<p>多个令牌看起来像这样：</p>
+<pre class="text"><code>DENO_AUTH_TOKENS=a1b2c3d4e5f6@deno.land; f1e2d3c4b5a6@example.com：8080</code></pre>
+<p>当 Deno 提取主机名与远程模块的主机名匹配的远程模块时，Deno 会将请求的
+<code>Authorization</code> 标头设置为 <code>Bearer &#123;token&#125;</code>
+的值。这允许远程服务器明白这个请求是一个被授权的请求，与一个特定的被授权的用户相关联，以提供对服务器上特定资源和模块的访问权限。</p>
+<p>有关配置我们的环境以从私有 GitHub
+存储库获取数据的更详细的使用指南和说明，请参阅<a target="_blank" rel="noopener" href="https://deno.land/manual/linking_to_external_code/private">相关手册条目</a>。</p>
+<h2 id="deno.test-的-exit-清理程序"><strong><code>Deno.test</code> 的
+Exit 清理程序</strong></h2>
+<p><code>Deno.test</code> API 已经拥有了<a target="_blank" rel="noopener" href="https://deno.land/manual@v1.7.5/testing#resource-and-async-op-sanitizers">两个清理程序</a>帮助我们确保我们的代码没有泄露运营机密或是资源，例如，所有打开的文件或网络请求都会在测试代码结束前被关闭，并且不会有更多的系统调用出现。</p>
+<p>Deno 1.8 版本添加了一个新的清理程序，保证测试的代码不会调用
+<code>Deno.exit()</code>。流氓的 exit
+声明可能表示错误的阳性测试结果，并且经常被滥用或忘记删除。</p>
+<p>这个清理程序默认为所有的测试启用，但是可以在测试定义中设置
+<code>sanitizeExit</code> 布尔值为 <code>false</code> 以关闭：</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>Deno<span class="op">.</span><span class="fu">test</span>(&#123;</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">name</span><span class="op">:</span> <span class="st">"false success"</span><span class="op">,</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">fn</span>() &#123;</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>        Deno<span class="op">.</span><span class="fu">exit</span>(<span class="dv">0</span>)<span class="op">;</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    &#125;<span class="op">,</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">sanitizeExit</span><span class="op">:</span> <span class="kw">false</span><span class="op">,</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>&#125;)<span class="op">;</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="co">// 这个测试不会被运行：</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>Deno<span class="op">.</span><span class="fu">test</span>(&#123;</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>    <span class="dt">name</span><span class="op">:</span> <span class="st">"failing test"</span><span class="op">,</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">fn</span>() &#123;</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">throw</span> <span class="kw">new</span> <span class="bu">Error</span>(<span class="st">"this test fails"</span>)<span class="op">;</span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>    &#125;<span class="op">,</span></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>&#125;)<span class="op">;</span></span></code></pre></div>
+<p>你可以试着自己去运行这段代码：<code>deno test https://deno.land/posts/v1.8/exit_sanitizer.ts</code>。</p>
+<h3 id="deno.permissions-api-现在进入稳定状态"><code>Deno.permissions</code>
+API 现在进入稳定状态</h3>
+<p>Deno
+的安全模型是基于权限的。当前，只有在启动应用程序时才能授予这些权限。这在大多数情况下都适用，但是在某些情况下，在运行时请求或撤消权限会带来更好的用户体验。</p>
+<p>在 Deno 1.8 中，我们有了一个稳定的 API 可以去
+<code>query</code>、<code>request</code> 和 <code>revoke</code>
+权限。这些 API 包含在 <code>Deno.permissions</code>
+对象中。这是一个示例：</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">homedir</span>() &#123;</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span> &#123;</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="vs">`你的目录是：</span><span class="sc">$&#123;</span>Deno<span class="op">.</span><span class="at">env</span><span class="op">.</span><span class="fu">get</span>(<span class="st">"HOME"</span>)<span class="sc">&#125;</span><span class="vs">`</span>)<span class="op">;</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    &#125; <span class="cf">catch</span> (err) &#123;</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>        <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="vs">`无法获取目录：</span><span class="sc">$&#123;</span>err<span class="sc">&#125;</span><span class="vs">`</span>)<span class="op">;</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    &#125;</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>&#125;</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="co">// 尝试获取主目录（此操作将失败，因为还没有 env 的权限）。</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="fu">homedir</span>()<span class="op">;</span></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> &#123;granted&#125; <span class="op">=</span> <span class="cf">await</span> Deno<span class="op">.</span><span class="at">permissions</span><span class="op">.</span><span class="fu">request</span>(&#123;<span class="dt">name</span><span class="op">:</span> <span class="st">"env"</span>&#125;)<span class="op">;</span></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (granted) &#123;</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>    <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="vs">`你被授予了 "env" 权限`</span>)<span class="op">;</span></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>&#125; <span class="cf">else</span> &#123;</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>    <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="vs">`你没有被授予 "env" 权限`</span>)<span class="op">;</span></span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>&#125;</span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a><span class="co">// 尝试获取主目录（如果用户授权，则应成功）</span></span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a><span class="fu">homedir</span>()<span class="op">;</span></span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a><span class="cf">await</span> Deno<span class="op">.</span><span class="at">permissions</span><span class="op">.</span><span class="fu">revoke</span>(&#123;<span class="dt">name</span><span class="op">:</span> <span class="st">"env"</span>&#125;)<span class="op">;</span></span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a><span class="co">// 尝试获取主目录（此操作将失败，因为权限被撤销了）</span></span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a><span class="fu">homedir</span>()<span class="op">;</span></span></code></pre></div>
+<p>你可以自己尝试运行一下这段脚本：<code>deno run https://deno.land/posts/v1.8/permission_api.ts</code>。</p>
+<h3 id="deno.link-和-deno.symlink-api-现在进入稳定状态"><code>Deno.link</code>
+和 <code>Deno.symlink</code> API 现在进入稳定状态</h3>
+<p>这个发行还提供了有关符号链接的四个 API 的稳定版本：</p>
+<ul>
+<li><code>Deno.link</code></li>
+<li><code>Deno.linkSync</code></li>
+<li><code>Deno.symlink</code></li>
+<li><code>Deno.symlinkSync</code></li>
+</ul>
+<p>在这些 API
+的稳定化之前，他们通过了一项安全评估，并且我们需要特定的权限去使用它。</p>
+<p><code>Deno.link</code> 和 <code>Deno.linkSync</code>
+需要对源文件和目标路径的读写权限。</p>
+<p><code>Deno.symlink</code> 和 <code>Deno.symlinkSync</code>
+需要目标路径的写权限。</p>
+<h3 id="更细致的-deno.metrics">更细致的 <code>Deno.metrics</code></h3>
+<p>随着 Deno
+变得更加稳定，对于开发者来说，使用简便的方法来检测其应用程序变得越来越重要。这从最低级别（在运行时本身）开始。在
+Deno 中，JS 中的所有特权操作（转到 Rust 的那些操作）都是通过 JS 和 Rust
+之间的单个中心接口来完成的。我们称通过该接口的请求为
+<code>ops</code>。例如，调用 <code>Deno.open</code>
+会在特权端调用<code>op_open_async</code> 操作，返回打开文件的资源
+ID（或错误）。</p>
+<p>两年多以前，在 2018 年 10 月 11 日，我们提供了一种查看 Rust 和 JS
+之间所有操作的指标的方法：<code>Deno.metrics</code>。该 API
+当前会暴露出已启动和已完成的同步和异步操作的数量，以及通过操作接口发送的数据量。到目前为止，这仅限于所有不同操作的组合数据。我们没有办法找出<strong>某个</strong>操作被调用的次数
+—— 只能获取所有操作的数据。</p>
+<p>当使用 <code>--unstable</code> 运行这段代码时候，此版本会向
+<code>Deno.metrics</code> 中添加一个名为 <code>ops</code>
+的新字段。此字段会包含每个操作的信息，涉及 API 的调用频率以及通过 API
+传输的数据量。这允许对运行时进行更精细的检测。</p>
+<p>这是示例：</p>
+<pre class="shell"><code>$ deno --unstable
+Deno 1.8.0
+exit using ctrl+d or close()
+&gt; Deno.metrics().ops["op_open_async"]
+undefined
+&gt; await Deno.open("./README.md")
+File &#123;&#125;
+&gt; Deno.metrics().ops["op_open_async"]
+&#123;
+  opsDispatched: 1,
+  opsDispatchedSync: 0,
+  opsDispatchedAsync: 1,
+  opsDispatchedAsyncUnref: 0,
+  opsCompleted: 1,
+  opsCompletedSync: 0,
+  opsCompletedAsync: 1,
+  opsCompletedAsyncUnref: 0,
+  bytesSentControl: 54,
+  bytesSentData: 0,
+  bytesReceived: 22
+&#125;</code></pre>
+<p>在即将发布的版本中，<code>Deno.test</code>
+中的异步操作清理工具将使用此新信息，以在测试完成之前未完成异步操作时提供更多可操作的错误。我们已经看到此功能用于检测应用程序并将数据通过管道传输到监视软件中：</p>
+<figure>
+<img src="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/v2-4fae6d12908d01b0d324f9594d7fae10_1440w.jpg" alt="一个网站表格显示着 Deno.metrics 的输出">
+<figcaption aria-hidden="true">一个网站表格显示着
+<code>Deno.metrics</code> 的输出</figcaption>
+</figure>
+<h3 id="deno-fmt-对-json-的支持"><code>deno fmt</code> 对 JSON
+的支持</h3>
+<p><code>deno fmt</code> 现在可以格式化 <code>.json</code> 和
+<code>.jsonc</code> 文件，就像是 JS 或 TS 文件一样，格式化工具会同时将
+Markdown 文件中的 JSON 和 JSONC 代码格式化掉。</p>
+<h2 id="deno.emit-对-iife-捆绑包的支持"><code>Deno.emit</code> 对 IIFE
+捆绑包的支持</h2>
+<p>内置捆绑程序现在可以发出立即调用函数表达式（IIFE）格式的捆绑包。</p>
+<p>默认情况下，输出格式仍然是 <code>esm</code>，但是用户可以通过将
+<code>EmitOptions.bundle</code> 选项设置为 <code>iife</code>
+来更改它：</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> &#123;files&#125; <span class="op">=</span> <span class="cf">await</span> Deno<span class="op">.</span><span class="fu">emit</span>(<span class="st">"/a.ts"</span><span class="op">,</span> &#123;</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">bundle</span><span class="op">:</span> <span class="st">"iife"</span><span class="op">,</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">sources</span><span class="op">:</span> &#123;</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">"/a.ts"</span><span class="op">:</span> <span class="vs">`import &#123; b &#125; from "./b.ts";</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="vs">        console.log(b);`</span><span class="op">,</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>        <span class="st">"/b.ts"</span><span class="op">:</span> <span class="vs">`export const b = "b";`</span><span class="op">,</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    &#125;<span class="op">,</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>&#125;)<span class="op">;</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(files[<span class="st">"deno:///bundle.js"</span>])<span class="op">;</span></span></code></pre></div>
+<p>结果是：</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">function</span> () &#123;</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> b <span class="op">=</span> <span class="st">"b"</span><span class="op">;</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(b)<span class="op">;</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> &#123;&#125;<span class="op">;</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>&#125;)()<span class="op">;</span></span></code></pre></div>
+<p>你可以自己运行下这个：<code>deno run --unstable https://deno.land/posts/v1.8/emit_iife.ts</code>。</p>
+<p>这对于为不支持ESM的较旧浏览器创建捆绑包特别有用。</p>
+<h3 id="deno-lsp-现在进入了稳定状态"><code>deno lsp</code>
+现在进入了稳定状态</h3>
+<p>在过去的几个月中，我们一直在努力更新着旧的 VS Code 编辑器集成（Deno
+扩展）。旧的扩展名仅适用于 VS Code，而且解析的类型并不总是与 Deno CLI
+中的类型匹配。</p>
+<p>在 Deno 1.6 中，我们在 canary 版本中发布了 <code>deno lsp</code> ——
+Deno 的内置语言服务器。LSP 使我们能够从单个代码库向所有支持 LSP
+的编辑器提供编辑器集成。内置的语言服务器与 Deno CLI
+的其余部分基于相同的体系结构，也因此，它提供的 TypeScript 诊断与 CLI
+的其余部分相同。</p>
+<p>两周前，在 Deno 1.7.5 中，我们稳定了 <code>deno lsp</code>
+并切换了我们的 <a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=denoland.vscode-deno">VS
+Code
+扩展名</a>来使用它。到目前为止，我们已经收到了很好的反馈，并将努力解决所有报告的问题。如果你在扩展程序中遇到问题，请在我们的问题跟踪器中报告该问题，毕竟我们无法解决我们不知道的问题。</p>
+<p>除了官方的 VS Code 集成以外，我们还创建了更多基于
+<code>deno lsp</code> 的社区集成：</p>
+<ul>
+<li>带有 CoC 的 Vim：<a target="_blank" rel="noopener" href="https://github.com/fannheyward/coc-deno">https://github.com/fannheyward/coc-deno</a></li>
+<li>Neovim：<a target="_blank" rel="noopener" href="https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md#denols">https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md#denols</a></li>
+<li>Emacs：<a target="_blank" rel="noopener" href="https://emacs-lsp.github.io/lsp-mode/page/lsp-deno/">https://emacs-lsp.github.io/lsp-mode/page/lsp-deno/</a></li>
+<li>Kakoune：<a target="_blank" rel="noopener" href="https://deno.land/manual/getting_started/setup_your_environment#example-for-kakoune">https://deno.land/manual/getting_started/setup_your_environment#example-for-kakoune</a></li>
+<li>Sublime：<a target="_blank" rel="noopener" href="https://deno.land/manual/getting_started/setup_your_environment#example-for-sublime-text">https://deno.land/manual/getting_started/setup_your_environment#example-for-sublime-text</a></li>
+</ul>
+<h3 id="typescript-4.2">TypeScript 4.2</h3>
+<p>Deno 1.8 捆绑了 TypeScript 的最新稳定版本。</p>
+<p>有关 Typescript 4.2 中新功能的更多信息，请参见 <a target="_blank" rel="noopener" href="https://devblogs.microsoft.com/typescript/announcing-typescript-4-2/">TypeScript
+4.2</a></p>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Computer-Science/" rel="tag"># Computer Science</a>
+              <a href="/tags/Backend/" rel="tag"># Backend</a>
+              <a href="/tags/Deno/" rel="tag"># Deno</a>
+              <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/03/04/computer%20science/frontend/how-an-anti-typescript-javascript-developer-like-me-became-a-typescript-fan/" rel="prev" title="为什么我对 TypeScript 黑转粉？一个 JS 开发者的深情自白">
+      <i class="fa fa-chevron-left"></i> 为什么我对 TypeScript 黑转粉？一个 JS 开发者的深情自白
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/03/06/computer%20science/frontend/undefined-null-revisited/" rel="next" title="重新审视 undefined 和 null">
+      重新审视 undefined 和 null <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B0%E5%8A%9F%E8%83%BD%E5%92%8C%E5%8F%98%E5%8C%96"><span class="nav-text">新功能和变化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9-webgpu-api-%E7%9A%84%E5%AE%9E%E9%AA%8C%E6%80%A7%E5%8A%9F%E8%83%BD%E6%94%AF%E6%8C%81"><span class="nav-text">对 WebGPU API
+的实验性功能支持</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#icu-%E6%94%AF%E6%8C%81"><span class="nav-text">ICU 支持</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%94%B9%E8%BF%9B%E4%BA%86%E7%9A%84%E8%A6%86%E7%9B%96%E7%8E%87%E5%B7%A5%E5%85%B7-deno-coverage"><span class="nav-text">改进了的覆盖率工具
+deno coverage</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%BC%E5%85%A5%E6%98%A0%E5%B0%84%E5%8A%9F%E8%83%BD%E7%8E%B0%E5%B7%B2%E7%A8%B3%E5%AE%9A"><span class="nav-text">导入映射功能现已稳定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%94%AF%E6%8C%81%E4%BD%BF%E7%94%A8-auth-token-%E8%8E%B7%E5%8F%96%E6%A8%A1%E5%9D%97"><span class="nav-text">支持使用 Auth Token 获取模块</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#deno.test-%E7%9A%84-exit-%E6%B8%85%E7%90%86%E7%A8%8B%E5%BA%8F"><span class="nav-text">Deno.test 的
+Exit 清理程序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#deno.permissions-api-%E7%8E%B0%E5%9C%A8%E8%BF%9B%E5%85%A5%E7%A8%B3%E5%AE%9A%E7%8A%B6%E6%80%81"><span class="nav-text">Deno.permissions
+API 现在进入稳定状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#deno.link-%E5%92%8C-deno.symlink-api-%E7%8E%B0%E5%9C%A8%E8%BF%9B%E5%85%A5%E7%A8%B3%E5%AE%9A%E7%8A%B6%E6%80%81"><span class="nav-text">Deno.link
+和 Deno.symlink API 现在进入稳定状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9B%B4%E7%BB%86%E8%87%B4%E7%9A%84-deno.metrics"><span class="nav-text">更细致的 Deno.metrics</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#deno-fmt-%E5%AF%B9-json-%E7%9A%84%E6%94%AF%E6%8C%81"><span class="nav-text">deno fmt 对 JSON
+的支持</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#deno.emit-%E5%AF%B9-iife-%E6%8D%86%E7%BB%91%E5%8C%85%E7%9A%84%E6%94%AF%E6%8C%81"><span class="nav-text">Deno.emit 对 IIFE
+捆绑包的支持</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#deno-lsp-%E7%8E%B0%E5%9C%A8%E8%BF%9B%E5%85%A5%E4%BA%86%E7%A8%B3%E5%AE%9A%E7%8A%B6%E6%80%81"><span class="nav-text">deno lsp
+现在进入了稳定状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#typescript-4.2"><span class="nav-text">TypeScript 4.2</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Hoarfroster"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Hoarfroster</p>
+  <div class="site-description" itemprop="description">这里是霜羽~~咕咕咕</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">193</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">53</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">58</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <ul class="links-of-author motion-element">
+      <li class="links-of-author-item">
+        <a href="https://github.com/PassionPenguin" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;PassionPenguin" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        <span> PassionPenguin</span>
+      </li>
+      <li class="links-of-author-item">
+        <a href="mailto:hoarfroster@outlook.com" title="E-Mail → mailto:hoarfroster@outlook.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+        <span> hoarfroster@outlook.com</span>
+      </li>
+      <li class="links-of-author-item">
+        <a href="https://twitter.com/zhangqizhe" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;zhangqizhe" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+        <span> @zhangqizhe</span>
+      </li>
+      <li class="links-of-author-item">
+        <a href="https://www.instagram.com/glacierpenguin/" title="Instagram → https:&#x2F;&#x2F;www.instagram.com&#x2F;glacierpenguin&#x2F;" rel="noopener" target="_blank"><i class="fab fa-instagram fa-fw"></i>Instagram</a>
+        <span> @glacierpenguin</span>
+      </li>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hoarfroster</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="Symbols count total">1.1m</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">34:12</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT</a>
+  </div>
+
+        
+
+
+
+
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-firestore.js"></script>
+  <script>
+    firebase.initializeApp({
+      apiKey   : 'AIzaSyDqM81uUD8yWHAvsGasJzvWBHhpBYnRttI',
+      projectId: 'hoar-froster'
+    });
+
+    function getCount(doc, increaseCount) {
+      // IncreaseCount will be false when not in article page
+      return doc.get().then(d => {
+        var count = 0;
+        if (!d.exists) { // Has no data, initialize count
+          if (increaseCount) {
+            doc.set({
+              count: 1
+            });
+            count = 1;
+          }
+        } else { // Has data
+          count = d.data().count;
+          if (increaseCount) {
+            // If first view this article
+            doc.set({ // Increase count
+              count: count + 1
+            });
+            count++;
+          }
+        }
+
+        return count;
+      });
+    }
+
+    function appendCountTo(el) {
+      return count => {
+        el.innerText = count;
+      }
+    }
+  </script>
+  <script>
+    (function() {
+      var db = firebase.firestore();
+      var articles = db.collection('articles-info');
+
+      if (CONFIG.page.isPost) { // Is article page
+        var title = document.querySelector('.post-title').innerText.trim();
+        var doc = articles.doc(title);
+        var increaseCount = CONFIG.hostname === location.hostname;
+        if (localStorage.getItem(title)) {
+          increaseCount = false;
+        } else {
+          // Mark as visited
+          localStorage.setItem(title, true);
+        }
+        getCount(doc, increaseCount).then(appendCountTo(document.querySelector('.firestore-visitors-count')));
+      } else if (CONFIG.page.isHome) { // Is index page
+        var promises = [...document.querySelectorAll('.post-title')].map(element => {
+          var title = element.innerText.trim();
+          var doc = articles.doc(title);
+          return getCount(doc);
+        });
+        Promise.all(promises).then(counts => {
+          var metas = document.querySelectorAll('.firestore-visitors-count');
+          counts.forEach((val, idx) => {
+            appendCountTo(metas[idx])(val);
+          });
+        });
+      }
+    })();
+  </script>
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var canonicalURL, curProtocol;
+      //Get the <link> tag
+      var x=document.getElementsByTagName("link");
+		//Find the last canonical URL
+		if(x.length > 0){
+			for (i=0;i<x.length;i++){
+				if(x[i].rel.toLowerCase() == 'canonical' && x[i].href){
+					canonicalURL=x[i].href;
+				}
+			}
+		}
+    //Get protocol
+	    if (!canonicalURL){
+	    	curProtocol = window.location.protocol.split(':')[0];
+	    }
+	    else{
+	    	curProtocol = canonicalURL.split(':')[0];
+	    }
+      //Get current URL if the canonical URL does not exist
+	    if (!canonicalURL) canonicalURL = window.location.href;
+	    //Assign script content. Replace current URL with the canonical URL
+      !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=canonicalURL,t=document.referrer;if(!e.test(r)){var n=(String(curProtocol).toLowerCase() === 'https')?"https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif":"//api.share.baidu.com/s.gif";t?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var i=new Image;i.src=n}}(window);})();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme    : 'default',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/disqusjs@1/dist/disqusjs.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/disqusjs@1/dist/disqus.js', () => {
+    window.dsqjs = new DisqusJS({
+      api       : 'https://disqus.skk.moe/disqus/' || 'https://disqus.com/api/',
+      apikey    : 'Lo65MITAya5vcdTm6cJ8V5qCBNx3PVErvDOsfJ5tUPtEbw3DMS3EIzEx6vrmTzCN',
+      shortname : 'hoarfroster',
+      url       : "https://hoarfroster.github.io/2021/03/04/computer%20science/backend/Deno-1-8-Release-Notes/",
+      identifier: "2021/03/04/computer science/backend/Deno-1-8-Release-Notes/",
+      title     : "Deno 1.8 发行公告",
+    });
+  }, window.DisqusJS);
+});
+</script>
+
+</body>
+</html>

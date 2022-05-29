@@ -1,0 +1,1871 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/avatar.png" color="#222">
+  <meta name="google-site-verification" content="iFMbHL1JuWjTlNFq5Rv96vDzpsqakxTpdE2nw7Crr6o">
+  <meta name="msvalidate.01" content="EF6D8CD8A3335E66AB96B4D544FCD96C">
+  <meta name="baidu-site-verification" content="code-80b80Pbzs2">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link href="/lib/fontawesome/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<script>
+
+  window.onload = function() {
+    document.querySelectorAll("p").forEach(e=>{
+      e.innerHTML = e.innerHTML.replaceAll(/==(.+?)==/g, "<mark>$1</mark>").replaceAll(/​\s+?/g, "<span class='tab'></span>");
+    });
+    
+    [...document.querySelectorAll("pre > code")].forEach(e=> {
+        var codeClass = e.parentElement.classList.value;
+        if (codeClass == null || codeClass === "") {
+            e.classList.add("hljs");
+        } else {
+            var map = {
+                js: "javascript"
+            };
+            if (map[codeClass]) {
+                codeClass = map[codeClass];
+            }
+            codeClass.split(" ").forEach(i=>e.classList.add(i));
+            hljs.highlightElement(e);
+        }
+    });
+
+    [...document.querySelectorAll('.classcial-chinese-literature-and-poetry-translation')].forEach(i=>{
+      let el = document.createElement('div');
+      el.setAttribute('class', 'fa-solid fa-eye');
+      i.prepend(el);
+      el.addEventListener('click', ()=>{
+        let status = el.classList.contains('fa-eye');
+        [...i.querySelectorAll('.translation')].forEach(j=>{
+          j.classList.remove('hide');
+          if(status) {
+            j.classList.add('hide');
+          }
+        });
+        el.attributes['class'].value = el.attributes['class'].value.replace('fa-eye-slash', 'fa-0').replace('fa-eye', 'fa-eye-slash').replace('fa-0', 'fa-eye');
+      });
+
+      [...i.querySelectorAll('.original-text')].forEach(e=>{
+        let el = document.createElement('div');
+        el.setAttribute('class', 'fa-solid fa-eye-slash');
+        e.prepend(el);
+        el.addEventListener('click', ()=>{
+            e.nextSibling.classList.toggle('hide');
+            el.attributes['class'].value = el.attributes['class'].value.replace('fa-eye-slash', 'fa-0').replace('fa-eye', 'fa-eye-slash').replace('fa-0', 'fa-eye');
+        });
+      })
+    });
+  }
+</script>
+<script async src="/js/highlight.min.js"></script>
+<script async src="/js/cursor.js"></script>
+<script data-ad-client="ca-pub-2275811890061218" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"hoarfroster.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqusjs","storage":true,"lazyload":false,"nav":null,"activeClass":"disqusjs"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="这里是霜羽~~咕咕咕">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Hoarfroster 的小窝">
+<meta property="og:url" content="https://hoarfroster.github.io/page/21/index.html">
+<meta property="og:site_name" content="Hoarfroster 的小窝">
+<meta property="og:description" content="这里是霜羽~~咕咕咕">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="Hoarfroster">
+<meta property="article:tag" content="notes, blog">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://hoarfroster.github.io/page/21/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'en'
+  };
+</script>
+
+  <title>Hoarfroster 的小窝</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <!--<div class="headband"></div>-->
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hoarfroster 的小窝</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section">Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section">About</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section">Categories</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger">
+          Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content index posts-expand">
+            
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://hoarfroster.github.io/2022/02/02/chemistry/BK%203%20%E5%8E%9F%E5%AD%90%E7%BB%93%E6%9E%84%20%E5%85%83%E7%B4%A0%E5%91%A8%E6%9C%9F%E5%BE%8B/P1%20%E5%8E%9F%E5%AD%90%E7%BB%93%E6%9E%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Hoarfroster">
+      <meta itemprop="description" content="这里是霜羽~~咕咕咕">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hoarfroster 的小窝">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/02/02/chemistry/BK%203%20%E5%8E%9F%E5%AD%90%E7%BB%93%E6%9E%84%20%E5%85%83%E7%B4%A0%E5%91%A8%E6%9C%9F%E5%BE%8B/P1%20%E5%8E%9F%E5%AD%90%E7%BB%93%E6%9E%84/" class="post-title-link" itemprop="url">原子结构</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-02-02 00:31:09" itemprop="dateCreated datePublished" datetime="2022-02-02T00:31:09+08:00">2022-02-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-05-28 23:43:07" itemprop="dateModified" datetime="2022-05-28T23:43:07+08:00">2022-05-28</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/High-School/" itemprop="url" rel="index"><span itemprop="name">High School</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/High-School/Chemistry/" itemprop="url" rel="index"><span itemprop="name">Chemistry</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span><br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+              <span>1.6k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+              <span>3 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+<h2 id="知识聚焦">知识聚焦</h2>
+<h3 id="一原子结构">一、原子结构</h3>
+<blockquote>
+<h1 id="认识过程">认识过程</h1>
+<ol type="1">
+<li>公元前 5
+世纪，古希腊哲学家德谟克利特提出古代原子学说，认为万物都由间断的、不可分的原子构成。</li>
+<li>19
+世纪初，英国学者道尔顿的近代原子学说和意大利学者阿伏伽德罗的分子学说。</li>
+<li>1904 年英国学者汤姆生的“葡萄干面包式”原子结构模型。</li>
+<li>1911 年英国学者卢瑟福的行星式原子结构模型。</li>
+<li>1913 年丹麦学者玻尔的轨道原子结构模型。</li>
+<li>20 世纪初现代学者的量子力学原子结构模型。</li>
+</ol>
+</blockquote>
+<p>​ 原子组成（<span class="math inline">$\ce{^A_ZX}$</span>）：原子核（质子（Z
+个）+中子（A-Z 个））+核外电子（带负电荷，Z 个）。</p>
+<p>​
+<strong>核素</strong>指具有一定质子数和一定中子数的一种原子；<strong>同位素</strong>指质子数相同且中子数不同的同一元素不同核素。</p>
+<h3 id="二能层能级与排布规则">二、能层、能级与排布规则</h3>
+<h4 id="能级能层">1. 能级、能层</h4>
+<p>​ 核外电子按能量不同分成能层，由内而外排序，对应的符号为<span class="math inline"><em>K</em>、<em>L</em>、<em>M</em>、<em>N</em>、<em>O</em>、<em>P</em>、<em>Q</em></span>。能层越高，电子的能量越高。</p>
+<p>​ 在一个能层中，电子被分层不同能级，符号为<span class="math inline"><em>s</em>, <em>p</em>, <em>d</em>, <em>f</em></span>。</p>
+<blockquote>
+<h5 id="构造原理并不是原理而是规律是原子和电子同时递增时的规律所以失去电子形成离子的时候并不是按照这个来失去的">构造原理并不是<strong>原理</strong>，而是<strong>规律</strong>，是原子和电子同时递增时的规律！所以失去电子形成离子的时候并不是按照这个来失去的！</h5>
+</blockquote>
+<blockquote>
+<h4 id="特殊规律">特殊规律</h4>
+<ol type="1">
+<li><span class="math inline"><em>d</em>, <em>f</em></span>能层优先半满和全满（如<span class="math inline">$\ce{Cr = [Ar] 3d^5 4s^1, Cu = [Ar] 3d^{10}
+4s^1}$</span>，即洪特规则特例）。</li>
+<li>构造原理（仅供记忆）。</li>
+</ol>
+</blockquote>
+<h4 id="电子云和电子轨道">2. 电子云和电子轨道</h4>
+<p>​
+<strong>电子云</strong>是一种核素核外电子在原子核外出现的概率密度的模型，<span class="math inline"><em>s</em></span>电子云呈球形，<span class="math inline"><em>p</em></span>电子云呈哑铃型，<span class="math inline"><em>d</em></span>电子云呈梅花形。</p>
+<h4 id="原理规则">3. 原理规则</h4>
+<ol type="1">
+<li>电子自旋和<strong>泡利原理</strong>：==一个原子轨道里，只能容纳两个电子，自旋相反（也称为泡利不相容原理）==。</li>
+<li><strong>洪特规则</strong>：==基态原子中，填入简并轨道的电子总是先单独分占且自旋平行==。</li>
+<li><strong>能量最低原理</strong>：==在构建基态原子时，电子会尽可能地占据能量最低的原子轨道，使整个原子的能量最低==。</li>
+<li><strong>电子排布的轨道表达式</strong>：</li>
+</ol>
+<figure>
+<img src="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/201111160957272032773.gif" alt="See the source image">
+<figcaption aria-hidden="true">See the source image</figcaption>
+</figure>
+<ol start="5" type="1">
+<li>原子光谱：电子的跃迁会吸收能量或放出能量，表现形式即为吸收光谱和放射光谱。</li>
+</ol>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://hoarfroster.github.io/2022/02/02/chemistry/BK%203%20%E5%8E%9F%E5%AD%90%E7%BB%93%E6%9E%84%20%E5%85%83%E7%B4%A0%E5%91%A8%E6%9C%9F%E5%BE%8B/P2%20%E5%85%83%E7%B4%A0%E5%91%A8%E6%9C%9F%E5%BE%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Hoarfroster">
+      <meta itemprop="description" content="这里是霜羽~~咕咕咕">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hoarfroster 的小窝">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/02/02/chemistry/BK%203%20%E5%8E%9F%E5%AD%90%E7%BB%93%E6%9E%84%20%E5%85%83%E7%B4%A0%E5%91%A8%E6%9C%9F%E5%BE%8B/P2%20%E5%85%83%E7%B4%A0%E5%91%A8%E6%9C%9F%E5%BE%8B/" class="post-title-link" itemprop="url">元素周期律</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-02-02 00:31:09" itemprop="dateCreated datePublished" datetime="2022-02-02T00:31:09+08:00">2022-02-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-05-28 23:43:07" itemprop="dateModified" datetime="2022-05-28T23:43:07+08:00">2022-05-28</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/High-School/" itemprop="url" rel="index"><span itemprop="name">High School</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/High-School/Chemistry/" itemprop="url" rel="index"><span itemprop="name">Chemistry</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span><br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+              <span>4.5k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+              <span>8 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+<h2 id="知识聚焦">知识聚焦</h2>
+<h3 id="一元素周期律">一、元素周期律</h3>
+<table>
+<colgroup>
+<col style="width: 23%">
+<col style="width: 76%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>定义</th>
+<th>元素性质随着元素原子序数的递增而是周期性变化。</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>实质</td>
+<td>元素性质的周期性递变是核外电子排布周期性变化的必然结果</td>
+</tr>
+<tr class="even">
+<td>核外电子排布</td>
+<td>最外层电子数由 1 递增至 8 （若<span class="math inline"><em>K</em></span>层为最外层，则由 1 递增至
+2）而现周期性变化。</td>
+</tr>
+<tr class="odd">
+<td>原子半径</td>
+<td>原子半径由大到小（稀有气体元素除外）呈周期性变化。<br>原子半径由电子层数和核电荷数决定，它是反映结构的一个参考数据。</td>
+</tr>
+<tr class="even">
+<td>最高正价</td>
+<td>由＋ 1 递变到＋ 7 ，从中部开始有负价，从一 4 递变至一 1
+（稀有气体元主要化合价素化合价为零），呈周期性变化。<br>元素主要化合价由元素原子的最外层电子数决定，一般存在下列关系：最高正价数＝最外层电子数。</td>
+</tr>
+<tr class="odd">
+<td>元素及化合物的性质</td>
+<td>金属性渐弱，非金属性渐强，最高价氧化物对应水化物的碱性渐弱，酸性渐强，呈周期性变化。<br>这是由于在一个周期内的元素，电子层数相同，最外层电子数逐渐增多，核对外层电子引力渐强，使元素原子失电子渐难，得电子渐易，故有此变化规律。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="二元素周期表">二、元素周期表</h3>
+<ol type="1">
+<li>元素周期表的结构：
+<ol type="1">
+<li>周期：7 个，其中短周期为第一、二和三周期。</li>
+<li>族：<span class="math inline">16</span>个，主族 7 个，副族 8 个， 0
+族 1 个。</li>
+<li>区：分为<span class="math inline"><em>s</em>, <em>p</em>, <em>d</em>, <em>d</em><em>s</em>, <em>f</em></span>五个区。</li>
+</ol></li>
+<li>主族元素递变规律：</li>
+</ol>
+<table>
+<colgroup>
+<col style="width: 6%">
+<col style="width: 26%">
+<col style="width: 29%">
+<col style="width: 37%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>内容</th>
+<th>同周期元素（从左到右）</th>
+<th>同主族元素（从上到下）</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>原子结构</td>
+<td>核电荷数</td>
+<td>递增</td>
+<td>增大</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>电子层数</td>
+<td>相同</td>
+<td>增多</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>最外层电子书</td>
+<td>增多</td>
+<td>相同</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>原子半径</td>
+<td>逐渐减小</td>
+<td>逐渐增大</td>
+</tr>
+<tr class="odd">
+<td>元素性质</td>
+<td>主要化合价</td>
+<td>最高正价+1 到+7<br>最低负价-4 到-1</td>
+<td>最高正价、最低负价相同<br>最高正价=族序数</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>最高价氧化物对应水化物的酸碱性</td>
+<td>碱性减弱酸性增强</td>
+<td>碱性增强，酸性减弱</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>非金属气态氢化物稳定性</td>
+<td>增强</td>
+<td>减弱</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>非金属气态氢化物形成难度</td>
+<td>从难倒易</td>
+<td>从易到难</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>单质的氧化还原性</td>
+<td>还原性减弱，氧化性增强</td>
+<td>还原性增强，氧化性减弱</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>元素的金属性和非金属性</td>
+<td>金属性逐渐减弱，非金属性逐渐增强</td>
+<td>金属性逐渐增强，费金属性逐渐减弱</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<h4 id="寻找特殊物质">寻找特殊物质</h4>
+<ol type="1">
+<li>半导体：金属和非金属交界。</li>
+<li>催化剂、耐高温耐腐蚀材料：过渡元素。</li>
+<li>农药：F、Cl、S、P。</li>
+</ol>
+</blockquote>
+<h3 id="三原子结构与元素周期表">三、原子结构与元素周期表</h3>
+<h4 id="原子的电子构型和周期的关系">1. 原子的电子构型和周期的关系</h4>
+<p>​ 每周期第一种元素的最外层电子排布式<span class="math inline"><em>n</em><em>s</em><sup>1</sup></span>，每周期结尾元素最外层电子排布式除了<span class="math inline">$\ce{He 1s^2}$</span>外都是<span class="math inline">$n\ce{s}^2n\ce{p}^6$</span>。</p>
+<h4 id="元素周期表的分区">2. 元素周期表的分区</h4>
+<p><img src="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/image-20220201155918866.png" alt="image-20220201155918866" style="zoom:33%;"></p>
+<h3 id="四元素性质">四、元素性质</h3>
+<h4 id="微粒半径尺寸">1. 微粒半径尺寸</h4>
+<ol type="1">
+<li>原子半径：
+<ol type="1">
+<li>电子层数相同，原子序数增加，原子半径减小。</li>
+<li>最外层电子书相同，电子层数增加，原子半径减小。</li>
+</ol></li>
+<li>离子半径：
+<ol type="1">
+<li>同种元素的离子半径，阴离子大于原子大于阳离子，低价阳离子大于高价阳离子。</li>
+<li>电子层结构相同的离子，核电荷数越大，半径越小。</li>
+<li>同主族元素的离子，电子层越多，半径越大。</li>
+<li>带电荷、电子层不同的离子可以用一个中间离子作比较。</li>
+</ol></li>
+</ol>
+<h4 id="元素金属性和非金属性">2. 元素金属性和非金属性</h4>
+<blockquote>
+<h4 id="对角线规则">对角线规则</h4>
+<p>在元素周期表中，某些主族元素与右下方的主族元素的有些性质是相似的（如<span class="math inline">$\ce{Li-Mg, Be-Al, B-Si}$</span>）。</p>
+</blockquote>
+<ol type="1">
+<li>金属性：原子越容易失去电子，金属性越强。
+<ol type="1">
+<li>金属活动顺序表越靠前，金属性越强。</li>
+<li>单质与水或非氧化性酸反应越剧烈，金属性越强。</li>
+<li>单质还原性越强或离子氧化性越弱，金属性越强。</li>
+<li>最高价氧化物对应水化物的碱性越强，金属性越强。</li>
+<li>若<span class="math inline">$\ce{X}$</span>金属能置换<span class="math inline">$\ce{Y}$</span>离子，则<span class="math inline">$\ce{X}$</span>金属金属性强于<span class="math inline">$\ce{Y}$</span>金属。</li>
+<li>元素原子（或离子）失去（或得到）电子时，吸收能量越少（越多），失电子越难（越容易），金属性越弱（越强）。</li>
+<li>原电池中，负极金属和正极金属构成原电池，则负极金属强于正极金属。</li>
+<li>电解中，阴极离子放电顺序与金属性相反。</li>
+<li>金属电负性越低金属性越强。</li>
+</ol></li>
+<li>非金属性：原子越容易得到电子，非金属性越强。
+<ol type="1">
+<li>与<span class="math inline">$\ce{H2}$</span>化合越容易，气态氢化物越稳定，非金属性越强。</li>
+<li>单质氧化性越强，阴离子还原性越弱，非金属性越强。</li>
+<li>最高价氧化物对应水化物酸性越强，非金属性越强。</li>
+<li>若<span class="math inline">$\ce{X}$</span>单质能置换<span class="math inline">$\ce{Y}$</span>阴离子，则<span class="math inline">$\ce{X}$</span>的非金属性强于<span class="math inline">$\ce{Y}$</span>（如<span class="math inline">$\ce{Cl2}$</span>置换<span class="math inline">$\ce{Br-}$</span>）。</li>
+<li>元素原子（或离子）失去（或得到）电子时，吸收能量越少（越多），失电子越难（越容易），非金属性越强（越弱）。</li>
+<li>非金属电负性越高非金属性越强。</li>
+</ol></li>
+</ol>
+<h4 id="元素电负性">3. 元素电负性</h4>
+<p>​
+<strong>电负性</strong>是用来衡量元素在化合物中吸引电子能力的物理量，规定<span class="math inline">$\ce{F}$</span>电负性为 4.0
+，并以此规定确定其他元素的电负性。</p>
+<ol type="1">
+<li>同一主族电负性从上到下呈现减小趋势。</li>
+<li>同一周期主族元素从左往右电负性逐渐增加。</li>
+<li>金属电负性一般小于 1.8 ，非金属电负性一般大于 1.8
+。金属元素电负性越低金属越活泼金属性越强，非金属电负性越大非金属越活泼非金属性越强。</li>
+<li>电负性数值低的元素在化合物中吸引电子能力弱，呈正价。电负性数值高的在化合物中吸引电子能力强，呈负价。</li>
+<li>一般来说，如果两个成键元素电负性差值大于 1.7
+，通常是离子键；如果小于 1.7 ，一般是共价键。（值得注意的是，<span class="math inline">$\ce{HF}$</span>是共价化合物）</li>
+</ol>
+<h4 id="元素第一电离能">4. 元素第一电离能</h4>
+<p>​ <strong>第一电离能</strong>指元素气态原子失去一个电子形成<span class="math inline"> + 1</span>价气态阳离子所需要的最低能量，符号<span class="math inline"><em>I</em><sub>1</sub></span>。第一电离能可以用来衡量元素气态原子失电子的难易程度。</p>
+<ol type="1">
+<li><p>同一主族，随着原子序数的增加，第一电离能减小，自上而下越来越容易失去电子。</p></li>
+<li><p>同一周期，随着原子序数的增加，第一电离能增大，从左往右原子越来越失去电子。同周期主族元素，<span class="math inline">$n\ce{s^2}$</span>、<span class="math inline">$n\ce{s^2}p^3$</span>电离能因为<span class="math inline">$\ce{p}$</span>轨道全空或半充满的稳定状态而电离能偏高。</p></li>
+<li><p>金属性和电离能不完全挂钩。</p></li>
+</ol>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://hoarfroster.github.io/2022/01/31/chemistry/BK%207%20%E7%94%B5%E8%A7%A3%E8%B4%A8%E6%BA%B6%E6%B6%B2/P1%20%E5%BC%B1%E7%94%B5%E8%A7%A3%E8%B4%A8%E7%94%B5%E7%A6%BB%E5%B9%B3%E8%A1%A1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Hoarfroster">
+      <meta itemprop="description" content="这里是霜羽~~咕咕咕">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hoarfroster 的小窝">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/01/31/chemistry/BK%207%20%E7%94%B5%E8%A7%A3%E8%B4%A8%E6%BA%B6%E6%B6%B2/P1%20%E5%BC%B1%E7%94%B5%E8%A7%A3%E8%B4%A8%E7%94%B5%E7%A6%BB%E5%B9%B3%E8%A1%A1/" class="post-title-link" itemprop="url">弱电解质电离平衡</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-01-31 22:27:56" itemprop="dateCreated datePublished" datetime="2022-01-31T22:27:56+08:00">2022-01-31</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-05-28 23:43:08" itemprop="dateModified" datetime="2022-05-28T23:43:08+08:00">2022-05-28</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/High-School/" itemprop="url" rel="index"><span itemprop="name">High School</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/High-School/Chemistry/" itemprop="url" rel="index"><span itemprop="name">Chemistry</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span><br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+              <span>3.6k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+              <span>7 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+<h2 id="知识聚焦">知识聚焦</h2>
+<h3 id="一电解质与非电解质">一、电解质与非电解质</h3>
+<p><img src="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/image-20220131142628240.png" alt="image-20220131142628240" style="zoom: 25%;"></p>
+<blockquote>
+<h4 id="电解质的导电能力">电解质的导电能力</h4>
+<p>​
+电解质强弱是影响溶液导电能力的因素。电解质溶液的导电能力与单位体积中自由移动的离子数目和离子带电量有关。</p>
+<h5 id="判断电解质强弱的方法">判断电解质强弱的方法</h5>
+<ol type="1">
+<li>同浓度同温度下进行导电性对比实验。</li>
+<li>同浓度同温度下比较反应速率快慢（如比较酸性，可以投<span class="math inline">$\ce{Zn}$</span>粒到醋酸和盐酸中）。</li>
+<li>比较浓度和<span class="math inline">$\ce{pH}$</span>的关系，如<span class="math inline">$\ce{0.1 mol\cdot L^{-1}}$</span>醋酸溶液的<span class="math inline">$\ce{pH&gt;1}$</span>，证明醋酸是弱电解质。</li>
+<li>测对应盐的酸碱性，比如<span class="math inline">$\ce{NaAc}$</span>溶液呈碱性，可以证明<span class="math inline">$\ce{HAc}$</span>是弱酸。</li>
+<li>通过稀释溶液后<span class="math inline">$\ce{pH}$</span>和稀释倍数的关系，如<span class="math inline">$\ce{pH=2}$</span>的酸溶液稀释<span class="math inline">100</span>倍，<span class="math inline">$\ce{pH&lt;4}$</span>证明酸是弱酸。</li>
+<li>实验验证电离平衡，如醋酸溶液加入石蕊呈红色（酸性），加入醋酸铵（<span class="math inline">$\ce{pH}$</span>接近<span class="math inline">7</span>），颜色变浅，证明是弱酸。</li>
+<li>利用强酸（碱）制弱酸（碱）的原则，如向苯酚钠中通入<span class="math inline">$\ce{CO2}$</span>，出现浑浊，证明酸性<span class="math inline">$\ce{H2CO3&gt;PhOH}$</span>。</li>
+<li>利用元素周期表进行判断（酸碱性），也即使用非金属性、金属性或电负性进行判断。</li>
+</ol>
+</blockquote>
+<h3 id="二弱电解质的电离平衡">二、弱电解质的电离平衡</h3>
+<h4 id="意义与特征">1. 意义与特征</h4>
+<p>​
+在一定条件下，弱电解质离子化速率和分子化速率相等时，达到<strong>电离平衡状态</strong>。电离平衡具有如下特征：</p>
+<ol type="1">
+<li>弱电解质电离具有可逆性。</li>
+<li><span class="math inline"><em>v</em><sub><em>电</em><em>离</em></sub> = <em>v</em><sub><em>结</em><em>合</em></sub> ≠ 0</span>的动态平衡。</li>
+<li>条件一定，分子和离子浓度一定。</li>
+<li>条件改变，平衡破坏，发生移动。</li>
+</ol>
+<h4 id="电离平衡常数">2. 电离平衡常数</h4>
+<p>​ 对于反应<span class="math inline">$\ce{AB&lt;=&gt;A+
++B-}$</span>，<span class="math inline">$K=\ce{\dfrac{[A+][B-]}{[AB]}}$</span>（均为平衡浓度），其中酸常用<span class="math inline"><em>K</em><sub><em>a</em></sub></span>表示，碱常用<span class="math inline"><em>K</em><sub><em>b</em></sub></span>表示。电离平衡常数可以表示在相同温度下弱电解质的相对强弱（与浓度无关）。==多元弱酸多步水解且<span class="math inline"><em>K</em><sub><em>a</em>1</sub> &gt; <em>K</em><sub><em>a</em>2</sub> &gt; ⋯</span>，多元弱碱一步水解==。</p>
+<h3 id="二水的电离ph-与离子积">二、水的电离、pH 与离子积</h3>
+<p>​ 标况下，纯水<span class="math inline">$\ce{[H+]=[OH-]=10^{-7}mol\cdot
+L^{-1}}$</span>，<span class="math inline">$\ce{pH=7}$</span>，<span class="math inline">$K_w=\ce{[H+]\times[OH-]}=10^{-14}$</span>。<span class="math inline"><em>K</em><sub><em>w</em></sub></span>随温度的升高而增大，不管在哪种水溶液中，<span class="math inline">$\ce{[H+]_{H_2O}=[OH-]_{H_2O}}$</span>。</p>
+<p>​ 溶液的酸碱性与 pH 值并不直接挂钩，只取决于<span class="math inline">$\ce{[H+]}$</span>和<span class="math inline">$\ce{[OH-]}$</span>的相对大小。<span class="math inline">$\ce{pH=-\lg[H+], pOH=-\lg[OH-]}$</span>。</p>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://hoarfroster.github.io/2022/01/31/chemistry/BK%207%20%E7%94%B5%E8%A7%A3%E8%B4%A8%E6%BA%B6%E6%B6%B2/P2%20%E7%9B%90%E7%B1%BB%E6%B0%B4%E8%A7%A3%E5%B9%B3%E8%A1%A1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Hoarfroster">
+      <meta itemprop="description" content="这里是霜羽~~咕咕咕">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hoarfroster 的小窝">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/01/31/chemistry/BK%207%20%E7%94%B5%E8%A7%A3%E8%B4%A8%E6%BA%B6%E6%B6%B2/P2%20%E7%9B%90%E7%B1%BB%E6%B0%B4%E8%A7%A3%E5%B9%B3%E8%A1%A1/" class="post-title-link" itemprop="url">盐类水解平衡</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-01-31 22:27:56" itemprop="dateCreated datePublished" datetime="2022-01-31T22:27:56+08:00">2022-01-31</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-05-28 23:43:08" itemprop="dateModified" datetime="2022-05-28T23:43:08+08:00">2022-05-28</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/High-School/" itemprop="url" rel="index"><span itemprop="name">High School</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/High-School/Chemistry/" itemprop="url" rel="index"><span itemprop="name">Chemistry</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span><br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+              <span>3.8k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+              <span>7 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+<h2 id="知识聚焦">知识聚焦</h2>
+<h3 id="一盐类水解">一、盐类水解</h3>
+<p>​ 盐类水解的实质是，盐电离出来的一种或多种离子和水电离出来的<span class="math inline">$\ce{H+/OH-}$</span>形成了弱电解质，破坏了水的电离平衡，使溶液呈酸性、中性或碱性，<strong>本质是中和反应的逆反应，即盐+水<span class="math inline">$\ce{&lt;=&gt;}$</span>酸+碱</strong>，属于吸热反应，熵增。</p>
+<blockquote>
+<h3 id="盐类水解口诀无弱不水解谁弱谁水解越弱越水解谁强显谁性">盐类水解口诀：无弱不水解，谁弱谁水解，越弱越水解，谁强显谁性。</h3>
+</blockquote>
+<blockquote>
+<h5 id="盐类水解离子方程式注意事项">盐类水解离子方程式注意事项</h5>
+<ol type="1">
+<li>因为盐类水解程度较轻且过程可逆，所以要用<span class="math inline">$\ce{&lt;=&gt;}$</span>；水解产物如果有气体或沉淀，也不标<span class="math inline">$\ce{v / ^}$</span>。</li>
+<li>如果是双水解完全反应生成气体沉淀，则要用等号，标<span class="math inline">$\ce{v 、 ^}$</span>。</li>
+<li>多元弱酸盐水解分步进行，以第一步为主，不可以合并。</li>
+<li>多元弱碱一步水解。</li>
+</ol>
+</blockquote>
+<h3 id="二水解平衡的影响因素">二、水解平衡的影响因素</h3>
+<h4 id="本质盐的本性越弱越水解">1. 本质：盐的本性（越弱越水解）</h4>
+<h5 id="不同弱酸对应的盐越弱越水解">不同弱酸对应的盐：越弱越水解</h5>
+<p>碱性<span class="math inline">$\ce{NaClO&gt;NaHCO3}$</span>，对应的酸<span class="math inline">$\ce{HClO&lt;H2CO3}$</span>。</p>
+<h5 id="不同弱碱对应的盐越弱越水解">不同弱碱对应的盐：越弱越水解</h5>
+<p>酸性<span class="math inline">$\ce{NH3Cl&lt;MgCl2&lt;AlCl3}$</span>，对应的碱<span class="math inline">$\ce{NH3\cdot
+H2O&lt;Mg(OH)2&lt;Al(OH)3}$</span>。</p>
+<h5 id="同一弱酸对应的盐正盐水解程度酸式盐水解程度">同一弱酸对应的盐：正盐水解程度&gt;酸式盐水解程度</h5>
+<p>碱性<span class="math inline">$\ce{Na2CO3&gt;NaHCO3}$</span>，对应的酸<span class="math inline">$\ce{HCO^-3&lt;H2CO3}$</span>。</p>
+<h5 id="多元弱酸对应酸式盐一般水解趋势大于电离趋势">多元弱酸对应酸式盐一般水解趋势大于电离趋势</h5>
+<p>同浓度 pH，<span class="math inline">$\ce{Na2SO3&gt;Na2SO4&gt;NaHSO3&gt;NaHSO4}$</span>，<span class="math inline">$\ce{Na3PO4&gt;Na2HPO4&gt;NaH2PO4&gt;H3PO4}$</span>（<span class="math inline">$\ce{NaH2PO4/NaHSO3/NaHC2O4}$</span>除外）。</p>
+<h4 id="外因符合勒夏特列原理">2. 外因：符合勒夏特列原理</h4>
+<ol type="1">
+<li>温度：升温促水解，降温抑水解。</li>
+<li>浓度：<span class="math inline">$\ce{Al^3+ + 3H2O &lt;=&gt; Al(OH)3
++ 3H+}$</span>，加水稀释促水解（<span class="math inline">$\ce{[H+]
+v}$</span>），加固体<span class="math inline">$\ce{AlCl3}$</span>促水解（<span class="math inline">$\ce{[H+] ^}$</span>）。</li>
+</ol>
+<blockquote>
+<h3 id="盐类水解快捷计算规律">盐类水解快捷计算规律</h3>
+<p><span class="math inline">$\ce{K_h=\dfrac{K_w}{K_a}}$</span></p>
+</blockquote>
+<blockquote>
+<h3 id="三大守恒">三大守恒</h3>
+<h5 id="物料守恒元素守恒">物料守恒（元素守恒）</h5>
+<p>​
+电解质溶液中某一组分的原始浓度等于它在溶液中各种存在形式的浓度和（如<span class="math inline">$\ce{0.1 mol\cdot L^{-1}NaHS,
+[HS^-]+[S^2-]+[H2S]=0.1mol\cdot L^{-1}}$</span>）。</p>
+<h5 id="电荷守恒">电荷守恒</h5>
+<p>​ 电解质溶液中所有阳离子带电量和所有阴离子带电量相等（如<span class="math inline">$\ce{NaHCO3, [H+] + [Na+] = [OH-] +[HCO3-] +
+2[CO3^2-]}$</span>）。</p>
+<h5 id="质子守恒">质子守恒</h5>
+<p>​ 电解质溶液中水电离<span class="math inline">$\ce{H2O &lt;=&gt; H+ +
+OH-}$</span>，即电解质得氢（如弱酸强碱盐的水解）等于水释放的氢氧根浓度（如<span class="math inline">$\ce{NaHCO3, [H2CO3] + [H+] = [OH-] +
+[CO3^2-]}$</span>）。</p>
+</blockquote>
+<blockquote>
+<h5 id="盐溶液蒸发产物">盐溶液蒸发产物</h5>
+<ol type="1">
+<li>注意是否会发生氧化还原反应或分解反应（如<span class="math inline">$\ce{Fe^{II}, ClO-, HCO3-}$</span>受热反应）。</li>
+<li>如果是<span class="math inline">$\ce{AlCl3,
+Fe(NO3)3}$</span>这类的盐对应的阴离子会得到氢离子变成易挥发性酸，如<span class="math inline">$\ce{FeCl3}$</span>水解后，铁变成氢氧化物，氯离子得到氢离子变成<span class="math inline">$\ce{HCl}$</span>会挥发。</li>
+</ol>
+</blockquote>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://hoarfroster.github.io/2022/01/31/chemistry/BK%207%20%E7%94%B5%E8%A7%A3%E8%B4%A8%E6%BA%B6%E6%B6%B2/P3%20%E9%9A%BE%E6%BA%B6%E7%94%B5%E8%A7%A3%E8%B4%A8%E7%9A%84%E6%BA%B6%E8%A7%A3%E5%B9%B3%E8%A1%A1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Hoarfroster">
+      <meta itemprop="description" content="这里是霜羽~~咕咕咕">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hoarfroster 的小窝">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/01/31/chemistry/BK%207%20%E7%94%B5%E8%A7%A3%E8%B4%A8%E6%BA%B6%E6%B6%B2/P3%20%E9%9A%BE%E6%BA%B6%E7%94%B5%E8%A7%A3%E8%B4%A8%E7%9A%84%E6%BA%B6%E8%A7%A3%E5%B9%B3%E8%A1%A1/" class="post-title-link" itemprop="url">难溶电解质的溶解平衡</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-01-31 22:27:56" itemprop="dateCreated datePublished" datetime="2022-01-31T22:27:56+08:00">2022-01-31</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-05-28 23:43:08" itemprop="dateModified" datetime="2022-05-28T23:43:08+08:00">2022-05-28</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/High-School/" itemprop="url" rel="index"><span itemprop="name">High School</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/High-School/Chemistry/" itemprop="url" rel="index"><span itemprop="name">Chemistry</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span><br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+              <span>1.2k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+              <span>2 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+<h2 id="知识聚焦">知识聚焦</h2>
+<h3 id="一沉淀溶解平衡">一、沉淀溶解平衡</h3>
+<p>​
+在一定条件下，难溶电解质溶于水，当沉淀溶解的速率和沉淀生成的速率相等时，形成该电解质的饱和溶液，这种平衡称为<strong>沉淀溶解平衡</strong>。</p>
+<p>​ 对于难溶强电解质<span class="math inline">$\ce{M_mN_n}$</span>的溶解<span class="math inline">$\ce{M_mN_n&lt;=&gt;mM^{n+}(aq) +
+nN^{m-}}$</span>，<span class="math inline">$K_{sp}=\ce{[M^{n+}]^m[N^{m-}]^n}$</span>为该电解质的溶度积常数。</p>
+<blockquote>
+<h4 id="当溶解在溶液中的离子浓度小于ce10-5molcdot-l-1则说明该离子沉淀完全">当溶解在溶液中的离子浓度小于<span class="math inline">$\ce{10^{-5}mol\cdot
+L^{-1}}$</span>则说明该离子沉淀完全。</h4>
+</blockquote>
+<h3 id="二沉淀溶解的应用">二、沉淀溶解的应用</h3>
+<h4 id="沉淀的生成">1. 沉淀的生成</h4>
+<p>​ 在工业生产等工艺中，常调整<span class="math inline">$\ce{pH}$</span>到合适值沉淀某一金属以沉淀该金属，或者选择添加沉淀剂，如对应阴离子可以投入氯离子进行沉淀。</p>
+<h4 id="沉淀的溶解">2. 沉淀的溶解</h4>
+<p>​ 为了溶解难溶性电解质，我们可以添加酸碱调节<span class="math inline">$\ce{pH}$</span>，可以使用氧化还原反应（如<span class="math inline">$\ce{CuS,
+HgS}$</span>溶于氧化性酸），可以制成配合物溶解（如<span class="math inline">$\ce{AgCl}$</span>溶解于氨水生成配合物银氨溶液），可以使用溶解能力较强的物质使其转换等。</p>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/20/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><span class="page-number current">21</span><a class="page-number" href="/page/22/">22</a><span class="space">&hellip;</span><a class="page-number" href="/page/39/">39</a><a class="extend next" rel="next" href="/page/22/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Hoarfroster"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Hoarfroster</p>
+  <div class="site-description" itemprop="description">这里是霜羽~~咕咕咕</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">193</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">53</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">58</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <ul class="links-of-author motion-element">
+      <li class="links-of-author-item">
+        <a href="https://github.com/PassionPenguin" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;PassionPenguin" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        <span> PassionPenguin</span>
+      </li>
+      <li class="links-of-author-item">
+        <a href="mailto:hoarfroster@outlook.com" title="E-Mail → mailto:hoarfroster@outlook.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+        <span> hoarfroster@outlook.com</span>
+      </li>
+      <li class="links-of-author-item">
+        <a href="https://twitter.com/zhangqizhe" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;zhangqizhe" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+        <span> @zhangqizhe</span>
+      </li>
+      <li class="links-of-author-item">
+        <a href="https://www.instagram.com/glacierpenguin/" title="Instagram → https:&#x2F;&#x2F;www.instagram.com&#x2F;glacierpenguin&#x2F;" rel="noopener" target="_blank"><i class="fab fa-instagram fa-fw"></i>Instagram</a>
+        <span> @glacierpenguin</span>
+      </li>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hoarfroster</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="Symbols count total">1.1m</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">34:12</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT</a>
+  </div>
+
+        
+
+
+
+
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-firestore.js"></script>
+  <script>
+    firebase.initializeApp({
+      apiKey   : 'AIzaSyDqM81uUD8yWHAvsGasJzvWBHhpBYnRttI',
+      projectId: 'hoar-froster'
+    });
+
+    function getCount(doc, increaseCount) {
+      // IncreaseCount will be false when not in article page
+      return doc.get().then(d => {
+        var count = 0;
+        if (!d.exists) { // Has no data, initialize count
+          if (increaseCount) {
+            doc.set({
+              count: 1
+            });
+            count = 1;
+          }
+        } else { // Has data
+          count = d.data().count;
+          if (increaseCount) {
+            // If first view this article
+            doc.set({ // Increase count
+              count: count + 1
+            });
+            count++;
+          }
+        }
+
+        return count;
+      });
+    }
+
+    function appendCountTo(el) {
+      return count => {
+        el.innerText = count;
+      }
+    }
+  </script>
+  <script>
+    (function() {
+      var db = firebase.firestore();
+      var articles = db.collection('articles-info');
+
+      if (CONFIG.page.isPost) { // Is article page
+        var title = document.querySelector('.post-title').innerText.trim();
+        var doc = articles.doc(title);
+        var increaseCount = CONFIG.hostname === location.hostname;
+        if (localStorage.getItem(title)) {
+          increaseCount = false;
+        } else {
+          // Mark as visited
+          localStorage.setItem(title, true);
+        }
+        getCount(doc, increaseCount).then(appendCountTo(document.querySelector('.firestore-visitors-count')));
+      } else if (CONFIG.page.isHome) { // Is index page
+        var promises = [...document.querySelectorAll('.post-title')].map(element => {
+          var title = element.innerText.trim();
+          var doc = articles.doc(title);
+          return getCount(doc);
+        });
+        Promise.all(promises).then(counts => {
+          var metas = document.querySelectorAll('.firestore-visitors-count');
+          counts.forEach((val, idx) => {
+            appendCountTo(metas[idx])(val);
+          });
+        });
+      }
+    })();
+  </script>
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var canonicalURL, curProtocol;
+      //Get the <link> tag
+      var x=document.getElementsByTagName("link");
+		//Find the last canonical URL
+		if(x.length > 0){
+			for (i=0;i<x.length;i++){
+				if(x[i].rel.toLowerCase() == 'canonical' && x[i].href){
+					canonicalURL=x[i].href;
+				}
+			}
+		}
+    //Get protocol
+	    if (!canonicalURL){
+	    	curProtocol = window.location.protocol.split(':')[0];
+	    }
+	    else{
+	    	curProtocol = canonicalURL.split(':')[0];
+	    }
+      //Get current URL if the canonical URL does not exist
+	    if (!canonicalURL) canonicalURL = window.location.href;
+	    //Assign script content. Replace current URL with the canonical URL
+      !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=canonicalURL,t=document.referrer;if(!e.test(r)){var n=(String(curProtocol).toLowerCase() === 'https')?"https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif":"//api.share.baidu.com/s.gif";t?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var i=new Image;i.src=n}}(window);})();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme    : 'default',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+  
+
+  
+
+
+</body>
+</html>

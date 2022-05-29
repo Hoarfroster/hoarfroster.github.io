@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/avatar.png" color="#222">
+  <meta name="google-site-verification" content="iFMbHL1JuWjTlNFq5Rv96vDzpsqakxTpdE2nw7Crr6o">
+  <meta name="msvalidate.01" content="EF6D8CD8A3335E66AB96B4D544FCD96C">
+  <meta name="baidu-site-verification" content="code-80b80Pbzs2">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link href="/lib/fontawesome/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<script>
+
+  window.onload = function() {
+    document.querySelectorAll("p").forEach(e=>{
+      e.innerHTML = e.innerHTML.replaceAll(/==(.+?)==/g, "<mark>$1</mark>").replaceAll(/​\s+?/g, "<span class='tab'></span>");
+    });
+    
+    [...document.querySelectorAll("pre > code")].forEach(e=> {
+        var codeClass = e.parentElement.classList.value;
+        if (codeClass == null || codeClass === "") {
+            e.classList.add("hljs");
+        } else {
+            var map = {
+                js: "javascript"
+            };
+            if (map[codeClass]) {
+                codeClass = map[codeClass];
+            }
+            codeClass.split(" ").forEach(i=>e.classList.add(i));
+            hljs.highlightElement(e);
+        }
+    });
+
+    [...document.querySelectorAll('.classcial-chinese-literature-and-poetry-translation')].forEach(i=>{
+      let el = document.createElement('div');
+      el.setAttribute('class', 'fa-solid fa-eye');
+      i.prepend(el);
+      el.addEventListener('click', ()=>{
+        let status = el.classList.contains('fa-eye');
+        [...i.querySelectorAll('.translation')].forEach(j=>{
+          j.classList.remove('hide');
+          if(status) {
+            j.classList.add('hide');
+          }
+        });
+        el.attributes['class'].value = el.attributes['class'].value.replace('fa-eye-slash', 'fa-0').replace('fa-eye', 'fa-eye-slash').replace('fa-0', 'fa-eye');
+      });
+
+      [...i.querySelectorAll('.original-text')].forEach(e=>{
+        let el = document.createElement('div');
+        el.setAttribute('class', 'fa-solid fa-eye-slash');
+        e.prepend(el);
+        el.addEventListener('click', ()=>{
+            e.nextSibling.classList.toggle('hide');
+            el.attributes['class'].value = el.attributes['class'].value.replace('fa-eye-slash', 'fa-0').replace('fa-eye', 'fa-eye-slash').replace('fa-0', 'fa-eye');
+        });
+      })
+    });
+  }
+</script>
+<script async src="/js/highlight.min.js"></script>
+<script async src="/js/cursor.js"></script>
+<script data-ad-client="ca-pub-2275811890061218" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"hoarfroster.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqusjs","storage":true,"lazyload":false,"nav":null,"activeClass":"disqusjs"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="Deleting input.tex Deleting input.aux Deleting input.dvi Deleting input.log Deleting output.svg Deleting input.tex Deleting input.aux Deleting input.dvi Deleting input.log Deleting output.svg Deleting">
+<meta property="og:type" content="article">
+<meta property="og:title" content="传感器">
+<meta property="og:url" content="https://hoarfroster.github.io/2022/03/15/physics/High%20School/S2%20Electricity%20and%20Electromagnetism/%E4%BC%A0%E6%84%9F%E5%99%A8/index.html">
+<meta property="og:site_name" content="Hoarfroster 的小窝">
+<meta property="og:description" content="Deleting input.tex Deleting input.aux Deleting input.dvi Deleting input.log Deleting output.svg Deleting input.tex Deleting input.aux Deleting input.dvi Deleting input.log Deleting output.svg Deleting">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/image-20220316230352626.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/image-20220316230241861.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/image-20220316230423936.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/image-20220316231237558.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/image-20220316231736317.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/image-20220316231748800.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/image-20220316232208880.png">
+<meta property="article:published_time" content="2022-03-15T14:08:43.000Z">
+<meta property="article:modified_time" content="2022-05-28T15:43:08.340Z">
+<meta property="article:author" content="Hoarfroster">
+<meta property="article:tag" content="School Notes">
+<meta property="article:tag" content="High School">
+<meta property="article:tag" content="Physics">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/image-20220316230352626.png">
+
+<link rel="canonical" href="https://hoarfroster.github.io/2022/03/15/physics/High%20School/S2%20Electricity%20and%20Electromagnetism/%E4%BC%A0%E6%84%9F%E5%99%A8/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>传感器 | Hoarfroster 的小窝</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <!--<div class="headband"></div>-->
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hoarfroster 的小窝</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section">Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section">About</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section">Categories</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger">
+          Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://hoarfroster.github.io/2022/03/15/physics/High%20School/S2%20Electricity%20and%20Electromagnetism/%E4%BC%A0%E6%84%9F%E5%99%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Hoarfroster">
+      <meta itemprop="description" content="这里是霜羽~~咕咕咕">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hoarfroster 的小窝">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          传感器
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-03-15 22:08:43" itemprop="dateCreated datePublished" datetime="2022-03-15T22:08:43+08:00">2022-03-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-05-28 23:43:08" itemprop="dateModified" datetime="2022-05-28T23:43:08+08:00">2022-05-28</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/High-School/" itemprop="url" rel="index"><span itemprop="name">High School</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/High-School/Physics/" itemprop="url" rel="index"><span itemprop="name">Physics</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/High-School/Physics/Electricity-and-Electromagnetism/" itemprop="url" rel="index"><span itemprop="name">Electricity and Electromagnetism</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span><br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+              <span>4.6k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+              <span>8 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+<h2 id="课程标准">课程标准</h2>
+<h3 id="课程标准内容">课程标准内容</h3>
+<h4 id="传感器选择性必修">2.4 传感器（选择性必修）</h4>
+<blockquote>
+<p>2.4.1 知道非电学量转换成电学量的技术意义。</p>
+</blockquote>
+<p>​
+对传感器的所有内容的学习要求都属于了解水平的。传感器在现代生产生活和科技活动中的应用是非常普遍的，而且传感器的研发、生产越来越快，运用越来越普遍。本条目要求学生：了解把非电学量转化成电学量的原因和转化意义。电学量（电流、电压等信号）便于控制、处理（放大、衰减或波形调整），便于显示或储存，也便于传输与接收。把非电学量转化成电学量才可能实现信息采集、处理、储存和传输的自动化与智能化。所以非电学量转化成电学量是实现自动控制、数字化信息传输的基础。</p>
+<blockquote>
+<p>2.4.2
+通过实验，了解常见传感器的工作原理。会利用传感器制作简单的自动控制装置。</p>
+<p>例1 通过热敏电阻实验，了解温度传感器的工作原理。</p>
+</blockquote>
+<p>​
+教师可以通过实验演示，让学生了解各种常用的传感器的工作原理。在教学中可以用学生熟悉的热敏电阻、光敏电阻、驻极体话筒等常用元件进行实验，让学生了解这些元件如何将非电学量转化成电学量。其实，各种传感器把非电学量转化成学量的原理都不尽相同，因此这里只要求学生了解常见的几种传感器的工作原理即可。教师可以鼓励有兴趣的同学了解传感器研发与应用的新的技术进展，也可以让学生了解传感器在一种家用电器中的应用。
+​
+在教学中，可以让学生动手设计一个简单的传感器电路，电路中只要有以下功能即可：将非电学量转化成电学量、电学量的处理、电学量对设备的控制和操作等。</p>
+<blockquote>
+<p>2.4.3 列举传感器在生产生活中的应用。</p>
+<p>例2 了解光敏传感器及其在生产生活中的应用。</p>
+</blockquote>
+<p>​
+传感器在生产生活与技术中具有广泛的应用，可以让学生查阅资料，了解传感器的各种应用。例如，汽车、电饭锅、冰箱、空调、自动售货机、扫地机器人等各种设备或用具中都有传感器的应用，一些现代化的生产企业在一条流水线上可能会用上万个传感器来实现自动控制。智能手机中也有很多传感器，例如重力传感器等，学生可以通过查阅手机的说明书等技术资料了解有关应用。在教学中，可以让学生查阅资料，对资料进行学习与整理后在班内或组内交流。</p>
+<p>​
+传感器这部分内容主要是让学生了解一些身边的技术应用及原理，让学生理解传感器的原理、传感器应用给人们带来的便利性以及它的经济效益与社会效益。</p>
+<h4 id="教学活动要求">教学活动要求</h4>
+<ol type="1">
+<li>调查生产生活中传感器的应用，分析某一种传感器的工作原理。</li>
+<li>调查手机中的各种传感器，了解它们的应用。</li>
+</ol>
+<h2 id="知识聚焦">知识聚焦</h2>
+<h3 id="一传感器">一、传感器</h3>
+<p>​
+<strong>传感器</strong>（sensor）是指这样一类器件或装置：它能够感受诸如==力、温度、光、声、化学成分==等被测量，并能把它们按照一定的规律转换为便于传送和处理的可用信号输出。通常转换成的可用信号是电压、电流等电学量，或转换为电路的通断。把非电学量转换为电学量，可以很方便地进行测量、传输、处理和控制。</p>
+<h3 id="二常见的传感器及其应用">二、常见的传感器及其应用</h3>
+<h4 id="光敏电阻">1. 光敏电阻</h4>
+<p>​
+有一些物质，例如硫化镉，==电阻率与所受光照的强度有关==。使用这些物质涂敷到绝缘板上，再用银浆涂敷两个互不相连的梳状电极，就能制成一个<strong>光敏电阻</strong>。光敏电阻是光电传感器中常见的光敏元件。</p>
+<p>​ 光敏电阻在被光照射时电阻发生变化，原因是：
+硫化镉是一种半导体材料，==无光照时，载流子极少，导电性能差；
+随着光照的增强，载流子增多，导电性变好。==</p>
+<figure>
+<img src="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/image-20220316230352626.png" alt="光电计数基本原理">
+<figcaption aria-hidden="true">光电计数基本原理</figcaption>
+</figure>
+<h4 id="金属热电阻与热敏电阻">2. 金属热电阻与热敏电阻</h4>
+<p>​
+<strong>金属热电阻</strong>和<strong>热敏电阻</strong>是传感器中常见的感知温度的敏感元件。</p>
+<p>​
+金属的电阻率随温度的升高而增大。用金属丝可以制作温度传感器，称为热电阻。常用的一种热电阻是用铂制作的，可用来做电阻温度计。与金属不同，有些半导体在温度上升时导电能力增强，因此可以用半导体材料制作热敏电阻。==金属热电阻和热敏电阻都能够把温度这个热学量转换为电阻这个电学量。==</p>
+<figure>
+<img src="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/image-20220316230241861.png" alt="image-20220316230241861">
+<figcaption aria-hidden="true">image-20220316230241861</figcaption>
+</figure>
+<figure>
+<img src="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/image-20220316230423936.png" alt="液位报警示意图">
+<figcaption aria-hidden="true">液位报警示意图</figcaption>
+</figure>
+<h4 id="电阻应变片">3. 电阻应变片</h4>
+<p>​
+电阻应变片是一种使用非常广泛的力敏元件。因为电阻与导体的材料、长度和横截面积有关，当金属丝受到拉力时，长度变长、横截面积变小，导致电阻变大；当金属丝受到压力时，长度变短、横截面积变大，导致电阻变小。==金属导体在外力作用下发生机械形变（伸长或缩短）时，其电阻随着它所受机械形变的变化而发生变化的现象==，称为金属的<strong>电阻应变效应</strong>。<strong>金属电阻应变片</strong>就是利用这一原理制成的。</p>
+<p>​
+除了金属电阻应变片外，常用的电阻应变片还有<strong>半导体电阻应变片</strong>，它的工作原理是基于半导体材料的压阻效应（当单晶半导体材料沿某一轴向受到外力作用时，其电阻率发生变化的现象，称为压阻效应）。==电阻应变片能够把物体形变这个力学量转换为电阻这个电学量。==</p>
+<h4 id="电容式传感器">4. 电容式传感器</h4>
+<p>​ 电容器的电容 <span class="math inline"><em>C</em></span>
+决定于极板的正对面积 <span class="math inline"><em>S</em></span>、极板间的距离 <span class="math inline"><em>d</em></span>
+以及极板间的电介质这三个因素。如果某个物理量的变化能引起上述某个因素的变化，从而引起电容的变化，那么，通过测定电容器的电容就可以确定这个物理量的变化，由此可以制成电容式传感器。</p>
+<figure>
+<img src="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/image-20220316231237558.png" alt="image-20220316231237558">
+<figcaption aria-hidden="true">image-20220316231237558</figcaption>
+</figure>
+<h4 id="霍尔元件">5. 霍尔元件</h4>
+<p>​ 1879
+年，美国物理学家霍尔观察到，在匀强磁场中放置一个矩形截面的载流导体，当磁场方向与电流方向垂直时，导体中能够自由移动的带电粒子在洛伦兹力的作用下，向着与电流、磁场都垂直的方向漂移，继而在该方向上出现了电势差。后来大家把这个现象称为<strong>霍尔效应</strong>，所产生的电势差称为<strong>霍尔电势差</strong>或<strong>霍尔电压</strong>。</p>
+<figure>
+<img src="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/image-20220316231736317.png" alt="image-20220316231736317">
+<figcaption aria-hidden="true">image-20220316231736317</figcaption>
+</figure>
+<p>​
+除导体外，半导体也能产生霍尔效应，而且半导体的霍尔效应要强于导体。在一个很小的矩形半导体（如砷化铟）薄片上，制作四个电极
+<span class="math inline"><em>E</em></span>、<span class="math inline"><em>F</em></span>、<span class="math inline"><em>M</em></span>、<span class="math inline"><em>N</em></span>，它就成了一个霍尔元件。在 <span class="math inline"><em>E</em></span>、<span class="math inline"><em>F</em></span> 间通入恒定的电流 <span class="math inline"><em>I</em></span>，同时外加与薄片垂直的磁感应强度为
+<span class="math inline"><em>B</em></span> 的磁场，则在 <span class="math inline"><em>M</em></span>、<span class="math inline"><em>N</em></span> 间可出现霍尔电压 <span class="math inline"><em>U</em><sub><em>H</em></sub></span>。通过分析可知，霍尔电压
+<span class="math inline"><em>U</em><sub><em>H</em></sub></span>
+与磁感应强度 <span class="math inline"><em>B</em></span>
+有线性关系，因此利用霍尔元件可以测量磁感应强度的大小和方向。==霍尔元件能够把磁感应强度这个磁学量转换为电压这个电学量。==</p>
+<figure>
+<img src="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/image-20220316231748800.png" alt="image-20220316231748800">
+<figcaption aria-hidden="true">image-20220316231748800</figcaption>
+</figure>
+<p>​
+霍尔元件除了可以检测磁场及其变化，还可以在各种与磁场有关的场合中使用。如下图中，在两块磁感应强度相同、同极相对放置的磁体缝隙中放入霍尔元件，当霍尔元件处于中间位置时，磁感应强度
+<span class="math inline"><em>B</em></span> 为 <span class="math inline">0</span>，霍尔电压 <span class="math inline"><em>U</em><sub><em>H</em></sub></span> 为 <span class="math inline">0</span>，可将该点作为位移的零点。当霍尔元件沿着
+<span class="math inline"> ± <em>z</em></span>
+方向移动时，则有霍尔电压输出，且电压大小与位移大小成正比，从而能够实现微小位移的测量。</p>
+<h4 id="干簧管">6. 干簧管</h4>
+<p>​
+干簧管的结构很简单，玻璃管内封入了两个软磁性材料制成的簧片。当磁体靠近干簧管时，两个簧片被磁化而接通，所以干簧管能起到开关的作用，操纵开关的是磁场这只看不见的“手”。==干簧管是一种能够感知磁场的传感器。==</p>
+<figure>
+<img src="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/image-20220316232208880.png" alt="image-20220316232208880">
+<figcaption aria-hidden="true">image-20220316232208880</figcaption>
+</figure>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/School-Notes/" rel="tag"># School Notes</a>
+              <a href="/tags/High-School/" rel="tag"># High School</a>
+              <a href="/tags/Physics/" rel="tag"># Physics</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/03/15/physics/High%20School/S2%20Electricity%20and%20Electromagnetism/%E7%94%B5%E7%A3%81%E6%B3%A2/" rel="prev" title="电磁波">
+      <i class="fa fa-chevron-left"></i> 电磁波
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/03/15/physics/High%20School/S2%20Electricity%20and%20Electromagnetism/%E7%94%B5%E7%A3%81%E6%84%9F%E5%BA%94%E5%8F%8A%E5%85%B6%E5%BA%94%E7%94%A8/" rel="next" title="电磁感应及其应用">
+      电磁感应及其应用 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%BE%E7%A8%8B%E6%A0%87%E5%87%86"><span class="nav-text">课程标准</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%BE%E7%A8%8B%E6%A0%87%E5%87%86%E5%86%85%E5%AE%B9"><span class="nav-text">课程标准内容</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BC%A0%E6%84%9F%E5%99%A8%E9%80%89%E6%8B%A9%E6%80%A7%E5%BF%85%E4%BF%AE"><span class="nav-text">2.4 传感器（选择性必修）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%99%E5%AD%A6%E6%B4%BB%E5%8A%A8%E8%A6%81%E6%B1%82"><span class="nav-text">教学活动要求</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9F%A5%E8%AF%86%E8%81%9A%E7%84%A6"><span class="nav-text">知识聚焦</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E4%BC%A0%E6%84%9F%E5%99%A8"><span class="nav-text">一、传感器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E5%B8%B8%E8%A7%81%E7%9A%84%E4%BC%A0%E6%84%9F%E5%99%A8%E5%8F%8A%E5%85%B6%E5%BA%94%E7%94%A8"><span class="nav-text">二、常见的传感器及其应用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%89%E6%95%8F%E7%94%B5%E9%98%BB"><span class="nav-text">1. 光敏电阻</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%91%E5%B1%9E%E7%83%AD%E7%94%B5%E9%98%BB%E4%B8%8E%E7%83%AD%E6%95%8F%E7%94%B5%E9%98%BB"><span class="nav-text">2. 金属热电阻与热敏电阻</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%B5%E9%98%BB%E5%BA%94%E5%8F%98%E7%89%87"><span class="nav-text">3. 电阻应变片</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%B5%E5%AE%B9%E5%BC%8F%E4%BC%A0%E6%84%9F%E5%99%A8"><span class="nav-text">4. 电容式传感器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9C%8D%E5%B0%94%E5%85%83%E4%BB%B6"><span class="nav-text">5. 霍尔元件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B9%B2%E7%B0%A7%E7%AE%A1"><span class="nav-text">6. 干簧管</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Hoarfroster"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Hoarfroster</p>
+  <div class="site-description" itemprop="description">这里是霜羽~~咕咕咕</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">193</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">53</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">58</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <ul class="links-of-author motion-element">
+      <li class="links-of-author-item">
+        <a href="https://github.com/PassionPenguin" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;PassionPenguin" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        <span> PassionPenguin</span>
+      </li>
+      <li class="links-of-author-item">
+        <a href="mailto:hoarfroster@outlook.com" title="E-Mail → mailto:hoarfroster@outlook.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+        <span> hoarfroster@outlook.com</span>
+      </li>
+      <li class="links-of-author-item">
+        <a href="https://twitter.com/zhangqizhe" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;zhangqizhe" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+        <span> @zhangqizhe</span>
+      </li>
+      <li class="links-of-author-item">
+        <a href="https://www.instagram.com/glacierpenguin/" title="Instagram → https:&#x2F;&#x2F;www.instagram.com&#x2F;glacierpenguin&#x2F;" rel="noopener" target="_blank"><i class="fab fa-instagram fa-fw"></i>Instagram</a>
+        <span> @glacierpenguin</span>
+      </li>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hoarfroster</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="Symbols count total">1.1m</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">34:12</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT</a>
+  </div>
+
+        
+
+
+
+
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-firestore.js"></script>
+  <script>
+    firebase.initializeApp({
+      apiKey   : 'AIzaSyDqM81uUD8yWHAvsGasJzvWBHhpBYnRttI',
+      projectId: 'hoar-froster'
+    });
+
+    function getCount(doc, increaseCount) {
+      // IncreaseCount will be false when not in article page
+      return doc.get().then(d => {
+        var count = 0;
+        if (!d.exists) { // Has no data, initialize count
+          if (increaseCount) {
+            doc.set({
+              count: 1
+            });
+            count = 1;
+          }
+        } else { // Has data
+          count = d.data().count;
+          if (increaseCount) {
+            // If first view this article
+            doc.set({ // Increase count
+              count: count + 1
+            });
+            count++;
+          }
+        }
+
+        return count;
+      });
+    }
+
+    function appendCountTo(el) {
+      return count => {
+        el.innerText = count;
+      }
+    }
+  </script>
+  <script>
+    (function() {
+      var db = firebase.firestore();
+      var articles = db.collection('articles-info');
+
+      if (CONFIG.page.isPost) { // Is article page
+        var title = document.querySelector('.post-title').innerText.trim();
+        var doc = articles.doc(title);
+        var increaseCount = CONFIG.hostname === location.hostname;
+        if (localStorage.getItem(title)) {
+          increaseCount = false;
+        } else {
+          // Mark as visited
+          localStorage.setItem(title, true);
+        }
+        getCount(doc, increaseCount).then(appendCountTo(document.querySelector('.firestore-visitors-count')));
+      } else if (CONFIG.page.isHome) { // Is index page
+        var promises = [...document.querySelectorAll('.post-title')].map(element => {
+          var title = element.innerText.trim();
+          var doc = articles.doc(title);
+          return getCount(doc);
+        });
+        Promise.all(promises).then(counts => {
+          var metas = document.querySelectorAll('.firestore-visitors-count');
+          counts.forEach((val, idx) => {
+            appendCountTo(metas[idx])(val);
+          });
+        });
+      }
+    })();
+  </script>
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var canonicalURL, curProtocol;
+      //Get the <link> tag
+      var x=document.getElementsByTagName("link");
+		//Find the last canonical URL
+		if(x.length > 0){
+			for (i=0;i<x.length;i++){
+				if(x[i].rel.toLowerCase() == 'canonical' && x[i].href){
+					canonicalURL=x[i].href;
+				}
+			}
+		}
+    //Get protocol
+	    if (!canonicalURL){
+	    	curProtocol = window.location.protocol.split(':')[0];
+	    }
+	    else{
+	    	curProtocol = canonicalURL.split(':')[0];
+	    }
+      //Get current URL if the canonical URL does not exist
+	    if (!canonicalURL) canonicalURL = window.location.href;
+	    //Assign script content. Replace current URL with the canonical URL
+      !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=canonicalURL,t=document.referrer;if(!e.test(r)){var n=(String(curProtocol).toLowerCase() === 'https')?"https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif":"//api.share.baidu.com/s.gif";t?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var i=new Image;i.src=n}}(window);})();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme    : 'default',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/disqusjs@1/dist/disqusjs.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/disqusjs@1/dist/disqus.js', () => {
+    window.dsqjs = new DisqusJS({
+      api       : 'https://disqus.skk.moe/disqus/' || 'https://disqus.com/api/',
+      apikey    : 'Lo65MITAya5vcdTm6cJ8V5qCBNx3PVErvDOsfJ5tUPtEbw3DMS3EIzEx6vrmTzCN',
+      shortname : 'hoarfroster',
+      url       : "https://hoarfroster.github.io/2022/03/15/physics/High%20School/S2%20Electricity%20and%20Electromagnetism/%E4%BC%A0%E6%84%9F%E5%99%A8/",
+      identifier: "2022/03/15/physics/High School/S2 Electricity and Electromagnetism/传感器/",
+      title     : "传感器",
+    });
+  }, window.DisqusJS);
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/avatar.png" color="#222">
+  <meta name="google-site-verification" content="iFMbHL1JuWjTlNFq5Rv96vDzpsqakxTpdE2nw7Crr6o">
+  <meta name="msvalidate.01" content="EF6D8CD8A3335E66AB96B4D544FCD96C">
+  <meta name="baidu-site-verification" content="code-80b80Pbzs2">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link href="/lib/fontawesome/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<script>
+
+  window.onload = function() {
+    document.querySelectorAll("p").forEach(e=>{
+      e.innerHTML = e.innerHTML.replaceAll(/==(.+?)==/g, "<mark>$1</mark>").replaceAll(/​\s+?/g, "<span class='tab'></span>");
+    });
+    
+    [...document.querySelectorAll("pre > code")].forEach(e=> {
+        var codeClass = e.parentElement.classList.value;
+        if (codeClass == null || codeClass === "") {
+            e.classList.add("hljs");
+        } else {
+            var map = {
+                js: "javascript"
+            };
+            if (map[codeClass]) {
+                codeClass = map[codeClass];
+            }
+            codeClass.split(" ").forEach(i=>e.classList.add(i));
+            hljs.highlightElement(e);
+        }
+    });
+
+    [...document.querySelectorAll('.classcial-chinese-literature-and-poetry-translation')].forEach(i=>{
+      let el = document.createElement('div');
+      el.setAttribute('class', 'fa-solid fa-eye');
+      i.prepend(el);
+      el.addEventListener('click', ()=>{
+        let status = el.classList.contains('fa-eye');
+        [...i.querySelectorAll('.translation')].forEach(j=>{
+          j.classList.remove('hide');
+          if(status) {
+            j.classList.add('hide');
+          }
+        });
+        el.attributes['class'].value = el.attributes['class'].value.replace('fa-eye-slash', 'fa-0').replace('fa-eye', 'fa-eye-slash').replace('fa-0', 'fa-eye');
+      });
+
+      [...i.querySelectorAll('.original-text')].forEach(e=>{
+        let el = document.createElement('div');
+        el.setAttribute('class', 'fa-solid fa-eye-slash');
+        e.prepend(el);
+        el.addEventListener('click', ()=>{
+            e.nextSibling.classList.toggle('hide');
+            el.attributes['class'].value = el.attributes['class'].value.replace('fa-eye-slash', 'fa-0').replace('fa-eye', 'fa-eye-slash').replace('fa-0', 'fa-eye');
+        });
+      })
+    });
+  }
+</script>
+<script async src="/js/highlight.min.js"></script>
+<script async src="/js/cursor.js"></script>
+<script data-ad-client="ca-pub-2275811890061218" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"hoarfroster.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqusjs","storage":true,"lazyload":false,"nav":null,"activeClass":"disqusjs"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="Deleting input.tex Deleting input.aux Deleting input.dvi Deleting input.log Deleting output.svg Deleting input.tex Deleting input.aux Deleting input.dvi Deleting input.log Deleting output.svg Deleting">
+<meta property="og:type" content="article">
+<meta property="og:title" content="发酵工程">
+<meta property="og:url" content="https://hoarfroster.github.io/2022/03/02/biology/High%20School/b5%20bioengineering/P1%20%E5%8F%91%E9%85%B5%E5%B7%A5%E7%A8%8B/index.html">
+<meta property="og:site_name" content="Hoarfroster 的小窝">
+<meta property="og:description" content="Deleting input.tex Deleting input.aux Deleting input.dvi Deleting input.log Deleting output.svg Deleting input.tex Deleting input.aux Deleting input.dvi Deleting input.log Deleting output.svg Deleting">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-03-02T04:08:00.000Z">
+<meta property="article:modified_time" content="2022-05-28T15:43:07.855Z">
+<meta property="article:author" content="Hoarfroster">
+<meta property="article:tag" content="School Notes">
+<meta property="article:tag" content="High School">
+<meta property="article:tag" content="Biology">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://hoarfroster.github.io/2022/03/02/biology/High%20School/b5%20bioengineering/P1%20%E5%8F%91%E9%85%B5%E5%B7%A5%E7%A8%8B/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>发酵工程 | Hoarfroster 的小窝</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <!--<div class="headband"></div>-->
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hoarfroster 的小窝</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section">Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section">About</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section">Categories</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger">
+          Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://hoarfroster.github.io/2022/03/02/biology/High%20School/b5%20bioengineering/P1%20%E5%8F%91%E9%85%B5%E5%B7%A5%E7%A8%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Hoarfroster">
+      <meta itemprop="description" content="这里是霜羽~~咕咕咕">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hoarfroster 的小窝">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          发酵工程
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-03-02 12:08:00" itemprop="dateCreated datePublished" datetime="2022-03-02T12:08:00+08:00">2022-03-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-05-28 23:43:07" itemprop="dateModified" datetime="2022-05-28T23:43:07+08:00">2022-05-28</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/High-School/" itemprop="url" rel="index"><span itemprop="name">High School</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/High-School/Biology/" itemprop="url" rel="index"><span itemprop="name">Biology</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/High-School/Biology/Bioengineering/" itemprop="url" rel="index"><span itemprop="name">Bioengineering</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span><br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+              <span>6.1k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+              <span>11 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+<h2 id="知识聚焦">知识聚焦</h2>
+<blockquote>
+<h5 id="本章知识内容较多考察点较细需要牢记相关知识">本章知识内容较多，考察点较细，需要牢记相关知识。</h5>
+</blockquote>
+<h3 id="一发酵与传统发酵技术">一、发酵与传统发酵技术</h3>
+<p>​
+<strong><em>发酵</em>是指人们利用微生物，在适宜的条件下，将原料通过微生物的代谢转化为人类所需要的产物</strong>。</p>
+<p>​
+<strong><em>传统发酵技术</em>是指直接利用原材料中天然存在的微生物，或前一次发酵保存下来的面团、卤汁等发酵物中的微生物进行发酵、制作食品的技术</strong>。</p>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 4%">
+<col style="width: 19%">
+<col style="width: 34%">
+<col style="width: 34%">
+<col style="width: 5%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>泡菜</th>
+<th>果酒</th>
+<th>果醋</th>
+<th>腐乳</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>菌种</td>
+<td>乳酸菌</td>
+<td>酵母菌</td>
+<td>酵母菌、醋酸菌（或醋酸菌）</td>
+<td>毛霉、曲霉</td>
+</tr>
+<tr class="even">
+<td>代谢类型</td>
+<td>异养厌氧型</td>
+<td>异养需氧型</td>
+<td>异养兼性厌氧型</td>
+<td>异养厌氧型</td>
+</tr>
+<tr class="odd">
+<td>细胞类型</td>
+<td>细菌</td>
+<td>真菌</td>
+<td>细菌</td>
+<td>真菌</td>
+</tr>
+<tr class="even">
+<td>代谢温度</td>
+<td>20-30 ℃</td>
+<td>18-30 ℃</td>
+<td>30-35 ℃</td>
+<td>17 ℃</td>
+</tr>
+<tr class="odd">
+<td>时间</td>
+<td>4-7 天</td>
+<td>10-12 天</td>
+<td>7-8 天</td>
+<td>10-15 天</td>
+</tr>
+<tr class="even">
+<td>pH</td>
+<td>酸性</td>
+<td>酸性</td>
+<td>酸性</td>
+<td>中性</td>
+</tr>
+<tr class="odd">
+<td>代谢原理</td>
+<td><span class="math inline">$\ce{C6H12O6 -&gt;[酶] 2C3H6O3 +
+energy}$</span></td>
+<td><span class="math inline">$\ce{C6H12O6 + 6O2 -&gt;[酶] 6CO2 + 12H2O
++ energy}$</span><br><span class="math inline">$\ce{C6H12O6 -&gt;[酶]
+2C2H5OH + 2CO2 + energy}$</span></td>
+<td><span class="math inline">$\ce{C6H12O6 + 2O2 -&gt;[酶] 2CH3COOH +
+2CO2 + 2H2O +energy}$</span><br><span class="math inline">$\ce{C2H5OH
++ O2 -&gt;[酶] CH3COOH + H2O + energy}$</span></td>
+<td>蛋白质水解：<span class="math inline">$\ce{Protein + H2O -&gt;[酶]
+\text{a.a.}}$</span></td>
+</tr>
+<tr class="even">
+<td>相关鉴定</td>
+<td>亚硝酸盐：==盐酸酸化条件下亚硝酸盐与对氨基苯磺酸反应后，与
+N-1-萘基乙二胺盐酸盐结合形成玫瑰红色染料。==</td>
+<td>酒精：<span class="math inline">$\ce{K2CrO4(aq, H^+)}$</span></td>
+<td>醋酸：闻气味、检测 pH</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>制作过程</td>
+<td>1. 配置盐水（清水：食盐配置百分比 5%-20%），煮沸冷却。 <br>2.
+加入蒜瓣、生姜和其他香辛料，继续装至八分满。 <br>3.
+缓缓倒入冷却的盐水，使盐水没过全部菜料，盖好坛盖。<br>4.
+向坛盖边沿水槽注水，并注意经常向水槽中补满水。室温发酵。</td>
+<td>1. 清洗发酵瓶、榨汁机等工具，用 70%酒精消毒、晾干。<br>2.
+挑选并冲洗新鲜葡萄，用清水冲洗 1-2
+次，去除枯梗和腐烂的坏果，沥干。<br>3.
+用榨汁机榨取葡萄汁，装入发酵瓶中，留有<span class="math inline">$\frac{1}{3}$</span>的空间。<br>4. 控制温度在
+18-30 ℃，发酵 10-12 天，每隔 12h 左右拧松瓶盖排气。</td>
+<td>在果酒的基础上：<br>5. 打开瓶盖，盖上纱布，控制温度在 30-35
+℃，发酵 7-8 天。</td>
+<td>前期发酵：<br>1. 让豆腐上生出毛霉。<br>2.
+加盐腌制。<br>后期发酵（抑制毛霉生长，改变口感风味）：<br>3.
+加卤汤，装瓶。<br>4. 密封腌制。</td>
+</tr>
+<tr class="even">
+<td>注意事项</td>
+<td>1. 煮沸盐水：除去水中溶解氧；杀灭水中其他杂菌。<br>2.
+==亚硝酸盐不是致癌物==，亚硝酸盐的代谢产物<strong>亚硝胺</strong>才是致癌物。<br>3.
+泡菜坛盖边注满水用以保证乳酸菌发酵的无氧环境，需要及时补充水。<br>4.
+泡菜坛需要选择透气性差、无裂纹、火候好、无沙眼、坛沿深、盖子吻合好的。<br>5.
+材料选择：蔬菜需要新鲜（避免硝酸盐被还原）<br>6.
+发酵温度：控制在室温，过高滋生杂菌，过低发酵时间过长。<br>7.
+<strong>腌制条件：<em>腌制时间、温度、食盐用量，防止杂菌污染，严格灭菌。</em></strong></td>
+<td>1. 及时排气，避免发酵旺盛期 <span class="math inline">$\ce{CO2}$</span> 撑裂发酵瓶。<br>2.
+制酒时，应该<strong>先打开后关闭充气口</strong>。<br>3.
+酵母菌数量不足（前期有氧呼吸不足）会导致酒精浓度低。<br>4.
+酵母菌数量充足但发酵时密封不严会导致酒精浓度低。<br>5.
+葡萄酒呈红色可能是葡萄皮上的色素进入发酵液所致。</td>
+<td>在果酒的基础上：<br>6.
+制醋时，应该<strong>始终打开充气口</strong>（连接气泵），输入无菌空气。<br>7.
+若产生的醋酸少，很可能是供氧不足所致（短期中断也会导致大量醋酸菌死亡）。</td>
+<td>1. 食盐与豆腐块用量控制在
+1:5，过高影响口味，过低不足以抑制微生物生长，易腐败变质。<br>2.
+卤汤中酒精浓度应控制在 12%
+左右，过高延长腐乳成熟时间，过低不足以抑制微生物生长，易腐败变质。<br>3.
+装瓶时需要洗刷干净发酵瓶并沸水消毒。<br>4.
+装瓶时迅速小心，加卤汤后胶条密封瓶口，封瓶时将瓶口通过酒精灯火焰，防止瓶口被污染。<br>5.
+豆腐含水量以 70% 适宜，过高不易成形，过低不利于毛霉生长。</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<h5 id="注意事项">注意事项</h5>
+<ol type="1">
+<li>使用传统发酵技术发酵时都是利用多菌种进行发酵，如腐乳的发酵中有青霉、毛霉、曲霉、酵母参与，只是毛霉是主要参与者。</li>
+<li>每一次取样时取样用具要洗净，取样后迅速封口，注意无菌操作。</li>
+<li>利用醋酸菌、酵母菌等时不可加入青霉素等抗生素。</li>
+</ol>
+</blockquote>
+<h3 id="二微生物的培养">二、微生物的培养</h3>
+<h4 id="培养基">1. 培养基</h4>
+<p>​
+人们按照微生物对营养物质的不同需求，配制出供其生长繁殖的营养基质称为<strong><em>营养基</em>，用以<em>培养、分离、鉴定、保存微生物</em>或<em>积累其代谢物</em></strong>。</p>
+<p>​
+<strong><em>菌落</em>，是指由<em>单个或少数微生物细胞</em>在适宜<em>固体培养基</em>表面或内部生长繁殖到一定程度，形成<em>以母细胞为中心</em>的一团<em>肉眼可见的、有一定形态、构造</em>等特征的<em>子细胞集团</em></strong>。</p>
+<p>​
+根据物理性质，可以分为液体培养基（大量培养）、半固体培养基（观察微生物运动、分离、鉴定）和固体培养基（实验室中分离、鉴定、活菌计数、保藏菌种）。根据需求，可以分为选择培养基（筛选目的菌）和鉴定培养基（鉴别微生物）。</p>
+<p>​ 各种培养基一般都含有微生物的 6 大营养要素（<strong><em>C 源、N
+源、水、能源、生长因子、无机盐</em></strong>）。此外，为了满足的生长环境，需要适当<strong>调整
+pH、<span class="math inline">$\ce{O2}$</span>等成分</strong>。在培养乳酸杆菌时需要添加<strong>维生素</strong>，培养霉菌时需要调整
+pH 为弱酸性，培养细菌时需要调整 pH 为中性或弱碱性，培养酵母菌时需要调整
+pH 为弱酸性 <span class="citation" data-cites="EssentialMicroBiology_CultureMedium_pH">[@EssentialMicroBiology_CultureMedium_pH]</span>。==环境条件会影响微生物的生长繁殖与代谢物的生成==（如谷氨酸发酵中，中性或弱碱性条件积累谷氨酸，酸性条件形成谷氨酸胺、N-乙酰谷胺酰胺）。</p>
+<blockquote>
+<h4 id="琼脂作为凝固剂的优点">琼脂作为凝固剂的优点</h4>
+<ol type="1">
+<li>琼脂一般不会被微生物代谢，不能供给能量或作碳源。</li>
+<li>琼脂在室温下是固体。</li>
+</ol>
+</blockquote>
+<h4 id="无菌技术">2. 无菌技术</h4>
+<p>​
+==获得纯培养物的关键在于防范杂菌污染==，为了防止实验室的培养物被杂菌污染（获得纯净培养物），有效避免操作者自身被微生物感染，我们采取无菌技术：</p>
+<table>
+<thead>
+<tr cid="n181" mdtype="table_row">
+<th>
+<span contenteditable="true" data-cid="n182" data-mdtype="table_cell"></span>
+</th>
+<th>
+<span contenteditable="true" data-cid="n183" data-mdtype="table_cell"><span data-md-inline="plain">方法</span></span>
+</th>
+<th>
+<span contenteditable="true" data-cid="n184" data-mdtype="table_cell"><span data-md-inline="plain">目的</span></span>
+</th>
+<th>
+<span contenteditable="true" data-cid="n185" data-mdtype="table_cell"><span data-md-inline="plain">常见方法</span></span>
+</th>
+<th>
+<span contenteditable="true" data-cid="n186" data-mdtype="table_cell"><span data-md-inline="plain">应用范围</span></span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr cid="n187" mdtype="table_row">
+<td rowspan="4">
+<span contenteditable="true" data-cid="n188" data-mdtype="table_cell"><span data-md-inline="plain">消毒</span></span>
+</td>
+<td rowspan="4">
+<span contenteditable="true" data-cid="n189" data-mdtype="table_cell"><span data-md-inline="plain">较为温和的物化或生物方法</span></span>
+</td>
+<td rowspan="4">
+<span contenteditable="true" data-cid="n190" data-mdtype="table_cell"><span data-md-inline="plain">杀死物体表面或内部的一部分微生物（不含芽孢和孢子）</span></span>
+</td>
+<td>
+<span contenteditable="true" data-cid="n191" data-mdtype="table_cell"><span data-md-inline="plain">煮沸消毒</span></span>
+</td>
+<td>
+<span contenteditable="true" data-cid="n192" data-mdtype="table_cell"><span data-md-inline="plain">日常用品</span></span>
+</td>
+</tr>
+<tr cid="n199" mdtype="table_row">
+<td>
+<span contenteditable="true" data-cid="n203" data-mdtype="table_cell"><span data-md-inline="plain">巴氏消毒</span></span>
+</td>
+<td>
+<span contenteditable="true" data-cid="n204" data-mdtype="table_cell"><span data-md-inline="plain">不耐高温的液体</span></span>
+</td>
+</tr>
+<tr cid="n205" mdtype="table_row">
+<td>
+<span contenteditable="true" data-cid="n209" data-mdtype="table_cell"><span data-md-inline="plain">紫外线消毒</span></span>
+</td>
+<td>
+<span contenteditable="true" data-cid="n210" data-mdtype="table_cell"><span data-md-inline="plain">环境消毒</span></span>
+</td>
+</tr>
+<tr cid="n211" mdtype="table_row">
+<td>
+<span contenteditable="true" data-cid="n215" data-mdtype="table_cell"><span data-md-inline="plain">化学药物（酒精、氯气等）消毒</span></span>
+</td>
+<td>
+<span contenteditable="true" data-cid="n216" data-mdtype="table_cell"><span data-md-inline="plain">用酒精擦拭双手、用氯气消毒水源</span></span>
+</td>
+</tr>
+<tr cid="n193" mdtype="table_row">
+<td rowspan="3">
+<span contenteditable="true" data-cid="n194" data-mdtype="table_cell"><span data-md-inline="plain">灭菌</span></span>
+</td>
+<td rowspan="3">
+<span contenteditable="true" data-cid="n195" data-mdtype="table_cell"><span data-md-inline="plain">强烈的理化方法</span></span>
+</td>
+<td rowspan="3">
+<span contenteditable="true" data-cid="n196" data-mdtype="table_cell"><span data-md-inline="plain">杀死物体内外所有的微生物（包括芽孢和孢子）</span></span>
+</td>
+<td>
+<span contenteditable="true" data-cid="n197" data-mdtype="table_cell"><span data-md-inline="plain">灼烧灭菌</span></span>
+</td>
+<td>
+<span contenteditable="true" data-cid="n198" data-mdtype="table_cell"><span data-md-inline="plain">接种工具</span></span>
+</td>
+</tr>
+<tr cid="n217" mdtype="table_row">
+<td>
+<span contenteditable="true" data-cid="n221" data-mdtype="table_cell"><span data-md-inline="plain">干热灭菌</span></span>
+</td>
+<td>
+<span contenteditable="true" data-cid="n222" data-mdtype="table_cell"><span data-md-inline="plain">玻璃器皿、金属用具</span></span>
+</td>
+</tr>
+<tr cid="n223" mdtype="table_row">
+<td>
+<span contenteditable="true" data-cid="n227" data-mdtype="table_cell"><span data-md-inline="plain">高温蒸汽灭菌（湿热灭菌）</span></span>
+</td>
+<td>
+<span contenteditable="true" data-cid="n228" data-mdtype="table_cell"><span data-md-inline="plain">培养基及容器</span></span>
+</td>
+</tr>
+</tbody>
+</table>
+<h4 id="纯培养与选择培养">3. 纯培养与选择培养</h4>
+<p>​
+由单一个体繁殖所获得的微生物群体称为<strong>纯培养物</strong>，获得纯培养物的过程就是纯培养。纯培养的方法有<strong>平板划线法、稀释涂布平板法</strong>。纯培养的过程一般为==制备培养基（制备培养基、灭菌、倒平板）、接种与分离、培养==。</p>
+<table>
+<colgroup>
+<col style="width: 4%">
+<col style="width: 31%">
+<col style="width: 31%">
+<col style="width: 31%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>倒平板</th>
+<th>平板划线法</th>
+<th>稀释涂布平板法</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>简介</td>
+<td>制取固体培养基操作。</td>
+<td>接种环在固体平板培养基表面连续划线接种菌体。</td>
+<td>在一系列的梯度稀释后进行涂布平板法操作接种菌体。</td>
+</tr>
+<tr class="even">
+<td>步骤</td>
+<td>1. 酒精灯火焰旁右手拿锥形瓶，左手拔出棉塞。<br>2.
+将瓶口迅速通过火焰灼烧灭菌，防止瓶口微生物污染培养基。<br>3.
+用左手将培养皿打开一条稍大于瓶口的缝隙（不完全打开以防污染），右手将锥形瓶中培养基倒入培养皿中，左手立刻盖上培养皿的皿盖。<br>4.
+等待培养基冷却后，倒置培养皿。</td>
+<td>1. 将接种环在火焰上灼烧，直到接种环金属丝烧红。<br>2.
+在火焰旁==冷却接种环==，拔出装有酵母菌培养液的试管棉塞。<br>3.
+将试管口通过火焰灼烧灭菌。 在火焰附近取一环菌液。<br>4.
+将试管口通过火焰灼烧灭菌，随后塞上棉塞。<br>5.
+在火焰附近将皿盖打开一条缝隙，用接种环在培养基<strong>表面</strong>迅速浅浅划出平行线
+3-5 条，盖上皿盖。<br>6.
+灼烧接种环，冷却后从第一次划线末端开始下一次划线，作 5
+次划线，最后一次划线不要与第一次划线相连。</td>
+<td>1. 系列梯度稀释操作（梯度稀释菌液至<span class="math inline">10<sup>7</sup></span>，梯度<span class="math inline">10</span>）。<br>2. 取 0.1mL
+菌液，添加到培养基表面。<br>3.
+取出浸泡于酒精中的<strong>涂布器</strong>，在火焰上点燃，烧尽酒精后<strong>冷却涂布器</strong>。<br>4.
+用涂布器将菌液均匀涂布在培养基表面。涂布时转动培养皿，使菌液分布均匀。</td>
+</tr>
+<tr class="odd">
+<td>注意事项</td>
+<td>1. 倒置培养皿，防止<strong>冷凝水滴落污染</strong>培养皿。<br>2.
+纯培养酵母菌时，我们使用<strong>马铃薯琼脂培养基</strong>（马铃薯加水煮烂后过滤得到滤液，添加葡萄糖与琼脂）。</td>
+<td>1.
+不同阶段灼烧接种环目的：第一次操作前<strong>杀灭原有微生物</strong>；每次划线前杀灭上次划线后残留的菌种，<strong>使下次划线菌种直接来源于上次划线末端</strong>；划线结束后杀灭接种环上残留菌种，<strong>避免细菌污染环境和感染操作者</strong>。<br>2.
+可以从具有显著菌落特征的区域菌落中挑选。</td>
+<td>1.
+燃尽涂布器上的酒精后冷却涂布器，防止<strong>杀灭菌液</strong>。<br>2.
+可以从适宜稀释度的平板上的菌落挑选菌体。</td>
+</tr>
+<tr class="even">
+<td>优劣</td>
+<td>-</td>
+<td>1. 可以根据菌落的特点获得某种微生物的单细胞菌落。<br>2.
+不能对微生物计数，只能接种或分离微生物。</td>
+<td>1.
+可以<strong>接种或分离</strong>获得到单细胞菌落，也可以对微生物进行<strong>计数</strong>。<br>2.
+在稀释倍数足够高时，培养基表面生长的一个<strong>单一菌落来源于<em>样品稀释液中的一个活菌</em></strong>，平板上的菌落数可以反映样品中含有活菌数的大概。进行数量测定时，选取平板上菌落数
+30-300 的稀释度，并在该稀释度下重复 3 次实验，求平均。<br>3.
+操作复杂，需要涂布多个平板。</td>
+</tr>
+</tbody>
+</table>
+<p>​ 人为提供利于目的菌生长的条件（营养、温度、pH
+等），同时抑制或阻止其他微生物的生长是实验室微生物筛选的原理。</p>
+<blockquote>
+<h4 id="选择培养基">选择培养基</h4>
+<ol type="1">
+<li>全部营养成分具备下，加入物质（抗生素、高浓度食盐水等）。</li>
+<li>改变培养基营养成分以分离微生物（排除氮源、碳源等）。</li>
+<li>利用培养基特定化学成分分离（如仅提供唯一碳源为特定物质）。</li>
+<li>通过某些特殊环境分离微生物（高盐分离耐盐菌，高温分离耐高温菌等）。</li>
+</ol>
+</blockquote>
+<blockquote>
+<h5 id="选择培养基上生长的微生物不一定是目的菌">选择培养基上生长的微生物不一定是目的菌：</h5>
+<ol type="1">
+<li>可能会有其他菌种同样具备条件。</li>
+<li>可能是该菌种利用了目的菌代谢产物进行生存。</li>
+</ol>
+</blockquote>
+<blockquote>
+<h4 id="选择培养的鉴定">选择培养的鉴定</h4>
+<p>​ 鉴定能分泌脲酶（<span class="math inline">$\ce{CO(NH2)2 + H2O
+-&gt;[脲酶] CO2 ^ +
+2NH3}$</span>）的细菌：<strong>酚红</strong>或酚酞指示剂——与<span class="math inline">$\ce{NH3}$</span>显红色（出现红色环带）。</p>
+<p>​
+鉴定能分解纤维素的细菌：<strong>刚果红</strong>染液——与纤维素生成红色配合物（出现透明圈）。</p>
+<p>​
+鉴定大肠杆菌：伊红美蓝（伊红亚甲基蓝；<strong>伊红亚甲蓝</strong>）培养基，大肠杆菌呈深紫色并伴有绿色金属光泽。</p>
+</blockquote>
+<h4 id="测定微生物数目">4. 测定微生物数目</h4>
+<table>
+<colgroup>
+<col style="width: 6%">
+<col style="width: 46%">
+<col style="width: 46%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>显微镜直接计数</th>
+<th>间接计数（活菌计数）</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>原理</td>
+<td>利用特定细菌计数板或血细胞计数板，在显微镜下观察、计数，然后再计算一定体积的样品中微生物的数量</td>
+<td>在稀释倍数足够高时，培养基表面生长的一个单一菌落来源于样品稀释液中的一个活菌，平板上的菌落数可以反映样品中含有活菌数的大概。</td>
+</tr>
+<tr class="even">
+<td>注意事项</td>
+<td>1. 用计数板直接计数，方便且时间短。<br>2.
+（在不使用台盼蓝、美兰等）无法区分死菌与活菌，<strong>导致<em>统计值比实际值偏大</em></strong>。<br>（可以使用台盼蓝：膜选择性、美兰：还原酶对死细胞进行染色，均呈蓝色，判断死细胞）</td>
+<td>1. 进行数量测定时，选取平板上菌落数 30-300 的稀释度。<br>2.
+在所选择的稀释度下重复 3 次实验，求平均。<br>3.
+由于涂布器残余菌液、两个或多个细胞连在一起平板上只能观察到一个稍大的菌落，<strong>所以<em>统计值往往偏少于实际活菌数</em></strong>。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="发酵工程及其应用">5. 发酵工程及其应用</h4>
+<p>​
+发酵工程与传统发酵技术相比，主要以可再生资源为原料，反应条件温和，环境污染较少，可以生产目前无法生产或通过化学方法生产困难的性能优异产品，投资较少。</p>
+<p>​ 发酵工程的基本环节是：</p>
+<pre class="mermaid">graph LR
+a[从自然界分离的菌种]
+b[诱变育种]
+c[基因工程]
+d[细胞工程]
+e[生产所用菌种]
+f[原料]
+g[扩大培养]
+h[发酵罐 - 控制条件]
+i[配置培养基]
+j[微生物菌体]
+k[代谢产物]
+l[产物]
+a --&gt; b
+a --&gt; c
+a --&gt; d
+b --&gt; e
+c --&gt; e
+d --&gt; e
+e --&gt; g
+g --接种--&gt; h
+f --&gt; i
+i --灭菌 + 冷却--&gt; h
+h --&gt; j
+h --&gt; k
+j --&gt; l
+k --&gt; l</pre>
+<p>​</p>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/School-Notes/" rel="tag"># School Notes</a>
+              <a href="/tags/High-School/" rel="tag"># High School</a>
+              <a href="/tags/Biology/" rel="tag"># Biology</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/03/01/physics/High%20School/S4%20Optics/P1%20%E5%85%89%E7%9A%84%E6%8A%98%E5%B0%84%E4%B8%8E%E5%85%A8%E5%8F%8D%E5%B0%84/" rel="prev" title="光的折射与全反射">
+      <i class="fa fa-chevron-left"></i> 光的折射与全反射
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/03/05/computer%20science/source%20control/resign-all-commits-with-new-gpg-key/" rel="next" title="Git 使用新 gpg 秘钥重新 commit">
+      Git 使用新 gpg 秘钥重新 commit <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9F%A5%E8%AF%86%E8%81%9A%E7%84%A6"><span class="nav-text">知识聚焦</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9C%AC%E7%AB%A0%E7%9F%A5%E8%AF%86%E5%86%85%E5%AE%B9%E8%BE%83%E5%A4%9A%E8%80%83%E5%AF%9F%E7%82%B9%E8%BE%83%E7%BB%86%E9%9C%80%E8%A6%81%E7%89%A2%E8%AE%B0%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86"><span class="nav-text">本章知识内容较多，考察点较细，需要牢记相关知识。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E5%8F%91%E9%85%B5%E4%B8%8E%E4%BC%A0%E7%BB%9F%E5%8F%91%E9%85%B5%E6%8A%80%E6%9C%AF"><span class="nav-text">一、发酵与传统发酵技术</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-text">注意事项</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E5%BE%AE%E7%94%9F%E7%89%A9%E7%9A%84%E5%9F%B9%E5%85%BB"><span class="nav-text">二、微生物的培养</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%B9%E5%85%BB%E5%9F%BA"><span class="nav-text">1. 培养基</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%90%BC%E8%84%82%E4%BD%9C%E4%B8%BA%E5%87%9D%E5%9B%BA%E5%89%82%E7%9A%84%E4%BC%98%E7%82%B9"><span class="nav-text">琼脂作为凝固剂的优点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%97%A0%E8%8F%8C%E6%8A%80%E6%9C%AF"><span class="nav-text">2. 无菌技术</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BA%AF%E5%9F%B9%E5%85%BB%E4%B8%8E%E9%80%89%E6%8B%A9%E5%9F%B9%E5%85%BB"><span class="nav-text">3. 纯培养与选择培养</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%89%E6%8B%A9%E5%9F%B9%E5%85%BB%E5%9F%BA"><span class="nav-text">选择培养基</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%80%89%E6%8B%A9%E5%9F%B9%E5%85%BB%E5%9F%BA%E4%B8%8A%E7%94%9F%E9%95%BF%E7%9A%84%E5%BE%AE%E7%94%9F%E7%89%A9%E4%B8%8D%E4%B8%80%E5%AE%9A%E6%98%AF%E7%9B%AE%E7%9A%84%E8%8F%8C"><span class="nav-text">选择培养基上生长的微生物不一定是目的菌：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%89%E6%8B%A9%E5%9F%B9%E5%85%BB%E7%9A%84%E9%89%B4%E5%AE%9A"><span class="nav-text">选择培养的鉴定</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B5%8B%E5%AE%9A%E5%BE%AE%E7%94%9F%E7%89%A9%E6%95%B0%E7%9B%AE"><span class="nav-text">4. 测定微生物数目</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%91%E9%85%B5%E5%B7%A5%E7%A8%8B%E5%8F%8A%E5%85%B6%E5%BA%94%E7%94%A8"><span class="nav-text">5. 发酵工程及其应用</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Hoarfroster"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Hoarfroster</p>
+  <div class="site-description" itemprop="description">这里是霜羽~~咕咕咕</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">193</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">53</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">58</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <ul class="links-of-author motion-element">
+      <li class="links-of-author-item">
+        <a href="https://github.com/PassionPenguin" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;PassionPenguin" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        <span> PassionPenguin</span>
+      </li>
+      <li class="links-of-author-item">
+        <a href="mailto:hoarfroster@outlook.com" title="E-Mail → mailto:hoarfroster@outlook.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+        <span> hoarfroster@outlook.com</span>
+      </li>
+      <li class="links-of-author-item">
+        <a href="https://twitter.com/zhangqizhe" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;zhangqizhe" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+        <span> @zhangqizhe</span>
+      </li>
+      <li class="links-of-author-item">
+        <a href="https://www.instagram.com/glacierpenguin/" title="Instagram → https:&#x2F;&#x2F;www.instagram.com&#x2F;glacierpenguin&#x2F;" rel="noopener" target="_blank"><i class="fab fa-instagram fa-fw"></i>Instagram</a>
+        <span> @glacierpenguin</span>
+      </li>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hoarfroster</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="Symbols count total">1.1m</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">34:12</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT</a>
+  </div>
+
+        
+
+
+
+
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-firestore.js"></script>
+  <script>
+    firebase.initializeApp({
+      apiKey   : 'AIzaSyDqM81uUD8yWHAvsGasJzvWBHhpBYnRttI',
+      projectId: 'hoar-froster'
+    });
+
+    function getCount(doc, increaseCount) {
+      // IncreaseCount will be false when not in article page
+      return doc.get().then(d => {
+        var count = 0;
+        if (!d.exists) { // Has no data, initialize count
+          if (increaseCount) {
+            doc.set({
+              count: 1
+            });
+            count = 1;
+          }
+        } else { // Has data
+          count = d.data().count;
+          if (increaseCount) {
+            // If first view this article
+            doc.set({ // Increase count
+              count: count + 1
+            });
+            count++;
+          }
+        }
+
+        return count;
+      });
+    }
+
+    function appendCountTo(el) {
+      return count => {
+        el.innerText = count;
+      }
+    }
+  </script>
+  <script>
+    (function() {
+      var db = firebase.firestore();
+      var articles = db.collection('articles-info');
+
+      if (CONFIG.page.isPost) { // Is article page
+        var title = document.querySelector('.post-title').innerText.trim();
+        var doc = articles.doc(title);
+        var increaseCount = CONFIG.hostname === location.hostname;
+        if (localStorage.getItem(title)) {
+          increaseCount = false;
+        } else {
+          // Mark as visited
+          localStorage.setItem(title, true);
+        }
+        getCount(doc, increaseCount).then(appendCountTo(document.querySelector('.firestore-visitors-count')));
+      } else if (CONFIG.page.isHome) { // Is index page
+        var promises = [...document.querySelectorAll('.post-title')].map(element => {
+          var title = element.innerText.trim();
+          var doc = articles.doc(title);
+          return getCount(doc);
+        });
+        Promise.all(promises).then(counts => {
+          var metas = document.querySelectorAll('.firestore-visitors-count');
+          counts.forEach((val, idx) => {
+            appendCountTo(metas[idx])(val);
+          });
+        });
+      }
+    })();
+  </script>
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var canonicalURL, curProtocol;
+      //Get the <link> tag
+      var x=document.getElementsByTagName("link");
+		//Find the last canonical URL
+		if(x.length > 0){
+			for (i=0;i<x.length;i++){
+				if(x[i].rel.toLowerCase() == 'canonical' && x[i].href){
+					canonicalURL=x[i].href;
+				}
+			}
+		}
+    //Get protocol
+	    if (!canonicalURL){
+	    	curProtocol = window.location.protocol.split(':')[0];
+	    }
+	    else{
+	    	curProtocol = canonicalURL.split(':')[0];
+	    }
+      //Get current URL if the canonical URL does not exist
+	    if (!canonicalURL) canonicalURL = window.location.href;
+	    //Assign script content. Replace current URL with the canonical URL
+      !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=canonicalURL,t=document.referrer;if(!e.test(r)){var n=(String(curProtocol).toLowerCase() === 'https')?"https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif":"//api.share.baidu.com/s.gif";t?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var i=new Image;i.src=n}}(window);})();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme    : 'default',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/disqusjs@1/dist/disqusjs.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/disqusjs@1/dist/disqus.js', () => {
+    window.dsqjs = new DisqusJS({
+      api       : 'https://disqus.skk.moe/disqus/' || 'https://disqus.com/api/',
+      apikey    : 'Lo65MITAya5vcdTm6cJ8V5qCBNx3PVErvDOsfJ5tUPtEbw3DMS3EIzEx6vrmTzCN',
+      shortname : 'hoarfroster',
+      url       : "https://hoarfroster.github.io/2022/03/02/biology/High%20School/b5%20bioengineering/P1%20%E5%8F%91%E9%85%B5%E5%B7%A5%E7%A8%8B/",
+      identifier: "2022/03/02/biology/High School/b5 bioengineering/P1 发酵工程/",
+      title     : "发酵工程",
+    });
+  }, window.DisqusJS);
+});
+</script>
+
+</body>
+</html>

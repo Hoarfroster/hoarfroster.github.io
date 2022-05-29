@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/avatar.png" color="#222">
+  <meta name="google-site-verification" content="iFMbHL1JuWjTlNFq5Rv96vDzpsqakxTpdE2nw7Crr6o">
+  <meta name="msvalidate.01" content="EF6D8CD8A3335E66AB96B4D544FCD96C">
+  <meta name="baidu-site-verification" content="code-80b80Pbzs2">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link href="/lib/fontawesome/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<script>
+
+  window.onload = function() {
+    document.querySelectorAll("p").forEach(e=>{
+      e.innerHTML = e.innerHTML.replaceAll(/==(.+?)==/g, "<mark>$1</mark>").replaceAll(/​\s+?/g, "<span class='tab'></span>");
+    });
+    
+    [...document.querySelectorAll("pre > code")].forEach(e=> {
+        var codeClass = e.parentElement.classList.value;
+        if (codeClass == null || codeClass === "") {
+            e.classList.add("hljs");
+        } else {
+            var map = {
+                js: "javascript"
+            };
+            if (map[codeClass]) {
+                codeClass = map[codeClass];
+            }
+            codeClass.split(" ").forEach(i=>e.classList.add(i));
+            hljs.highlightElement(e);
+        }
+    });
+
+    [...document.querySelectorAll('.classcial-chinese-literature-and-poetry-translation')].forEach(i=>{
+      let el = document.createElement('div');
+      el.setAttribute('class', 'fa-solid fa-eye');
+      i.prepend(el);
+      el.addEventListener('click', ()=>{
+        let status = el.classList.contains('fa-eye');
+        [...i.querySelectorAll('.translation')].forEach(j=>{
+          j.classList.remove('hide');
+          if(status) {
+            j.classList.add('hide');
+          }
+        });
+        el.attributes['class'].value = el.attributes['class'].value.replace('fa-eye-slash', 'fa-0').replace('fa-eye', 'fa-eye-slash').replace('fa-0', 'fa-eye');
+      });
+
+      [...i.querySelectorAll('.original-text')].forEach(e=>{
+        let el = document.createElement('div');
+        el.setAttribute('class', 'fa-solid fa-eye-slash');
+        e.prepend(el);
+        el.addEventListener('click', ()=>{
+            e.nextSibling.classList.toggle('hide');
+            el.attributes['class'].value = el.attributes['class'].value.replace('fa-eye-slash', 'fa-0').replace('fa-eye', 'fa-eye-slash').replace('fa-0', 'fa-eye');
+        });
+      })
+    });
+  }
+</script>
+<script async src="/js/highlight.min.js"></script>
+<script async src="/js/cursor.js"></script>
+<script data-ad-client="ca-pub-2275811890061218" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"hoarfroster.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqusjs","storage":true,"lazyload":false,"nav":null,"activeClass":"disqusjs"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="长期以来，RxJava 一直是 Android 响应式解决方案的无可争议的引领者。虽然 Kotlin 不断扩展，并且引入了冷流（Flow）的概念，情况可能在未来几年迅速改变，但这并不意味着 RxJava 会退出历史舞台。虽说响应式编程最初与线程无关，但合适的线程的并发和并行对程序而言仍然非常重要。在本文中，我们将简要回顾 RxJava 2 中的线程（对其用法做一些基本说明），然后讨论一下 Kotl">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从 RxJava 2 转向使用 Kotlin 流：多线程">
+<meta property="og:url" content="https://hoarfroster.github.io/2021/03/11/computer%20science/backend/from-rxjava-2-to-kotlin-flow-threading/index.html">
+<meta property="og:site_name" content="Hoarfroster 的小窝">
+<meta property="og:description" content="长期以来，RxJava 一直是 Android 响应式解决方案的无可争议的引领者。虽然 Kotlin 不断扩展，并且引入了冷流（Flow）的概念，情况可能在未来几年迅速改变，但这并不意味着 RxJava 会退出历史舞台。虽说响应式编程最初与线程无关，但合适的线程的并发和并行对程序而言仍然非常重要。在本文中，我们将简要回顾 RxJava 2 中的线程（对其用法做一些基本说明），然后讨论一下 Kotl">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn-images-1.medium.com/max/2000/0*piI5NnrRuivMUOKD">
+<meta property="og:image" content="https://cdn-images-1.medium.com/max/2000/1*QOMRfQTktM17z2xHUYmcrQ.png">
+<meta property="og:image" content="https://cdn-images-1.medium.com/max/2000/1*zpbvxCRXjGLSEuFlnrWarg.png">
+<meta property="og:image" content="https://cdn-images-1.medium.com/max/2000/1*xopZFayVenZK03PQ9RoZ0Q.png">
+<meta property="og:image" content="https://cdn-images-1.medium.com/max/2000/1*511-boC1pDMN9gLmK9ySKg.png">
+<meta property="og:image" content="https://cdn-images-1.medium.com/max/2000/1*atQKeG0bwwMfjBD7nBIZHg.png">
+<meta property="og:image" content="https://cdn-images-1.medium.com/max/2000/1*jTX93fFjuwjxR33NLaSkmA.png">
+<meta property="og:image" content="https://cdn-images-1.medium.com/max/2000/1*JSkHKLjh9X-YDL1Olkl5hQ.png">
+<meta property="og:image" content="https://cdn-images-1.medium.com/max/2000/1*_G4_NwfgY1wmO7aVoamsrw.png">
+<meta property="og:image" content="https://cdn-images-1.medium.com/max/2000/1*sv6HwmwwsOufpc-00wZpCQ.png">
+<meta property="og:image" content="https://cdn-images-1.medium.com/max/2000/1*isZ3b5z8Jg7f-V9tOqdFlw.png">
+<meta property="og:image" content="https://cdn-images-1.medium.com/max/2000/1*dfWRpulMkYT_8aNiXJVCPA.png">
+<meta property="og:image" content="https://cdn-images-1.medium.com/max/2000/1*SM6l5_038WGzm9Z4Zd97nA.png">
+<meta property="og:image" content="https://cdn-images-1.medium.com/max/2000/1*5D5AHoF0nPJyD7lcMvp0cA.png">
+<meta property="og:image" content="https://cdn-images-1.medium.com/max/2000/1*24TAclWSQTvfOlYIw9I65w.png">
+<meta property="og:image" content="https://cdn-images-1.medium.com/max/2000/1*6WmwuDO_EMLlyHLDycCu8A.png">
+<meta property="og:image" content="https://cdn-images-1.medium.com/max/2000/1*nYL6iK4SOlMEh9YMOsSbKQ.png">
+<meta property="og:image" content="https://cdn-images-1.medium.com/max/2000/1*VNsQnjyftFkMvtcPD8x_rQ.png">
+<meta property="og:image" content="https://cdn-images-1.medium.com/max/2000/1*qIELqmv38MzyvsUml8QUYw.png">
+<meta property="og:image" content="https://cdn-images-1.medium.com/max/2000/1*z6XDLAkVgMLmyeYsvSTbbA.png">
+<meta property="article:published_time" content="2021-03-11T13:45:00.000Z">
+<meta property="article:modified_time" content="2022-05-28T15:43:08.180Z">
+<meta property="article:author" content="Hoarfroster">
+<meta property="article:tag" content="Computer Science">
+<meta property="article:tag" content="Backend">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="Kotlin">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn-images-1.medium.com/max/2000/0*piI5NnrRuivMUOKD">
+
+<link rel="canonical" href="https://hoarfroster.github.io/2021/03/11/computer%20science/backend/from-rxjava-2-to-kotlin-flow-threading/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>从 RxJava 2 转向使用 Kotlin 流：多线程 | Hoarfroster 的小窝</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <!--<div class="headband"></div>-->
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hoarfroster 的小窝</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section">Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section">About</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section">Categories</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger">
+          Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://hoarfroster.github.io/2021/03/11/computer%20science/backend/from-rxjava-2-to-kotlin-flow-threading/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Hoarfroster">
+      <meta itemprop="description" content="这里是霜羽~~咕咕咕">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hoarfroster 的小窝">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          从 RxJava 2 转向使用 Kotlin 流：多线程
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-03-11 21:45:00" itemprop="dateCreated datePublished" datetime="2021-03-11T21:45:00+08:00">2021-03-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-05-28 23:43:08" itemprop="dateModified" datetime="2022-05-28T23:43:08+08:00">2022-05-28</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Computer-Science/" itemprop="url" rel="index"><span itemprop="name">Computer Science</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Computer-Science/Backend/" itemprop="url" rel="index"><span itemprop="name">Backend</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Computer-Science/Backend/Kotlin/" itemprop="url" rel="index"><span itemprop="name">Kotlin</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span><br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+              <span>12k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+              <span>22 mins.</span>
+            </span>
+            <div class="post-description">长期以来，RxJava 一直是 Android 响应式解决方案的无可争议的引领者。虽然 Kotlin 不断扩展，并且引入了冷流（Flow）的概念，情况可能在未来几年迅速改变，但这并不意味着 RxJava 会退出历史舞台。虽说响应式编程最初与线程无关，但合适的线程的并发和并行对程序而言仍然非常重要。在本文中，我们将简要回顾 RxJava 2 中的线程（对其用法做一些基本说明），然后讨论一下 Kotlin Flow 中线程的工作原理，让我们能在不影响功能的情况下能够顺利地完成代码迁移。</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <blockquote>
+<ul>
+<li>原文地址：<a target="_blank" rel="noopener" href="https://proandroiddev.com/from-rxjava-2-to-kotlin-flow-threading-8618867e1955">From
+RxJava 2 to Kotlin Flow: Threading</a></li>
+<li>原文作者：<a target="_blank" rel="noopener" href="https://medium.com/@krossovochkin">Vasya
+Drobushkov</a></li>
+<li>译者：<a target="_blank" rel="noopener" href="https://github.com/PassionPenguin">霜羽
+Hoarfroster</a></li>
+<li>校对者：<a target="_blank" rel="noopener" href="https://github.com/samyu2000">samyu2000</a>、<a target="_blank" rel="noopener" href="https://github.com/zenblo">zenblo</a></li>
+</ul>
+</blockquote>
+<figure>
+<img src="https://cdn-images-1.medium.com/max/2000/0*piI5NnrRuivMUOKD" alt="来源">
+<figcaption aria-hidden="true"><a target="_blank" rel="noopener" href="https://unsplash.com/photos/vyyVbUOYNPc">来源</a></figcaption>
+</figure>
+<h2 id="简介">简介</h2>
+<p>长期以来，RxJava 一直是 Android
+响应式解决方案的无可争议的引领者。虽然 Kotlin
+不断扩展，并且引入了冷流（Flow）的概念，情况可能在未来几年迅速改变，但这并不意味着
+RxJava
+会退出历史舞台。虽说响应式编程最初与线程无关，但合适的线程的并发和并行对程序而言仍然非常重要。在本文中，我们将简要回顾
+RxJava 2 中的线程（对其用法做一些基本说明），然后讨论一下 Kotlin Flow
+中线程的工作原理，让我们能在不影响功能的情况下能够顺利地完成代码迁移。</p>
+<p>让我们从对 RxJava 2 的简短回顾开始。</p>
+<h2 id="rxjava-2">RxJava 2</h2>
+<p>RxJava 2 的 <code>Observable</code> 和 Kotlin 的 Flow
+都是冷流，意味着其中的代码在订阅之前都不会被执行。</p>
+<blockquote>
+<p>除了 <code>Observable</code> 以外，在 RxJava 中其实还有其它类型，例如
+<code>Flowable</code> 或是 <code>Single</code>
+等。但在本文中，我们只会讲讲
+<code>Observable</code>，因为它们的原理是相似的。</p>
+</blockquote>
+<p>RxJava <code>Observable</code> 的最基础使用如下所示：</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode kotlin"><code class="sourceCode kotlin"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>observeSomething<span class="op">()</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span>subscribeOn<span class="op">(</span>io<span class="op">())</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span>observeOn<span class="op">(</span>mainThread<span class="op">())</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span>subscribe <span class="op">&#123;</span> result <span class="op">-&gt;</span> println<span class="op">(</span>result<span class="op">)</span> <span class="op">&#125;</span></span></code></pre></div>
+<p>在上述代码中，我们订阅了输入输出事件。程序运行时，只要发生了 I/O
+事件，就会把接收到的结果在主线程打印出来。</p>
+<h4 id="subscribeon">subscribeOn</h4>
+<p>subscribeOn 是一个运算符，用于声明将在哪一个调度器上设置一个
+<code>Observable</code>
+的订阅。“将在哪一个调度器上订阅”是指“将在哪个调度器上启动我们的执行程序”。</p>
+<p>第一个划重点的地方是：我们并不需要管 <code>subscribeOn</code>
+具体在哪个地方声明。例如我们可以这样：</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode kotlin"><code class="sourceCode kotlin"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>observeSomething<span class="op">()</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span>subscribeOn<span class="op">(</span>io<span class="op">())</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span>observeOn<span class="op">(</span>mainThread<span class="op">())</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span>subscribe <span class="op">&#123;</span> result <span class="op">-&gt;</span> println<span class="op">(</span>result<span class="op">)</span> <span class="op">&#125;</span></span></code></pre></div>
+<p>也可以这样：</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode kotlin"><code class="sourceCode kotlin"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>observeSomething<span class="op">()</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span>observeOn<span class="op">(</span>mainThread<span class="op">())</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span>subscribeOn<span class="op">(</span>io<span class="op">())</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span>subscribe <span class="op">&#123;</span> result <span class="op">-&gt;</span> println<span class="op">(</span>result<span class="op">)</span> <span class="op">&#125;</span></span></code></pre></div>
+<p>上述两种情况的运行结果是一样的，这并不意外。我们通过在这一串代码链中声明了这些运算符声明了这个链的开始，但其中的某些运算符本身并不依赖于声明的位置，就例如上面的例子那样。</p>
+<p>第二个划重点的地方是，因为一个链并不能同时在多个调度器处启动，因此我们无需在链中添加多个
+<code>subscribeOn</code>，因为只有其中之一会起作用。如果出于某种原因你将多个
+<code>subscribeOn</code>
+运算符放在链中，则最上面的一个将被使用，而最下面的将被忽略：</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode kotlin"><code class="sourceCode kotlin"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>observeSomething<span class="op">()</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span>subscribeOn<span class="op">(</span>io<span class="op">())</span> <span class="co">// 这个会被使用上</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span>observeOn<span class="op">(</span>mainThread<span class="op">())</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span>subscribeOn<span class="op">(</span>io<span class="op">())</span> <span class="co">// 这个会直接被忽略</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span>subscribe <span class="op">&#123;</span> result <span class="op">-&gt;</span> println<span class="op">(</span>result<span class="op">)</span> <span class="op">&#125;</span></span></code></pre></div>
+<h4 id="observeon">observeOn</h4>
+<p><code>subscribeOn</code> 表示将在哪个调度器上启动链，而
+<code>observeOn</code> 表示将在哪个调度器上运行线程。实际上，这意味着
+<code>observeOn</code> 会更改下面的链中的运行的线程的调度器。</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode kotlin"><code class="sourceCode kotlin"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">/* 1 */</span> observeSomething<span class="op">()</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co">/* 1 */</span>     <span class="op">.</span>subscribeOn<span class="op">(</span>io<span class="op">())</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">/* 2 */</span>     <span class="op">.</span>observeOn<span class="op">(</span>mainThread<span class="op">())</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">/* 2 */</span>     <span class="op">.</span>subscribe <span class="op">&#123;</span> result <span class="op">-&gt;</span> println<span class="op">(</span>result<span class="op">)</span> <span class="op">&#125;</span></span></code></pre></div>
+<p>在这里，我们看到从链开始，直到链上的 <code>observeOn</code>
+定义是第一部分，然后 <code>observeOn</code> 更改链要在
+<code>mainThread</code> 调度器上运行，因此现在以下全部内容都在
+<code>mainThread</code> （第二部分）上执行。</p>
+<p>与 <code>subscribeOn</code>
+不同，实际上如果真的需要，我们可以添加多个 <code>observeOn</code>：</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode kotlin"><code class="sourceCode kotlin"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">/* 1 */</span> observeSomething<span class="op">()</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co">/* 1 */</span>     <span class="op">.</span>subscribeOn<span class="op">(</span>io<span class="op">())</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co">/* 2 */</span>     <span class="op">.</span>observeOn<span class="op">(</span>computation<span class="op">())</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co">/* 2 */</span>     <span class="op">.</span>map <span class="op">&#123;</span> result <span class="op">-&gt;</span> result<span class="op">.</span>length <span class="op">&#125;</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co">/* 3 */</span>     <span class="op">.</span>observeOn<span class="op">(</span>mainThread<span class="op">())</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co">/* 3 */</span>     <span class="op">.</span>subscribe <span class="op">&#123;</span> result <span class="op">-&gt;</span> println<span class="op">(</span>result<span class="op">)</span> <span class="op">&#125;</span></span></code></pre></div>
+<p>如上面的例子那样，我们先从网络上获取一些数据，接着进行一些计算处理，再打印结果。。我们添加了多个
+<code>observeOn</code>，让程序首先切换到 <code>computation</code>
+调度器（这样做的目的是在后台线程中进行计算，这是第二部分），然后切换到
+<code>mainThread</code> 打印结果。</p>
+<h4 id="just-defer">just + defer</h4>
+<p><code>subscribeOn</code> 的一个常见错误是将它与
+<code>Observable.just</code> 一起使用。</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode kotlin"><code class="sourceCode kotlin"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>Observable<span class="op">.</span>just<span class="op">(</span>loadDataSync<span class="op">())</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span>subscribeOn<span class="op">(</span>io<span class="op">())</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span>observeOn<span class="op">(</span>mainThread<span class="op">())</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span>subscribe <span class="op">&#123;</span> result <span class="op">-&gt;</span> println<span class="op">(</span>result<span class="op">)</span> <span class="op">&#125;</span></span></code></pre></div>
+<p><code>just</code>
+参数的值是立即计算的，而不是在订阅时才计算的。这意味着，如果您在主线程上创建此类可观察的对象，那么可能会在主线程上进行大量潜在的计算。虽说订阅将在
+<code>io</code> 上正确完成，但是 <code>just</code>
+的值将在订阅之前就被计算出来了。</p>
+<p>解决此问题的方法之一是将你的 <code>Observable.just</code> 调用包装到
+<code>Observable.defer</code>
+中，这样调用所执行的所有内容都将在订阅时以及在我们位于
+<code>subscribeOn</code> 处所声明的调度器上进行计算：</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode kotlin"><code class="sourceCode kotlin"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>Observable<span class="op">.</span>defer <span class="op">&#123;</span> Observable<span class="op">.</span>just<span class="op">(</span>loadDataSync<span class="op">())</span> <span class="op">&#125;</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span>subscribeOn<span class="op">(</span>io<span class="op">())</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span>observeOn<span class="op">(</span>mainThread<span class="op">())</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span>subscribe <span class="op">&#123;</span> result <span class="op">-&gt;</span> println<span class="op">(</span>result<span class="op">)</span> <span class="op">&#125;</span></span></code></pre></div>
+<h4 id="flatmap-的并发和并行">flatMap 的并发和并行</h4>
+<p>另一个棘手的事情来自使用运算符 <code>flatMap</code>
+和我们对并发性和并行性的理解。</p>
+<p>例如，当我们拥有 ID 列表流，并且我们需要对每一个 ID
+都执行一次从网络中加载数据：</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode kotlin"><code class="sourceCode kotlin"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>Observable<span class="op">.</span>fromIterable<span class="op">(</span>listOf<span class="op">(</span><span class="st">"id1"</span><span class="op">,</span> <span class="st">"id2"</span><span class="op">,</span> <span class="st">"id3"</span><span class="op">))</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span>flatMap <span class="op">&#123;</span> id <span class="op">-&gt;</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>        loadData<span class="op">(</span>id<span class="op">)</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">&#125;</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span>subscribeOn<span class="op">(</span>io<span class="op">())</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span>observeOn<span class="op">(</span>mainThread<span class="op">())</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span>toList<span class="op">()</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span>subscribe <span class="op">&#123;</span> result <span class="op">-&gt;</span> println<span class="op">(</span>result<span class="op">)</span> <span class="op">&#125;</span></span></code></pre></div>
+<p>我们在这里的预期是，我们已经订阅了 <code>io</code>，<code>io()</code>
+的底层有线程池，因此对每个 <code>id</code> 的 <code>loadData</code>
+的调用是并行的。但是事实并非如此。我们使用 <code>flatMap</code>
+编写了并发代码，但它不是并行运行的，其原因是我们告诉了程序我们要在
+<code>io</code> 上启动链。我们的链的起点在 <code>flatMapIterable</code>
+上，这意味着在订阅后，将使用 <code>io</code>
+池中的一个线程，并在该单个线程上运行所有线程。为了改变行为并使我们的代码并行运行，我们需要将
+<code>subscribeOn</code> 移动到 <code>flatMap</code> 之内：</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode kotlin"><code class="sourceCode kotlin"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>Observable<span class="op">.</span>fromIterable<span class="op">(</span>listOf<span class="op">(</span><span class="st">"id1"</span><span class="op">,</span> <span class="st">"id2"</span><span class="op">,</span> <span class="st">"id3"</span><span class="op">))</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span>flatMap <span class="op">&#123;</span> id <span class="op">-&gt;</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>        loadData<span class="op">(</span>id<span class="op">)</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>            <span class="op">.</span>subscribeOn<span class="op">(</span>io<span class="op">())</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">&#125;</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span>observeOn<span class="op">(</span>mainThread<span class="op">())</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span>toList<span class="op">()</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span>subscribe <span class="op">&#123;</span> result <span class="op">-&gt;</span> println<span class="op">(</span>result<span class="op">)</span> <span class="op">&#125;</span></span></code></pre></div>
+<p>一旦执行到了
+<code>flatMap</code>，每个内部的可观察对象（<code>flatMap</code>
+内部的可观察对象）都将被订阅。意味着在每一次执行 <code>loadData</code>
+函数，都会有一个订阅，从 <code>io</code>
+池中获取新线程。这样我们就达到了并行性。</p>
+<p>因此，当我们使用诸如 <code>flatMap</code>
+之类的运算符时，我们的链应该有多个订阅点：一个用于原始链起点，每个用于内部的可观察点：</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode kotlin"><code class="sourceCode kotlin"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">/* 订阅点 1 */</span> Observable<span class="op">.</span>fromIterable<span class="op">(</span>listOf<span class="op">(</span><span class="st">"id1"</span><span class="op">,</span> <span class="st">"id2"</span><span class="op">,</span> <span class="st">"id3"</span><span class="op">))</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>                    <span class="op">.</span>flatMap <span class="op">&#123;</span> id <span class="op">-&gt;</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co">/* 订阅点 2 */</span>             loadData<span class="op">(</span>id<span class="op">)</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>                            <span class="op">.</span>subscribeOn<span class="op">(</span>io<span class="op">())</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>                            <span class="op">.</span>flatMap <span class="op">&#123;</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co">/* 订阅点 3 */</span>                     loadData2<span class="op">(</span>id<span class="op">)</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>                                    <span class="op">.</span>subscribeOn<span class="op">(</span>io<span class="op">())</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>                            <span class="op">&#125;</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>                        <span class="op">&#125;</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>                    <span class="op">.</span>observeOn<span class="op">(</span>mainThread<span class="op">())</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>                    <span class="op">.</span>toList<span class="op">()</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>                    <span class="op">.</span>subscribe <span class="op">&#123;</span> result <span class="op">-&gt;</span> println<span class="op">(</span>result<span class="op">)</span> <span class="op">&#125;</span></span></code></pre></div>
+<p>代码中的注释指向了每一个订阅发生的位置。通过使用
+<code>subscribeOn</code>，我们可以声明在这些情况下应该在哪个调度程序订阅上进行。</p>
+<h4 id="单线程运行">单线程运行</h4>
+<p>最后，但也同样重要的是，如果我们不使用 <code>subscribeOn</code> 或
+<code>observeOn</code>，那么代码将是同步进行的，所有执行将是顺序执行的，并且在下一个语句的可观察到的完整执行之前是暂停的。</p>
+<p>以上就基本上是 RxJava 中的线程的全部内容，让我们现在走进 Kotlin
+流。</p>
+<h2 id="kotlin-流">Kotlin 流</h2>
+<p>Kotlin 流的最基础使用方法如下所示：</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode kotlin"><code class="sourceCode kotlin"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>CoroutineScope<span class="op">(</span>Job<span class="op">()</span> <span class="op">+</span> Dispatchers<span class="op">.</span>Main<span class="op">).</span>launch <span class="op">&#123;</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    observeSomething<span class="op">()</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span>flowOn<span class="op">(</span>Dispatchers<span class="op">.</span>IO<span class="op">)</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span>collect <span class="op">&#123;</span> result <span class="op">-&gt;</span> println<span class="op">(</span>result<span class="op">)</span> <span class="op">&#125;</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="op">&#125;</span></span></code></pre></div>
+<blockquote>
+<p>现在，我们有了许多与协程相关的概念，可能需要对其进行解释。我们不会深入介绍协程这个功能或是
+Kotlin Flow，因此，如果您不熟悉协程，最好先阅读有关协程的文档。</p>
+</blockquote>
+<p>该示例在某种程度上与 RxJava 部分中使用的示例相同：我们观察了
+<code>io</code> 的一些变化，然后在 <code>main</code>
+上打印结果，尽管代码有所不同。让我们找出区别以及它是如何工作的。</p>
+<p>首先要注意的是，只能在某些协程范围内收集流（因为 <code>collect</code>
+方法需要在 <code>suspend</code>
+函数下执行）。因此，我们创建了合并范围，并在该范围内“启动”了新的协程。在启动的协程中，我们现在可以收集流。</p>
+<p>关于 Kotlin
+流和收集功能的重要一件事是称为上下文保留的功能。这意味着我们无需声明要在哪个调度器上收集数据，该调度程序始终与我们从流中收集数据的范围相同。</p>
+<p>因此，如果要在 Main 中进行收集，则需要在协程中使用
+<code>Dispatchers.Main</code> 来调用 <code>collect</code> 函数。</p>
+<h4 id="flowon">flowOn</h4>
+<p>这是一个运算符，用于更改工作流所处的上下文（尤其是线程调度）。</p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*QOMRfQTktM17z2xHUYmcrQ.png"></p>
+<p>因此，在上面的示例中，通过编写
+<code>flowOn(Dispatchers.IO)</code>，我们告诉了程序我们希望在输入输出上运行执行所有代码。</p>
+<p>如果像以前的 RxJava 一样在 <code>map</code>
+内部添加一些计算，我们将得到以下结果：</p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*zpbvxCRXjGLSEuFlnrWarg.png"></p>
+<p>我们将看到，我们基本上可以通过在运算符之后声明 <code>flowOn</code>
+来更改运算符的工作位置。</p>
+<h4 id="launchin">launchIn</h4>
+<p>关于 <code>collect</code> 函数的一件重要事情是它带有
+<code>suspend</code> 声明的。这意味着当我们调用 <code>collect</code>
+函数的时候，执行会被暂停直到流的完成。</p>
+<p>因此，如果在同一个协程中放入两个 <code>collect</code>
+函数，那么第一个将有效地阻止第二个执行：</p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*xopZFayVenZK03PQ9RoZ0Q.png"></p>
+<p>在这里我们能够看到打印了返回值出来，但并没有显示第二次的返回值，因为第一个
+<code>collect</code> 函数会被暂停并且不允许进行第二次
+<code>collect</code> 函数的执行。</p>
+<p>要想解决这个问题我们需要在不同的协程中启动各自流。</p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*511-boC1pDMN9gLmK9ySKg.png"></p>
+<p>但是这个代码看起来并不漂亮，并且要使其看起来更好一点（没有附加的嵌套级别），我们可以将
+<code>launchIn</code> 扩展功能（只是个在包装的启动中的语法糖）与
+<code>onEach</code> 结合使用：</p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*atQKeG0bwwMfjBD7nBIZHg.png"></p>
+<p>这样，我们创建的代码看起来更像我们之前在 RxJava上写过的那样，因为
+RxJava 中的订阅通常不会被阻塞（除非使用了某些 <code>blockingxxx</code>
+函数）。因此对于类似的情景，似乎 <code>launchin</code>
+应该是我们的首选。</p>
+<h4 id="flowof">flowOf</h4>
+<p>为 <code>flowOf</code> 假设的情景与 <code>Observable.just</code>
+类似：我们现在需要进行一些计算（挂起的），那么它将在外部范围内完成，不受
+<code>flowOn</code> 的影响：</p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*jTX93fFjuwjxR33NLaSkmA.png"></p>
+<p>如果在带有 <code>Dispatchers.Main</code> 的上下文中运行，那么
+<code>calculate</code> 将在主线程上完成而不是输入输出上运行。</p>
+<p>为了解决这个问题，您可以使用 <code>flow</code>
+构建器并在其中明确定义内容：</p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*JSkHKLjh9X-YDL1Olkl5hQ.png"></p>
+<p>然后将在输入输出线程上进行计算。</p>
+<h4 id="flatmapmerge-并发和并行">FlatMapMerge 并发和并行</h4>
+<p>为了了解 Kotlin Flow 如何与 <code>flatMapMerge</code>（对 RxJava 中
+<code>flatMap</code> 的模拟）一起使用，我们将使用一些测试示例：</p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*_G4_NwfgY1wmO7aVoamsrw.png"></p>
+<p>在这里，我们有在 <code>d1</code>
+调度器上收集的流。这个流有两个项目，每个项目都平面映射到其他两个项目上。而且我们在
+<code>d2</code> 调度器上有一个 <code>flowOn</code> 定义。</p>
+<p>在代码中，我们添加了 <code>onEach</code>
+的调用，用于输出执行的线程的信息。</p>
+<p>在此示例中，输出为：</p>
+<pre><code>inner: pool-2-thread-2 @coroutine#4
+inner: pool-2-thread-3 @coroutine#5
+inner: pool-2-thread-3 @coroutine#5
+inner: pool-2-thread-2 @coroutine#4
+collect: pool-1-thread-2 @coroutine#2
+collect: pool-1-thread-2 @coroutine#2
+collect: pool-1-thread-2 @coroutine#2
+collect: pool-1-thread-2 @coroutine#2</code></pre>
+<p>因此，我们发现与 RxJava 不同的是，即使我们将 <code>flowOn</code>
+放在其中的 <code>flatMapMerge</code> 之外（之后），<code>flowOn</code>
+也会通过在多个线程上并行运行来影响其中的代码执行。</p>
+<p>那么我们将 <code>flowOn</code> 放在 <code>flatMapMerge</code>
+中：</p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*sv6HwmwwsOufpc-00wZpCQ.png"></p>
+<p>我们可以得到这些结果：</p>
+<pre><code>inner: pool-2-thread-2 @coroutine#6
+inner: pool-2-thread-1 @coroutine#7
+inner: pool-2-thread-2 @coroutine#6
+inner: pool-2-thread-1 @coroutine#7
+collect: pool-1-thread-3 @coroutine#2
+collect: pool-1-thread-3 @coroutine#2
+collect: pool-1-thread-3 @coroutine#2
+collect: pool-1-thread-3 @coroutine#2</code></pre>
+<p>同样，每个内部流都在其自己的线程的第二个池在上运行。因此，在哪里定义
+<code>flowOn</code> 似乎没有什么区别。</p>
+<p>但是其实有一个区别 —— 让我们通过在第一个 <code>flowOf</code>
+调用下面添加 <code>onEach</code> 来看看它是什么：</p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*isZ3b5z8Jg7f-V9tOqdFlw.png"></p>
+<p>结果如下：</p>
+<pre><code>outer: pool-2-thread-1 @coroutine#3
+outer: pool-2-thread-1 @coroutine#3
+inner: pool-2-thread-2 @coroutine#4
+inner: pool-2-thread-3 @coroutine#5
+inner: pool-2-thread-3 @coroutine#5
+inner: pool-2-thread-2 @coroutine#4
+collect: pool-1-thread-2 @coroutine#2
+collect: pool-1-thread-2 @coroutine#2
+collect: pool-1-thread-2 @coroutine#2
+collect: pool-1-thread-2 @coroutine#2</code></pre>
+<p>这意味着所有在 <code>flowOn</code> 以前的代码都会在第二个 pool
+中运行，外面的代码会在第一线程，而每一个里面的 flow
+都会有属于它自己的线程：</p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*dfWRpulMkYT_8aNiXJVCPA.png"></p>
+<p>红色部分运行在 <code>d2</code> 而蓝色部分运行在 <code>d1</code>。</p>
+<p>下面让我们来看看如果我们把 <code>flowOn</code> 放在
+<code>flatMapMerge</code> 中会发生什么：</p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*SM6l5_038WGzm9Z4Zd97nA.png"></p>
+<p>输出如下：</p>
+<pre><code>outer: pool-1-thread-2 @coroutine#3
+outer: pool-1-thread-2 @coroutine#3
+inner: pool-2-thread-1 @coroutine#6
+inner: pool-2-thread-2 @coroutine#7
+inner: pool-2-thread-1 @coroutine#6
+inner: pool-2-thread-2 @coroutine#7
+collect: pool-1-thread-3 @coroutine#2
+collect: pool-1-thread-3 @coroutine#2
+collect: pool-1-thread-3 @coroutine#2
+collect: pool-1-thread-3 @coroutine#2</code></pre>
+<p>我们可以看到外面的运行在了 <code>d1</code>，也因而没有被
+<code>flowOn</code> 影响：</p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*5D5AHoF0nPJyD7lcMvp0cA.png"></p>
+<p>这就是它们间的差异。</p>
+<h2 id="比较">比较</h2>
+<p>现在让我们来做一些比较和总结，也看看几个例子。</p>
+<p>从比较部分来看，RxJava 和 Kotlin Flow 都展现出 cold
+streams。两者都有一般的操作符和方法来改变链中的线程（调度器或分配器）。</p>
+<h4 id="线程的控制">线程的控制</h4>
+<p>在RxJava中，用于线程的<strong>调度器</strong>被使用（最常见的有
+<code>io()</code>、<code>computation()</code>、<code>mainThread()</code>）。</p>
+<p>在Kotlin Flow中，用于线程的<strong>调度器</strong>最常见的是
+<code>IO</code>、<code>Default</code>、<code>Main</code>）。</p>
+<h4 id="线程操作符">线程操作符</h4>
+<p>在RxJava中，我们使用<strong>subscribeOn</strong>声明哪个调度器链应该被<strong>订阅（启动）</strong>，使用
+<code>observeOn</code> 声明它应该在哪里进行。</p>
+<p>在 Kotlin Flow 中，我们使用收集流的 Scope
+定义了在使用在哪个上下文（调度器）上收集完这个链，以及在
+<code>flowOn</code> 之前它的执行的地方。</p>
+<p>这就像是个倒过来的方法。在 RxJava
+中，我们在下面声明启动和修改链。</p>
+<p>而在 Kotlin Flow 中，我们声明用于在上面修改链。</p>
+<h4 id="迁移例子">迁移例子</h4>
+<p>考虑一下，我们有一些复杂的 RxJava 链，我们希望迁移到 Kotlin
+Flow，并保持线程逻辑不变。从上文中我们已经了解到，基本上遵循上下颠倒的思维方式就可以了。当然，我们完成代码迁移后，还要记得进行测试。</p>
+<p>同样，我们应该已经记住： RxJava
+中的非阻塞线程和在协程之间重用线程并挂起是不同的方法，而且两者是无法建立精确的一对一关系的。尽管我们可以施加一些约束，但是我们希望将并行性保持在我们拥有并行性的位置，并在相同的线程池上运行相同的代码块。</p>
+<p>为了使我们的测试示例尽可能正确，我们将在调度器之间使用 Java
+执行程序。</p>
+<p>RxJava 的部分：</p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*24TAclWSQTvfOlYIw9I65w.png"></p>
+<p>Kotlin Flow 的那一部分：</p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*6WmwuDO_EMLlyHLDycCu8A.png"></p>
+<p>我们将拥有 4 个包含 3 个线程的池，而主要执行者只有 1 个线程。</p>
+<p>我们的 RxJava 的示例将如下所示：</p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*nYL6iK4SOlMEh9YMOsSbKQ.png"></p>
+<p>在这里，我们有三个项目流，它们从 s1 开始，然后将执行切换到 s2。在
+<code>flatMap</code>
+内部，我们设下了可观察的订阅（允许并行）以及一些线程切换。然后，在平面映射之后，我们进行了一些代码的执行并在主线程中打印结果。</p>
+<p>运行程序后，我们将看到以下输出：</p>
+<pre><code>1: pool-1-thread-1
+1: pool-1-thread-1
+1: pool-1-thread-1
+2: pool-3-thread-1
+2: pool-3-thread-1
+2: pool-3-thread-1
+inner 1: pool-4-thread-1
+inner 1: pool-4-thread-2
+inner 1: pool-4-thread-1
+inner 1: pool-4-thread-1
+inner 1: pool-4-thread-2
+inner 1: pool-4-thread-2
+inner 1: pool-4-thread-3
+inner 2: pool-5-thread-1
+inner 2: pool-5-thread-2
+3: pool-5-thread-1
+inner 2: pool-5-thread-2
+inner 1: pool-4-thread-3
+inner 2: pool-5-thread-2
+inner 2: pool-5-thread-3
+3: pool-5-thread-1
+3: pool-5-thread-1
+3: pool-5-thread-1
+end: pool-6-thread-1
+end: pool-6-thread-1
+inner 1: pool-4-thread-3
+end: pool-6-thread-1
+3: pool-5-thread-1
+inner 2: pool-5-thread-1
+3: pool-5-thread-1
+inner 2: pool-5-thread-3
+inner 2: pool-5-thread-1
+end: pool-6-thread-1
+3: pool-5-thread-3
+3: pool-5-thread-3
+end: pool-6-thread-1
+inner 2: pool-5-thread-3
+3: pool-5-thread-3
+end: pool-6-thread-1
+end: pool-6-thread-1
+end: pool-6-thread-1
+end: pool-6-thread-1</code></pre>
+<p>它很长，但是应该符合我们之前写的假设。</p>
+<p>让我们直观化显示一下数据：</p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*VNsQnjyftFkMvtcPD8x_rQ.png"></p>
+<p>在这里，我们可以精确地看到上面所述的内容。其中需要重点关注的内容是，<code>3</code>
+与 <code>inner 2</code>
+在同一调度器上运行。我们有两个起点（初始起点和内部起点），在这里我们将
+<code>subscribeOn</code>
+允许在内部并行。然后移动到链的下方，并在必要时添加了
+<code>observeOn</code> 的定义。</p>
+<p>现在，我们切换到 Kotlin Flow 的版本：</p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*qIELqmv38MzyvsUml8QUYw.png"></p>
+<p>从一开始，我们就将主线程固定为结束的线程。然后我们从最下面开始看起，我们在需要的地方添加
+<code>flowOn</code>。首先，我们添加了 <code>d4</code> 并注意到
+<code>inner 2</code> 也应在其上运行。然后，我们切换到
+<code>d3</code>，依此类推，直到链的最顶端。结果如下：</p>
+<pre><code>1: pool-1-thread-1 @coroutine#6
+1: pool-1-thread-1 @coroutine#6
+1: pool-1-thread-1 @coroutine#6
+2: pool-2-thread-2 @coroutine#5
+2: pool-2-thread-2 @coroutine#5
+2: pool-2-thread-2 @coroutine#5
+inner 1: pool-3-thread-1 @coroutine#10
+inner 1: pool-3-thread-2 @coroutine#11
+inner 1: pool-3-thread-3 @coroutine#12
+inner 1: pool-3-thread-2 @coroutine#11
+inner 1: pool-3-thread-3 @coroutine#12
+inner 2: pool-4-thread-3 @coroutine#9
+inner 1: pool-3-thread-1 @coroutine#10
+inner 1: pool-3-thread-3 @coroutine#12
+inner 1: pool-3-thread-2 @coroutine#11
+inner 2: pool-4-thread-1 @coroutine#7
+inner 2: pool-4-thread-2 @coroutine#8
+inner 2: pool-4-thread-1 @coroutine#7
+inner 2: pool-4-thread-3 @coroutine#9
+inner 1: pool-3-thread-1 @coroutine#10
+3: pool-4-thread-1 @coroutine#3
+inner 2: pool-4-thread-3 @coroutine#9
+inner 2: pool-4-thread-2 @coroutine#8
+end: pool-5-thread-1 @coroutine#2
+3: pool-4-thread-1 @coroutine#3
+inner 2: pool-4-thread-2 @coroutine#8
+3: pool-4-thread-1 @coroutine#3
+end: pool-5-thread-1 @coroutine#2
+3: pool-4-thread-1 @coroutine#3
+end: pool-5-thread-1 @coroutine#2
+end: pool-5-thread-1 @coroutine#2
+3: pool-4-thread-1 @coroutine#3
+3: pool-4-thread-1 @coroutine#3
+end: pool-5-thread-1 @coroutine#2
+end: pool-5-thread-1 @coroutine#2
+3: pool-4-thread-1 @coroutine#3
+3: pool-4-thread-1 @coroutine#3
+end: pool-5-thread-1 @coroutine#2
+end: pool-5-thread-1 @coroutine#2
+inner 2: pool-4-thread-1 @coroutine#7
+3: pool-4-thread-1 @coroutine#3
+end: pool-5-thread-1 @coroutine#2</code></pre>
+<p>除了日志的外观不同（因为 RxJava
+与协程不同），我们仍然可以看到所有逻辑仍然适用，并且我们没有破坏并行执行。</p>
+<p>虽然我们仍然可以看到一些差异。例如，我们在RxJava示例中运行“
+3”的代码在以下位置运行：</p>
+<pre><code>3: pool-5-thread-1
+...
+3: pool-5-thread-3</code></pre>
+<p>在协程示例中，它总是在一个线程上运行：</p>
+<pre><code>3: pool-4-thread-1 @coroutine#3</code></pre>
+<p>这可能是由于并发而引起的巧合，也可能是因为协程程序更好地利用了线程的使用（或者可能不是，实际上我不知道，所以如果有人有其他想法，可以毫不犹豫地发布响应）。尽管我们不太在乎，因为无论如何线程池的使用都是正确的。</p>
+<p>如果我们可视化线程，则可以执行以下操作：</p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*z6XDLAkVgMLmyeYsvSTbbA.png"></p>
+<h2 id="小结">小结</h2>
+<p>Kotlin Flow 真的不错，可以跟 RxJava Observable
+相媲美。它们的使用方法和支持的运算符都相似，相似的运算符，并且都在其链内处理线程。他们在使用
+<code>Observable.just</code> 或 <code>flowOf</code>
+时也有类似的技巧。但是就并发性和并行性而言，Kotlin Flow
+似乎更简洁。同样，Kotlin Flow 也没有诸如带有 <code>subscribeOn</code> 的
+RxJava
+这样的问题，因为在流程中，我们用作用域声明了链的末尾，从技术上讲，不可能将它们放多个。</p>
+<p>在处理线程的方式上，Kotlin Flow 和 RxJava 是相反的。在 RxJava
+中，我们认为是从上到下，而在 Kotlin Flow
+中则是从下到上。但无论如何，如果有必要，在不破坏大部分功能的前提下，将代码进行反向迁移也是可行的。</p>
+<p>希望您喜欢这篇文章，但愿它对您有所帮助</p>
+<p>祝你编程快乐！</p>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Computer-Science/" rel="tag"># Computer Science</a>
+              <a href="/tags/Backend/" rel="tag"># Backend</a>
+              <a href="/tags/Java/" rel="tag"># Java</a>
+              <a href="/tags/Kotlin/" rel="tag"># Kotlin</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/03/10/computer%20science/backend/apis-vs-websockets-vs-webhooks-what-to-choose/" rel="prev" title="API、WebSockets 和 WebHooks：究竟应该选谁">
+      <i class="fa fa-chevron-left"></i> API、WebSockets 和 WebHooks：究竟应该选谁
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/03/13/computer%20science/dart/native-splash-screen-in-flutter-using-lottie/" rel="next" title="在 Flutter 项目中使用 Lottie 构建原生 Splash 启动页">
+      在 Flutter 项目中使用 Lottie 构建原生 Splash 启动页 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rxjava-2"><span class="nav-text">RxJava 2</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#subscribeon"><span class="nav-text">subscribeOn</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#observeon"><span class="nav-text">observeOn</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#just-defer"><span class="nav-text">just + defer</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#flatmap-%E7%9A%84%E5%B9%B6%E5%8F%91%E5%92%8C%E5%B9%B6%E8%A1%8C"><span class="nav-text">flatMap 的并发和并行</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8D%95%E7%BA%BF%E7%A8%8B%E8%BF%90%E8%A1%8C"><span class="nav-text">单线程运行</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#kotlin-%E6%B5%81"><span class="nav-text">Kotlin 流</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#flowon"><span class="nav-text">flowOn</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#launchin"><span class="nav-text">launchIn</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#flowof"><span class="nav-text">flowOf</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#flatmapmerge-%E5%B9%B6%E5%8F%91%E5%92%8C%E5%B9%B6%E8%A1%8C"><span class="nav-text">FlatMapMerge 并发和并行</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AF%94%E8%BE%83"><span class="nav-text">比较</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E7%9A%84%E6%8E%A7%E5%88%B6"><span class="nav-text">线程的控制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="nav-text">线程操作符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%81%E7%A7%BB%E4%BE%8B%E5%AD%90"><span class="nav-text">迁移例子</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93"><span class="nav-text">小结</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Hoarfroster"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Hoarfroster</p>
+  <div class="site-description" itemprop="description">这里是霜羽~~咕咕咕</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">193</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">53</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">58</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <ul class="links-of-author motion-element">
+      <li class="links-of-author-item">
+        <a href="https://github.com/PassionPenguin" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;PassionPenguin" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        <span> PassionPenguin</span>
+      </li>
+      <li class="links-of-author-item">
+        <a href="mailto:hoarfroster@outlook.com" title="E-Mail → mailto:hoarfroster@outlook.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+        <span> hoarfroster@outlook.com</span>
+      </li>
+      <li class="links-of-author-item">
+        <a href="https://twitter.com/zhangqizhe" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;zhangqizhe" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+        <span> @zhangqizhe</span>
+      </li>
+      <li class="links-of-author-item">
+        <a href="https://www.instagram.com/glacierpenguin/" title="Instagram → https:&#x2F;&#x2F;www.instagram.com&#x2F;glacierpenguin&#x2F;" rel="noopener" target="_blank"><i class="fab fa-instagram fa-fw"></i>Instagram</a>
+        <span> @glacierpenguin</span>
+      </li>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hoarfroster</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="Symbols count total">1.1m</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">34:12</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT</a>
+  </div>
+
+        
+
+
+
+
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-firestore.js"></script>
+  <script>
+    firebase.initializeApp({
+      apiKey   : 'AIzaSyDqM81uUD8yWHAvsGasJzvWBHhpBYnRttI',
+      projectId: 'hoar-froster'
+    });
+
+    function getCount(doc, increaseCount) {
+      // IncreaseCount will be false when not in article page
+      return doc.get().then(d => {
+        var count = 0;
+        if (!d.exists) { // Has no data, initialize count
+          if (increaseCount) {
+            doc.set({
+              count: 1
+            });
+            count = 1;
+          }
+        } else { // Has data
+          count = d.data().count;
+          if (increaseCount) {
+            // If first view this article
+            doc.set({ // Increase count
+              count: count + 1
+            });
+            count++;
+          }
+        }
+
+        return count;
+      });
+    }
+
+    function appendCountTo(el) {
+      return count => {
+        el.innerText = count;
+      }
+    }
+  </script>
+  <script>
+    (function() {
+      var db = firebase.firestore();
+      var articles = db.collection('articles-info');
+
+      if (CONFIG.page.isPost) { // Is article page
+        var title = document.querySelector('.post-title').innerText.trim();
+        var doc = articles.doc(title);
+        var increaseCount = CONFIG.hostname === location.hostname;
+        if (localStorage.getItem(title)) {
+          increaseCount = false;
+        } else {
+          // Mark as visited
+          localStorage.setItem(title, true);
+        }
+        getCount(doc, increaseCount).then(appendCountTo(document.querySelector('.firestore-visitors-count')));
+      } else if (CONFIG.page.isHome) { // Is index page
+        var promises = [...document.querySelectorAll('.post-title')].map(element => {
+          var title = element.innerText.trim();
+          var doc = articles.doc(title);
+          return getCount(doc);
+        });
+        Promise.all(promises).then(counts => {
+          var metas = document.querySelectorAll('.firestore-visitors-count');
+          counts.forEach((val, idx) => {
+            appendCountTo(metas[idx])(val);
+          });
+        });
+      }
+    })();
+  </script>
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var canonicalURL, curProtocol;
+      //Get the <link> tag
+      var x=document.getElementsByTagName("link");
+		//Find the last canonical URL
+		if(x.length > 0){
+			for (i=0;i<x.length;i++){
+				if(x[i].rel.toLowerCase() == 'canonical' && x[i].href){
+					canonicalURL=x[i].href;
+				}
+			}
+		}
+    //Get protocol
+	    if (!canonicalURL){
+	    	curProtocol = window.location.protocol.split(':')[0];
+	    }
+	    else{
+	    	curProtocol = canonicalURL.split(':')[0];
+	    }
+      //Get current URL if the canonical URL does not exist
+	    if (!canonicalURL) canonicalURL = window.location.href;
+	    //Assign script content. Replace current URL with the canonical URL
+      !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=canonicalURL,t=document.referrer;if(!e.test(r)){var n=(String(curProtocol).toLowerCase() === 'https')?"https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif":"//api.share.baidu.com/s.gif";t?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var i=new Image;i.src=n}}(window);})();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme    : 'default',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/disqusjs@1/dist/disqusjs.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/disqusjs@1/dist/disqus.js', () => {
+    window.dsqjs = new DisqusJS({
+      api       : 'https://disqus.skk.moe/disqus/' || 'https://disqus.com/api/',
+      apikey    : 'Lo65MITAya5vcdTm6cJ8V5qCBNx3PVErvDOsfJ5tUPtEbw3DMS3EIzEx6vrmTzCN',
+      shortname : 'hoarfroster',
+      url       : "https://hoarfroster.github.io/2021/03/11/computer%20science/backend/from-rxjava-2-to-kotlin-flow-threading/",
+      identifier: "2021/03/11/computer science/backend/from-rxjava-2-to-kotlin-flow-threading/",
+      title     : "从 RxJava 2 转向使用 Kotlin 流：多线程",
+    });
+  }, window.DisqusJS);
+});
+</script>
+
+</body>
+</html>

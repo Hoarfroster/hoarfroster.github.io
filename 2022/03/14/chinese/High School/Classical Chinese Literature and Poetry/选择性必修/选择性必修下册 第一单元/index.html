@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/avatar.png" color="#222">
+  <meta name="google-site-verification" content="iFMbHL1JuWjTlNFq5Rv96vDzpsqakxTpdE2nw7Crr6o">
+  <meta name="msvalidate.01" content="EF6D8CD8A3335E66AB96B4D544FCD96C">
+  <meta name="baidu-site-verification" content="code-80b80Pbzs2">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link href="/lib/fontawesome/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<script>
+
+  window.onload = function() {
+    document.querySelectorAll("p").forEach(e=>{
+      e.innerHTML = e.innerHTML.replaceAll(/==(.+?)==/g, "<mark>$1</mark>").replaceAll(/​\s+?/g, "<span class='tab'></span>");
+    });
+    
+    [...document.querySelectorAll("pre > code")].forEach(e=> {
+        var codeClass = e.parentElement.classList.value;
+        if (codeClass == null || codeClass === "") {
+            e.classList.add("hljs");
+        } else {
+            var map = {
+                js: "javascript"
+            };
+            if (map[codeClass]) {
+                codeClass = map[codeClass];
+            }
+            codeClass.split(" ").forEach(i=>e.classList.add(i));
+            hljs.highlightElement(e);
+        }
+    });
+
+    [...document.querySelectorAll('.classcial-chinese-literature-and-poetry-translation')].forEach(i=>{
+      let el = document.createElement('div');
+      el.setAttribute('class', 'fa-solid fa-eye');
+      i.prepend(el);
+      el.addEventListener('click', ()=>{
+        let status = el.classList.contains('fa-eye');
+        [...i.querySelectorAll('.translation')].forEach(j=>{
+          j.classList.remove('hide');
+          if(status) {
+            j.classList.add('hide');
+          }
+        });
+        el.attributes['class'].value = el.attributes['class'].value.replace('fa-eye-slash', 'fa-0').replace('fa-eye', 'fa-eye-slash').replace('fa-0', 'fa-eye');
+      });
+
+      [...i.querySelectorAll('.original-text')].forEach(e=>{
+        let el = document.createElement('div');
+        el.setAttribute('class', 'fa-solid fa-eye-slash');
+        e.prepend(el);
+        el.addEventListener('click', ()=>{
+            e.nextSibling.classList.toggle('hide');
+            el.attributes['class'].value = el.attributes['class'].value.replace('fa-eye-slash', 'fa-0').replace('fa-eye', 'fa-eye-slash').replace('fa-0', 'fa-eye');
+        });
+      })
+    });
+  }
+</script>
+<script async src="/js/highlight.min.js"></script>
+<script async src="/js/cursor.js"></script>
+<script data-ad-client="ca-pub-2275811890061218" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"hoarfroster.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqusjs","storage":true,"lazyload":false,"nav":null,"activeClass":"disqusjs"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="部编版高中语文课本选择性必修下册第一单元古诗文笔记与教学内容整理。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="高中文言文：选择性必修下 第一单元">
+<meta property="og:url" content="https://hoarfroster.github.io/2022/03/14/chinese/High%20School/Classical%20Chinese%20Literature%20and%20Poetry/%E9%80%89%E6%8B%A9%E6%80%A7%E5%BF%85%E4%BF%AE/%E9%80%89%E6%8B%A9%E6%80%A7%E5%BF%85%E4%BF%AE%E4%B8%8B%E5%86%8C%20%E7%AC%AC%E4%B8%80%E5%8D%95%E5%85%83/index.html">
+<meta property="og:site_name" content="Hoarfroster 的小窝">
+<meta property="og:description" content="部编版高中语文课本选择性必修下册第一单元古诗文笔记与教学内容整理。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-03-13T17:07:02.000Z">
+<meta property="article:modified_time" content="2022-05-28T15:43:08.138Z">
+<meta property="article:author" content="Hoarfroster">
+<meta property="article:tag" content="School Notes">
+<meta property="article:tag" content="High School">
+<meta property="article:tag" content="Chinese">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://hoarfroster.github.io/2022/03/14/chinese/High%20School/Classical%20Chinese%20Literature%20and%20Poetry/%E9%80%89%E6%8B%A9%E6%80%A7%E5%BF%85%E4%BF%AE/%E9%80%89%E6%8B%A9%E6%80%A7%E5%BF%85%E4%BF%AE%E4%B8%8B%E5%86%8C%20%E7%AC%AC%E4%B8%80%E5%8D%95%E5%85%83/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>高中文言文：选择性必修下 第一单元 | Hoarfroster 的小窝</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <!--<div class="headband"></div>-->
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hoarfroster 的小窝</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section">Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section">About</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section">Categories</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger">
+          Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://hoarfroster.github.io/2022/03/14/chinese/High%20School/Classical%20Chinese%20Literature%20and%20Poetry/%E9%80%89%E6%8B%A9%E6%80%A7%E5%BF%85%E4%BF%AE/%E9%80%89%E6%8B%A9%E6%80%A7%E5%BF%85%E4%BF%AE%E4%B8%8B%E5%86%8C%20%E7%AC%AC%E4%B8%80%E5%8D%95%E5%85%83/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Hoarfroster">
+      <meta itemprop="description" content="这里是霜羽~~咕咕咕">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hoarfroster 的小窝">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          高中文言文：选择性必修下 第一单元
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-03-14 01:07:02" itemprop="dateCreated datePublished" datetime="2022-03-14T01:07:02+08:00">2022-03-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-05-28 23:43:08" itemprop="dateModified" datetime="2022-05-28T23:43:08+08:00">2022-05-28</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/High-School/" itemprop="url" rel="index"><span itemprop="name">High School</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/High-School/Chinese/" itemprop="url" rel="index"><span itemprop="name">Chinese</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/High-School/Chinese/Classical-Chinese-Literature-and-Poetry/" itemprop="url" rel="index"><span itemprop="name">Classical Chinese Literature and Poetry</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span><br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+              <span>3.5k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+              <span>6 mins.</span>
+            </span>
+            <div class="post-description">部编版高中语文课本选择性必修下册第一单元古诗文笔记与教学内容整理。</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="单元内容">单元内容</h2>
+<h3 id="课文目录">课文目录</h3>
+<pre class="template:contents"><code>[[High School, Chinese, Classical Chinese Literature and Poetry, 氓-《诗经·卫风》], 氓-《诗经·卫风》]
+[[High School, Chinese, Classical Chinese Literature and Poetry, 离骚（节选）-屈原], 离骚（节选）-屈原]
+[[High School, Chinese, Classical Chinese Literature and Poetry, 孔雀东南飞并序], 孔雀东南飞并序]
+[[High School, Chinese, Classical Chinese Literature and Poetry, 蜀道难-李白], 蜀道难-李白]
+[[High School, Chinese, Classical Chinese Literature and Poetry, 蜀相-杜甫], 蜀相-杜甫]
+[[High School, Chinese, Classical Chinese Literature and Poetry, 望海潮·东南形胜-柳永], 望海潮·东南形胜-柳永]
+[[High School, Chinese, Classical Chinese Literature and Poetry, 扬州慢·淮左名都-姜夔], 扬州慢·淮左名都-姜夔]</code></pre>
+<h3 id="单元目标">单元目标</h3>
+<ol type="1">
+<li><p>深入研读本单元选编的古典诗歌作品，探寻诗歌之美，品评诗歌之味，感受古人通过诗歌表达的哀乐悲欢等种种情感。</p></li>
+<li><p>从传统文化经典的角度来理解古典诗歌，把握其中蕴含的文化精神，探讨古典诗歌在当下社会生活中的重要意义，认识古典诗歌的思想意义和审美价值。</p></li>
+<li><p>结合以前所学，梳理中国古典诗歌的发展脉络，尝试探讨评述不同体裁的诗歌在声韵格律、表现手法、审美风格等方面的异同，总结学习古典诗歌的经验并得到一定的理性认识。</p></li>
+</ol>
+<h2 id="编写意图">编写意图</h2>
+<h3 id="编写意图-1">编写意图</h3>
+<p>​
+本单元属于选择性必修课程“中华传统文化经典研习”学习任务群，主要学习内容为中国古典诗歌。古典诗歌是中华传统文化的重要组成部分，诗歌的创作与欣赏在我国有着悠久的历史和深厚的传统，数千年来，伟大的诗人灿若繁星，名篇佳作层出不穷。本单元的主题是“诗意的探寻”，这一主题有两方面的含义。首先，本单元选编的诗歌，都有着丰厚的意蕴，需要细细品味咀嚼，多方面探求作品的“诗意”；其次，还要学会让自己的阅读体验与生活经验相印证，由此感受诗人创作时心灵与世界之间的相互碰撞、激荡，学会从千变万化的社会生活中发现诗意，体认诗歌的意义和价值。</p>
+<p>​ 本单元选编了7首诗，按照文学史发展次序编排，分为4课。</p>
+<p>​
+第1课是《氓》和屈原的《离骚》（节选）。《氓》是《诗经》中叙事性较强的作品，在以第一人称的角度自述经历的同时，也带有强烈的抒情性。《离骚》是一首长篇抒情诗，同时也有自述身世经历的部分，诗人将个人遭际与国家命运联系起来，抒写人生理想和家国情怀，可以结合此前学过的《屈原列传》加以体会。《诗经》和《楚辞》是我国古典诗歌的源头，对于后世的文学创作（不限于诗歌）有着深远的影响，过去的教材中往往安排在比较靠前的位置，但考虑到难度（特别是《楚辞》）的因素，此次特意将其后移至选择性必修阶段，并编为一课，便于学生比较其不同的艺术风格，认识中国诗歌的抒情传统。</p>
+<p>​
+第2课是《孔雀东南飞》。《孔雀东南飞》是乐府诗的代表作品。乐府诗继承了《诗经》的传统，“感于哀乐，缘事而发”（《汉书·艺文志》），《孔雀东南飞》就是基于民间流传的焦仲卿、刘兰芝的故事，“时人伤之，为诗云尔”而来的。相比同样写爱情婚姻悲剧的《氓》，《孔雀东南飞》是一首更为纯粹的叙事诗，通篇采用第三人称叙事，结构巧妙，情节曲折，人物形象丰满，语言流畅而生动，取得了非常高的艺术成就。可以联系此前学过的古代民歌作品如《木兰诗）来体会其语言风格和写作特点，还可以与《氓》对比阅读，比较二者主题思想和艺术风格方面的异同。</p>
+<p>​
+第3课选了李白的《蜀道难》和杜甫的《蜀相》。李白和杜甫身处唐王朝繁华似锦的极盛时代，又目睹了安史之乱的惊天巨变，各自以不朽的诗篇抒写了时代精神和人们的心灵。李白天才不羁，诗风豪迈飘逸，想象奇特，笔意纵横，无拘无束；杜甫老成浑厚，诗风沉郁顿挫，笔力千钧，法度森然，体式谨严。两人的诗风既截然有别，又共同表现出盛唐诗歌特有的气象。可以通过《蜀道难》和《蜀相》这两首作品，结合此前所学，对唐代诗歌进行一些探讨。</p>
+<p>​
+第4课是柳永的《望海潮》和姜夔的《扬州慢》。两首词均以城市为表现对象。词这一文体的繁盛与城市经济文化的发展有着密不可分的关系，而柳永的《望海潮》虽为投赠、干谒之作，但同时也在相当程度上反映了北宋中期世道太平、市井繁荣、人民安居乐业的社会现实。然而盛衰无常，人类发展史上，许多繁华一时的大都市都曾遭遇严重的破坏乃至毁灭。姜夔的《扬州慢》就将一座同样“自古繁华”的城市屡遭兵燹后的惨状呈现出来，并通过今昔对比、表达了自己的“黍离之悲”。这是关于城市的不同书写和记忆，相互映照，可以给我们带来更多的思考。</p>
+<p>​
+本单元的四个研习任务，都与“诗意的探寻”这一人文主题有紧密的联系，形成有机关联的整体。任务一聚焦古典的当代价值，要求学生在诵读、欣赏本单元诗作的同时，结合过去所学、联系当下生活，思考古诗词在当下的意义。任务二聚焦本单元两首侧重叙事的诗作，要求学生梳理诗中的故事，比较异同，体会其艺术特点，意在让学生由此对中国古典诗歌的叙事风格（这一点在过去的诗歌学习中涉及较少）有一个适当的把握。任务三聚焦诗歌的鉴赏方法，提示学生从意象的选择、意境的营造等角度入手，探究诗歌艺术手法的运用，进而欣赏其艺术魅力。任务四带有一定的拓展性和综合性，要求学生就课内或课外的一首作品写鉴赏文章，并全班合作，编辑成集，作为古典诗歌学习的阶段性成果。</p>
+<h3 id="教学指导">教学指导</h3>
+<p>​
+教学本单元，应当聚焦核心素养，明确单元教学目标。通过专题阅读、比较阅读等方式，经由真实情境中展开的学习活动，让学生在自主阅读鉴赏、梳理探究、写作表达、展示交流的过程中，丰富审美体验，不断深化对古典诗歌的认识。在教学实施中，还要注意以下几个问题。首先，要从“中华传统文化经典”的维度去观照本单元的诗歌作品。在反复诵读、斟酌字句、推敲手法，理解诗作细节的基础上，结合知人论世，体会这些作品所表现的中国人的精神世界，领悟其中丰厚的文化内涵。</p>
+<p>​
+其次，要体现“研习”的特点。相对于必修阶段，选择性必修阶段提出了更高的学习要求。要“学习多角度、多层次地阅读，对优秀作品能够常读常新，获得新的体验和发现。借助工具书、图书馆和网络查找有关资料，加深对作品的理解”；还要“学会尊重、理解作品所体现的不同时代、不同民族、不同流派风格的文化，尝试对感兴趣的古今中外文学作品进行比较研究或专题研究，理解作品所表现出来的价值判断和审美取向，作出恰当的评价”。教师应当引导、鼓励学生选择一些有深度的问题进行深人的研究性学习，初步练习小论文的写作，为更高层次的学习奠定基础。</p>
+<p>​
+最后，本单元对中国古典诗歌的学习带有一定的总结性。学生在基础教育阶段已经学习、接触了许多古诗词，具有较充分的感性认识和初步的理性认识，应该引导学生从发展源流、体式、题材、艺术风格、艺术手法等多个维度对自己关于古诗词的认识进行梳理，努力将已有的相对零散的知识系统化、结构化，对于自己学习、欣赏古诗词的方法，也应该通过本单元学习作一个较好的总结。</p>
+<p>​
+具体的教学实施方案，后面的“单元教学设计举例”给出了较详细的示例，可以参考。这里提出几个基本原则。一是要多方面激发学生对古诗词的兴趣。古诗词包含着丰厚的意蕴，可以进行多方面的探讨，如古诗词安排声韵、营造音乐美的手法，诗词的体式流变，作品中展现的古代社会生活，作品承载的古人的精神追求，等等。要善于从作品中找到能引发学生心灵“共振”的切入点，从而引起学生探究的兴趣。二是要引导学生多作自主梳理，如诗词体式的基本知识，与作品有关的文学史常识，作品中出现的特殊语言现象，古诗词独特的表现手法，等等。教师应鼓励学生通过编制图表等多种形式进行学习与积累，适时点拨方法，解答疑难问题，还应提倡学生之间的讨论交流和资源共享，形成团队学习、集体探究的良好氛围。三是要充分运用诵读这一手段，可以借助朗诵评价表，从情感、创意、表现等维度给学生提供学习与评价的标准，让学生在展示与评价中增进对诗歌情感的理解，增强对诗歌艺术魅力的体验。四是要引导学生自觉将已有的认识与经验进行拓展运用，如延伸阅读其他古诗词作品，自主进行赏析、评价等。</p>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/School-Notes/" rel="tag"># School Notes</a>
+              <a href="/tags/High-School/" rel="tag"># High School</a>
+              <a href="/tags/Chinese/" rel="tag"># Chinese</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/03/14/chinese/High%20School/Classical%20Chinese%20Literature%20and%20Poetry/%E9%80%89%E6%8B%A9%E6%80%A7%E5%BF%85%E4%BF%AE/%E9%80%89%E6%8B%A9%E6%80%A7%E5%BF%85%E4%BF%AE%E4%B8%AD%E5%86%8C%20%E7%AC%AC%E4%B8%89%E5%8D%95%E5%85%83/" rel="prev" title="高中文言文：选择性必修中 第三单元">
+      <i class="fa fa-chevron-left"></i> 高中文言文：选择性必修中 第三单元
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/03/14/chinese/High%20School/Classical%20Chinese%20Literature%20and%20Poetry/%E9%80%89%E6%8B%A9%E6%80%A7%E5%BF%85%E4%BF%AE/%E9%80%89%E6%8B%A9%E6%80%A7%E5%BF%85%E4%BF%AE%E4%B8%8B%E5%86%8C%20%E7%AC%AC%E4%B8%89%E5%8D%95%E5%85%83/" rel="next" title="高中文言文：选择性必修下 第三单元">
+      高中文言文：选择性必修下 第三单元 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%95%E5%85%83%E5%86%85%E5%AE%B9"><span class="nav-text">单元内容</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%BE%E6%96%87%E7%9B%AE%E5%BD%95"><span class="nav-text">课文目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%95%E5%85%83%E7%9B%AE%E6%A0%87"><span class="nav-text">单元目标</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E5%86%99%E6%84%8F%E5%9B%BE"><span class="nav-text">编写意图</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%96%E5%86%99%E6%84%8F%E5%9B%BE-1"><span class="nav-text">编写意图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%99%E5%AD%A6%E6%8C%87%E5%AF%BC"><span class="nav-text">教学指导</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Hoarfroster"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Hoarfroster</p>
+  <div class="site-description" itemprop="description">这里是霜羽~~咕咕咕</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">193</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">53</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">58</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <ul class="links-of-author motion-element">
+      <li class="links-of-author-item">
+        <a href="https://github.com/PassionPenguin" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;PassionPenguin" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        <span> PassionPenguin</span>
+      </li>
+      <li class="links-of-author-item">
+        <a href="mailto:hoarfroster@outlook.com" title="E-Mail → mailto:hoarfroster@outlook.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+        <span> hoarfroster@outlook.com</span>
+      </li>
+      <li class="links-of-author-item">
+        <a href="https://twitter.com/zhangqizhe" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;zhangqizhe" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+        <span> @zhangqizhe</span>
+      </li>
+      <li class="links-of-author-item">
+        <a href="https://www.instagram.com/glacierpenguin/" title="Instagram → https:&#x2F;&#x2F;www.instagram.com&#x2F;glacierpenguin&#x2F;" rel="noopener" target="_blank"><i class="fab fa-instagram fa-fw"></i>Instagram</a>
+        <span> @glacierpenguin</span>
+      </li>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hoarfroster</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="Symbols count total">1.1m</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">34:12</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT</a>
+  </div>
+
+        
+
+
+
+
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-firestore.js"></script>
+  <script>
+    firebase.initializeApp({
+      apiKey   : 'AIzaSyDqM81uUD8yWHAvsGasJzvWBHhpBYnRttI',
+      projectId: 'hoar-froster'
+    });
+
+    function getCount(doc, increaseCount) {
+      // IncreaseCount will be false when not in article page
+      return doc.get().then(d => {
+        var count = 0;
+        if (!d.exists) { // Has no data, initialize count
+          if (increaseCount) {
+            doc.set({
+              count: 1
+            });
+            count = 1;
+          }
+        } else { // Has data
+          count = d.data().count;
+          if (increaseCount) {
+            // If first view this article
+            doc.set({ // Increase count
+              count: count + 1
+            });
+            count++;
+          }
+        }
+
+        return count;
+      });
+    }
+
+    function appendCountTo(el) {
+      return count => {
+        el.innerText = count;
+      }
+    }
+  </script>
+  <script>
+    (function() {
+      var db = firebase.firestore();
+      var articles = db.collection('articles-info');
+
+      if (CONFIG.page.isPost) { // Is article page
+        var title = document.querySelector('.post-title').innerText.trim();
+        var doc = articles.doc(title);
+        var increaseCount = CONFIG.hostname === location.hostname;
+        if (localStorage.getItem(title)) {
+          increaseCount = false;
+        } else {
+          // Mark as visited
+          localStorage.setItem(title, true);
+        }
+        getCount(doc, increaseCount).then(appendCountTo(document.querySelector('.firestore-visitors-count')));
+      } else if (CONFIG.page.isHome) { // Is index page
+        var promises = [...document.querySelectorAll('.post-title')].map(element => {
+          var title = element.innerText.trim();
+          var doc = articles.doc(title);
+          return getCount(doc);
+        });
+        Promise.all(promises).then(counts => {
+          var metas = document.querySelectorAll('.firestore-visitors-count');
+          counts.forEach((val, idx) => {
+            appendCountTo(metas[idx])(val);
+          });
+        });
+      }
+    })();
+  </script>
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var canonicalURL, curProtocol;
+      //Get the <link> tag
+      var x=document.getElementsByTagName("link");
+		//Find the last canonical URL
+		if(x.length > 0){
+			for (i=0;i<x.length;i++){
+				if(x[i].rel.toLowerCase() == 'canonical' && x[i].href){
+					canonicalURL=x[i].href;
+				}
+			}
+		}
+    //Get protocol
+	    if (!canonicalURL){
+	    	curProtocol = window.location.protocol.split(':')[0];
+	    }
+	    else{
+	    	curProtocol = canonicalURL.split(':')[0];
+	    }
+      //Get current URL if the canonical URL does not exist
+	    if (!canonicalURL) canonicalURL = window.location.href;
+	    //Assign script content. Replace current URL with the canonical URL
+      !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=canonicalURL,t=document.referrer;if(!e.test(r)){var n=(String(curProtocol).toLowerCase() === 'https')?"https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif":"//api.share.baidu.com/s.gif";t?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var i=new Image;i.src=n}}(window);})();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme    : 'default',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/disqusjs@1/dist/disqusjs.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/disqusjs@1/dist/disqus.js', () => {
+    window.dsqjs = new DisqusJS({
+      api       : 'https://disqus.skk.moe/disqus/' || 'https://disqus.com/api/',
+      apikey    : 'Lo65MITAya5vcdTm6cJ8V5qCBNx3PVErvDOsfJ5tUPtEbw3DMS3EIzEx6vrmTzCN',
+      shortname : 'hoarfroster',
+      url       : "https://hoarfroster.github.io/2022/03/14/chinese/High%20School/Classical%20Chinese%20Literature%20and%20Poetry/%E9%80%89%E6%8B%A9%E6%80%A7%E5%BF%85%E4%BF%AE/%E9%80%89%E6%8B%A9%E6%80%A7%E5%BF%85%E4%BF%AE%E4%B8%8B%E5%86%8C%20%E7%AC%AC%E4%B8%80%E5%8D%95%E5%85%83/",
+      identifier: "2022/03/14/chinese/High School/Classical Chinese Literature and Poetry/选择性必修/选择性必修下册 第一单元/",
+      title     : "高中文言文：选择性必修下 第一单元",
+    });
+  }, window.DisqusJS);
+});
+</script>
+
+</body>
+</html>

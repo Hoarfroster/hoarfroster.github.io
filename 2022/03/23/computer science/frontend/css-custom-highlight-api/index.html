@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/avatar.png" color="#222">
+  <meta name="google-site-verification" content="iFMbHL1JuWjTlNFq5Rv96vDzpsqakxTpdE2nw7Crr6o">
+  <meta name="msvalidate.01" content="EF6D8CD8A3335E66AB96B4D544FCD96C">
+  <meta name="baidu-site-verification" content="code-80b80Pbzs2">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link href="/lib/fontawesome/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<script>
+
+  window.onload = function() {
+    document.querySelectorAll("p").forEach(e=>{
+      e.innerHTML = e.innerHTML.replaceAll(/==(.+?)==/g, "<mark>$1</mark>").replaceAll(/​\s+?/g, "<span class='tab'></span>");
+    });
+    
+    [...document.querySelectorAll("pre > code")].forEach(e=> {
+        var codeClass = e.parentElement.classList.value;
+        if (codeClass == null || codeClass === "") {
+            e.classList.add("hljs");
+        } else {
+            var map = {
+                js: "javascript"
+            };
+            if (map[codeClass]) {
+                codeClass = map[codeClass];
+            }
+            codeClass.split(" ").forEach(i=>e.classList.add(i));
+            hljs.highlightElement(e);
+        }
+    });
+
+    [...document.querySelectorAll('.classcial-chinese-literature-and-poetry-translation')].forEach(i=>{
+      let el = document.createElement('div');
+      el.setAttribute('class', 'fa-solid fa-eye');
+      i.prepend(el);
+      el.addEventListener('click', ()=>{
+        let status = el.classList.contains('fa-eye');
+        [...i.querySelectorAll('.translation')].forEach(j=>{
+          j.classList.remove('hide');
+          if(status) {
+            j.classList.add('hide');
+          }
+        });
+        el.attributes['class'].value = el.attributes['class'].value.replace('fa-eye-slash', 'fa-0').replace('fa-eye', 'fa-eye-slash').replace('fa-0', 'fa-eye');
+      });
+
+      [...i.querySelectorAll('.original-text')].forEach(e=>{
+        let el = document.createElement('div');
+        el.setAttribute('class', 'fa-solid fa-eye-slash');
+        e.prepend(el);
+        el.addEventListener('click', ()=>{
+            e.nextSibling.classList.toggle('hide');
+            el.attributes['class'].value = el.attributes['class'].value.replace('fa-eye-slash', 'fa-0').replace('fa-eye', 'fa-eye-slash').replace('fa-0', 'fa-eye');
+        });
+      })
+    });
+  }
+</script>
+<script async src="/js/highlight.min.js"></script>
+<script async src="/js/cursor.js"></script>
+<script data-ad-client="ca-pub-2275811890061218" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"hoarfroster.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqusjs","storage":true,"lazyload":false,"nav":null,"activeClass":"disqusjs"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="给选中的文本添加样式并不是没用的行为，而值得开心的是，CSS Custom Highlight API 即将到来，而且它将会成为未来 Web 上样式化选中文本的不二法门！">
+<meta property="og:type" content="article">
+<meta property="og:title" content="你不会不知道最新的 CSS API 可以给选中的文本添加样式吧？">
+<meta property="og:url" content="https://hoarfroster.github.io/2022/03/23/computer%20science/frontend/css-custom-highlight-api/index.html">
+<meta property="og:site_name" content="Hoarfroster 的小窝">
+<meta property="og:description" content="给选中的文本添加样式并不是没用的行为，而值得开心的是，CSS Custom Highlight API 即将到来，而且它将会成为未来 Web 上样式化选中文本的不二法门！">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i0.wp.com/css-tricks.com/wp-content/uploads/2022/02/s_8E0FC85C45E73C25EFCF623C768360F2F95DBDDEC338D5F6DE316BB0830F6F67_1644484463021_highlight-api-demo-no-text-deco.gif?resize=800%2C733&amp;ssl=1">
+<meta property="og:image" content="https://i0.wp.com/css-tricks.com/wp-content/uploads/2022/02/s_8E0FC85C45E73C25EFCF623C768360F2F95DBDDEC338D5F6DE316BB0830F6F67_1643042116795_image.png?resize=977%2C269&amp;ssl=1">
+<meta property="og:image" content="https://i0.wp.com/css-tricks.com/wp-content/uploads/2022/02/s_8E0FC85C45E73C25EFCF623C768360F2F95DBDDEC338D5F6DE316BB0830F6F67_1643042176497_image.png?resize=1117%2C951&amp;ssl=1">
+<meta property="og:image" content="https://i0.wp.com/css-tricks.com/wp-content/uploads/2022/02/Screen-Shot-2022-02-14-at-7.33.16-AM.png?resize=1846%2C1196&amp;ssl=1">
+<meta property="og:image" content="https://i0.wp.com/css-tricks.com/wp-content/uploads/2022/02/s_8E0FC85C45E73C25EFCF623C768360F2F95DBDDEC338D5F6DE316BB0830F6F67_1643109885151_image.png?resize=1129%2C100&amp;ssl=1">
+<meta property="article:published_time" content="2022-03-23T15:42:00.000Z">
+<meta property="article:modified_time" content="2022-05-28T15:43:08.263Z">
+<meta property="article:author" content="Hoarfroster">
+<meta property="article:tag" content="Computer Science">
+<meta property="article:tag" content="UI">
+<meta property="article:tag" content="Frontend">
+<meta property="article:tag" content="CSS">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i0.wp.com/css-tricks.com/wp-content/uploads/2022/02/s_8E0FC85C45E73C25EFCF623C768360F2F95DBDDEC338D5F6DE316BB0830F6F67_1644484463021_highlight-api-demo-no-text-deco.gif?resize=800%2C733&amp;ssl=1">
+
+<link rel="canonical" href="https://hoarfroster.github.io/2022/03/23/computer%20science/frontend/css-custom-highlight-api/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>你不会不知道最新的 CSS API 可以给选中的文本添加样式吧？ | Hoarfroster 的小窝</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <!--<div class="headband"></div>-->
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hoarfroster 的小窝</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section">Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section">About</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section">Categories</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger">
+          Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://hoarfroster.github.io/2022/03/23/computer%20science/frontend/css-custom-highlight-api/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Hoarfroster">
+      <meta itemprop="description" content="这里是霜羽~~咕咕咕">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hoarfroster 的小窝">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          你不会不知道最新的 CSS API 可以给选中的文本添加样式吧？
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-03-23 23:42:00" itemprop="dateCreated datePublished" datetime="2022-03-23T23:42:00+08:00">2022-03-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-05-28 23:43:08" itemprop="dateModified" datetime="2022-05-28T23:43:08+08:00">2022-05-28</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Computer-Science/" itemprop="url" rel="index"><span itemprop="name">Computer Science</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Computer-Science/Frontend/" itemprop="url" rel="index"><span itemprop="name">Frontend</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Computer-Science/Frontend/Styling/" itemprop="url" rel="index"><span itemprop="name">Styling</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span><br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+              <span>5.7k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+              <span>10 mins.</span>
+            </span>
+            <div class="post-description">给选中的文本添加样式并不是没用的行为，而值得开心的是，CSS Custom Highlight API 即将到来，而且它将会成为未来 Web 上样式化选中文本的不二法门！</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <blockquote>
+<ul>
+<li>原文地址：<a target="_blank" rel="noopener" href="https://css-tricks.com/css-custom-highlight-api-early-loo/">CSS
+Custom Highlight API: The Future of Highlighting Text Ranges on the
+Web</a></li>
+<li>原文作者：<a target="_blank" rel="noopener" href="https://css-tricks.com/author/patrickbrosset/">Patrick
+Brosset</a></li>
+<li>译者：<a target="_blank" rel="noopener" href="https://github.com/PassionPenguin">霜羽
+Hoarfroster</a></li>
+</ul>
+</blockquote>
+<p><strong>给选中的文本添加样式</strong>并不是没用的行为，而值得开心的是，CSS
+Custom Highlight API 即将到来，而且它将会成为未来 Web
+上样式化选中文本的不二法门！</p>
+<figure>
+<img src="https://i0.wp.com/css-tricks.com/wp-content/uploads/2022/02/s_8E0FC85C45E73C25EFCF623C768360F2F95DBDDEC338D5F6DE316BB0830F6F67_1644484463021_highlight-api-demo-no-text-deco.gif?resize=800%2C733&amp;ssl=1" alt="CSS Custom Highlight API demo 动画演示">
+<figcaption aria-hidden="true">CSS Custom Highlight API demo
+动画演示</figcaption>
+</figure>
+<p>举个例子：如果我们用过 知乎编辑器、Google Docs、百度文库、Word 或
+Dropbox Paper
+这些文本编辑软件，我们不难发现它们会检测到拼写和语法错误，并会在错误的下方用下划波浪线提醒我们<strong>“大傻子！写错了！”</strong>。类似的，VS
+Code、IDEA 这样的代码编辑器也会在出现代码错误时有类似的提醒。</p>
+<p><img src="https://i0.wp.com/css-tricks.com/wp-content/uploads/2022/02/s_8E0FC85C45E73C25EFCF623C768360F2F95DBDDEC338D5F6DE316BB0830F6F67_1643042116795_image.png?resize=977%2C269&amp;ssl=1"></p>
+<p>对于高亮文本，另一个非常常见的用例的是<strong>搜索并高亮</strong>这一操作。在我们进行网页内搜索时，浏览器会弹出一个文本输入框。在我们输入相关内容后，网页中相匹配的内容就会被高亮。我们可以现在试试按
+<code>Ctrl</code>/<code>⌘</code>+
+<code>F</code>，然后并输入本文中的一些文字尝试这一操作。</p>
+<p><img src="https://i0.wp.com/css-tricks.com/wp-content/uploads/2022/02/s_8E0FC85C45E73C25EFCF623C768360F2F95DBDDEC338D5F6DE316BB0830F6F67_1643042176497_image.png?resize=1117%2C951&amp;ssl=1"></p>
+<p>浏览器本身就经常需要处理这类高亮，比如说可编辑元素（如
+<code>&lt;textarea&gt;</code>）会有错误拼写检查，搜索功能会自动高亮找到的文本内容……</p>
+<p>但是我们是否（或者我们的产品经理是否）想要让我们在网页上实现这种样式呢？似乎在网页上实现高亮文本一直是个常见的需求，可能浪费了不少人让他们去造轮子……</p>
+<p>别把这个问题想得太简单啦，我们不只需要将文本扔进一个有特定
+<code>class</code> 的 <code>&lt;span&gt;</code> 中并对它应用一些 CSS
+样式。实际上，我们需要能够在各种情形下的复杂的 DOM
+树中正确高亮文本<em>多段</em>文本，并且任意一段文本都可能会跨越多个 DOM
+元素的边界。</p>
+<p>有两种常见的解决方案，包括：</p>
+<ol type="1">
+<li>给伪元素样式化（<code>:selection</code> 等伪元素）；</li>
+<li>创建自己的文本高亮系统；</li>
+</ol>
+<p>我们将首先用这两种方法完成高亮文本操作，然后看看<strong>即将推出的可以改变这一切的
+CSS Custom Highlight API</strong>。</p>
+<h3 id="潜在方案-1可样式化的文本范围">潜在方案
+#1：可样式化的文本范围</h3>
+<p>可能最常见的用例是我们选择的文本，当我们使用鼠标等选择网页中的一段文本时，浏览器会自动创建一个
+<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/Selection"><code>Selection</code></a>
+对象。事实上，现在尝试在此页面上选择文本，然后在 DevTools 控制台中运行
+<code>document.getSelection()</code>。
+我们应该会看到有关所选文本的位置信息。</p>
+<figure>
+<img src="https://i0.wp.com/css-tricks.com/wp-content/uploads/2022/02/Screen-Shot-2022-02-14-at-7.33.16-AM.png?resize=1846%2C1196&amp;ssl=1" alt="DevTools 的一个显示当前文本选择位置的控制台窗口。">
+<figcaption aria-hidden="true">DevTools
+的一个显示当前文本选择位置的控制台窗口。</figcaption>
+</figure>
+<p>事实证明，我们还可以通过 JavaScript 以编程方式创建文本选择。
+这是一个例子：</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">// First, create a Range object.</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> range <span class="op">=</span> <span class="kw">new</span> <span class="bu">Range</span>()<span class="op">;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">// And set its start and end positions.</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>range<span class="op">.</span><span class="fu">setStart</span>(parentNode<span class="op">,</span> startOffset)<span class="op">;</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>range<span class="op">.</span><span class="fu">setEnd</span>(parentNode<span class="op">,</span> endOffset)<span class="op">;</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">// Then, set the current selection to this range.</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="bu">document</span><span class="op">.</span><span class="fu">getSelection</span>()<span class="op">.</span><span class="fu">removeAllRanges</span>()<span class="op">;</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="bu">document</span><span class="op">.</span><span class="fu">getSelection</span>()<span class="op">.</span><span class="fu">addRange</span>(range)<span class="op">;</span></span></code></pre></div>
+<p>还有一些代码，用于定义选中内容的样式。 CSS 有一个名为 <a target="_blank" rel="noopener" href="https://css-tricks.com/almanac/selectors/s/selection/"><code>::selection</code></a>
+的伪元素可以做到这一点，它在 <a href="https:%20//caniuse.com/css-selection">所有浏览器</a>
+中几乎都得到支持。</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="in">::selection</span> &#123;</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">background-color</span>: <span class="cn">#f06</span><span class="op">;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">color</span>: <span class="cn">white</span><span class="op">;</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>&#125;</span></code></pre></div>
+<p>这是一个使用此方案按单词顺序高亮页面中所有单词的示例：<a target="_blank" rel="noopener" href="https://codepen.io/captainbrosset/pen/eYeYJBx">CodePen</a>。</p>
+<p>在 <code>::selection</code> 伪元素之上，还有许多其他伪元素：</p>
+<ul>
+<li><code>::target-text</code> 选择在支持 <a target="_blank" rel="noopener" href="https://wicg.github.io/scroll-to-text-fragment/">scroll-to-text</a>
+功能的浏览器中滚动到的文本。 (<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/CSS/::target-text">MDN</a>)</li>
+<li><code>::spelling-error</code> 选择被浏览器标记为包含拼写错误的文本。
+(<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/CSS/::spelling-error">MDN</a>)</li>
+<li><code>::grammar-error</code> 选择被浏览器标记为包含语法错误的文本。
+(<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/CSS/::grammar-error">MDN</a>)</li>
+</ul>
+<p>不幸的是，这些 CSS
+选择器的浏览器支持不是很好，虽然这些范围选择器在需要用到它们的领域中都很有用，但它们不能用于设置自定义文本的样式
+—— 这些只能由浏览器定义。</p>
+<p>所以我们的方案很好，因为它相对简单，不会改变页面的
+DOM。事实上，<code>Range</code>
+对象本质上是页面中段落的坐标，而不是需要创建才能存在的 HTML 元素。</p>
+<p>然而，一个主要缺点是创建选择会重置用户已经手动选择的任何内容。尝试在上面的演示中选择文本来测试它。一旦代码将选择移动到其他地方，我们就会看到它是如何消失的。</p>
+<h3 id="潜在方案-2自定义高亮文本系统">潜在方案
+#2：自定义高亮文本系统</h3>
+<p>如果使用 <code>Selection</code>
+对象对我们来说不够用，那么第二个解决方案几乎是我们唯一可以做的事情。这个解决方案围绕着自己做所有事情，使用
+JavaScript 在我们希望高亮文本的 DOM 中插入新的 HTML 元素。</p>
+<p>不幸的是，这意味着要编写和维护更多的
+JavaScript，更不用说它迫使浏览器在高亮文本发生变化时重新创建页面布局。此外，还有一些复杂的边缘情况，例如，当我们想要高亮文本跨越多个
+DOM 元素的一段文本时。</p>
+<figure>
+<img src="https://i0.wp.com/css-tricks.com/wp-content/uploads/2022/02/s_8E0FC85C45E73C25EFCF623C768360F2F95DBDDEC338D5F6DE316BB0830F6F67_1643109885151_image.png?resize=1129%2C100&amp;ssl=1" alt="显示一行用斜体、粗体显示，并且由一条亮黄色的高亮的 HTML 内容。">
+<figcaption aria-hidden="true">显示一行用斜体、粗体显示，并且由一条亮黄色的高亮的
+HTML 内容。</figcaption>
+</figure>
+<p>有趣的是，<a target="_blank" rel="noopener" href="https://codemirror.net">CodeMirror</a> 和 <a target="_blank" rel="noopener" href="https://microsoft.github.io/monaco-editor/">Monaco</a>（支持 VS
+Code 的 JavaScript
+文本编辑器库）有自己的高亮逻辑，使用了稍微不同的方法，其中高亮放在了 DOM
+树单独一个部分中 —— 文本行和高亮文本的段在 DOM
+中的两个不同位置呈现，然后彼此重叠。如果我们检查包含文本的 DOM
+子树，你会发现并没有高亮样式。这样，可以重新渲染高亮样式，而不会影响文本行，也不必在其中引入新元素。</p>
+<p>总体而言，感觉就像缺少浏览器驱动的高亮文本功能。有助于解决所有这些缺点（不干扰用户文本选择、多选支持、简单代码）并且比定制解决方案更快的东西。</p>
+<p>幸运的是，这就是我们在这里谈论的内容！</p>
+<h3 id="开始研究-css-自定义高亮-api">开始研究 CSS 自定义高亮 API</h3>
+<p><a target="_blank" rel="noopener" href="https://www.w3.org/TR/css-highlight-api-1/">CSS 自定义高亮
+API</a> 是一个新的 W3C
+规范（目前处于工作草案状态），它可以设置任意文本范围的样式来自
+JavaScript！这里的方法与我们之前回顾的用户文本选择技术非常相似。它为开发人员提供了一种从
+JavaScript 创建任意范围，然后使用 CSS 设置样式的方法。</p>
+<h4 id="创建文本范围">创建文本范围</h4>
+<p>第一步是创建要高亮文本的文本范围。这可以使用 JavaScript 中的 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/Range"><code>Range</code></a>
+来完成。所以，就像我们在设置当前选择时所做的那样：</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> range <span class="op">=</span> <span class="kw">new</span> <span class="bu">Range</span>()<span class="op">;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>range<span class="op">.</span><span class="fu">setStart</span>(parentNode<span class="op">,</span> startOffset)<span class="op">;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>range<span class="op">.</span><span class="fu">setEnd</span>(parentNode<span class="op">,</span> endOffset)<span class="op">;</span></span></code></pre></div>
+<p>值得注意的是，如果作为第一个参数传递的节点是否是文本节点，则
+<code>setStart</code> 和 <code>setEnd</code>
+方法的工作方式不同。对于文本节点，偏移量对应于节点内的字符数。对于其他节点，偏移量对应于父节点内的子节点数。</p>
+<p>另外值得注意的是，<code>setStart</code> 和 <code>setEnd</code>
+并不是描述范围开始和结束位置的唯一方法。查看 <code>Range</code>
+类上可用的 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/Range#methods">其他方法</a>
+以查看其他选项。</p>
+<h4 id="创建-highlight-对象">创建 Highlight 对象</h4>
+<p>第二步包括为最后一步中创建的范围创建 <a target="_blank" rel="noopener" href="https://www.w3.org/TR/css-highlight-api-1/#highlight"><code>Highlight</code></a>
+对象。一个 <code>Highlight</code> 对象可以接收一个或多个
+<code>Range</code>。因此，如果我们想以完全相同的方式高亮文本一堆文本，我们可能应该创建一个
+<code>Highlight</code> 对象并使用与这些文本相对应的所有
+<code>Range</code> 来初始化它。</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> highlight <span class="op">=</span> <span class="kw">new</span> <span class="fu">Highlight</span>(range1<span class="op">,</span> range2<span class="op">,</span> <span class="op">...,</span> rangeN)<span class="op">;</span></span></code></pre></div>
+<p>但我们也可以根据需要创建任意数量的 <code>Highlight</code> 对象。
+例如，如果我们正在构建一个协作文本编辑器，其中每个用户都获得不同的文本颜色，那么我们可以为每个用户创建一个
+<code>Highlight</code> 对象。
+然后每个对象都可以设置不同的样式，我们接下来会看到。</p>
+<h4 id="注册-highlight">注册 Highlight</h4>
+<p>现在高亮对象自己不做任何事情。 他们首先需要在所谓的高亮注册表中注册。
+这是通过使用 <a target="_blank" rel="noopener" href="https://www.w3.org/TR/css-highlight-api-1/#highlight-registry">CSS
+Highlights API</a> 完成的。
+注册表就像一张地图，我们可以在其中通过命名来注册新的亮点，以及删除亮点（甚至清除整个注册表）。</p>
+<p>这是注册单个亮点的方法。</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">CSS</span><span class="op">.</span><span class="at">highlights</span><span class="op">.</span><span class="fu">set</span>(<span class="st">'my-custom-highlight'</span><span class="op">,</span> highlight)<span class="op">;</span></span></code></pre></div>
+<p>其中 <code>my-custom-highlight</code> 是我们选择的名称，而
+<code>highlight</code> 是在最后一步中创建的 <code>Highlight</code>
+对象。</p>
+<h4 id="给高亮文本设置样式">给高亮文本设置样式</h4>
+<p>最后一步是实际设置注册高光的样式。 通过定义新的 CSS <a target="_blank" rel="noopener" href="https://www.w3.org/TR/css-highlight-api-1/#custom-highlight-pseudo"><code>::highlight()</code></a>
+伪元素并使用我们在注册 <code>Highlight</code>
+对象时选择的名称（在我们上面的示例中为<code>my-custom-highlight</code>），我们就完成设置了。</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="in">::highlight(my-custom-highlight)</span> &#123;</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">background-color</span>: <span class="cn">yellow</span><span class="op">;</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">color</span>: <span class="cn">black</span><span class="op">;</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>&#125;</span></code></pre></div>
+<p>值得注意的是，就像 <code>::selection</code> 一样，CSS
+属性的子集只能与 <code>::highlight()</code> 伪元素一起使用：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://css-tricks.com/almanac/properties/b/background-color/"><code>background-color</code></a></li>
+<li><a target="_blank" rel="noopener" href="https://css-tricks.com/almanac/properties/c/caret-color/"><code>caret-color</code></a></li>
+<li><a target="_blank" rel="noopener" href="https://css-tricks.com/almanac/properties/c/color/"><code>color</code></a></li>
+<li><a target="_blank" rel="noopener" href="https://css-tricks.com/almanac/properties/c/cursor/"><code>cursor</code></a></li>
+<li><a target="_blank" rel="noopener" href="https://css-tricks.com/almanac/properties/f/fill/"><code>fill</code></a></li>
+<li><a target="_blank" rel="noopener" href="https://css-tricks.com/almanac/properties/s/stroke/"><code>stroke</code></a></li>
+<li><a target="_blank" rel="noopener" href="https://css-tricks.com/almanac/properties/s/stroke-width/"><code>stroke-width</code></a></li>
+<li><a target="_blank" rel="noopener" href="https://css-tricks.com/almanac/properties/t/text-decoration/"><code>text-decoration</code></a>（可能仅在规范的第
+2 版中受支持）</li>
+<li><a target="_blank" rel="noopener" href="https://css-tricks.com/almanac/properties/t/text-shadow/"><code>text-shadow</code></a></li>
+</ul>
+<h4 id="更新高亮文本">更新高亮文本</h4>
+<p>有多种方法可以更新页面上高亮文本的文本。</p>
+<p>例如，我们可以使用 <code>CSS.highlights.clear()</code>
+完全清除高亮注册表，然后从头开始。或者，我们也可以更新基础范围，而无需重新创建任何对象。为此，再次使用
+<code>range.setStart</code> 和 <code>range.setEnd</code>
+方法（或任何其他 <code>Range</code>
+方法），浏览器将重新绘制高亮文本。</p>
+<p>但是，<code>Highlight</code> 对象的工作方式类似于 JavaScript 的 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set"><code>Set</code></a>，因此这意味着我们还可以添加使用
+<code>highlight.add(newRange)</code> 将新的 <code>Range</code>
+对象添加到现有的 <code>Highlight</code> 或使用
+<code>highlight.delete(existingRange)</code> 删除
+<code>Range</code>。</p>
+<p>第三，我们还可以从 <code>CSS.highlights</code>
+注册表中添加或删除特定的 <code>Highlight</code> 对象。由于此 API
+的工作方式类似于 JavaScript 的 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map"><code>Map</code></a>，因此我们可以
+<a href="https:%20//developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map/set"><code>set</code></a>
+和 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web%20/JavaScript/Reference/Global_Objects/Map/delete"><code>delete</code></a>
+来更新当前注册的<code>Highlight</code>。</p>
+<h4 id="浏览器支持">浏览器支持</h4>
+<p>CSS Custom Highlight API
+的规范相对较新，它在浏览器中的实现仍然不完整。因此，尽管这将成为 Web
+平台的一个非常有用的补充，但它还没有完全准备好用于生产环境。</p>
+<p>Microsoft Edge 团队目前正在 Chromium 中实现 CSS 自定义高亮
+API。事实上，通过启用 Experimental Web Platform features 标志（在
+<code>about:flags</code> 下），该功能现在已经可以在 Canary
+版本中使用。目前还没有确定该功能何时会在 Chrome、Edge 和其他基于
+Chromium 的浏览器中发布的计划，但已经非常接近了。</p>
+<p><a target="_blank" rel="noopener" href="https://developer.apple.com/safari/technology-preview/release-notes/#r99">Safari
+99+</a> 也支持该 API，但需要开启 Experiment Flag（Develop → Experimental
+Features → Highlight API）后才可以使用，并且接口有点不同，因为它使用 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/StaticRange"><code>StaticRange</code></a>
+对象。</p>
+<p>Firefox 尚不支持 API，你可以 <a target="_blank" rel="noopener" href="https://github.com/mozilla/standards-positions/issues/482">阅读
+Mozilla 对此的观点</a> 了解更多信息。</p>
+<h3 id="demo">Demo</h3>
+<p>说到 Microsoft Edge，他们在 GitHub 上建立了一个
+Demo，让我们可以在其中使用 CSS 自定义高亮 API 进行试驾。（尝试 demo
+前，首先请确保使用的是 Chrome Canary 或 Edge Canary，并在
+<code>about:flags</code> 页面中开启 Experimental Web Platform features
+flag）：<a target="_blank" rel="noopener" href="https://microsoftedge.github.io/Demos/custom-highlight-api/">查看演示</a>。</p>
+<p>该演示使用自定义高亮文本 API
+根据我们在页面顶部的搜索字段中键入的内容高亮文本页面中的文本范围。</p>
+<p>页面加载后，JavaScript 代码检索页面中的所有文本节点（使用 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/TreeWalker">TreeWalker</a>）以及当用户键入时在搜索字段中，代码会遍历这些节点，直到找到匹配项。然后使用这些匹配项创建“范围”对象，然后使用自定义高亮文本
+API 高亮文本这些对象。</p>
+<h3 id="结语">结语</h3>
+<p>那么，这个新的浏览器提供的高亮 API
+真的值得我们的关注吗？当然，它<strong>太值得了</strong>！</p>
+<p>一方面，即使 CSS 自定义高亮文本 API
+一开始可能看起来有点复杂（即必须创建范围，然后高亮文本，然后注册它们，最后为它们设置样式），它仍然比创建新的
+DOM 元素并插入要简单得多，而且也能更棒的胜任高亮文本的任务。</p>
+<p>更重要的是，浏览器引擎可以非常非常快速地设置这些范围的样式。</p>
+<p>仅允许将 CSS 属性的子集与 <code>::highlight()</code>
+伪元素一起使用的原因是子集仅包含可以由浏览器非常有效地应用而无需重新创建页面布局的属性.通过在周围的页面中插入新的
+DOM 元素来高亮文本文本范围需要引擎做更多的工作。</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/ffiori">Fernando Fiori</a>，这一 API
+的贡献者，创建了这个漂亮的<a target="_blank" rel="noopener" href="https://ffiori.github.io/highlight-api-demos/demo-performance%20.html">性能比较演示</a>。在笔者的测试中，CSS
+自定义高亮 API 的平均执行速度比基于 DOM 的高亮快 5 倍。</p>
+<p>有了 Chromium 和 Safari
+的实验性支持，我们正在稳步接近这一即将可以运用在生产中的
+API。我着实迫不及待地期盼着浏览器对这一 API 的广泛支持，想象着可以用这一
+API 解决什么问题，解锁什么 CSS 的骚操作！</p>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Computer-Science/" rel="tag"># Computer Science</a>
+              <a href="/tags/UI/" rel="tag"># UI</a>
+              <a href="/tags/Frontend/" rel="tag"># Frontend</a>
+              <a href="/tags/CSS/" rel="tag"># CSS</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/03/18/physics/High%20School/S2%20Electricity%20and%20Electromagnetism/%E7%94%B5%E8%B7%AF%E5%8F%8A%E5%85%B6%E5%BA%94%E7%94%A8/" rel="prev" title="电路及其应用">
+      <i class="fa fa-chevron-left"></i> 电路及其应用
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/03/25/chinese/High%20School/Classical%20Chinese%20Literature%20and%20Poetry/%E9%80%89%E6%8B%A9%E6%80%A7%E5%BF%85%E4%BF%AE/%E6%B0%93-%E3%80%8A%E8%AF%97%E7%BB%8F%C2%B7%E5%8D%AB%E9%A3%8E%E3%80%8B/" rel="next" title="氓-《诗经·卫风》">
+      氓-《诗经·卫风》 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%BD%9C%E5%9C%A8%E6%96%B9%E6%A1%88-1%E5%8F%AF%E6%A0%B7%E5%BC%8F%E5%8C%96%E7%9A%84%E6%96%87%E6%9C%AC%E8%8C%83%E5%9B%B4"><span class="nav-text">潜在方案
+#1：可样式化的文本范围</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%BD%9C%E5%9C%A8%E6%96%B9%E6%A1%88-2%E8%87%AA%E5%AE%9A%E4%B9%89%E9%AB%98%E4%BA%AE%E6%96%87%E6%9C%AC%E7%B3%BB%E7%BB%9F"><span class="nav-text">潜在方案
+#2：自定义高亮文本系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%80%E5%A7%8B%E7%A0%94%E7%A9%B6-css-%E8%87%AA%E5%AE%9A%E4%B9%89%E9%AB%98%E4%BA%AE-api"><span class="nav-text">开始研究 CSS 自定义高亮 API</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E6%96%87%E6%9C%AC%E8%8C%83%E5%9B%B4"><span class="nav-text">创建文本范围</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA-highlight-%E5%AF%B9%E8%B1%A1"><span class="nav-text">创建 Highlight 对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B3%A8%E5%86%8C-highlight"><span class="nav-text">注册 Highlight</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%99%E9%AB%98%E4%BA%AE%E6%96%87%E6%9C%AC%E8%AE%BE%E7%BD%AE%E6%A0%B7%E5%BC%8F"><span class="nav-text">给高亮文本设置样式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9B%B4%E6%96%B0%E9%AB%98%E4%BA%AE%E6%96%87%E6%9C%AC"><span class="nav-text">更新高亮文本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E6%94%AF%E6%8C%81"><span class="nav-text">浏览器支持</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#demo"><span class="nav-text">Demo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-text">结语</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Hoarfroster"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Hoarfroster</p>
+  <div class="site-description" itemprop="description">这里是霜羽~~咕咕咕</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">193</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">53</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">58</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <ul class="links-of-author motion-element">
+      <li class="links-of-author-item">
+        <a href="https://github.com/PassionPenguin" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;PassionPenguin" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        <span> PassionPenguin</span>
+      </li>
+      <li class="links-of-author-item">
+        <a href="mailto:hoarfroster@outlook.com" title="E-Mail → mailto:hoarfroster@outlook.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+        <span> hoarfroster@outlook.com</span>
+      </li>
+      <li class="links-of-author-item">
+        <a href="https://twitter.com/zhangqizhe" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;zhangqizhe" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+        <span> @zhangqizhe</span>
+      </li>
+      <li class="links-of-author-item">
+        <a href="https://www.instagram.com/glacierpenguin/" title="Instagram → https:&#x2F;&#x2F;www.instagram.com&#x2F;glacierpenguin&#x2F;" rel="noopener" target="_blank"><i class="fab fa-instagram fa-fw"></i>Instagram</a>
+        <span> @glacierpenguin</span>
+      </li>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hoarfroster</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="Symbols count total">1.1m</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">34:12</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT</a>
+  </div>
+
+        
+
+
+
+
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-firestore.js"></script>
+  <script>
+    firebase.initializeApp({
+      apiKey   : 'AIzaSyDqM81uUD8yWHAvsGasJzvWBHhpBYnRttI',
+      projectId: 'hoar-froster'
+    });
+
+    function getCount(doc, increaseCount) {
+      // IncreaseCount will be false when not in article page
+      return doc.get().then(d => {
+        var count = 0;
+        if (!d.exists) { // Has no data, initialize count
+          if (increaseCount) {
+            doc.set({
+              count: 1
+            });
+            count = 1;
+          }
+        } else { // Has data
+          count = d.data().count;
+          if (increaseCount) {
+            // If first view this article
+            doc.set({ // Increase count
+              count: count + 1
+            });
+            count++;
+          }
+        }
+
+        return count;
+      });
+    }
+
+    function appendCountTo(el) {
+      return count => {
+        el.innerText = count;
+      }
+    }
+  </script>
+  <script>
+    (function() {
+      var db = firebase.firestore();
+      var articles = db.collection('articles-info');
+
+      if (CONFIG.page.isPost) { // Is article page
+        var title = document.querySelector('.post-title').innerText.trim();
+        var doc = articles.doc(title);
+        var increaseCount = CONFIG.hostname === location.hostname;
+        if (localStorage.getItem(title)) {
+          increaseCount = false;
+        } else {
+          // Mark as visited
+          localStorage.setItem(title, true);
+        }
+        getCount(doc, increaseCount).then(appendCountTo(document.querySelector('.firestore-visitors-count')));
+      } else if (CONFIG.page.isHome) { // Is index page
+        var promises = [...document.querySelectorAll('.post-title')].map(element => {
+          var title = element.innerText.trim();
+          var doc = articles.doc(title);
+          return getCount(doc);
+        });
+        Promise.all(promises).then(counts => {
+          var metas = document.querySelectorAll('.firestore-visitors-count');
+          counts.forEach((val, idx) => {
+            appendCountTo(metas[idx])(val);
+          });
+        });
+      }
+    })();
+  </script>
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var canonicalURL, curProtocol;
+      //Get the <link> tag
+      var x=document.getElementsByTagName("link");
+		//Find the last canonical URL
+		if(x.length > 0){
+			for (i=0;i<x.length;i++){
+				if(x[i].rel.toLowerCase() == 'canonical' && x[i].href){
+					canonicalURL=x[i].href;
+				}
+			}
+		}
+    //Get protocol
+	    if (!canonicalURL){
+	    	curProtocol = window.location.protocol.split(':')[0];
+	    }
+	    else{
+	    	curProtocol = canonicalURL.split(':')[0];
+	    }
+      //Get current URL if the canonical URL does not exist
+	    if (!canonicalURL) canonicalURL = window.location.href;
+	    //Assign script content. Replace current URL with the canonical URL
+      !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=canonicalURL,t=document.referrer;if(!e.test(r)){var n=(String(curProtocol).toLowerCase() === 'https')?"https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif":"//api.share.baidu.com/s.gif";t?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var i=new Image;i.src=n}}(window);})();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme    : 'default',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/disqusjs@1/dist/disqusjs.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/disqusjs@1/dist/disqus.js', () => {
+    window.dsqjs = new DisqusJS({
+      api       : 'https://disqus.skk.moe/disqus/' || 'https://disqus.com/api/',
+      apikey    : 'Lo65MITAya5vcdTm6cJ8V5qCBNx3PVErvDOsfJ5tUPtEbw3DMS3EIzEx6vrmTzCN',
+      shortname : 'hoarfroster',
+      url       : "https://hoarfroster.github.io/2022/03/23/computer%20science/frontend/css-custom-highlight-api/",
+      identifier: "2022/03/23/computer science/frontend/css-custom-highlight-api/",
+      title     : "你不会不知道最新的 CSS API 可以给选中的文本添加样式吧？",
+    });
+  }, window.DisqusJS);
+});
+</script>
+
+</body>
+</html>

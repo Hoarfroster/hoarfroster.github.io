@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/avatar.png" color="#222">
+  <meta name="google-site-verification" content="iFMbHL1JuWjTlNFq5Rv96vDzpsqakxTpdE2nw7Crr6o">
+  <meta name="msvalidate.01" content="EF6D8CD8A3335E66AB96B4D544FCD96C">
+  <meta name="baidu-site-verification" content="code-80b80Pbzs2">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link href="/lib/fontawesome/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<script>
+
+  window.onload = function() {
+    document.querySelectorAll("p").forEach(e=>{
+      e.innerHTML = e.innerHTML.replaceAll(/==(.+?)==/g, "<mark>$1</mark>").replaceAll(/​\s+?/g, "<span class='tab'></span>");
+    });
+    
+    [...document.querySelectorAll("pre > code")].forEach(e=> {
+        var codeClass = e.parentElement.classList.value;
+        if (codeClass == null || codeClass === "") {
+            e.classList.add("hljs");
+        } else {
+            var map = {
+                js: "javascript"
+            };
+            if (map[codeClass]) {
+                codeClass = map[codeClass];
+            }
+            codeClass.split(" ").forEach(i=>e.classList.add(i));
+            hljs.highlightElement(e);
+        }
+    });
+
+    [...document.querySelectorAll('.classcial-chinese-literature-and-poetry-translation')].forEach(i=>{
+      let el = document.createElement('div');
+      el.setAttribute('class', 'fa-solid fa-eye');
+      i.prepend(el);
+      el.addEventListener('click', ()=>{
+        let status = el.classList.contains('fa-eye');
+        [...i.querySelectorAll('.translation')].forEach(j=>{
+          j.classList.remove('hide');
+          if(status) {
+            j.classList.add('hide');
+          }
+        });
+        el.attributes['class'].value = el.attributes['class'].value.replace('fa-eye-slash', 'fa-0').replace('fa-eye', 'fa-eye-slash').replace('fa-0', 'fa-eye');
+      });
+
+      [...i.querySelectorAll('.original-text')].forEach(e=>{
+        let el = document.createElement('div');
+        el.setAttribute('class', 'fa-solid fa-eye-slash');
+        e.prepend(el);
+        el.addEventListener('click', ()=>{
+            e.nextSibling.classList.toggle('hide');
+            el.attributes['class'].value = el.attributes['class'].value.replace('fa-eye-slash', 'fa-0').replace('fa-eye', 'fa-eye-slash').replace('fa-0', 'fa-eye');
+        });
+      })
+    });
+  }
+</script>
+<script async src="/js/highlight.min.js"></script>
+<script async src="/js/cursor.js"></script>
+<script data-ad-client="ca-pub-2275811890061218" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"hoarfroster.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqusjs","storage":true,"lazyload":false,"nav":null,"activeClass":"disqusjs"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="Deleting input.tex Deleting input.aux Deleting input.dvi Deleting input.log Deleting output.svg Deleting input.tex Deleting input.aux Deleting input.dvi Deleting input.log Deleting output.svg Deleting">
+<meta property="og:type" content="article">
+<meta property="og:title" content="种群及其动态">
+<meta property="og:url" content="https://hoarfroster.github.io/2022/04/03/biology/High%20School/b4%20ecology/P1%20%E7%A7%8D%E7%BE%A4%E5%8F%8A%E5%85%B6%E5%8A%A8%E6%80%81/index.html">
+<meta property="og:site_name" content="Hoarfroster 的小窝">
+<meta property="og:description" content="Deleting input.tex Deleting input.aux Deleting input.dvi Deleting input.log Deleting output.svg Deleting input.tex Deleting input.aux Deleting input.dvi Deleting input.log Deleting output.svg Deleting">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/image-20220403173723680.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/image-20220403173734579.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/image-20220403173427178.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/image-20220403182947283.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/image-20220403183430559.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/image-20220403183227756.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/image-20220403183327623.png">
+<meta property="article:published_time" content="2022-04-03T08:53:00.000Z">
+<meta property="article:modified_time" content="2022-05-28T15:43:07.845Z">
+<meta property="article:author" content="Hoarfroster">
+<meta property="article:tag" content="School Notes">
+<meta property="article:tag" content="High School">
+<meta property="article:tag" content="Biology">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/image-20220403173723680.png">
+
+<link rel="canonical" href="https://hoarfroster.github.io/2022/04/03/biology/High%20School/b4%20ecology/P1%20%E7%A7%8D%E7%BE%A4%E5%8F%8A%E5%85%B6%E5%8A%A8%E6%80%81/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>种群及其动态 | Hoarfroster 的小窝</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <!--<div class="headband"></div>-->
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hoarfroster 的小窝</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section">Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section">About</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section">Categories</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger">
+          Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://hoarfroster.github.io/2022/04/03/biology/High%20School/b4%20ecology/P1%20%E7%A7%8D%E7%BE%A4%E5%8F%8A%E5%85%B6%E5%8A%A8%E6%80%81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Hoarfroster">
+      <meta itemprop="description" content="这里是霜羽~~咕咕咕">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hoarfroster 的小窝">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          种群及其动态
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-04-03 16:53:00" itemprop="dateCreated datePublished" datetime="2022-04-03T16:53:00+08:00">2022-04-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-05-28 23:43:07" itemprop="dateModified" datetime="2022-05-28T23:43:07+08:00">2022-05-28</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/High-School/" itemprop="url" rel="index"><span itemprop="name">High School</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/High-School/Biology/" itemprop="url" rel="index"><span itemprop="name">Biology</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/High-School/Biology/Ecology/" itemprop="url" rel="index"><span itemprop="name">Ecology</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span><br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+              <span>4.6k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+              <span>8 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+Deleting input.tex
+Deleting input.aux
+Deleting input.dvi
+Deleting input.log
+Deleting output.svg
+<h2 id="知识聚焦">知识聚焦</h2>
+<p>​
+任何物种都不可能以单一个体生存和繁衍，<strong>在一定的空间范围内，同种生物的所有个体形成的集合就是<em>种群</em></strong>。</p>
+<ol type="1">
+<li>同种生物、所有个体：同一个物种（不是同一类生物，如“鱼”、“杂草”……）。</li>
+<li>一定的空间和时间：种群具有一定的时空限制，离开一定时空的种群不存在。</li>
+<li>从生态学的观点来看，种群是生物繁殖的基本单位，也是组成生物群落的基本单位。从进化的观点来看，种群实生物进化的基本单位。</li>
+</ol>
+<h3 id="一种群的特征">一、种群的特征</h3>
+<p>​ 种群的特征包括其<strong>数量特征与空间特征</strong>：</p>
+<ol type="1">
+<li>数量特征：<strong><em>种群密度、出生率和死亡率、迁入率和迁出率、年龄结构和性别比例</em></strong>。</li>
+<li>空间特征：组成种群的个体在<strong>生活空间中的位置状态或布局</strong>。</li>
+</ol>
+<h4 id="种群密度">1. 种群密度</h4>
+<p>​
+种群在单位面积或单位体积中的个体数就是<strong><em>种群密度</em></strong>，是种群<strong><em>最基本</em>的数量特征</strong>，反映种群在一定时期和一定空间的数量，可用于预测预报农林害虫、渔业捕捞强度确定等领域。</p>
+<p>​ 计算种群密度，可以使用：</p>
+<ol type="1">
+<li><p><strong>逐个计数法</strong>：针对<strong>分布范围小、个体较大</strong>的种群。</p></li>
+<li><p><strong>估算法</strong>：针对<strong>分布范围较大、个体较小、数量较大且难以逐个计数</strong>的种群，如<strong>样方法和标记重捕法</strong>，又如黑光灯诱捕+估算。</p>
+<blockquote>
+<h4 id="样方法">样方法</h4>
+<h5 id="适用范围">适用范围</h5>
+<p>​
+适用于大多数植物、某些昆虫卵以及<strong>活动范围小、活动能力弱</strong>的动物。</p>
+<h5 id="取样法">取样法</h5>
+<ol type="1">
+<li><p><strong>五点取样法</strong>：当调查的总体为非长条形时，在总体中取五个样方（形状以正方形为宜）。该方法<strong>适用于个体分布较均匀情况</strong>。</p>
+<figure>
+<img src="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/image-20220403173723680.png" alt="五点取样法">
+<figcaption aria-hidden="true">五点取样法</figcaption>
+</figure></li>
+<li><p><strong>等距取样法</strong>：当调查的总体为长条形时，现将调查总体均分为若干份，由抽样比例决定距离或间隔并抽取样方。</p>
+<figure>
+<img src="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/image-20220403173734579.png" alt="等距取样法">
+<figcaption aria-hidden="true">等距取样法</figcaption>
+</figure></li>
+</ol>
+<h5 id="注意事项">注意事项</h5>
+<ol type="1">
+<li>需要<strong>随机取样</strong>，不能掺入主观因素。</li>
+<li>总面积大的地块相应样方需要多一些。</li>
+<li>计数时，<strong>边角只取两边一角</strong>。</li>
+<li>植物<strong>大小不同</strong>（动物<strong>活动性不同</strong>），<strong>样方的面积也应该不同</strong>。</li>
+</ol>
+</blockquote>
+<blockquote>
+<h4 id="标记重捕法">标记重捕法</h4>
+<h5 id="适用范围-1">适用范围</h5>
+<p>​ 适用于<strong>活动能力强、活动范围大</strong>的动物。</p>
+<h5 id="计算公式">计算公式</h5>
+<p>​ 种群数量 <span class="math inline"><em>N</em></span>、标记数 <span class="math inline"><em>a</em></span>、重捕数 <span class="math inline"><em>b</em></span> 与重捕中的标记数 <span class="math inline"><em>c</em></span> 关系： <span class="math inline">$N = \dfrac{ab}{c}$</span>。</p>
+<h5 id="注意事项-1">注意事项</h5>
+<ol type="1">
+<li><strong>标记物或标记方法对动物寿命、行为不能有伤害</strong>。</li>
+<li><strong>标记物不能过分醒目</strong>，否则会影响被标记动物与其他动物之间的关系（如影像种群关系或影响捕食关系）。</li>
+<li><strong>标记物需要保留一定时间</strong>，在调查期间不能消失。</li>
+<li>调查期间种群迁入迁出、出生死亡不能过于活跃。</li>
+<li>在重捕前，被标记动物需要在种群中<strong>完全均匀分布</strong>。</li>
+</ol>
+</blockquote></li>
+</ol>
+<h4 id="其他种群数量特征">2. 其他种群数量特征</h4>
+<p>​
+<strong><em>出生率、死亡率</em></strong>指<strong>单位时间</strong>内新产生个体或死亡个体占该种群个体总数的比值。</p>
+<p>​
+<strong><em>迁入率、迁出率</em></strong>指<strong>单位时间</strong>内迁入或迁出的个体占该种群个体总数的比值。</p>
+<p>​
+种群的<strong><em>年龄结构</em></strong>指一个种群<strong>各年龄期的个体数目的比例</strong>，大致可以分为下图的三种类型（<strong>增长型、稳定型、衰退型</strong>）。</p>
+<figure>
+<img src="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/image-20220403173427178.png" alt="种群的年龄结构示意图">
+<figcaption aria-hidden="true">种群的年龄结构示意图</figcaption>
+</figure>
+<p>​
+<strong><em>性别比例</em></strong>指种群中<strong>雌雄个体数目的比例</strong>。</p>
+<p>​
+综上所述，种群密度是种群最基本的数量特征。种群的其他数量特征是影响种群密度的重要因素，其中出生率和死亡率、迁入率和迁出率直接决定种群密度，年龄结构影响出生率和死亡率，性别比例影响出生率，进而影响种群密度。</p>
+<h3 id="二种群数量的变化">二、种群数量的变化</h3>
+<p>​
+种群数量的变化可以用<strong>增长率</strong>和<strong>增长速率</strong>来描述，前者指代种群在单位时间内净增加的个体数占原有个体数的比率，后者指代种群在单位时间内净增加的个体数量。</p>
+<h4 id="种群的-j-形增长">1. 种群的 J 形增长</h4>
+<p>​
+自然界有类似细菌在理想条件下种群增长的形式，如果以时间为横坐标，种群数量为纵坐标画出曲线表示，曲线大致<strong>呈现
+J 形</strong>，这种类型的种群增长称为 <strong>J
+形增长</strong>，数学模型为 <span class="math inline"><em>N</em><sub><em>t</em></sub> = <em>N</em><sub>0</sub><em>λ</em><sup><em>t</em></sup></span>​。</p>
+<p><img src="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/image-20220403182947283.png" alt="J 形曲线" style="width:256px;"></p>
+<p><img src="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/image-20220403183430559.png" alt="J 形曲线增长速率" style="width:256px;"></p>
+<p>​ J
+形增长的特点是<strong>种群的增长率一定，且种群数量没有上限</strong>，反映种群增长的潜力或趋势，增长率
+<span class="math inline"><em>λ</em> − 1</span>，增长速率不断变大。</p>
+<h4 id="种群的-s-形增长">2. 种群的 S 形增长</h4>
+<p>​
+生态学家高斯做过单独培养大草履虫的实验，其增长一定时间后，种群数量趋于稳定，增长曲线呈现
+S 形，这种类型的种群增长称为 S 形增长，数学模型为逻辑斯谛方程：<span class="math inline">$N_t=\dfrac{kN_0e^{rt}}{k +
+N_0(e^{rt}-1)}$</span>（<span class="math inline"><em>k</em></span>
+为环境容纳量，<span class="math inline"><em>N</em><sub>0</sub></span>
+为种群数量的初始值，<span class="math inline"><em>r</em></span>
+为常数）。</p>
+<p><img src="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/image-20220403183227756.png" alt="S 形曲线" style="width: 256px"></p>
+<p><img src="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/image-20220403183327623.png" alt="S 形曲线增长速率" style="width:256px;"></p>
+<p>​ S 形增长的特点是种群数量在 <strong><span class="math inline">$0\sim\dfrac{K}{2}$</span>
+时增长速率逐渐增大</strong>（<span class="math inline">$\dfrac{K}{2}$</span>
+时增长速率取到<strong>最大值</strong>），随后不断降低，<strong>最终在
+<span class="math inline"><em>K</em></span>
+值上下波动，种群增长速率几乎为零</strong>。种群数量增长率逐渐减小，增长速率先增大再减小。</p>
+<blockquote>
+<h4 id="环境容纳量-k-值">环境容纳量 K 值</h4>
+<p>​ 环境容纳量是指一定的环境条件所能维持的种群的最大数量，又称为 K
+值。影响 K 值的因素包括食物、空间、气候、天敌、传染病、人类活动等：</p>
+<ol type="1">
+<li><p>环境遭到破坏时，K 值会下降；环境得到改善后，K
+值会有所提升。</p></li>
+<li><p>K
+值并不是种群数量的最大值，而是保证环境不被破坏的前提下所能维持的种群最大数量。</p></li>
+<li><p>在环境不遭到破坏的情况下，K
+值会在平均值附近上下波动。当种群偏离平均值（一定范围）下，会通过负反馈调节机制让种群数量返回一定范围内。</p></li>
+</ol>
+<p>​ 环境容纳量的研究，可以：</p>
+<ol type="1">
+<li><strong>合理开发利用野生动植物资源</strong>，即控制种群数量在 <span class="math inline">$\dfrac{K}{2}$</span>
+上下时能够得到<strong>最大的增长速率</strong>，以<strong><em>持续</em>获得最大收获量</strong>，而不影响资源再生。</li>
+<li><strong>保护野生生物资源</strong>，可以提高野生生物的环境容纳量，其中最有效的措施是建立自然保护区，==就地保护是保护生物多样性最有效的措施，异地保护是对就地保护的补充==。</li>
+<li><strong>防治有害生物</strong>，控制有害生物的环境容纳量在 <span class="math inline">$\dfrac{K}{2}$</span> 以下。</li>
+</ol>
+</blockquote>
+<h4 id="探究实践培养液中酵母菌种群数量的变化-exp-培养液中酵母菌种群数量的变化">探究·实践：培养液中酵母菌种群数量的变化
+| #exp-培养液中酵母菌种群数量的变化</h4>
+<h5 id="问题">问题</h5>
+<p>培养液中酵母菌种群的数量是怎样随时间变化的？</p>
+<h5 id="材料用具">材料用具</h5>
+<p>酵母菌、无菌马铃薯培养液或肉汤培养液、试管、血细胞计数板、滴管、显微镜等。讨论探究思路</p>
+<p>在制订计划前，你需要思考以下问题，并与同学讨论。</p>
+<ol type="1">
+<li>怎样对酵母菌进行计数？</li>
+</ol>
+<p>​
+（1）对一支试管中的培养液（可定为10mL）中的酵母菌逐个计数是非常困难的，可以采用抽样检测的方法：先将盖玻片放在血细胞计数板的计数室上，用吸管吸取培养液，滴于盖玻片边缘，让培养液自行渗入。多余的培养液用滤纸吸去。稍待片刻，待酵母菌全部沉降到计数室底部，将计数板放在载物台的中央，计数一个小方格内的酵母菌数量，再以此为根据，估算试管中的酵母菌总数。</p>
+<p>​
+盖玻片下的培养液厚度为0.1mm，请推导出将一个小方格范围内的酵母菌数目，换算成10mL培养液中酵母菌总数的公式。</p>
+<p>​
+（2）从试管中吸出培养液进行计数之前，建议你将试管轻轻振荡几次。这是为什么？</p>
+<p>​ （3）如果一个小方格内酵母菌过多，难以数清，应当采取什么措施？</p>
+<p>​ （4）对于压在小方格界线上的酵母菌，应当怎样计数？</p>
+<ol start="2" type="1">
+<li><p>本探究需要设对照吗？如果需要，请论对照组应怎样设计和操作；如果不需要，请说明理由。</p></li>
+<li><p>要做重复实验吗？为什么？</p></li>
+<li><p>怎样记录结果？记录表怎样设计？</p></li>
+</ol>
+<h5 id="注意事项-2">注意事项</h5>
+<ol type="1">
+<li><p>测定酵母菌种群数量变化是在恒定体积的培养液中进行的，与自然界中种群数量的变化有异。</p></li>
+<li><p>由于酵母菌是单细胞微生物，在进行酵母菌计数时，必须在显微镜下进行，且不能准确计数、只能估算。</p></li>
+<li><p>从试管中吸取培养液进行计数前，需将试管轻轻振荡几次，目的是使培养液中的酵母菌均匀分布，以保证估算的准确性，减少误差。</p></li>
+<li><p>每天计数酵母菌的时间要固定。</p></li>
+<li><p>若一个小方格内酵母菌过多，难以数清，要将培养液稀释一定倍数，再重新计数。</p></li>
+<li><p>计数时，对于压在小方格界线上的酵母菌，应只计数相邻两边及其顶角的酵母菌，原则是“计上不计下，计左不计右”。</p></li>
+<li><p>血细胞计数板的使用方法：先将盖玻片放在血细胞计数板的计数室上，用吸管吸取培养液，滴于盖玻片边缘，让培养液自行渗人。多余培养液用滤纸吸去。稍待片刻，待酵母菌全部沉降到计数室底部，将计数板放在载物台的中央，计数一个小方格内的酵母菌数量，再以此为根据，估算试管中的酵母菌总数。</p></li>
+</ol>
+<h4 id="影响种群数量的波动的因素">3. 影响种群数量的波动的因素</h4>
+<ol type="1">
+<li>出生率和死亡率、迁入率和迁出率、环境条件的改变（干旱、严冬等）、自身特征改变（种群自身密度）</li>
+<li>种群外部因素，如捕食、寄生、种间竞争等种群间关系所致。</li>
+</ol>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/School-Notes/" rel="tag"># School Notes</a>
+              <a href="/tags/High-School/" rel="tag"># High School</a>
+              <a href="/tags/Biology/" rel="tag"># Biology</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/03/30/biology/High%20School/b5%20bioengineering/P4%20%E7%94%9F%E7%89%A9%E6%8A%80%E6%9C%AF%E7%9A%84%E5%AE%89%E5%85%A8%E6%80%A7%E4%B8%8E%E4%BC%A6%E7%90%86%E9%97%AE%E9%A2%98/" rel="prev" title="生物技术的安全性与伦理问题">
+      <i class="fa fa-chevron-left"></i> 生物技术的安全性与伦理问题
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/04/03/biology/High%20School/b4%20ecology/P2%20%E7%BE%A4%E8%90%BD%E5%8F%8A%E5%85%B6%E6%BC%94%E6%9B%BF/" rel="next" title="群落及其演替">
+      群落及其演替 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9F%A5%E8%AF%86%E8%81%9A%E7%84%A6"><span class="nav-text">知识聚焦</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E7%A7%8D%E7%BE%A4%E7%9A%84%E7%89%B9%E5%BE%81"><span class="nav-text">一、种群的特征</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A7%8D%E7%BE%A4%E5%AF%86%E5%BA%A6"><span class="nav-text">1. 种群密度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%B7%E6%96%B9%E6%B3%95"><span class="nav-text">样方法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%80%82%E7%94%A8%E8%8C%83%E5%9B%B4"><span class="nav-text">适用范围</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8F%96%E6%A0%B7%E6%B3%95"><span class="nav-text">取样法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-text">注意事项</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%87%E8%AE%B0%E9%87%8D%E6%8D%95%E6%B3%95"><span class="nav-text">标记重捕法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%80%82%E7%94%A8%E8%8C%83%E5%9B%B4-1"><span class="nav-text">适用范围</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E5%85%AC%E5%BC%8F"><span class="nav-text">计算公式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9-1"><span class="nav-text">注意事项</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E7%A7%8D%E7%BE%A4%E6%95%B0%E9%87%8F%E7%89%B9%E5%BE%81"><span class="nav-text">2. 其他种群数量特征</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E7%A7%8D%E7%BE%A4%E6%95%B0%E9%87%8F%E7%9A%84%E5%8F%98%E5%8C%96"><span class="nav-text">二、种群数量的变化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A7%8D%E7%BE%A4%E7%9A%84-j-%E5%BD%A2%E5%A2%9E%E9%95%BF"><span class="nav-text">1. 种群的 J 形增长</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A7%8D%E7%BE%A4%E7%9A%84-s-%E5%BD%A2%E5%A2%9E%E9%95%BF"><span class="nav-text">2. 种群的 S 形增长</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E5%AE%B9%E7%BA%B3%E9%87%8F-k-%E5%80%BC"><span class="nav-text">环境容纳量 K 值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8E%A2%E7%A9%B6%E5%AE%9E%E8%B7%B5%E5%9F%B9%E5%85%BB%E6%B6%B2%E4%B8%AD%E9%85%B5%E6%AF%8D%E8%8F%8C%E7%A7%8D%E7%BE%A4%E6%95%B0%E9%87%8F%E7%9A%84%E5%8F%98%E5%8C%96-exp-%E5%9F%B9%E5%85%BB%E6%B6%B2%E4%B8%AD%E9%85%B5%E6%AF%8D%E8%8F%8C%E7%A7%8D%E7%BE%A4%E6%95%B0%E9%87%8F%E7%9A%84%E5%8F%98%E5%8C%96"><span class="nav-text">探究·实践：培养液中酵母菌种群数量的变化
+| #exp-培养液中酵母菌种群数量的变化</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%97%AE%E9%A2%98"><span class="nav-text">问题</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9D%90%E6%96%99%E7%94%A8%E5%85%B7"><span class="nav-text">材料用具</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9-2"><span class="nav-text">注意事项</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BD%B1%E5%93%8D%E7%A7%8D%E7%BE%A4%E6%95%B0%E9%87%8F%E7%9A%84%E6%B3%A2%E5%8A%A8%E7%9A%84%E5%9B%A0%E7%B4%A0"><span class="nav-text">3. 影响种群数量的波动的因素</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Hoarfroster"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Hoarfroster</p>
+  <div class="site-description" itemprop="description">这里是霜羽~~咕咕咕</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">193</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">53</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">58</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <ul class="links-of-author motion-element">
+      <li class="links-of-author-item">
+        <a href="https://github.com/PassionPenguin" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;PassionPenguin" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        <span> PassionPenguin</span>
+      </li>
+      <li class="links-of-author-item">
+        <a href="mailto:hoarfroster@outlook.com" title="E-Mail → mailto:hoarfroster@outlook.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+        <span> hoarfroster@outlook.com</span>
+      </li>
+      <li class="links-of-author-item">
+        <a href="https://twitter.com/zhangqizhe" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;zhangqizhe" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+        <span> @zhangqizhe</span>
+      </li>
+      <li class="links-of-author-item">
+        <a href="https://www.instagram.com/glacierpenguin/" title="Instagram → https:&#x2F;&#x2F;www.instagram.com&#x2F;glacierpenguin&#x2F;" rel="noopener" target="_blank"><i class="fab fa-instagram fa-fw"></i>Instagram</a>
+        <span> @glacierpenguin</span>
+      </li>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hoarfroster</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="Symbols count total">1.1m</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">34:12</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT</a>
+  </div>
+
+        
+
+
+
+
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-firestore.js"></script>
+  <script>
+    firebase.initializeApp({
+      apiKey   : 'AIzaSyDqM81uUD8yWHAvsGasJzvWBHhpBYnRttI',
+      projectId: 'hoar-froster'
+    });
+
+    function getCount(doc, increaseCount) {
+      // IncreaseCount will be false when not in article page
+      return doc.get().then(d => {
+        var count = 0;
+        if (!d.exists) { // Has no data, initialize count
+          if (increaseCount) {
+            doc.set({
+              count: 1
+            });
+            count = 1;
+          }
+        } else { // Has data
+          count = d.data().count;
+          if (increaseCount) {
+            // If first view this article
+            doc.set({ // Increase count
+              count: count + 1
+            });
+            count++;
+          }
+        }
+
+        return count;
+      });
+    }
+
+    function appendCountTo(el) {
+      return count => {
+        el.innerText = count;
+      }
+    }
+  </script>
+  <script>
+    (function() {
+      var db = firebase.firestore();
+      var articles = db.collection('articles-info');
+
+      if (CONFIG.page.isPost) { // Is article page
+        var title = document.querySelector('.post-title').innerText.trim();
+        var doc = articles.doc(title);
+        var increaseCount = CONFIG.hostname === location.hostname;
+        if (localStorage.getItem(title)) {
+          increaseCount = false;
+        } else {
+          // Mark as visited
+          localStorage.setItem(title, true);
+        }
+        getCount(doc, increaseCount).then(appendCountTo(document.querySelector('.firestore-visitors-count')));
+      } else if (CONFIG.page.isHome) { // Is index page
+        var promises = [...document.querySelectorAll('.post-title')].map(element => {
+          var title = element.innerText.trim();
+          var doc = articles.doc(title);
+          return getCount(doc);
+        });
+        Promise.all(promises).then(counts => {
+          var metas = document.querySelectorAll('.firestore-visitors-count');
+          counts.forEach((val, idx) => {
+            appendCountTo(metas[idx])(val);
+          });
+        });
+      }
+    })();
+  </script>
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var canonicalURL, curProtocol;
+      //Get the <link> tag
+      var x=document.getElementsByTagName("link");
+		//Find the last canonical URL
+		if(x.length > 0){
+			for (i=0;i<x.length;i++){
+				if(x[i].rel.toLowerCase() == 'canonical' && x[i].href){
+					canonicalURL=x[i].href;
+				}
+			}
+		}
+    //Get protocol
+	    if (!canonicalURL){
+	    	curProtocol = window.location.protocol.split(':')[0];
+	    }
+	    else{
+	    	curProtocol = canonicalURL.split(':')[0];
+	    }
+      //Get current URL if the canonical URL does not exist
+	    if (!canonicalURL) canonicalURL = window.location.href;
+	    //Assign script content. Replace current URL with the canonical URL
+      !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=canonicalURL,t=document.referrer;if(!e.test(r)){var n=(String(curProtocol).toLowerCase() === 'https')?"https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif":"//api.share.baidu.com/s.gif";t?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var i=new Image;i.src=n}}(window);})();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme    : 'default',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/disqusjs@1/dist/disqusjs.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/disqusjs@1/dist/disqus.js', () => {
+    window.dsqjs = new DisqusJS({
+      api       : 'https://disqus.skk.moe/disqus/' || 'https://disqus.com/api/',
+      apikey    : 'Lo65MITAya5vcdTm6cJ8V5qCBNx3PVErvDOsfJ5tUPtEbw3DMS3EIzEx6vrmTzCN',
+      shortname : 'hoarfroster',
+      url       : "https://hoarfroster.github.io/2022/04/03/biology/High%20School/b4%20ecology/P1%20%E7%A7%8D%E7%BE%A4%E5%8F%8A%E5%85%B6%E5%8A%A8%E6%80%81/",
+      identifier: "2022/04/03/biology/High School/b4 ecology/P1 种群及其动态/",
+      title     : "种群及其动态",
+    });
+  }, window.DisqusJS);
+});
+</script>
+
+</body>
+</html>
