@@ -89,8 +89,8 @@
 <meta property="article:modified_time" content="2022-05-28T15:43:08.186Z">
 <meta property="article:author" content="Hoarfroster">
 <meta property="article:tag" content="Computer Science">
-<meta property="article:tag" content="Backend">
 <meta property="article:tag" content="Kotlin">
+<meta property="article:tag" content="Backend">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://cdn-images-1.medium.com/max/9562/1*fzMDTQAsZ8D9O3YXJwLW5A.jpeg">
 
@@ -138,7 +138,119 @@
   </style>
 </noscript>
 
-</head>
+<style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
   <div class="container use-motion">
@@ -337,11 +449,7 @@ Hoarfroster</a></li>
 <blockquote>
 <p>A better solution for hardcoded numbers</p>
 </blockquote>
-<figure>
-<img src="https://cdn-images-1.medium.com/max/9562/1*fzMDTQAsZ8D9O3YXJwLW5A.jpeg" alt="图自 Maail 源 Unsplash">
-<figcaption aria-hidden="true">图自 <a target="_blank" rel="noopener" href="https://unsplash.com/@maail?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Maail</a>
-源 <a target="_blank" rel="noopener" href="https://unsplash.com/s/photos/feathers?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></figcaption>
-</figure>
+<p><img src="https://cdn-images-1.medium.com/max/9562/1*fzMDTQAsZ8D9O3YXJwLW5A.jpeg" alt="图自 Maail 源 Unsplash"></p>
 <p>我真的不喜欢幻数这个词 ——
 我看到太多人都理解错了。我见过这么一种代码审查，一看见代码中或者注释中有数字就评论：“哦，这是个幻数呢，请您务必给它取个名并放在代码头部”，我好多的代码里也会有这样的评论。</p>
 <p>（我也很不喜欢有的时候我们会有应该要把所有的变量放在一个文件的顶部的想法，但这是另一个故事。）</p>
@@ -349,33 +457,33 @@ Hoarfroster</a></li>
 <h2 id="什么是幻数">什么是幻数？</h2>
 <p>我的意思是，您可以在 Google
 上搜索它，并获得一堆如金银绸缎但却又站不住脚的定义。但实际上，幻数其实就是代码中难以理解的数字。</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode kotlin"><code class="sourceCode kotlin"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fun</span> <span class="fu">generate</span><span class="op">()</span> <span class="op">&#123;</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="op">(</span>i <span class="kw">in</span> <span class="dv">0</span> until <span class="dv">52</span><span class="op">)</span> <span class="op">&#123;</span></span>
+<div class="sourceCode" id="cb1"><pre class="sourceCode kotlin"><code class="sourceCode kotlin"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fun</span> <span class="fu">generate</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="op">(</span>i <span class="kw">in</span> <span class="dv">0</span> until <span class="dv">52</span><span class="op">)</span> <span class="op">{</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        deck<span class="op">[</span>i<span class="op">]</span> <span class="op">=</span> uniqueCard<span class="op">()</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">&#125;</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="op">&#125;</span></span></code></pre></div>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>这个 52 从哪来的？</p>
 <p>好吧，事实证明这是生成纸牌组的代码，而 52
 恰好是纸牌组中的纸牌总数。不妨让我们给数字起个名字。</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode kotlin"><code class="sourceCode kotlin"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>const <span class="kw">val</span> <span class="va">numberOfCardsInADeck</span> <span class="op">=</span> <span class="dv">52</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="kw">fun</span> <span class="fu">generate</span><span class="op">()</span> <span class="op">&#123;</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="op">(</span>i <span class="kw">in</span> <span class="dv">0</span> until numberOfCardsInADeck<span class="op">)</span> <span class="op">&#123;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="kw">fun</span> <span class="fu">generate</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="op">(</span>i <span class="kw">in</span> <span class="dv">0</span> until numberOfCardsInADeck<span class="op">)</span> <span class="op">{</span></span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>        deck<span class="op">[</span>i<span class="op">]</span> <span class="op">=</span> uniqueCard<span class="op">()</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">&#125;</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="op">&#125;</span></span></code></pre></div>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>这样，代码就会更具可读性、可维护性。太好了，您已经掌握了如何编写干净的代码的不二法门。</p>
 <p>嘿嘿，不，这只是冰山一角。这个示例（这是一个非常常见的示例）告诉我们一个非常深奥的道理
 —— 开发人员可能很容易地从其余的代码中明白 52 究竟是什么 ——
 这是一只非常温顺的幻数怪。</p>
 <p>当幻数怪突然冒出来的时候，那才是它们展示真实面孔的时间嗷。例如使用以下代码调整搜索算法：</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode kotlin"><code class="sourceCode kotlin"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fun</span> <span class="fu">search</span><span class="op">(</span><span class="va">query</span><span class="op">:</span> <span class="dt">String</span><span class="op">)</span> <span class="op">&#123;</span></span>
+<div class="sourceCode" id="cb3"><pre class="sourceCode kotlin"><code class="sourceCode kotlin"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fun</span> <span class="fu">search</span><span class="op">(</span><span class="va">query</span><span class="op">:</span> <span class="dt">String</span><span class="op">)</span> <span class="op">{</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    find<span class="op">(</span>query<span class="op">,</span> <span class="fl">2.4f</span><span class="op">,</span> <span class="fl">10.234f</span><span class="op">,</span> <span class="dv">999</span><span class="op">,</span> <span class="kw">Int</span><span class="op">.</span>MAX_VALUE<span class="op">,</span> <span class="kw">false</span><span class="op">)</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="op">&#125;</span></span></code></pre></div>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>噢这奇怪的数字到底意味着什么？看来想要弄清楚这些数字的用途和作用并不容易。</p>
 <h2 id="为什么使用幻数是个问题">为什么使用幻数是个问题？</h2>
 <p>假设您的应用规模不断扩大，需要搜索的内容还很多，突然之间，您的搜索结果并没有完全满足您的需求。</p>
-<p>我们有一个错误：“当我搜索”麦片”时，即使我知道谷物一定是它的成分，谷物也不会出现在结果中。”</p>
+<p>我们有一个错误：“当我搜索“麦片“时，即使我知道谷物一定是它的成分，谷物也不会出现在结果中。”</p>
 <p>在本算法四年前那最后一次被修改以后，我的 Joe Schmo
 啊，您现在需要更改这些值以解决此错误，而您首先需要改变什么？</p>
 <p>——
@@ -386,12 +494,12 @@ Hoarfroster</a></li>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>const <span class="kw">val</span> <span class="va">searchMaxResults</span> <span class="op">=</span> <span class="kw">Int</span><span class="op">.</span>MAX_VALUE <span class="co">// 我们希望的能从搜索中获得所有可能的结果</span></span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>const <span class="kw">val</span> <span class="va">shouldSearchIndex</span> <span class="op">=</span> <span class="kw">false</span> <span class="co">// 我们不想搜索索引</span></span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="kw">fun</span> <span class="fu">search</span><span class="op">(</span><span class="va">query</span><span class="op">:</span> <span class="dt">String</span><span class="op">)</span> <span class="op">&#123;</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="kw">fun</span> <span class="fu">search</span><span class="op">(</span><span class="va">query</span><span class="op">:</span> <span class="dt">String</span><span class="op">)</span> <span class="op">{</span></span>
 <span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    find<span class="op">(</span>query<span class="op">,</span> searchWeight<span class="op">,</span> searchSpread<span class="op">,</span> searchPageSize<span class="op">,</span> searchMaxResults<span class="op">,</span> shouldSearchIndex<span class="op">)</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="op">&#125;</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
 <span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co">// 调用我们的加权搜索算法。在foo.bar.com上阅读有关此算法的文档</span></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="kw">fun</span> <span class="fu">find</span><span class="op">(</span><span class="va">query</span><span class="op">:</span> <span class="dt">String</span><span class="op">,</span> <span class="va">weight</span><span class="op">:</span> <span class="dt">Float</span><span class="op">,</span> <span class="va">spread</span><span class="op">:</span> <span class="dt">Float</span><span class="op">,</span> <span class="va">pageSize</span><span class="op">:</span> <span class="dt">Int</span><span class="op">,</span> <span class="va">maxResults</span><span class="op">:</span> <span class="dt">Int</span><span class="op">,</span> <span class="va">index</span><span class="op">:</span> <span class="dt">Boolean</span><span class="op">)</span> <span class="op">&#123;&#125;</span></span></code></pre></div>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="kw">fun</span> <span class="fu">find</span><span class="op">(</span><span class="va">query</span><span class="op">:</span> <span class="dt">String</span><span class="op">,</span> <span class="va">weight</span><span class="op">:</span> <span class="dt">Float</span><span class="op">,</span> <span class="va">spread</span><span class="op">:</span> <span class="dt">Float</span><span class="op">,</span> <span class="va">pageSize</span><span class="op">:</span> <span class="dt">Int</span><span class="op">,</span> <span class="va">maxResults</span><span class="op">:</span> <span class="dt">Int</span><span class="op">,</span> <span class="va">index</span><span class="op">:</span> <span class="dt">Boolean</span><span class="op">)</span> <span class="op">{}</span></span></code></pre></div>
 <p>处理这样的代码，您会不会感觉舒服多了？您甚至可能对如何进行更改有所了解。优化搜索可能很困难，但是接手的人凭着这份文档，就能更好地解决这个漏洞</p>
 <h2 id="什么不能称之为幻数">什么不能称之为幻数？</h2>
 <p>实际上，难以推理的数字不会像容易推理的数字那样频繁出现。例如这个数据：</p>
@@ -402,9 +510,9 @@ Hoarfroster</a></li>
 42！最多的翻译就是这样，但是像这样数据，即使我们给它取一个名称，又会增加什么价值？</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode kotlin"><code class="sourceCode kotlin"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>const <span class="kw">val</span> <span class="va">viewHeight</span> <span class="op">=</span> <span class="dv">42</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="kw">fun</span> <span class="fu">buildView</span><span class="op">()</span> <span class="op">&#123;</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="kw">fun</span> <span class="fu">buildView</span><span class="op">()</span> <span class="op">{</span></span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    view<span class="op">.</span>height <span class="op">=</span> viewHeight</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="op">&#125;</span></span></code></pre></div>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>以上做法只会导致冗杂代码。而这似乎是一个很小的例子，但是这种不必要地命名数字的想法会迅速增加
 UI 代码的大小 —— 增加代码行数，完成绩效。</p>
 <h2 id="所以我们是否可以在代码中使用数字">所以我们是否可以在代码中使用数字？</h2>
@@ -425,8 +533,8 @@ UI 代码的大小 —— 增加代码行数，完成绩效。</p>
       <footer class="post-footer">
           <div class="post-tags">
               <a href="/tags/Computer-Science/" rel="tag"># Computer Science</a>
-              <a href="/tags/Backend/" rel="tag"># Backend</a>
               <a href="/tags/Kotlin/" rel="tag"># Kotlin</a>
+              <a href="/tags/Backend/" rel="tag"># Backend</a>
           </div>
 
         
@@ -588,12 +696,12 @@ UI 代码的大小 —— 增加代码行数，完成绩效。</p>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">1.1m</span>
+    <span title="Symbols count total">921k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">34:12</span>
+    <span title="Reading time total">27:54</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT</a>
   </div>

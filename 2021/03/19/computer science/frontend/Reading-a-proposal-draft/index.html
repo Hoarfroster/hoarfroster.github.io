@@ -137,7 +137,119 @@
   </style>
 </noscript>
 
-</head>
+<style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
   <div class="container use-motion">
@@ -307,7 +419,7 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-              <span>511</span>
+              <span>513</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
@@ -341,7 +453,7 @@ Hoarfroster</a></li>
 <code>https://tc39.es/proposal-&lt;name&gt;</code>。这些草案都是供实现该功能时所参考的权威定义；README
 或 Issue 中的内容或讨论可能会引用这份草案作为背景。</p>
 <p>提案规范文本的表达可能会与<a target="_blank" rel="noopener" href="https://tc39.es/ecma262">当前规范的草案</a>有所不同，也可能会对某些其他提案有所添加。当添加一个全新的章节时，它不会突出显示，但是当修改现有章节时，它们会以绿色突出显示，强调是插入的内容，而红色的标识则表示删除。</p>
-<p>规范文本旨在被抽象地解释（译者注：即，只对实现的运行效果有所要求，而在如何实现上没有规定）。只有<em>“可观察到的语义”</em>，即执行
+<p>规范文本旨在被抽象地解释（译者注：即，只对实现的运行效果有所要求，而在如何实现上没有规定）。只有*“可观察到的语义”*，即执行
 JavaScript
 代码时的行为表现，才需要与规范匹配。具体实现可以使用他们想要的任何策略，包括使用能达到相同结果的不同算法。</p>
 <p>想要查看更多有关如何阅读一份规范文本的详细信息？请参考 Timothy Gu
@@ -367,12 +479,12 @@ JavaScript
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2021/03/19/computer%20science/frontend/How-to-make-a-Pull-Request-against-the-ECMAScript-specification/" rel="prev" title="如何针对 ECMAScript 规范创建一个拉取请求">
-      <i class="fa fa-chevron-left"></i> 如何针对 ECMAScript 规范创建一个拉取请求
+    <a href="/2021/03/19/computer%20science/frontend/tools-for-auditing-css/" rel="prev" title="都 1202 年了，你还不知道这些检查 CSS 的工具？？？">
+      <i class="fa fa-chevron-left"></i> 都 1202 年了，你还不知道这些检查 CSS 的工具？？？
     </a></div>
       <div class="post-nav-item">
-    <a href="/2021/03/19/computer%20science/frontend/Championing-a-proposal-at-TC39/" rel="next" title="如何在 TC39 提起一项提案？">
-      如何在 TC39 提起一项提案？ <i class="fa fa-chevron-right"></i>
+    <a href="/2021/03/19/computer%20science/frontend/How-to-make-a-Pull-Request-against-the-ECMAScript-specification/" rel="next" title="如何针对 ECMAScript 规范创建一个拉取请求">
+      如何针对 ECMAScript 规范创建一个拉取请求 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -519,12 +631,12 @@ JavaScript
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">1.1m</span>
+    <span title="Symbols count total">921k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">34:12</span>
+    <span title="Reading time total">27:54</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT</a>
   </div>

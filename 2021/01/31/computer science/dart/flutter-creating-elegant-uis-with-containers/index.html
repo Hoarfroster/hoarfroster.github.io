@@ -146,7 +146,119 @@
   </style>
 </noscript>
 
-</head>
+<style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
   <div class="container use-motion">
@@ -356,27 +468,27 @@ Hoarfroster</a></li>
 <code>Container</code>
 控件并给它制定一个宽度和高度（我们可以看到下面的例子就避免了使用子控件去绘制形状）。</p>
 <p><img src="https://cdn-images-1.medium.com/max/2078/1*mzCSaRJfZi8BiBHYUrUbqg.png"></p>
-<pre class="dart"><code>Widget squareContainer() &#123;
+<pre class="Dart"><code>Widget squareContainer() {
   return Container(
     color: Colors.purpleAccent,
     width: 100,
     height: 100,
   );
-&#125;
+}
 
-Widget rectContainer() &#123;
+Widget rectContainer() {
   return Container(
     color: Colors.greenAccent,
     width: 200,
     height: 100,
   );
-&#125;</code></pre>
+}</code></pre>
 <p>而下面的例子展示了如何给 <code>Container</code>
 控件加上圆角。首先操作的两个控件是使用了 <code>BoxDecoration</code>
 圆角化控件的。我们同样可以通过使用 <code>BoxDecoration</code>
 绘制一个圆形，就像第三个控件那样：</p>
 <p><img src="https://cdn-images-1.medium.com/max/2202/1*lK_CjuIIFxIMSrijjme1qg.png"></p>
-<pre class="dart"><code>Widget roundedContainer() &#123;
+<pre class="Dart"><code>Widget roundedContainer() {
   return Container(
     width: 100,
     height: 50,
@@ -384,9 +496,9 @@ Widget rectContainer() &#123;
         color: Colors.tealAccent,
         borderRadius: BorderRadius.all(Radius.circular(10))),
   );
-&#125;
+}
 
-Widget fullyRoundedContainer() &#123;
+Widget fullyRoundedContainer() {
   return Container(
     width: 100,
     height: 50,
@@ -394,22 +506,22 @@ Widget fullyRoundedContainer() &#123;
         color: Colors.blueAccent,
         borderRadius: BorderRadius.all(Radius.circular(50))),
   );
-&#125;
+}
 
-Widget circleContainer() &#123;
+Widget circleContainer() {
   return Container(
     width: 100,
     height: 100,
     decoration: BoxDecoration(color: Colors.redAccent, shape: BoxShape.circle),
   );
-&#125;</code></pre>
+}</code></pre>
 <p>如果我们用 <code>Container</code> 控件包裹一个有 <code>onTap</code>
 功能（本例中为 <code>InkWell</code>
 控件）的子控件，我们甚至可以构建一个自定义的按钮：</p>
 <p><img src="https://cdn-images-1.medium.com/max/2000/1*0CUGG-lyqxr-iP4wb9PRNQ.png"></p>
-<pre class="dart"><code>Widget containerButton() &#123;
+<pre class="Dart"><code>Widget containerButton() {
   return InkWell(
-    onTap: () &#123;&#125;,
+    onTap: () {},
     child: Container(
         decoration: BoxDecoration(
             color: Colors.deepOrange,
@@ -420,12 +532,12 @@ Widget circleContainer() &#123;
           style: TextStyle(color: Colors.white),
         )),
   );
-&#125;</code></pre>
+}</code></pre>
 <p>我们还可以通过使用 <code>Border.all()</code> 来生成边框装饰我们的
 <code>Container</code> 控件。<code>BoxShadow</code> 则可以给我们的
 <code>Container</code> 添加所设置的阴影，如控件二：</p>
 <p><img src="https://cdn-images-1.medium.com/max/2000/1*SAcNvyxyzu-ofhDJ9_qhWg.png"></p>
-<pre class="dart"><code>Widget containerWithBorders() &#123;
+<pre class="Dart"><code>Widget containerWithBorders() {
   return Container(
     width: 100,
     height: 100,
@@ -434,9 +546,9 @@ Widget circleContainer() &#123;
         border: Border.all(),
         borderRadius: BorderRadius.all(Radius.circular(15))),
   );
-&#125;
+}
 
-Widget containerWithShadow() &#123;
+Widget containerWithShadow() {
   return Container(
     width: 100,
     height: 100,
@@ -453,13 +565,13 @@ Widget containerWithShadow() &#123;
       ],
     ),
   );
-&#125;</code></pre>
+}</code></pre>
 <p>在一个 <code>Container</code> 控件中，我们可以通过使用
 <code>BoxDecoration</code> 以及 <code>DecorationImage</code>
 给它添加装饰图片。这里大家可以试着找找两张图片中 <code>Container</code>
 的区别，探究添加的装饰是如何被应用到控件上的：</p>
 <p><img src="https://cdn-images-1.medium.com/max/2224/1*W0xtgxhy3hLNkrcHbZEGhQ.png"></p>
-<pre class="dart"><code>Widget containerImgDecoration() &#123;
+<pre class="Dart"><code>Widget containerImgDecoration() {
   return Container(
     width: 150,
     height: 150,
@@ -468,9 +580,9 @@ Widget containerWithShadow() &#123;
         image: DecorationImage(
             image: AssetImage("assets/images/img.jpg"), fit: BoxFit.cover)),
   );
-&#125;
+}
 
-Widget containerImg() &#123;
+Widget containerImg() {
   return Container(
     width: 150,
     height: 150,
@@ -478,13 +590,13 @@ Widget containerImg() &#123;
         BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(15))),
     child: Image(image: AssetImage("assets/images/img.jpg"), fit: BoxFit.cover),
   );
-&#125;</code></pre>
+}</code></pre>
 <p>我们可以添加多彩的标题背景，让我们的 UI 更有吸引力。下面是三个使用
 <code>Container</code> 控件构造的标题栏的例子：</p>
 <p><img src="https://cdn-images-1.medium.com/max/2458/1*I5-WNUcfc8gRxQiiTD59zQ.png"></p>
 <p><img src="https://cdn-images-1.medium.com/max/2422/1*F3DS06d7jMIPJxwqVQlWKg.png"></p>
 <p><img src="https://cdn-images-1.medium.com/max/2484/1*0LAhQZtJZx2bgvHFgEvELw.png"></p>
-<pre class="dart"><code>Widget containerHeaderOne(&#123;width&#125;) &#123;
+<pre class="Dart"><code>Widget containerHeaderOne({width}) {
   return Container(
     width: width,
     height: 200,
@@ -494,9 +606,9 @@ Widget containerImg() &#123;
           bottom:  Radius.elliptical(width, 200.0)),
     ),
   );
-&#125;
+}
 
-Widget containerHeaderTwo(&#123;width&#125;) &#123;
+Widget containerHeaderTwo({width}) {
   return Container(
     width: width,
     height: 200,
@@ -506,9 +618,9 @@ Widget containerHeaderTwo(&#123;width&#125;) &#123;
           bottomRight: Radius.circular(200)),
     ),
   );
-&#125;
+}
 
-Widget containerHeaderThree(&#123;width&#125;) &#123;
+Widget containerHeaderThree({width}) {
   return Container(
     width: width,
     height: 200,
@@ -519,7 +631,7 @@ Widget containerHeaderThree(&#123;width&#125;) &#123;
           bottomRight: Radius.circular(200)),
     ),
   );
-&#125;</code></pre>
+}</code></pre>
 <p>你可以在 <a target="_blank" rel="noopener" href="https://github.com/manee92/FlutterDemo/blob/master/lib/screens/UIDemo/ContainerDemo.dart">这里</a>
 找到完整的代码。</p>
 <p>感谢你的阅读！</p>
@@ -695,12 +807,12 @@ Widget containerHeaderThree(&#123;width&#125;) &#123;
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">1.1m</span>
+    <span title="Symbols count total">921k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">34:12</span>
+    <span title="Reading time total">27:54</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT</a>
   </div>

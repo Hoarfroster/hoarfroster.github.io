@@ -145,7 +145,119 @@
   </style>
 </noscript>
 
-</head>
+<style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
   <div class="container use-motion">
@@ -381,7 +493,7 @@ Web 元素作为 Flutter 小部件。在这个项目中，我们渲染了一个 
 作为另一个 HTML
 元素呈现方式，让我们可以在单击拍照按钮时从媒体流中捕获图像。</li>
 </ol>
-<pre class="dart"><code>Future&lt;CameraImage&gt; takePicture() async &#123;  
+<pre class="dart"><code>Future&lt;CameraImage&gt; takePicture() async {  
  final videoWidth = videoElement.videoWidth;  
  final videoHeight = videoElement.videoHeight;  
  final canvas = html.CanvasElement(  
@@ -398,7 +510,7 @@ Web 元素作为 Flutter 小部件。在这个项目中，我们渲染了一个 
    width: videoWidth,  
    height: videoHeight,  
  );  
-&#125;</code></pre>
+}</code></pre>
 <h3 id="相机权限">相机权限</h3>
 <p>在我们让 Flutter Camera 插件可以在 Web
 上运行后，我们创建了一个抽象来根据相机权限显示不同的
@@ -470,14 +582,14 @@ return Scaffold(
 <pre class="dart"><code>for (final character in state.characters)  
  DraggableResizable(     
    canTransform: character.id == state.selectedAssetId,  
-   onUpdate: (update) &#123;  
+   onUpdate: (update) {  
      context.read&lt;PhotoboothBloc&gt;().add(  
        PhotoCharacterDragged(  
          character: character,   
          update: update,  
        ),  
      );  
-   &#125;,  
+   },  
    child: _AnimatedCharacter(name: character.asset.name),  
  ),</code></pre>
 <p>为了调整对象的大小，我们创建了一个可拖动、可调整大小的小部件，它可以包裹在任何
@@ -533,7 +645,7 @@ UI
 UI 组件库包也可以为 Flutter 社区开源，类似于 <a target="_blank" rel="noopener" href="https://flutter.dev/docs/development/ui/widgets/material">Material</a>
 和 <a target="_blank" rel="noopener" href="https://flutter.dev/docs/development/ui/widgets/cupertino">Cupertino</a>
 组件库。</p>
-<h2 id="firebase-flutter-完美匹配">Firebase + Flutter = 完美匹配</h2>
+<h2 id="firebase--flutter--完美匹配">Firebase + Flutter = 完美匹配</h2>
 <h3 id="firebase-身份验证存储托管等">Firebase
 身份验证、存储、托管等</h3>
 <p>Photo Booth 利用 Firebase 生态系统进行各种后端集成。<a target="_blank" rel="noopener" href="https://pub.dev/packages/firebase_auth"><code>firebase_auth</code>
@@ -565,8 +677,8 @@ Performance Monitoring</a> 来监控关键的 Web 性能指标。</p>
 I/O Photo Booth，并被裁剪为 4:3 或 3:4
 的纵横比，以便在社交帖子上看起来很棒。</p>
 <p>我们使用 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvas"><code>OffscreenCanvas</code></a>
-API 或 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/%20en-US/docs/Web/HTML/Element/canvas"><code>CanvasElement</code></a>
-作为 polyfill
+API 或 [<code>CanvasElement</code>](https://developer.mozilla.org/
+en-US/docs/Web/HTML/Element/canvas) 作为 polyfill
 合成原始照片以及包含我们的朋友和道具的图层，并生成可以下载的单个图像。<a target="_blank" rel="noopener" href="https://github.com/flutter/photobooth/tree/main/packages/image_compositor"><code>image_compositor</code></a>
 <a target="_blank" rel="noopener" href="https://github.com/flutter/photobooth/tree/main/packages/image_compositor">包</a>
 处理此处理步骤。</p>
@@ -575,14 +687,14 @@ API 或 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/%2
 URL。浏览器在分析 URL
 时，会检测到云函数生成的动态元信息。此信息允许浏览器在我们的社交帖子中显示照片的精美预览图像以及指向共享页面的链接，我们的关注者可以在其中查看照片并导航回
 I/O Photo Booth 应用程序以获取他们自己的照片。</p>
-<pre class="dart"><code>function renderSharePage(imageFileName: string, baseUrl: string): string &#123;  
- const context = Object.assign(&#123;&#125;, BaseHTMLContext, &#123;  
+<pre class="dart"><code>function renderSharePage(imageFileName: string, baseUrl: string): string {  
+ const context = Object.assign({}, BaseHTMLContext, {  
    appUrl: baseUrl,  
-   shareUrl: `$&#123;baseUrl&#125;/share/$&#123;imageFileName&#125;`,  
-   shareImageUrl: bucketPathForFile(`$&#123;UPLOAD_PATH&#125;/$&#123;imageFileName&#125;`),  
- &#125;);  
+   shareUrl: `${baseUrl}/share/${imageFileName}`,  
+   shareImageUrl: bucketPathForFile(`${UPLOAD_PATH}/${imageFileName}`),  
+ });  
  return renderTemplate(shareTmpl, context);  
-&#125;</code></pre>
+}</code></pre>
 <p>最终产品看起来像这样：</p>
 <p><img src="https://miro.medium.com/max/2800/0*tXpB_n44hmjGxHXf"></p>
 <p>有关如何在 Flutter 项目中使用 Firebase 的更多信息，请查看此 <a target="_blank" rel="noopener" href="https://firebase.google.com/codelabs/firebase-get-to-know-flutter#0">codelab</a>。</p>
@@ -691,7 +803,7 @@ Booth 成为可能。</p>
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
           <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-flutter-%E5%88%B6%E4%BD%9C%E8%99%9A%E6%8B%9F%E7%85%A7%E7%9B%B8%E4%BA%AD"><span class="nav-text">使用 Flutter 制作虚拟照相亭</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BA-web-%E6%9E%84%E5%BB%BA-flutter-%E7%9B%B8%E6%9C%BA%E6%8F%92%E4%BB%B6"><span class="nav-text">为 Web 构建 Flutter 相机插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B8%E6%9C%BA%E6%9D%83%E9%99%90"><span class="nav-text">相机权限</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%95%9C%E5%83%8F%E7%85%A7%E7%89%87"><span class="nav-text">镜像照片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9D%9A%E6%8C%81%E4%B8%A5%E6%A0%BC%E7%9A%84%E7%BA%B5%E6%A8%AA%E6%AF%94"><span class="nav-text">坚持严格的纵横比</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%9A%E8%BF%87%E6%8B%96%E6%94%BE%E6%B7%BB%E5%8A%A0%E6%9C%8B%E5%8F%8B%E5%92%8C%E8%B4%B4%E7%BA%B8"><span class="nav-text">通过拖放添加朋友和贴纸</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%98%E5%85%88%E8%80%83%E8%99%91%E7%BD%91%E7%BB%9C%E4%B8%8A%E7%9A%84-flutter"><span class="nav-text">优先考虑网络上的 Flutter</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-flutter-%E8%BF%9B%E8%A1%8C-web-%E4%BC%98%E5%85%88%E5%BC%80%E5%8F%91"><span class="nav-text">使用 Flutter 进行 Web
-优先开发</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%AF%E6%89%A9%E5%B1%95%E6%9E%B6%E6%9E%84"><span class="nav-text">可扩展架构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#firebase-flutter-%E5%AE%8C%E7%BE%8E%E5%8C%B9%E9%85%8D"><span class="nav-text">Firebase + Flutter &#x3D; 完美匹配</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#firebase-%E8%BA%AB%E4%BB%BD%E9%AA%8C%E8%AF%81%E5%AD%98%E5%82%A8%E6%89%98%E7%AE%A1%E7%AD%89"><span class="nav-text">Firebase
+优先开发</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%AF%E6%89%A9%E5%B1%95%E6%9E%B6%E6%9E%84"><span class="nav-text">可扩展架构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#firebase--flutter--%E5%AE%8C%E7%BE%8E%E5%8C%B9%E9%85%8D"><span class="nav-text">Firebase + Flutter &#x3D; 完美匹配</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#firebase-%E8%BA%AB%E4%BB%BD%E9%AA%8C%E8%AF%81%E5%AD%98%E5%82%A8%E6%89%98%E7%AE%A1%E7%AD%89"><span class="nav-text">Firebase
 身份验证、存储、托管等</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-cloud-functions-%E8%BF%9B%E8%A1%8C%E7%A4%BE%E4%BA%A4"><span class="nav-text">使用 Cloud Functions
 进行社交</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%90%E5%93%81%E6%95%88%E6%9E%9C"><span class="nav-text">成品效果</span></a></li></ol></div>
       </div>
@@ -774,12 +886,12 @@ Booth 成为可能。</p>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">1.1m</span>
+    <span title="Symbols count total">921k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">34:12</span>
+    <span title="Reading time total">27:54</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT</a>
   </div>

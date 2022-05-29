@@ -141,7 +141,119 @@
   </style>
 </noscript>
 
-</head>
+<style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
   <div class="container use-motion">
@@ -311,13 +423,13 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-              <span>3.5k</span>
+              <span>11k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
-              <span>6 mins.</span>
+              <span>21 mins.</span>
             </span>
             <div class="post-description">动物体各器官系统之间能够紧密配合、相互协调，对环境的变化和体内外的刺激作出反应并维持内环境的稳态，主要是因为它们受神经和内分泌等系统的调节。在大多数情况下，神经系统的调节更快速，并往往处于主导地位。</div>
 
@@ -352,551 +464,349 @@
 <li><p>以具体调节实例，说出神经调节和激素调节的区别和联系。</p></li>
 <li><p>以二氧化碳对呼吸运动的调节为例，说明体液调节除激素外，还有其他成分的调节。</p></li>
 </ol>
-<p><img src="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/体液调节.png" alt="体液调节" style="zoom: 67%;"></p>
+<img src="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/体液调节.png" alt="体液调节" style="zoom: 67%;">
+
 <h2 id="知识聚焦">知识聚焦</h2>
 <h3 id="一激素与内分泌系统">一、激素与内分泌系统</h3>
-<h4 id="激素的发现">1. 激素的发现</h4>
+<h4 id="1-激素的发现">1. 激素的发现</h4>
 <ol type="1">
-<li><p><strong><em>沃泰默实验</em></strong>：错误的方法得出结论“胰液分泌是一个非常顽固的神经反射”。</p>
-<figure>
-<img src="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/%E6%BF%80%E7%B4%A0%E4%B8%8E%E5%86%85%E5%88%86%E6%B3%8C%E7%B3%BB%E7%BB%9F%20-%20%E6%B2%83%E6%B3%B0%E9%BB%98%E5%AE%9E%E9%AA%8C.png" alt="激素与内分泌系统 - 沃泰默实验">
-<figcaption aria-hidden="true">激素与内分泌系统 -
-沃泰默实验</figcaption>
-</figure></li>
-<li><p><strong><em>斯他林、贝利斯实验</em></strong>：恰当的方法得出结论“小肠黏膜在稀盐酸的作用下分泌的某种化学物质让胰腺分泌胰液”，由此人类发现第一种激素——小肠黏膜分泌的促胰液素。
+<li><p><em><strong>沃泰默实验</strong></em>：错误的方法得出结论“胰液分泌是一个非常顽固的神经反射”。</p>
+<p><img src="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/%E6%BF%80%E7%B4%A0%E4%B8%8E%E5%86%85%E5%88%86%E6%B3%8C%E7%B3%BB%E7%BB%9F%20-%20%E6%B2%83%E6%B3%B0%E9%BB%98%E5%AE%9E%E9%AA%8C.png" alt="激素与内分泌系统 - 沃泰默实验"></p></li>
+<li><p><em><strong>斯他林、贝利斯实验</strong></em>：恰当的方法得出结论“小肠黏膜在稀盐酸的作用下分泌的某种化学物质让胰腺分泌胰液”，由此人类发现第一种激素——小肠黏膜分泌的促胰液素。
 <img src="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/%E6%BF%80%E7%B4%A0%E4%B8%8E%E5%86%85%E5%88%86%E6%B3%8C%E7%B3%BB%E7%BB%9F%20-%20%E6%96%AF%E4%BB%96%E6%9E%97%E3%80%81%E8%B4%9D%E5%88%A9%E6%96%AF%E5%AE%9E%E9%AA%8C.png" alt="激素与内分泌系统 - 斯他林、贝利斯实验"></p></li>
 </ol>
-<h4 id="激素调节及主要激素与内分泌腺">2.
+<h4 id="2-激素调节及主要激素与内分泌腺">2.
 激素调节及主要激素与内分泌腺</h4>
 <p>机体存在由内分泌器官或细胞分泌化学物质（激素）进行调节的方式，即激素调节。</p>
 <p>内分泌系统由相对独立的内分泌腺（内分泌细胞聚集的场所）和兼有内分泌功能的细胞构成。常见的激素及内分泌腺如下：</p>
 <table>
-<colgroup>
-<col>
-<col>
-<col>
-<col>
-<col>
-</colgroup>
-<thead>
-<tr>
-<td>
-<p>
-相关激素
-</p>
-</td>
-<td>
-<p>
-分泌腺体
-</p>
-</td>
-<td>
-<p>
-物质类型
-</p>
-</td>
-<td>
-<p>
-作用部位
-</p>
-</td>
-<td>
-<p>
-相关疾病、作用
-</p>
-</td>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<p>
-生长激素 GH
-</p>
-</td>
-<td rowspan="4">
-<p>
-腺垂体
-</p>
-</td>
-<td rowspan="7">
-<p>
-含氮激素
-</p>
-<p>
-（蛋白质）
-</p>
-</td>
-<td>
-<p>
-几乎全身细胞
-</p>
-</td>
-<td>
-<p>
-侏儒症
-</p>
-<p>
-巨人症
-</p>
-<p>
-肢端肥大症
-</p>
-</td>
-</tr>
-<tr>
-<td>
-<p>
-促肾上腺皮质激素 ACTH
-</p>
-</td>
-<td>
-<p>
-肾上腺
-</p>
-</td>
-<td rowspan="3">
-<p>
-促进对应激素的释放
-</p>
-</td>
-</tr>
-<tr>
-<td>
-<p>
-促性腺激素 Gn
-</p>
-</td>
-<td>
-<p>
-性腺
-</p>
-</td>
-</tr>
-<tr>
-<td>
-<p>
-促甲状腺激素 TSH
-</p>
-</td>
-<td>
-<p>
-甲状腺
-</p>
-</td>
-</tr>
-<tr>
-<td>
-<p>
-释放激素
-</p>
-<p>
-<span>（促肾上腺皮质激素释放激素 CRH、促性腺激素释放激素
-GnRH、促甲状腺激素释放激素 TRH）</span>
-</p>
-</td>
-<td>
-<p>
-下丘脑
-</p>
-</td>
-<td>
-<p>
-腺垂体
-</p>
-</td>
-<td>
-<p>
-促进或抑制垂体释放对应的刺激激素，间接控制对应激素的释放
-</p>
-</td>
-</tr>
-<tr>
-<td>
-<p>
-催乳素 PRL
-</p>
-</td>
-<td>
-<p>
-腺垂体、胎盘
-</p>
-</td>
-<td>
-<p>
-乳腺、卵巢黄体
-</p>
-</td>
-<td>
-<p>
-促进乳腺发育或泌乳、刺激黄体分泌黄体酮
-</p>
-</td>
-</tr>
-<tr>
-<td>
-<p>
-胰岛素
-</p>
-</td>
-<td>
-<p>
-胰岛B细胞
-</p>
-</td>
-<td>
-<p>
-组织细胞
-</p>
-</td>
-<td>
-<p>
-调节代谢，促进细胞摄取、利用、分解糖类物质，促进非糖物质的转换与糖原的合成
-</p>
-</td>
-</tr>
-<tr>
-<td>
-<p>
-胰高血糖素
-</p>
-</td>
-<td>
-<p>
-胰岛A细胞
-</p>
-</td>
-<td rowspan="5">
-<p>
-含氮激素（多肽）
-</p>
-</td>
-<td>
-<p>
-组织细胞
-</p>
-</td>
-<td>
-<p>
-调节代谢，使血糖升高，促进糖原分解和非糖物质的转换
-</p>
-</td>
-</tr>
-<tr>
-<td>
-<p>
-促胰液素
-</p>
-</td>
-<td>
-<p>
-消化管
-</p>
-</td>
-<td>
-<p>
-胰腺、胆囊
-</p>
-</td>
-<td>
-<p>
-促进胆汁和胰液中HCO3-的分泌
-</p>
-</td>
-</tr>
-<tr>
-<td>
-<p>
-血管紧张素 AT
-</p>
-</td>
-<td>
-<p>
-血、肝
-</p>
-</td>
-<td>
-<p>
-血管、肾上腺皮质
-</p>
-</td>
-<td>
-<p>
-促进血管收缩
-</p>
-<p>
-促进肾上腺皮质释放醛固酮
-</p>
-</td>
-</tr>
-<tr>
-<td>
-<p>
-抗利尿激素 ADH
-</p>
-</td>
-<td>
-<p>
-下丘脑
-</p>
-<p>
-神经垂体
-</p>
-</td>
-<td>
-<p>
-肾小管和集合管（肾脏）、血管与血小板、垂体
-</p>
-</td>
-<td>
-<p>
-增加肾脏对水分的重吸收
-</p>
-<p>
-促进血管收缩
-</p>
-<p>
-聚集血小板，促进ACTH释放
-</p>
-</td>
-</tr>
-<tr>
-<td>
-<p>
-催产素 OXT、OT
-</p>
-</td>
-<td>
-<p>
-下丘脑
-</p>
-<p>
-神经垂体
-</p>
-</td>
-<td>
-<p>
-乳腺、子宫等
-</p>
-</td>
-<td>
-<p>
-促进乳汁产生、促进分娩等
-</p>
-</td>
-</tr>
-<tr>
-<td>
-<p>
-去甲肾上腺素 NE
-</p>
-</td>
-<td>
-<p>
-肾上腺髓质
-</p>
-<p>
-神经系统
-</p>
-</td>
-<td rowspan="3">
-<p>
-含氮激素
-</p>
-<p>
-（胺类激素）
-</p>
-</td>
-<td>
-<p>
-腺垂体
-</p>
-</td>
-<td>
-<p>
-影响多种促进激素的释放（如TSH、ACTH、Gn）
-</p>
-</td>
-</tr>
-<tr>
-<td>
-<p>
-肾上腺素 E
-</p>
-</td>
-<td>
-<p>
-肾上腺髓质
-</p>
-</td>
-<td>
-<p>
-心血管细胞等
-</p>
-</td>
-<td>
-<p>
-提高多种组织的兴奋性
-</p>
-<p>
-加速代谢
-</p>
-</td>
-</tr>
-<tr>
-<td>
-<p>
-甲状腺激素 T<span>4</span>
-</p>
-</td>
-<td>
-<p>
-甲状腺
-</p>
-</td>
-<td>
-<p>
-几乎全身细胞
-</p>
-</td>
-<td>
-<p>
-调节机体代谢与生长发育
-</p>
-<p>
-甲亢、甲减
-</p>
-<p>
-大脖子病、呆小症
-</p>
-</td>
-</tr>
-<tr>
-<td>
-<p>
-褪黑激素 MLT
-</p>
-</td>
-<td>
-<p>
-松果体
-</p>
-</td>
-<td>
-<p>
-含氮激素
-</p>
-<p>
-（胺类激素）
-</p>
-</td>
-<td rowspan="4">
-</td>
-<td>
-<p>
-调节生物节律
-</p>
-</td>
-</tr>
-<tr>
-<td>
-<p>
-睾酮 T
-</p>
-</td>
-<td>
-<p>
-睾丸间质细胞
-</p>
-</td>
-<td rowspan="5">
-<p>
-类固醇激素（甾体）
-</p>
-</td>
-<td>
-<p>
-维持和促进男性生殖器官和第二性征的发育
-</p>
-</td>
-</tr>
-<tr>
-<td>
-<p>
-孕酮 P
-</p>
-</td>
-<td>
-<p>
-黄体、胎盘
-</p>
-</td>
-<td>
-<p>
-促使子宫内膜发生分泌期的变化，为受精卵着床和妊娠的维持所必需
-</p>
-</td>
-</tr>
-<tr>
-<td>
-<p>
-雌二醇 E2
-</p>
-</td>
-<td>
-<p>
-卵泡
-</p>
-<p>
-黄体、胎盘
-</p>
-</td>
-<td>
-<p>
-维持和促进女性生殖器官和第二性征的发育
-</p>
-</td>
-</tr>
-<tr>
-<td>
-<p>
-醛固酮（糖皮质）
-</p>
-</td>
-<td rowspan="2">
-<p>
-肾上腺皮质
-</p>
-</td>
-<td rowspan="2">
-<p>
-肾小管、集合管
-</p>
-</td>
-<td>
-<p>
-调节水盐代谢、促进肾脏对钠的重吸收和对钾的排泄
-</p>
-</td>
-</tr>
-<tr>
-<td>
-<p>
-皮质醇（盐皮质）
-</p>
-</td>
-<td>
-<p>
-主要影响糖代谢
-</p>
-</td>
-</tr>
-</tbody>
-</table>
+                <colgroup>
+                    <col>
+                    <col>
+                    <col>
+                    <col>
+                    <col>
+                </colgroup>
+                <thead>
+                    <tr>
+                        <td>
+                            <p>相关激素</p>
+                        </td>
+                        <td>
+                            <p>分泌腺体</p>
+                        </td>
+                        <td>
+                            <p>物质类型</p>
+                        </td>
+                        <td>
+                            <p>作用部位</p>
+                        </td>
+                        <td>
+                            <p>相关疾病、作用</p>
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <p>生长激素 GH</p>
+                        </td>
+                        <td rowspan="4">
+                            <p>腺垂体</p>
+                        </td>
+                        <td rowspan="7">
+                            <p>含氮激素</p>
+                            <p>（蛋白质）</p>
+                        </td>
+                        <td>
+                            <p>几乎全身细胞</p>
+                        </td>
+                        <td>
+                            <p>侏儒症</p>
+                            <p>巨人症</p>
+                            <p>肢端肥大症</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>促肾上腺皮质激素 ACTH</p>
+                        </td>
+                        <td>
+                            <p>肾上腺</p>
+                        </td>
+                        <td rowspan="3">
+                            <p>促进对应激素的释放</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>促性腺激素 Gn</p>
+                        </td>
+                        <td>
+                            <p>性腺</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>促甲状腺激素 TSH</p>
+                        </td>
+                        <td>
+                            <p>甲状腺</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>释放激素</p>
+                            <p><span>（促肾上腺皮质激素释放激素 CRH、促性腺激素释放激素 GnRH、促甲状腺激素释放激素  TRH）</span></p>
+                        </td>
+                        <td>
+                            <p>下丘脑</p>
+                        </td>
+                        <td>
+                            <p>腺垂体</p>
+                        </td>
+                        <td>
+                            <p>促进或抑制垂体释放对应的刺激激素，间接控制对应激素的释放</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>催乳素 PRL</p>
+                        </td>
+                        <td>
+                            <p>腺垂体、胎盘</p>
+                        </td>
+                        <td>
+                            <p>乳腺、卵巢黄体</p>
+                        </td>
+                        <td>
+                            <p>促进乳腺发育或泌乳、刺激黄体分泌黄体酮</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>胰岛素</p>
+                        </td>
+                        <td>
+                            <p>胰岛B细胞</p>
+                        </td>
+                        <td>
+                            <p>组织细胞</p>
+                        </td>
+                        <td>
+                            <p>调节代谢，促进细胞摄取、利用、分解糖类物质，促进非糖物质的转换与糖原的合成</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>胰高血糖素</p>
+                        </td>
+                        <td>
+                            <p>胰岛A细胞</p>
+                        </td>
+                        <td rowspan="5">
+                            <p>含氮激素（多肽）</p>
+                        </td>
+                        <td>
+                            <p>组织细胞</p>
+                        </td>
+                        <td>
+                            <p>调节代谢，使血糖升高，促进糖原分解和非糖物质的转换</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>促胰液素</p>
+                        </td>
+                        <td>
+                            <p>消化管</p>
+                        </td>
+                        <td>
+                            <p>胰腺、胆囊</p>
+                        </td>
+                        <td>
+                            <p>促进胆汁和胰液中HCO3-的分泌</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>血管紧张素 AT</p>
+                        </td>
+                        <td>
+                            <p>血、肝</p>
+                        </td>
+                        <td>
+                            <p>血管、肾上腺皮质</p>
+                        </td>
+                        <td>
+                            <p>促进血管收缩</p>
+                            <p>促进肾上腺皮质释放醛固酮</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>抗利尿激素 ADH</p>
+                        </td>
+                        <td>
+                            <p>下丘脑</p>
+                            <p>神经垂体</p>
+                        </td>
+                        <td>
+                            <p>肾小管和集合管（肾脏）、血管与血小板、垂体</p>
+                        </td>
+                        <td>
+                            <p>增加肾脏对水分的重吸收</p>
+                            <p>促进血管收缩</p>
+                            <p>聚集血小板，促进ACTH释放</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>催产素 OXT、OT</p>
+                        </td>
+                        <td>
+                            <p>下丘脑</p>
+                            <p>神经垂体</p>
+                        </td>
+                        <td>
+                            <p>乳腺、子宫等</p>
+                        </td>
+                        <td>
+                            <p>促进乳汁产生、促进分娩等</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>去甲肾上腺素 NE</p>
+                        </td>
+                        <td>
+                            <p>肾上腺髓质</p>
+                            <p>神经系统</p>
+                        </td>
+                        <td rowspan="3">
+                            <p>含氮激素</p>
+                            <p>（胺类激素）</p>
+                        </td>
+                        <td>
+                            <p>腺垂体</p>
+                        </td>
+                        <td>
+                            <p>影响多种促进激素的释放（如TSH、ACTH、Gn）</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>肾上腺素 E</p>
+                        </td>
+                        <td>
+                            <p>肾上腺髓质</p>
+                        </td>
+                        <td>
+                            <p>心血管细胞等</p>
+                        </td>
+                        <td>
+                            <p>提高多种组织的兴奋性</p>
+                            <p>加速代谢</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>甲状腺激素 T<span>4</span></p>
+                        </td>
+                        <td>
+                            <p>甲状腺</p>
+                        </td>
+                        <td>
+                            <p>几乎全身细胞</p>
+                        </td>
+                        <td>
+                            <p>调节机体代谢与生长发育</p>
+                            <p>甲亢、甲减</p>
+                            <p>大脖子病、呆小症</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>褪黑激素 MLT</p>
+                        </td>
+                        <td>
+                            <p>松果体</p>
+                        </td>
+                        <td>
+                            <p>含氮激素</p>
+                            <p>（胺类激素）</p>
+                        </td>
+                        <td rowspan="4">
+                        </td><td>
+                            <p>调节生物节律</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>睾酮 T</p>
+                        </td>
+                        <td>
+                            <p>睾丸间质细胞</p>
+                        </td>
+                        <td rowspan="5">
+                            <p>类固醇激素（甾体）</p>
+                        </td>
+                        <td>
+                            <p>维持和促进男性生殖器官和第二性征的发育</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>孕酮 P</p>
+                        </td>
+                        <td>
+                            <p>黄体、胎盘</p>
+                        </td>
+                        <td>
+                            <p>促使子宫内膜发生分泌期的变化，为受精卵着床和妊娠的维持所必需</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>雌二醇 E2</p>
+                        </td>
+                        <td>
+                            <p>卵泡</p>
+                            <p>黄体、胎盘</p>
+                        </td>
+                        <td>
+                            <p>维持和促进女性生殖器官和第二性征的发育</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>醛固酮（糖皮质）</p>
+                        </td>
+                        <td rowspan="2">
+                            <p>肾上腺皮质</p>
+                        </td>
+                        <td rowspan="2">
+                            <p>肾小管、集合管</p>
+                        </td>
+                        <td>
+                            <p>调节水盐代谢、促进肾脏对钠的重吸收和对钾的排泄</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>皮质醇（盐皮质）</p>
+                        </td>
+                        <td>
+                            <p>主要影响糖代谢</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
 <p>内分泌系统是机体整体功能的重要调节系统，各内分泌腺间具有复杂的功能联系，共同调控机体活动，包括维持内环境稳定、调节物质和能量代谢、调控生长发育和生殖等。</p>
 <h3 id="二激素调节的过程及体液调节与激素调节的关系">二、激素调节的过程及体液调节与激素调节的关系</h3>
-<p><strong><em>激素等化学物质</em>通过<em>体液传送</em>的方式对生命活动进行调节，称为<em>体液调节</em></strong>。低等动物只有体液调节没有神经调节。体液调节和神经调节相辅相成、各具优势。</p>
-<h4 id="血糖平衡调节">1. 血糖平衡调节</h4>
+<p><em><em><em>激素等化学物质</em>通过</em>体液传送</em>的方式对生命活动进行调节，称为<em>体液调节</em>**。低等动物只有体液调节没有神经调节。体液调节和神经调节相辅相成、各具优势。</p>
+<h4 id="1-血糖平衡调节">1. 血糖平衡调节</h4>
 <p>控制血糖降低：</p>
 <ol type="1">
 <li><p>血糖升高后胰岛B细胞活性上升，释放胰岛素。另一方面，下丘脑被触发，传递信息给垂体，进而传递信息给胰岛B细胞促进释放。</p></li>
@@ -907,29 +817,26 @@ GnRH、促甲状腺激素释放激素 TRH）</span>
 <li><p>主要：胰岛A细胞活动增强，释放胰高血糖素，促进肝糖原分解葡萄糖，促进非糖物质转变为糖（增加来向）。</p></li>
 <li><p>次要：糖皮质激素（肾上腺皮质）、肾上腺素（肾上腺）、甲状腺激素（甲状腺）。</p></li>
 </ol>
-<p><strong><em>反馈调节</em>指一个系统中，系统本身工作的效果反过来作为信息，调节该系统的工作的调节。</strong>反馈调节对于机体维持稳态有重要意义。反馈分为正反馈调节（反馈信息促进与加强控制部分的活动（加强生理过程直至完成））和负反馈调节（反馈信息与控制信息的作用方向相反，纠正控制信息的效应）。</p>
-<figure>
-<img src="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/6.png" alt="img">
-<figcaption aria-hidden="true">img</figcaption>
-</figure>
-<h4 id="甲状腺激素调节">2. 甲状腺激素调节</h4>
+<p>**<em>反馈调节</em>指一个系统中，系统本身工作的效果反过来作为信息，调节该系统的工作的调节。**反馈调节对于机体维持稳态有重要意义。反馈分为正反馈调节（反馈信息促进与加强控制部分的活动（加强生理过程直至完成））和负反馈调节（反馈信息与控制信息的作用方向相反，纠正控制信息的效应）。</p>
+<p><img src="https://raw.githubusercontent.com/PassionPenguin/picgo-database/main/6.png" alt="img"></p>
+<h4 id="2-甲状腺激素调节">2. 甲状腺激素调节</h4>
 <p>下丘脑—垂体—甲状腺：寒冷刺激⇒下丘脑⇒TRH⇒TSH⇒甲状腺⇒下丘脑、垂体（<strong>反馈+分级</strong>），我们把类似下丘脑、垂体和靶腺体之间存在的分层调控称为<em>分级调节</em>。分级调节可以放大激素调节的调节效应，形成<strong>多级反馈调节</strong>，有利于<strong>精细调控</strong>，进而维持机体稳态。</p>
 <p>激素调节的特点是<strong><em>体液运输</em>（血液、淋巴循环系统）、<em>作用于靶器官与靶细胞</em>（激素选择靶细胞）、<em>作为信使传递信息</em>（只传信息不催化不供能不组成细胞结构）、<em>微量激素与高效调节</em></strong>。</p>
 <p>不同激素对同一生理效应发挥同样作用：协同。不同激素对同一生理效应发挥相反作用：拮抗。</p>
-<h4 id="体温调节">3. 体温调节</h4>
+<h4 id="3-体温调节">3. 体温调节</h4>
 <p>体温保持相对恒定，是产热与散热<strong>动态平衡</strong>的结果。</p>
-<p>产热：<strong><em>代谢产热</em></strong>是机体热量的主要来源。安静状态下，肝脑器官是主要的热量来源。运动时，骨骼肌是主要的产热器官。</p>
-<p>散热：<strong><em>皮肤</em></strong>是人体最主要的散热器官。皮肤散热的具体方式是<strong>辐射、传导与蒸发</strong>。冷觉感受器和热觉感受器位于皮肤中。</p>
+<p>产热：<em><strong>代谢产热</strong></em>是机体热量的主要来源。安静状态下，肝脑器官是主要的热量来源。运动时，骨骼肌是主要的产热器官。</p>
+<p>散热：<em><strong>皮肤</strong></em>是人体最主要的散热器官。皮肤散热的具体方式是<strong>辐射、传导与蒸发</strong>。冷觉感受器和热觉感受器位于皮肤中。</p>
 <p>寒冷环境，冷觉感受器受到刺激，传递到下丘脑体温调节中枢，经过神经中枢的分析与综合，产生如下结果：使皮肤血管收缩，减缓皮肤血流量以减少散热；另一方面，汗腺分泌量减少，使蒸发散热减少。使骨骼肌战栗，增加产热；另一方面，释放甲状腺激素与肾上腺素，促进代谢的增快。</p>
 <p>炎热环境，热觉感受器受到刺激，传递到下丘脑体温调节中枢，经过神经中枢的分析与综合，产生如下结果：使皮肤血管舒张，增快皮肤血液流动速度以增加散热；另一方面，汗腺分泌量增多，使蒸发散热增多。</p>
 <p>人的调节体温能力是<strong>有限的</strong>。体温过低过高都会<strong>影响正常代谢</strong>，使细胞、组织与器官发生<strong>功能紊乱</strong>，破坏内环境稳态，严重时危及生命。</p>
-<h4 id="水盐平衡调节">4. 水盐平衡调节</h4>
+<h4 id="4-水盐平衡调节">4. 水盐平衡调节</h4>
 <p>人体每天都通过饮水、进食等方式摄入水分，通过排汗排尿等方式排出水。机体能够通过调节尿量进而维持机体水平衡。</p>
 <p>体内渗透压过高时，机体会释放抗利尿激素，并产生渴觉以增加水的摄入量。体内渗透压过低时，机体会减少抗利尿激素的释放，以通过肾脏排出更多的水分。</p>
 <p>大量失水（如大量出汗等情况）下，一般而言（这里指低渗性脱水）血钠含量会降低，促使肾上腺皮质增加分泌醛固醇，以促进肾小管和集合管对钠离子的重吸收，维持血钠平衡。</p>
-<p><strong><em>抗利尿激素</em>是下丘脑<em>分泌</em>垂体<em>储存并释放</em></strong>的激素，用于<strong>增加肾小管和集合管对水分的吸收</strong>。</p>
+<p><em><em><em>抗利尿激素</em>是下丘脑</em>分泌</em>垂体<em>储存并释放</em><strong>的激素，用于</strong>增加肾小管和集合管对水分的吸收**。</p>
 <p>水盐平衡对维持人体的稳态起着非常重要的作用，是人体各种生命活动正常进行的必要条件。</p>
-<h4 id="神经调节与体液调节">5. 神经调节与体液调节</h4>
+<h4 id="5-神经调节与体液调节">5. 神经调节与体液调节</h4>
 <p>不少内分泌腺直接或间接地受到中枢神经系统的调节，<strong>体液调节可以看作是神经调节的一部分</strong>。另一方面，内分泌腺分泌的激素（如T4）也<strong>影响神经系统的发育与各项功能</strong>。</p>
     </div>
 
@@ -1022,8 +929,8 @@ GnRH、促甲状腺激素释放激素 TRH）</span>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%BC%E8%A8%80"><span class="nav-text">导言</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%BE%E7%A8%8B%E6%A0%87%E5%87%86"><span class="nav-text">课程标准</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%A6%E4%B8%9A%E8%A6%81%E6%B1%82"><span class="nav-text">学业要求</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%85%E5%AE%B9%E8%AF%B4%E6%98%8E"><span class="nav-text">内容说明</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9F%A5%E8%AF%86%E8%81%9A%E7%84%A6"><span class="nav-text">知识聚焦</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E6%BF%80%E7%B4%A0%E4%B8%8E%E5%86%85%E5%88%86%E6%B3%8C%E7%B3%BB%E7%BB%9F"><span class="nav-text">一、激素与内分泌系统</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%BF%80%E7%B4%A0%E7%9A%84%E5%8F%91%E7%8E%B0"><span class="nav-text">1. 激素的发现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%BF%80%E7%B4%A0%E8%B0%83%E8%8A%82%E5%8F%8A%E4%B8%BB%E8%A6%81%E6%BF%80%E7%B4%A0%E4%B8%8E%E5%86%85%E5%88%86%E6%B3%8C%E8%85%BA"><span class="nav-text">2.
-激素调节及主要激素与内分泌腺</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E6%BF%80%E7%B4%A0%E8%B0%83%E8%8A%82%E7%9A%84%E8%BF%87%E7%A8%8B%E5%8F%8A%E4%BD%93%E6%B6%B2%E8%B0%83%E8%8A%82%E4%B8%8E%E6%BF%80%E7%B4%A0%E8%B0%83%E8%8A%82%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-text">二、激素调节的过程及体液调节与激素调节的关系</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A1%80%E7%B3%96%E5%B9%B3%E8%A1%A1%E8%B0%83%E8%8A%82"><span class="nav-text">1. 血糖平衡调节</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%B2%E7%8A%B6%E8%85%BA%E6%BF%80%E7%B4%A0%E8%B0%83%E8%8A%82"><span class="nav-text">2. 甲状腺激素调节</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%93%E6%B8%A9%E8%B0%83%E8%8A%82"><span class="nav-text">3. 体温调节</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B0%B4%E7%9B%90%E5%B9%B3%E8%A1%A1%E8%B0%83%E8%8A%82"><span class="nav-text">4. 水盐平衡调节</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A5%9E%E7%BB%8F%E8%B0%83%E8%8A%82%E4%B8%8E%E4%BD%93%E6%B6%B2%E8%B0%83%E8%8A%82"><span class="nav-text">5. 神经调节与体液调节</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%BC%E8%A8%80"><span class="nav-text">导言</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%BE%E7%A8%8B%E6%A0%87%E5%87%86"><span class="nav-text">课程标准</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%A6%E4%B8%9A%E8%A6%81%E6%B1%82"><span class="nav-text">学业要求</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%85%E5%AE%B9%E8%AF%B4%E6%98%8E"><span class="nav-text">内容说明</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9F%A5%E8%AF%86%E8%81%9A%E7%84%A6"><span class="nav-text">知识聚焦</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E6%BF%80%E7%B4%A0%E4%B8%8E%E5%86%85%E5%88%86%E6%B3%8C%E7%B3%BB%E7%BB%9F"><span class="nav-text">一、激素与内分泌系统</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E6%BF%80%E7%B4%A0%E7%9A%84%E5%8F%91%E7%8E%B0"><span class="nav-text">1. 激素的发现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E6%BF%80%E7%B4%A0%E8%B0%83%E8%8A%82%E5%8F%8A%E4%B8%BB%E8%A6%81%E6%BF%80%E7%B4%A0%E4%B8%8E%E5%86%85%E5%88%86%E6%B3%8C%E8%85%BA"><span class="nav-text">2.
+激素调节及主要激素与内分泌腺</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E6%BF%80%E7%B4%A0%E8%B0%83%E8%8A%82%E7%9A%84%E8%BF%87%E7%A8%8B%E5%8F%8A%E4%BD%93%E6%B6%B2%E8%B0%83%E8%8A%82%E4%B8%8E%E6%BF%80%E7%B4%A0%E8%B0%83%E8%8A%82%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-text">二、激素调节的过程及体液调节与激素调节的关系</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E8%A1%80%E7%B3%96%E5%B9%B3%E8%A1%A1%E8%B0%83%E8%8A%82"><span class="nav-text">1. 血糖平衡调节</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E7%94%B2%E7%8A%B6%E8%85%BA%E6%BF%80%E7%B4%A0%E8%B0%83%E8%8A%82"><span class="nav-text">2. 甲状腺激素调节</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E4%BD%93%E6%B8%A9%E8%B0%83%E8%8A%82"><span class="nav-text">3. 体温调节</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E6%B0%B4%E7%9B%90%E5%B9%B3%E8%A1%A1%E8%B0%83%E8%8A%82"><span class="nav-text">4. 水盐平衡调节</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-%E7%A5%9E%E7%BB%8F%E8%B0%83%E8%8A%82%E4%B8%8E%E4%BD%93%E6%B6%B2%E8%B0%83%E8%8A%82"><span class="nav-text">5. 神经调节与体液调节</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -1104,12 +1011,12 @@ GnRH、促甲状腺激素释放激素 TRH）</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">1.1m</span>
+    <span title="Symbols count total">921k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">34:12</span>
+    <span title="Reading time total">27:54</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT</a>
   </div>

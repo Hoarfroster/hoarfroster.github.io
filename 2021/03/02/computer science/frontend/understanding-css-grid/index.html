@@ -148,7 +148,119 @@
   </style>
 </noscript>
 
-</head>
+<style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
   <div class="container use-motion">
@@ -318,13 +430,13 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-              <span>3.6k</span>
+              <span>3.4k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
-              <span>7 mins.</span>
+              <span>6 mins.</span>
             </span>
             <div class="post-description">CSS 栅格布局（Grid）是一种全新的在 Web 上创建二维布局的方法。我们仅需几行 CSS，就可以创建一个之前不用 JavaScript 根本不可能实现的栅格布局。我们不需要任何插件或复杂的安装步骤，不需要繁琐的附加文件，同时也不需要局限于 12 列的栅格布局（译者注：指 Bootstrap 提供的 12 栅格系统）。</div>
 
@@ -369,11 +481,7 @@ JavaScript
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;div</span> <span class="er">class</span><span class="ot">=</span><span class="st">"item color-4"</span><span class="kw">&gt;</span>item-4<span class="kw">&lt;/div&gt;</span></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;div</span> <span class="er">class</span><span class="ot">=</span><span class="st">"item color-5"</span><span class="kw">&gt;</span>item-5<span class="kw">&lt;/div&gt;</span></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/div&gt;</span></span></code></pre></div>
-<figure>
-<img src="https://cdn-images-1.medium.com/max/2800/0*lCX1UQBdGhuXCuJl.jpeg" alt="我额外添加了一些 CSS 代码让大家更好理解，与 Grid 实现毫无关系">
-<figcaption aria-hidden="true">我额外添加了一些 CSS
-代码让大家更好理解，与 Grid 实现毫无关系</figcaption>
-</figure>
+<p><img src="https://cdn-images-1.medium.com/max/2800/0*lCX1UQBdGhuXCuJl.jpeg" alt="我额外添加了一些 CSS 代码让大家更好理解，与 Grid 实现毫无关系"></p>
 <h3 id="基础在-css-中设置栅格和行列">基础：在 CSS 中设置栅格和行列</h3>
 <p>在 CSS 中，我们可以通过 <code>display: grid</code> 定义将
 <code>.container</code> 类的元素变为栅格布局。通过使用
@@ -381,11 +489,11 @@ JavaScript
 列，每列设置为 250px）。通过使用
 <code>grid-template-rows</code>，我们可以设置行的高度（如果需要的话），本例中是
 150px。完成以上步骤之后，我们就实现了第一个栅格布局！</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.container</span> &#123;</span>
+<div class="sourceCode" id="cb2"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.container</span> {</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">display</span>: grid<span class="op">;</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">grid-template-columns</span>: <span class="dv">250</span><span class="dt">px</span> <span class="dv">250</span><span class="dt">px</span> <span class="dv">250</span><span class="dt">px</span> <span class="dv">250</span><span class="dt">px</span> <span class="dv">250</span><span class="dt">px</span><span class="op">;</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">grid-template-rows</span>: <span class="dv">150</span><span class="dt">px</span><span class="op">;</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>&#125;</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">/* 缩写：</span></span>
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"> grid-template-columns: repeat(5, 250px); */</span> </span></code></pre></div>
@@ -396,17 +504,13 @@ JavaScript
 分别设置水平和垂直的间隔。顺便提一句，我们可以使用所有通用单位，例如使用
 <code>px</code> 用于设置固定的间隔，或使用 <code>％</code>
 来设置自适应的间隔。</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.container</span> &#123;</span>
+<div class="sourceCode" id="cb3"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.container</span> {</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">display</span>: grid<span class="op">;</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">grid-template-columns</span>: <span class="fu">repeat(</span><span class="dv">5</span><span class="op">,</span> <span class="dv">250</span><span class="dt">px</span><span class="fu">)</span><span class="op">;</span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">grid-template-rows</span>: <span class="dv">150</span><span class="dt">px</span><span class="op">;</span></span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">grid-gap</span>: <span class="dv">30</span><span class="dt">px</span><span class="op">;</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>&#125;</span></code></pre></div>
-<figure>
-<img src="https://cdn-images-1.medium.com/max/2800/0*CR0ENpYQu_-fNCuD.png" alt="需要注意的是容器的左边会将间隔减半，因此在本例中他们的间隔是 15px（对大多数其它的栅格同理）">
-<figcaption aria-hidden="true">需要注意的是容器的左边会将间隔减半，因此在本例中他们的间隔是
-15px（对大多数其它的栅格同理）</figcaption>
-</figure>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p><img src="https://cdn-images-1.medium.com/max/2800/0*CR0ENpYQu_-fNCuD.png" alt="需要注意的是容器的左边会将间隔减半，因此在本例中他们的间隔是 15px（对大多数其它的栅格同理）"></p>
 <p><small>译者注：在 Chrome 91，Safari 14.0.2，Firefox 86.0a1
 均未有此现象，估摸为原文笔误或版本不同</small></p>
 <h3 id="使用-fr-自动填充剩余空间">使用 <code>fr</code>
@@ -416,104 +520,94 @@ JavaScript
 <code>fr</code>，根据我们自己的想法分配可用空间！例如，在这里，我们将屏幕空间划分为
 6 个部分。 第一列占用空间的 1/6 = 1fr，第二列 3/6 = 3fr，第三列 2/6 =
 2fr。当然，我们也可以根据需要添加 <code>grid-gap</code>。</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.container</span> &#123;</span>
+<div class="sourceCode" id="cb4"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.container</span> {</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">display</span>: grid<span class="op">;</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">grid-template-columns</span>: <span class="dv">1</span>fr <span class="dv">3</span>fr <span class="dv">2</span>fr<span class="op">;</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>&#125;</span></code></pre></div>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p><img src="https://cdn-images-1.medium.com/max/2980/0*yh7hFOcFs43LM9q8.gif"></p>
 <p>现在所有的行都是自适应的！</p>
 <h3 id="混合使用-px-和-fr-构建自适应而又固定的列">混合使用
 <code>px</code> 和 <code>fr</code> 构建自适应而又固定的列</h3>
 <p><code>px</code> 和 <code>fr</code>
 的按需同时使用可以让栅格适应可用的空间，这非常好用！</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.container</span> &#123;</span>
+<div class="sourceCode" id="cb5"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.container</span> {</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">display</span>: grid<span class="op">;</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">grid-template-columns</span>: <span class="dv">300</span><span class="dt">px</span> <span class="dv">3</span>fr <span class="dv">2</span>fr<span class="op">;</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>&#125;</span></code></pre></div>
-<figure>
-<img src="https://cdn-images-1.medium.com/max/2000/0*9buHg29Y9pG0bJir.gif" alt="第一列用了 px 去固定尺寸，而剩余的布局是自适应的">
-<figcaption aria-hidden="true">第一列用了 <code>px</code>
-去固定尺寸，而剩余的布局是自适应的</figcaption>
-</figure>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p><img src="https://cdn-images-1.medium.com/max/2000/0*9buHg29Y9pG0bJir.gif" alt="第一列用了 px 去固定尺寸，而剩余的布局是自适应的"></p>
 <h3 id="排序上的绝对自由">排序上的绝对自由</h3>
 <p>私以为，最棒的是在栅格中，我们可以自由设置每一项所占用的尺寸！我们可以用
 <code>grid-column-start</code> 设置起点，并用
 <code>grid-column-end</code> 设置终点，或采用缩写方式
 <code>grid-column: startpoint / endpoint;</code>：</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.container</span> &#123;</span>
+<div class="sourceCode" id="cb6"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.container</span> {</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">display</span>: grid<span class="op">;</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">grid-template-columns</span>: <span class="dv">1</span>fr <span class="dv">3</span>fr <span class="dv">2</span>fr<span class="op">;</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>&#125;</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="fu">.item-1</span> &#123;</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="fu">.item-1</span> {</span>
 <span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">grid-column</span>: <span class="dv">1</span> / <span class="dv">4</span><span class="op">;</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>&#125;</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="fu">.item-5</span> &#123;</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="fu">.item-5</span> {</span>
 <span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">grid-column</span>: <span class="dv">3</span> / <span class="dv">4</span><span class="op">;</span></span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>&#125;</span></code></pre></div>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p><img src="https://cdn-images-1.medium.com/max/2800/0*fGVZP5_NMbf9UJs3.png"></p>
 <p>别被栅格线所迷惑，它们总是在第一项的开始！</p>
 <h3 id="同样适用于垂直或全区域的分布">同样适用于垂直或全区域的分布！</h3>
 <p>在这方面 CSS Grid 耀眼十足，表现出了对比 Bootstrap 和 Co 的优越性 ——
 借助
 <code>grid-row</code>，每一项都可以定义任意的位置及宽度。正如我们将在下一个示例中看到的那样，这对于适应不同屏幕尺寸和设备具有绝对优势：</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.container</span> &#123;</span>
+<div class="sourceCode" id="cb7"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.container</span> {</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">display</span>: grid<span class="op">;</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">grid-template-columns</span>: <span class="dv">1</span>fr <span class="dv">3</span>fr <span class="dv">2</span>fr<span class="op">;</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>&#125;</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="fu">.item-2</span> &#123;</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="fu">.item-2</span> {</span>
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">grid-row</span>: <span class="dv">1</span> / <span class="dv">3</span><span class="op">;</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>&#125;</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="fu">.item-1</span> &#123;</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="fu">.item-1</span> {</span>
 <span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">grid-column</span>: <span class="dv">1</span> / <span class="dv">4</span><span class="op">;</span></span>
 <span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">grid-row</span>: <span class="dv">3</span> / <span class="dv">4</span><span class="op">;</span></span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>&#125;</span></code></pre></div>
-<figure>
-<img src="https://cdn-images-1.medium.com/max/2800/0*a3fS5-GjETjWhArV.png" alt="任何垂直方向上的宽度和位置">
-<figcaption aria-hidden="true">任何垂直方向上的宽度和位置</figcaption>
-</figure>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p><img src="https://cdn-images-1.medium.com/max/2800/0*a3fS5-GjETjWhArV.png" alt="任何垂直方向上的宽度和位置 "></p>
 <h3 id="想要适应不同的屏幕尺寸和设备当然没问题">想要适应不同的屏幕尺寸和设备？当然没问题！</h3>
 <p>CSS Grid
 与常规栅格相比也具有明显的优势，根据屏幕大小，我们不仅可以通过媒体查询从自适应值切换到固定值，还可以调整整个项目的位置！</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.container</span> &#123;</span>
+<div class="sourceCode" id="cb8"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.container</span> {</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">display</span>: grid<span class="op">;</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">grid-template-columns</span>: <span class="dv">250</span><span class="dt">px</span> <span class="dv">3</span>fr <span class="dv">2</span>fr<span class="op">;</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>&#125;</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="fu">.item-1</span> &#123;</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="fu">.item-1</span> {</span>
 <span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">grid-column</span>: <span class="dv">1</span> / <span class="dv">4</span><span class="op">;</span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>&#125;</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="fu">.item-2</span> &#123;</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="fu">.item-2</span> {</span>
 <span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">grid-row</span>: <span class="dv">2</span> / <span class="dv">4</span><span class="op">;</span></span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>&#125;</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="im">@media</span> <span class="kw">only</span> <span class="dv">screen</span> <span class="kw">and</span> (<span class="kw">max-width</span>: <span class="dv">720</span><span class="dt">px</span>) &#123;</span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">.container</span> &#123;</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="im">@media</span> <span class="kw">only</span> <span class="dv">screen</span> <span class="kw">and</span> (<span class="kw">max-width</span>: <span class="dv">720</span><span class="dt">px</span>) {</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">.container</span> {</span>
 <span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>        <span class="kw">grid-template-columns</span>: <span class="dv">1</span>fr <span class="dv">1</span>fr<span class="op">;</span></span>
-<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>    &#125;</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>    }</span>
 <span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">.item-1</span> &#123;</span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">.item-1</span> {</span>
 <span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>        <span class="kw">grid-column</span>: <span class="dv">1</span> / <span class="dv">3</span><span class="op">;</span></span>
 <span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>        <span class="kw">grid-row</span>: <span class="dv">2</span> / <span class="dv">3</span><span class="op">;</span></span>
-<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>    &#125;</span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>    }</span>
 <span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">.item-2</span> &#123;</span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">.item-2</span> {</span>
 <span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>        <span class="kw">grid-row</span>: <span class="dv">1</span> / <span class="dv">1</span><span class="op">;</span></span>
-<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>    &#125;</span>
-<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>&#125;</span></code></pre></div>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p><img src="https://cdn-images-1.medium.com/max/2856/0*zF54G2_cLwYLyNh-.gif"></p>
 <h2 id="浏览器支持">浏览器支持</h2>
 <p>现在，所有现代浏览器（Safari、Chrome、Firefox、Edge）都原生地支持 CSS
 Grid。凭借 87.85% 的全球支持率（译者注：截止至译文发布时，支持率已达到
 95.47％），CSS Grid 已经成为 Boostrap 和 Co 的替代品。</p>
-<figure>
-<img src="https://github.com/PassionPenguin/picgo-database/blob/main/understanding-css-grid-caniuse.com__search=CSS%2520Grid.png?raw=true" alt="2021 年 3 月的状态，数据来自 caniuse.com">
-<figcaption aria-hidden="true">2021 年 3 月的状态，数据来自 <a target="_blank" rel="noopener" href="https://caniuse.com/#search=CSS%20Grid">caniuse.com</a></figcaption>
-</figure>
+<p><img src="https://github.com/PassionPenguin/picgo-database/blob/main/understanding-css-grid-caniuse.com__search=CSS%2520Grid.png?raw=true" alt="2021 年 3 月的状态，数据来自 caniuse.com"></p>
 <h2 id="css-栅格的实践案例">CSS 栅格的实践案例</h2>
 <ul>
 <li><a target="_blank" rel="noopener" href="http://www.christinevallaure.com">christinevallaure.com,</a>，UX/UI
@@ -709,12 +803,12 @@ px 和 fr 构建自适应而又固定的列</span></a></li><li class="nav-item n
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">1.1m</span>
+    <span title="Symbols count total">921k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">34:12</span>
+    <span title="Reading time total">27:54</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT</a>
   </div>

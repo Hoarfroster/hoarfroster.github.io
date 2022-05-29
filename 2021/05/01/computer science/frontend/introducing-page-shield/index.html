@@ -139,7 +139,119 @@
   </style>
 </noscript>
 
-</head>
+<style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
   <div class="container use-motion">
@@ -305,7 +417,7 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-              <span>3k</span>
+              <span>2.9k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
@@ -390,20 +502,12 @@ Cloudflare
 发送报告。由于我们使用的是纯报告头，因此不需要应用程序所有者维护允许列表以获得相关的见解。</p>
 <p>对于我们看到的每一份报告，我们会将 JavaScript
 文件与该区域的历史依赖性进行比较，并检查该文件是否是新的。如果是，我们会发出警报，以便客户可以调查并确定是否是预期的变化。</p>
-<figure>
-<img src="https://blog.cloudflare.com/content/images/2021/03/image1-40.png" alt="位于 Firewall -> Page Shield 下的 Script Monitor 用户界面">
-<figcaption aria-hidden="true">位于 Firewall -&gt; Page Shield 下的
-Script Monitor 用户界面</figcaption>
-</figure>
+<p><img src="https://blog.cloudflare.com/content/images/2021/03/image1-40.png" alt="位于 Firewall -> Page Shield 下的 Script Monitor 用户界面"></p>
 <p>脚本监控界面位于防火墙-&gt;页面屏蔽下。</p>
 <p>作为测试版参与者，您将在您的 zone 仪表板的防火墙部分下看到 Page
 Shield 标签。在那里，您可以找到脚本监控表，跟踪您区域的 JavaScript
 依赖性。对于每个依赖项，你可以查看首次看到的日期、最后看到的日期以及检测到它的主机域。</p>
-<figure>
-<img src="https://blog.cloudflare.com/content/images/2021/03/image2-34.png" alt="发现新的 JavaScript 依赖关系的电子邮件通知示例">
-<figcaption aria-hidden="true">发现新的 JavaScript
-依赖关系的电子邮件通知示例</figcaption>
-</figure>
+<p><img src="https://blog.cloudflare.com/content/images/2021/03/image2-34.png" alt="发现新的 JavaScript 依赖关系的电子邮件通知示例"></p>
 <p>您还可以在仪表板中配置脚本监视器通知。每当您的网站请求一个新的
 JavaScript 文件时，这些通知就会向电子邮件或 PagerDuty 发送警报。</p>
 <h2 id="未来期望">未来期望</h2>
@@ -599,12 +703,12 @@ JavaScript。</p>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">1.1m</span>
+    <span title="Symbols count total">921k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">34:12</span>
+    <span title="Reading time total">27:54</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT</a>
   </div>

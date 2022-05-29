@@ -146,7 +146,119 @@
   </style>
 </noscript>
 
-</head>
+<style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
   <div class="container use-motion">
@@ -316,7 +428,7 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-              <span>10k</span>
+              <span>9.8k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
@@ -373,13 +485,13 @@ Flutter + Lottie 之旅吧。</p>
 <code>android/app/build.gradle</code> 文件）（在这里我也同样添加了
 Constraint Layout）</li>
 </ol>
-<div class="sourceCode" id="cb1"><pre class="sourceCode groovy"><code class="sourceCode groovy"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>dependencies <span class="op">&#123;</span></span>
+<div class="sourceCode" id="cb1"><pre class="sourceCode groovy"><code class="sourceCode groovy"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>dependencies <span class="op">{</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>   <span class="op">...</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">implementation</span> <span class="st">"com.airbnb.android:lottie:3.5.0"</span> # 当前版本 <span class="fl">3.6.0</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>   implementation <span class="st">"androidx.constraintlayout:constraintlayout:2.0.4"</span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>   # 译者注：原文为 implementation <span class="st">"com.android.support.constraint:constraint-layout:2.0.4"</span> 但 Lottie <span class="fl">2.8</span><span class="op">+</span> 只支持 AndroidX 项目</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>   <span class="op">...</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="op">&#125;</span></span></code></pre></div>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <ol start="2" type="1">
 <li>在 <code>AndroidManifest.xml</code> 中删去 <code>name</code> 为
 io.flutter.embedding.android.SplashScreenDrawable 的
@@ -472,14 +584,14 @@ io.flutter.embedding.android.SplashScreenDrawable 的
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">android</span><span class="op">.</span><span class="im">view</span><span class="op">.</span><span class="im">View</span></span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">io</span><span class="op">.</span><span class="im">flutter</span><span class="op">.</span><span class="im">embedding</span><span class="op">.</span><span class="im">android</span><span class="op">.</span><span class="im">SplashScreen</span></span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> SplashView <span class="op">:</span> <span class="dt">SplashScreen</span> <span class="op">&#123;</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> SplashView <span class="op">:</span> <span class="dt">SplashScreen</span> <span class="op">{</span></span>
 <span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">override</span> <span class="kw">fun</span> <span class="fu">createSplashView</span><span class="op">(</span><span class="va">context</span><span class="op">:</span> <span class="dt">Context</span><span class="op">,</span> <span class="va">savedInstanceState</span><span class="op">:</span> <span class="dt">Bundle</span><span class="op">?):</span> <span class="dt">View</span><span class="op">?</span> <span class="op">=</span></span>
 <span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>            LayoutInflater<span class="op">.</span>from<span class="op">(</span>context<span class="op">).</span>inflate<span class="op">(</span>R<span class="op">.</span>layout<span class="op">.</span>splash_view<span class="op">,</span> <span class="kw">null</span><span class="op">,</span> <span class="kw">false</span><span class="op">)</span></span>
 <span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">override</span> <span class="kw">fun</span> <span class="fu">transitionToFlutter</span><span class="op">(</span><span class="va">onTransitionComplete</span><span class="op">:</span> <span class="dt">Runnable</span><span class="op">)</span> <span class="op">&#123;</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">override</span> <span class="kw">fun</span> <span class="fu">transitionToFlutter</span><span class="op">(</span><span class="va">onTransitionComplete</span><span class="op">:</span> <span class="dt">Runnable</span><span class="op">)</span> <span class="op">{</span></span>
 <span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>        onTransitionComplete<span class="op">.</span>run<span class="op">()</span></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    <span class="op">&#125;</span></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="op">&#125;</span></span></code></pre></div>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>如你所见，此视图 Inflate 了 <code>splash_view</code>
 布局文件。最后一步是告诉 <code>MainActivity</code>
 我们的自定义启动视图。</p>
@@ -490,22 +602,15 @@ io.flutter.embedding.android.SplashScreenDrawable 的
 <div class="sourceCode" id="cb5"><pre class="sourceCode kotlin"><code class="sourceCode kotlin"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">io</span><span class="op">.</span><span class="im">flutter</span><span class="op">.</span><span class="im">embedding</span><span class="op">.</span><span class="im">android</span><span class="op">.</span><span class="im">FlutterActivity</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">io</span><span class="op">.</span><span class="im">flutter</span><span class="op">.</span><span class="im">embedding</span><span class="op">.</span><span class="im">android</span><span class="op">.</span><span class="im">SplashScreen</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> MainActivity<span class="op">:</span> <span class="dt">FlutterActivity</span><span class="op">()</span> <span class="op">&#123;</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> MainActivity<span class="op">:</span> <span class="dt">FlutterActivity</span><span class="op">()</span> <span class="op">{</span></span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">override</span> <span class="kw">fun</span> <span class="fu">provideSplashScreen</span><span class="op">():</span> <span class="dt">SplashScreen</span><span class="op">?</span> <span class="op">=</span> SplashView<span class="op">()</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="op">&#125;</span></span></code></pre></div>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>现在项目的目录应该像这样：</p>
-<figure>
-<img src="https://cdn-images-1.medium.com/max/2000/1*kj2sZaD-YWBgNaEXYAwqbg.png" alt="Android 项目目录">
-<figcaption aria-hidden="true">Android 项目目录</figcaption>
-</figure>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*kj2sZaD-YWBgNaEXYAwqbg.png" alt="Android 项目目录"></p>
 <p>这就是 Android 下 Lottie 构建 Splash
 启动页的方法，只需要跑一下这个应用程序然后你就能够看到应用程序启动时候的动画了。</p>
-<figure>
-<img src="https://cdn-images-1.medium.com/max/2000/1*EDVg6zpUrwJ39ppvlN7nTA.gif" alt="Android 中使用了动画的 Splash 页面">
-<figcaption aria-hidden="true">Android 中使用了动画的 Splash
-页面</figcaption>
-</figure>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*EDVg6zpUrwJ39ppvlN7nTA.gif" alt="Android 中使用了动画的 Splash 页面"></p>
 <h2 id="ios">iOS</h2>
 <p>让我们在 iOS 中添加启动页：</p>
 <ol type="1">
@@ -520,20 +625,13 @@ io.flutter.embedding.android.SplashScreenDrawable 的
 号来做到这一点。点击之后，屏幕中将弹出一个窗口。我们在输入框处输入 View
 Controller
 搜索并将这个控件拖动到编辑器中即可），如以下屏幕快照所示：</p>
-<figure>
-<img src="https://cdn-images-1.medium.com/max/7108/1*L9EKQQFnxtozE_xgcpVkfw.png" alt="添加一个新的 View Controller">
-<figcaption aria-hidden="true">添加一个新的 View Controller</figcaption>
-</figure>
+<p><img src="https://cdn-images-1.medium.com/max/7108/1*L9EKQQFnxtozE_xgcpVkfw.png" alt="添加一个新的 View Controller"></p>
 <ol start="3" type="1">
 <li>完成了第二步之后，你会看到两个屏幕。选择新的 View Controller
 然后点击 <code>attributes inspector</code>，然后再点击
 <code>is initial view controller</code> .</li>
 </ol>
-<figure>
-<img src="https://cdn-images-1.medium.com/max/3826/1*TzWohD3MyARxjm7Vetmzow.png" alt="设置 Splash View Controller 为起始的 View Controller">
-<figcaption aria-hidden="true">设置 Splash View Controller 为起始的 View
-Controller</figcaption>
-</figure>
+<p><img src="https://cdn-images-1.medium.com/max/3826/1*TzWohD3MyARxjm7Vetmzow.png" alt="设置 Splash View Controller 为起始的 View Controller"></p>
 <ol start="4" type="1">
 <li>我们需要在 <code>ios/Podfile</code> 文件中添加 Lottie 依赖;</li>
 </ol>
@@ -569,22 +667,22 @@ ios 项目，在项目根目录处（相对于 Flutter
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">Flutter</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="at">@UIApplicationMain</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="at">@objc</span> <span class="kw">class</span> AppDelegate<span class="op">:</span> <span class="dt">FlutterAppDelegate</span> <span class="op">&#123;</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="at">@objc</span> <span class="kw">class</span> AppDelegate<span class="op">:</span> <span class="dt">FlutterAppDelegate</span> <span class="op">{</span></span>
 <span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">lazy</span> <span class="kw">var</span> <span class="va">flutterEngine</span> <span class="op">=</span> FlutterEngine<span class="op">(</span>name<span class="op">:</span> <span class="st">"MyApp"</span><span class="op">)</span></span>
 <span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">override</span> <span class="kw">func</span> <span class="fu">application</span><span class="op">(</span></span>
 <span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>        <span class="va">_</span> <span class="va">application</span><span class="op">:</span> <span class="dt">UIApplication</span><span class="op">,</span></span>
 <span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>        <span class="va">didFinishLaunchingWithOptions</span> <span class="va">launchOptions</span><span class="op">:</span> [<span class="dt">UIApplication</span>.<span class="va">LaunchOptionsKey</span><span class="op">:</span> <span class="dt">Any</span>]?</span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    <span class="op">)</span> -&gt; <span class="fu">Bool</span> <span class="op">&#123;</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    <span class="op">)</span> -&gt; <span class="fu">Bool</span> <span class="op">{</span></span>
 <span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>        <span class="co">// Runs the default Dart entrypoint with a default Flutter route.</span></span>
 <span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>        flutterEngine<span class="op">.</span>run<span class="op">()</span></span>
 <span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>        <span class="co">// Used to connect plugins (only if you have plugins with iOS platform code).</span></span>
 <span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>        GeneratedPluginRegistrant<span class="op">.</span>register<span class="op">(</span>with<span class="op">:</span> <span class="kw">self</span><span class="op">.</span>flutterEngine<span class="op">)</span></span>
 <span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>        <span class="kw">return</span> <span class="kw">super</span><span class="op">.</span>application<span class="op">(</span>application<span class="op">,</span> didFinishLaunchingWithOptions<span class="op">:</span> launchOptions<span class="op">)</span></span>
-<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>    <span class="op">&#125;</span></span>
-<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a><span class="op">&#125;</span></span></code></pre></div>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>在这里我们创建了一个名为 <code>MyApp</code> 的
 <code>FlutterEngine</code>（你可以自己决定它的名称），然后在
 <code>application</code> 的 <code>didFinishLaunchingWithOptions</code>
@@ -599,23 +697,23 @@ ios 项目，在项目根目录处（相对于 Flutter
 <div class="sourceCode" id="cb10"><pre class="sourceCode swift"><code class="sourceCode swift"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">UIKit</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">Lottie</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> SplashViewController<span class="op">:</span> <span class="dt">UIViewController</span> <span class="op">&#123;</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> SplashViewController<span class="op">:</span> <span class="dt">UIViewController</span> <span class="op">{</span></span>
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="kw">var</span> <span class="va">animationView</span><span class="op">:</span> AnimationView<span class="op">?</span></span>
 <span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="kw">override</span> <span class="kw">func</span> <span class="fu">viewDidAppear</span><span class="op">(</span><span class="va">_</span> <span class="va">animated</span><span class="op">:</span> <span class="dt">Bool</span><span class="op">)</span> <span class="op">&#123;</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="kw">override</span> <span class="kw">func</span> <span class="fu">viewDidAppear</span><span class="op">(</span><span class="va">_</span> <span class="va">animated</span><span class="op">:</span> <span class="dt">Bool</span><span class="op">)</span> <span class="op">{</span></span>
 <span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>        animationView <span class="op">=</span> <span class="op">.</span><span class="kw">init</span><span class="op">(</span>name<span class="op">:</span> <span class="st">"splash_screen"</span><span class="op">)</span></span>
 <span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>        animationView<span class="op">!.</span>frame <span class="op">=</span> view<span class="op">.</span>bounds</span>
 <span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>        animationView<span class="op">!.</span>contentMode <span class="op">=</span> <span class="op">.</span>scaleAspectFit</span>
 <span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>        animationView<span class="op">!.</span>loopMode <span class="op">=</span> <span class="op">.</span>playOnce</span>
 <span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>        animationView<span class="op">!.</span>animationSpeed <span class="op">=</span> <span class="fl">1.00</span></span>
 <span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>        view<span class="op">.</span>addSubview<span class="op">(</span>animationView<span class="op">!)</span></span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>        animationView<span class="op">!.</span>play<span class="op">&#123;</span> <span class="op">(</span>finished<span class="op">)</span> <span class="cf">in</span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>        animationView<span class="op">!.</span>play<span class="op">{</span> <span class="op">(</span>finished<span class="op">)</span> <span class="cf">in</span></span>
 <span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>            <span class="kw">self</span><span class="op">.</span>startFlutterApp<span class="op">()</span></span>
-<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>        <span class="op">&#125;</span></span>
-<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>    <span class="op">&#125;</span></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
 <span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>    <span class="kw">func</span> <span class="fu">startFlutterApp</span><span class="op">()</span> <span class="op">&#123;</span></span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>    <span class="kw">func</span> <span class="fu">startFlutterApp</span><span class="op">()</span> <span class="op">{</span></span>
 <span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> <span class="va">appDelegate</span> <span class="op">=</span> UIApplication<span class="op">.</span>shared<span class="op">.</span>delegate <span class="kw">as</span><span class="op">!</span> AppDelegate</span>
 <span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> <span class="va">flutterEngine</span> <span class="op">=</span> appDelegate<span class="op">.</span>flutterEngine</span>
 <span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> <span class="va">flutterViewController</span> <span class="op">=</span></span>
@@ -626,8 +724,8 @@ ios 项目，在项目根目录处（相对于 Flutter
 <span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a>        </span>
 <span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a>        present<span class="op">(</span>flutterViewController<span class="op">,</span> animated<span class="op">:</span> <span class="kw">true</span><span class="op">,</span> completion<span class="op">:</span> <span class="kw">nil</span><span class="op">)</span></span>
 <span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a>    <span class="op">&#125;</span></span>
-<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a><span class="op">&#125;</span></span></code></pre></div>
+<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>在 <code>viewDidAppear</code> 中，我们使用添加的
 <code>splash_screen.json</code> 文件初始化动画视图。你可以修改诸如
 <code>loopMode</code>、<code>animationSpeed</code>
@@ -647,11 +745,7 @@ let flutterViewController = FlutterViewController(engine: flutterEngine, nibName
 <code>ViewController</code>，然后从 <code>identity inspector</code>
 中选择 <code>SplashViewController</code>，如屏幕快照所示：</li>
 </ol>
-<figure>
-<img src="https://cdn-images-1.medium.com/max/7152/1*ghXXOoQqELmNTc4wrbxoJQ.png" alt="链接到 SplashViewController">
-<figcaption aria-hidden="true">链接到
-<code>SplashViewController</code></figcaption>
-</figure>
+<p><img src="https://cdn-images-1.medium.com/max/7152/1*ghXXOoQqELmNTc4wrbxoJQ.png" alt="链接到 SplashViewController"></p>
 <ol start="9" type="1">
 <li>最后一步是设置 <code>Main.storyboard</code> 的主界面，替换掉
 <code>LauncherScreen.storyboard</code>。单击 Runner，选择
@@ -659,10 +753,7 @@ let flutterViewController = FlutterViewController(engine: flutterEngine, nibName
 下，从下拉菜单中将 <code>Main interface</code> 设置为
 <strong>Main</strong>，如屏幕快照所示：</li>
 </ol>
-<figure>
-<img src="https://cdn-images-1.medium.com/max/3274/1*KQV8lIB3aRfA_AHtTNXi4g.png" alt="设置 Main interface 为 Main">
-<figcaption aria-hidden="true">设置 Main interface 为 Main</figcaption>
-</figure>
+<p><img src="https://cdn-images-1.medium.com/max/3274/1*KQV8lIB3aRfA_AHtTNXi4g.png" alt="设置 Main interface 为 Main"></p>
 <p>生成并运行该应用程序，你应该能够看到动画的启动页了：</p>
 <p><img src="https://cdn-images-1.medium.com/max/2000/1*bdfeeBtOIHW_1A0MfdjnZQ.gif"></p>
 <p>就是这样，你现在已经生成了针对 Android 和 iOS
@@ -842,12 +933,12 @@ let flutterViewController = FlutterViewController(engine: flutterEngine, nibName
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">1.1m</span>
+    <span title="Symbols count total">921k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">34:12</span>
+    <span title="Reading time total">27:54</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT</a>
   </div>

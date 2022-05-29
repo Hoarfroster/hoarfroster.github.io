@@ -140,7 +140,119 @@
   </style>
 </noscript>
 
-</head>
+<style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
   <div class="container use-motion">
@@ -310,7 +422,7 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-              <span>2.9k</span>
+              <span>2.8k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
@@ -354,11 +466,7 @@ O(1)。</p>
 </blockquote>
 <p>在计算机系统中，存储器是一系列编号的分配存储块，每个分配存储块都可以容纳一个数字。Python
 通过引用将数据存储在这些分配存储块中。这意味着数字本身只是指向或引用了我们实际关心的数据。</p>
-<figure>
-<img src="https://cdn-images-1.medium.com/max/2664/1*r3B7WgUsBJeYQmExYERwig.png" alt="一个存储了长度为 6 的数组系统内存布局">
-<figcaption aria-hidden="true"><strong>一个存储了长度为 6
-的数组系统内存布局</strong></figcaption>
-</figure>
+<p><img src="https://cdn-images-1.medium.com/max/2664/1*r3B7WgUsBJeYQmExYERwig.png" alt="一个存储了长度为 6 的数组系统内存布局"></p>
 <p>当创建列表或元组时，我们需要分配一个系统存储块，该块的每个部分都使用整数指针进行引用。为了查找列表中的任何特定元素，我们应该知道分配存储块的编号和所需的元素。</p>
 <p>例如，假设我们有一个从<strong>分配存储块编号</strong>
 <strong>S</strong> 开始的数组，要找到该数组中的第 5
@@ -387,17 +495,11 @@ O(n)，其中 n
 出于内存复制的消耗系统资源之大，列表元素的增加会严重影响程序运行速度。</p>
 <p><strong>List 的分配方程</strong></p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>M <span class="op">=</span> (N <span class="op">&gt;&gt;</span> <span class="dv">3</span>) <span class="op">+</span> (<span class="dv">3</span> <span class="cf">if</span> N <span class="op">&lt;</span> <span class="dv">9</span> <span class="cf">else</span> <span class="dv">6</span>)</span></code></pre></div>
-<figure>
-<img src="https://cdn-images-1.medium.com/max/2134/1*mYYlsNHqfxdvdSUUmlSARQ.png" alt="列表的 “过度” 分配">
-<figcaption aria-hidden="true">列表的 “过度” 分配</figcaption>
-</figure>
+<p><img src="https://cdn-images-1.medium.com/max/2134/1*mYYlsNHqfxdvdSUUmlSARQ.png" alt="列表的 “过度” 分配"></p>
 <p>该图显示列表尺寸与额外元素的关系。例如，如果使用创建了一个包含 8000
 个元素的列表，Python 将返回一个能够容纳大约 8,600
 个元素的列表，也就是会多分配 600 个元素的空间！</p>
-<figure>
-<img src="https://cdn-images-1.medium.com/max/2000/1*Tb-UGxpj6tL93pKUo8EXUg.png" alt="追加元素对列表理解的记忆和时间的影响">
-<figcaption aria-hidden="true"><strong>追加元素对列表理解的记忆和时间的影响</strong></figcaption>
-</figure>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*Tb-UGxpj6tL93pKUo8EXUg.png" alt="追加元素对列表理解的记忆和时间的影响"></p>
 <p>当我们构建了一个列表并且添加元素时候，我们使用了 2.7
 倍的内存。与创建列表相比，添加元素时候分配给列表的额外空间要大得多。</p>
 <p><strong>TUPLES 元组</strong></p>
@@ -608,12 +710,12 @@ Performance Python book</a></p>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">1.1m</span>
+    <span title="Symbols count total">921k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">34:12</span>
+    <span title="Reading time total">27:54</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT</a>
   </div>

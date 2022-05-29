@@ -136,7 +136,119 @@
   </style>
 </noscript>
 
-</head>
+<style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
   <div class="container use-motion">
@@ -312,7 +424,7 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
-              <span>3 mins.</span>
+              <span>4 mins.</span>
             </span>
             <div class="post-description">新发布的 NumPy 1.20 版本在性能和说明文档方面都有所提升。我们现在可以在 NumPy 函数中使用类型注释。SIMD（单指令流多数据流） 指令的更广泛使用完善了通用功能（ufunc）。NumPy 还对它的文档做出了显著的改进。</div>
 
@@ -353,12 +465,12 @@ SciPy，pandas 和 xarray 的 API 类型至少有一部分被注释了。即使�
 <p>开发人员还可以使用新类型 —— <a target="_blank" rel="noopener" href="https://numpy.org/doc/stable/reference/typing.html#numpy.typing.ArrayLike"><code>ArrayLike</code></a>
 和 <a target="_blank" rel="noopener" href="https://numpy.org/doc/stable/reference/typing.html#numpy.typing.DTypeLike"><code>DTypeLike</code></a>。<code>ArrayLike</code>
 类型用于可转换为数组的对象，而 <code>DTypeLike</code> 用于转换
-<code>dtypes</code> 的对象。数据类型对象（<a target="_blank" rel="noopener" href="https://numpy.org/doc/stable/reference/produced/numpy.dtype.html#numpy.dtype">numpy.dtype</a>）用于指定对应于固定大小的内存块的内容到数组项目，并包含有关项目数据类型（例如，整数，浮点数），数据大小，字节顺序（<a target="_blank" rel="noopener" href="https://numpy.org/doc/stable/glossary%20html#term-little-endian">little-endian</a>
-或 <a target="_blank" rel="noopener" href="https://numpy.org/doc/stable/glossary.html#term-big-endian">big-endian</a>）等。这两种新类型使类型检查器能够识别效率低下的模式并警告用户。该文档说明：</p>
+<code>dtypes</code> 的对象。数据类型对象（<a target="_blank" rel="noopener" href="https://numpy.org/doc/stable/reference/produced/numpy.dtype.html#numpy.dtype">numpy.dtype</a>）用于指定对应于固定大小的内存块的内容到数组项目，并包含有关项目数据类型（例如，整数，浮点数），数据大小，字节顺序（[little-endian](https://numpy.org/doc/stable/glossary
+html#term-little-endian) 或 <a target="_blank" rel="noopener" href="https://numpy.org/doc/stable/glossary.html#term-big-endian">big-endian</a>）等。这两种新类型使类型检查器能够识别效率低下的模式并警告用户。该文档说明：</p>
 <blockquote>
 <p><code>DTypeLike</code> 类型尝试让我们避免使用如下所示的字段字典创建
 <code>dtype</code> 对象：</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.dtype(&#123;“ field1”：（float，<span class="dv">1</span>），“ field2”：（int，<span class="dv">3</span>）&#125;)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.dtype({“ field1”：（float，<span class="dv">1</span>），“ field2”：（int，<span class="dv">3</span>）})</span></code></pre></div>
 <p>尽管这是有效的 Numpy
 代码，但类型识别器会提醒这里的问题，因为它的用法不明确。</p>
 </blockquote>
@@ -563,12 +675,12 @@ SIMD 编译器优化</a>功能，现在 NumPy 能够<a target="_blank" rel="noop
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">1.1m</span>
+    <span title="Symbols count total">921k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">34:12</span>
+    <span title="Reading time total">27:54</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT</a>
   </div>

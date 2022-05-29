@@ -140,7 +140,119 @@
   </style>
 </noscript>
 
-</head>
+<style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
   <div class="container use-motion">
@@ -340,10 +452,7 @@ Hoarfroster</a></li>
 <li>校对者：<a target="_blank" rel="noopener" href="https://github.com/lsvih">lsvih</a></li>
 </ul>
 </blockquote>
-<figure>
-<img src="https://cdn-images-1.medium.com/max/2000/1*icYuiagsCKqcRapvjiLbmw.png" alt="Flutter 中的交织动画">
-<figcaption aria-hidden="true">Flutter 中的交织动画</figcaption>
-</figure>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*icYuiagsCKqcRapvjiLbmw.png" alt="Flutter 中的交织动画"></p>
 <p>交织动画由一个动画序列或重叠的动画组成，而要制作交织的动画，我们需要使用多个或多组动画对象。我们应该使用同一个
 <code>AnimationController</code>
 控制所有动画，每个动画对象都应该指定某个点或锚点在一段时间内的运动，并且对于要执行的动画的每个属性，我们都应该创建一个补间（<code>Tween</code>）。</p>
@@ -420,13 +529,13 @@ final Animation&lt;double&gt; imageOpacity;</code></pre>
 </blockquote>
 <pre class="dart"><code>// 译者注：代码从 Flutter 库中截取，路径 /lib/src/animation/animation_controller.dart:150
 @override
-void initState() &#123;
+void initState() {
     super.initState();
     _controller = AnimationController(
         vsync: this, // 对 SingleTickerProviderStateMixin 的引用
         duration: widget.duration,
     );
-&#125;</code></pre>
+}</code></pre>
 <p><strong>如何在代码中实现：</strong></p>
 <p>你需要在代码中实现以下内容：</p>
 <ul>
@@ -437,57 +546,57 @@ Mixin，以让 <code>AnimationController</code> 确定它的动画时长为 3500
 </ul>
 <p>控制器将会播放一个动画，然后会在 widget
 树上创建一个无动画的部分。当在屏幕上检测到点击事件时，开始播放动画。动画一开始会顺序播放，然后会倒序播放。</p>
-<pre class="dart"><code>import 'package:flutter/material.dart';
+<pre class="Dart"><code>import 'package:flutter/material.dart';
 import 'package:stag_animation/trekking/staggered_trekking.dart';
 
-class StaggeredTrekkingAnimation extends StatefulWidget &#123;
+class StaggeredTrekkingAnimation extends StatefulWidget {
   @override
   _StaggeredTrekkingAnimationState createState() =&gt;
       _StaggeredTrekkingAnimationState();
-&#125;
+}
 
 class _StaggeredTrekkingAnimationState extends State&lt;StaggeredTrekkingAnimation&gt;
-    with SingleTickerProviderStateMixin &#123;
+    with SingleTickerProviderStateMixin {
   AnimationController _controller;
 
   @override
-  void initState() &#123;
+  void initState() {
     super.initState();
     _controller = AnimationController(
       duration: const Duration(milliseconds: 3500),
       vsync: this,
     );
     _controller.forward();
-  &#125;
+  }
 
-  Future&lt;void&gt; _playAnimation() async &#123;
-    try &#123;
+  Future&lt;void&gt; _playAnimation() async {
+    try {
       await _controller.forward().orCancel;
       await _controller.reverse().orCancel;
-    &#125; on TickerCanceled &#123;
+    } on TickerCanceled {
       // 这个动画被暂停了，可能因为该控件被 dispose 了。
-    &#125;
-  &#125;
+    }
+  }
 
   @override
-  void dispose() &#123;
+  void dispose() {
     super.dispose();
     _controller.dispose();
-  &#125;
+  }
 
   @override
-  Widget build(BuildContext context) &#123;
+  Widget build(BuildContext context) {
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
-      onTap: () &#123;
+      onTap: () {
         _playAnimation();
-      &#125;,
+      },
       child: StaggeredTrekking(
         controller: _controller,
       ),
     );
-  &#125;
-&#125;</code></pre>
+  }
+}</code></pre>
 <p>在 Staggered Trekking Enter
 动画中，我们使用了补间去决定动画的进展。</p>
 <p>接下来，你会完成一个无状态的控件的 <a target="_blank" rel="noopener" href="https://github.com/ShaiqAhmedkhan/Flutter_Staggered_Animation/blob/master/lib/trekking/staggered_trekking.dart">Staggered
@@ -495,9 +604,9 @@ Trekking 动画</a>。我们会用 <code>build()</code>
 函数为这个控件的动画初始化定义一个 <a target="_blank" rel="noopener" href="https://api.flutter.cn/flutter/widgets/AnimatedBuilder-class.html"><strong>AnimatedBuilder</strong></a>。同时，我们需要创建一个名为
 <code>_buildAnimation()</code> 的函数，负责更新用户界面，并将其分配给
 <code>builder</code> 属性.</p>
-<pre class="dart"><code>import 'package:flutter/material.dart';
+<pre class="Dart"><code>import 'package:flutter/material.dart';
 
-class StaggeredTrekkingEnterAnimation &#123;
+class StaggeredTrekkingEnterAnimation {
   StaggeredTrekkingEnterAnimation(this.controller)
       : barHeight = Tween&lt;double&gt;(begin: 0, end: 150).animate(
           CurvedAnimation(
@@ -536,7 +645,7 @@ class StaggeredTrekkingEnterAnimation &#123;
   final Animation&lt;double&gt; titleOpacity;
   final Animation&lt;double&gt; textOpacity;
   final Animation&lt;double&gt; imageOpacity;
-&#125;</code></pre>
+}</code></pre>
 <p><code>AnimatedBuilder</code>
 将侦听来自动画控制器的通知，然后会标记该控件的值的改变。对于动画的每一帧，这些值会因为调用
 <code>_buildAnimation()</code> 而都被更新。</p>
@@ -718,12 +827,12 @@ class StaggeredTrekkingEnterAnimation &#123;
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">1.1m</span>
+    <span title="Symbols count total">921k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">34:12</span>
+    <span title="Reading time total">27:54</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT</a>
   </div>

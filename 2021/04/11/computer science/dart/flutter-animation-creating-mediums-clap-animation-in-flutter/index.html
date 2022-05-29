@@ -145,7 +145,119 @@
   </style>
 </noscript>
 
-</head>
+<style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
   <div class="container use-motion">
@@ -358,9 +470,9 @@ import 'package:flutter/material.dart';
 
 void main() =&gt; runApp(new MyApp());
 
-class MyApp extends StatelessWidget &#123;
+class MyApp extends StatelessWidget {
   @override
-  Widget build(BuildContext context) &#123;
+  Widget build(BuildContext context) {
     return new MaterialApp(
       title: 'Flutter Demo',
       theme: new ThemeData(
@@ -368,28 +480,28 @@ class MyApp extends StatelessWidget &#123;
       ),
       home: new MyHomePage(title: 'Flutter Demo Home Page'),
     );
-  &#125;
-&#125;
+  }
+}
 
-class MyHomePage extends StatefulWidget &#123;
-  MyHomePage(&#123;Key key, this.title&#125;) : super(key: key);
+class MyHomePage extends StatefulWidget {
+  MyHomePage({Key key, this.title}) : super(key: key);
   final String title;
 
   @override
   _MyHomePageState createState() =&gt; new _MyHomePageState();
-&#125;
+}
 
-class _MyHomePageState extends State&lt;MyHomePage&gt; &#123;
+class _MyHomePageState extends State&lt;MyHomePage&gt; {
   int _counter = 0;
 
-  void _incrementCounter() &#123;
-    setState(() &#123;
+  void _incrementCounter() {
+    setState(() {
       _counter++;
-    &#125;);
-  &#125;
+    });
+  }
 
   @override
-  Widget build(BuildContext context) &#123;
+  Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
         title: new Text(widget.title),
@@ -414,20 +526,13 @@ class _MyHomePageState extends State&lt;MyHomePage&gt; &#123;
         child: new Icon(Icons.add),
       ),
     );
-  &#125;
-&#125;</code></pre>
+  }
+}</code></pre>
 <p>Flutter
 为我们提供了一份免费的入门代码午餐～它已经管理了点击次数的状态，并为我们创建了一个浮动的动作按钮。</p>
-<figure>
-<img src="https://miro.medium.com/max/110/1*TpeTkSaUBAfKctD802YCtA.png" alt="我们目前有的按钮">
-<figcaption aria-hidden="true">我们目前有的按钮</figcaption>
-</figure>
+<p><img src="https://miro.medium.com/max/110/1*TpeTkSaUBAfKctD802YCtA.png" alt="我们目前有的按钮"></p>
 <p>下面是我们想要达到的最终效果：</p>
-<figure>
-<img src="https://miro.medium.com/max/1600/1*Hnkdb5BSXFmjVitdYQiirQ.gif" alt="我们将会创建的动画。作者：Thuy Gia Nguyen">
-<figcaption aria-hidden="true">我们将会创建的动画。作者：<a target="_blank" rel="noopener" href="https://dribbble.com/shots/4294768-Medium-Claps-Made-in-Flinto"><strong>Thuy
-Gia Nguyen</strong></a></figcaption>
-</figure>
+<p><img src="https://miro.medium.com/max/1600/1*Hnkdb5BSXFmjVitdYQiirQ.gif" alt="我们将会创建的动画。作者：Thuy Gia Nguyen"></p>
 <p>在添加动画之前，我们先来快速浏览并解决一些简单的问题。</p>
 <ol type="1">
 <li>改变按钮图标和背景。</li>
@@ -436,38 +541,38 @@ Gia Nguyen</strong></a></figcaption>
 <p>让我们添加这 2 个快速修复，然后开始制作动画：</p>
 <pre class="dart"><code>// main.dart
 
-class _MyHomePageState extends State&lt;MyHomePage&gt; &#123;
+class _MyHomePageState extends State&lt;MyHomePage&gt; {
   int _counter = 0;
   final duration = new Duration(milliseconds: 300);
   Timer timer;
 
 
-  initState() &#123;
+  initState() {
     super.initState();
-  &#125;
+  }
 
-  dispose() &#123;
+  dispose() {
    super.dispose();
-  &#125;
+  }
 
-  void increment(Timer t) &#123;
-    setState(() &#123;
+  void increment(Timer t) {
+    setState(() {
       _counter++;
-    &#125;);
-  &#125;
+    });
+  }
 
-  void onTapDown(TapDownDetails tap) &#123;
+  void onTapDown(TapDownDetails tap) {
     // User pressed the button. This can be a tap or a hold.
     increment(null); // Take care of tap
     timer = new Timer.periodic(duration, increment); // Takes care of hold
-  &#125;
+  }
 
-  void onTapUp(TapUpDetails tap) &#123;
+  void onTapUp(TapUpDetails tap) {
     // User removed his finger from button.
     timer.cancel();
-  &#125;
+  }
 
-  Widget getScoreButton() &#123;
+  Widget getScoreButton() {
 
     return new Positioned(
         child: new Opacity(opacity: 1.0, child: new Container(
@@ -487,9 +592,9 @@ class _MyHomePageState extends State&lt;MyHomePage&gt; &#123;
         )),
         bottom: 100.0
     );
-  &#125;
+  }
 
-  Widget getClapButton() &#123;
+  Widget getClapButton() {
     // Using custom gesture detector because we want to keep increasing the claps
     // when user holds the button.
     return new GestureDetector(
@@ -512,10 +617,10 @@ class _MyHomePageState extends State&lt;MyHomePage&gt; &#123;
               size: 40.0),
         )
     );
-  &#125;
+  }
 
   @override
-  Widget build(BuildContext context) &#123;
+  Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
         title: new Text(widget.title),
@@ -549,8 +654,8 @@ class _MyHomePageState extends State&lt;MyHomePage&gt; &#123;
           )
       ),
     );
-  &#125;
-&#125;</code></pre>
+  }
+}</code></pre>
 <p>从最终的产品来看，我们需要补充 3 点。</p>
 <ol type="1">
 <li>改变 Widget 的大小</li>
@@ -594,9 +699,9 @@ new Positioned(
 毫秒之后设备会绘制一个新的界面。有时图像可能会发生错位（我们在屏幕刷新时发送了不同的图像），我们就会看到屏幕撕裂。<code>vsync</code>
 可以解决这个问题。</p>
 <p>让我们在控制器上添加一个监听器然后运行动画：</p>
-<pre class="dart"><code>scoreInAnimationController.addListener(() &#123;
+<pre class="dart"><code>scoreInAnimationController.addListener(() {
   print(scoreInAnimationController.value);
-&#125;);
+});
 scoreInAnimationController.forward(from: 0.0);
 
 /* OUTPUT
@@ -616,9 +721,9 @@ I/flutter ( 1913): 1.0
 0.4……）。我们如何改变这种行为？这将由第二个 Widget
 <code>CurvedAnimation</code> 来完成：</p>
 <pre class="dart"><code>bounceInAnimation = new CurvedAnimation(parent: scoreInAnimationController, curve: Curves.bounceIn);
-bounceInAnimation.addListener(() &#123;
+bounceInAnimation.addListener(() {
   print(bounceInAnimation.value);
-&#125;);
+});
 
 /* OUTPUT
 I/flutter ( 5221): 0.0
@@ -640,9 +745,9 @@ Widget 的动画值的范围是
 <code>[0.0, 100.0]</code>。我们可以简单地将上一步得到的值乘以 100
 来得到结果。或者我们可以使用第三种部件 <code>Tween</code> 类。</p>
 <pre class="dart"><code>tweenAnimation = new Tween(begin: 0.0, end: 100.0).animate(scoreInAnimationController);
-tweenAnimation.addListener(() &#123;
+tweenAnimation.addListener(() {
   print(tweenAnimation.value);
-&#125;);
+});
 
 /* Output 
 I/flutter ( 2639): 0.0
@@ -664,19 +769,19 @@ I/flutter ( 2639): 100.0
 <p><strong>展示鼓掌次数的 Widget 的位置动画</strong></p>
 <p>在这一点上，我们已经有足够的知识让我们的展示鼓掌次数的 Widget
 在我们按下按钮时从底部弹出，而在我们释放按钮的时候隐藏。</p>
-<pre class="dart"><code>initState() &#123;
+<pre class="dart"><code>initState() {
   super.initState();
   scoreInAnimationController = new AnimationController(duration: new Duration(milliseconds: 150), vsync: this);
-  scoreInAnimationController.addListener(()&#123;
-    setState(() &#123;&#125;); // 调用渲染函数（译者注：其实是更新状态）
-  &#125;);
-&#125;
+  scoreInAnimationController.addListener((){
+    setState(() {}); // 调用渲染函数（译者注：其实是更新状态）
+  });
+}
 
-void onTapDown(TapDownDetails tap) &#123;
+void onTapDown(TapDownDetails tap) {
   scoreInAnimationController.forward(from: 0.0);
   ...    
-&#125;
-Widget getScoreButton() &#123;
+}
+Widget getScoreButton() {
   var scorePosition = scoreInAnimationController.value * 100;
   var scoreOpacity = scoreInAnimationController.value;
   return new Positioned(
@@ -685,11 +790,8 @@ Widget getScoreButton() &#123;
     ),
     bottom: scorePosition
   );
-&#125;</code></pre>
-<figure>
-<img src="https://miro.medium.com/max/748/1*SG72TWaiaHNspnOUmPityQ.gif" alt="动画的现状">
-<figcaption aria-hidden="true">动画的现状</figcaption>
-</figure>
+}</code></pre>
+<p><img src="https://miro.medium.com/max/748/1*SG72TWaiaHNspnOUmPityQ.gif" alt="动画的现状"></p>
 <p>点开后弹出展示鼓掌次数的 Widget，不过还是有一个问题：</p>
 <p>当我们多次点击按钮时，展示鼓掌次数的 Widget
 会不断地弹出。这是因为上面代码中的一个小错误。我们告诉控制器在每次点击按钮时从
@@ -697,11 +799,11 @@ Widget getScoreButton() &#123;
 <p>现在，让我们为展示鼓掌次数的 Widget 添加输出动画。</p>
 <p>首先，我们添加一个枚举来更容易地管理展示鼓掌次数的 Widget
 的状态。</p>
-<pre class="dart"><code>enum ScoreWidgetStatus &#123;
+<pre class="dart"><code>enum ScoreWidgetStatus {
   HIDDEN,
   BECOMING_VISIBLE,
   BECOMING_INVISIBLE
-&#125;</code></pre>
+}</code></pre>
 <p>然后，我们创建一个动画控制器，对 Widget 的位置值在
 <code>[100, 150]</code>
 范围内进行非线性动画。我们还为动画添加了一个状态监听器，一旦动画结束，我们就将展示鼓掌次数的
@@ -710,45 +812,45 @@ Widget 的状态设置为隐藏。</p>
 scoreOutPositionAnimation = new Tween(begin: 100.0, end: 150.0).animate(
   new CurvedAnimation(parent: scoreOutAnimationController, curve: Curves.easeOut)
 );
-scoreOutPositionAnimation.addListener(()&#123;
-  setState(() &#123;&#125;);
-&#125;);
-scoreOutAnimationController.addStatusListener((status) &#123;
-  if (status == AnimationStatus.completed) &#123;
+scoreOutPositionAnimation.addListener((){
+  setState(() {});
+});
+scoreOutAnimationController.addStatusListener((status) {
+  if (status == AnimationStatus.completed) {
     _scoreWidgetStatus = ScoreWidgetStatus.HIDDEN;
-  &#125;
-&#125;);</code></pre>
+  }
+});</code></pre>
 <p>当用户将手指从 Widget 上移开时，我们将设置相应的状态，并启动一个 300
 毫秒的计时器。300 毫秒后，我们将对 Widget
 的位置和不透明度进行动画处理：</p>
-<pre class="dart"><code>void onTapUp(TapUpDetails tap) &#123;
+<pre class="dart"><code>void onTapUp(TapUpDetails tap) {
   // 用户移开了他的手指
-  scoreOutETA = new Timer(duration, () &#123;
+  scoreOutETA = new Timer(duration, () {
     scoreOutAnimationController.forward(from: 0.0);
     _scoreWidgetStatus = ScoreWidgetStatus.BECOMING_INVISIBLE;
-  &#125;);
+  });
   holdTimer.cancel();
-&#125;</code></pre>
+}</code></pre>
 <p>当用户将手指点按 Widget 时，我们将设置相应的状态，并启动一个 300
 毫秒的计时器：</p>
-<pre class="dart"><code>void onTapDown(TapDownDetails tap) &#123;
+<pre class="dart"><code>void onTapDown(TapDownDetails tap) {
   // 用户点按了按钮 —— 不管是长按还是点按
   if (scoreOutETA != null) scoreOutETA.cancel(); // 我们不希望次数消失！
-  if (_scoreWidgetStatus == ScoreWidgetStatus.HIDDEN) &#123;
+  if (_scoreWidgetStatus == ScoreWidgetStatus.HIDDEN) {
     scoreInAnimationController.forward(from: 0.0);
     _scoreWidgetStatus = ScoreWidgetStatus.BECOMING_VISIBLE;
-  &#125;
+  }
   increment(null); // 关注点按
   holdTimer = new Timer.periodic(duration, increment); // 关注长按
-&#125;</code></pre>
+}</code></pre>
 <p>我们还修改了 <code>TapDown</code>
 事件，以处理一些特殊情况。最后，我们需要选择我们需要使用哪个控制器的值来处理我们的展示鼓掌次数的
 Widget 的位置和不透明度。一个简单的 <code>switch</code>
 就可以完成这项工作：</p>
-<pre class="dart"><code>Widget getScoreButton() &#123;
+<pre class="dart"><code>Widget getScoreButton() {
   var scorePosition = 0.0;
   var scoreOpacity = 0.0;
-  switch(_scoreWidgetStatus) &#123;
+  switch(_scoreWidgetStatus) {
     case ScoreWidgetStatus.HIDDEN:
       break;
     case ScoreWidgetStatus.BECOMING_VISIBLE:
@@ -758,9 +860,9 @@ Widget 的位置和不透明度。一个简单的 <code>switch</code>
     case ScoreWidgetStatus.BECOMING_INVISIBLE:
       scorePosition = scoreOutPositionAnimation.value;
       scoreOpacity = 1.0 - scoreOutAnimationController.value;
-  &#125;
+  }
   return ……
-&#125;</code></pre>
+}</code></pre>
 <p>当前输出：</p>
 <p><img src="https://miro.medium.com/max/732/1*RNvj1meQIy6nCn5d-S74qQ.gif"></p>
 <p>最后，我们需要选择我们需要使用哪个控制器的值来设置展示鼓掌次数的
@@ -770,41 +872,41 @@ Widget 的位置和不透明度 —— 它应该弹出+淡出。</p>
 <p>我更新了 <code>ScoreWidgetStatus</code> 枚举，以持有一个额外的
 <code>VISIBLE</code> 值。现在，我们为大小属性添加一个新的控制器。</p>
 <pre class="dart"><code>scoreSizeAnimationController = new AnimationController(vsync: this, duration: new Duration(milliseconds: 150));
-scoreSizeAnimationController.addStatusListener((status) &#123;
-  if(status == AnimationStatus.completed) &#123;
+scoreSizeAnimationController.addStatusListener((status) {
+  if(status == AnimationStatus.completed) {
     scoreSizeAnimationController.reverse();
-  &#125;
-&#125;);
-scoreSizeAnimationController.addListener(()&#123;
-  setState(() &#123;&#125;);
-&#125;);</code></pre>
+  }
+});
+scoreSizeAnimationController.addListener((){
+  setState(() {});
+});</code></pre>
 <p>控制器在 150 毫秒内产生从 0 到 1 的数值，一旦完成，我们就产生从 1 到
 0 的数值，这样就有了很好的放大和缩小的效果。</p>
 <p>我们还更新了我们的 <code>increment</code> 函数 ——
 当数字递增时就会开始动画。</p>
-<pre class="dart"><code>void increment(Timer t) &#123;
+<pre class="dart"><code>void increment(Timer t) {
   scoreSizeAnimationController.forward(from: 0.0);
-  setState(() &#123;
+  setState(() {
     _counter++;
-  &#125;);
-&#125;</code></pre>
+  });
+}</code></pre>
 <p>我们需要处理枚举的 <code>Visible</code> 属性的情况。为此，我们需要在
 <code>TouchDown</code> 事件中添加一些判断：</p>
-<pre class="dart"><code>void onTapDown(TapDownDetails tap) &#123;
+<pre class="dart"><code>void onTapDown(TapDownDetails tap) {
   // 用户点按了按钮 —— 不管是长按还是点按
   if (scoreOutETA != null) scoreOutETA.cancel(); // 我们不希望次数消失！
-  if(_scoreWidgetStatus == ScoreWidgetStatus.BECOMING_INVISIBLE) &#123;
+  if(_scoreWidgetStatus == ScoreWidgetStatus.BECOMING_INVISIBLE) {
     // 在 Widget 向上飞入的时候点击了按钮，把那玩意暂停掉！
     scoreOutAnimationController.stop(canceled: true);
     _scoreWidgetStatus = ScoreWidgetStatus.VISIBLE;
-  &#125;
-  else if (_scoreWidgetStatus == ScoreWidgetStatus.HIDDEN ) &#123;
+  }
+  else if (_scoreWidgetStatus == ScoreWidgetStatus.HIDDEN ) {
     _scoreWidgetStatus = ScoreWidgetStatus.BECOMING_VISIBLE;
     scoreInAnimationController.forward(from: 0.0);
-  &#125;
+  }
   increment(null); // 关注点按
   holdTimer = new Timer.periodic(duration, increment); // 关注长按
-&#125;</code></pre>
+}</code></pre>
 <p>最后，我们在 Widget 中使用控制器的值。</p>
 <pre class="dart"><code>extraSize = scoreSizeAnimationController.value * 10;
 ...
@@ -814,10 +916,7 @@ width: 50.0  + extraSize,
 <p>完整的代码可以在 <a target="_blank" rel="noopener" href="https://gist.github.com/Kartik1607/52c882194e3119e0d176fb15e6c6b913">GitHub
 Gist</a>
 处找到。这里我们同时运行的大小和位置的动画。尺寸放缩动画还需要一点点调整，最后再说。</p>
-<figure>
-<img src="https://miro.medium.com/max/716/1*5ttrTDWNuApskZBCIX1zrQ.gif" alt="尺寸和位置动画一起工作">
-<figcaption aria-hidden="true">尺寸和位置动画一起工作</figcaption>
-</figure>
+<p><img src="https://miro.medium.com/max/716/1*5ttrTDWNuApskZBCIX1zrQ.gif" alt="尺寸和位置动画一起工作"></p>
 <h2 id="撒花动画">撒花动画</h2>
 <p>在做撒花动画之前，我们需要对尺寸放缩动画做一些调整。目前来看，按钮的放大幅度太大。解决方法很简单，将
 <code>extrasize</code> 系数从 <code>10</code> 改为小一点的数字。</p>
@@ -845,11 +944,11 @@ Flutter 资源中。现在我们就可以将该图像作为 Image Asset 素材�
   );</code></pre>
 <p>现在，我们需要创建 5 个这样的 Widget，而每个 Widget
 都应该有不同的角度。一个简单的 <code>for</code> 循环就可以了。</p>
-<pre class="dart"><code>for(int i = 0;i &lt; 5; ++i) &#123;
+<pre class="dart"><code>for(int i = 0;i &lt; 5; ++i) {
   var currentAngle = (firstAngle + ((2*pi)/5)*(i));
   var sparklesWidget = ...
   stackChildren.add(sparklesWidget);
-&#125;</code></pre>
+}</code></pre>
 <p>我们只需将 <code>2*pi</code>（360 度）分成 5 份，并据此创建一个
 Widget。然后，我们将这些 Widget
 添加到一个数组中，这个数组将作为栈的孩子。</p>
@@ -858,29 +957,26 @@ Widget。然后，我们将这些 Widget
 <code>firstAngle</code>。</p>
 <pre class="dart"><code>sparklesAnimationController = new AnimationController(vsync: this, duration: duration);
 sparklesAnimation = new CurvedAnimation(parent: sparklesAnimationController, curve: Curves.easeIn);
-sparklesAnimation.addListener(()&#123;
-  setState(() &#123; &#125;);
-&#125;);
+sparklesAnimation.addListener((){
+  setState(() { });
+});
 
-void increment(Timer t) &#123;
+void increment(Timer t) {
   sparklesAnimationController.forward(from: 0.0);
   ...
-  setState(() &#123;
+  setState(() {
   ...
   _sparklesAngle = random.nextDouble() * (2*pi);
-&#125;);
+});
      
-Widget getScoreButton() &#123;
+Widget getScoreButton() {
   ...
   var firstAngle = _sparklesAngle;
   var sparkleRadius = (sparklesAnimationController.value * 50) ;
   var sparklesOpacity = (1 - sparklesAnimation.value);
   ...
-&#125;</code></pre>
-<figure>
-<img src="https://miro.medium.com/max/788/1*O5FNILFgN18aAbfbTVfsDA.gif" alt="最终结果">
-<figcaption aria-hidden="true">最终结果</figcaption>
-</figure>
+}</code></pre>
+<p><img src="https://miro.medium.com/max/788/1*O5FNILFgN18aAbfbTVfsDA.gif" alt="最终结果"></p>
 <p>这就是我们对 Flutter
 中<strong>基本动画的介绍</strong>。我们未来还会继续探索更多的 Flutter
 知识，以学习创建更高级的 UI。</p>
@@ -1060,12 +1156,12 @@ Widget</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href=
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">1.1m</span>
+    <span title="Symbols count total">921k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">34:12</span>
+    <span title="Reading time total">27:54</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT</a>
   </div>

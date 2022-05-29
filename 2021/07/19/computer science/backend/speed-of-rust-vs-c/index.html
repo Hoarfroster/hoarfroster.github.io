@@ -137,7 +137,119 @@
   </style>
 </noscript>
 
-</head>
+<style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
   <div class="container use-motion">
@@ -329,7 +441,7 @@
         <blockquote>
 <ul>
 <li>原文地址：<a target="_blank" rel="noopener" href="https://kornel.ski/rust-c-speed">Speed of Rust
-vs.&nbsp;C</a></li>
+vs. C</a></li>
 <li>原文作者：<a target="_blank" rel="noopener" href="https://twitter.com/kornelski">kornelski</a></li>
 <li>译者：<a target="_blank" rel="noopener" href="https://github.com/PassionPenguin">霜羽
 Hoarfroster</a></li>
@@ -363,7 +475,7 @@ Rust 一样快或更快。因为从理论上讲，没有什么是 C 无法做到
 <p>尽管 Rust
 具有更高级别的构造，比如说迭代器、特征和智能指针，但它们都旨在可预测地优化为简单的机器代码（也被称为“零成本抽象”）。Rust
 类型的内存布局很简单，例如可增长的字符串和矢量正好是
-<code>&#123;byte*, capacity, length&#125;</code>。Rust
+<code>{byte*, capacity, length}</code>。Rust
 没有任何类似移动或复制构造函数的概念，因此它能保证对象的传递不会比传递指针或
 <code>memcpy</code> 复杂。</p>
 <p>借用检查只会在编译时进行一次静态分析。它不会<strong>做任何事情</strong>，甚至在代码生成之前就完全去除了生命周期信息。它不会自动打包，也不会干其他所谓聪明的事。</p>
@@ -393,7 +505,7 @@ Rust-C-Swift 互联互通的程序上使用 Xcode 的 Instruments）。</p>
 <ul>
 <li><strong>计算的</strong> <code>goto</code>： <code>goto</code>
 的“无聊”用法可以用 Rust 中的其他构造替换，例如
-<code>loop &#123;break&#125;</code>。在 C 中，goto 的许多用途是为了清理。但由于
+<code>loop {break}</code>。在 C 中，goto 的许多用途是为了清理。但由于
 Rust 的 RAII/destructors，Rust 不需要这些。不过有一个非标准的
 <code>goto *addr</code> 扩展名，对解释器非常有用。Rust
 不能直接做到这一点（你可以写一个 <code>match</code>
@@ -418,7 +530,7 @@ C 移植到 Rust，我才意识到有多少 C
 函数只使用指向内存的指针而没有大小并且期望（大小可以从上下文间接知道，或者只是假设对于任务来说足够大）。</p></li>
 <li><p>并不是所有的边界检查都被优化了。<code>for item in arr</code> 或
 <code>arr.iter().for_each(...)</code> 是尽可能高效的。但如果我们需要
-<code>for i in 0..len &#123;arr[i]&#125;</code> 形式的循环，则性能取决于 LLVM
+<code>for i in 0..len {arr[i]}</code> 形式的循环，则性能取决于 LLVM
 优化器是否能够证明长度匹配。有时它不能，并且边界检查会禁止自动矢量化。当然，对此有多种变通方法，包括安全的和不安全的。</p></li>
 <li><p>在 Rust 中不提倡“聪明”的内存使用。在 C
 中，任何事情都会发生。例如，在 C
@@ -724,12 +836,12 @@ Rust
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">1.1m</span>
+    <span title="Symbols count total">921k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">34:12</span>
+    <span title="Reading time total">27:54</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT</a>
   </div>

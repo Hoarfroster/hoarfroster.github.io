@@ -146,7 +146,119 @@
   </style>
 </noscript>
 
-</head>
+<style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
   <div class="container use-motion">
@@ -316,7 +428,7 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-              <span>4k</span>
+              <span>3.9k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
@@ -346,11 +458,7 @@ Hoarfroster</a></li>
 <li>校对者：<a target="_blank" rel="noopener" href="https://github.com/zenblo">zenblo</a>、<a target="_blank" rel="noopener" href="https://github.com/Chorer">Chorer</a></li>
 </ul>
 </blockquote>
-<figure>
-<img src="https://cdn-images-1.medium.com/max/9640/0*bs0OAqfhQkkn-9YY" alt="由 Kristina Flour 上传至 Unsplash">
-<figcaption aria-hidden="true">由 <a target="_blank" rel="noopener" href="https://unsplash.com/@tinaflour?utm_source=medium&amp;utm_medium=referral">Kristina
-Flour</a> 上传至 <a target="_blank" rel="noopener" href="https://unsplash.com?utm_source=medium&amp;utm_medium=referral">Unsplash</a></figcaption>
-</figure>
+<p><img src="https://cdn-images-1.medium.com/max/9640/0*bs0OAqfhQkkn-9YY" alt="由 Kristina Flour 上传至 Unsplash"></p>
 <p>数十年来，CSS 和 HTML 一直都是互联网的基石。</p>
 <p>虽然 HTML
 能够负责创建网站结构并进行图文排列，但在设计网站上却无能为力。</p>
@@ -361,34 +469,31 @@ Grid（网格）。</p>
 <p>尽管创建 Web 应用广受欢迎且日趋复杂，但大多数开发者仍有很多不了解的
 CSS 属性和技巧。</p>
 <p>以下是你可能从未听说过的 6 个 CSS 属性：</p>
-<h2 id="all">1. <code>all</code></h2>
+<h2 id="1-all">1. <code>all</code></h2>
 <p>你是否曾经使用过 CSS
 框架呢？如果是的话，我可以肯定你有好几次都想要根据自己的喜好覆盖某些元素的样式定义。</p>
 <p>最常用的方法是使用 CSS 中的 <code>!important</code>
 属性来强调当前属性，而忽略所有其他设置和规则。</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.header</span> &#123;</span>
+<div class="sourceCode" id="cb1"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.header</span> {</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">color</span>: <span class="cn">blue</span> <span class="at">!important</span><span class="op">;</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">font-size</span>: <span class="dv">14</span><span class="dt">px</span> <span class="at">!important</span><span class="op">;</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>&#125;</span></code></pre></div>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>但是，重复书写相同的关键字会让 CSS 文件看起来很混乱。</p>
 <p>而一个更简单的覆盖样式定义的方法，是使用 <code>all</code> 属性。</p>
 <p><code>all</code> 共有 3 个可用的属性值 ——
 <code>initial</code>、<code>inherit</code> 和 <code>unset</code>。</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.header</span> &#123;</span>
+<div class="sourceCode" id="cb2"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.header</span> {</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">all</span>: initial<span class="op">;</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">color</span>: <span class="cn">blue</span><span class="op">;</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">font-size</span>: <span class="dv">14</span><span class="dt">px</span><span class="op">;</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>&#125;</span></code></pre></div>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p><code>all: initial</code>
 会将元素的所有属性设置为回退值或初始值。</p>
 <p>从 Chrome 版本 37 和 Firefox 版本 27 开始它们都支持了这个属性。Edge
 浏览器也支持此属性，但 IE 并不支持。</p>
-<h2 id="writing-mode">2. <code>writing-mode</code></h2>
+<h2 id="2-writing-mode">2. <code>writing-mode</code></h2>
 <p>我最近写过一篇有关<a target="_blank" rel="noopener" href="https://medium.com/javascript-in-plain-english/8-amazing-places-to-find-design-inspirations-for-free-dd2e64abc1b0">寻找设计灵感的神奇地方</a>的文章，里面列举的网站和我偶然发现的许多站点中，文本都是在一侧竖直排列的。</p>
-<figure>
-<img src="https://cdn-images-1.medium.com/max/2600/1*m5Ut8kRsp8oSIUogG_EMuw.jpeg" alt="来源：httpster">
-<figcaption aria-hidden="true">来源：<a target="_blank" rel="noopener" href="https://httpster.net/2020/dec/">httpster</a></figcaption>
-</figure>
+<p><img src="https://cdn-images-1.medium.com/max/2600/1*m5Ut8kRsp8oSIUogG_EMuw.jpeg" alt="来源：httpster"></p>
 <p>在上图的右侧（滚动条附近），我们可以看到侧边竖直排列的文本，而这恰好就是一种显示附加信息的巧妙方法。</p>
 <p><code>writing-mode</code> 属性可以让我们实现这个效果。</p>
 <p>该属性支持以下值：</p>
@@ -401,13 +506,9 @@ CSS 属性和技巧。</p>
 不同，水平地将文本从左到右排列，并且如果有两行或更多行，则这些行会被放置在前一行的右侧。</li>
 </ul>
 <p><code>horizontal-tb</code> 属性则实现默认排列文本的效果。</p>
-<figure>
-<img src="https://cdn-images-1.medium.com/max/2000/1*enCsNGgsHPLsCxLnu0-FJA.png" alt="来源：MDN Web 文档">
-<figcaption aria-hidden="true">来源：<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/writing-mode">MDN
-Web 文档</a></figcaption>
-</figure>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*enCsNGgsHPLsCxLnu0-FJA.png" alt="来源：MDN Web 文档"></p>
 <p>你可以在<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/CSS/writing-mode">这里</a>找到相关实现和代码块。</p>
-<h2 id="background-clip">3. <code>background-clip</code></h2>
+<h2 id="3-background-clip">3. <code>background-clip</code></h2>
 <p>这是一个有趣的属性，它让我们可以为元素的背景设置自定义图形。</p>
 <p>我们的自定义图形可以延伸到元素的边框，内边距盒或内容盒。</p>
 <p>以下是此属性的简短实现：</p>
@@ -417,7 +518,7 @@ Web 文档</a></figcaption>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;p</span> <span class="er">class</span><span class="ot">=</span><span class="st">"content-box"</span><span class="kw">&gt;</span>背景仅延伸到内容盒的边缘。<span class="kw">&lt;/p&gt;</span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;p</span> <span class="er">class</span><span class="ot">=</span><span class="st">"text"</span><span class="kw">&gt;</span>背景被裁剪为前景文本。<span class="kw">&lt;/p&gt;</span></span></code></pre></div>
 <p>CSS：</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>p &#123;</span>
+<div class="sourceCode" id="cb4"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>p {</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">border</span>: <span class="dv">.8</span><span class="dt">em</span> <span class="cn">darkviolet</span><span class="op">;</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">border-style</span>: <span class="dv">dotted</span> <span class="dv">double</span><span class="op">;</span></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">margin</span>: <span class="dv">1</span><span class="dt">em</span> <span class="dv">0</span><span class="op">;</span></span>
@@ -425,57 +526,51 @@ Web 文档</a></figcaption>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">background</span>: <span class="fu">linear-gradient(</span><span class="dv">60</span><span class="dt">deg</span><span class="op">,</span> <span class="cn">red</span><span class="op">,</span> <span class="cn">yellow</span><span class="op">,</span> <span class="cn">red</span><span class="op">,</span> <span class="cn">yellow</span><span class="op">,</span> <span class="cn">red</span><span class="fu">)</span><span class="op">;</span></span>
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">font</span>: <span class="dv">900</span> <span class="dv">1.2</span><span class="dt">em</span> <span class="dv">sans-serif</span><span class="op">;</span></span>
 <span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">text-decoration</span>: <span class="dv">underline</span><span class="op">;</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>&#125;</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="fu">.border-box</span> &#123;</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="fu">.border-box</span> {</span>
 <span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">background-clip</span>: <span class="dv">border-box</span><span class="op">;</span></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>&#125;</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="fu">.padding-box</span> &#123;</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="fu">.padding-box</span> {</span>
 <span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    <span class="kw">background-clip</span>: padding-box<span class="op">;</span></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>&#125;</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="fu">.content-box</span> &#123;</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="fu">.content-box</span> {</span>
 <span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>    <span class="kw">background-clip</span>: <span class="dv">content-box</span><span class="op">;</span></span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>&#125;</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a><span class="fu">.text</span> &#123;</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a><span class="fu">.text</span> {</span>
 <span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>    <span class="kw">background-clip</span>: <span class="dv">text</span><span class="op">;</span></span>
 <span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>    -webkit-background-clip: <span class="dv">text</span><span class="op">;</span></span>
 <span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>    <span class="kw">color</span>: <span class="fu">rgba(</span><span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">.2</span><span class="fu">)</span><span class="op">;</span></span>
-<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>&#125;</span></code></pre></div>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>效果：</p>
-<figure>
-<img src="https://cdn-images-1.medium.com/max/2000/1*Ugb8RTSg7qFGkcSFUWfkHw.jpeg" alt="图源作者">
-<figcaption aria-hidden="true">图源作者</figcaption>
-</figure>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*Ugb8RTSg7qFGkcSFUWfkHw.jpeg" alt="图源作者"></p>
 <p>我们也可以使用自定义图片作为文本的背景：</p>
-<figure>
-<img src="https://cdn-images-1.medium.com/max/2000/1*ng2WZRQ1HOIBSHWdizCzBw.jpeg" alt="图源作者">
-<figcaption aria-hidden="true">图源作者</figcaption>
-</figure>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*ng2WZRQ1HOIBSHWdizCzBw.jpeg" alt="图源作者"></p>
 <p>值得注意的是，在 Chrome 上我们需要使用
 <code>-webkit-background-clip</code>
 属性，并确保文本颜色设置为透明。</p>
-<h2 id="user-select">4. <code>user-select</code></h2>
+<h2 id="4-user-select">4. <code>user-select</code></h2>
 <p>如果我们的网站上有着一些不想让用户复制的文本，我们可以使用此属性。</p>
 <p><code>user-select</code> 属性指定是否可以选择元素的文本。</p>
 <p>这对除文本框之外的内容没有任何影响。</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.row-of-icons</span> &#123;</span>
+<div class="sourceCode" id="cb5"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.row-of-icons</span> {</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">-webkit-user-select</span>: <span class="dv">none</span><span class="op">;</span> <span class="co">/* Chrome &amp; Safari all */</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">-moz-user-select</span>: <span class="dv">none</span><span class="op">;</span> <span class="co">/* Firefox all */</span></span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">-ms-user-select</span>: <span class="dv">none</span><span class="op">;</span> <span class="co">/* IE 10+ */</span></span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">user-select</span>: <span class="dv">none</span><span class="op">;</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>&#125;</span></code></pre></div>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>此属性也可用于确保选择了整个元素。</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.force-select</span> &#123;</span>
+<div class="sourceCode" id="cb6"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.force-select</span> {</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">user-select</span>: <span class="dv">all</span><span class="op">;</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">-webkit-user-select</span>: <span class="dv">all</span><span class="op">;</span> <span class="co">/* Chrome 49+ */</span></span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">-moz-user-select</span>: <span class="dv">all</span><span class="op">;</span> <span class="co">/* Firefox 43+ */</span></span>
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>&#125;</span></code></pre></div>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>你可以在<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/CSS/user-select">这里</a>找到完整的说明。</p>
-<h2 id="white-space">5. <code>white-space</code></h2>
+<h2 id="5-white-space">5. <code>white-space</code></h2>
 <p>在使用 <code>text-overflow</code>
 的时候，该属性非常有用，因为它允许我们控制元素的文本流。</p>
 <p>它接受
@@ -511,61 +606,51 @@ Web 文档</a></figcaption>
 <span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;/p&gt;</span></span>
 <span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/div&gt;</span></span></code></pre></div>
 <p>CSS:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>div &#123;</span>
+<div class="sourceCode" id="cb8"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>div {</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">width</span>: <span class="dv">100</span><span class="dt">px</span><span class="op">;</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>&#125;</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>p &#123;</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>p {</span>
 <span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">background</span>: <span class="cn">red</span><span class="op">;</span></span>
 <span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">font-size</span>: <span class="dv">2</span><span class="dt">rem</span><span class="op">;</span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>&#125;</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="fu">.first</span> &#123;</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="fu">.first</span> {</span>
 <span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">white-space</span>: <span class="dv">nowrap</span><span class="op">;</span></span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>&#125;</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="fu">.second</span> &#123;</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="fu">.second</span> {</span>
 <span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>    <span class="kw">white-space</span>: <span class="dv">pre</span><span class="op">;</span></span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>&#125;</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a><span class="fu">.third</span> &#123;</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a><span class="fu">.third</span> {</span>
 <span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>    <span class="kw">white-space</span>: <span class="dv">pre-line</span><span class="op">;</span></span>
-<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>&#125;</span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a><span class="fu">.fourth</span> &#123;</span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a><span class="fu">.fourth</span> {</span>
 <span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>    <span class="kw">white-space</span>: <span class="dv">nowrap</span><span class="op">;</span></span>
 <span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>    <span class="kw">text-overflow</span>: <span class="dv">ellipsis</span><span class="op">;</span></span>
 <span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>    <span class="kw">overflow</span>: <span class="dv">hidden</span><span class="op">;</span></span>
-<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>&#125;</span></code></pre></div>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>效果:</p>
-<figure>
-<img src="https://cdn-images-1.medium.com/max/2000/1*9L39xG8cZkPXO2rkiuvHOg.jpeg" alt="图源作者">
-<figcaption aria-hidden="true">图源作者</figcaption>
-</figure>
-<h2 id="border-image">6. <code>border-image</code></h2>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*9L39xG8cZkPXO2rkiuvHOg.jpeg" alt="图源作者"></p>
+<h2 id="6-border-image">6. <code>border-image</code></h2>
 <p>此属性非常适合设计我们的网站，我们可以使用此属性在元素周围创建漂亮的边框
 —— <code>border-image</code> 允许你将自定义图像设置为边框。</p>
 <p>下面的图像就展示了这个属性的应用：</p>
-<figure>
-<img src="https://cdn-images-1.medium.com/max/2000/1*7SOVwmouXHD1lxWGVeSEMw.png" alt="图源: MDN 网站">
-<figcaption aria-hidden="true">图源: <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-image">MDN
-网站</a></figcaption>
-</figure>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*7SOVwmouXHD1lxWGVeSEMw.png" alt="图源: MDN 网站"></p>
 <p>HTML 和 CSS 代码如下：</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;body&gt;</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;h1&gt;</span>This is a title<span class="kw">&lt;/h1&gt;</span></span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/body&gt;</span></span></code></pre></div>
-<div class="sourceCode" id="cb10"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>h1 &#123;</span>
+<div class="sourceCode" id="cb10"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>h1 {</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">border</span>: <span class="dv">10</span><span class="dt">px</span> <span class="dv">solid</span> <span class="dv">transparent</span><span class="op">;</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">padding</span>: <span class="dv">15</span><span class="dt">px</span><span class="op">;</span></span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">border-image</span>: <span class="fu">url(</span><span class="st">border.png</span><span class="fu">)</span> <span class="dv">20</span><span class="dt">%</span> round<span class="op">;</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>&#125;</span></code></pre></div>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>效果:</p>
-<figure>
-<img src="https://cdn-images-1.medium.com/max/2716/1*go4Ajp41jzEj5bPsHAnOkQ.jpeg" alt="图源作者">
-<figcaption aria-hidden="true">图源作者</figcaption>
-</figure>
+<p><img src="https://cdn-images-1.medium.com/max/2716/1*go4Ajp41jzEj5bPsHAnOkQ.jpeg" alt="图源作者"></p>
 <p>此属性可用于创建精美卡片或强调部分文本。</p>
 <h2 id="最后的想法">最后的想法</h2>
 <p>前端开发者们除了使用 JavaScript 之外，还同时使用着 CSS 和
@@ -668,7 +753,7 @@ HTML。了解更多的 CSS 属性知识，能够帮助我们更快、更好地�
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#all"><span class="nav-text">1. all</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#writing-mode"><span class="nav-text">2. writing-mode</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#background-clip"><span class="nav-text">3. background-clip</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#user-select"><span class="nav-text">4. user-select</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#white-space"><span class="nav-text">5. white-space</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#border-image"><span class="nav-text">6. border-image</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%80%E5%90%8E%E7%9A%84%E6%83%B3%E6%B3%95"><span class="nav-text">最后的想法</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-all"><span class="nav-text">1. all</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-writing-mode"><span class="nav-text">2. writing-mode</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-background-clip"><span class="nav-text">3. background-clip</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-user-select"><span class="nav-text">4. user-select</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-white-space"><span class="nav-text">5. white-space</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-border-image"><span class="nav-text">6. border-image</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%80%E5%90%8E%E7%9A%84%E6%83%B3%E6%B3%95"><span class="nav-text">最后的想法</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -749,12 +834,12 @@ HTML。了解更多的 CSS 属性知识，能够帮助我们更快、更好地�
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">1.1m</span>
+    <span title="Symbols count total">921k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">34:12</span>
+    <span title="Reading time total">27:54</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT</a>
   </div>

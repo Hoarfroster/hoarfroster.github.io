@@ -86,7 +86,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://cdn-images-1.medium.com/max/2000/0*RbpNfHqVXY39GYeC.png">
 <meta property="article:published_time" content="2021-01-13T13:26:00.000Z">
-<meta property="article:modified_time" content="2022-05-28T15:43:08.171Z">
+<meta property="article:modified_time" content="2022-05-29T08:07:02.296Z">
 <meta property="article:author" content="Hoarfroster">
 <meta property="article:tag" content="Computer Science">
 <meta property="article:tag" content="Backend">
@@ -139,7 +139,119 @@
   </style>
 </noscript>
 
-</head>
+<style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
   <div class="container use-motion">
@@ -277,7 +389,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-05-28 23:43:08" itemprop="dateModified" datetime="2022-05-28T23:43:08+08:00">2022-05-28</time>
+                <time title="Modified: 2022-05-29 16:07:02" itemprop="dateModified" datetime="2022-05-29T16:07:02+08:00">2022-05-29</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -351,23 +463,23 @@ Node.js 处理临时数据部分的工作内容 —— 在 V8
 <p>让我们一起深入缓冲区（<code>Buffer</code>）的各种使用方法，了解更多有关它们的信息以及一起学习如何在
 Node.js 程序中使用它们吧。</p>
 <p><img src="https://cdn-images-1.medium.com/max/2000/0*RbpNfHqVXY39GYeC.png"></p>
-<h2 id="node.js-buffer-的方法">Node.js Buffer 的方法</h2>
+<h2 id="nodejs-buffer-的方法">Node.js Buffer 的方法</h2>
 <p>Node.js 缓冲模块的最大优势，其实就是它是内置于 Node.js
 中的，因此我们可以在任何我们想要使用它的地方使用它。</p>
 <p>让我们一起浏览一些重要的 Node.js 缓冲模块的方法吧。</p>
-<h4 id="buffer.alloc"><code>Buffer.alloc()</code></h4>
+<h4 id="bufferalloc"><code>Buffer.alloc()</code></h4>
 <p>此方法将创建一个新的缓冲区，但是分配的大小不是固定的。当我们调用此方法时，可以自行分配大小（以字节为单位）。</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> buf <span class="op">=</span> <span class="bu">Buffer</span><span class="op">.</span><span class="fu">alloc</span>(<span class="dv">6</span>)  <span class="co">// 这会创建一个 6 字节的缓冲区</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(buf) <span class="co">// &lt;Buffer 00 00 00 00 00 00&gt;</span></span></code></pre></div>
-<h4 id="buffer.bytelength"><code>Buffer.byteLength()</code></h4>
+<h4 id="bufferbytelength"><code>Buffer.byteLength()</code></h4>
 <p>如果我们想要获取缓冲区的长度，我们只需调用
 <code>Buffer.byteLength()</code> 就行了。</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> buf <span class="op">=</span> <span class="bu">Buffer</span><span class="op">.</span><span class="fu">alloc</span>(<span class="dv">10</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> buffLen <span class="op">=</span> <span class="bu">Buffer</span><span class="op">.</span><span class="fu">byteLength</span>(buf) <span class="co">// 检查缓冲区长度</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(buffLen) <span class="co">// 10</span></span></code></pre></div>
-<h4 id="buffer.compare"><code>Buffer.compare()</code></h4>
+<h4 id="buffercompare"><code>Buffer.compare()</code></h4>
 <p>通过使用 <code>Buffer.compare()</code>
 我们可以比较两个缓冲区，此方法的返回值是
 <code>-1</code>，<code>0</code>，<code>1</code> 中的一个。</p>
@@ -390,7 +502,7 @@ Node.js 程序中使用它们吧。</p>
 <span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> buf2 <span class="op">=</span> <span class="bu">Buffer</span><span class="op">.</span><span class="fu">from</span>(<span class="st">'a'</span>)</span>
 <span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> a <span class="op">=</span> <span class="bu">Buffer</span><span class="op">.</span><span class="fu">compare</span>(buf1<span class="op">,</span> buf2)</span>
 <span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(a) <span class="co">// 这会打印 1</span></span></code></pre></div>
-<h4 id="buffer.concat"><code>Buffer.concat()</code></h4>
+<h4 id="bufferconcat"><code>Buffer.concat()</code></h4>
 <p>顾名思义，我们可以使用此函数连接两个缓冲区。当然，就像字符串一样，我们也可以连接两个以上的缓冲区。</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> buffer1 <span class="op">=</span> <span class="bu">Buffer</span><span class="op">.</span><span class="fu">from</span>(<span class="st">'x'</span>)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> buffer2 <span class="op">=</span> <span class="bu">Buffer</span><span class="op">.</span><span class="fu">from</span>(<span class="st">'y'</span>)</span>
@@ -405,23 +517,23 @@ Node.js 程序中使用它们吧。</p>
 <span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(buf)</span>
 <span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="co">// &lt;Buffer 78 79 7a&gt; concat successful</span></span></code></pre></div>
-<h4 id="buffer.entries"><code>Buffer.entries()</code></h4>
+<h4 id="bufferentries"><code>Buffer.entries()</code></h4>
 <p><code>Buffer.entries()</code> 会用这一缓冲区的内容创建并返回一个
 [index, byte] 形式的迭代器。</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> buf <span class="op">=</span> <span class="bu">Buffer</span><span class="op">.</span><span class="fu">from</span>(<span class="st">'xyz'</span>)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (a <span class="kw">of</span> buf<span class="op">.</span><span class="fu">entries</span>()) &#123;</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (a <span class="kw">of</span> buf<span class="op">.</span><span class="fu">entries</span>()) {</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(a)</span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">/* 这个会在控制台输出一个有缓冲区位置与内容的字节的数组 [ 0, 120 ][ 1, 121 ][ 2, 122 ] */</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>&#125;</span></code></pre></div>
-<h4 id="buffer.fill"><code>Buffer.fill()</code></h4>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<h4 id="bufferfill"><code>Buffer.fill()</code></h4>
 <p>我们可以使用 <code>Buffer.fill()</code>
 这个函数将数据插入或填充到缓冲区中。更多信息请参见下文。</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> b <span class="op">=</span> <span class="bu">Buffer</span><span class="op">.</span><span class="fu">alloc</span>(<span class="dv">10</span>)<span class="op">.</span><span class="fu">fill</span>(<span class="st">'a'</span>)</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(b<span class="op">.</span><span class="fu">toString</span>())</span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co">// aaaaaaaaaa</span></span></code></pre></div>
-<h4 id="buffer.includes"><code>Buffer.includes()</code></h4>
+<h4 id="bufferincludes"><code>Buffer.includes()</code></h4>
 <p>像字符串一样，它将确认缓冲区是否具有该值。我们可以使用
 <code>Buffer.includes()</code>
 方法来实现这一点，给定方法根据搜索返回一个布尔值，即 <code>true</code>
@@ -432,7 +544,7 @@ Node.js 程序中使用它们吧。</p>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(buf<span class="op">.</span><span class="fu">includes</span>(<span class="bu">Buffer</span><span class="op">.</span><span class="fu">from</span>(<span class="st">'a buffer example'</span>)))</span>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co">// false</span></span></code></pre></div>
-<h4 id="buffer.isencoding"><code>Buffer.isEncoding()</code></h4>
+<h4 id="bufferisencoding"><code>Buffer.isEncoding()</code></h4>
 <p>我们可能知道二进制文件必须进行编码，那么如果我们要检查数据类型是否支持字符编码该怎么办呢？我们可以使用
 <code>Buffer.isEncoding()</code> 方法进行确认。如果支持，它将返回
 <code>true</code>。</p>
@@ -447,7 +559,7 @@ Node.js 程序中使用它们吧。</p>
 <span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="bu">Buffer</span><span class="op">.</span><span class="fu">isEncoding</span>(<span class="st">'hey'</span>))</span>
 <span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="co">// false</span></span></code></pre></div>
-<h4 id="buffer.slice"><code>Buffer.slice()</code></h4>
+<h4 id="bufferslice"><code>Buffer.slice()</code></h4>
 <p><code>buf.slice()</code> 将用于使用缓冲区的选定元素创建一个新缓冲区
 ——
 对缓冲区进行切割时，将创建一个新缓冲区，其中包含要在新缓冲区切片中找到的项目的列表。</p>
@@ -456,7 +568,7 @@ Node.js 程序中使用它们吧。</p>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(b<span class="op">.</span><span class="fu">toString</span>())<span class="op">;</span></span>
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co">// wxy</span></span></code></pre></div>
-<h4 id="buffer.swapx"><code>Buffer.swapX()</code></h4>
+<h4 id="bufferswapx"><code>Buffer.swapX()</code></h4>
 <p><code>Buffer.swapX()</code> 用于交换缓冲区的字节顺序。使用
 <code>Buffer.swapX()</code> （此处 <code>X</code> 可以为 16, 32,
 64）来交换 16 位，32 位和 64 位缓冲区对象的字节顺序。</p>
@@ -478,13 +590,13 @@ Node.js 程序中使用它们吧。</p>
 <span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>buf1<span class="op">.</span><span class="fu">swap64</span>()</span>
 <span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(buf1)</span>
 <span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a><span class="co">// &lt;Buffer 06 05 08 07 02 01 04 03&gt;</span></span></code></pre></div>
-<h4 id="buffer.json"><code>Buffer.json()</code></h4>
+<h4 id="bufferjson"><code>Buffer.json()</code></h4>
 <p>它可以帮助我们从缓冲区创建 JSON 对象，而该方法将返回 JSON
 缓冲区对象，</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> buf <span class="op">=</span> <span class="bu">Buffer</span><span class="op">.</span><span class="fu">from</span>([<span class="bn">0x1</span><span class="op">,</span> <span class="bn">0x2</span><span class="op">,</span> <span class="bn">0x3</span><span class="op">,</span> <span class="bn">0x4</span><span class="op">,</span> <span class="bn">0x5</span><span class="op">,</span> <span class="bn">0x6</span><span class="op">,</span> <span class="bn">0x7</span><span class="op">,</span> <span class="bn">0x8</span>])<span class="op">;</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(buf<span class="op">.</span><span class="fu">toJSON</span>())<span class="op">;</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co">// &#123;"type":"Buffer", data:[1, 2, 3, 4, 5, 6, 7, 8]&#125;</span></span></code></pre></div>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co">// {"type":"Buffer", data:[1, 2, 3, 4, 5, 6, 7, 8]}</span></span></code></pre></div>
 <h2 id="结论">结论</h2>
 <p>如果我们需要进一步了解并使用 Node.js 的缓冲区，我们需要对缓冲区以及
 Node.js
@@ -579,7 +691,7 @@ Node.js 缓冲区和各种 Node.js 缓冲区方法的使用。</p>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#node.js-buffer-%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-text">Node.js Buffer 的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#buffer.alloc"><span class="nav-text">Buffer.alloc()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#buffer.bytelength"><span class="nav-text">Buffer.byteLength()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#buffer.compare"><span class="nav-text">Buffer.compare()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#buffer.concat"><span class="nav-text">Buffer.concat()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#buffer.entries"><span class="nav-text">Buffer.entries()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#buffer.fill"><span class="nav-text">Buffer.fill()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#buffer.includes"><span class="nav-text">Buffer.includes()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#buffer.isencoding"><span class="nav-text">Buffer.isEncoding()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#buffer.slice"><span class="nav-text">Buffer.slice()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#buffer.swapx"><span class="nav-text">Buffer.swapX()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#buffer.json"><span class="nav-text">Buffer.json()</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AE%BA"><span class="nav-text">结论</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#nodejs-buffer-%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-text">Node.js Buffer 的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#bufferalloc"><span class="nav-text">Buffer.alloc()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#bufferbytelength"><span class="nav-text">Buffer.byteLength()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#buffercompare"><span class="nav-text">Buffer.compare()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#bufferconcat"><span class="nav-text">Buffer.concat()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#bufferentries"><span class="nav-text">Buffer.entries()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#bufferfill"><span class="nav-text">Buffer.fill()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#bufferincludes"><span class="nav-text">Buffer.includes()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#bufferisencoding"><span class="nav-text">Buffer.isEncoding()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#bufferslice"><span class="nav-text">Buffer.slice()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#bufferswapx"><span class="nav-text">Buffer.swapX()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#bufferjson"><span class="nav-text">Buffer.json()</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AE%BA"><span class="nav-text">结论</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -660,12 +772,12 @@ Node.js 缓冲区和各种 Node.js 缓冲区方法的使用。</p>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">1.1m</span>
+    <span title="Symbols count total">921k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">34:12</span>
+    <span title="Reading time total">27:54</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT</a>
   </div>

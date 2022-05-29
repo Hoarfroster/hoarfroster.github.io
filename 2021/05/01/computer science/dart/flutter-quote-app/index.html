@@ -141,7 +141,119 @@
   </style>
 </noscript>
 
-</head>
+<style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
   <div class="container use-motion">
@@ -366,14 +478,14 @@ Material 应用程序。</p>
 import 'package:flutter/material.dart';
 import 'package:flutter_quote_app/screens/home.dart';
 
-void main() &#123;
+void main() {
   runApp(MyApp());
-&#125;
+}
 
-class MyApp extends StatelessWidget &#123;
+class MyApp extends StatelessWidget {
   // 你的应用程序 Widget 树的根 Widget
   @override
-  Widget build(BuildContext context) &#123;
+  Widget build(BuildContext context) {
     return MaterialApp(
         title: '名言名句应用程序',
         theme: ThemeData(
@@ -382,8 +494,8 @@ class MyApp extends StatelessWidget &#123;
         ),
         debugShowCheckedModeBanner: false,
         home: HomeScreen());
-  &#125;
-&#125;</code></pre>
+  }
+}</code></pre>
 <h2 id="通过-api-获取数据">通过 API 获取数据</h2>
 <p>为了获得数据，我们需要一个 API 以获得名言名句的 JSON
 格式的原始数据。</p>
@@ -402,12 +514,12 @@ List&lt;Quotes&gt; quotesFromJson(String str) =&gt;
 String quotesToJson(List&lt;Quotes&gt; data) =&gt;
   json.encode(List&lt;dynamic&gt;.from(data.map((x) =&gt; x.toJson())));
 
-class Quotes &#123;
-  Quotes(&#123;
+class Quotes {
+  Quotes({
     this.q,
     this.a,
     this.h,
-  &#125;);
+  });
 
   String q;
   String a;
@@ -419,26 +531,26 @@ class Quotes &#123;
       h: json["h"],
     );
 
-  Map&lt;String, dynamic&gt; toJson() =&gt; &#123;
+  Map&lt;String, dynamic&gt; toJson() =&gt; {
       "q": q,
       "a": a,
       "h": h,
-    &#125;;
-&#125;</code></pre>
+    };
+}</code></pre>
 <p>以上是生成的 Dart 模型类。</p>
 <h3 id="让我们创建一个函数来请求-api-获取数据">让我们创建一个函数来请求
 API 获取数据</h3>
 <pre class="dart"><code>// home.dart
 
-static Future&lt;List&lt;Quotes&gt;&gt; fetchQuotes() async &#123;
+static Future&lt;List&lt;Quotes&gt;&gt; fetchQuotes() async {
   final response = await http.get('https://zenquotes.io/api/quotes');
-  if (response.statusCode == 200) &#123;
+  if (response.statusCode == 200) {
     print(quotesFromJson(response.body).length);
     return quotesFromJson(response.body);
-  &#125; else &#123;
+  } else {
     throw Exception('失败加载名言名句');
-  &#125;
-&#125;</code></pre>
+  }
+}</code></pre>
 <p>在上面的代码中，我们有一个异步方法，作出一个 GET
 请求。如果响应的状态码是
 <code>200</code>，它就会返回<strong>名言名句</strong>的列表，否则就抛出一个异常。</p>
@@ -456,33 +568,33 @@ import 'package:flutter_quote_app/models/qoutemodel.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 
-class HomeScreen extends StatefulWidget &#123;
+class HomeScreen extends StatefulWidget {
   @override
   _HomeScreenState createState() =&gt; _HomeScreenState();
-&#125;
+}
 
 PageController pageController = PageController(keepPage: true);
 
-class _HomeScreenState extends State&lt;HomeScreen&gt; &#123;
+class _HomeScreenState extends State&lt;HomeScreen&gt; {
   // 调用 API 并获取数据
-  static Future&lt;List&lt;Quotes&gt;&gt; fetchQuotes() async &#123;
+  static Future&lt;List&lt;Quotes&gt;&gt; fetchQuotes() async {
     final response = await http.get('https://zenquotes.io/api/quotes');
-    if (response.statusCode == 200) &#123;
+    if (response.statusCode == 200) {
       print(quotesFromJson(response.body).length);
       return quotesFromJson(response.body);
-    &#125; else &#123;
+    } else {
       throw Exception('获取名言名句失败');
-    &#125;
-  &#125;
+    }
+  }
 
   @override
-  void initState() &#123;
+  void initState() {
     super.initState();
     fetchQuotes();
-  &#125;
+  }
 
   @override
-  Widget build(BuildContext context) &#123;
+  Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
         children: [
@@ -498,8 +610,8 @@ class _HomeScreenState extends State&lt;HomeScreen&gt; &#123;
         ],
       ),
     );
-  &#125;
-&#125;</code></pre>
+  }
+}</code></pre>
 <p>在这里，我们使用 <code>Column</code> 作为 <code>Scaffold</code> 的
 <code>body</code> 属性值，包含两个 <code>Expanded</code> 子
 Widget，一个有 <code>flex: 8</code>，另一个没有 <code>flex</code>
@@ -515,7 +627,7 @@ Widget，一个有 <code>flex: 8</code>，另一个没有 <code>flex</code>
 <p>为什么要用这个东西呢？</p>
 </blockquote>
 <p>由于我们的 UI 会在应用运行后立即构建，但我们却无法立刻获取到来自 API
-的<strong><em>响应</em></strong>，因此如果你的 UI 依赖于 API
+的<em><strong>响应</strong></em>，因此如果你的 UI 依赖于 API
 响应值，那么它将会抛出很多的 <code>null</code> 错误。</p>
 <h3 id="让我们投奔-future">让我们投奔 Future</h3>
 <p><code>FutureBuilder</code> 也是一个 Widget，因此我们可以直接在我们的
@@ -530,33 +642,33 @@ import 'package:flutter_quote_app/models/qoutemodel.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 
-class HomeScreen extends StatefulWidget &#123;
+class HomeScreen extends StatefulWidget {
   @override
   _HomeScreenState createState() =&gt; _HomeScreenState();
-&#125;
+}
 
 PageController pageController = PageController(keepPage: true);
 
-class _HomeScreenState extends State&lt;HomeScreen&gt; &#123;
+class _HomeScreenState extends State&lt;HomeScreen&gt; {
   // 调用 API 并获取数据
-  static Future&lt;List&lt;Quotes&gt;&gt; fetchQuotes() async &#123;
+  static Future&lt;List&lt;Quotes&gt;&gt; fetchQuotes() async {
     final response = await http.get('https://zenquotes.io/api/quotes');
-    if (response.statusCode == 200) &#123;
+    if (response.statusCode == 200) {
       print(quotesFromJson(response.body).length);
       return quotesFromJson(response.body);
-    &#125; else &#123;
+    } else {
       throw Exception('失败加载名言名句');
-    &#125;
-  &#125;
+    }
+  }
 
   @override
-  void initState() &#123;
+  void initState() {
     super.initState();
     fetchQuotes();
-  &#125;
+  }
 
   @override
-  Widget build(BuildContext context) &#123;
+  Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
         children: [
@@ -565,14 +677,14 @@ class _HomeScreenState extends State&lt;HomeScreen&gt; &#123;
             child: FutureBuilder&lt;List&lt;Quotes&gt;&gt;(
               future: fetchQuotes(),
               builder:
-                  (BuildContext context, AsyncSnapshot&lt;List&lt;Quotes&gt;&gt; snapshot) &#123;
+                  (BuildContext context, AsyncSnapshot&lt;List&lt;Quotes&gt;&gt; snapshot) {
                 if (snapshot.connectionState == ConnectionState.done &amp;&amp;
-                    snapshot.hasData) &#123;
+                    snapshot.hasData) {
                   return buildPageView(snapshot);
-                &#125; else &#123;
+                } else {
                   return Center(child: CircularProgressIndicator());
-                &#125;
-              &#125;,
+                }
+              },
             ),
           ),
           Expanded(
@@ -583,7 +695,7 @@ class _HomeScreenState extends State&lt;HomeScreen&gt; &#123;
         ],
       ),
     );
-  &#125;</code></pre>
+  }</code></pre>
 <p><code>FutureBuilder</code> 有两个主要属性：<code>future</code> 和
 <code>builder</code>。这里我们将 <code>future</code> 赋值为
 <code>fetchQuotes()</code> 方法以运行获取数据的函数并将结果返回给
@@ -594,24 +706,24 @@ class _HomeScreenState extends State&lt;HomeScreen&gt; &#123;
 <code>CircularProgressIndicator</code>。而一旦有了返回的数据就立即显示名言名句页面。</p>
 <p><code>FutureBuilder</code> 能帮助我们轻松实现：</p>
 <pre class="dart"><code>future: fetchQuotes(),          
-builder: (BuildContext context, AsyncSnapshot&lt;List&lt;Quotes&gt;&gt; snapshot) &#123;
-    if (snapshot.connectionState == ConnectionState.done &amp;&amp; snapshot.hasData) &#123;
+builder: (BuildContext context, AsyncSnapshot&lt;List&lt;Quotes&gt;&gt; snapshot) {
+    if (snapshot.connectionState == ConnectionState.done &amp;&amp; snapshot.hasData) {
        return buildPageView(snapshot);
-    &#125; else &#123;
+    } else {
        return Center(child: CircularProgressIndicator());
-    &#125;
-&#125;</code></pre>
+    }
+}</code></pre>
 <p>在这里，我们已经创建了我的 <code>PageView</code> Widget 构造器
 <code>buildPageView()</code>，并将其传递给子 Widget。</p>
 <h2 id="样式化文本">样式化文本</h2>
 <pre class="dart"><code>// home.dart
 
-PageView buildPageView(AsyncSnapshot&lt;List&lt;Quotes&gt;&gt; snapshot) &#123;
+PageView buildPageView(AsyncSnapshot&lt;List&lt;Quotes&gt;&gt; snapshot) {
     return PageView.builder(
       controller: pageController,
       itemCount: snapshot.data.length,
       scrollDirection: Axis.vertical,
-      itemBuilder: (BuildContext context, int index) &#123;
+      itemBuilder: (BuildContext context, int index) {
         return Container(
           // height: MediaQuery.of(context).size.height * 0.87,
           width: double.infinity,
@@ -638,12 +750,12 @@ PageView buildPageView(AsyncSnapshot&lt;List&lt;Quotes&gt;&gt; snapshot) &#123;
                   repeatForever: false,
                   displayFullTextOnTap: true,
                   speed: const Duration(milliseconds: 150),
-                  onFinished: () &#123;
+                  onFinished: () {
                     pageController.nextPage(
                       duration: Duration(seconds: 1),
                       curve: Curves.easeInOutCirc,
                     );
-                  &#125;,
+                  },
                   text: ['"' + snapshot.data[index].q + '"'],
                   textStyle: GoogleFonts.montserratAlternates(
                       fontSize: 30.0, color: Colors.white),
@@ -659,10 +771,10 @@ PageView buildPageView(AsyncSnapshot&lt;List&lt;Quotes&gt;&gt; snapshot) &#123;
             ],
           ),
         );
-      &#125;,
+      },
     );
-  &#125;
-&#125;</code></pre>
+  }
+}</code></pre>
 <p>在 PageView 构造器中，我们使用了
 <code>TyperAnimatedTextKit</code>，而你也需要导入这个包。在
 <code>TyperAnimatedTextKit</code>
@@ -845,12 +957,12 @@ API 获取数据</span></a></li></ol></li><li class="nav-item nav-level-2"><a cl
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">1.1m</span>
+    <span title="Symbols count total">921k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">34:12</span>
+    <span title="Reading time total">27:54</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT</a>
   </div>

@@ -141,7 +141,119 @@
   </style>
 </noscript>
 
-</head>
+<style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
   <div class="container use-motion">
@@ -336,10 +448,7 @@ Hoarfroster</a></li>
 <li>校对者：<a target="_blank" rel="noopener" href="https://github.com/zenblo">zenblo</a>、<a target="_blank" rel="noopener" href="https://github.com/Chorer">Chorer</a></li>
 </ul>
 </blockquote>
-<figure>
-<img src="https://webdevelopmenthistory.com/wp-content/uploads/2021/03/1993_cgi_mosaic.jpg" alt="头图">
-<figcaption aria-hidden="true">头图</figcaption>
-</figure>
+<p><img src="https://webdevelopmenthistory.com/wp-content/uploads/2021/03/1993_cgi_mosaic.jpg" alt="头图"></p>
 <p>在 <a target="_blank" rel="noopener" href="https://webdevelopmenthistory.com/1995-the-birth-of-javascript/">JavaScript
 诞生</a>的几年前，一个叫做通用网关接口（CGI）的规范为网页提供了一种早期的交互形式。不同于在浏览器内部（也就是客户端）执行交互任务的
 JavaScript，CGI
@@ -372,18 +481,18 @@ CGP/1.0。”</p>
 <p>“我想了想，这并不是一个真正的协议，而是一个接口，你们觉得把它改成
 CGI/1.0 怎么样？”</p>
 </blockquote>
-<p>有人对”网关”一词持反对态度，<a target="_blank" rel="noopener" href="http://1997.webhistory.org/www.lists/www-talk.1993q4/0563.html">McCool
-解释说</a>，它指的是”一个连接外部服务器程序的接口，允许你与通常可能无法访问的服务对接”。</p>
+<p>有人对“网关“一词持反对态度，<a target="_blank" rel="noopener" href="http://1997.webhistory.org/www.lists/www-talk.1993q4/0563.html">McCool
+解释说</a>，它指的是“一个连接外部服务器程序的接口，允许你与通常可能无法访问的服务对接“。</p>
 <p>更具体地说，它指的是将一个 Web 服务器连接到一个传统的信息系统 ——
 比如数据库。因此，执行 CGI
-程序的服务器就是允许在网页上使用（例如）数据库的信息的”网关”。<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/2089271/what-is-common-gateway-interface-cgi">换一种说法</a>，CGI
+程序的服务器就是允许在网页上使用（例如）数据库的信息的“网关“。<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/2089271/what-is-common-gateway-interface-cgi">换一种说法</a>，CGI
 告诉 Web 服务器如何用应用程序收发数据。</p>
 <p>用现代术语来说，我们可以把 CGI
 看作是一个应用程序接口（API）。所以从这个意义上说，正如<a target="_blank" rel="noopener" href="http://www.whizkidtech.redprince.net/cgi-bin/tutorial">一份教程</a>所说的那样，“CGI
 就是 Web 服务器的 API”。</p>
 <p><img src="https://webdevelopmenthistory.com/wp-content/uploads/2021/03/cgi1-1024x733.png"></p>
 <p>通过超链接启动的 CGI 程序；<a target="_blank" rel="noopener" href="http://condor.cc.ku.edu/~grobe/docs/forms-intro.shtml">图源
-Michael Grobe</a>，堪萨斯大学的”1994 年的某个时候”</p>
+Michael Grobe</a>，堪萨斯大学的“1994 年的某个时候“</p>
 <p>到 <a target="_blank" rel="noopener" href="http://1997.webhistory.org/www.lists/www-talk.1993q4/0685.html">1993
 年 12 月初</a>，McCool “将 CGI 规范写成了一套 HTML 文件，网址是
 http://hoohoo.ncsa.uiuc.edu/cgi/”。虽然该网页早已从网上消失，但 Wayback
@@ -394,15 +503,15 @@ Machine 有一份 <a target="_blank" rel="noopener" href="https://web.archive.or
 服务器）接口的标准。”</p>
 </blockquote>
 <p>在附带的<a target="_blank" rel="noopener" href="https://web.archive.org/web/19971210170704/http://hoohoo.ncsa.uiuc.edu/cgi/intro.html">介绍</a>中，McCool
-声称”对于你可以上传到 Web
-上的东西，真的是没有限制的”，但他同时也补充了一个注意事项：</p>
+声称“对于你可以上传到 Web
+上的东西，真的是没有限制的“，但他同时也补充了一个注意事项：</p>
 <blockquote>
 <p>“你唯一需要记住的是，无论你的 CGI
 程序做什么，都不应该花太多时间去处理。否则，用户只会盯着他们的浏览器，等待一些事情发生。”</p>
 </blockquote>
 <p>因为 CGI 脚本是可执行的，所以它们通常被放在一个特殊的文件夹里面。正如
-McCool 所解释的那样，这是”为了让 Web
-服务器知道要执行程序，而不是仅仅将其显示给浏览器”。这也使得网站管理员能够锁定文件夹，以防止人们创建有潜在危险的
+McCool 所解释的那样，这是“为了让 Web
+服务器知道要执行程序，而不是仅仅将其显示给浏览器“。这也使得网站管理员能够锁定文件夹，以防止人们创建有潜在危险的
 CGI 脚本。McCool 建议文件夹名称为
 <strong>cgi-bin</strong>，而这很快就成为了标准。在 90 年代以后，像
 <code>http://www.example.com/cgi-bin/helloworld.pl</code> 这样的 URL
@@ -452,8 +561,8 @@ Script Archive</a>这样的网站来提供这些代码片段。</p>
 Wright</a> 在 1995 年创办 Matt’s Script Archive
 时，还是科罗拉多州柯林斯堡的一名高中生。他最受欢迎的脚本之一是一个名为
 <a target="_blank" rel="noopener" href="http://www.scriptarchive.com/formmail.html">FormMail</a>
-的联系表格，该脚本用 Perl 编写，被描述为”一个通用的 HTML
-表格连接到电子邮件网关的脚本，支持解析任何表格的结果，并将它们发送给指定的用户”。不过不幸的是，FormMail
+的联系表格，该脚本用 Perl 编写，被描述为“一个通用的 HTML
+表格连接到电子邮件网关的脚本，支持解析任何表格的结果，并将它们发送给指定的用户“。不过不幸的是，FormMail
 本身就不安全，很快就被垃圾邮件发送者利用来发送垃圾邮件。</p>
 <p><img src="https://webdevelopmenthistory.com/wp-content/uploads/2021/03/matts_script_archive98-1024x754.jpg"></p>
 <p><a target="_blank" rel="noopener" href="https://web.archive.org/web/19980709151514/http://scriptarchive.com/">Matt’s
@@ -475,14 +584,14 @@ Archive</a> 的程序什么的更新持续了五年（尽管它现在包含安�
 开发的主题之一，就是 web 应用的复杂性越来越高。前端（web
 浏览器）越来越多地与后端技术相连，包括微软的操作系统。<a target="_blank" rel="noopener" href="https://webdevelopmenthistory.com/1997-netscape-crossware-vs-the-windows-web/">到
 1997年</a>，Netscape 推行了一个叫做 “crossware” 的概念（Marc Andreessen
-将其定义为”跨网络和操作系统运行的按需应用程序”），与此同时，微软正在建立其与
+将其定义为“跨网络和操作系统运行的按需应用程序“），与此同时，微软正在建立其与
 Windows 集成的 ActiveX 技术。</p>
 <p>但是 CGI
-提供了一种简单的方式来通过网页访问后端功能，从而在很多方面都绕开了这种复杂化的运动。网关”实际上只是一个从浏览器到服务器的虚拟管道，它可以执行一个脚本，然后将结果送回浏览器。这种简单性使得
+提供了一种简单的方式来通过网页访问后端功能，从而在很多方面都绕开了这种复杂化的运动。网关“实际上只是一个从浏览器到服务器的虚拟管道，它可以执行一个脚本，然后将结果送回浏览器。这种简单性使得
 20 世纪 90 年代有影响力的网站，如 Yahoo!、eBay 和 Craigslist 等得以摆脱
 Netscape 或微软，获得蓬勃的发展。</p>
 <p>但网络发展的另一个主题是，事物不会静止太久! 1994
-年出现了一种新的脚本语言，它是基于 CGI 的 —— <a target="_blank" rel="noopener" href="https://www.php.net/manual/en/history.php.php">PHP</a>，一个名字最初是”个人主页工具
+年出现了一种新的脚本语言，它是基于 CGI 的 —— <a target="_blank" rel="noopener" href="https://www.php.net/manual/en/history.php.php">PHP</a>，一个名字最初是“个人主页工具
 “的意思的语言。随着时间的推移，PHP 在很多情况下成为了 Perl CGI
 脚本的替代品。我将在本系列关于服务器端 Web
 开发的下一篇文章中深入探讨<em>这个故事</em>。</p>
@@ -657,12 +766,12 @@ Netscape 或微软，获得蓬勃的发展。</p>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">1.1m</span>
+    <span title="Symbols count total">921k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">34:12</span>
+    <span title="Reading time total">27:54</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT</a>
   </div>

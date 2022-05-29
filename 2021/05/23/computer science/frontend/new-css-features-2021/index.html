@@ -143,7 +143,119 @@
   </style>
 </noscript>
 
-</head>
+<style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
   <div class="container use-motion">
@@ -364,32 +476,32 @@ Doc</a></p>
 <p>自定义属性基本上允许我们定义 CSS
 属性的替代品以用于我们的设计。一个例子就能让你理解为什么说这个功能有用：</p>
 <p>通常，在构建主题时，我们会选择一种<a target="_blank" rel="noopener" href="https://websitesetup.org/website-color-schemes/"><strong>配色方案</strong></a>，然后在必要时声明这些颜色。</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>a &#123;</span>
+<div class="sourceCode" id="cb1"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>a {</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">color</span>: <span class="cn">#cd2653</span><span class="op">;</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>&#125;</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">.social-icons</span> a &#123;</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">.social-icons</span> a {</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">background</span>: <span class="cn">#cd2653</span><span class="op">;</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>&#125;</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">.wp-block-button.is-style-outline</span> &#123;</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">.wp-block-button.is-style-outline</span> {</span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">color</span>: <span class="cn">#cd2653</span><span class="op">;</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>&#125;</span></code></pre></div>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>这种方法的问题是，如果我们想要更改一种颜色，则必须在每一处使用了这个颜色的地方做出对应的修改。尽管<a target="_blank" rel="noopener" href="https://torquemag.io/2015/12/17-best-code-editors-wordpress-developers-users/"><strong>代码编辑器</strong></a>可以通过搜索和替换轻松地做到这一点，但这仍然很烦人。尤其是如果我们只是想进行快速测试，并且必须再次撤消所有操作。</p>
 <h4 id="更好的解决方案">更好的解决方案</h4>
 <p>自定义属性就解决了这个问题。在它们的帮助下，我们可以轻松地将刚才所说的配色分配给一个变量，然后每次使用该颜色时，只需将其作为
 CSS 属性输入即可，如下所示：</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="in">:root</span> &#123;</span>
+<div class="sourceCode" id="cb2"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="in">:root</span> {</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="va">--global--color-primary</span>: <span class="cn">#28303d</span><span class="op">;</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>&#125;</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>a &#123;</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>a {</span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">color</span>: <span class="fu">var(</span><span class="va">--global--color-primary</span><span class="fu">)</span><span class="op">;</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>&#125;</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="fu">.social-icons</span> a &#123;</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="fu">.social-icons</span> a {</span>
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">background</span>: <span class="fu">var(</span><span class="va">--global--color-primary</span><span class="fu">)</span><span class="op">;</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>&#125;</span></code></pre></div>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>这样，每当我们想要对配色进行更改时，只需要在一个地方进行更改即可。太酷了吧？过去，我们还需要使用
 <a target="_blank" rel="noopener" href="https://torquemag.io/2017/06/start-using-sass-wordpress-npm-scripts/">Sass</a>
 之类的预处理器来使用变量，而现在它是 CSS 的原生功能。</p>
@@ -399,11 +511,8 @@ CSS 属性输入即可，如下所示：</p>
 <code>var()</code> 函数在整个文档中使用它们。</p>
 <p>如果要更改变量，只需更改 <code>:root</code> 下面的声明就可以了。</p>
 <p>此 CSS 功能的兼容性如何，<a target="_blank" rel="noopener" href="https://caniuse.com/css-variables"><strong>浏览器支持</strong></a>非常好：</p>
-<figure>
-<img src="https://s3-torquehhvm-wpengine.netdna-ssl.com/uploads/2021/02/css-variables-custom-properties-browser-support-1024x376.jpg" alt="Can I Use">
-<figcaption aria-hidden="true">Can I Use</figcaption>
-</figure>
-<h3 id="supports"><span class="citation" data-cites="supports">@supports</span></h3>
+<p><img src="https://s3-torquehhvm-wpengine.netdna-ssl.com/uploads/2021/02/css-variables-custom-properties-browser-support-1024x376.jpg" alt="Can I Use"></p>
+<h3 id="supports">@supports</h3>
 <p>接下来，有一个类似于媒体查询的 CSS
 规则。不过我们不是用它基于屏幕大小或设备类型编写特定的样式，而是根据用户浏览器支持的
 CSS 属性和值，应用特定的样式。</p>
@@ -415,11 +524,11 @@ CSS 属性和值，应用特定的样式。</p>
 <code>@supports</code> 也称为“功能查询”的原因）。</p>
 <h4 id="如何使用功能查询">如何使用功能查询</h4>
 <p>如果您熟悉媒体查询，则使用支持检查将非常容易。使用方法如下：</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">@supports</span> (<span class="kw">display</span>: <span class="dv">grid</span>) &#123;</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">.site-content</span> &#123;</span>
+<div class="sourceCode" id="cb3"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">@supports</span> (<span class="kw">display</span>: <span class="dv">grid</span>) {</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">.site-content</span> {</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>        <span class="kw">display</span>: grid<span class="op">;</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    &#125;</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>&#125;</span></code></pre></div>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>如你所见，其实不过就是规则的声明后跟要在方括号中检查的属性或属性 —
 值对，再加上我们平时用的 CSS
 声明用于说明满足条件时要应用哪些样式规则。</p>
@@ -429,17 +538,14 @@ CSS 属性和值，应用特定的样式。</p>
 <p>同样重要的是要注意 <code>@supports</code> 支持使用运算符
 <code>not</code>、<code>and</code> 和
 <code>or</code>（也可以结合使用）以创建更具体的规则，例如对不支持该特定功能的浏览器的优雅降级：</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">@supports</span> <span class="kw">not</span> (<span class="kw">display</span>: <span class="dv">grid</span>) &#123;</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">.site-content</span> &#123;</span>
+<div class="sourceCode" id="cb4"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">@supports</span> <span class="kw">not</span> (<span class="kw">display</span>: <span class="dv">grid</span>) {</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">.site-content</span> {</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>        <span class="kw">float</span>: <span class="dv">left</span><span class="op">;</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    &#125;</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>&#125;</span></code></pre></div>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>为了能够正常使用 <code>@supports</code>
-功能，你需要知道哪些浏览器支持它（我知道，这是一种元数据）。好消息是<strong><a target="_blank" rel="noopener" href="https://caniuse.com/css-featurequeries">所有的现代浏览器都支持</a></strong>。</p>
-<figure>
-<img src="https://s3-torquehhvm-wpengine.netdna-ssl.com/uploads/2021/02/css-feature-queries-browser-support-1024x368.jpg" alt="Can I Use">
-<figcaption aria-hidden="true">Can I Use</figcaption>
-</figure>
+功能，你需要知道哪些浏览器支持它（我知道，这是一种元数据）。好消息是**<a target="_blank" rel="noopener" href="https://caniuse.com/css-featurequeries">所有的现代浏览器都支持</a>**。</p>
+<p><img src="https://s3-torquehhvm-wpengine.netdna-ssl.com/uploads/2021/02/css-feature-queries-browser-support-1024x368.jpg" alt="Can I Use"></p>
 <p>但是，由于这些查询的目的是启用或禁用旧版浏览器无法处理的功能，因此请确保正确编写它们。即如果要使用功能查询，请为支持功能查询的浏览器创建功能查询条件。让浏览器以它无法理解的方式忽略某些内容是没有用的。</p>
 <h3 id="flexbox-间隙">Flexbox 间隙</h3>
 <p>Flexbox 是另一种 CSS 布局模块，而我们<a target="_blank" rel="noopener" href="https://torquemag.io/2020/02/flexbox-tutorial/"><strong>已经讨论过它</strong></a>。长期以来，Flexbox
@@ -449,11 +555,11 @@ CSS 属性和值，应用特定的样式。</p>
 <a target="_blank" rel="noopener" href="https://caniuse.com/?search=column-gap"><code>column-gap</code></a>
 属性，在网格布局、Flexbox 布局和 Multi-Column 布局中创建间隙。</p>
 <p>这是一个在 Flexbox 中创建间隙的快速示例：</p>
-<pre><code>.flex-gap-test &#123;
+<pre><code>.flex-gap-test {
     display: inline-flex;
     flex-wrap: wrap;
     gap: 16px;
-&#125;
+}
 
 &lt;div class="flex-gap-test"&gt;
     &lt;div&gt;1&lt;/div&gt;
@@ -464,10 +570,7 @@ CSS 属性和值，应用特定的样式。</p>
     &lt;div&gt;6&lt;/div&gt;
 &lt;/div&gt;</code></pre>
 <p>这就是效果：</p>
-<figure>
-<img src="https://s3-torquehhvm-wpengine.netdna-ssl.com/uploads/2021/02/new-css-features-flexbox-gaps-example.jpg" alt="Result">
-<figcaption aria-hidden="true">Result</figcaption>
-</figure>
+<p><img src="https://s3-torquehhvm-wpengine.netdna-ssl.com/uploads/2021/02/new-css-features-flexbox-gaps-example.jpg" alt="Result"></p>
 <p>尽管我们可以通过 <code>margin</code>
 实现相同的布局，但是与简单地声明间隙大小相比，它需要更多的标记和解决方法。</p>
 <h3 id="内容可见性">内容可见性</h3>
@@ -475,9 +578,9 @@ CSS 属性和值，应用特定的样式。</p>
 中一个非常酷的新功能，能够有效<a target="_blank" rel="noopener" href="https://torquemag.io/2015/08/ways-to-speed-up-wordpress-decrease-page-load-time/">提高网站性能</a>。它基本上像<a target="_blank" rel="noopener" href="https://torquemag.io/2018/01/lazy-load-wordpress/">延迟加载</a>一样工作，而且不仅适用于图像，还适用于任何
 HTML 元素。我们可以使用它来实现网站的懒加载。</p>
 <p>使用也超级容易。只需将其应用于我们选择的元素，如下所示：</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.content-below-fold</span> &#123;</span>
+<div class="sourceCode" id="cb6"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.content-below-fold</span> {</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    content-visibility: <span class="bu">auto</span><span class="op">;</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>&#125;</span></code></pre></div>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p><code>content-visibility</code> 支持三个值。默认情况下为
 <code>visible</code>，此时元素将照常加载。我们可以将其设置为
 <code>hidden</code>，即无论元素是否可见都不会呈现该元素。设置为
@@ -491,10 +594,7 @@ HTML 元素。我们可以使用它来实现网站的懒加载。</p>
 <p><a href="(https://caniuse.com/css-content-visibility)">浏览器支持方面</a>，<a target="_blank" rel="noopener" href="https://caniuse.com/css-content-visibility"><code>content-visibility</code></a>
 仍然有些差劲，不过正在朝着那个方向前进着，<a target="_blank" rel="noopener" href="https://caniuse.com/mdn-css_properties_contain-intrinsic-size"><code>contain-intrinsic-size</code></a>
 同理。</p>
-<figure>
-<img src="https://s3-torquehhvm-wpengine.netdna-ssl.com/uploads/2021/02/css-content-visibility-browser-support-1024x370.jpg" alt="Can I Use">
-<figcaption aria-hidden="true">Can I Use</figcaption>
-</figure>
+<p><img src="https://s3-torquehhvm-wpengine.netdna-ssl.com/uploads/2021/02/css-content-visibility-browser-support-1024x370.jpg" alt="Can I Use"></p>
 <p>我预计一旦它被更广泛地采用，它将成为加速渲染过程的最有效工具之一。</p>
 <h3 id="过渡变换动画">过渡，变换，动画</h3>
 <p>在过去，如果我们想在网站上移动某些内容，通常必须求助于
@@ -515,39 +615,39 @@ JavaScript（对于 MySpace 一代的用户来说则需要求助 GIF
 <p>自然，在这里我们没有空间详细讨论所有这三个部分。如果您想了解更多信息，请务必查看上面的链接。但是，让我们为每个示例做一些快速练习示例，以便您对可能的效果有一个印象。</p>
 <h4 id="css-transition">CSS Transition</h4>
 <p>这是 CSS 过渡的快速示例：</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>div &#123;</span>
+<div class="sourceCode" id="cb7"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>div {</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">width</span>: <span class="dv">100</span><span class="dt">px</span><span class="op">;</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">height</span>: <span class="dv">100</span><span class="dt">px</span><span class="op">;</span></span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">transition</span>: height <span class="dv">3</span><span class="dt">s</span><span class="op">;</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>&#125;</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>div<span class="in">:hover</span> &#123;</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>div<span class="in">:hover</span> {</span>
 <span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">height</span>: <span class="dv">500</span><span class="dt">px</span><span class="op">;</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>&#125;</span></code></pre></div>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>当有人将鼠标悬停在 <code>div</code>
 元素上时，上述的代码会将这个元素高度在三秒内增加到
 <code>500px</code>。</p>
 <h4 id="css-transform">CSS Transform</h4>
 <p>以下是 CSS 转换的示例 ——
 当有人将鼠标悬停在元素上方时，它将使元素顺时针旋转 30 度：</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>div<span class="in">:hover</span> &#123;</span>
+<div class="sourceCode" id="cb8"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>div<span class="in">:hover</span> {</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">transform</span>: <span class="fu">rotate(</span><span class="dv">30</span><span class="dt">deg</span><span class="fu">)</span><span class="op">;</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>&#125;</span></code></pre></div>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <h4 id="css-animation">CSS Animation</h4>
 <p>最后，是展示 CSS 动画使用方式的简短代码段：</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">@keyframes</span> color-change &#123;</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="dv">from</span> &#123;</span>
+<div class="sourceCode" id="cb9"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">@keyframes</span> color-change {</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="dv">from</span> {</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>        <span class="kw">background-color</span>: <span class="cn">blue</span><span class="op">;</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    &#125;</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="dv">to</span> &#123;</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="dv">to</span> {</span>
 <span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>        <span class="kw">background-color</span>: <span class="cn">yellow</span><span class="op">;</span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    &#125;</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>&#125;</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>div<span class="in">:hover</span> &#123;</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>div<span class="in">:hover</span> {</span>
 <span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">animation-name</span>: color-change<span class="op">;</span></span>
 <span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">animation-duration</span>: <span class="dv">3</span><span class="dt">s</span><span class="op">;</span></span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>&#125;</span></code></pre></div>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>请注意我们使用 <code>@keyframes</code>
 命名动画并定义其功能，然后我们需要使用 <code>animation-name</code>
 将该动画应用于元素。<code>animation-duration</code>
@@ -561,20 +661,17 @@ CSS 过渡、转换和动画。</p>
 <p>滚动捕捉让我们可以选择将用户的视口锁定到站点的某些部分或元素。对于创建很酷的过渡效果并在向下滚动页面帮助用户专注于最重要的页面元素的场景而言，这个功能非常有用。我们可以<a target="_blank" rel="noopener" href="https://codepen.io/tutsplus/pen/qpJYaK">在这里</a>找到一个简单的演示。</p>
 <p>这种效果在移动设备的应用程序中很明显，但是，通过滚动捕捉，我们也可以将其带到网站上。</p>
 <p>在最基本的情况上用法也相对简单。我们只需将滚动捕捉的类型应用于容器并定义其子对象应捕捉到的位置。</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.container</span> &#123;</span>
+<div class="sourceCode" id="cb10"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.container</span> {</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    scroll-snap-type: y mandatory<span class="op">;</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>&#125;</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">.container</span> div &#123;</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">.container</span> div {</span>
 <span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    scroll-snap-align: start<span class="op">;</span></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>&#125;</span></code></pre></div>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>当然还有更多有关它的使用特色。如果你想了解它，CSS Tricks
 已经有了一篇<a target="_blank" rel="noopener" href="https://css-tricks.com/practical-css-scroll-snapping/"><strong>很完美的文章</strong></a>了。</p>
 <p>然后是<a target="_blank" rel="noopener" href="https://caniuse.com/css-snappoints">浏览器的兼容性</a>，这是相当不错的。</p>
-<figure>
-<img src="https://s3-torquehhvm-wpengine.netdna-ssl.com/uploads/2021/02/css-scroll-snap-browser-support-1024x378.jpg" alt="Can I Use">
-<figcaption aria-hidden="true">Can I Use</figcaption>
-</figure>
+<p><img src="https://s3-torquehhvm-wpengine.netdna-ssl.com/uploads/2021/02/css-scroll-snap-browser-support-1024x378.jpg" alt="Can I Use"></p>
 <p>但是请注意，<code>scroll-snap</code>
 属性之间的支持会有些许不同。因此，请确保检查你的特定用例。</p>
 <h3 id="is-和-where">:is 和 :where</h3>
@@ -584,17 +681,17 @@ CSS 过渡、转换和动画。</p>
 <p>例如：</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.main</span> a<span class="in">:hover</span><span class="op">,</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">.sidebar</span> a<span class="in">:hover</span><span class="op">,</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">.site-footer</span> a<span class="in">:hover</span> &#123;</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">.site-footer</span> a<span class="in">:hover</span> {</span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">/* 样式 */</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>&#125;</span></code></pre></div>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>还有这个：</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="in">:is(.main, .sidebar, .site-footer)</span> a<span class="in">:hover</span> &#123;</span>
+<div class="sourceCode" id="cb12"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="in">:is(.main, .sidebar, .site-footer)</span> a<span class="in">:hover</span> {</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">/* 样式 */</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>&#125;</span></code></pre></div>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>同理 <code>:where</code>:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="in">:where(.main, .sidebar, .site-footer)</span> a<span class="in">:hover</span> &#123;</span>
+<div class="sourceCode" id="cb13"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="in">:where(.main, .sidebar, .site-footer)</span> a<span class="in">:hover</span> {</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">/* 样式 */</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>&#125;</span></code></pre></div>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>如果包含的样式标记相同，那又会有什么区别？区别在于 <code>:is</code>
 更加具体。它采用括号中最具体元素的针对性级别。与此相反，<code>:where</code>
 的针对性始终为零。因此更容易按照案例进行覆盖。</p>
@@ -784,12 +881,12 @@ CSS 过渡、转换和动画。</p>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">1.1m</span>
+    <span title="Symbols count total">921k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">34:12</span>
+    <span title="Reading time total">27:54</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT</a>
   </div>

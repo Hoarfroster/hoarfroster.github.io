@@ -147,7 +147,119 @@
   </style>
 </noscript>
 
-</head>
+<style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
   <div class="container use-motion">
@@ -317,13 +429,13 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-              <span>4.7k</span>
+              <span>4.3k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
-              <span>9 mins.</span>
+              <span>8 mins.</span>
             </span>
             <div class="post-description">对于我们 Figma 来说，性能永远是我们最重要的卖点之一。我们力争去让团队能够所思即所得，而我们的多人同步引擎就是决定这个愿景能否实现的关键部分。我们希望能够让每个协作者都可以实时看到别人在 Figma 文档中所做的修改！</div>
 
@@ -371,10 +483,7 @@ Bug</a> 的这种经常会在 C++ 程序中出现的情况的出现。</p>
 <h2 id="用-rust-扩展我们的服务">用 Rust 扩展我们的服务</h2>
 <p>我们的多人服务是运行在固定数量的一些机器，每个服务都拥有着固定数目的进程（Worker），并且每个文档都独立运行在一个特定的进程上。这意味着每一个进程都负责当前打开的
 Figma 的文档的一部分。这看起来会是这样的：</p>
-<figure>
-<img src="https://miro.medium.com/max/2230/1*b_L0C2dgCIsZSuRtdT2aOg.png" alt="https://miro.medium.com/max/2230/1*b_L0C2dgCIsZSuRtdT2aOg.png">
-<figcaption aria-hidden="true">https://miro.medium.com/max/2230/1*b_L0C2dgCIsZSuRtdT2aOg.png</figcaption>
-</figure>
+<p><img src="https://miro.medium.com/max/2230/1*b_L0C2dgCIsZSuRtdT2aOg.png" alt="https://miro.medium.com/max/2230/1*b_L0C2dgCIsZSuRtdT2aOg.png"></p>
 <p>我们遇到的最主要的问题，就是旧服务器会在同步时候遇到无法预计的延迟高峰。这个服务器是使用
 TypeScript
 编写的，并且是单线程的，完全不能同时处理多项操作。这意味着单一一个操作的缓慢会导致整个进程在这个操作完成前的停止。而常见的操作就是对文档的解码。Figma
@@ -382,10 +491,7 @@ TypeScript
 <p>扔给这项服务更多的硬件丝毫不能缓解这个问题，因为一个缓慢的操作就会让这个进程所负责的所有文件都无法使用，而且我们无法为每一个文档都单独创建一个
 Node.js 线程，因为 JavaScript
 虚拟机的内存开销实在太大了。事实上只有很少一部分大文件会造成麻烦，但这就会影响所有用户的服务体验啊！我们的临时解决方法是将那些疯了的巨大的文档独立，隔离到一个单独的进程池中：</p>
-<figure>
-<img src="https://miro.medium.com/max/2230/1*8bzkHy9Fg3fZXTEHIm65kg.png" alt="https://miro.medium.com/max/2230/1*8bzkHy9Fg3fZXTEHIm65kg.png">
-<figcaption aria-hidden="true">https://miro.medium.com/max/2230/1*8bzkHy9Fg3fZXTEHIm65kg.png</figcaption>
-</figure>
+<p><img src="https://miro.medium.com/max/2230/1*8bzkHy9Fg3fZXTEHIm65kg.png" alt="https://miro.medium.com/max/2230/1*8bzkHy9Fg3fZXTEHIm65kg.png"></p>
 <p>这能让服务器跟上来了，但是这个方案注定让我们被迫持续关注所有这类型的文档，并将它们人工独立出去。我们借助这个方案还是争取来了一些时间，并且通过将对性能敏感的服务移动到单独的子进程中，我们能够继续去探索解决这些问题的方法了。这些子进程是用
 Rust
 编写的，并且通过标准输入输出与它的父进程沟通。而这些新的小不点使用的内存，也像他们的年龄那般
@@ -393,37 +499,16 @@ Rust
 对比起那些年老珠黄的旧服务来说嘛。现在我们完全可以通过为每一个文档提供一个单独的子进程来让所有的文档能够并行使用了，并且序列化时间是原有的
 10
 倍那么快，甚至在最差的情况下也完全可以接受了。新的架构看起来是这样的：</p>
-<figure>
-<img src="https://miro.medium.com/max/2350/1*JvrV35TNvuARMRcvFpeMaQ.png" alt="https://miro.medium.com/max/2350/1*JvrV35TNvuARMRcvFpeMaQ.png">
-<figcaption aria-hidden="true">https://miro.medium.com/max/2350/1*JvrV35TNvuARMRcvFpeMaQ.png</figcaption>
-</figure>
+<p><img src="https://miro.medium.com/max/2350/1*JvrV35TNvuARMRcvFpeMaQ.png" alt="https://miro.medium.com/max/2350/1*JvrV35TNvuARMRcvFpeMaQ.png"></p>
 <h2 id="服务端的性能提升">服务端的性能提升</h2>
 <p>我们的服务器的性能提升令人难以置信。下图显示了逐步的推出新服务架构之前、之时和之后一周的各种性能指标。图片中间的大幅下降的部分是我们完全部署时候的指标。请记住，这些改进是针对服务器端的性能，而不是客户端的性能，因此，它们的主要作用只是为了让该进程能够为所有人不会造成任何麻烦顺利进行他们的工作</p>
-<figure>
-<img src="https://miro.medium.com/max/1440/1*s7uU1Sd7IF7xOjR2mv4xRA.png" alt="https://miro.medium.com/max/1440/1*s7uU1Sd7IF7xOjR2mv4xRA.png">
-<figcaption aria-hidden="true">https://miro.medium.com/max/1440/1*s7uU1Sd7IF7xOjR2mv4xRA.png</figcaption>
-</figure>
-<figure>
-<img src="https://miro.medium.com/max/2230/1*1sXGPC5m0cc_u_L-tt0m-Q.png" alt="https://miro.medium.com/max/2230/1*1sXGPC5m0cc_u_L-tt0m-Q.png">
-<figcaption aria-hidden="true">https://miro.medium.com/max/2230/1*1sXGPC5m0cc_u_L-tt0m-Q.png</figcaption>
-</figure>
-<figure>
-<img src="https://miro.medium.com/max/1440/1*b3y9hIkhXJFe4aeVQQBOqQ.png" alt="https://miro.medium.com/max/1440/1*b3y9hIkhXJFe4aeVQQBOqQ.png">
-<figcaption aria-hidden="true">https://miro.medium.com/max/1440/1*b3y9hIkhXJFe4aeVQQBOqQ.png</figcaption>
-</figure>
-<figure>
-<img src="https://miro.medium.com/max/1440/1*Ta8MtAg17e_L9qo09r-IxA.png" alt="https://miro.medium.com/max/1440/1*Ta8MtAg17e_L9qo09r-IxA.png">
-<figcaption aria-hidden="true">https://miro.medium.com/max/1440/1*Ta8MtAg17e_L9qo09r-IxA.png</figcaption>
-</figure>
-<figure>
-<img src="https://miro.medium.com/max/2230/1*YxXXHIm6PTXEx-muh_h2xQ.png" alt="https://miro.medium.com/max/2230/1*YxXXHIm6PTXEx-muh_h2xQ.png">
-<figcaption aria-hidden="true">https://miro.medium.com/max/2230/1*YxXXHIm6PTXEx-muh_h2xQ.png</figcaption>
-</figure>
+<p><img src="https://miro.medium.com/max/1440/1*s7uU1Sd7IF7xOjR2mv4xRA.png" alt="https://miro.medium.com/max/1440/1*s7uU1Sd7IF7xOjR2mv4xRA.png"></p>
+<p><img src="https://miro.medium.com/max/2230/1*1sXGPC5m0cc_u_L-tt0m-Q.png" alt="https://miro.medium.com/max/2230/1*1sXGPC5m0cc_u_L-tt0m-Q.png"></p>
+<p><img src="https://miro.medium.com/max/1440/1*b3y9hIkhXJFe4aeVQQBOqQ.png" alt="https://miro.medium.com/max/1440/1*b3y9hIkhXJFe4aeVQQBOqQ.png"></p>
+<p><img src="https://miro.medium.com/max/1440/1*Ta8MtAg17e_L9qo09r-IxA.png" alt="https://miro.medium.com/max/1440/1*Ta8MtAg17e_L9qo09r-IxA.png"></p>
+<p><img src="https://miro.medium.com/max/2230/1*YxXXHIm6PTXEx-muh_h2xQ.png" alt="https://miro.medium.com/max/2230/1*YxXXHIm6PTXEx-muh_h2xQ.png"></p>
 <p>与旧服务器相比，这是峰值指标的数字变化：</p>
-<figure>
-<img src="https://miro.medium.com/max/2230/1*48agi3zbT2Ifc2rDxE85pQ.png" alt="https://miro.medium.com/max/2230/1*48agi3zbT2Ifc2rDxE85pQ.png">
-<figcaption aria-hidden="true">https://miro.medium.com/max/2230/1*48agi3zbT2Ifc2rDxE85pQ.png</figcaption>
-</figure>
+<p><img src="https://miro.medium.com/max/2230/1*48agi3zbT2Ifc2rDxE85pQ.png" alt="https://miro.medium.com/max/2230/1*48agi3zbT2Ifc2rDxE85pQ.png"></p>
 <h2 id="rust-的优缺点">Rust 的优缺点</h2>
 <p>Rust
 的确在编写高性能服务器这件事上帮了我们，但事实证明，这门语言也并没有我们想象中的那么好。即便它比标准的服务器端语言更年轻，但是仍然有不少粗糙待需继续磨平改良之处（见下文）。</p>
@@ -505,7 +590,8 @@ Rust 压缩库（这两个库都被 Mozilla 的跨时代浏览器原型 Servo
 上的人机工程学的问题（Rust 的异步编程答案）。<code>Futures</code>
 的效率很高，但有时候使用起来很是复杂。</p>
 <p>例如，将操作链接在一起是通过构造一个代表整个操作链的巨型嵌套类型来完成的。虽说这意味着该链的所有内容只需要一次分配，但是这也意味着错误消息会是很长一段，令人难以阅读的错误，让人想起
-C++ 中的模板错误（<a target="_blank" rel="noopener" href="https://gist.github.com/evanw/%2006a672db1897482eadfbbf37ebf9b9ec">示例</a>）。再加上其他问题，例如需要在不同的错误类型之间进行调整以及必须解决复杂的生命周期问题，我们决定放弃这种方法。</p>
+C++ 中的模板错误（[示例](https://gist.github.com/evanw/
+06a672db1897482eadfbbf37ebf9b9ec)）。再加上其他问题，例如需要在不同的错误类型之间进行调整以及必须解决复杂的生命周期问题，我们决定放弃这种方法。</p>
 <p><em>我们做了什么：</em> 我们没有全力以赴地使用
 Rust，而是决定暂时将网络处理保留在 Node.js 中。Node.js
 进程为每个文档创建一个单独的 Rust
@@ -694,12 +780,12 @@ Figma 的多人服务得以获得一个更广阔的未来！</p>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">1.1m</span>
+    <span title="Symbols count total">921k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">34:12</span>
+    <span title="Reading time total">27:54</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT</a>
   </div>

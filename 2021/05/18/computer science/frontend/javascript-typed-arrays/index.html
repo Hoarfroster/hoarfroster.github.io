@@ -138,7 +138,119 @@
   </style>
 </noscript>
 
-</head>
+<style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
   <div class="container use-motion">
@@ -338,11 +450,7 @@ Hoarfroster</a></li>
 <li>校对者：<a target="_blank" rel="noopener" href="https://github.com/KimYangOfCat">KimYang</a>、<a target="_blank" rel="noopener" href="https://github.com/Kimhooo">Kimhooo</a></li>
 </ul>
 </blockquote>
-<figure>
-<img src="https://cdn-images-1.medium.com/max/10992/0*u7yLuqz5vOYfScJQ" alt="图源 Pierre Bamin，出自 Unsplash">
-<figcaption aria-hidden="true">图源 <a target="_blank" rel="noopener" href="https://unsplash.com/@bamin?utm_source=juejin&amp;utm_medium=referral">Pierre
-Bamin</a>，出自 <a target="_blank" rel="noopener" href="https://unsplash.com?utm_source=juejin&amp;utm_medium=referral">Unsplash</a></figcaption>
-</figure>
+<p><img src="https://cdn-images-1.medium.com/max/10992/0*u7yLuqz5vOYfScJQ" alt="图源 Pierre Bamin，出自 Unsplash"></p>
 <p>在 JavaScript
 这门语言中，我们所有人都必须对数组足够熟悉，知晓数组本质上是动态的，并且可以容纳任何
 JavaScript 对象。不过，如果你曾经使用过类似于 C
@@ -401,10 +509,10 @@ ES6 已将其集成到 JavaScript 核心框架中，也可以访问诸如
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>xhr<span class="op">.</span><span class="fu">open</span>(<span class="st">'GET'</span><span class="op">,</span> exampleUrl)<span class="op">;</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>xhr<span class="op">.</span><span class="at">responseType</span> <span class="op">=</span> <span class="st">'arraybuffer'</span><span class="op">;</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>xhr<span class="op">.</span><span class="at">onload</span> <span class="op">=</span> <span class="kw">function</span> () &#123;</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>xhr<span class="op">.</span><span class="at">onload</span> <span class="op">=</span> <span class="kw">function</span> () {</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> arrayBuffer <span class="op">=</span> xhr<span class="op">.</span><span class="at">response</span><span class="op">;</span></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 处理数据</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>&#125;<span class="op">;</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>}<span class="op">;</span></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>xhr<span class="op">.</span><span class="fu">send</span>()<span class="op">;</span></span></code></pre></div>
 <h3 id="fetch-api">Fetch API</h3>
@@ -414,9 +522,9 @@ ES6 已将其集成到 JavaScript 核心框架中，也可以访问诸如
 <code>ArrayBuffer</code> 解析的 <code>Promise</code>。</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fetch</span>(url)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="op">.</span><span class="fu">then</span>(response <span class="kw">=&gt;</span> response<span class="op">.</span><span class="fu">arrayBuffer</span>())</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="op">.</span><span class="fu">then</span>(arrayBuffer <span class="kw">=&gt;</span> &#123;</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="op">.</span><span class="fu">then</span>(arrayBuffer <span class="kw">=&gt;</span> {</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>   <span class="co">// 处理数据</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>&#125;)<span class="op">;</span></span></code></pre></div>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span></code></pre></div>
 <h3 id="html-canvas">HTML Canvas</h3>
 <p>HTML5 Canvas 元素使你可以渲染动态的 2D
 形状和位图图像。该元素仅充当图形的容器，而图形则是在 JavaScript
@@ -440,16 +548,16 @@ ES6 已将其集成到 JavaScript 核心框架中，也可以访问诸如
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>socket<span class="op">.</span><span class="at">binaryType</span> <span class="op">=</span> <span class="st">"arraybuffer"</span><span class="op">;</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">// 监听 message</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>socket<span class="op">.</span><span class="fu">addEventListener</span>(<span class="st">"message"</span><span class="op">,</span> <span class="kw">function</span> (<span class="bu">event</span>) &#123;</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>socket<span class="op">.</span><span class="fu">addEventListener</span>(<span class="st">"message"</span><span class="op">,</span> <span class="kw">function</span> (<span class="bu">event</span>) {</span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> view <span class="op">=</span> <span class="kw">new</span> <span class="bu">DataView</span>(<span class="bu">event</span><span class="op">.</span><span class="at">data</span>)<span class="op">;</span></span>
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 处理接收数据</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>&#125;)<span class="op">;</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span>
 <span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co">// 发送二进制数据</span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>socket<span class="op">.</span><span class="fu">addEventListener</span>(<span class="st">'open'</span><span class="op">,</span> <span class="kw">function</span> (<span class="bu">event</span>) &#123;</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>socket<span class="op">.</span><span class="fu">addEventListener</span>(<span class="st">'open'</span><span class="op">,</span> <span class="kw">function</span> (<span class="bu">event</span>) {</span>
 <span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> typedArray <span class="op">=</span> <span class="kw">new</span> <span class="bu">Uint16Array</span>(<span class="dv">7</span>)<span class="op">;</span></span>
 <span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    socket<span class="op">.</span><span class="fu">send</span>(typedArray<span class="op">.</span><span class="at">buffer</span>)<span class="op">;</span></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>&#125;)<span class="op">;</span></span></code></pre></div>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span></code></pre></div>
 <p>尽管初学者可能不需要详细了解类型化数组，但是当你进入中高级 JavaScript
 开发的时候，它们是必不可少的。这主要是因为你可能要开发需要使用类型化数组的更复杂的应用程序。</p>
 <p>要深入了解类型化数组，请浏览下面附带的资源链接。</p>
@@ -459,7 +567,7 @@ ES6 已将其集成到 JavaScript 核心框架中，也可以访问诸如
 <li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Typed_arrays">JavaScript
 类型化数组 - MDN 文档</a></li>
 <li><a target="_blank" rel="noopener" href="https://exploringjs.com/es6/ch_typed-arrays.html">Exploring
-JS by Dr.&nbsp;Axel</a></li>
+JS by Dr. Axel</a></li>
 </ul>
     </div>
 
@@ -633,12 +741,12 @@ JS by Dr.&nbsp;Axel</a></li>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">1.1m</span>
+    <span title="Symbols count total">921k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">34:12</span>
+    <span title="Reading time total">27:54</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT</a>
   </div>

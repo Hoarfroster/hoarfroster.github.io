@@ -155,7 +155,119 @@
   </style>
 </noscript>
 
-</head>
+<style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
   <div class="container use-motion">
@@ -325,13 +437,13 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-              <span>4.7k</span>
+              <span>4.6k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
-              <span>9 mins.</span>
+              <span>8 mins.</span>
             </span>
             <div class="post-description">我对图像编码十分狂热。如今，一场“图像编码之战”正在酝酿之中，而我并不是唯一对此有想法的人。显然，作为 JPEG 委员会 JPEG XL 特设小组的主席，我坚定地致力于多年的图像编码的工作。但是，在本文中，我将努力做到公平和中立。</div>
 
@@ -355,11 +467,7 @@ Hoarfroster</a></li>
 <li>校对者：<a target="_blank" rel="noopener" href="https://github.com/Kimhooo">Kimhooo</a>、<a target="_blank" rel="noopener" href="https://github.com/PingHGao">PingHGao</a></li>
 </ul>
 </blockquote>
-<figure>
-<img src="https://res.cloudinary.com/cloudinary-marketing/image/upload/c_fill,w_770/dpr_2.0,f_auto,fl_lossy,q_auto/v1/Web_Assets/blog/jxl-compare-codecs.png" alt="是时候用新一代图像编码格式替换 JPEG 编码格式了">
-<figcaption aria-hidden="true">是时候用新一代图像编码格式替换 JPEG
-编码格式了</figcaption>
-</figure>
+<p><img src="https://res.cloudinary.com/cloudinary-marketing/image/upload/c_fill,w_770/dpr_2.0,f_auto,fl_lossy,q_auto/v1/Web_Assets/blog/jxl-compare-codecs.png" alt="是时候用新一代图像编码格式替换 JPEG 编码格式了"></p>
 <p>我对图像编码十分狂热。如今，一场“图像编码之战”正在酝酿之中，而我并不是唯一<a target="_blank" rel="noopener" href="https://codecs.multimedia.cx/2020/11/an-upcoming-image-format-war/">对此有想法</a>的人。显然，作为
 JPEG 委员会 JPEG XL
 特设小组的主席，我坚定地致力于多年的图像编码的工作。但是，在本文中，我将努力做到公平和中立。</p>
@@ -370,10 +478,7 @@ JPEG 委员会 JPEG XL
 alpha 透明度的支持，就足以让人烦恼许久，更不用说那色彩深度的 8
 位的限制（也是他不支持 HDR
 的原因），还有那和与现有技术相比相对薄弱的压缩。显然，进行谋权篡位的时候到了！</p>
-<figure>
-<img src="https://res.cloudinary.com/cloudinary-marketing/image/upload/w_700,c_fill,f_auto,q_auto,dpr_2.0/Web_Assets/blog/chess-board-competition.jpg" title="一张棋盘" alt="一张棋盘">
-<figcaption aria-hidden="true">一张棋盘</figcaption>
-</figure>
+<p><img src="https://res.cloudinary.com/cloudinary-marketing/image/upload/w_700,c_fill,f_auto,q_auto,dpr_2.0/Web_Assets/blog/chess-board-competition.jpg" title="一张棋盘" alt="一张棋盘"></p>
 <p>六名选手正在进入战场，请做好准备 —— 全军出击：</p>
 <ul>
 <li><strong>JPEG 2000</strong> —— JPEG 小组，这是 JPEG
@@ -400,10 +505,7 @@ Apple 的支持，HEIC 也不大可能成为替代 JPEG 的通用编码。</p>
 XL）与掌控旧政权的 JPEG 和 PNG 比较。</p>
 <h2 id="压缩">压缩</h2>
 <p>显然压缩是图像编码的重要指标，快来看看数据吧：</p>
-<figure>
-<img src="https://github.com/PassionPenguin/picgo-database/blob/main/time-for-next-gen-codecs-to-dethrone-jpeg-compression-benchmark.png?raw=true" title="压缩比较" alt="压缩比较">
-<figcaption aria-hidden="true">压缩比较</figcaption>
-</figure>
+<p><img src="https://github.com/PassionPenguin/picgo-database/blob/main/time-for-next-gen-codecs-to-dethrone-jpeg-compression-benchmark.png?raw=true" title="压缩比较" alt="压缩比较"></p>
 <ul>
 <li>JPEG 是为了对相片进行有损压缩而创建，而 PNG
 则专用于无损压缩，并在非摄影图像上表现最佳。在某种程度上，这两个编码是互补的，适用于我们实际应用中的各种用例和图像类型。</li>
@@ -456,10 +558,7 @@ JPEG，领先着几英里。</p>
 <p>对一张全屏的 JPEG 或 PNG 进行解码仅需极短的时间 ——
 几乎只在眨眼瞬间。较新的编码能够做到更好地压缩，但这也会增加复杂性。例如，限制
 JPEG 2000 的主要因素之一，就是其过高的计算复杂性。</p>
-<figure>
-<img src="https://github.com/PassionPenguin/picgo-database/blob/main/time-for-next-gen-codecs-to-dethrone-jpeg-speed-benchmark.png?raw=true" title="速率比较" alt="速率比较">
-<figcaption aria-hidden="true">速率比较</figcaption>
-</figure>
+<p><img src="https://github.com/PassionPenguin/picgo-database/blob/main/time-for-next-gen-codecs-to-dethrone-jpeg-speed-benchmark.png?raw=true" title="速率比较" alt="速率比较"></p>
 <p>如果图像压缩的主要目标是加快传送速度，那请顺带考虑解码速度。因为通常解码速度比编码速度更重要，毕竟在许多用例中，我们只需编码一次即可，而这一过程可以在强大的机器上离线进行。相反，解码则需要在包括低端设备在内的各种设备上进行多次。</p>
 <p>由于 CPU
 速度在单核性能方面一直处于停滞状态，因此并行化多核处理变得越来越重要。毕竟，硬件的发展趋势是拥有更多的
@@ -475,10 +574,7 @@ sRGB）的图像，这个深度就足够了。但对于高动态范围（HDR）�
 <p>目前，10 位的色彩深度足以满足图像传送的需要，而其他所有图像编码都支持
 10
 位的深度。不过对于创作工作流（可能仍需要连续的图像转换）则可能需要更高的深度。</p>
-<figure>
-<img src="https://github.com/PassionPenguin/picgo-database/blob/main/time-for-next-gen-codecs-to-dethrone-jpeg-limitations-benchmark.png?raw=true" title="局限性比较" alt="局限性比较">
-<figcaption aria-hidden="true">局限性比较</figcaption>
-</figure>
+<p><img src="https://github.com/PassionPenguin/picgo-database/blob/main/time-for-next-gen-codecs-to-dethrone-jpeg-limitations-benchmark.png?raw=true" title="局限性比较" alt="局限性比较"></p>
 <p>WebP 和 HEIC
 不支持没有色度二次采样的图像则是另一种限制。对于许多照片，色度二次采样已经足够了。在其他情况下，比如说那些具有精细细节或具有彩色外观的纹理或彩色文本图像上，WebP
 和 HEIC 图像的表现可能就差强人意了。</p>
@@ -489,15 +585,9 @@ HEIC 和 AVIF 允许在 HEIF
 的 HEIC 实现使用大小为 512x512 的独立编码的图块，这意味着在例如另存为
 HEIC 时，编码解码器会将原本 1586x752
 的图像被切成八个较小的图像块，如下所示：</p>
-<figure>
-<img src="https://res.cloudinary.com/cloudinary-marketing/image/upload/w_700,c_fill,f_auto,q_auto,dpr_2.0/Web_Assets/blog/013b.png" title="编码的分块" alt="编码的分块">
-<figcaption aria-hidden="true">编码的分块</figcaption>
-</figure>
+<p><img src="https://res.cloudinary.com/cloudinary-marketing/image/upload/w_700,c_fill,f_auto,q_auto,dpr_2.0/Web_Assets/blog/013b.png" title="编码的分块" alt="编码的分块"></p>
 <p>如果你放大去关注一下那些独立编码的图块之间的边界，那你肯定能够很清晰地看到图块之间的不连续：</p>
-<figure>
-<img src="https://res.cloudinary.com/cloudinary-marketing/image/upload/w_700,c_fill,f_auto,q_auto,dpr_2.0/Web_Assets/blog/013heic.png" title="放大" alt="放大">
-<figcaption aria-hidden="true">放大</figcaption>
-</figure>
+<p><img src="https://res.cloudinary.com/cloudinary-marketing/image/upload/w_700,c_fill,f_auto,q_auto,dpr_2.0/Web_Assets/blog/013heic.png" title="放大" alt="放大"></p>
 <p>为避免此类图块边界伪像，在使用 HEIC 和 AVIF
 的时候我们应该避免让图像超过最大每块尺寸（即 8K 视频帧的大小）。</p>
 <h2 id="动画">动画</h2>
@@ -522,10 +612,7 @@ AV1），就会被自动地应用于我们的动画之中，让我们最终能�
 <h2 id="功能">功能</h2>
 <p>让我们谈回静止的图像。除了快速压缩 RGB
 图片（没有大小或色彩深度限制）外，图像编码还必须提供其他所需功能。</p>
-<figure>
-<img src="https://github.com/PassionPenguin/picgo-database/blob/main/time-for-next-gen-codecs-to-dethrone-jpeg-features-benchmark.png?raw=true" title="功能对比" alt="功能对比">
-<figcaption aria-hidden="true">功能对比</figcaption>
-</figure>
+<p><img src="https://github.com/PassionPenguin/picgo-database/blob/main/time-for-next-gen-codecs-to-dethrone-jpeg-features-benchmark.png?raw=true" title="功能对比" alt="功能对比"></p>
 <p>对于 Web 图像尤其是大的图像来说，慢慢加载的图像，即<a target="_blank" rel="noopener" href="https://cloudinary.com/blog/improve_the_web_experience_with_progressive_image_decoding">渐进式解码</a>可是一项出色的功能。JPEG
 编码系列在这方面最为强大。</p>
 <p>此外所有新的编码均支持 Alpha
@@ -537,10 +624,7 @@ XL 还提供了诸如图层名称、选择蒙版、专色通道以及对 16 位�
 <p>在抵御世代丢失的弹性方面，视频编码不能完全发挥出色的性能。不过对于
 Web
 交付，这种缺陷并不重要，我指的是在图像变成例如模因，而最终被重新编码多次的情况下除外。</p>
-<figure>
-<img src="https://res.cloudinary.com/cloudinary-marketing/image/upload/w_700,c_fill,f_auto,q_auto,dpr_2.0/Web_Assets/blog/frame-2000.png" title="2000 代" alt="2000 代">
-<figcaption aria-hidden="true">2000 代</figcaption>
-</figure>
+<p><img src="https://res.cloudinary.com/cloudinary-marketing/image/upload/w_700,c_fill,f_auto,q_auto,dpr_2.0/Web_Assets/blog/frame-2000.png" title="2000 代" alt="2000 代"></p>
 <p>最后，JPEG XL 的独特过渡功能是他可以有效地重新压缩<a target="_blank" rel="noopener" href="https://cloudinary.com/blog/legacy_and_transition_creating_a_new_universal_image_codec">旧版
 JPEG 文件</a>，而不会产生内容的丢失。</p>
 <h2 id="希望与策略">希望与策略</h2>
@@ -558,10 +642,7 @@ WebP，毕竟他有着广泛的浏览器支持？会不会有多个获胜者，�
 <p>此外，考虑到许多因素在起作用，但并非所有因素都是技术性的，因此很难预测编码采用的成功。我们只是希望新的编码能在这场战斗中取胜，这主要是与惯性和现状的“轻松”相对立的。最终，除非
 JPEG
 占主导地位，否则无论采用哪种新编码，我们都将受益于更强的压缩、更高的图像保真度和色彩准确性，从而能够使用更具吸引力且加载速度更快的图像。那将是每个人的胜利！</p>
-<figure>
-<img src="https://github.com/PassionPenguin/picgo-database/blob/main/time-for-next-gen-codecs-to-dethrone-jpeg-battle-of-codecs.png?raw=true" title="编码对比" alt="编码对比">
-<figcaption aria-hidden="true">编码对比</figcaption>
-</figure>
+<p><img src="https://github.com/PassionPenguin/picgo-database/blob/main/time-for-next-gen-codecs-to-dethrone-jpeg-battle-of-codecs.png?raw=true" title="编码对比" alt="编码对比"></p>
 <blockquote>
 <h3 id="注">注：</h3>
 <p>同时，需要注意的是，上面列出的 AVIF 限制适用于当前定义的最高 AVIF
@@ -746,12 +827,12 @@ JPEG
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">1.1m</span>
+    <span title="Symbols count total">921k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">34:12</span>
+    <span title="Reading time total">27:54</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT</a>
   </div>

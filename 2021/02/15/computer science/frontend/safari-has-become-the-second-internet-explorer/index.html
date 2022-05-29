@@ -141,7 +141,119 @@
   </style>
 </noscript>
 
-</head>
+<style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
   <div class="container use-motion">
@@ -341,11 +453,7 @@ Hoarfroster</a></li>
 <li>校对者：<a target="_blank" rel="noopener" href="https://github.com/lsvih">lsvih</a></li>
 </ul>
 </blockquote>
-<figure>
-<img src="https://cdn-images-1.medium.com/max/2300/1*obluMaNgoWxwefRpP__Elg.png" alt="Safari 有时候看起来长得跟 IE 没啥不一样的">
-<figcaption aria-hidden="true">Safari 有时候看起来长得跟 IE
-没啥不一样的</figcaption>
-</figure>
+<p><img src="https://cdn-images-1.medium.com/max/2300/1*obluMaNgoWxwefRpP__Elg.png" alt="Safari 有时候看起来长得跟 IE 没啥不一样的"></p>
 <p>如果你去问问一个程序员他对听到 IE
 这个词的感受，一般来说，绝对是这样的 —— OMG
 痛苦的要死！我当然也不是例外！我作为一名 Web
@@ -379,10 +487,7 @@ iPhone 上安装 PWA 应用程序），但是好心的 Apple
 <p>这个话题虽说位列 PWA 的限制列表中，但也值得单独一提。</p>
 <p>在 Mac 上，某些应用程序的 Web
 版本无法发送推送通知，导致不能提供全部功能。</p>
-<figure>
-<img src="https://github.com/PassionPenguin/picgo-database/blob/main/safari-has-become-the-second-internet-explorer-developer.mozilla.org_en-US_docs_Web_API_Push_API.png?raw=true" alt="推送通知浏览器支持表格">
-<figcaption aria-hidden="true">推送通知浏览器支持表格</figcaption>
-</figure>
+<p><img src="https://github.com/PassionPenguin/picgo-database/blob/main/safari-has-become-the-second-internet-explorer-developer.mozilla.org_en-US_docs_Web_API_Push_API.png?raw=true" alt="推送通知浏览器支持表格"></p>
 <p>Messenger 应用们就是最好的例子。如今，Telegram 或 Facebook Messenger
 只能在网站打开时通过变更标题和播放声音来通知用户有关新消息的信息。如果用户静音了，并将浏览器最小化了，显然就会错过新的消息。</p>
 <p>此限制的唯一好处是，新闻站点没有烦人的通知告示希望你去订阅它们的提醒
@@ -401,13 +506,13 @@ MacRumors 上对有关问题进行了讨论。</p>
 // @match       *://*youtube.*
 // ==/UserScript==
 
-ytd-page-manager &#123;
+ytd-page-manager {
     overflow-y: unset !important;
-&#125;
+}
 
-#page-manager.ytd-app &#123;
+#page-manager.ytd-app {
     overflow-x: unset !important;
-&#125;</code></pre>
+}</code></pre>
 <p>但这不是存在此问题的唯一地方。我在许多不同的在滚动事件上附加了很多功能的网站（例如
 Youtube 音乐、Facebook、Reddit 等）上都发现了类似的滚动上的问题。</p>
 <p>这就实现快速滚动的代价，所以我希望 Apple
@@ -419,7 +524,7 @@ YouTube！你大概率遇到过缩略图或头像无法加载的问题，可以�
 <p>我不知道问题的根源，但已经明确了是缓存中的错误。虽说清除缓存可以解决此问题。但是它有时仍然会复现。</p>
 <p>有两种清除 Safari 中缓存的方法：</p>
 <ol type="1">
-<li>在 Safari 中单击”刷新”按钮的同时，按键盘上的 <code>Shift</code>
+<li>在 Safari 中单击“刷新“按钮的同时，按键盘上的 <code>Shift</code>
 键。</li>
 <li>按键盘上的 <strong><code>Command（⌘）</code></strong> +
 <strong><code>Option（⌥, alt）</code></strong> +
@@ -429,10 +534,7 @@ YouTube！你大概率遇到过缩略图或头像无法加载的问题，可以�
 <h2 id="图标">图标</h2>
 <p>你是否能在 Mac 的 Safari 中看到 Instagram
 网页的图标？出于某种原因，它是黑白的。</p>
-<figure>
-<img src="https://cdn-images-1.medium.com/max/5744/1*GgbMRIpIX_cuz6eCaLSoXA.png" alt="左上角的黑白图标">
-<figcaption aria-hidden="true">左上角的黑白图标</figcaption>
-</figure>
+<p><img src="https://cdn-images-1.medium.com/max/5744/1*GgbMRIpIX_cuz6eCaLSoXA.png" alt="左上角的黑白图标"></p>
 <p>这是个次要的但也是个非常奇怪的问题。你可以自己尝试访问一下，会发现真正的图标应该是有颜色的。这个问题也出现在了我的
 <a target="_blank" rel="noopener" href="https://methodist.io">methodist.io</a>
 网页上。我在许多站点上都发现了此问题，而如果你知道此问题的发生原因以及解决方法，麻烦在评论中分享～</p>
@@ -458,10 +560,7 @@ WebP 的支持。</p>
 <strong>AV1</strong>。苹果、谷歌、Netflix
 等公司（这个名单令人印象深刻）成立了一家”开放媒体联盟“公司，这些企业共享了他们的技术和专利，以创建跨时代的解编码器。目前，解编码器已开发完了，Netflix
 也业已在其应用中使用了它，但是 Safari 还是不支持它。</p>
-<figure>
-<img src="https://cdn-images-1.medium.com/max/2000/1*4Hu_Vd2eexqGCyRn16_AZg.jpeg" alt="开放媒体联盟">
-<figcaption aria-hidden="true">开放媒体联盟</figcaption>
-</figure>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*4Hu_Vd2eexqGCyRn16_AZg.jpeg" alt="开放媒体联盟"></p>
 <p>如你所见，Safari 是一款非常保守的浏览器，而 Apple
 总是不愿意与用户的意愿保持一致。</p>
 <h2 id="小结">小结</h2>
@@ -641,12 +740,12 @@ WebP 的支持。</p>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">1.1m</span>
+    <span title="Symbols count total">921k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">34:12</span>
+    <span title="Reading time total">27:54</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT</a>
   </div>

@@ -145,7 +145,119 @@
   </style>
 </noscript>
 
-</head>
+<style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
   <div class="container use-motion">
@@ -315,7 +427,7 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-              <span>1.6k</span>
+              <span>1.4k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
@@ -345,11 +457,7 @@ Hoarfroster</a></li>
 <li>校对者：<a target="_blank" rel="noopener" href="https://github.com/zenblo">zenblo</a>、<a target="_blank" rel="noopener" href="https://github.com/Ashira97">Ashira97</a></li>
 </ul>
 </blockquote>
-<figure>
-<img src="https://github.com/PassionPenguin/picgo-database/blob/main/a-review-of-javascript-testing-frameworks-in-2021-UsageRanking.jpg?raw=true" alt="JavaScript 测试框架的使用情况，数据来源《2020 年 Javascript 状况调查》">
-<figcaption aria-hidden="true">JavaScript
-测试框架的使用情况，数据来源《2020 年 Javascript 状况调查》</figcaption>
-</figure>
+<p><img src="https://github.com/PassionPenguin/picgo-database/blob/main/a-review-of-javascript-testing-frameworks-in-2021-UsageRanking.jpg?raw=true" alt="JavaScript 测试框架的使用情况，数据来源《2020 年 Javascript 状况调查》"></p>
 <p>测试环节是软件工程中的重要组成部分。如果你不熟悉测试，那你可能会提出和别人一样的问题
 —— 如果我的软件的所有功能都在正常运作，我为什么还要进行测试呢？</p>
 <p>我们进行测试的目的是检查代码的功能是否正常，检查代码是否按预期工作。一般来说，我们并不会通过测试来查找代码中的
@@ -357,7 +465,7 @@ Bug。</p>
 <p>而如果我们要针对 JavaScript 和 Node.js
 应用程序进行测试，实际上有很多可用的框架供我们选择。</p>
 <p>在本文中，我们将仔细研究当今可用的一些流行的测试框架。</p>
-<h3 id="jest">1. Jest</h3>
+<h3 id="1-jest">1. Jest</h3>
 <p><strong>Github Stars</strong>：<strong>38.3k</strong></p>
 <p><img src="https://cdn-images-1.medium.com/max/2000/0*ORx4FzFx1702SS1x.png"></p>
 <p>Jest 是一个易于操作的，delightful 的 JavaScript
@@ -367,23 +475,16 @@ Bug。</p>
 <a target="_blank" rel="noopener" href="https://2020.stateofjs.com/zh-Hans">2020 年 Javascript
 状况调查</a>，它是 JavaScript
 开发人员中最常用的测试框架之一。而且调查显示，大多数开发人员都感兴趣于学习它。</p>
-<figure>
-<img src="https://github.com/PassionPenguin/picgo-database/blob/main/a-review-of-javascript-testing-frameworks-in-2021-UsageRanking.jpg?raw=true" alt="JavaScript 测试框架的使用情况，数据来源《2020 年 Javascript 状况调查》">
-<figcaption aria-hidden="true">JavaScript
-测试框架的使用情况，数据来源《2020 年 Javascript 状况调查》</figcaption>
-</figure>
-<h3 id="mocha">2. Mocha</h3>
+<p><img src="https://github.com/PassionPenguin/picgo-database/blob/main/a-review-of-javascript-testing-frameworks-in-2021-UsageRanking.jpg?raw=true" alt="JavaScript 测试框架的使用情况，数据来源《2020 年 Javascript 状况调查》"></p>
+<h3 id="2-mocha">2. Mocha</h3>
 <p><strong>GitHub Stars</strong>：<strong>20.2k</strong></p>
-<figure>
-<img src="https://cdn-images-1.medium.com/max/2000/1*if41jUf_RLXNEjCSz-2aBQ.png" alt="Mocha Logo">
-<figcaption aria-hidden="true">Mocha Logo</figcaption>
-</figure>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*if41jUf_RLXNEjCSz-2aBQ.png" alt="Mocha Logo"></p>
 <p>Mocha 是 Node.js 程序的 JavaScript
 测试框架，支持浏览器、异步测试、测试覆盖率报告以及任何断言库的使用。</p>
 <p>它简单、灵活、有趣，而且适用于 Node.js 和浏览器。<a target="_blank" rel="noopener" href="https://2020.stateofjs.com/zh-Hans">2020 年 Javascript
 状况调查</a> 显示，它是仅次于 Jest 的 JavaScript
 开发人员中第二常用的测试框架。</p>
-<h3 id="jasmine">3. Jasmine</h3>
+<h3 id="3-jasmine">3. Jasmine</h3>
 <p><strong>GitHub Stars</strong>：<strong>15k</strong></p>
 <p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ffd4f0612a61489d901fa29b153a3dbe~tplv-k3u1fbpfcp-watermark.image"></p>
 <p>Jasmine 是一个用于测试 JavaScript
@@ -391,17 +492,13 @@ Bug。</p>
 节点，而且它的语法清晰明了，因此我们可以轻松使用它进行测试。</p>
 <p>调查显示，虽然许多开发人员正在使用
 Jasmine，但是他们对该框架的兴趣的趋势是下降的。</p>
-<figure>
-<img src="https://github.com/PassionPenguin/picgo-database/blob/main/a-review-of-javascript-testing-frameworks-in-2021-InterestRanking.jpg?raw=true" alt="JavaScript 测试框架的兴趣情况，数据来源《2020 年 Javascript 状况》">
-<figcaption aria-hidden="true">JavaScript
-测试框架的兴趣情况，数据来源《2020 年 Javascript 状况》</figcaption>
-</figure>
-<h3 id="ava">4. AVA</h3>
+<p><img src="https://github.com/PassionPenguin/picgo-database/blob/main/a-review-of-javascript-testing-frameworks-in-2021-InterestRanking.jpg?raw=true" alt="JavaScript 测试框架的兴趣情况，数据来源《2020 年 Javascript 状况》"></p>
+<h3 id="4-ava">4. AVA</h3>
 <p><strong>GitHub Stars</strong>：<strong>18.6k</strong></p>
 <p><img src="https://cdn-images-1.medium.com/max/2000/0*_MnNTc5DD3wLQJMu"></p>
 <p>AVA 是 Node.js 的测试框架。它拥有简洁的
 API、详细的错误输出。它支持新的语言功能、支持测试文件隔离，能让我们更有信心进行开发。</p>
-<h3 id="puppeteer">5. Puppeteer</h3>
+<h3 id="5-puppeteer">5. Puppeteer</h3>
 <p><strong>GitHub Stars</strong>：<strong>68.2k</strong></p>
 <p><img src="https://cdn-images-1.medium.com/max/2560/0*gfOux77U2JV6g3C5"></p>
 <p>Puppeteer 是一个 Node.js 库，提供了高级的 API，通过 <a target="_blank" rel="noopener" href="https://chromedevtools.github.io/devtools-protocol/">DevTools
@@ -509,7 +606,7 @@ Jest。</p>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#jest"><span class="nav-text">1. Jest</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mocha"><span class="nav-text">2. Mocha</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jasmine"><span class="nav-text">3. Jasmine</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ava"><span class="nav-text">4. AVA</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#puppeteer"><span class="nav-text">5. Puppeteer</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AE%BA"><span class="nav-text">结论</span></a></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-jest"><span class="nav-text">1. Jest</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-mocha"><span class="nav-text">2. Mocha</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-jasmine"><span class="nav-text">3. Jasmine</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-ava"><span class="nav-text">4. AVA</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-puppeteer"><span class="nav-text">5. Puppeteer</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AE%BA"><span class="nav-text">结论</span></a></div>
       </div>
       <!--/noindex-->
 
@@ -590,12 +687,12 @@ Jest。</p>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">1.1m</span>
+    <span title="Symbols count total">921k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">34:12</span>
+    <span title="Reading time total">27:54</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT</a>
   </div>

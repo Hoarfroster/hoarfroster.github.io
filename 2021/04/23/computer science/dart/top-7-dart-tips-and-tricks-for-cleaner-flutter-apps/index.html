@@ -139,7 +139,119 @@
   </style>
 </noscript>
 
-</head>
+<style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
   <div class="container use-motion">
@@ -339,11 +451,7 @@ Hoarfroster</a></li>
 <li>校对者：<a target="_blank" rel="noopener" href="https://github.com/5Reasons">5Reasons</a>、<a target="_blank" rel="noopener" href="https://github.com/greycodee">greycodee</a></li>
 </ul>
 </blockquote>
-<figure>
-<img src="https://cdn-images-1.medium.com/max/10368/1*UkUGENyS23H0pweg_EdyNg.jpeg" alt="由 Lucie Hošová 上传至 Unsplash">
-<figcaption aria-hidden="true">由 <a target="_blank" rel="noopener" href="https://unsplash.com/@marjorylucabaxter?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Lucie
-Hošová</a> 上传至 <a target="_blank" rel="noopener" href="https://unsplash.com/s/photos/dart?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></figcaption>
-</figure>
+<p><img src="https://cdn-images-1.medium.com/max/10368/1*UkUGENyS23H0pweg_EdyNg.jpeg" alt="由 Lucie Hošová 上传至 Unsplash"></p>
 <p><a target="_blank" rel="noopener" href="https://www.educative.io/blog/dart-2-language-features">Dart</a>
 是一门针对客户端进行了优化的编程语言，专门用于快速地构建移动端、桌面端和服务端应用程序。Dart
 由 Google 开发，并与 Google 的跨平台框架 Flutter 相互搭配。借助 Flutter
@@ -361,69 +469,69 @@ Dart 所提供的许多特性。</p>
 <li>使用 Inspect 功能</li>
 <li>使用 sync 和 async 生成器</li>
 </ol>
-<h2 id="使用匿名函数作为参数">1. 使用匿名函数作为参数</h2>
+<h2 id="1-使用匿名函数作为参数">1. 使用匿名函数作为参数</h2>
 <p>在 Dart 语言中，我们可以将函数作为参数传递给其他函数，而 Dart
 语言本身还支持无需命名即可调用的匿名函数。</p>
 <p>以下是 Dart
 中使用匿名函数的示例。在本例中，我们将一个匿名的求立方函数传递给内置方法
 <code>forEach</code>，尝试获取 <code>list</code>
 数组中每一项的立方。</p>
-<pre class="dart"><code>main() &#123;
+<pre class="Dart"><code>main() {
   var list = [1, 2, 3];
-  list.forEach((item) &#123;
+  list.forEach((item) {
     print(item * item * item);
-  &#125;);
-&#125;</code></pre>
-<h2 id="使用-call-方法让类可以像是个函数一样被调用">2. 使用
+  });
+}</code></pre>
+<h2 id="2-使用-call-方法让类可以像是个函数一样被调用">2. 使用
 <code>call</code> 方法让类可以像是个函数一样被调用</h2>
 <p>使用 Dart
 语言我们可以构造一个可调用的类，允许将该类的实例作为函数调用。我们可以用
 <code>call()</code> 方法做到这一点,请参见下面的语法：</p>
-<pre class="dart"><code>class class_name &#123;
+<pre class="Dart"><code>class class_name {
   ... // class 
 
-  return_type call ( parameters ) &#123;
+  return_type call ( parameters ) {
     ... // 调用这个函数内容
-  &#125;
+  }
 
-&#125;</code></pre>
+}</code></pre>
 <p>让我们来看一个例子：</p>
-<pre class="dart"><code>class EducativeIntro &#123;
+<pre class="Dart"><code>class EducativeIntro {
 
   // 定义 call 方法 
   String call(String a, String b, String c) =&gt; 'Welcome to $a$b$c';
-&#125;
+}
 
 // 主函数  
-void main() &#123;
+void main() {
   var educative_input = EducativeIntro();
 
   // 借助实例调用这个类
   var educative_output = educative_input('our ', 'Dart ', 'tutorial');
 
   print(educative_output);
-&#125;</code></pre>
+}</code></pre>
 <blockquote>
 <p><strong>注意：</strong> Dart 不支持多个可调用方法</p>
 </blockquote>
-<h2 id="使用-.entries-来在一个-map-上遍历">3. 使用 <code>.entries</code>
-来在一个 map 上遍历</h2>
+<h2 id="3-使用-entries-来在一个-map-上遍历">3. 使用
+<code>.entries</code> 来在一个 map 上遍历</h2>
 <p>在 Dart 中我们可以使用 <code>entries()</code>
 方法以空安全的方式遍历一张 map。假设我们现在有一张 map
 用于追踪在不同产品上花费的金额（通常我们会使用 <code>!</code> 运算符在此
 map 中进行遍历）：</p>
-<pre class="dart"><code>for (var key in moneySpent.keys) &#123;
+<pre class="Dart"><code>for (var key in moneySpent.keys) {
   final value = moneySpent[key]!;
   print('$key: $value');
-&#125;</code></pre>
+}</code></pre>
 <p>我们可以改进此代码，并使用循环使其更安全。当我们使用
 <code>entries</code>
 变量进行遍历时，我们可以用空安全的方式访问键值对。</p>
-<pre class="dart"><code>for (var entry in moneySpent.entries) &#123;
+<pre class="Dart"><code>for (var entry in moneySpent.entries) {
   // 使用键值对做一些事情
-  print('$&#123;entry.key&#125;: $&#123;entry.value&#125;');
-&#125;</code></pre>
-<h2 id="如何使用-getter-和-setter">4. 如何使用 getter 和 setter</h2>
+  print('${entry.key}: ${entry.value}');
+}</code></pre>
+<h2 id="4-如何使用-getter-和-setter">4. 如何使用 getter 和 setter</h2>
 <p>getter 和 setter
 是一对特殊的方法，它们能够对一个对象的属性进行读、写操作。我们对 getter
 和 setter
@@ -433,16 +541,16 @@ map 中进行遍历）：</p>
 <p>在下面的示例中，我们在第 13 行创建了一个 getter 函数，返回当前实例的
 <code>name</code> 属性的值。而在第 21 行，我们调用了 getter
 函数，这里的输出应是 <code>Sarah</code>。</p>
-<pre class="dart"><code>class Person &#123;
+<pre class="Dart"><code>class Person {
   String name;
   String gender;
   int age;
 
   Person(this.name, this.gender, this.age);
 
-  Person.newBorn()&#123;
+  Person.newBorn(){
     this.age = 0;
-  &#125;
+  }
 
     // getter 函数，获取 name 的值
   String get personName =&gt; name;
@@ -450,15 +558,15 @@ map 中进行遍历）：</p>
   walking() =&gt; print('$name is walking');
 
   talking() =&gt; print('$name is talking');
-&#125;
+}
 
-int main() &#123;
+int main() {
   var firstPerson = Person("Sarah", "Female", 25);
   print(firstPerson.personName);
-&#125;</code></pre>
+}</code></pre>
 <p>setter 则是用于写入一个对象的属性的函数，使用 <code>set</code>
 关键词：</p>
-<pre class="dart"><code>class Person &#123;
+<pre class="Dart"><code>class Person {
   String name;
   String gender;
   int age;
@@ -466,24 +574,24 @@ int main() &#123;
   String get personName =&gt; name;
 
     // setter 函数用于设置 age 的值
-  void set personAge(num val) &#123;
-    if (val &lt; 0) &#123;
+  void set personAge(num val) {
+    if (val &lt; 0) {
       print("Age cannot be negative");
-    &#125; else &#123;
+    } else {
       this.age = val;
-    &#125;
-  &#125;
+    }
+  }
 
   walking() =&gt; print('$name is walking');
 
   talking() =&gt; print('$name is talking');
-&#125;
+}
 
-int main() &#123;
+int main() {
   var firstPerson = Person();
   firstPerson.personAge = -5;
   print(firstPerson.age);
-&#125;</code></pre>
+}</code></pre>
 <p>第 9 行到第 15 行代码中我们创建了一个 setter 函数用于设置
 <code>age</code>
 的值。该函数还被添加了一个条件判断，让我们不能输入负的年龄。在第 23
@@ -493,17 +601,17 @@ int main() &#123;
 <p>列表是 Dart
 中最常见的集合类型之一，但是列表可以容纳重复项。有时我们只想要唯一值的集合，这就是
 <code>Set</code> 用武之处。</p>
-<pre class="dart"><code>
-final countriesSet = &#123;
+<pre class="Dart"><code>
+final countriesSet = {
   'USA',
   'India',
   'Iceland',
   'USA',
-&#125;;</code></pre>
+};</code></pre>
 <p>在一个 <code>Set</code> 中两个元素不能相同，因此上面的代码会有一个
 warning 并且无法被编译。同理使用 <code>const set</code>
 也无法被编译。</p>
-<h2 id="使用-inspect-功能">6. 使用 Inspect 功能</h2>
+<h2 id="6-使用-inspect-功能">6. 使用 Inspect 功能</h2>
 <p>在网络开发中我们经常会需要用到 Inspect 功能，因为它能够告诉我们应用于
 HTML 标记的所有属性。Dart 也提供了类似的功能，我们称之为 Flutter
 Inspect。这个功能可以有效简化 Flutter
@@ -517,7 +625,7 @@ Inspect。这个功能可以有效简化 Flutter
 <li>选择屏幕上的控件以获取更多信息</li>
 </ul>
 <p><img src="https://cdn-images-1.medium.com/max/4920/1*8HtnC_I_iMewckScC92stA.png"></p>
-<h2 id="使用-sync-和-async-生成器">7. 使用 Sync 和 Async 生成器</h2>
+<h2 id="7-使用-sync-和-async-生成器">7. 使用 Sync 和 Async 生成器</h2>
 <p>在 Dart 中，生成器可以生成一系列值。而 Dart
 一共有两个生成器函数：</p>
 <ul>
@@ -526,20 +634,20 @@ Inspect。这个功能可以有效简化 Flutter
 </ul>
 <p>换句话说，同步生成器返回可以顺序访问的值的集合。为此，我们将函数体标记为
 <code>sync*</code>。我们会以 <code>yield</code> 语句用作值。</p>
-<pre class="dart"><code>Iterable&lt;int&gt; count(int n) sync* &#123;
-  for (var i = 1; i &lt;= n; i++) &#123;
+<pre class="Dart"><code>Iterable&lt;int&gt; count(int n) sync* {
+  for (var i = 1; i &lt;= n; i++) {
     yield i;
-  &#125;
-&#125;</code></pre>
+  }
+}</code></pre>
 <p>异步生成器则会返回一个 <code>Stream</code>
 对象，让接收一系列事件成为可能。我们可以通过将函数体标记为
 <code>async*</code> 来做到这一点。我们会以 <code>yield</code>
 语句用作值。</p>
-<pre class="dart"><code>Stream&lt;int&gt; countStream(int n) async* &#123;
-  for (var i = 1; i &lt;= n; i++) &#123;
+<pre class="Dart"><code>Stream&lt;int&gt; countStream(int n) async* {
+  for (var i = 1; i &lt;= n; i++) {
     yield i;
-  &#125;
-&#125;</code></pre>
+  }
+}</code></pre>
 <h2 id="你下一步将学习什么">你下一步将学习什么？</h2>
 <p>我们希望这些技巧能帮助您充分利用 Dart 及其提供的所有特性。Flutter 和
 Dart
@@ -643,9 +751,9 @@ Dart 特性应该是：</p>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%8C%BF%E5%90%8D%E5%87%BD%E6%95%B0%E4%BD%9C%E4%B8%BA%E5%8F%82%E6%95%B0"><span class="nav-text">1. 使用匿名函数作为参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-call-%E6%96%B9%E6%B3%95%E8%AE%A9%E7%B1%BB%E5%8F%AF%E4%BB%A5%E5%83%8F%E6%98%AF%E4%B8%AA%E5%87%BD%E6%95%B0%E4%B8%80%E6%A0%B7%E8%A2%AB%E8%B0%83%E7%94%A8"><span class="nav-text">2. 使用
-call 方法让类可以像是个函数一样被调用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-.entries-%E6%9D%A5%E5%9C%A8%E4%B8%80%E4%B8%AA-map-%E4%B8%8A%E9%81%8D%E5%8E%86"><span class="nav-text">3. 使用 .entries
-来在一个 map 上遍历</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8-getter-%E5%92%8C-setter"><span class="nav-text">4. 如何使用 getter 和 setter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%A8-set-%E5%AD%98%E5%82%A8%E5%94%AF%E4%B8%80%E5%80%BC"><span class="nav-text">用 Set 存储唯一值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-inspect-%E5%8A%9F%E8%83%BD"><span class="nav-text">6. 使用 Inspect 功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-sync-%E5%92%8C-async-%E7%94%9F%E6%88%90%E5%99%A8"><span class="nav-text">7. 使用 Sync 和 Async 生成器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%A0%E4%B8%8B%E4%B8%80%E6%AD%A5%E5%B0%86%E5%AD%A6%E4%B9%A0%E4%BB%80%E4%B9%88"><span class="nav-text">你下一步将学习什么？</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E4%BD%BF%E7%94%A8%E5%8C%BF%E5%90%8D%E5%87%BD%E6%95%B0%E4%BD%9C%E4%B8%BA%E5%8F%82%E6%95%B0"><span class="nav-text">1. 使用匿名函数作为参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E4%BD%BF%E7%94%A8-call-%E6%96%B9%E6%B3%95%E8%AE%A9%E7%B1%BB%E5%8F%AF%E4%BB%A5%E5%83%8F%E6%98%AF%E4%B8%AA%E5%87%BD%E6%95%B0%E4%B8%80%E6%A0%B7%E8%A2%AB%E8%B0%83%E7%94%A8"><span class="nav-text">2. 使用
+call 方法让类可以像是个函数一样被调用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E4%BD%BF%E7%94%A8-entries-%E6%9D%A5%E5%9C%A8%E4%B8%80%E4%B8%AA-map-%E4%B8%8A%E9%81%8D%E5%8E%86"><span class="nav-text">3. 使用
+.entries 来在一个 map 上遍历</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8-getter-%E5%92%8C-setter"><span class="nav-text">4. 如何使用 getter 和 setter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%A8-set-%E5%AD%98%E5%82%A8%E5%94%AF%E4%B8%80%E5%80%BC"><span class="nav-text">用 Set 存储唯一值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-%E4%BD%BF%E7%94%A8-inspect-%E5%8A%9F%E8%83%BD"><span class="nav-text">6. 使用 Inspect 功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-%E4%BD%BF%E7%94%A8-sync-%E5%92%8C-async-%E7%94%9F%E6%88%90%E5%99%A8"><span class="nav-text">7. 使用 Sync 和 Async 生成器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%A0%E4%B8%8B%E4%B8%80%E6%AD%A5%E5%B0%86%E5%AD%A6%E4%B9%A0%E4%BB%80%E4%B9%88"><span class="nav-text">你下一步将学习什么？</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -726,12 +834,12 @@ call 方法让类可以像是个函数一样被调用</span></a></li><li class="
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">1.1m</span>
+    <span title="Symbols count total">921k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">34:12</span>
+    <span title="Reading time total">27:54</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT</a>
   </div>

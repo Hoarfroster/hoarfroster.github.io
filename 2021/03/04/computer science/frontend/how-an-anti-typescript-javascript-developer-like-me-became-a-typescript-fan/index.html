@@ -141,7 +141,119 @@
   </style>
 </noscript>
 
-</head>
+<style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
   <div class="container use-motion">
@@ -311,7 +423,7 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-              <span>1.9k</span>
+              <span>1.8k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
@@ -353,10 +465,7 @@ TypeScript 这门语言了。</p>
 <strong>Java</strong>
 世界那般的泥潭，似乎每句代码的输入都是强类型并且令我极度厌烦的。当我开始学习
 TypeScript 时，即使像下面这样的简单代码也足以让我感到恐惧。</p>
-<figure>
-<img src="https://miro.medium.com/max/1544/1*ccNIwcBOISh4ZJ7kAuaY4A.png" alt="TypeScript 泛型示例">
-<figcaption aria-hidden="true">TypeScript 泛型示例</figcaption>
-</figure>
+<p><img src="https://miro.medium.com/max/1544/1*ccNIwcBOISh4ZJ7kAuaY4A.png" alt="TypeScript 泛型示例"></p>
 <p>由于上述的原因，即使我通过观看一些在线的教程或是尝试去阅读书籍来学习
 TypeScript，我也从未主导或参与过任何使用 TypeScript
 编写的企业应用程序的开发之中。实际上，我过去常常选择 JavaScript 而不是
@@ -370,16 +479,12 @@ TypeScript，而不是喜欢 JavaScript 的原因，明白了使用 TypeScript
 的好处和一些激励我去尝试使用的的理由。这些内容我将在下面的部分中列出：</p>
 <h2 id="我成为-typescript-粉丝的三大原因"><strong>我成为 TypeScript
 粉丝的三大原因</strong></h2>
-<h3 id="避免无效状态的出现-拥有详尽的检查"><strong>避免无效状态的出现
+<h3 id="避免无效状态的出现--拥有详尽的检查"><strong>避免无效状态的出现
 &amp; 拥有详尽的检查</strong></h3>
 <p>这就是我喜欢 TypeScript
 的主要原因。如果你想了解更多这个概念的信息，我建议你看下面的视频 ——
 虽说它说的是 Elm 语言，但该概念也适用于 TypeScript 语言。</p>
-<figure>
-<img src="https://youtu.be/IcgmSRJHu_8" alt="Making Impossible State Impossible">
-<figcaption aria-hidden="true">Making Impossible State
-Impossible</figcaption>
-</figure>
+<p><img src="https://youtu.be/IcgmSRJHu_8" alt="Making Impossible State Impossible"></p>
 <p>如果你想查看一些有关如何在 React 应用程序中利用 TypeScript
 来避免程序出现无效状态的示例，我建议你去阅读一下下面的博客文章：</p>
 <ol type="1">
@@ -395,7 +500,7 @@ React 组件 ⚛️</a></li>
 编译器发现，这样可以节省研发和 QA 的工作周期。</p>
 <p>使用
 TypeScript，一切都保持最初定义的方式。如果将变量声明为布尔型，则它将始终是布尔型，并且不会变成数字。这增加了代码按照最初预期的方式工作的可能性。简而言之，代码是可预测的！</p>
-<h3 id="丰富的-ide-支持-易于重构"><strong>丰富的 IDE 支持 &amp;
+<h3 id="丰富的-ide-支持--易于重构"><strong>丰富的 IDE 支持 &amp;
 易于重构</strong></h3>
 <p>集成开发环境（IDE）让有关类型的信息更加有用 —— 我们可以在 IDE
 中使用上代码导航和自动完成等功能，并借助这些准确的建议修复错误。我们还可以在输入代码时获得反馈：编辑器会在错误发生时立即标记出错误，包括与类型相关的错误。这些功能可帮助开发者写出可维护的代码，并带来巨大的生产力提升
@@ -510,8 +615,8 @@ TypeScript</a></li>
       <div class="post-toc-wrap sidebar-panel">
           <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E6%88%91%E6%9B%BE%E7%BB%8F%E6%98%AF-typescript-%E7%9A%84%E9%BB%91%E7%B2%89"><span class="nav-text">为什么我曾经是
 TypeScript 的黑粉？</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%91%E6%88%90%E4%B8%BA-typescript-%E7%B2%89%E4%B8%9D%E7%9A%84%E4%B8%89%E5%A4%A7%E5%8E%9F%E5%9B%A0"><span class="nav-text">我成为 TypeScript
-粉丝的三大原因</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%81%BF%E5%85%8D%E6%97%A0%E6%95%88%E7%8A%B6%E6%80%81%E7%9A%84%E5%87%BA%E7%8E%B0-%E6%8B%A5%E6%9C%89%E8%AF%A6%E5%B0%BD%E7%9A%84%E6%A3%80%E6%9F%A5"><span class="nav-text">避免无效状态的出现
-&amp; 拥有详尽的检查</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%8A%E6%97%A9%E5%8F%91%E7%8E%B0%E9%94%99%E8%AF%AF"><span class="nav-text">及早发现错误</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%B0%E5%AF%8C%E7%9A%84-ide-%E6%94%AF%E6%8C%81-%E6%98%93%E4%BA%8E%E9%87%8D%E6%9E%84"><span class="nav-text">丰富的 IDE 支持 &amp;
+粉丝的三大原因</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%81%BF%E5%85%8D%E6%97%A0%E6%95%88%E7%8A%B6%E6%80%81%E7%9A%84%E5%87%BA%E7%8E%B0--%E6%8B%A5%E6%9C%89%E8%AF%A6%E5%B0%BD%E7%9A%84%E6%A3%80%E6%9F%A5"><span class="nav-text">避免无效状态的出现
+&amp; 拥有详尽的检查</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%8A%E6%97%A9%E5%8F%91%E7%8E%B0%E9%94%99%E8%AF%AF"><span class="nav-text">及早发现错误</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%B0%E5%AF%8C%E7%9A%84-ide-%E6%94%AF%E6%8C%81--%E6%98%93%E4%BA%8E%E9%87%8D%E6%9E%84"><span class="nav-text">丰富的 IDE 支持 &amp;
 易于重构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AE%BA"><span class="nav-text">结论</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
@@ -593,12 +698,12 @@ TypeScript 的黑粉？</span></a><ol class="nav-child"><li class="nav-item nav-
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">1.1m</span>
+    <span title="Symbols count total">921k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">34:12</span>
+    <span title="Reading time total">27:54</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT</a>
   </div>

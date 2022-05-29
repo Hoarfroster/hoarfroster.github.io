@@ -141,7 +141,119 @@
   </style>
 </noscript>
 
-</head>
+<style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
   <div class="container use-motion">
@@ -341,11 +453,7 @@ Hoarfroster</a></li>
 <li>校对者：<a target="_blank" rel="noopener" href="https://github.com/zenblo">zenblo</a>、<a target="_blank" rel="noopener" href="https://github.com/Ashira97">Ashira97</a></li>
 </ul>
 </blockquote>
-<figure>
-<img src="https://cdn-images-1.medium.com/max/3840/1*_7N-LnDFVgKcgEgzczZVmg.jpeg" alt="Image by seznandy from Pixabay">
-<figcaption aria-hidden="true">Image by <a target="_blank" rel="noopener" href="https://pixabay.com/users/seznandy-15803435/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=5093898">seznandy</a>
-from <a target="_blank" rel="noopener" href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=5093898">Pixabay</a></figcaption>
-</figure>
+<p><img src="https://cdn-images-1.medium.com/max/3840/1*_7N-LnDFVgKcgEgzczZVmg.jpeg" alt="Image by seznandy from Pixabay"></p>
 <p>我们都会也都喜爱
 JavaScript，并且我们都通过编写代码和在我们最爱的运行环境（通常是浏览器，Node.js
 和 Deno）中来执行 JavaScript 代码。但你是否曾经尝试过去编译你的
@@ -378,7 +486,8 @@ JIT
 <li>如果你的代码会运行地比较长时间，那么就用 JIT
 吧，这样可以让你的代码在一些运行时分析后获得更好的优化。</li>
 </ul>
-<h2 id="那么对于编译你的-javascript">那么对于编译你的 JavaScript ？</h2>
+<h2 id="那么对于编译你的-javascript-">那么对于编译你的 JavaScript
+？</h2>
 <p>同样的，为什么 JavaScript 是被解析并且 JIT 并不能直接去编译
 JavaScript 为机器代码的原因：JavaScript
 的动态功能让它在实时编译中更占优势。</p>
@@ -390,11 +499,11 @@ JavaScript 为机器代码的原因：JavaScript
 代码为机器指令，因为我可以确定这是个很大的挑战 ——
 我指的是，例如让我们编译下面的代码：</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> result <span class="op">=</span> <span class="kw">null</span><span class="op">;</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">my_complex_function</span>()) &#123;</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">my_complex_function</span>()) {</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> <span class="dv">10</span><span class="op">;</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>&#125; <span class="cf">else</span> &#123;</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> <span class="st">"something else"</span><span class="op">;</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>&#125;</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">"The result is "</span> <span class="op">+</span> result)<span class="op">;</span></span></code></pre></div>
 <p>你真的在运行之前能够判定 <code>result</code>
 变量的类型吗？你可能需要先在心中思考一下所有可能的类型，并且同时将不同的情况判断一遍。即便你解决了这个问题，你依旧添加了不少的逻辑到你的思考与判断之中。这听起来可并不那么好啊！</p>
@@ -410,10 +519,7 @@ Android, Web (<a target="_blank" rel="noopener" href="https://blog.bitsrc.io/wha
 代码的解析器，这个项目能够让最终的编译输出一个比当前可用编译器输出的更优化的一个输出。</p>
 <p>针对它们输出的结果而言，它们早已对 Windows 上 Node.js 的 v12
 有了一些优化。在某些情况下并不是提升速度，而是内存的使用甚至是输出文件的大小。</p>
-<figure>
-<img src="https://cdn-images-1.medium.com/max/3036/1*HyX7ShDvXey6u9mo9_3ezg.png" alt="NectarJS’ 网站上的一份表格">
-<figcaption aria-hidden="true">NectarJS’ 网站上的一份表格</figcaption>
-</figure>
+<p><img src="https://cdn-images-1.medium.com/max/3036/1*HyX7ShDvXey6u9mo9_3ezg.png" alt="NectarJS’ 网站上的一份表格"></p>
 <p>当然，该项目仍然有其局限性，特别是到目前为止，该项目仅支持大约 80％
 的 ES3 标准，这意味着您可以编写的 JavaScript
 代码是非常有限且不符合当今的标准的。</p>
@@ -432,7 +538,7 @@ $ npm install nectarjs -g
 </code></pre>
 <p>在安装并同时设置或导入了<a target="_blank" rel="noopener" href="https://github.com/NectarJS/nectarjs/blob/master/docs/ADVANCED_USAGE.md#requirements-and-compilation">必要的依赖</a>以后，你就可以简单的编写一段
 HelloWorld 代码并编译这段代码：</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">"Hello 编译过的 world！"</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode JavaScript"><code class="sourceCode javascript"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">"Hello 编译过的 world！"</span>)</span></code></pre></div>
 <p>要去编译这段代码，简简单单的使用这段指令即可：</p>
 <pre><code>$ nectar your-file.js</code></pre>
 <p>这就是我在我的 macOS 系统上能够获得的输出：</p>
@@ -539,7 +645,8 @@ JavaScript 真的有用吗？这当然有用，但这只是 JavaScript
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#aot-vs-jit"><span class="nav-text">AOT vs JIT</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%82%A3%E4%B9%88%E5%AF%B9%E4%BA%8E%E7%BC%96%E8%AF%91%E4%BD%A0%E7%9A%84-javascript"><span class="nav-text">那么对于编译你的 JavaScript ？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%9A%E8%BF%87%E4%BD%BF%E7%94%A8-nectarjs-%E8%BF%9B%E8%A1%8C%E7%BC%96%E8%AF%91"><span class="nav-text">通过使用 NectarJS 进行编译</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E5%B9%B6%E6%B5%8B%E8%AF%95-nectarjs"><span class="nav-text">安装并测试 NectarJS</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%99%E5%B0%B1%E6%98%AF-javascript-%E7%9A%84%E6%9C%AA%E6%9D%A5%E5%90%97"><span class="nav-text">这就是 JavaScript 的未来吗？</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#aot-vs-jit"><span class="nav-text">AOT vs JIT</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%82%A3%E4%B9%88%E5%AF%B9%E4%BA%8E%E7%BC%96%E8%AF%91%E4%BD%A0%E7%9A%84-javascript-"><span class="nav-text">那么对于编译你的 JavaScript
+？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%9A%E8%BF%87%E4%BD%BF%E7%94%A8-nectarjs-%E8%BF%9B%E8%A1%8C%E7%BC%96%E8%AF%91"><span class="nav-text">通过使用 NectarJS 进行编译</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E5%B9%B6%E6%B5%8B%E8%AF%95-nectarjs"><span class="nav-text">安装并测试 NectarJS</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%99%E5%B0%B1%E6%98%AF-javascript-%E7%9A%84%E6%9C%AA%E6%9D%A5%E5%90%97"><span class="nav-text">这就是 JavaScript 的未来吗？</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -620,12 +727,12 @@ JavaScript 真的有用吗？这当然有用，但这只是 JavaScript
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">1.1m</span>
+    <span title="Symbols count total">921k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">34:12</span>
+    <span title="Reading time total">27:54</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT</a>
   </div>

@@ -139,7 +139,119 @@
   </style>
 </noscript>
 
-</head>
+<style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
   <div class="container use-motion">
@@ -340,11 +452,7 @@ Hoarfroster</a></li>
 </blockquote>
 <p>了解哪一种 <code>for</code>
 循环或迭代器适合我们的需求，防止我们犯下一些影响应用性能的低级错误。</p>
-<figure>
-<img src="https://miro.medium.com/max/10944/0*FjGuCxH-seN1PrRF" alt="由 Artem Sapegin 上传至 Unsplash">
-<figcaption aria-hidden="true">由 <a target="_blank" rel="noopener" href="https://unsplash.com/@sapegin?utm_source=medium&amp;utm_medium=referral">Artem
-Sapegin</a> 上传至 <a target="_blank" rel="noopener" href="https://unsplash.com/?utm_source=medium&amp;utm_medium=referral">Unsplash</a></figcaption>
-</figure>
+<p><img src="https://miro.medium.com/max/10944/0*FjGuCxH-seN1PrRF" alt="由 Artem Sapegin 上传至 Unsplash"></p>
 <p>JavaScript 是 Web 开发领域的“常青树”。无论是 JavaScript 框架（如
 Node.js、React、Angular、Vue 等），还是原生
 JavaScript，都拥有非常庞大的粉丝基础。我们来谈谈现代 JavaScript
@@ -360,13 +468,13 @@ JavaScript，都拥有非常庞大的粉丝基础。我们来谈谈现代 JavaSc
 循环中最快的这一事实。下面我会举个对一个包含超过一百万项元素的数组执行一次循环遍历的例子。</p>
 <p><strong>声明</strong>：<code>console.time()</code>
 结果的准确度在很大程度上取决于我们运行测试的系统配置。你可以在<a target="_blank" rel="noopener" href="https://johnresig.com/blog/accuracy-of-javascript-time/">此处</a>对准确度作进一步了解。</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> million <span class="op">=</span> <span class="dv">1000000</span><span class="op">;</span> </span>
+<div class="sourceCode" id="cb1"><pre class="sourceCode JavaScript"><code class="sourceCode javascript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> million <span class="op">=</span> <span class="dv">1000000</span><span class="op">;</span> </span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> arr <span class="op">=</span> <span class="bu">Array</span>(million)<span class="op">;</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">time</span>(<span class="st">'⏳'</span>)<span class="op">;</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (<span class="kw">let</span> i <span class="op">=</span> arr<span class="op">.</span><span class="at">length</span><span class="op">;</span> i <span class="op">&gt;</span> <span class="dv">0</span><span class="op">;</span> i<span class="op">--</span>) &#123;&#125; <span class="co">// for(倒序)  :- 1.5ms</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (<span class="kw">let</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> arr<span class="op">.</span><span class="at">length</span><span class="op">;</span> i<span class="op">++</span>) &#123;&#125; <span class="co">// for          :- 1.6ms</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (<span class="kw">let</span> i <span class="op">=</span> arr<span class="op">.</span><span class="at">length</span><span class="op">;</span> i <span class="op">&gt;</span> <span class="dv">0</span><span class="op">;</span> i<span class="op">--</span>) {} <span class="co">// for(倒序)  :- 1.5ms</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (<span class="kw">let</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> arr<span class="op">.</span><span class="at">length</span><span class="op">;</span> i<span class="op">++</span>) {} <span class="co">// for          :- 1.6ms</span></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>arr<span class="op">.</span><span class="fu">forEach</span>(v <span class="kw">=&gt;</span> v)                     <span class="co">// foreach      :- 2.1ms</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (<span class="kw">const</span> v <span class="kw">of</span> arr) &#123;&#125;                 <span class="co">// for...of     :- 11.7ms</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (<span class="kw">const</span> v <span class="kw">of</span> arr) {}                 <span class="co">// for...of     :- 11.7ms</span></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">timeEnd</span>(<span class="st">'⏳'</span>)<span class="op">;</span></span></code></pre></div>
 <p>造成这样结果的原因很简单，在代码中，正序和倒序的 <code>for</code>
 循环几乎花费一样的时间，仅仅相差了 0.1
@@ -381,19 +489,19 @@ JavaScript，都拥有非常庞大的粉丝基础。我们来谈谈现代 JavaSc
 和 <code>forEach</code>
 都从对象中获取了数据，而原型并没有，因此没有可比性。）</p>
 <h2 id="循环的类型以及我们应该在何处使用它们"><strong>循环的类型，以及我们应该在何处使用它们</strong></h2>
-<h3 id="for-循环正序和倒序"><strong>1. For
+<h3 id="1-for-循环正序和倒序"><strong>1. For
 循环（正序和倒序）</strong></h3>
 <p>我想，也许大家都应该对这个基础循环非常熟悉了。我们可以在任何我们需要的地方使用
 <code>for</code> 循环，按照核定的次数运行一段代码。最基础的
 <code>for</code>
 循环运行最迅速的，那我们每一次都应该使用它，对吗？并不然，性能不仅仅只是唯一尺度，代码可读性往往更加重要，就让我们选择适合我们应用程序的变形即可。</p>
-<h3 id="foreach"><strong>2. <code>forEach</code></strong></h3>
+<h3 id="2-foreach"><strong>2. <code>forEach</code></strong></h3>
 <p>这个方法需要接受一个回调函数作为输入参数，遍历数组的每一个元素，并执行我们的回调函数（以元素本身和它的索引（可选参数）作为参数赋予给回调函数）。<code>forEach</code>
 还允许在回调函数中使用一个可选参数 <code>this</code>。</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> things <span class="op">=</span> [<span class="st">'have'</span><span class="op">,</span> <span class="st">'fun'</span><span class="op">,</span> <span class="st">'coding'</span>]<span class="op">;</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> callbackFun <span class="op">=</span> (item<span class="op">,</span> idex) <span class="kw">=&gt;</span> &#123;</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="vs">`</span><span class="sc">$&#123;</span>item<span class="sc">&#125;</span><span class="vs"> - </span><span class="sc">$&#123;</span>index<span class="sc">&#125;</span><span class="vs">`</span>)<span class="op">;</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>&#125;</span>
+<div class="sourceCode" id="cb2"><pre class="sourceCode JavaScript"><code class="sourceCode javascript"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> things <span class="op">=</span> [<span class="st">'have'</span><span class="op">,</span> <span class="st">'fun'</span><span class="op">,</span> <span class="st">'coding'</span>]<span class="op">;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> callbackFun <span class="op">=</span> (item<span class="op">,</span> idex) <span class="kw">=&gt;</span> {</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="vs">`</span><span class="sc">${</span>item<span class="sc">}</span><span class="vs"> - </span><span class="sc">${</span>index<span class="sc">}</span><span class="vs">`</span>)<span class="op">;</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>things<span class="op">.</span><span class="fu">foreach</span>(callbackFun)<span class="op">;</span> </span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">/* 输出   have - 0</span></span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">        fun - 1</span></span>
@@ -401,23 +509,23 @@ JavaScript，都拥有非常庞大的粉丝基础。我们来谈谈现代 JavaSc
 <p>需要注意的是，如果我们要使用 <code>forEach</code>，我们不能使用
 JavaScript
 的短路运算符（||、&amp;&amp;……），即不能在每一次循环中跳过或结束循环。</p>
-<h3 id="forof"><strong>3. <code>for…of</code></strong></h3>
+<h3 id="3-forof"><strong>3. <code>for…of</code></strong></h3>
 <p><code>for…of</code> 是在 ES6（ECMAScript
 6）中实现标准化的。它会对一个可迭代的对象（例如
 <code>array</code>、<code>map</code>、<code>set</code>、<code>string</code>
 等）创建一个循环，并且有一个突出的优点，即优秀的可读性。</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> arr <span class="op">=</span> [<span class="dv">3</span><span class="op">,</span> <span class="dv">5</span><span class="op">,</span> <span class="dv">7</span>]<span class="op">;</span></span>
+<div class="sourceCode" id="cb3"><pre class="sourceCode JavaScript"><code class="sourceCode javascript"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> arr <span class="op">=</span> [<span class="dv">3</span><span class="op">,</span> <span class="dv">5</span><span class="op">,</span> <span class="dv">7</span>]<span class="op">;</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> str <span class="op">=</span> <span class="st">'hello'</span><span class="op">;</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (<span class="kw">let</span> i <span class="kw">of</span> arr) &#123;</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (<span class="kw">let</span> i <span class="kw">of</span> arr) {</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>   <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(i)<span class="op">;</span> <span class="co">// 输出 3, 5, 7</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>&#125;</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (<span class="kw">let</span> i <span class="kw">of</span> str) &#123;</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (<span class="kw">let</span> i <span class="kw">of</span> str) {</span>
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>   <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(i)<span class="op">;</span> <span class="co">// 输出 'h', 'e', 'l', 'l', 'o'</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>&#125;</span></code></pre></div>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>需要注意的是，请不要在生成器中使用 <code>for……of</code>，即便
 <code>for……of</code>
 循环提前终止。在退出循环后，生成器被关闭，并尝试再次迭代，不会产生任何进一步的结果。</p>
-<h3 id="for-in"><strong>4. <code>for</code>
+<h3 id="4-for-in"><strong>4. <code>for</code>
 <code>in</code></strong></h3>
 <p><code>for…in</code>
 会在对象的所有可枚举属性上迭代指定的变量。对于每个不同的属性，<code>for…in</code>
@@ -425,27 +533,23 @@ JavaScript
 因此，在遍历数组时最好使用带有数字索引的传统 <code>for</code> 循环。
 因为 <code>for…in</code>
 语句还会迭代除数组元素之外的用户定义属性，就算我们修改了数组对象（例如添加自定义属性或方法），依然如此。</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> details <span class="op">=</span> &#123;<span class="dt">firstName</span><span class="op">:</span> <span class="st">'john'</span><span class="op">,</span> <span class="dt">lastName</span><span class="op">:</span> <span class="st">'Doe'</span>&#125;<span class="op">;</span></span>
+<div class="sourceCode" id="cb4"><pre class="sourceCode JavaScript"><code class="sourceCode javascript"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> details <span class="op">=</span> {<span class="dt">firstName</span><span class="op">:</span> <span class="st">'john'</span><span class="op">,</span> <span class="dt">lastName</span><span class="op">:</span> <span class="st">'Doe'</span>}<span class="op">;</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> fullName <span class="op">=</span> <span class="st">''</span><span class="op">;</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (<span class="kw">let</span> i <span class="kw">in</span> details) &#123;</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (<span class="kw">let</span> i <span class="kw">in</span> details) {</span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    fullName <span class="op">+=</span> details[i] <span class="op">+</span> <span class="st">' '</span><span class="op">;</span> <span class="co">// fullName: john doe</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>&#125;</span></code></pre></div>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <h3 id="forof-和-forin"><code>for…of</code> 和 <code>for…in</code></h3>
 <p><code>for…of</code> 和 <code>for…in</code>
 之间的主要区别是它们迭代的内容。<code>for…in</code>
 循环遍历对象的属性，而 <code>for…of</code> 循环遍历可迭代对象的值。</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> arr<span class="op">=</span> [<span class="dv">4</span><span class="op">,</span> <span class="dv">5</span><span class="op">,</span> <span class="dv">6</span>]<span class="op">;</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (<span class="kw">let</span> i <span class="kw">in</span> arr) &#123;</span>
+<div class="sourceCode" id="cb5"><pre class="sourceCode JavaScript"><code class="sourceCode javascript"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> arr<span class="op">=</span> [<span class="dv">4</span><span class="op">,</span> <span class="dv">5</span><span class="op">,</span> <span class="dv">6</span>]<span class="op">;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (<span class="kw">let</span> i <span class="kw">in</span> arr) {</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>   <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(i)<span class="op">;</span> <span class="co">// '0', '1', '2'</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>&#125;</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (<span class="kw">let</span> i <span class="kw">of</span> arr) &#123;</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (<span class="kw">let</span> i <span class="kw">of</span> arr) {</span>
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>   <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(i)<span class="op">;</span> <span class="co">// '4', '5', '6'</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>&#125;</span></code></pre></div>
-<figure>
-<img src="https://miro.medium.com/max/12000/0*E9FPH2LFeFnTGWF5" alt="由 Tine Ivanič 上传至 Unsplash">
-<figcaption aria-hidden="true">由 <a target="_blank" rel="noopener" href="https://unsplash.com/@tine999?utm_source=medium&amp;utm_medium=referral">Tine
-Ivanič</a> 上传至 <a target="_blank" rel="noopener" href="https://unsplash.com/?utm_source=medium&amp;utm_medium=referral">Unsplash</a></figcaption>
-</figure>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p><img src="https://miro.medium.com/max/12000/0*E9FPH2LFeFnTGWF5" alt="由 Tine Ivanič 上传至 Unsplash"></p>
 <h3 id="结论"><strong>结论</strong></h3>
 <ul>
 <li><code>for</code> 最快，但可读性比较差</li>
@@ -546,8 +650,8 @@ Ivanič</a> 上传至 <a target="_blank" rel="noopener" href="https://unsplash.c
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A9%B6%E7%AB%9F%E5%93%AA%E4%B8%80%E7%A7%8D%E5%BE%AA%E7%8E%AF%E6%9B%B4%E5%BF%AB"><span class="nav-text">究竟哪一种循环更快？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BE%AA%E7%8E%AF%E7%9A%84%E7%B1%BB%E5%9E%8B%E4%BB%A5%E5%8F%8A%E6%88%91%E4%BB%AC%E5%BA%94%E8%AF%A5%E5%9C%A8%E4%BD%95%E5%A4%84%E4%BD%BF%E7%94%A8%E5%AE%83%E4%BB%AC"><span class="nav-text">循环的类型，以及我们应该在何处使用它们</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#for-%E5%BE%AA%E7%8E%AF%E6%AD%A3%E5%BA%8F%E5%92%8C%E5%80%92%E5%BA%8F"><span class="nav-text">1. For
-循环（正序和倒序）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#foreach"><span class="nav-text">2. forEach</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#forof"><span class="nav-text">3. for…of</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#for-in"><span class="nav-text">4. for
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A9%B6%E7%AB%9F%E5%93%AA%E4%B8%80%E7%A7%8D%E5%BE%AA%E7%8E%AF%E6%9B%B4%E5%BF%AB"><span class="nav-text">究竟哪一种循环更快？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BE%AA%E7%8E%AF%E7%9A%84%E7%B1%BB%E5%9E%8B%E4%BB%A5%E5%8F%8A%E6%88%91%E4%BB%AC%E5%BA%94%E8%AF%A5%E5%9C%A8%E4%BD%95%E5%A4%84%E4%BD%BF%E7%94%A8%E5%AE%83%E4%BB%AC"><span class="nav-text">循环的类型，以及我们应该在何处使用它们</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-for-%E5%BE%AA%E7%8E%AF%E6%AD%A3%E5%BA%8F%E5%92%8C%E5%80%92%E5%BA%8F"><span class="nav-text">1. For
+循环（正序和倒序）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-foreach"><span class="nav-text">2. forEach</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-forof"><span class="nav-text">3. for…of</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-for-in"><span class="nav-text">4. for
 in</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#forof-%E5%92%8C-forin"><span class="nav-text">for…of 和 for…in</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%93%E8%AE%BA"><span class="nav-text">结论</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
@@ -629,12 +733,12 @@ in</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fo
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">1.1m</span>
+    <span title="Symbols count total">921k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">34:12</span>
+    <span title="Reading time total">27:54</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT</a>
   </div>

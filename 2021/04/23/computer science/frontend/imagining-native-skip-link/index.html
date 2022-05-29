@@ -136,7 +136,119 @@
   </style>
 </noscript>
 
-</head>
+<style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
   <div class="container use-motion">
@@ -336,7 +448,7 @@ Hoarfroster</a></li>
 </ul>
 </blockquote>
 <p>我们最近在 <a target="_blank" rel="noopener" href="https://kittygiraudel.com/2020/12/01/a11y-advent-calendar/">A11y
-Advent calendar</a> 话题中谈到了<a target="_blank" rel="noopener" href="https://kittygiraudel.com/2020/12/06/a11y-advent-skip-to-content/">“跳至内容”链接</a>。如果你不熟悉这个概念，我引用一下那里的原文：</p>
+Advent calendar</a> 话题中谈到了<a target="_blank" rel="noopener" href="https://kittygiraudel.com/2020/12/06/a11y-advent-skip-to-content/">“跳至内容“链接</a>。如果你不熟悉这个概念，我引用一下那里的原文：</p>
 <blockquote>
 <p>当点击一个链接时，页面会被重新加载，焦点会恢复到页面顶部。而如果在这时候使用无障碍辅助功能在页面中导航，在访问主要内容之前，必须先逐一跳过整个页眉、导航，有时甚至包括侧边栏。这体验太糟糕了！为了解决这个问题，一个常见的设计模式是实现一个跳过链接，也就是发送至主要内容区域的锚链接。</p>
 </blockquote>
@@ -368,9 +480,11 @@ Web We Want</a>提议的。</p>
 元素，因为它在每个页面中都是唯一的，并且明确地要包含主要内容。</p>
 <blockquote>
 <p><code>&lt;main&gt;</code>
-是文档或应用程序正文的主要内容。主要内容区域由与文档的中心主题或应用程序的中心功能直接相关或扩展的内容组成。
-- <a target="_blank" rel="noopener" href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-main-element">W3C
-HTML 编辑草案</a></p>
+是文档或应用程序正文的主要内容。主要内容区域由与文档的中心主题或应用程序的中心功能直接相关或扩展的内容组成。</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-main-element">W3C
+HTML 编辑草案</a></li>
+</ul>
 </blockquote>
 <p>但并不是所有的网站都使用 <code>&lt;main&gt;</code>
 元素。我认为浏览器可能会有一些内置的启发式方法来找出什么是主要的内容容器，但恐怕这不在该功能讨论的范围内。</p>
@@ -390,12 +504,12 @@ Gustafson 所提示的</a>。</p>
 <p>在网页内容区域中的标签将显示原生的跳转链接。如果使用，它将绕过整个导航，包括自定义跳转链接。如果不使用，下一个标签将是网站的跳转链接，这将是多余的，但也无关紧要。</p>
 <p>理想的情况是，浏览器提供一种方法来知道是否支持该功能，这样跳转链接就可以为还不支持跳转链接的浏览器进行多重填充。不过这很可能需要
 JavaScript。</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="op">!</span>windows<span class="op">.</span><span class="at">navigator</span><span class="op">.</span><span class="at">skipLink</span>) &#123;</span>
+<div class="sourceCode" id="cb3"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="op">!</span>windows<span class="op">.</span><span class="at">navigator</span><span class="op">.</span><span class="at">skipLink</span>) {</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> skipLink <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">createElement</span>(<span class="st">'a'</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    skipLink<span class="op">.</span><span class="at">href</span><span class="op">=</span><span class="st">'#main'</span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    skipLink<span class="op">.</span><span class="at">innerHTML</span> <span class="op">=</span> <span class="st">'跳转到主要内容'</span></span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">document</span><span class="op">.</span><span class="at">body</span><span class="op">.</span><span class="fu">prepend</span>(skipLink)</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>&#125;</span></code></pre></div>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <h2 id="收尾">收尾</h2>
 <p>这绝不是完美的，我也没有一个万无一失的解决方案可以提供。如果有的话，我相信比我更聪明、更有见识的人早就提出来了。</p>
 <p>不过，缺乏跳转链接对使用辅助技术浏览网页的人来说是一个很大的障碍。而且考虑到每个网站都需要一个，不同网站之间几乎没有差异，这确实感觉像是浏览器在原生上该做的事情。</p>
@@ -571,12 +685,12 @@ JavaScript。</p>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">1.1m</span>
+    <span title="Symbols count total">921k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">34:12</span>
+    <span title="Reading time total">27:54</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT</a>
   </div>

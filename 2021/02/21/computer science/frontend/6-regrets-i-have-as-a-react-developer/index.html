@@ -139,7 +139,119 @@
   </style>
 </noscript>
 
-</head>
+<style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
   <div class="container use-motion">
@@ -309,7 +421,7 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-              <span>2.6k</span>
+              <span>2.5k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
@@ -339,29 +451,25 @@ Hoarfroster</a></li>
 <li>校对者：<a target="_blank" rel="noopener" href="https://github.com/zhuzilin">zhuzilin</a>、<a target="_blank" rel="noopener" href="https://github.com/zenblo">zenblo</a>、<a target="_blank" rel="noopener" href="https://github.com/Ivocin">Ivocin</a></li>
 </ul>
 </blockquote>
-<figure>
-<img src="https://cdn-images-1.medium.com/max/8396/1*b_I4LDS0bICAcnC1bdOM2g.jpeg" alt="由 Francisco Gonzalez 上传至 Unsplash">
-<figcaption aria-hidden="true">由 <a target="_blank" rel="noopener" href="https://unsplash.com/@franciscoegonzalez?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Francisco
-Gonzalez</a> 上传至 <a target="_blank" rel="noopener" href="https://unsplash.com/s/photos/sadness?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></figcaption>
-</figure>
+<p><img src="https://cdn-images-1.medium.com/max/8396/1*b_I4LDS0bICAcnC1bdOM2g.jpeg" alt="由 Francisco Gonzalez 上传至 Unsplash"></p>
 <p>React
 是一个很好的适合我们去学习的工具，它让我们能够以我们自己的方法编写代码完成任务。但即使它的功能很强大，它也有着不少的限制。</p>
 <p>对于新的开发者而言，其实并没有明确的指南告诉我们，某一个场景最适合用哪一个工具。这让每一个问题都有各种各样的解决方案，而我也同样掉到了这个坑里面，并且已经无力回天，没法去采用一些别的最佳实践了。</p>
 <p>今天我将要分享我最应该在我的 React 开发旅程前期就应该开始做的 6
 件事。</p>
-<h2 id="测试">1. 测试</h2>
+<h2 id="1-测试">1. 测试</h2>
 <p>长期以来，测试是我的弱项。我并没有为 React
 组件编写测试样例，并且正如预期的那样，我经常因为某些输入错误而不得不进行调试。</p>
 <p>但即便测试这个词语看起来很吓人，在 React
 中进行测试真的是很简单的一件事情（对于大多数情况而言）。</p>
 <p>写一个简单的测试只需要花费两分钟，但这可能会为我们在未来节省大量的时间。下面就是一个测试
 <code>Title</code> 组件渲染是否可以正确渲染的例子：</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">it</span>(<span class="st">'checks if the title component is in the document'</span><span class="op">,</span> () <span class="kw">=&gt;</span> &#123;</span>
+<div class="sourceCode" id="cb1"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">it</span>(<span class="st">'checks if the title component is in the document'</span><span class="op">,</span> () <span class="kw">=&gt;</span> {</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">expect</span>(<span class="bu">screen</span><span class="op">.</span><span class="fu">getByText</span>(<span class="st">'Title'</span>))<span class="op">.</span><span class="fu">toBeInTheDocument</span>()</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>&#125;)</span></code></pre></div>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
 <p>而如果你使用的是 <code>create-react-app</code> 命令创建你的 React
 应用程序，那么命令本身已经正确地为你设置好了测试套件，只需要尽早地开始编写测试代码即可。</p>
-<h2 id="使用正确的文件夹结构">2. 使用正确的文件夹结构</h2>
+<h2 id="2-使用正确的文件夹结构">2. 使用正确的文件夹结构</h2>
 <p>我认为当我还是一个 React
 的新手时，我犯下的最大错误就是没有使用正确的文件夹结构。我基本上将文件按照他们的类别分类：</p>
 <pre><code>|-store
@@ -386,7 +494,7 @@ Gonzalez</a> 上传至 <a target="_blank" rel="noopener" href="https://unsplash.
     |---OrderAction.js
     |---OrderReducer.js</code></pre>
 <p>现在对我而言在文件系统中导航到我想要查看的文件变得简单了许多！</p>
-<h2 id="使用样式化的组件">3. 使用样式化的组件</h2>
+<h2 id="3-使用样式化的组件">3. 使用样式化的组件</h2>
 <p>我一开始使用 <code>css</code>
 文件去给我的组件添加样式，但是随着时间的推进以及项目的扩大，这真的变得越发混乱。</p>
 <p>在一段时间以后我了解并学习了
@@ -400,9 +508,9 @@ Gonzalez</a> 上传至 <a target="_blank" rel="noopener" href="https://unsplash.
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>// inside css files</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>.btn-submit <span class="va">&#123;</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>.btn-submit <span class="va">{</span></span>
 <span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="va">&#125;</span></span></code></pre></div>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="va">}</span></span></code></pre></div>
 <p>同样，个人而言，我并不喜欢 <code>JSX</code> 的 <code>className</code>
 属性。</p>
 <p>过了一段时间我发现了一个可以拯救我的叫做
@@ -416,7 +524,7 @@ Gonzalez</a> 上传至 <a target="_blank" rel="noopener" href="https://unsplash.
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="vs">  padding: 0.25em 1em;</span></span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="vs">  border-radius: 3px;</span></span>
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="vs">`</span><span class="op">;</span></span></code></pre></div>
-<h2 id="尽早转向使用函数组件">4. 尽早转向使用函数组件</h2>
+<h2 id="4-尽早转向使用函数组件">4. 尽早转向使用函数组件</h2>
 <p>一开始，我是通过 <code>class-components</code> 学习的
 React。在那一年左右，我<strong>只</strong>使用了类组件。</p>
 <p>当我转向使用函数组件后，我发现了它们巨大的优点。我想
@@ -426,17 +534,17 @@ React。在那一年左右，我<strong>只</strong>使用了类组件。</p>
 <p>译者注：React 的函数组件是 React
 组件的另一种定义方式，两种方式都可以用于定义组件，但是相比于类组件，函数组件要更简单好用些，它会直接返回一个元素，如果希望了解更多内容，请直接搜索
 <code>函数组件</code>～</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode jsx"><code class="sourceCode javascriptreact"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> Hello <span class="op">=</span> () <span class="kw">=&gt;</span> &#123;</span>
+<div class="sourceCode" id="cb6"><pre class="sourceCode jsx"><code class="sourceCode javascriptreact"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> Hello <span class="op">=</span> () <span class="kw">=&gt;</span> {</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return </span><span class="kw">&lt;div&gt;</span>Hello Word<span class="kw">&lt;/div&gt;</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>&#125;</span></code></pre></div>
-<h2 id="使用表单处理库">5. 使用表单处理库</h2>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<h2 id="5-使用表单处理库">5. 使用表单处理库</h2>
 <p>处理表单可能是任何应用程序中最常见的功能之一，但我在原生的
 <code>onChange</code>
 方法上花了很多时间尝试去使用它来完成表单处理的时候，我才发现，使用这个功能处理数据和验证真的非常痛苦！</p>
 <p><strong>直到我发现了 <code>Formik</code> 和
 <code>react-hook-form</code>。</strong></p>
 <p>使用这两个库能让表单处理变得更加容易和简洁。最重要的是，目前对我来说，表单验证是可以通过简单的一两句声明，就可以完成的，真的变得极度容易。</p>
-<h2 id="使用-linter-和-formatter">6.使用 Linter 和 Formatter</h2>
+<h2 id="6使用-linter-和-formatter">6.使用 Linter 和 Formatter</h2>
 <p>长时间以来，手动格式化我的代码是一件很麻烦的事情。我喜欢我的代码整洁干净，因此每次需要：</p>
 <ul>
 <li>删除未使用的变量</li>
@@ -541,7 +649,7 @@ React。在那一年左右，我<strong>只</strong>使用了类组件。</p>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95"><span class="nav-text">1. 测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%AD%A3%E7%A1%AE%E7%9A%84%E6%96%87%E4%BB%B6%E5%A4%B9%E7%BB%93%E6%9E%84"><span class="nav-text">2. 使用正确的文件夹结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%A0%B7%E5%BC%8F%E5%8C%96%E7%9A%84%E7%BB%84%E4%BB%B6"><span class="nav-text">3. 使用样式化的组件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%BD%E6%97%A9%E8%BD%AC%E5%90%91%E4%BD%BF%E7%94%A8%E5%87%BD%E6%95%B0%E7%BB%84%E4%BB%B6"><span class="nav-text">4. 尽早转向使用函数组件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E8%A1%A8%E5%8D%95%E5%A4%84%E7%90%86%E5%BA%93"><span class="nav-text">5. 使用表单处理库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-linter-%E5%92%8C-formatter"><span class="nav-text">6.使用 Linter 和 Formatter</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E6%B5%8B%E8%AF%95"><span class="nav-text">1. 测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E4%BD%BF%E7%94%A8%E6%AD%A3%E7%A1%AE%E7%9A%84%E6%96%87%E4%BB%B6%E5%A4%B9%E7%BB%93%E6%9E%84"><span class="nav-text">2. 使用正确的文件夹结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E4%BD%BF%E7%94%A8%E6%A0%B7%E5%BC%8F%E5%8C%96%E7%9A%84%E7%BB%84%E4%BB%B6"><span class="nav-text">3. 使用样式化的组件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E5%B0%BD%E6%97%A9%E8%BD%AC%E5%90%91%E4%BD%BF%E7%94%A8%E5%87%BD%E6%95%B0%E7%BB%84%E4%BB%B6"><span class="nav-text">4. 尽早转向使用函数组件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E4%BD%BF%E7%94%A8%E8%A1%A8%E5%8D%95%E5%A4%84%E7%90%86%E5%BA%93"><span class="nav-text">5. 使用表单处理库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6%E4%BD%BF%E7%94%A8-linter-%E5%92%8C-formatter"><span class="nav-text">6.使用 Linter 和 Formatter</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -622,12 +730,12 @@ React。在那一年左右，我<strong>只</strong>使用了类组件。</p>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">1.1m</span>
+    <span title="Symbols count total">921k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">34:12</span>
+    <span title="Reading time total">27:54</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT</a>
   </div>

@@ -139,7 +139,119 @@
   </style>
 </noscript>
 
-</head>
+<style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
   <div class="container use-motion">
@@ -367,7 +479,7 @@ Flexbox 在开发者当中广受欢迎，但 Grid 布局也正迎头赶上。</l
 <li>自定义属性或变量</li>
 </ul>
 <h2 id="scss-的功能">SCSS 的功能</h2>
-<h4 id="scss-支持使用变量-避免冗杂的代码">SCSS 支持使用变量 ——
+<h4 id="scss-支持使用变量--避免冗杂的代码">SCSS 支持使用变量 ——
 避免冗杂的代码</h4>
 <p>我们其实可以在我们的样式表中重用一堆的颜色 <code>color</code>
 或其他元素定义（例如字体
@@ -378,21 +490,21 @@ Flexbox 在开发者当中广受欢迎，但 Grid 布局也正迎头赶上。</l
 $primary-font: 'Ubuntu', 'Helvetica', sans-serif;
 $unit: 1rem;
 
-body &#123;
+body {
     color: $black;
     font-family: $primary-font;
-    padding: #&#123;$unit * 2&#125;;
-&#125;</code></pre>
+    padding: #{$unit * 2};
+}</code></pre>
 <p>CSS 也支持变量和自定义属性，以下就是 CSS 中的自定义属性：</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>--black<span class="in">: #000000;</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>--width<span class="in">: 800px;</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>--primaryFont<span class="in">: 'Ubuntu</span>'<span class="op">,</span> 'Helvetica'<span class="op">,</span> sans-serif;</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>body &#123;</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>body {</span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">width</span>: <span class="fu">var(</span><span class="va">--width</span><span class="fu">)</span><span class="op">;</span></span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">color</span>: <span class="fu">var(</span><span class="va">--black</span><span class="fu">)</span><span class="op">;</span></span>
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">font-family</span>: <span class="fu">var(</span><span class="va">--primaryFont</span><span class="fu">)</span><span class="op">;</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>&#125;</span></code></pre></div>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <blockquote>
 <h1 id="但是在运行时-css-自定义属性比-scss-变量更耗时">但是在运行时 CSS
 自定义属性比 SCSS 变量更耗时。</h1>
@@ -400,72 +512,73 @@ body &#123;
 <p>这是因为浏览器会在运行时去处理这些属性。而 SCSS
 则相反，它在预处理阶段会被转化为 CSS，并去处理变量。因此，SCSS
 中变量的使用和代码的重用相比 CSS 而言有着更好的性能。</p>
-<h4 id="scss-允许嵌套的语法-更简洁的源代码">SCSS 允许嵌套的语法 ——
+<h4 id="scss-允许嵌套的语法--更简洁的源代码">SCSS 允许嵌套的语法 ——
 更简洁的源代码</h4>
 <p>假如有下面这样的 CSS 代码块：</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.header</span> &#123;</span>
+<div class="sourceCode" id="cb3"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.header</span> {</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">padding</span>: <span class="dv">1</span><span class="dt">rem</span><span class="op">;</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">border-bottom</span>: <span class="dv">1</span><span class="dt">px</span> <span class="dv">solid</span> <span class="cn">grey</span><span class="op">;</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>&#125;</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">.header</span> <span class="fu">.nav</span> &#123;</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">.header</span> <span class="fu">.nav</span> {</span>
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">list-style</span>: <span class="dv">none</span><span class="op">;</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>&#125;</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="fu">.header</span> <span class="fu">.nav</span> li &#123;</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="fu">.header</span> <span class="fu">.nav</span> li {</span>
 <span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">display</span>: inline-flex<span class="op">;</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>&#125;</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="fu">.header</span> <span class="fu">.nav</span> li a &#123;</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="fu">.header</span> <span class="fu">.nav</span> li a {</span>
 <span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    <span class="kw">display</span>: flex<span class="op">;</span></span>
 <span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    <span class="kw">padding</span>: <span class="dv">0.5</span><span class="dt">rem</span><span class="op">;</span></span>
 <span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    <span class="kw">color</span>: <span class="cn">red</span><span class="op">;</span></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>&#125;</span></code></pre></div>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>上述的代码看起来很混乱，为了给子元素添加样式，不得不重复声明同一个父元素。</p>
 <p>但如果使用 SCSS
 的嵌套语法，我们可以编写更简洁的代码。上述的代码如果用 SCSS
 编写，是这样的：</p>
-<pre class="scss"><code>.header &#123;
+<pre class="scss"><code>.header {
     padding: 1rem;
     border-bottom: 1px solid grey;
 
-    .nav &#123;
+    .nav {
         list-style: none;
 
-        li &#123;
+        li {
             display: inline-flex;
 
-            a &#123;
+            a {
                 display: flex;
                 padding: 0.5rem;
                 color: red;
-            &#125;
-        &#125;
-    &#125;
-&#125;</code></pre>
+            }
+        }
+    }
+}</code></pre>
 <p>因此，与传统的 CSS 相比，使用 SCSS 设计组件似乎更加优雅而简洁。</p>
-<h4 id="extend-功能-避免重复同样的样式"><span class="citation" data-cites="extend">@extend</span> 功能 —— 避免重复同样的样式！</h4>
+<h4 id="extend-功能--避免重复同样的样式">@extend 功能 ——
+避免重复同样的样式！</h4>
 <p>在 SCSS 中，我们可以使用 <code>@extend</code>
 在不同的选择器中共享相同的属性。带有占位符的 <code>@extend</code>
 的使用方法如下所示：</p>
-<pre class="scss"><code>%unstyled-list &#123;
+<pre class="scss"><code>%unstyled-list {
     list-style: none;
     margin: 0;
     padding: 0;
-&#125;</code></pre>
+}</code></pre>
 <p><code>%unstyled-list</code>
 是一个可以避免重复编写代码的语法糖，我们可以在不同的地方使用这个列表样式模版，例如说：</p>
-<pre class="scss"><code>.search-results &#123;
+<pre class="scss"><code>.search-results {
     @extend %unstyled-list;
-&#125;
+}
 
-.advertisements &#123;
+.advertisements {
     @extend %unstyled-list;
-&#125;
+}
 
-.dashboard &#123;
+.dashboard {
     @extend %unstyled-list;
-&#125;</code></pre>
+}</code></pre>
 <p>同样，我们可以在所有引入了这个定义的样式表中重用它。</p>
 <p>SCSS 中还有很多例如<a target="_blank" rel="noopener" href="https://sass-lang.com/documentation/at-rules/function">函数</a>、<a target="_blank" rel="noopener" href="https://sass-lang.com/documentation/at-rules/mixin">混入</a>、<a target="_blank" rel="noopener" href="https://sass-lang.com/documentation/at-rules/control/for">循环</a>
 的功能，能让我们的前端开发更加高效。</p>
@@ -586,10 +699,11 @@ CSS 与 SCSS 进行比较，我们会发现还有一些必要的功能无法在 
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#css-%E5%BD%93%E5%89%8D%E7%9A%84%E5%8A%9F%E8%83%BD"><span class="nav-text">CSS 当前的功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#scss-%E7%9A%84%E5%8A%9F%E8%83%BD"><span class="nav-text">SCSS 的功能</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#scss-%E6%94%AF%E6%8C%81%E4%BD%BF%E7%94%A8%E5%8F%98%E9%87%8F-%E9%81%BF%E5%85%8D%E5%86%97%E6%9D%82%E7%9A%84%E4%BB%A3%E7%A0%81"><span class="nav-text">SCSS 支持使用变量 ——
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#css-%E5%BD%93%E5%89%8D%E7%9A%84%E5%8A%9F%E8%83%BD"><span class="nav-text">CSS 当前的功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#scss-%E7%9A%84%E5%8A%9F%E8%83%BD"><span class="nav-text">SCSS 的功能</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#scss-%E6%94%AF%E6%8C%81%E4%BD%BF%E7%94%A8%E5%8F%98%E9%87%8F--%E9%81%BF%E5%85%8D%E5%86%97%E6%9D%82%E7%9A%84%E4%BB%A3%E7%A0%81"><span class="nav-text">SCSS 支持使用变量 ——
 避免冗杂的代码</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%86%E6%98%AF%E5%9C%A8%E8%BF%90%E8%A1%8C%E6%97%B6-css-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B1%9E%E6%80%A7%E6%AF%94-scss-%E5%8F%98%E9%87%8F%E6%9B%B4%E8%80%97%E6%97%B6"><span class="nav-text">但是在运行时 CSS
-自定义属性比 SCSS 变量更耗时。</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#scss-%E5%85%81%E8%AE%B8%E5%B5%8C%E5%A5%97%E7%9A%84%E8%AF%AD%E6%B3%95-%E6%9B%B4%E7%AE%80%E6%B4%81%E7%9A%84%E6%BA%90%E4%BB%A3%E7%A0%81"><span class="nav-text">SCSS 允许嵌套的语法 ——
-更简洁的源代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#extend-%E5%8A%9F%E8%83%BD-%E9%81%BF%E5%85%8D%E9%87%8D%E5%A4%8D%E5%90%8C%E6%A0%B7%E7%9A%84%E6%A0%B7%E5%BC%8F"><span class="nav-text">@extend 功能 —— 避免重复同样的样式！</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%91%E5%BA%94%E8%AF%A5%E4%BB%8E-scss-%E5%88%87%E6%8D%A2%E5%88%B0-css-%E5%90%97"><span class="nav-text">我应该从 SCSS 切换到 CSS 吗？</span></a></li></ol></div>
+自定义属性比 SCSS 变量更耗时。</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#scss-%E5%85%81%E8%AE%B8%E5%B5%8C%E5%A5%97%E7%9A%84%E8%AF%AD%E6%B3%95--%E6%9B%B4%E7%AE%80%E6%B4%81%E7%9A%84%E6%BA%90%E4%BB%A3%E7%A0%81"><span class="nav-text">SCSS 允许嵌套的语法 ——
+更简洁的源代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#extend-%E5%8A%9F%E8%83%BD--%E9%81%BF%E5%85%8D%E9%87%8D%E5%A4%8D%E5%90%8C%E6%A0%B7%E7%9A%84%E6%A0%B7%E5%BC%8F"><span class="nav-text">@extend 功能 ——
+避免重复同样的样式！</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%91%E5%BA%94%E8%AF%A5%E4%BB%8E-scss-%E5%88%87%E6%8D%A2%E5%88%B0-css-%E5%90%97"><span class="nav-text">我应该从 SCSS 切换到 CSS 吗？</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -670,12 +784,12 @@ CSS 与 SCSS 进行比较，我们会发现还有一些必要的功能无法在 
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">1.1m</span>
+    <span title="Symbols count total">921k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">34:12</span>
+    <span title="Reading time total">27:54</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT</a>
   </div>

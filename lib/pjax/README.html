@@ -1,31 +1,23 @@
-<h1 align="center">
-<a href="https://github.com/MoOx/pjax">PJAX</a> for
-<a href="https://github.com/theme-next">NexT</a>
-</h1>
-<h1 align="center">
-Installation
-</h1>
-<h2>
-If you want to use the CDN instead of clone this repo, please jump to
-the Step 3.
-</h2>
-<h2 align="center">
-Step 1 → Go to NexT dir
-</h2>
+<h1 align="center"><a href="https://github.com/MoOx/pjax">PJAX</a> for <a href="https://github.com/theme-next">NexT</a></h1>
+
+<h1 align="center">Installation</h1>
+
+<h2>If you want to use the CDN instead of clone this repo, please jump to the Step 3.</h2>
+
+<h2 align="center">Step 1 → Go to NexT dir</h2>
+
 <p>Change dir to <strong>NexT</strong> directory. There must be
 <code>layout</code>, <code>source</code>, <code>languages</code> and
 other directories:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd themes/next</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">_config.yml</span>  crowdin.yml  docs  gulpfile.js  languages  layout  LICENSE.md  package.json  README.md  scripts  source</span></code></pre></div>
-<h2 align="center">
-Step 2 → Get module
-</h2>
+<h2 align="center">Step 2 → Get module</h2>
+
 <p>Install module to <code>source/lib</code> directory:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git clone https://github.com/theme-next/theme-next-pjax source/lib/pjax</span></code></pre></div>
-<h2 align="center">
-Step 3 → Set it up
-</h2>
+<h2 align="center">Step 3 → Set it up</h2>
+
 <p>Enable module in <strong>NexT</strong> <code>_config.yml</code> file
 and select your theme:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode yml"><code class="sourceCode yaml"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pjax</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span></code></pre></div>
@@ -35,9 +27,8 @@ and select your theme:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode yml"><code class="sourceCode yaml"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">vendors</span><span class="kw">:</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="at">  ...</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">pjax</span><span class="kw">:</span><span class="at"> //cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js</span></span></code></pre></div>
-<h1 align="center">
-Update
-</h1>
+<h1 align="center">Update</h1>
+
 <div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd themes/next/source/lib/pjax</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git pull</span></code></pre></div>
 <h1 id="pjax">Pjax</h1>
@@ -69,11 +60,11 @@ bundle</a>:</p>
 <p><strong>Note</strong>: If you use this option, you will need to do
 one of the following:</p>
 <ul>
-<li><p>Link a script tag to either <code>pjax.js</code> or
-<code>pjax.min.js</code>. E.g.:</p>
+<li>Link a script tag to either <code>pjax.js</code> or
+<code>pjax.min.js</code>. E.g.:
 <div class="sourceCode" id="cb9"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;script</span> <span class="er">src</span><span class="ot">=</span><span class="st">"./node_modules/pjax/pjax.js"</span><span class="kw">&gt;&lt;/script&gt;</span></span></code></pre></div></li>
-<li><p>Use a bundler like Webpack. (<code>index.js</code> cannot be used
-in the browser without a bundler).</p></li>
+<li>Use a bundler like Webpack. (<code>index.js</code> cannot be used in
+the browser without a bundler).</li>
 </ul></li>
 <li><p>Or you can clone the repo and build the bundle from the source
 using npm:</p>
@@ -290,7 +281,7 @@ do the following:</p>
 <span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <h3 id="refreshel"><code>refresh([el])</code></h3>
 <p>Use this method to bind Pjax to children of a DOM element that didn’t
-exist when Pjax was initialised e.g.&nbsp;content inserted dynamically by
+exist when Pjax was initialised e.g. content inserted dynamically by
 another library or script. If called with no arguments, Pjax will parse
 the entire document again to look for newly-inserted elements.</p>
 <div class="sourceCode" id="cb19"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Inside a callback or Promise that runs after new DOM content has been inserted</span></span>
@@ -314,7 +305,7 @@ multiple specific selectors, separate them by a comma.</p>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> pjax <span class="op">=</span> <span class="kw">new</span> <span class="fu">Pjax</span>({</span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">elements</span><span class="op">:</span> <span class="st">".pjax, .ajax"</span><span class="op">,</span></span>
 <span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
-<h3 id="selectors-array-default-title-.js-pjax"><code>selectors</code>
+<h3 id="selectors-array-default-title-js-pjax"><code>selectors</code>
 (Array, default: <code>["title", ".js-Pjax"]</code>)</h3>
 <p>CSS selectors used to find which content to replace.</p>
 <div class="sourceCode" id="cb23"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> pjax <span class="op">=</span> <span class="kw">new</span> <span class="fu">Pjax</span>({</span>
@@ -341,8 +332,8 @@ multiple specific selectors, separate them by a comma.</p>
 <p><strong>NOTE:</strong> <em>If the current page and new page do not
 have the same amount of DOM elements, Pjax will fall back to normal page
 load.</em></p>
-<h3 id="switches-object-default"><code>switches</code> (Object, default:
-<code>{}</code>)</h3>
+<h3 id="switches-object-default-"><code>switches</code> (Object,
+default: <code>{}</code>)</h3>
 <p>This is an object containing callbacks that can be used to switch old
 elements with new elements.</p>
 <p>The object keys should be one of the defined selectors (from the
@@ -389,7 +380,7 @@ callback.</li>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  oldEl<span class="op">.</span><span class="at">outerHTML</span> <span class="op">=</span> newEl<span class="op">.</span><span class="at">outerHTML</span></span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">this</span><span class="op">.</span><span class="fu">onSwitch</span>()</span>
 <span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<h3 id="switchesoptions-object-default"><code>switchesOptions</code>
+<h3 id="switchesoptions-object-default-"><code>switchesOptions</code>
 (Object, default: <code>{}</code>)</h3>
 <p>These are options that can be used during content replacement by
 switches. For now, only <code>Pjax.switches.sideBySide</code> uses it.
@@ -515,7 +506,7 @@ prevent Pjax from updating browser history. While possible, there is
 almost no use case where you would want to do this.</p>
 <p>Internally, this option is used when a <code>popstate</code> event
 triggers Pjax (to not <code>pushState()</code> again).</p>
-<h3 id="analytics-function-boolean-default-a-function-that-pushes-_gaq-_trackpageview-or-sends-ga-pageview"><code>analytics</code>
+<h3 id="analytics-function--boolean-default-a-function-that-pushes-_gaq-_trackpageview-or-sends-ga-pageview"><code>analytics</code>
 (Function | Boolean, default: a function that pushes <code>_gaq</code>
 <code>_trackPageview</code> or sends <code>ga</code>
 <code>pageview</code></h3>
@@ -524,7 +515,7 @@ tries to track a pageview with Google Analytics (if it exists on the
 page). It’s called every time a page is switched, even for history
 navigation.</p>
 <p>Set to <code>false</code> to disable this behavior.</p>
-<h3 id="scrollto-integer-integer-integer-false-default-0"><code>scrollTo</code>
+<h3 id="scrollto-integer--integer-integer--false-default-0"><code>scrollTo</code>
 (Integer | [Integer, Integer] | False, default: <code>0</code>)</h3>
 <p>When set to an integer, this is the value (in px from the top of the
 page) to scroll to when a page is switched.</p>
@@ -656,7 +647,7 @@ function when the <code>pjax:success</code> event is fired.</p>
 <span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a><span class="bu">document</span><span class="op">.</span><span class="fu">addEventListener</span>(<span class="st">"pjax:success"</span><span class="op">,</span> whenContainerReady)</span></code></pre></div>
 <h2 id="faq">FAQ</h2>
-<h3 id="q-disqus-doesnt-work-anymore-how-can-i-fix-that">Q: Disqus
+<h3 id="q-disqus-doesnt-work-anymore-how-can-i-fix-that-">Q: Disqus
 doesn’t work anymore, how can I fix that ?</h3>
 <h4 id="a-there-are-a-few-things-you-need-to-do">A: There are a few
 things you need to do:</h4>

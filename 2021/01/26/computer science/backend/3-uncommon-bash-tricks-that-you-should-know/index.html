@@ -138,7 +138,119 @@
   </style>
 </noscript>
 
-</head>
+<style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
   <div class="container use-motion">
@@ -338,10 +450,7 @@ Hoarfroster</a></li>
 <li>校对者：<a target="_blank" rel="noopener" href="https://github.com/flashhu">flashhu</a>、<a target="_blank" rel="noopener" href="https://github.com/plusmultiply0">plusmultiply0</a></li>
 </ul>
 </blockquote>
-<figure>
-<img src="https://cdn-images-1.medium.com/max/4000/0*-UdH52A57htDgdu0.png" alt="图源 Matera，摄于意大利">
-<figcaption aria-hidden="true">图源 Matera，摄于意大利</figcaption>
-</figure>
+<p><img src="https://cdn-images-1.medium.com/max/4000/0*-UdH52A57htDgdu0.png" alt="图源 Matera，摄于意大利"></p>
 <p>优秀的开发人员往往键入的内容更少 —— 这也让他们能够：</p>
 <ul>
 <li>更快地工作</li>
@@ -354,7 +463,7 @@ Bash），<strong>而本文将要向大家介绍的内容就是 —— 3 个减�
 技巧。</strong></p>
 <p>本文中介绍的 3 个 Bash 技巧是：</p>
 <ol type="1">
-<li>使用 <code>&#123;a,b&#125;</code> —— 扩展参数，以避免再次键入单个命令</li>
+<li>使用 <code>{a,b}</code> —— 扩展参数，以避免再次键入单个命令</li>
 <li>使用 <code>$_</code> ——
 访问最后一个参数，以避免从最后一个命令中重新键入</li>
 <li>使用 <code>^old^new</code> —— 快速更改最后一条命令的一部分</li>
@@ -363,38 +472,38 @@ Bash），<strong>而本文将要向大家介绍的内容就是 —— 3 个减�
 <p><strong>本文输入的命令均以 <code>$</code>
 开头。对于命令行解析后的代码，我将在相关代码下面以不带 <code>$</code>
 的单独一行写出这句代码等同的解析后的代码。</strong></p>
-<h2 id="ab-拓展参数"><code>&#123;a,b&#125;</code> 拓展参数</h2>
+<h2 id="ab-拓展参数"><code>{a,b}</code> 拓展参数</h2>
 <p>当我们在编写命令时，我们常会重复输入同一个命令。</p>
 <p>以更改文件后缀为例，我们一般使用的是 <code>mv</code>：</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> mv README.txt README.md</span></code></pre></div>
 <p>注意到我们写了两次 README，而参数扩展就可以避免这种重复 ——
 更改文件的后缀而无需输入 README 两次：</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> mv README.<span class="dt">&#123;txt</span><span class="op">,</span><span class="dt">md&#125;</span></span>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> mv README.<span class="dt">{txt</span><span class="op">,</span><span class="dt">md}</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> README.txt README.md</span></code></pre></div>
-<p>我们使用的参数扩展为 <code>&#123;txt,md&#125;</code>，而它将会扩展为两个参数 ——
+<p>我们使用的参数扩展为 <code>{txt,md}</code>，而它将会扩展为两个参数 ——
 <code>txt md</code>（会以空格分隔）。</p>
 <p><strong>参数扩展会为花括号内，以逗号分割的每个元素分别创建一个参数：</strong></p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="dt">&#123;1</span><span class="op">,</span><span class="dt">2</span><span class="op">,</span><span class="dt">3&#125;</span></span>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="dt">{1</span><span class="op">,</span><span class="dt">2</span><span class="op">,</span><span class="dt">3}</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">1</span> 2 3</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo pre<span class="dt">&#123;1</span><span class="op">,</span><span class="dt">2</span><span class="op">,</span><span class="dt">3&#125;</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo pre<span class="dt">{1</span><span class="op">,</span><span class="dt">2</span><span class="op">,</span><span class="dt">3}</span></span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="ex">pre1</span> pre2 pre3</span></code></pre></div>
 <p>空元素将创建不带任何替换项的参数：</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo pre<span class="dt">&#123;</span><span class="op">,</span><span class="dt">1</span><span class="op">,</span><span class="dt">2&#125;</span>fix</span>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo pre<span class="dt">{</span><span class="op">,</span><span class="dt">1</span><span class="op">,</span><span class="dt">2}</span>fix</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">prefix</span> pre1fix pre2fix</span></code></pre></div>
 <p>另一个例子 —— 我们将要把 <code>data</code> 文件夹中的
 <code>models</code> 文件夹重命名为 <code>ml</code>：</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> mv data/models data/ml</span></code></pre></div>
 <p>我们可以使用参数扩展来节省重新输入 <code>data/</code> 的时间：</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> mv data/<span class="dt">&#123;models</span><span class="op">,</span><span class="dt">ml&#125;</span></span>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> mv data/<span class="dt">{models</span><span class="op">,</span><span class="dt">ml}</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> data/models data/ml</span></code></pre></div>
 <p>我们可以使用带有数字序列的参数扩展 ——
 这在创建顺序编号目录时很有用：</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> mkdir data<span class="dt">&#123;</span><span class="dv">0</span><span class="dt">..</span><span class="dv">2</span><span class="dt">&#125;</span></span>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> mkdir data<span class="dt">{</span><span class="dv">0</span><span class="dt">..</span><span class="dv">2</span><span class="dt">}</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> data0 data1 data2</span></code></pre></div>
 <p>我们还可以在<strong>参数内部进行参数扩展</strong> ——
 例如，更改路径中的文件夹名称：</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cat models/<span class="dt">&#123;baseline</span><span class="op">,</span><span class="dt">final&#125;</span>/data.csv</span>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cat models/<span class="dt">{baseline</span><span class="op">,</span><span class="dt">final}</span>/data.csv</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> models/baseline/data.csv models/final/data.csv</span></code></pre></div>
 <p>最后一个示例：在 <code>mv</code> 命令中，我们使用了 3 个参数 ——
 将两个 Python 文件移动到 tests 文件夹中：</p>
@@ -628,12 +737,12 @@ ubuntu 改为 user：</p>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">1.1m</span>
+    <span title="Symbols count total">921k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">34:12</span>
+    <span title="Reading time total">27:54</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT</a>
   </div>

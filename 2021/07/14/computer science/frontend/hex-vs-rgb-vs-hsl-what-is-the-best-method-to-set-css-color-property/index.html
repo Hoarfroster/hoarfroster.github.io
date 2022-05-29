@@ -141,7 +141,119 @@
   </style>
 </noscript>
 
-</head>
+<style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
   <div class="container use-motion">
@@ -311,7 +423,7 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-              <span>4.1k</span>
+              <span>4k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
@@ -387,19 +499,12 @@ Lightness，是另一种在 CSS 中声明颜色的方式。紫色的 HSL
 度代表蓝色。</p>
 <p>与 RGB 不同，在 HSL 中，颜色的饱和度和亮度都可以改变。</p>
 <p>这些颜色可以是暗淡的，也可以是鲜艳的。颜色越少，它变成灰色的阴影就越多。<strong>饱和度</strong>指代混合色中存在多少颜色，它能控制颜色的<strong>鲜艳或暗淡</strong>程度。</p>
-<figure>
-<img src="https://cdn-images-1.medium.com/max/2044/1*-eXO8dohWa8I60_Qo-AKyQ.gif" alt="使用 Brandon Mathis 的 HSL 颜色选择器(https://hslpicker.com/#ff5100)">
-<figcaption aria-hidden="true">使用 Brandon Mathis 的 <a target="_blank" rel="noopener" href="https://hslpicker.com/#ff5100">HSL
-颜色选择器</a>(https://hslpicker.com/#ff5100)</figcaption>
-</figure>
+<p><img src="https://cdn-images-1.medium.com/max/2044/1*-eXO8dohWa8I60_Qo-AKyQ.gif" alt="使用 Brandon Mathis 的 HSL 颜色选择器(https://hslpicker.com/#ff5100)"></p>
 <p>如你所见，当饱和度值沿线从 100% 变为 0%
 时，颜色会从纯色调变为暗色调。</p>
 <p>此外，还有第三个参数代表亮度。这玩意也是一个百分比值，数值范围也是 0%
 到 100%，用于描述颜色中黑色或白色的占比。</p>
-<figure>
-<img src="https://cdn-images-1.medium.com/max/2000/1*1s0MaASIXSV9vJw6oFvjgg.gif" alt="使用 Brandon Mathis 的 HSL 颜色选择器">
-<figcaption aria-hidden="true">使用 Brandon Mathis 的 <a target="_blank" rel="noopener" href="https://hslpicker.com/#ff5100">HSL 颜色选择器</a></figcaption>
-</figure>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*1s0MaASIXSV9vJw6oFvjgg.gif" alt="使用 Brandon Mathis 的 HSL 颜色选择器"></p>
 <p>这类似于水彩在绘画中的使用。如果你想让颜色更亮，你可以添加白色，如果你想让颜色更深，你可以添加黑色。因此，100%
 的亮度表示完全的白色，50% 表示实际色调颜色，0% 表示纯黑色。</p>
 <p><strong>HSLA</strong> 与 RGBA 类似，是 HSL
@@ -522,10 +627,10 @@ HSL，建立一个配色方案，简直就是小菜一碟。 😋</p>
 <li>如果你的目标访问者使用严重过时的浏览器访问你的网站，请使用
 Hex，或者使用如下后备代码：</li>
 </ol>
-<div class="sourceCode" id="cb4"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>p &#123;</span>
+<div class="sourceCode" id="cb4"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>p {</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">color</span>: <span class="cn">#FF0000</span><span class="op">;</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">color</span>: <span class="fu">hsla(</span><span class="dv">0</span><span class="op">,</span> <span class="dv">100</span><span class="dt">%</span><span class="op">,</span> <span class="dv">50</span><span class="dt">%</span><span class="op">,</span> <span class="dv">1</span><span class="fu">)</span><span class="op">;</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>&#125;</span></code></pre></div>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <ol start="4" type="1">
 <li>如果以上三点还是没能让你决定使用哪一种，请使用 HSLA。HSLA 允许你像
 RGBA 一样使用透明度，而且更具备可访问性。</li>
@@ -739,12 +844,12 @@ CSS 中设置颜色属性应取决于以下三个因素：</p>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">1.1m</span>
+    <span title="Symbols count total">921k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">34:12</span>
+    <span title="Reading time total">27:54</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT</a>
   </div>

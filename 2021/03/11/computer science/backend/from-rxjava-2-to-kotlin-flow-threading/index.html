@@ -108,9 +108,9 @@
 <meta property="article:modified_time" content="2022-05-28T15:43:08.180Z">
 <meta property="article:author" content="Hoarfroster">
 <meta property="article:tag" content="Computer Science">
+<meta property="article:tag" content="Kotlin">
 <meta property="article:tag" content="Backend">
 <meta property="article:tag" content="Java">
-<meta property="article:tag" content="Kotlin">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://cdn-images-1.medium.com/max/2000/0*piI5NnrRuivMUOKD">
 
@@ -158,7 +158,119 @@
   </style>
 </noscript>
 
-</head>
+<style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
   <div class="container use-motion">
@@ -358,10 +470,7 @@ Hoarfroster</a></li>
 <li>校对者：<a target="_blank" rel="noopener" href="https://github.com/samyu2000">samyu2000</a>、<a target="_blank" rel="noopener" href="https://github.com/zenblo">zenblo</a></li>
 </ul>
 </blockquote>
-<figure>
-<img src="https://cdn-images-1.medium.com/max/2000/0*piI5NnrRuivMUOKD" alt="来源">
-<figcaption aria-hidden="true"><a target="_blank" rel="noopener" href="https://unsplash.com/photos/vyyVbUOYNPc">来源</a></figcaption>
-</figure>
+<p><img src="https://cdn-images-1.medium.com/max/2000/0*piI5NnrRuivMUOKD" alt="来源"></p>
 <h2 id="简介">简介</h2>
 <p>长期以来，RxJava 一直是 Android
 响应式解决方案的无可争议的引领者。虽然 Kotlin
@@ -384,7 +493,7 @@ RxJava 2 中的线程（对其用法做一些基本说明），然后讨论一�
 <div class="sourceCode" id="cb1"><pre class="sourceCode kotlin"><code class="sourceCode kotlin"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>observeSomething<span class="op">()</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span>subscribeOn<span class="op">(</span>io<span class="op">())</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span>observeOn<span class="op">(</span>mainThread<span class="op">())</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span>subscribe <span class="op">&#123;</span> result <span class="op">-&gt;</span> println<span class="op">(</span>result<span class="op">)</span> <span class="op">&#125;</span></span></code></pre></div>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span>subscribe <span class="op">{</span> result <span class="op">-&gt;</span> println<span class="op">(</span>result<span class="op">)</span> <span class="op">}</span></span></code></pre></div>
 <p>在上述代码中，我们订阅了输入输出事件。程序运行时，只要发生了 I/O
 事件，就会把接收到的结果在主线程打印出来。</p>
 <h4 id="subscribeon">subscribeOn</h4>
@@ -396,12 +505,12 @@ RxJava 2 中的线程（对其用法做一些基本说明），然后讨论一�
 <div class="sourceCode" id="cb2"><pre class="sourceCode kotlin"><code class="sourceCode kotlin"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>observeSomething<span class="op">()</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span>subscribeOn<span class="op">(</span>io<span class="op">())</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span>observeOn<span class="op">(</span>mainThread<span class="op">())</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span>subscribe <span class="op">&#123;</span> result <span class="op">-&gt;</span> println<span class="op">(</span>result<span class="op">)</span> <span class="op">&#125;</span></span></code></pre></div>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span>subscribe <span class="op">{</span> result <span class="op">-&gt;</span> println<span class="op">(</span>result<span class="op">)</span> <span class="op">}</span></span></code></pre></div>
 <p>也可以这样：</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode kotlin"><code class="sourceCode kotlin"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>observeSomething<span class="op">()</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span>observeOn<span class="op">(</span>mainThread<span class="op">())</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span>subscribeOn<span class="op">(</span>io<span class="op">())</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span>subscribe <span class="op">&#123;</span> result <span class="op">-&gt;</span> println<span class="op">(</span>result<span class="op">)</span> <span class="op">&#125;</span></span></code></pre></div>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span>subscribe <span class="op">{</span> result <span class="op">-&gt;</span> println<span class="op">(</span>result<span class="op">)</span> <span class="op">}</span></span></code></pre></div>
 <p>上述两种情况的运行结果是一样的，这并不意外。我们通过在这一串代码链中声明了这些运算符声明了这个链的开始，但其中的某些运算符本身并不依赖于声明的位置，就例如上面的例子那样。</p>
 <p>第二个划重点的地方是，因为一个链并不能同时在多个调度器处启动，因此我们无需在链中添加多个
 <code>subscribeOn</code>，因为只有其中之一会起作用。如果出于某种原因你将多个
@@ -411,7 +520,7 @@ RxJava 2 中的线程（对其用法做一些基本说明），然后讨论一�
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span>subscribeOn<span class="op">(</span>io<span class="op">())</span> <span class="co">// 这个会被使用上</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span>observeOn<span class="op">(</span>mainThread<span class="op">())</span></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span>subscribeOn<span class="op">(</span>io<span class="op">())</span> <span class="co">// 这个会直接被忽略</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span>subscribe <span class="op">&#123;</span> result <span class="op">-&gt;</span> println<span class="op">(</span>result<span class="op">)</span> <span class="op">&#125;</span></span></code></pre></div>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span>subscribe <span class="op">{</span> result <span class="op">-&gt;</span> println<span class="op">(</span>result<span class="op">)</span> <span class="op">}</span></span></code></pre></div>
 <h4 id="observeon">observeOn</h4>
 <p><code>subscribeOn</code> 表示将在哪个调度器上启动链，而
 <code>observeOn</code> 表示将在哪个调度器上运行线程。实际上，这意味着
@@ -419,7 +528,7 @@ RxJava 2 中的线程（对其用法做一些基本说明），然后讨论一�
 <div class="sourceCode" id="cb5"><pre class="sourceCode kotlin"><code class="sourceCode kotlin"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">/* 1 */</span> observeSomething<span class="op">()</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co">/* 1 */</span>     <span class="op">.</span>subscribeOn<span class="op">(</span>io<span class="op">())</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">/* 2 */</span>     <span class="op">.</span>observeOn<span class="op">(</span>mainThread<span class="op">())</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">/* 2 */</span>     <span class="op">.</span>subscribe <span class="op">&#123;</span> result <span class="op">-&gt;</span> println<span class="op">(</span>result<span class="op">)</span> <span class="op">&#125;</span></span></code></pre></div>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">/* 2 */</span>     <span class="op">.</span>subscribe <span class="op">{</span> result <span class="op">-&gt;</span> println<span class="op">(</span>result<span class="op">)</span> <span class="op">}</span></span></code></pre></div>
 <p>在这里，我们看到从链开始，直到链上的 <code>observeOn</code>
 定义是第一部分，然后 <code>observeOn</code> 更改链要在
 <code>mainThread</code> 调度器上运行，因此现在以下全部内容都在
@@ -429,20 +538,20 @@ RxJava 2 中的线程（对其用法做一些基本说明），然后讨论一�
 <div class="sourceCode" id="cb6"><pre class="sourceCode kotlin"><code class="sourceCode kotlin"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">/* 1 */</span> observeSomething<span class="op">()</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co">/* 1 */</span>     <span class="op">.</span>subscribeOn<span class="op">(</span>io<span class="op">())</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co">/* 2 */</span>     <span class="op">.</span>observeOn<span class="op">(</span>computation<span class="op">())</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co">/* 2 */</span>     <span class="op">.</span>map <span class="op">&#123;</span> result <span class="op">-&gt;</span> result<span class="op">.</span>length <span class="op">&#125;</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co">/* 2 */</span>     <span class="op">.</span>map <span class="op">{</span> result <span class="op">-&gt;</span> result<span class="op">.</span>length <span class="op">}</span></span>
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co">/* 3 */</span>     <span class="op">.</span>observeOn<span class="op">(</span>mainThread<span class="op">())</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co">/* 3 */</span>     <span class="op">.</span>subscribe <span class="op">&#123;</span> result <span class="op">-&gt;</span> println<span class="op">(</span>result<span class="op">)</span> <span class="op">&#125;</span></span></code></pre></div>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co">/* 3 */</span>     <span class="op">.</span>subscribe <span class="op">{</span> result <span class="op">-&gt;</span> println<span class="op">(</span>result<span class="op">)</span> <span class="op">}</span></span></code></pre></div>
 <p>如上面的例子那样，我们先从网络上获取一些数据，接着进行一些计算处理，再打印结果。。我们添加了多个
 <code>observeOn</code>，让程序首先切换到 <code>computation</code>
 调度器（这样做的目的是在后台线程中进行计算，这是第二部分），然后切换到
 <code>mainThread</code> 打印结果。</p>
-<h4 id="just-defer">just + defer</h4>
+<h4 id="just--defer">just + defer</h4>
 <p><code>subscribeOn</code> 的一个常见错误是将它与
 <code>Observable.just</code> 一起使用。</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode kotlin"><code class="sourceCode kotlin"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>Observable<span class="op">.</span>just<span class="op">(</span>loadDataSync<span class="op">())</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span>subscribeOn<span class="op">(</span>io<span class="op">())</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span>observeOn<span class="op">(</span>mainThread<span class="op">())</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span>subscribe <span class="op">&#123;</span> result <span class="op">-&gt;</span> println<span class="op">(</span>result<span class="op">)</span> <span class="op">&#125;</span></span></code></pre></div>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span>subscribe <span class="op">{</span> result <span class="op">-&gt;</span> println<span class="op">(</span>result<span class="op">)</span> <span class="op">}</span></span></code></pre></div>
 <p><code>just</code>
 参数的值是立即计算的，而不是在订阅时才计算的。这意味着，如果您在主线程上创建此类可观察的对象，那么可能会在主线程上进行大量潜在的计算。虽说订阅将在
 <code>io</code> 上正确完成，但是 <code>just</code>
@@ -451,23 +560,23 @@ RxJava 2 中的线程（对其用法做一些基本说明），然后讨论一�
 <code>Observable.defer</code>
 中，这样调用所执行的所有内容都将在订阅时以及在我们位于
 <code>subscribeOn</code> 处所声明的调度器上进行计算：</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode kotlin"><code class="sourceCode kotlin"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>Observable<span class="op">.</span>defer <span class="op">&#123;</span> Observable<span class="op">.</span>just<span class="op">(</span>loadDataSync<span class="op">())</span> <span class="op">&#125;</span></span>
+<div class="sourceCode" id="cb8"><pre class="sourceCode kotlin"><code class="sourceCode kotlin"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>Observable<span class="op">.</span>defer <span class="op">{</span> Observable<span class="op">.</span>just<span class="op">(</span>loadDataSync<span class="op">())</span> <span class="op">}</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span>subscribeOn<span class="op">(</span>io<span class="op">())</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span>observeOn<span class="op">(</span>mainThread<span class="op">())</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span>subscribe <span class="op">&#123;</span> result <span class="op">-&gt;</span> println<span class="op">(</span>result<span class="op">)</span> <span class="op">&#125;</span></span></code></pre></div>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span>subscribe <span class="op">{</span> result <span class="op">-&gt;</span> println<span class="op">(</span>result<span class="op">)</span> <span class="op">}</span></span></code></pre></div>
 <h4 id="flatmap-的并发和并行">flatMap 的并发和并行</h4>
 <p>另一个棘手的事情来自使用运算符 <code>flatMap</code>
 和我们对并发性和并行性的理解。</p>
 <p>例如，当我们拥有 ID 列表流，并且我们需要对每一个 ID
 都执行一次从网络中加载数据：</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode kotlin"><code class="sourceCode kotlin"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>Observable<span class="op">.</span>fromIterable<span class="op">(</span>listOf<span class="op">(</span><span class="st">"id1"</span><span class="op">,</span> <span class="st">"id2"</span><span class="op">,</span> <span class="st">"id3"</span><span class="op">))</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span>flatMap <span class="op">&#123;</span> id <span class="op">-&gt;</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span>flatMap <span class="op">{</span> id <span class="op">-&gt;</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>        loadData<span class="op">(</span>id<span class="op">)</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">&#125;</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span>subscribeOn<span class="op">(</span>io<span class="op">())</span></span>
 <span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span>observeOn<span class="op">(</span>mainThread<span class="op">())</span></span>
 <span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span>toList<span class="op">()</span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span>subscribe <span class="op">&#123;</span> result <span class="op">-&gt;</span> println<span class="op">(</span>result<span class="op">)</span> <span class="op">&#125;</span></span></code></pre></div>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span>subscribe <span class="op">{</span> result <span class="op">-&gt;</span> println<span class="op">(</span>result<span class="op">)</span> <span class="op">}</span></span></code></pre></div>
 <p>我们在这里的预期是，我们已经订阅了 <code>io</code>，<code>io()</code>
 的底层有线程池，因此对每个 <code>id</code> 的 <code>loadData</code>
 的调用是并行的。但是事实并非如此。我们使用 <code>flatMap</code>
@@ -477,13 +586,13 @@ RxJava 2 中的线程（对其用法做一些基本说明），然后讨论一�
 池中的一个线程，并在该单个线程上运行所有线程。为了改变行为并使我们的代码并行运行，我们需要将
 <code>subscribeOn</code> 移动到 <code>flatMap</code> 之内：</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode kotlin"><code class="sourceCode kotlin"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>Observable<span class="op">.</span>fromIterable<span class="op">(</span>listOf<span class="op">(</span><span class="st">"id1"</span><span class="op">,</span> <span class="st">"id2"</span><span class="op">,</span> <span class="st">"id3"</span><span class="op">))</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span>flatMap <span class="op">&#123;</span> id <span class="op">-&gt;</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span>flatMap <span class="op">{</span> id <span class="op">-&gt;</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>        loadData<span class="op">(</span>id<span class="op">)</span></span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>            <span class="op">.</span>subscribeOn<span class="op">(</span>io<span class="op">())</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">&#125;</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
 <span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span>observeOn<span class="op">(</span>mainThread<span class="op">())</span></span>
 <span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span>toList<span class="op">()</span></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span>subscribe <span class="op">&#123;</span> result <span class="op">-&gt;</span> println<span class="op">(</span>result<span class="op">)</span> <span class="op">&#125;</span></span></code></pre></div>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span>subscribe <span class="op">{</span> result <span class="op">-&gt;</span> println<span class="op">(</span>result<span class="op">)</span> <span class="op">}</span></span></code></pre></div>
 <p>一旦执行到了
 <code>flatMap</code>，每个内部的可观察对象（<code>flatMap</code>
 内部的可观察对象）都将被订阅。意味着在每一次执行 <code>loadData</code>
@@ -492,17 +601,17 @@ RxJava 2 中的线程（对其用法做一些基本说明），然后讨论一�
 <p>因此，当我们使用诸如 <code>flatMap</code>
 之类的运算符时，我们的链应该有多个订阅点：一个用于原始链起点，每个用于内部的可观察点：</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode kotlin"><code class="sourceCode kotlin"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">/* 订阅点 1 */</span> Observable<span class="op">.</span>fromIterable<span class="op">(</span>listOf<span class="op">(</span><span class="st">"id1"</span><span class="op">,</span> <span class="st">"id2"</span><span class="op">,</span> <span class="st">"id3"</span><span class="op">))</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>                    <span class="op">.</span>flatMap <span class="op">&#123;</span> id <span class="op">-&gt;</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>                    <span class="op">.</span>flatMap <span class="op">{</span> id <span class="op">-&gt;</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co">/* 订阅点 2 */</span>             loadData<span class="op">(</span>id<span class="op">)</span></span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>                            <span class="op">.</span>subscribeOn<span class="op">(</span>io<span class="op">())</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>                            <span class="op">.</span>flatMap <span class="op">&#123;</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>                            <span class="op">.</span>flatMap <span class="op">{</span></span>
 <span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co">/* 订阅点 3 */</span>                     loadData2<span class="op">(</span>id<span class="op">)</span></span>
 <span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>                                    <span class="op">.</span>subscribeOn<span class="op">(</span>io<span class="op">())</span></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>                            <span class="op">&#125;</span></span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>                        <span class="op">&#125;</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>                            <span class="op">}</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>                        <span class="op">}</span></span>
 <span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>                    <span class="op">.</span>observeOn<span class="op">(</span>mainThread<span class="op">())</span></span>
 <span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>                    <span class="op">.</span>toList<span class="op">()</span></span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>                    <span class="op">.</span>subscribe <span class="op">&#123;</span> result <span class="op">-&gt;</span> println<span class="op">(</span>result<span class="op">)</span> <span class="op">&#125;</span></span></code></pre></div>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>                    <span class="op">.</span>subscribe <span class="op">{</span> result <span class="op">-&gt;</span> println<span class="op">(</span>result<span class="op">)</span> <span class="op">}</span></span></code></pre></div>
 <p>代码中的注释指向了每一个订阅发生的位置。通过使用
 <code>subscribeOn</code>，我们可以声明在这些情况下应该在哪个调度程序订阅上进行。</p>
 <h4 id="单线程运行">单线程运行</h4>
@@ -512,11 +621,11 @@ RxJava 2 中的线程（对其用法做一些基本说明），然后讨论一�
 流。</p>
 <h2 id="kotlin-流">Kotlin 流</h2>
 <p>Kotlin 流的最基础使用方法如下所示：</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode kotlin"><code class="sourceCode kotlin"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>CoroutineScope<span class="op">(</span>Job<span class="op">()</span> <span class="op">+</span> Dispatchers<span class="op">.</span>Main<span class="op">).</span>launch <span class="op">&#123;</span></span>
+<div class="sourceCode" id="cb12"><pre class="sourceCode kotlin"><code class="sourceCode kotlin"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>CoroutineScope<span class="op">(</span>Job<span class="op">()</span> <span class="op">+</span> Dispatchers<span class="op">.</span>Main<span class="op">).</span>launch <span class="op">{</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    observeSomething<span class="op">()</span></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span>flowOn<span class="op">(</span>Dispatchers<span class="op">.</span>IO<span class="op">)</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span>collect <span class="op">&#123;</span> result <span class="op">-&gt;</span> println<span class="op">(</span>result<span class="op">)</span> <span class="op">&#125;</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="op">&#125;</span></span></code></pre></div>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span>collect <span class="op">{</span> result <span class="op">-&gt;</span> println<span class="op">(</span>result<span class="op">)</span> <span class="op">}</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <blockquote>
 <p>现在，我们有了许多与协程相关的概念，可能需要对其进行解释。我们不会深入介绍协程这个功能或是
 Kotlin Flow，因此，如果您不熟悉协程，最好先阅读有关协程的文档。</p>
@@ -813,9 +922,9 @@ RxJava
       <footer class="post-footer">
           <div class="post-tags">
               <a href="/tags/Computer-Science/" rel="tag"># Computer Science</a>
+              <a href="/tags/Kotlin/" rel="tag"># Kotlin</a>
               <a href="/tags/Backend/" rel="tag"># Backend</a>
               <a href="/tags/Java/" rel="tag"># Java</a>
-              <a href="/tags/Kotlin/" rel="tag"># Kotlin</a>
           </div>
 
         
@@ -896,7 +1005,7 @@ RxJava
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rxjava-2"><span class="nav-text">RxJava 2</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#subscribeon"><span class="nav-text">subscribeOn</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#observeon"><span class="nav-text">observeOn</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#just-defer"><span class="nav-text">just + defer</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#flatmap-%E7%9A%84%E5%B9%B6%E5%8F%91%E5%92%8C%E5%B9%B6%E8%A1%8C"><span class="nav-text">flatMap 的并发和并行</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8D%95%E7%BA%BF%E7%A8%8B%E8%BF%90%E8%A1%8C"><span class="nav-text">单线程运行</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#kotlin-%E6%B5%81"><span class="nav-text">Kotlin 流</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#flowon"><span class="nav-text">flowOn</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#launchin"><span class="nav-text">launchIn</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#flowof"><span class="nav-text">flowOf</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#flatmapmerge-%E5%B9%B6%E5%8F%91%E5%92%8C%E5%B9%B6%E8%A1%8C"><span class="nav-text">FlatMapMerge 并发和并行</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AF%94%E8%BE%83"><span class="nav-text">比较</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E7%9A%84%E6%8E%A7%E5%88%B6"><span class="nav-text">线程的控制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="nav-text">线程操作符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%81%E7%A7%BB%E4%BE%8B%E5%AD%90"><span class="nav-text">迁移例子</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93"><span class="nav-text">小结</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rxjava-2"><span class="nav-text">RxJava 2</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#subscribeon"><span class="nav-text">subscribeOn</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#observeon"><span class="nav-text">observeOn</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#just--defer"><span class="nav-text">just + defer</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#flatmap-%E7%9A%84%E5%B9%B6%E5%8F%91%E5%92%8C%E5%B9%B6%E8%A1%8C"><span class="nav-text">flatMap 的并发和并行</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8D%95%E7%BA%BF%E7%A8%8B%E8%BF%90%E8%A1%8C"><span class="nav-text">单线程运行</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#kotlin-%E6%B5%81"><span class="nav-text">Kotlin 流</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#flowon"><span class="nav-text">flowOn</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#launchin"><span class="nav-text">launchIn</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#flowof"><span class="nav-text">flowOf</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#flatmapmerge-%E5%B9%B6%E5%8F%91%E5%92%8C%E5%B9%B6%E8%A1%8C"><span class="nav-text">FlatMapMerge 并发和并行</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AF%94%E8%BE%83"><span class="nav-text">比较</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E7%9A%84%E6%8E%A7%E5%88%B6"><span class="nav-text">线程的控制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="nav-text">线程操作符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%81%E7%A7%BB%E4%BE%8B%E5%AD%90"><span class="nav-text">迁移例子</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93"><span class="nav-text">小结</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -977,12 +1086,12 @@ RxJava
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">1.1m</span>
+    <span title="Symbols count total">921k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">34:12</span>
+    <span title="Reading time total">27:54</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT</a>
   </div>

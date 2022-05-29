@@ -138,7 +138,119 @@
   </style>
 </noscript>
 
-</head>
+<style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
   <div class="container use-motion">
@@ -308,13 +420,13 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-              <span>1.9k</span>
+              <span>2.3k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
-              <span>3 mins.</span>
+              <span>4 mins.</span>
             </span>
             <div class="post-description">Jamie Birch 最近发布了 Svelte NodeGUI，一个用于在 Windows、Linux 和 macOS 上构建桌面端应用程序的框架。这是一个相较 Electron 来说更轻量的代替方案，让我们能够使用 Svelte 前端框架和编译器，以及 Qt 控件工具包，还可以用 HTML 和 CSS 子集，构建桌面端应用程序。</div>
 
@@ -372,38 +484,39 @@ MB</a>。Svelte NodeGUI 则成功地通过不内置 Chromium
 窗口小部件可能会发出事件（称为信号），可以监听事件并以编程方式将其与事件处理程序关联。NodeGUI
 还提供了一组的内部事件，应用程序可以对其监听（即 <a target="_blank" rel="noopener" href="https://svelte.nodeGUI.org/docs/GUIdes/handle-events#event-handling">QEvents</a>）。Svelte
 NodeGUI 的文档提供了<a target="_blank" rel="noopener" href="https://svelte.nodeGUI.org/docs/GUIdes/handle-events#how-do-i-know-which-events-are-supported-">以下示例，说明了布局机制和事件语法</a>：</p>
-```jsx
-<script lang="ts">
-    import {onMount} from "svelte";
-    import {Direction} from "@nodegui/nodegui";
-    import type {QPushButtonSignals} from "@nodegui/nodegui";
-
-    let additionalButtons: string[] = [];
-    let direction: Direction = Direction.LeftToRight;
-
-    function addHandler(): void {
-        additionalButtons = [...additionalButtons, `Button ${additionalButtons.length}`];
-    }
-    function removeHandler(): void {
-        additionalButtons = [...additionalButtons.slice(0, additionalButtons.length - 1)];
-    }
-    function toggleDirection(): void {
-        direction = ((direction + 1) % 4) as Direction;
-    }
-
-    onMount(() => {
-        (window as any).win = win; // Prevent garbage collection.
-        win.nativeView.show();
-        return () => {
-        delete (window as any).win;
-    };
-});
-</script>
-<p><window bind:this="{win}"> <boxview direction="{direction}">
-<button text="Add" on="{addHandler}/">
-</button><button text="Remove" on="{removeHandler}/">
-</button><button text="Toggle direction" on="{toggleDirection}/"><p></p>
-</button></boxview></window></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode jsx"><code class="sourceCode javascriptreact"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;script</span> <span class="ot">lang</span><span class="op">=</span><span class="st">"ts"</span><span class="kw">&gt;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    import <span class="va">{</span>onMount<span class="va">}</span> from "svelte";</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    import <span class="va">{</span>Direction<span class="va">}</span> from "@nodegui/nodegui";</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    import type <span class="va">{</span>QPushButtonSignals<span class="va">}</span> from "@nodegui/nodegui";</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    let additionalButtons: string[] = [];</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    let direction: Direction = Direction.LeftToRight;</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    function addHandler(): void <span class="va">{</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>        additionalButtons <span class="op">=</span> [<span class="op">...</span>additionalButtons<span class="op">,</span> <span class="vs">`Button </span><span class="sc">${</span>additionalButtons<span class="op">.</span><span class="at">length</span><span class="sc">}</span><span class="vs">`</span>]<span class="op">;</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="va">}</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    function removeHandler(): void <span class="va">{</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>        additionalButtons <span class="op">=</span> [<span class="op">...</span>additionalButtons<span class="op">.</span><span class="fu">slice</span>(<span class="dv">0</span><span class="op">,</span> additionalButtons<span class="op">.</span><span class="at">length</span> <span class="op">-</span> <span class="dv">1</span>)]<span class="op">;</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="va">}</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    function toggleDirection(): void <span class="va">{</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>        direction <span class="op">=</span> ((direction <span class="op">+</span> <span class="dv">1</span>) <span class="op">%</span> <span class="dv">4</span>) <span class="im">as</span> Direction<span class="op">;</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="va">}</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    onMount(() =&gt; <span class="va">{</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>        (<span class="bu">window</span> <span class="im">as</span> any)<span class="op">.</span><span class="at">win</span> <span class="op">=</span> win<span class="op">;</span> <span class="co">// Prevent garbage collection.</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>        win<span class="op">.</span><span class="at">nativeView</span><span class="op">.</span><span class="fu">show</span>()<span class="op">;</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>        <span class="kw">delete</span> (<span class="bu">window</span> <span class="im">as</span> any)<span class="op">.</span><span class="at">win</span><span class="op">;</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    }<span class="op">;</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="va">}</span>);</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/script&gt;</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;window</span> <span class="ot">bind:this</span><span class="op">=</span><span class="va">{</span>win<span class="va">}</span><span class="kw">&gt;</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>    <span class="fu">&lt;boxView</span> <span class="ot">direction</span><span class="op">=</span><span class="va">{</span>direction<span class="va">}</span><span class="fu">&gt;</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;button</span> <span class="ot">text</span><span class="op">=</span><span class="st">"Add"</span> <span class="ot">on</span><span class="op">=</span><span class="va">{</span>addHandler<span class="va">}</span><span class="kw">/&gt;</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;button</span> <span class="ot">text</span><span class="op">=</span><span class="st">"Remove"</span> <span class="ot">on</span><span class="op">=</span><span class="va">{</span>removeHandler<span class="va">}</span><span class="kw">/&gt;</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;button</span> <span class="ot">text</span><span class="op">=</span><span class="st">"Toggle direction"</span> <span class="ot">on</span><span class="op">=</span><span class="va">{</span>toggleDirection<span class="va">}</span><span class="kw">/&gt;</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>            </span></code></pre></div>
     </div>
 
     
@@ -577,12 +690,12 @@ NodeGUI 的文档提供了<a target="_blank" rel="noopener" href="https://svelte
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">1.1m</span>
+    <span title="Symbols count total">921k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">34:12</span>
+    <span title="Reading time total">27:54</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT</a>
   </div>
