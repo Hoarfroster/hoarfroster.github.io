@@ -6,3 +6,4 @@ index.db
 node_modules
 public
 source
+.texsvg/
