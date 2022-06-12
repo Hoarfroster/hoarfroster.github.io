@@ -94,7 +94,7 @@ if (cluster.isMaster) {
                     return {
                         title: row.TITLE,
                         path: row.PATH,
-                        category: row.category !== undefined ? JSON.parse(row.category)[0] : null,
+                        category: row.CATEGORY !== null && row.CATEGORY !== undefined ? JSON.parse(row.CATEGORY)[0] : null,
                         stat: JSON.parse(row.STAT),
                     };
                 }).filter(row => reservedPages.indexOf(`${row.title}`.toUpperCase()) === -1).forEach(entry => {
@@ -211,6 +211,7 @@ if (cluster.isMaster) {
 
             if (meta.categories && meta.categories.length > 0) {
                 meta.categories.forEach(e => {
+                    e.push(`${meta.title}`);
                     let p = path.join(...e);
                     if (platform === 'win32') {
                         const badWinChars = /[*|"<>?:]/g
