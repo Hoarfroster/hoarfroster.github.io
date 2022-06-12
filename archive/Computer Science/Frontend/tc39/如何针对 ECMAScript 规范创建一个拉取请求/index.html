@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>如何针对 ECMAScript 规范创建一个拉取请求</title>
+    <script src="/assets/script/main.js"></script>
+    <link rel="stylesheet" href="/assets/style/styles.css">
+</head>
+
+<body>
+    <div class="header">
+    <div class="container">
+        <div class="icon">
+            <img src="/assets/media/vectors/hoarfroster-text.svg" alt="Hoarfroster Logo with Text">
+        </div>
+        <nav class="navigation">
+            <ul class="header-navigation-list">
+                <li><a href="/">首页</a></li>
+                <li><a href="/archive.html">文章</a></li>
+                <li><a href="/about.html">关于</a></li>
+            </ul>
+            <form action="/search" method="post">
+                <label>
+                    <input type="text" class="search" placeholder="搜索咕咕咕的小站"/>
+                </label>
+                <label class="submit">
+                    <input type="submit"/>
+                </label>
+            </form>
+        </nav>
+        <ul class="social-accounts">
+            <li>
+                <a href="https://www.zhihu.com/people/shuang-yu-29-75">
+                    <i class="fa-brands fa-zhihu" style="font-size: 20px; color:#06f; line-height: 20px;"></i>
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/PassionPenguin">
+                    <img src="/assets/media/vectors/github.svg" alt="github-logo"/>
+                </a>
+            </li>
+            <li>
+                <a href="https://dribbble.com/Hoarfroster">
+                    <img src="/assets/media/vectors/dribbble.svg" alt="dribbble-logo"/>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+    <div class="content article">
+        <article>
+            <div class="title">
+                <h1>如何针对 ECMAScript 规范创建一个拉取请求</h1>
+                <p><span class='chars'>6012B</span><span class='created-date'>Created Sun Jun 12 2022 23:55:03 GM</span><span class='modified-date'>Modified Sun Jun 12 2022 23:55:03 GM</span></p>
+            </div>
+            <div class="main markdown-body">
+                
+
+<blockquote>
+<ul>
+<li>原文地址：<a href="https://github.com/tc39/how-we-work/blob/master/pr.md">How to make
+a Pull Request against the ECMAScript specification</a></li>
+<li>原文作者：<a href="https://github.com/tc39/how-we-work">Ecma
+TC39</a></li>
+<li>译者：<a href="https://github.com/PassionPenguin">霜羽
+Hoarfroster</a>、<a href="https://github.com/Usualminds">Usualminds</a></li>
+<li>校对者：<a href="https://github.com/Usualminds">Usualminds</a>、<a href="https://github.com/kimberlyohq">kimberlyohq</a>、<a href="https://github.com/KimYangOfCat">Kim Yang</a></li>
+</ul>
+</blockquote>
+<p>对 JavaScript 规范的所有更改最终都会变为对 <a href="https://github.com/tc39/ecma262/">ecma262</a> 或 <a href="https://github.com/tc39/ecma402/">ecma402</a>
+存储库的拉取请求。</p>
+<h2 id="创建一个拉取请求">创建一个拉取请求</h2>
+<p>要创建一个拉取请求（PR），请 <a href="https://help.github.com/articles/fork-a-repo/">fork</a> <a href="https://github.com/tc39/ecma262">ecma262</a> 仓库，将变更添加到
+spec.html 文件，并将其上传到 GitHub 上之前 fork 的仓库中，使用 Web
+端界面提交拉取请求。在本地编辑时，要想查看你在 HTML 中的内容更改，请运行
+<code>npm run build</code>（通过 <a href="https://github.com/bterlson/ecmarkup">ecmarkup</a>）将 spec.html
+生成为实际的 HTML 文件。</p>
+<p><strong>拉取请求应指定哪个仓库？</strong>：几乎所有规范内容的拉取请求都应针对
+ecma262 仓库；ecma402 仓库仅用于存储国际规范（提供国际化的标准库）。</p>
+<p>拉取请求中的提交的第一行应该以以下的标记开头，后跟冒号，以说明它们是哪一种修补（patch）类型：</p>
+<ul>
+<li><code>Normative:</code> 变化会以某种方式影响 JavaScript
+的行为。这些更改被称为“可观察的”，因为我们可以通过编写代码来“观察”其行为的变化。</li>
+<li><code>Editorial:</code>
+对规范文本进行的任何非规范性更改，包括拼写错误、文档样式的更改等。</li>
+<li><code>Layering:</code> 重构规范文本、算法或嵌入钩子的修改，以实现
+JavaScript 规范与其他使用 JavaScript 规范的无入侵式的集成。</li>
+<li><code>Markup:</code> 对规范中的标记不可见的更改</li>
+<li><code>Meta:</code> 更改了有关该存储库的文档（例如 readme.md 或
+contributing.md）以及其他支持文档或脚本（例如
+package.json，设计文档等）</li>
+</ul>
+<h2 id="第四阶段提案拉取请求normative">第四阶段提案拉取请求（<code>Normative:</code>）</h2>
+<p><a href="http://tc39.es/process-document/">TC39 阶段流程</a>
+的第四阶段要求将建议书写成与规范相对应的拉取文本；要进入第四阶段，需要<a href="https://github.com/tc39/how-we-work/blob/master/management.md#ecma-262-editor-group">编辑组</a>针对该拉取请求进行审查，并在第四阶段之后合并该拉取请求。</p>
+<h2 id="非规范拉取请求">非规范拉取请求</h2>
+<p><code>Editorial</code>、<code>Layering</code>、<code>Markup</code> 和
+<code>Meta</code> 类型的拉取请求不会更改 JavaScript
+的行为，但是它们对于正在阅读或使用 JavaScript 规范的人员却很有意义。</p>
+<p>如果您要对 JavaScript 规范进行更改，请提出 Issue
+进行初步讨论，或者直接创建拉取请求并请求审核。通常，针对拉取请求的审核可以完全在
+GitHub 上进行，编者和任何其他想要参与的人都可以参与审核。由于 JavaScript
+不会有明显的变化，因此这些拉取请求不需要委员会的明确共识，但是，如果出现了争议，则可以将这个拉取请求提交到委员会，交由委员会处理。</p>
+<h2 id="规范性拉取请求">规范性拉取请求</h2>
+<p>规范性拉取请求更改了 JavaScript 程序的功能，可能需要采取行动才能从
+JavaScript 引擎实现者以及使用 JavaScript
+进行编程的开发者那里进行调整。这是很严肃的事情！因此，规范的拉取请求具有以下要求：</p>
+<ul>
+<li>必须在 <a href="https://github.com/tc39/test262/">test262</a>
+中提出针对拉取请求的所做的测试。</li>
+<li>拉取请求必须在委员会中提出。在某些情况下，编者或作者只需对 PR
+进行简短描述，如果没有提出任何疑问，则认为该提案“已达成共识”。在其他时候，如果该提案有争议，则需要<a href="https://github.com/tc39/how-we-work/blob/master/presenting.md">准备演示文稿</a>，更详细地说明动机（这很是有用）。随后将进行讨论，并且委员会将会针对是否可以就该提案达成共识作出回应。因此，有争议的规范性拉取请求会被标记为“需要共识”（<code>needs consensus</code>）。</li>
+</ul>
+<p>如果您有拟议的拉取请求，并且希望将其推进，请为其编写 test262
+测试，并将其放在即将举行的 TC39
+会议的议程上。如果您不在委员会中，对你而言重要的事情是要找到一个 TC39
+代表来支持该提案，并在委员会的整个过程中（包括进行演示）将其推进。</p>
+<p>我们鼓励 TC39
+代表们在即将到来的会议议程上主动添加“需要共识”的拉取请求，并对其进行介绍。如果没有人主动提出该拉取请求，编者将在时间允许的情况下将其添加到议程中。</p>
+<h3 id="网络与现实-拉取请求">“网络与现实” 拉取请求</h3>
+<p>有时，JavaScript 规范与大多数或所有 Web
+浏览器实现的内容之间会出现不匹配的情况。鉴于网络上的大量代码，很有可能已经有许多网站期望这种行为，但是却没有明确说明，但大体上是部署了的。在这种情况下，最有用的事情通常是更改规范，而不是更改所有
+JavaScript 实现，以匹配“网络现实”。</p>
+<h3 id="实施反馈">实施反馈</h3>
+<p>在许多情况下，收集有关实施规范的拉取请求的现实状况、是否实现对某些不太重要的修改感兴趣等方面，获取外界的反馈是有用的。对于这些情况，委员会可能会要求构建一个或多个实现（可能只是在
+fork 中或被隐藏在 flag 中），然后再合并规范拉取请求。</p>
+
+
+
+            </div>
+        </article>
+        <div class="sidebar">
+            <div class="about-box">
+    <div class="avatar">
+        <img src="/assets/media/bitmap/avatar.jpeg" alt="avatar">
+    </div>
+    <h1>霜羽 Hoarfroster</h1>
+    <h2>@PassionPenguin</h2>
+    <p class="moment"><span class="status">🤔</span><span>努力！</span></p>
+    <ul>
+        <li><i class="fa-solid fa-location-dot"></i> 广东 · 广州 | <span class="light">Guangzhou, China</span>
+        </li>
+        <li><i class="fa-solid fa-envelope"></i> <a href="mailto:hoarfroster@outlook.com">hoarfroster@outlook.com</a>
+        </li>
+        <li><i class="fa-solid fa-house"></i> <a href="https://story.hoarfroster.space/">https://story.hoarfroster.space/</a>
+        </li>
+    </ul>
+</div>
+<div class="organization">
+    <h4>组织 Organizations</h4>
+    <ul>
+        <li>
+            <img src="https://avatars.githubusercontent.com/u/81648011?s=60&amp;v=4"
+                alt="Hexa-Penguin"><span>Hexa-Penguin</span>
+        </li>
+        <li>
+            <img src="https://avatars.githubusercontent.com/u/10482599?s=60&amp;v=4" alt="xitu"><span>稀土 xitu</span>
+        </li>
+    </ul>
+</div>
+<div class="category">
+    <span class="title">文章分类</span>
+    <ul>
+        <!-- <li><a href="/archive.html">所有分类</a></li> -->
+    </ul>
+</div>
+<div class="archive">
+    <span class="title">文章存档</span>
+    <ul>
+        <!-- <li><a href="/archive.html">所有文章</a></li> -->
+    </ul>
+</div>
+        </div>
+    </div>
+    <div class="footer">
+    <div class="content">
+        <div class="about">
+            <p>霜羽 Hoarfroster</p>
+            <p>&copy; Copyright 2021 Hoarfroster and contributors.</p>
+        </div>
+        <div class="nav">
+            <div class="links">
+                <span class="title">关于文章</span>
+                <ul>
+                    <li><a href="/archive.html">文章存档</a></li>
+                </ul>
+            </div>
+            <div class="category">
+                <span class="title">关于霜羽</span>
+                <ul>
+                    <li><a href="/about.html">有关霜羽</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <ul class="social-accounts">
+        <li>
+            <a href="https://www.zhihu.com/people/shuang-yu-29-75">
+                <i class="fa-brands fa-zhihu" style="font-size: 24px; color:#06f; line-height: 24px;"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://github.com/PassionPenguin">
+                <img src="/assets/media/vectors/github.svg" alt="github-logo"/>
+            </a>
+        </li>
+        <li>
+            <a href="https://dribbble.com/Hoarfroster">
+                <img src="/assets/media/vectors/dribbble.svg" alt="dribbble-logo"/>
+            </a>
+        </li>
+        <li>
+            <a href="https://zh.wikipedia.org/wiki/User:HoarfrostFeather">
+                <i class="fa-brands fa-wikipedia-w" style="font-size: 22px; color: #888; line-height: 24px;"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://space.bilibili.com/201469972">
+                <i class="fa-brands fa-bilibili" style="font-size: 22px; color: #00a1d6; line-height: 24px;"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+</body>
+
+</html>

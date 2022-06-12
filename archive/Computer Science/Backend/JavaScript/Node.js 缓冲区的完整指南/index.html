@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Node.js 缓冲区的完整指南</title>
+    <script src="/assets/script/main.js"></script>
+    <link rel="stylesheet" href="/assets/style/styles.css">
+</head>
+
+<body>
+    <div class="header">
+    <div class="container">
+        <div class="icon">
+            <img src="/assets/media/vectors/hoarfroster-text.svg" alt="Hoarfroster Logo with Text">
+        </div>
+        <nav class="navigation">
+            <ul class="header-navigation-list">
+                <li><a href="/">首页</a></li>
+                <li><a href="/archive.html">文章</a></li>
+                <li><a href="/about.html">关于</a></li>
+            </ul>
+            <form action="/search" method="post">
+                <label>
+                    <input type="text" class="search" placeholder="搜索咕咕咕的小站"/>
+                </label>
+                <label class="submit">
+                    <input type="submit"/>
+                </label>
+            </form>
+        </nav>
+        <ul class="social-accounts">
+            <li>
+                <a href="https://www.zhihu.com/people/shuang-yu-29-75">
+                    <i class="fa-brands fa-zhihu" style="font-size: 20px; color:#06f; line-height: 20px;"></i>
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/PassionPenguin">
+                    <img src="/assets/media/vectors/github.svg" alt="github-logo"/>
+                </a>
+            </li>
+            <li>
+                <a href="https://dribbble.com/Hoarfroster">
+                    <img src="/assets/media/vectors/dribbble.svg" alt="dribbble-logo"/>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+    <div class="content article">
+        <article>
+            <div class="title">
+                <h1>Node.js 缓冲区的完整指南</h1>
+                <p><span class='chars'>7042B</span><span class='created-date'>Created Sun Jun 12 2022 23:55:03 GM</span><span class='modified-date'>Modified Sun Jun 12 2022 23:55:03 GM</span></p>
+            </div>
+            <div class="main markdown-body">
+                
+
+<blockquote>
+<ul>
+<li>原文地址：<a href="https://medium.com/javascript-in-plain-english/a-complete-guide-of-node-js-buffer-3a38d2d949b1">A
+Complete Guide of Node.js Buffer</a></li>
+<li>原文作者：<a href="https://medium.com/@harsh-patel">Harsh
+Patel</a></li>
+<li>译者：<a href="https://github.com/PassionPenguin">霜羽
+Hoarfroster</a></li>
+<li>校对者：<a href="https://github.com/flashhu">flashhu</a>、<a href="https://github.com/regon-cao">regon-cao</a></li>
+</ul>
+</blockquote>
+<p>二进制流是大量的二进制数据的集合。由于通常情况下二进制流的大小挺大的，因此二进制流一般不会一起运送，而会在运输前切分成小块然后逐一发送。</p>
+<p>当数据处理单元暂时不再接收其他数据流时，剩余的数据将会被保留在缓存中，直到数据处理单元准备好接收更多数据为止。</p>
+<p>Node.js
+服务器一般需要在文件系统中进行读写，而文件在存储层面而言其实都是二进制流。除此之外，Node.js
+还能与 TCP 流一起使用，让 TCP
+流在不可靠的互联网络上提供可靠的端到端字节流保障通信。</p>
+<p>发送给接收者的数据流会被缓冲，直到接收者准备接收更多要处理的数据为止。这就是
+Node.js 处理临时数据部分的工作内容 —— 在 V8
+引擎外部管理和存储二进制数据。</p>
+<p>让我们一起深入缓冲区（<code>Buffer</code>）的各种使用方法，了解更多有关它们的信息以及一起学习如何在
+Node.js 程序中使用它们吧。</p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/0*RbpNfHqVXY39GYeC.png"></p>
+<h2 id="nodejs-buffer-的方法">Node.js Buffer 的方法</h2>
+<p>Node.js 缓冲模块的最大优势，其实就是它是内置于 Node.js
+中的，因此我们可以在任何我们想要使用它的地方使用它。</p>
+<p>让我们一起浏览一些重要的 Node.js 缓冲模块的方法吧。</p>
+<h4 id="bufferalloc"><code>Buffer.alloc()</code></h4>
+<p>此方法将创建一个新的缓冲区，但是分配的大小不是固定的。当我们调用此方法时，可以自行分配大小（以字节为单位）。</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> buf <span class="op">=</span> <span class="bu">Buffer</span><span class="op">.</span><span class="fu">alloc</span>(<span class="dv">6</span>)  <span class="co">// 这会创建一个 6 字节的缓冲区</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(buf) <span class="co">// &lt;Buffer 00 00 00 00 00 00&gt;</span></span></code></pre></div>
+<h4 id="bufferbytelength"><code>Buffer.byteLength()</code></h4>
+<p>如果我们想要获取缓冲区的长度，我们只需调用
+<code>Buffer.byteLength()</code> 就行了。</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> buf <span class="op">=</span> <span class="bu">Buffer</span><span class="op">.</span><span class="fu">alloc</span>(<span class="dv">10</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> buffLen <span class="op">=</span> <span class="bu">Buffer</span><span class="op">.</span><span class="fu">byteLength</span>(buf) <span class="co">// 检查缓冲区长度</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(buffLen) <span class="co">// 10</span></span></code></pre></div>
+<h4 id="buffercompare"><code>Buffer.compare()</code></h4>
+<p>通过使用 <code>Buffer.compare()</code>
+我们可以比较两个缓冲区，此方法的返回值是
+<code>-1</code>，<code>0</code>，<code>1</code> 中的一个。</p>
+<p>译者注：<code>buf.compare(otherBuffer);</code>
+这一句调用会返回一个数字
+<code>-1</code>，<code>0</code>，<code>1</code>，分别对应
+<code>buf</code> 在 <code>otherBuffer</code> 之前，之后或相同。</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> buf1 <span class="op">=</span> <span class="bu">Buffer</span><span class="op">.</span><span class="fu">from</span>(<span class="st">'Harsh'</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> buf2 <span class="op">=</span> <span class="bu">Buffer</span><span class="op">.</span><span class="fu">from</span>(<span class="st">'Harsg'</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> a <span class="op">=</span> <span class="bu">Buffer</span><span class="op">.</span><span class="fu">compare</span>(buf1<span class="op">,</span> buf2)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(a) <span class="co">// 这会打印 0</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> buf1 <span class="op">=</span> <span class="bu">Buffer</span><span class="op">.</span><span class="fu">from</span>(<span class="st">'a'</span>)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> buf2 <span class="op">=</span> <span class="bu">Buffer</span><span class="op">.</span><span class="fu">from</span>(<span class="st">'b'</span>)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> a <span class="op">=</span> <span class="bu">Buffer</span><span class="op">.</span><span class="fu">compare</span>(buf1<span class="op">,</span> buf2)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(a) <span class="co">// 这会打印 -1</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> buf1 <span class="op">=</span> <span class="bu">Buffer</span><span class="op">.</span><span class="fu">from</span>(<span class="st">'b'</span>)</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> buf2 <span class="op">=</span> <span class="bu">Buffer</span><span class="op">.</span><span class="fu">from</span>(<span class="st">'a'</span>)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> a <span class="op">=</span> <span class="bu">Buffer</span><span class="op">.</span><span class="fu">compare</span>(buf1<span class="op">,</span> buf2)</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(a) <span class="co">// 这会打印 1</span></span></code></pre></div>
+<h4 id="bufferconcat"><code>Buffer.concat()</code></h4>
+<p>顾名思义，我们可以使用此函数连接两个缓冲区。当然，就像字符串一样，我们也可以连接两个以上的缓冲区。</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> buffer1 <span class="op">=</span> <span class="bu">Buffer</span><span class="op">.</span><span class="fu">from</span>(<span class="st">'x'</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> buffer2 <span class="op">=</span> <span class="bu">Buffer</span><span class="op">.</span><span class="fu">from</span>(<span class="st">'y'</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> buffer3 <span class="op">=</span> <span class="bu">Buffer</span><span class="op">.</span><span class="fu">from</span>(<span class="st">'z'</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> arr <span class="op">=</span> [buffer1<span class="op">,</span> buffer2<span class="op">,</span> buffer3]</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(arr)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">/* buffer, !concat [ &lt;Buffer 78&gt;, &lt;Buffer 79&gt;, &lt;Buffer 7a&gt; ] */</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co">// 通过 Buffer.concat 方法连接两个缓冲区</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> buf <span class="op">=</span> <span class="bu">Buffer</span><span class="op">.</span><span class="fu">concat</span>(arr)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(buf)</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="co">// &lt;Buffer 78 79 7a&gt; concat successful</span></span></code></pre></div>
+<h4 id="bufferentries"><code>Buffer.entries()</code></h4>
+<p><code>Buffer.entries()</code> 会用这一缓冲区的内容创建并返回一个
+[index, byte] 形式的迭代器。</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> buf <span class="op">=</span> <span class="bu">Buffer</span><span class="op">.</span><span class="fu">from</span>(<span class="st">'xyz'</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (a <span class="kw">of</span> buf<span class="op">.</span><span class="fu">entries</span>()) {</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(a)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">/* 这个会在控制台输出一个有缓冲区位置与内容的字节的数组 [ 0, 120 ][ 1, 121 ][ 2, 122 ] */</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<h4 id="bufferfill"><code>Buffer.fill()</code></h4>
+<p>我们可以使用 <code>Buffer.fill()</code>
+这个函数将数据插入或填充到缓冲区中。更多信息请参见下文。</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> b <span class="op">=</span> <span class="bu">Buffer</span><span class="op">.</span><span class="fu">alloc</span>(<span class="dv">10</span>)<span class="op">.</span><span class="fu">fill</span>(<span class="st">'a'</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(b<span class="op">.</span><span class="fu">toString</span>())</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co">// aaaaaaaaaa</span></span></code></pre></div>
+<h4 id="bufferincludes"><code>Buffer.includes()</code></h4>
+<p>像字符串一样，它将确认缓冲区是否具有该值。我们可以使用
+<code>Buffer.includes()</code>
+方法来实现这一点，给定方法根据搜索返回一个布尔值，即 <code>true</code>
+或 <code>false</code>。</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> buf <span class="op">=</span> <span class="bu">Buffer</span><span class="op">.</span><span class="fu">from</span>(<span class="st">'this is a buffer'</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(buf<span class="op">.</span><span class="fu">includes</span>(<span class="st">'this'</span>))</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">// true</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(buf<span class="op">.</span><span class="fu">includes</span>(<span class="bu">Buffer</span><span class="op">.</span><span class="fu">from</span>(<span class="st">'a buffer example'</span>)))</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co">// false</span></span></code></pre></div>
+<h4 id="bufferisencoding"><code>Buffer.isEncoding()</code></h4>
+<p>我们可能知道二进制文件必须进行编码，那么如果我们要检查数据类型是否支持字符编码该怎么办呢？我们可以使用
+<code>Buffer.isEncoding()</code> 方法进行确认。如果支持，它将返回
+<code>true</code>。</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="bu">Buffer</span><span class="op">.</span><span class="fu">isEncoding</span>(<span class="st">'hex'</span>))</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co">// true</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="bu">Buffer</span><span class="op">.</span><span class="fu">isEncoding</span>(<span class="st">'utf-8'</span>))</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co">// true</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="bu">Buffer</span><span class="op">.</span><span class="fu">isEncoding</span>(<span class="st">'utf/8'</span>))</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="co">// false</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="bu">Buffer</span><span class="op">.</span><span class="fu">isEncoding</span>(<span class="st">'hey'</span>))</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="co">// false</span></span></code></pre></div>
+<h4 id="bufferslice"><code>Buffer.slice()</code></h4>
+<p><code>buf.slice()</code> 将用于使用缓冲区的选定元素创建一个新缓冲区
+——
+对缓冲区进行切割时，将创建一个新缓冲区，其中包含要在新缓冲区切片中找到的项目的列表。</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> a <span class="op">=</span> <span class="bu">Buffer</span><span class="op">.</span><span class="fu">from</span>(<span class="st">'uvwxyz'</span>)<span class="op">;</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> b <span class="op">=</span> a<span class="op">.</span><span class="fu">slice</span>(<span class="dv">2</span><span class="op">,</span> <span class="dv">5</span>)<span class="op">;</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(b<span class="op">.</span><span class="fu">toString</span>())<span class="op">;</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co">// wxy</span></span></code></pre></div>
+<h4 id="bufferswapx"><code>Buffer.swapX()</code></h4>
+<p><code>Buffer.swapX()</code> 用于交换缓冲区的字节顺序。使用
+<code>Buffer.swapX()</code> （此处 <code>X</code> 可以为 16, 32,
+64）来交换 16 位，32 位和 64 位缓冲区对象的字节顺序。</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> buf1 <span class="op">=</span> <span class="bu">Buffer</span><span class="op">.</span><span class="fu">from</span>([<span class="bn">0x1</span><span class="op">,</span> <span class="bn">0x2</span><span class="op">,</span> <span class="bn">0x3</span><span class="op">,</span> <span class="bn">0x4</span><span class="op">,</span> <span class="bn">0x5</span><span class="op">,</span> <span class="bn">0x6</span><span class="op">,</span> <span class="bn">0x7</span><span class="op">,</span> <span class="bn">0x8</span>])</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(buf1)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co">// &lt;Buffer 01 02 03 04 05 06 07 08&gt;</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co">// 交换 16 位字节顺序</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>buf1<span class="op">.</span><span class="fu">swap16</span>()</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(buf1)</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="co">// &lt;Buffer 02 01 04 03 06 05 08 07&gt;</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="co">// 交换 32 位字节顺序</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>buf1<span class="op">.</span><span class="fu">swap32</span>()</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(buf1)</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="co">// &lt;Buffer 03 04 01 02 07 08 05 06&gt;</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="co">// 交换 64 位字节顺序</span></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>buf1<span class="op">.</span><span class="fu">swap64</span>()</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(buf1)</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a><span class="co">// &lt;Buffer 06 05 08 07 02 01 04 03&gt;</span></span></code></pre></div>
+<h4 id="bufferjson"><code>Buffer.json()</code></h4>
+<p>它可以帮助我们从缓冲区创建 JSON 对象，而该方法将返回 JSON
+缓冲区对象，</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> buf <span class="op">=</span> <span class="bu">Buffer</span><span class="op">.</span><span class="fu">from</span>([<span class="bn">0x1</span><span class="op">,</span> <span class="bn">0x2</span><span class="op">,</span> <span class="bn">0x3</span><span class="op">,</span> <span class="bn">0x4</span><span class="op">,</span> <span class="bn">0x5</span><span class="op">,</span> <span class="bn">0x6</span><span class="op">,</span> <span class="bn">0x7</span><span class="op">,</span> <span class="bn">0x8</span>])<span class="op">;</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(buf<span class="op">.</span><span class="fu">toJSON</span>())<span class="op">;</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co">// {"type":"Buffer", data:[1, 2, 3, 4, 5, 6, 7, 8]}</span></span></code></pre></div>
+<h2 id="结论">结论</h2>
+<p>如果我们需要进一步了解并使用 Node.js 的缓冲区，我们需要对缓冲区以及
+Node.js
+缓冲区的工作原理有更扎实的基础知识。我们还应该了解为什么我们需要使用
+Node.js 缓冲区和各种 Node.js 缓冲区方法的使用。</p>
+
+
+
+            </div>
+        </article>
+        <div class="sidebar">
+            <div class="about-box">
+    <div class="avatar">
+        <img src="/assets/media/bitmap/avatar.jpeg" alt="avatar">
+    </div>
+    <h1>霜羽 Hoarfroster</h1>
+    <h2>@PassionPenguin</h2>
+    <p class="moment"><span class="status">🤔</span><span>努力！</span></p>
+    <ul>
+        <li><i class="fa-solid fa-location-dot"></i> 广东 · 广州 | <span class="light">Guangzhou, China</span>
+        </li>
+        <li><i class="fa-solid fa-envelope"></i> <a href="mailto:hoarfroster@outlook.com">hoarfroster@outlook.com</a>
+        </li>
+        <li><i class="fa-solid fa-house"></i> <a href="https://story.hoarfroster.space/">https://story.hoarfroster.space/</a>
+        </li>
+    </ul>
+</div>
+<div class="organization">
+    <h4>组织 Organizations</h4>
+    <ul>
+        <li>
+            <img src="https://avatars.githubusercontent.com/u/81648011?s=60&amp;v=4"
+                alt="Hexa-Penguin"><span>Hexa-Penguin</span>
+        </li>
+        <li>
+            <img src="https://avatars.githubusercontent.com/u/10482599?s=60&amp;v=4" alt="xitu"><span>稀土 xitu</span>
+        </li>
+    </ul>
+</div>
+<div class="category">
+    <span class="title">文章分类</span>
+    <ul>
+        <!-- <li><a href="/archive.html">所有分类</a></li> -->
+    </ul>
+</div>
+<div class="archive">
+    <span class="title">文章存档</span>
+    <ul>
+        <!-- <li><a href="/archive.html">所有文章</a></li> -->
+    </ul>
+</div>
+        </div>
+    </div>
+    <div class="footer">
+    <div class="content">
+        <div class="about">
+            <p>霜羽 Hoarfroster</p>
+            <p>&copy; Copyright 2021 Hoarfroster and contributors.</p>
+        </div>
+        <div class="nav">
+            <div class="links">
+                <span class="title">关于文章</span>
+                <ul>
+                    <li><a href="/archive.html">文章存档</a></li>
+                </ul>
+            </div>
+            <div class="category">
+                <span class="title">关于霜羽</span>
+                <ul>
+                    <li><a href="/about.html">有关霜羽</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <ul class="social-accounts">
+        <li>
+            <a href="https://www.zhihu.com/people/shuang-yu-29-75">
+                <i class="fa-brands fa-zhihu" style="font-size: 24px; color:#06f; line-height: 24px;"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://github.com/PassionPenguin">
+                <img src="/assets/media/vectors/github.svg" alt="github-logo"/>
+            </a>
+        </li>
+        <li>
+            <a href="https://dribbble.com/Hoarfroster">
+                <img src="/assets/media/vectors/dribbble.svg" alt="dribbble-logo"/>
+            </a>
+        </li>
+        <li>
+            <a href="https://zh.wikipedia.org/wiki/User:HoarfrostFeather">
+                <i class="fa-brands fa-wikipedia-w" style="font-size: 22px; color: #888; line-height: 24px;"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://space.bilibili.com/201469972">
+                <i class="fa-brands fa-bilibili" style="font-size: 22px; color: #00a1d6; line-height: 24px;"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+</body>
+
+</html>

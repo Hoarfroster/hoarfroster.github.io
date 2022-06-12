@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Android 中意料之外的应用崩溃以及它们的解决方案</title>
+    <script src="/assets/script/main.js"></script>
+    <link rel="stylesheet" href="/assets/style/styles.css">
+</head>
+
+<body>
+    <div class="header">
+    <div class="container">
+        <div class="icon">
+            <img src="/assets/media/vectors/hoarfroster-text.svg" alt="Hoarfroster Logo with Text">
+        </div>
+        <nav class="navigation">
+            <ul class="header-navigation-list">
+                <li><a href="/">首页</a></li>
+                <li><a href="/archive.html">文章</a></li>
+                <li><a href="/about.html">关于</a></li>
+            </ul>
+            <form action="/search" method="post">
+                <label>
+                    <input type="text" class="search" placeholder="搜索咕咕咕的小站"/>
+                </label>
+                <label class="submit">
+                    <input type="submit"/>
+                </label>
+            </form>
+        </nav>
+        <ul class="social-accounts">
+            <li>
+                <a href="https://www.zhihu.com/people/shuang-yu-29-75">
+                    <i class="fa-brands fa-zhihu" style="font-size: 20px; color:#06f; line-height: 20px;"></i>
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/PassionPenguin">
+                    <img src="/assets/media/vectors/github.svg" alt="github-logo"/>
+                </a>
+            </li>
+            <li>
+                <a href="https://dribbble.com/Hoarfroster">
+                    <img src="/assets/media/vectors/dribbble.svg" alt="dribbble-logo"/>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+    <div class="content article">
+        <article>
+            <div class="title">
+                <h1>Android 中意料之外的应用崩溃以及它们的解决方案</h1>
+                <p><span class='chars'>9168B</span><span class='created-date'>Created Sun Jun 12 2022 23:55:03 GM</span><span class='modified-date'>Modified Sun Jun 12 2022 23:55:03 GM</span></p>
+            </div>
+            <div class="main markdown-body">
+                
+
+<blockquote>
+<ul>
+<li>原文地址：<a href="https://levelup.gitconnected.com/unexpected-app-crashes-on-android-and-how-to-deal-with-them-c5d07512d99f">Unexpected
+App Crashes on Android and How to Deal with Them</a></li>
+<li>原文作者：<a href="https://medium.com/@kunalchaubal">Kunal
+Chaubal</a></li>
+<li>译者：<a href="https://github.com/PassionPenguin">霜羽
+Hoarfroster</a></li>
+<li>校对者：<a href="https://github.com/zenblo">zenblo</a>、<a href="https://github.com/HumanBeingXenon">HumanBeing</a></li>
+</ul>
+</blockquote>
+<p><img src="https://cdn-images-1.medium.com/max/2560/1*4WT3_B3SVKgvexQOTE_ZqQ.jpeg" alt="图自 testbytes 源于 Pixabay"></p>
+<p>如果问前端、后端甚至游戏开发人员之间存在什么共同点，那就是我们都讨厌应用产品出现
+Bug，尤其是当这些错误导致应用崩溃时。而在应用发布后，监视应用程序中这些不断增加的崩溃是一种极其不愉快的体验。</p>
+<p>不管应用程序的业务逻辑如何，都可能会因为运行的系统或平台问题而导致出现某些奇怪的崩溃现象。在
+Android 中，从后台状态恢复应用程序时可能会产生崩溃 ——
+此类崩溃是意外发生的，而且仅通过查看崩溃日志，我们很难理解崩溃的具体原因以及解决问题，而本文讨论了此类问题及其解决方法。</p>
+<h2 id="问题">问题</h2>
+<p>在监视产品的崩溃日志时，我注意到一些问题与日俱增。该应用在正常测试条件下似乎运行良好，并且崩溃不可复现，直到应用程序从后台任务中进入前台。</p>
+<p>每个 Android
+应用程序都在其自己的进程中运行，并且操作系统已为该进程分配了一些内存。当用户与其他应用程序交互时将应用程序置于后台时，如果应用程序没有足够的可用内存，则操作系统会终止你的应用程序进程。而这一情况通常发生在前台运行另一个需要更大手机内存
+(RAM) 的应用程序时。</p>
+<p>当应用程序进程被终止的时候，所有的单例对象和临时数据都同时丢失了，而现在如果你返回你的应用程序，系统会创建一个新的进程，而你的应用程序会从你退出时候的
+Activity 栈顶执行 Resume 函数恢复该 Activity。</p>
+<p>由于此时你的所有的单例对象都丢失了，因此当这个 Activity
+尝试访问相同的对象时，就会遇到空指针异常而崩溃退出。</p>
+<p>这是个问题。在我们继续讨论解决方案之前，让我们复现一下这种情况。</p>
+<h2 id="复现崩溃">复现崩溃</h2>
+<ol type="1">
+<li>在模拟器或通过 USB 电缆（译者注：Android 11 也可使用 Wi-Fi
+连接设备调试）连接的实际设备上使用 ADB 运行指令（如 Android
+Studio）运行的任何应用程序。</li>
+<li>导航到任意一个页面，然后按下“主页”按钮。</li>
+<li>打开终端，键入以下命令，我们就可以获取应用程序的进程
+ID（PID）。</li>
+</ol>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">adb</span> shell pidof com.darktheme.example</span></code></pre></div>
+<p>该命令的语法为 <code>adb shell pidof APP_BUNDLE_ID</code></p>
+<p>请记下你在终端窗口上看到的
+PID（这可用于验证现有的应用程序进程是否已被终止，并在我们恢复应用程序时启动了新的进程）。</p>
+<ol start="4" type="1">
+<li>键入以下终端命令以终止你的应用程序进程</li>
+</ol>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">adb</span> shell am kill com.darktheme.example</span></code></pre></div>
+<p>此时，你的终端窗口应如下所示：</p>
+<p><img src="https://cdn-images-1.medium.com/max/2276/1*pYpZN8FbnrYeo_6QPGqc0g.png" alt="执行 kill 命令后的命令行窗口"></p>
+<p>现在，从后台任务中打开你的应用程序，并检查该应用程序是否崩溃。如果是，请不要担心，我们将在下一部分中讨论如何处理此问题。如果没有，你可以松一口气了，因为这是你应得的。</p>
+<p>需要注意的是，从后台打开应用后，请重新获取应用所属进程的
+PID。如果你在第 3 步中记下的 PID 与新的 PID
+相等，则该过程并没有被终止。</p>
+<h2 id="建议的解决方案">建议的解决方案</h2>
+<p>有两种方法可以解决此问题。根据你所处的情况，你可以决定用哪一个方法来推进问题的解决：</p>
+<h4 id="解决方案-1">解决方案 1：</h4>
+<p>一种简便的解决方案是，当用户从后台恢复应用程序时，让应用程序检查我们现有的应用程序进程是否被结束并重新创建。如果是，则可以导航回启动界面，使其看起来像是一个应用程序的初始化界面。</p>
+<p>你可以将以下代码放在 BaseActivity 中：</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode Kotlin"><code class="sourceCode kotlin"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>    <span class="kw">override</span> <span class="kw">fun</span> <span class="fu">onCreate</span><span class="op">(</span><span class="va">savedInstanceState</span><span class="op">:</span> <span class="dt">Bundle</span><span class="op">?)</span> <span class="op">{</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>        <span class="kw">super</span><span class="op">.</span>onCreate<span class="op">(</span>savedInstanceState<span class="op">)</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="op">(</span>savedInstanceState <span class="op">!=</span> <span class="kw">null</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>            <span class="co">// 获取当前 PID</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>            <span class="kw">val</span> <span class="va">currentPID</span> <span class="op">=</span> android<span class="op">.</span>os<span class="op">.</span>Process<span class="op">.</span>myPid<span class="op">().</span>toString<span class="op">()</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>            <span class="co">// 比较当前 PID 与 保存的 PID 是否一致</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="op">(</span>currentPID <span class="op">!=</span> savedInstanceState<span class="op">.</span>getString<span class="op">(</span>PID<span class="op">))</span> <span class="op">{</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>                <span class="co">// 如果当前 PID 与 保存的 PID 不相同，意味着新的进程被创建，从 SplashActivity 重启应用</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>                <span class="kw">val</span> <span class="va">intent</span> <span class="op">=</span> Intent<span class="op">(</span>applicationContext<span class="op">,</span> SplashActivity<span class="op">::</span><span class="kw">class</span>.java)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>                startActivity<span class="op">(</span><span class="va">intent</span><span class="op">)</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>                finish<span class="op">()</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>            }</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    <span class="kw">override</span> <span class="kw">fun</span> onSaveInstanceState<span class="op">(</span><span class="va">bundle</span><span class="op">:</span> <span class="dt">Bundle</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>        <span class="kw">super</span><span class="op">.</span>onSaveInstanceState<span class="op">(</span>bundle<span class="op">)</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>        bundle<span class="op">.</span>putString<span class="op">(</span>PID<span class="op">,</span> android<span class="op">.</span>os<span class="op">.</span>Process<span class="op">.</span>myPid<span class="op">().</span>toString<span class="op">())</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span></code></pre></div>
+<ul>
+<li>通过覆写 <code>onSaveInstanceState()</code> 功能，你可以将你的 PID
+打包保存下来。</li>
+<li>在 <code>onCreate()</code> 方法中，你需要比较当前 PID 和打包保存的
+PID。</li>
+<li>如果当前进程是是重新创建的流程，则重定向导航到 Splash
+Activity。</li>
+</ul>
+<p>当用户从后台导航回被结束了的应用程序时候，该应用程序将从
+SplashActivity 重新启动，就像是一次新的启动。</p>
+<p>这将防止应用程序访问在进程重建过程中可能已丢失的数据，从而防止应用程序崩溃。</p>
+<p>虽然此解决方案可以防止崩溃，但是这种方法其实就是重新启动应用程序，而不是从中断的位置恢复应用程序。如果你在发布应用后遇到此问题，并且急切地希望快速解决这个问题，则此解决方案应该能帮你大忙。</p>
+<p>但是，如果你刚从头开始开发，则解决方案 2
+将是你的理想选择，因为它可以做到从中断的位置恢复应用程序。</p>
+<h4 id="解决方案-2">解决方案 2：</h4>
+<p>现在，你肯定已经注意到可以利用“包”对象保存和访问数据。与前面的示例中的操作类似，将每个
+Activity / Fragment 中所有必要的信息保存下来。</p>
+<p>由于我们访问是被保存在“包”中的数据，这会避免应用程序崩溃，并且应用程序能从中断处恢复。所有其他
+Activity / Fragment 也会被重新创建。</p>
+<p>对于 Fragment 中的 RecyclerView，做法应该是：</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode Kotlin"><code class="sourceCode kotlin"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>    <span class="kw">override</span> <span class="kw">fun</span> <span class="fu">onViewCreated</span><span class="op">(</span><span class="va">view</span><span class="op">:</span> <span class="dt">View</span><span class="op">,</span> <span class="va">savedInstanceState</span><span class="op">:</span> <span class="dt">Bundle</span><span class="op">?)</span> <span class="op">{</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>        <span class="kw">super</span><span class="op">.</span>onViewCreated<span class="op">(</span>view<span class="op">,</span> savedInstanceState<span class="op">)</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>        <span class="kw">val</span> <span class="va">recyclerView</span> <span class="op">=</span> view<span class="op">.</span>findViewById<span class="op">(</span>R<span class="op">.</span>id<span class="op">.</span>recyclerView<span class="op">)</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>        recyclerView<span class="op">.</span>layoutManager <span class="op">=</span> LinearLayoutManager<span class="op">(</span>context<span class="op">)</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        users <span class="op">=</span> savedInstanceState<span class="op">?.</span>getParcelableArrayList<span class="op">(</span><span class="st">"userList"</span><span class="op">)</span> <span class="op">?:</span> viewModel<span class="op">.</span>getUsers<span class="op">()</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        rv<span class="op">.</span>adapter <span class="op">=</span> DataAdapter<span class="op">(</span>users<span class="op">,</span> <span class="kw">this</span><span class="op">)</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">override</span> <span class="kw">fun</span> <span class="fu">onSaveInstanceState</span><span class="op">(</span><span class="va">outState</span><span class="op">:</span> <span class="dt">Bundle</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>        <span class="kw">super</span><span class="op">.</span>onSaveInstanceState<span class="op">(</span>outState<span class="op">)</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>        outState<span class="op">.</span>putParcelableArrayList<span class="op">(</span><span class="st">"userList"</span><span class="op">,</span> users <span class="kw">as</span> ArrayList<span class="op">)</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span></code></pre></div>
+<ul>
+<li>通过覆写 <code>onSaveInstanceState()</code>
+功能，我们可以将所需信息保存在 Bundle 对象中。</li>
+<li>我们会让应用程序检查 <code>onViewCreated()</code>
+函数中捆绑包中的数据是否可用，如果不可用，则会通过访问 ViewModel
+的方法获取数据。</li>
+</ul>
+<h2 id="结论">结论</h2>
+<p>在 Android
+平台上，由于进程被终止而导致的应用崩溃是很常见的。而如果我们使用较新的
+Android
+版本，我们可以注意到，出于节省电源的目的，大量的后台应用程序被强制结束运行了。</p>
+<p>解决方案 1 可以快速解决你现有的应用崩溃问题。</p>
+<p>但是，如果你正在从头开始开发应用程序，我建议使用解决方案
+2，因为它可以确保系统会从先前关闭的位置恢复该应用程序，因此带来更好的用户体验。</p>
+<p>研究此类崩溃的根本原因可能会挺困难的，因此我希望本文能够以任何可能的方式对你有所帮助。请告诉我你们对文中讨论的解决方案有何看法。</p>
+<p>这就是本文的全部内容，祝编程愉快，代码无 Bug！</p>
+
+
+
+            </div>
+        </article>
+        <div class="sidebar">
+            <div class="about-box">
+    <div class="avatar">
+        <img src="/assets/media/bitmap/avatar.jpeg" alt="avatar">
+    </div>
+    <h1>霜羽 Hoarfroster</h1>
+    <h2>@PassionPenguin</h2>
+    <p class="moment"><span class="status">🤔</span><span>努力！</span></p>
+    <ul>
+        <li><i class="fa-solid fa-location-dot"></i> 广东 · 广州 | <span class="light">Guangzhou, China</span>
+        </li>
+        <li><i class="fa-solid fa-envelope"></i> <a href="mailto:hoarfroster@outlook.com">hoarfroster@outlook.com</a>
+        </li>
+        <li><i class="fa-solid fa-house"></i> <a href="https://story.hoarfroster.space/">https://story.hoarfroster.space/</a>
+        </li>
+    </ul>
+</div>
+<div class="organization">
+    <h4>组织 Organizations</h4>
+    <ul>
+        <li>
+            <img src="https://avatars.githubusercontent.com/u/81648011?s=60&amp;v=4"
+                alt="Hexa-Penguin"><span>Hexa-Penguin</span>
+        </li>
+        <li>
+            <img src="https://avatars.githubusercontent.com/u/10482599?s=60&amp;v=4" alt="xitu"><span>稀土 xitu</span>
+        </li>
+    </ul>
+</div>
+<div class="category">
+    <span class="title">文章分类</span>
+    <ul>
+        <!-- <li><a href="/archive.html">所有分类</a></li> -->
+    </ul>
+</div>
+<div class="archive">
+    <span class="title">文章存档</span>
+    <ul>
+        <!-- <li><a href="/archive.html">所有文章</a></li> -->
+    </ul>
+</div>
+        </div>
+    </div>
+    <div class="footer">
+    <div class="content">
+        <div class="about">
+            <p>霜羽 Hoarfroster</p>
+            <p>&copy; Copyright 2021 Hoarfroster and contributors.</p>
+        </div>
+        <div class="nav">
+            <div class="links">
+                <span class="title">关于文章</span>
+                <ul>
+                    <li><a href="/archive.html">文章存档</a></li>
+                </ul>
+            </div>
+            <div class="category">
+                <span class="title">关于霜羽</span>
+                <ul>
+                    <li><a href="/about.html">有关霜羽</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <ul class="social-accounts">
+        <li>
+            <a href="https://www.zhihu.com/people/shuang-yu-29-75">
+                <i class="fa-brands fa-zhihu" style="font-size: 24px; color:#06f; line-height: 24px;"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://github.com/PassionPenguin">
+                <img src="/assets/media/vectors/github.svg" alt="github-logo"/>
+            </a>
+        </li>
+        <li>
+            <a href="https://dribbble.com/Hoarfroster">
+                <img src="/assets/media/vectors/dribbble.svg" alt="dribbble-logo"/>
+            </a>
+        </li>
+        <li>
+            <a href="https://zh.wikipedia.org/wiki/User:HoarfrostFeather">
+                <i class="fa-brands fa-wikipedia-w" style="font-size: 22px; color: #888; line-height: 24px;"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://space.bilibili.com/201469972">
+                <i class="fa-brands fa-bilibili" style="font-size: 22px; color: #00a1d6; line-height: 24px;"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+</body>
+
+</html>

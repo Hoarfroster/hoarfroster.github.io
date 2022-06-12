@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TypeScript 4.2 正式发布：优化了类型和开发者体验</title>
+    <script src="/assets/script/main.js"></script>
+    <link rel="stylesheet" href="/assets/style/styles.css">
+</head>
+
+<body>
+    <div class="header">
+    <div class="container">
+        <div class="icon">
+            <img src="/assets/media/vectors/hoarfroster-text.svg" alt="Hoarfroster Logo with Text">
+        </div>
+        <nav class="navigation">
+            <ul class="header-navigation-list">
+                <li><a href="/">首页</a></li>
+                <li><a href="/archive.html">文章</a></li>
+                <li><a href="/about.html">关于</a></li>
+            </ul>
+            <form action="/search" method="post">
+                <label>
+                    <input type="text" class="search" placeholder="搜索咕咕咕的小站"/>
+                </label>
+                <label class="submit">
+                    <input type="submit"/>
+                </label>
+            </form>
+        </nav>
+        <ul class="social-accounts">
+            <li>
+                <a href="https://www.zhihu.com/people/shuang-yu-29-75">
+                    <i class="fa-brands fa-zhihu" style="font-size: 20px; color:#06f; line-height: 20px;"></i>
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/PassionPenguin">
+                    <img src="/assets/media/vectors/github.svg" alt="github-logo"/>
+                </a>
+            </li>
+            <li>
+                <a href="https://dribbble.com/Hoarfroster">
+                    <img src="/assets/media/vectors/dribbble.svg" alt="dribbble-logo"/>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+    <div class="content article">
+        <article>
+            <div class="title">
+                <h1>TypeScript 4.2 正式发布：优化了类型和开发者体验</h1>
+                <p><span class='chars'>7471B</span><span class='created-date'>Created Sun Jun 12 2022 23:55:03 GM</span><span class='modified-date'>Modified Sun Jun 12 2022 23:55:03 GM</span></p>
+            </div>
+            <div class="main markdown-body">
+                
+
+<blockquote>
+<ul>
+<li>原文地址：<a href="https://www.infoq.com/news/2021/02/typescript-4-2-released/">Typescript
+4.2 Released, Improves Types and Developer Experience</a></li>
+<li>原文作者：<a href="https://www.infoq.com/profile/Bruno-Couriol/">Bruno-Couriol</a></li>
+<li>译者：<a href="https://github.com/PassionPenguin">霜羽
+Hoarfroster</a></li>
+<li>校对者：<a href="https://github.com/lsvih">lsvih</a>、<a href="https://github.com/zenblo">zenblo</a></li>
+</ul>
+</blockquote>
+<p>TypeScript 团队最近正式发布了 <a href="https://devblogs.microsoft.com/typescript/announcing-typescript-4-2/">TypeScript
+4.2</a> 版本！该版本的 TypeScript
+拥有了更灵活的类型注释，更严格的检查，额外的配置选项以及一些其他的重大变化。我们现在可以在元组的类型定义中的任意位置使用
+Rest
+参数（而不是只能在末尾使用）了！类型别名不再在类型错误消息中扩展，从而让我们开发者拥有更好的体验。</p>
+<p>TypeScript 4.2 <a href="https://github.com/microsoft/TypeScript/pull/41544">支持元组类型中任何位置的
+Rest 参数（Rest Parameters）</a>：</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode ts"><code class="sourceCode typescript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> T1 <span class="op">=</span> [<span class="op">...</span><span class="dt">string</span>[]<span class="op">,</span> <span class="dt">number</span>]<span class="op">;</span>  <span class="co">// 任意个 string 以及一个 number</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> T2 <span class="op">=</span> [<span class="dt">number</span><span class="op">,</span> <span class="op">...</span><span class="dt">boolean</span>[]<span class="op">,</span> <span class="dt">string</span><span class="op">,</span> <span class="dt">string</span>]<span class="op">;</span>  <span class="co">// 一个 number，跟着任意个 boolean，跟着两个 string</span></span></code></pre></div>
+<p>在以前的版本中，Rest 参数只能在末尾处使用，例如
+<code>type T1 = [number, ...string[]];</code>，因此我们不能对包含 Rest
+参数却以固定类型参数结尾的参数集使用强类型定义。</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode ts"><code class="sourceCode typescript"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">f1</span>(<span class="op">...</span>args<span class="op">:</span> [<span class="op">...</span><span class="dt">string</span>[]<span class="op">,</span> <span class="dt">number</span>]) {</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> strs <span class="op">=</span> args<span class="op">.</span><span class="fu">slice</span>(<span class="dv">0</span><span class="op">,</span> <span class="op">-</span><span class="dv">1</span>) <span class="im">as</span> <span class="dt">string</span>[]<span class="op">;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> num <span class="op">=</span> args[args<span class="op">.</span><span class="at">length</span> <span class="op">-</span> <span class="dv">1</span>] <span class="im">as</span> <span class="dt">number</span><span class="op">;</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">// ...</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">f1</span>(<span class="dv">5</span>)<span class="op">;</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">f1</span>(<span class="st">'abc'</span><span class="op">,</span> <span class="dv">5</span>)<span class="op">;</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="fu">f1</span>(<span class="st">'abc'</span><span class="op">,</span> <span class="st">'def'</span><span class="op">,</span> <span class="dv">5</span>)<span class="op">;</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="fu">f1</span>(<span class="st">'abc'</span><span class="op">,</span> <span class="st">'def'</span><span class="op">,</span> <span class="dv">5</span><span class="op">,</span> <span class="dv">6</span>)<span class="op">;</span>  <span class="co">// Error</span></span></code></pre></div>
+<p>函数 <code>f1</code> 的 <code>string</code>
+参数的个数是不确定的，它的后面跟着一个 <code>number</code>
+类型的参数。我们现在可以精确的定义 <code>f1</code>
+参数的类型了。当然我们还是不能够使用多个 Rest
+参数，可选元素不能在必需元素之前，也不能在其余元素之后。以下的参数类型定义是支持的：</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode ts"><code class="sourceCode typescript"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> Tup3<span class="op">&lt;</span>T <span class="kw">extends</span> <span class="dt">unknown</span>[]<span class="op">,</span> U <span class="kw">extends</span> <span class="dt">unknown</span>[]<span class="op">,</span> V <span class="kw">extends</span> <span class="dt">unknown</span>[]<span class="op">&gt;</span> <span class="op">=</span> [<span class="op">...</span>T<span class="op">,</span> <span class="op">...</span>U<span class="op">,</span> <span class="op">...</span>V]<span class="op">;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> TN1 <span class="op">=</span> Tup3<span class="op">&lt;</span>[<span class="dt">number</span>]<span class="op">,</span> <span class="dt">string</span>[]<span class="op">,</span> [<span class="dt">number</span>]<span class="op">&gt;;</span>  <span class="co">// [number, ...string[], number]</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">// Optional element following required element</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> TN2 <span class="op">=</span> Tup3<span class="op">&lt;</span>[<span class="dt">number</span>]<span class="op">,</span> [<span class="dt">string</span><span class="op">?</span>]<span class="op">,</span> [<span class="dt">boolean</span>]<span class="op">&gt;;</span>  <span class="co">// [number, string | undefined, boolean]</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> TN3 <span class="op">=</span> Tup3<span class="op">&lt;</span>[<span class="dt">number</span>]<span class="op">,</span> <span class="dt">string</span>[]<span class="op">,</span> [<span class="dt">boolean</span><span class="op">?</span>]<span class="op">&gt;;</span>  <span class="co">// [number, ...(string | boolean | undefined)[]]</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> TN4 <span class="op">=</span> Tup3<span class="op">&lt;</span>[<span class="dt">number</span>]<span class="op">,</span> <span class="dt">string</span>[]<span class="op">,</span> <span class="dt">boolean</span>[]<span class="op">&gt;;</span>  <span class="co">// [number, ...(string | boolean)[]]</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> TN5 <span class="op">=</span> Tup3<span class="op">&lt;</span><span class="dt">string</span>[]<span class="op">,</span> <span class="dt">number</span>[]<span class="op">,</span> <span class="dt">boolean</span>[]<span class="op">&gt;;</span>  <span class="co">// (string | number | boolean)[] </span></span></code></pre></div>
+<p>TypeScript 4.2 还让我们在使用类型别名时候拥有更好的开发体验：</p>
+<p><img src="https://imgur.com/rQkqilu.png" alt="https://imgur.com/rQkqilu.png"></p>
+<p>前面的示例表明，类型别名 <code>BasicPrimitive</code>
+在某些情况下被拓展或规范化（例如为
+<code>number | string | boolean</code>类型），但现在不会这样了。发行说明还强调了在不同地方的
+TypeScript 开发者体验感受方面都做出了改进：</p>
+<blockquote>
+<p>你可以避免显示一些可怕的超长的类型定义 ——
+类型别名现在通常会出现在快速信息和签名帮助中，以及转译的
+<code>.d.ts</code> 文件输出中。这可以使 TypeScript
+对于新手来说更加友善。</p>
+</blockquote>
+<p><strong><code>abstract</code></strong>
+修饰符现在可以在构造函数签名上使用，实例：</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode ts"><code class="sourceCode typescript"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">abstract</span> <span class="kw">class</span> Shape {</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">abstract</span> <span class="fu">getArea</span>()<span class="op">:</span> <span class="dt">number</span><span class="op">;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">// 这是个错误！我们不能实例化一个抽象的类 </span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="kw">new</span> <span class="fu">Shape</span>()<span class="op">;</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="kw">interface</span> HasArea {</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">getArea</span>()<span class="op">:</span> <span class="dt">number</span><span class="op">;</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co">// 这是一个错误！我们不能赋予抽象的构造器类型给一个不是抽象的构造器类型</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> Ctor<span class="op">:</span> <span class="kw">new</span>  () <span class="kw">=&gt;</span> HasArea <span class="op">=</span> Shape<span class="op">;</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="co">// 这就很棒啦</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> Ctor<span class="op">:</span> <span class="kw">abstract</span> <span class="kw">new</span> () <span class="kw">=&gt;</span> HasArea <span class="op">=</span> Shape<span class="op">;</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="co">//        ^^^^^^^^</span></span></code></pre></div>
+<p><strong><code>abstract</code></strong> 修饰符的新语义允许我们<a href="https://github.com/microsoft/TypeScript/pull/36392">以支持抽象类的方式编写
+<code>mixin factories</code> 的构造器</a>。</p>
+<p>我们现在可以将已解构的变量明确标记为未使用，而一些开发人员以前会写：</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode ts"><code class="sourceCode typescript"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> [Input<span class="op">,</span> <span class="co">/* state */</span><span class="op">,</span> <span class="co">/* actions */</span><span class="op">,</span> meta] <span class="op">=</span> input </span></code></pre></div>
+<p>而如果要更好的维护和阅读性，而非使用这个：</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode ts"><code class="sourceCode typescript"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> [Input<span class="op">,</span> <span class="op">,</span> <span class="op">,</span> meta] <span class="op">=</span> input </span></code></pre></div>
+<p>开发者们现在可以在未使用的变量名称的前面使用一个下划线标记：</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode ts"><code class="sourceCode typescript"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> [Input<span class="op">,</span> _state<span class="op">,</span> _actions<span class="op">,</span> meta] <span class="op">=</span> input</span></code></pre></div>
+<p>新版本的 TypeScript 还对 <code>in</code>
+运算符提供了更严格的检查：<code>"foo" in 42</code> 将触发类型错误。而
+TypeScript 的未调用函数检查现在适用于 <code>&amp;&amp;</code> 和
+<code>||</code> 表达式。<a href="https://devblogs.microsoft.com/typescript/announcing-typescript-4-2/#no-property-access-index-signature">当类型具有字符串索引签名时，设置
+<code>noPropertyAccessFromIndexSignature</code>
+标志不再使用点运算符（例如
+<code>person.name</code>），让我们进行属性访问成为可能</a>，而
+<code>explainFiles</code> 编译器标志（例如
+<code>tsc --explainFiles</code>
+命令）让编译器能够产生更详尽的信息告诉我们解决的和处理的文件的信息：</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">TS_Compiler_Directory/4.2.2/lib/lib.es5.d.ts</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="ex">Library</span> referenced via <span class="st">'es5'</span> from file <span class="st">'TS_Compiler_Directory/4.2.2/lib/lib.es2015.d.ts'</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="ex">TS_Compiler_Directory/4.2.2/lib/lib.es2015.d.ts</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="ex">Library</span> referenced via <span class="st">'es2015'</span> from file <span class="st">'TS_Compiler_Directory/4.2.2/lib/lib.es2016.d.ts'</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="ex">...</span> More Library References...</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="ex">foo.ts</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  <span class="ex">Matched</span> by include pattern <span class="st">'**/*'</span> in <span class="st">'tsconfig.json'</span></span></code></pre></div>
+<p>TypeScript 4.2 还包含了一些重大更改：<a href="https://devblogs.microsoft.com/typescript/announcing-typescript-4-2/#type-arguments-in-javascript-are-not-parsed-as-type-arguments">JavaScript
+中的类型参数不会解析为类型参数</a>，这意味着有效的 TypeScript 代码
+<code>f&lt;T&gt;(100)</code> 将按照 JavaScript 规范解析到 JavaScript
+文件中 <code>(f &lt; T) &gt; (100)</code>。与此同时，<code>.d.ts</code>
+扩展名不能在导入路径中使用了（例如
+<code>import { Foo } from "./foo.d.ts;</code>），而我们可以用以下任何一种替换：</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode ts"><code class="sourceCode typescript"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> {Foo} <span class="im">from</span> <span class="st">"./foo.js"</span><span class="op">;</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> {Foo} <span class="im">from</span> <span class="st">"./foo"</span><span class="op">;</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> {Foo} <span class="im">from</span> <span class="st">"./foo/index.js"</span><span class="op">;</span></span></code></pre></div>
+<p>TypeScript 4.2 实现在任何规模或位置更加准确编写 JavaScript
+的目标，但是，在每个发行版中，TypeScript
+都会增加其复杂性。一位开发者指出：</p>
+<blockquote>
+<p>由于 TypeScript 进行了大量更新导致的担忧，人们开始怀疑 TypeScript
+是否会变得太复杂使得我们无法了解全部的问题，就像 C++ 那样。。</p>
+</blockquote>
+<p>TypeScript 4.2
+还有其他的重大更改和功能新增，欢迎开发者阅读完整的发行说明。TypeScript
+是基于 Apache 2 许可的开源软件，我们鼓励通过 TypeScript 在 GitHub
+上的项目，在遵循 TypeScript 贡献准则和 Microsoft
+开源行为准则的前提下进行贡献和反馈。</p>
+
+
+
+            </div>
+        </article>
+        <div class="sidebar">
+            <div class="about-box">
+    <div class="avatar">
+        <img src="/assets/media/bitmap/avatar.jpeg" alt="avatar">
+    </div>
+    <h1>霜羽 Hoarfroster</h1>
+    <h2>@PassionPenguin</h2>
+    <p class="moment"><span class="status">🤔</span><span>努力！</span></p>
+    <ul>
+        <li><i class="fa-solid fa-location-dot"></i> 广东 · 广州 | <span class="light">Guangzhou, China</span>
+        </li>
+        <li><i class="fa-solid fa-envelope"></i> <a href="mailto:hoarfroster@outlook.com">hoarfroster@outlook.com</a>
+        </li>
+        <li><i class="fa-solid fa-house"></i> <a href="https://story.hoarfroster.space/">https://story.hoarfroster.space/</a>
+        </li>
+    </ul>
+</div>
+<div class="organization">
+    <h4>组织 Organizations</h4>
+    <ul>
+        <li>
+            <img src="https://avatars.githubusercontent.com/u/81648011?s=60&amp;v=4"
+                alt="Hexa-Penguin"><span>Hexa-Penguin</span>
+        </li>
+        <li>
+            <img src="https://avatars.githubusercontent.com/u/10482599?s=60&amp;v=4" alt="xitu"><span>稀土 xitu</span>
+        </li>
+    </ul>
+</div>
+<div class="category">
+    <span class="title">文章分类</span>
+    <ul>
+        <!-- <li><a href="/archive.html">所有分类</a></li> -->
+    </ul>
+</div>
+<div class="archive">
+    <span class="title">文章存档</span>
+    <ul>
+        <!-- <li><a href="/archive.html">所有文章</a></li> -->
+    </ul>
+</div>
+        </div>
+    </div>
+    <div class="footer">
+    <div class="content">
+        <div class="about">
+            <p>霜羽 Hoarfroster</p>
+            <p>&copy; Copyright 2021 Hoarfroster and contributors.</p>
+        </div>
+        <div class="nav">
+            <div class="links">
+                <span class="title">关于文章</span>
+                <ul>
+                    <li><a href="/archive.html">文章存档</a></li>
+                </ul>
+            </div>
+            <div class="category">
+                <span class="title">关于霜羽</span>
+                <ul>
+                    <li><a href="/about.html">有关霜羽</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <ul class="social-accounts">
+        <li>
+            <a href="https://www.zhihu.com/people/shuang-yu-29-75">
+                <i class="fa-brands fa-zhihu" style="font-size: 24px; color:#06f; line-height: 24px;"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://github.com/PassionPenguin">
+                <img src="/assets/media/vectors/github.svg" alt="github-logo"/>
+            </a>
+        </li>
+        <li>
+            <a href="https://dribbble.com/Hoarfroster">
+                <img src="/assets/media/vectors/dribbble.svg" alt="dribbble-logo"/>
+            </a>
+        </li>
+        <li>
+            <a href="https://zh.wikipedia.org/wiki/User:HoarfrostFeather">
+                <i class="fa-brands fa-wikipedia-w" style="font-size: 22px; color: #888; line-height: 24px;"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://space.bilibili.com/201469972">
+                <i class="fa-brands fa-bilibili" style="font-size: 22px; color: #00a1d6; line-height: 24px;"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Temporal API —— Date API 问题的一个解决方案</title>
+    <script src="/assets/script/main.js"></script>
+    <link rel="stylesheet" href="/assets/style/styles.css">
+</head>
+
+<body>
+    <div class="header">
+    <div class="container">
+        <div class="icon">
+            <img src="/assets/media/vectors/hoarfroster-text.svg" alt="Hoarfroster Logo with Text">
+        </div>
+        <nav class="navigation">
+            <ul class="header-navigation-list">
+                <li><a href="/">首页</a></li>
+                <li><a href="/archive.html">文章</a></li>
+                <li><a href="/about.html">关于</a></li>
+            </ul>
+            <form action="/search" method="post">
+                <label>
+                    <input type="text" class="search" placeholder="搜索咕咕咕的小站"/>
+                </label>
+                <label class="submit">
+                    <input type="submit"/>
+                </label>
+            </form>
+        </nav>
+        <ul class="social-accounts">
+            <li>
+                <a href="https://www.zhihu.com/people/shuang-yu-29-75">
+                    <i class="fa-brands fa-zhihu" style="font-size: 20px; color:#06f; line-height: 20px;"></i>
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/PassionPenguin">
+                    <img src="/assets/media/vectors/github.svg" alt="github-logo"/>
+                </a>
+            </li>
+            <li>
+                <a href="https://dribbble.com/Hoarfroster">
+                    <img src="/assets/media/vectors/dribbble.svg" alt="dribbble-logo"/>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+    <div class="content article">
+        <article>
+            <div class="title">
+                <h1>JavaScript Temporal API —— Date API 问题的一个解决方案</h1>
+                <p><span class='chars'>10699B</span><span class='created-date'>Created Sun Jun 12 2022 23:55:03 GM</span><span class='modified-date'>Modified Sun Jun 12 2022 23:55:03 GM</span></p>
+            </div>
+            <div class="main markdown-body">
+                
+
+<blockquote>
+<ul>
+<li>原文地址：<a href="https://blog.bitsrc.io/javascript-temporal-api-a-fix-for-the-date-api-aa8381a4234c">JavaScript
+Temporal API- A Fix for the Date API</a></li>
+<li>原文作者：<a href="https://medium.com/@nathansebhastian">Nathan
+Sebhastian</a></li>
+<li>译者：<a href="https://github.com/PassionPenguin">霜羽
+Hoarfroster</a></li>
+<li>校对者：<a href="https://github.com/Chorer">Chorer</a>、<a href="https://github.com/Usualminds">Usualminds</a></li>
+</ul>
+</blockquote>
+<p><img src="https://cdn-images-1.medium.com/max/2024/1*iq9Xe8BZue94e2BD4ecpqA.png"></p>
+<p>JavaScript 的日期处理 API 比较糟糕，因为它是直接对 <a href="https://docs.oracle.com/javase/6/docs/api/java/util/Date">Java 的
+<code>Date</code> 类</a> 进行复制来实现了 <code>Date</code> 对象，而
+Java 维护者最终弃用了许多 <code>Date</code> 类的方法，并于 1997 年创建了
+<code>Calendar</code> 类以取代它。</p>
+<p>但是 JavaScript 的 <code>Date</code> API
+还没有进行进一步修复，这就是为什么我们今天会遇到以下问题：</p>
+<ul>
+<li><code>Date</code> 对象是可变的</li>
+<li>用于日期和时间计算的混乱 API（例如，天数的加减）</li>
+<li>仅支持 UTC 和本地时区</li>
+<li>从字符串中解析日期的不可靠</li>
+<li>不支持公历以外的其他历法</li>
+</ul>
+<p>但由于目前 <code>Date</code> API
+被广泛地应用于各种库和浏览器引擎中，我们暂时不可能修复其错误部分。如果我们更改它的底层实现，就会很可能对许多现有的网站和库造成破坏性影响。</p>
+<p>新的 <code>Temporal</code> API 提案旨在解决 <code>Date</code> API
+的问题，它对 JavaScript 的日期和时间操作进行了以下改进：</p>
+<ul>
+<li>仅创建和处理不可变的 <code>Temporal</code> 对象</li>
+<li>用于日期和时间计算的简单 API</li>
+<li>支持所有时区</li>
+<li>遵循 ISO-8601 格式进行严格的日期解析</li>
+<li>支持非公历的历法</li>
+</ul>
+<blockquote>
+<p>请记住，<code>Temporal</code> 提案<a href="https://github.com/tc39/proposal-temporal#status">当前处于第二阶段</a>，尚未准备好用于生产环境中。</p>
+</blockquote>
+<p>让我们借助代码示例理解 <code>Temporal</code> API
+的功能吧。下文中的所有 <code>Temporal</code> API 代码都是使用 <a href="https://www.npmjs.com/package/proposal-temporal">Temporal
+Polyfill</a> 创建的。</p>
+<h2 id="不可变的日期对象">不可变的日期对象</h2>
+<p>使用 JavaScript 的 <code>new Date()</code> 构造器创建的
+<code>Date</code> 对象是可变的，意味着你可以在初始化以后修改它的值：</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> date <span class="op">=</span> <span class="kw">new</span> <span class="bu">Date</span>(<span class="st">"2021-02-20"</span>)<span class="op">;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(date)<span class="op">;</span> <span class="co">// 2021-02-20T00:00:00.000Z</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>date<span class="op">.</span><span class="fu">setYear</span>(<span class="dv">2000</span>)<span class="op">;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(date)<span class="op">;</span> <span class="co">// 2000-02-20T00:00:00.000Z</span></span></code></pre></div>
+<p>尽管看似无关紧要，但这种可变的对象在处理不当时可能会导致错误，其中一种情况就是当我们尝试将天数添加到当前日期时。</p>
+<p>例如，这是一个将当前日期增加一周的功能。 由于 <code>setDate</code>
+会修改对象本身，因此我们会得到<strong>两个具有相同日期值的对象</strong>：</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">addOneWeek</span>(date) {</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    date<span class="op">.</span><span class="fu">setDate</span>(date<span class="op">.</span><span class="fu">getDate</span>() <span class="op">+</span> <span class="dv">7</span>)<span class="op">;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> date<span class="op">;</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> today <span class="op">=</span> <span class="kw">new</span> <span class="bu">Date</span>()<span class="op">;</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> oneWeekLater <span class="op">=</span> <span class="fu">addOneWeek</span>(today)<span class="op">;</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(today)<span class="op">;</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(oneWeekLater)<span class="op">;</span> <span class="co">//  值和变量 today 一样</span></span></code></pre></div>
+<p><code>Temporal</code>
+提供了不直接修改对象的方法，进而修复了这个问题，例如下面就是使用
+<code>Temporal</code> API 添加一周的例子：</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> date <span class="op">=</span> Temporal<span class="op">.</span><span class="at">now</span><span class="op">.</span><span class="fu">plainDateISO</span>()<span class="op">;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(date)<span class="op">;</span> <span class="co">// 2021-02-20</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(date<span class="op">.</span><span class="fu">add</span>({<span class="dt">days</span><span class="op">:</span> <span class="dv">7</span>}))<span class="op">;</span> <span class="co">// 2021-02-27</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(date)<span class="op">;</span> <span class="co">// 2021-02-20</span></span></code></pre></div>
+<p>如上面的代码所示，<code>Temporal</code> 为我们提供了
+<code>.add()</code>
+方法，让我们能将天、周、月或年添加到当前日期对象中而不会修改原始值。</p>
+<h2 id="用于日期和时间计算的-api">用于日期和时间计算的 API</h2>
+<p>前面的 <code>Temporal</code> 示例中我们了解到了 <code>.add()</code>
+方法，它能帮助我们对日期对象执行计算。我们现在使用的 <code>Date</code>
+API 仅提供了获取和设置日期值的方法，不如 <code>Temporal</code>
+来得简单直接。</p>
+<p><code>Temporal</code> 还为我们提供了多个 API 来计算日期值。比如说
+<code>until()</code> 方法，它可以计算 <code>firstDate</code> 和
+<code>secondDate</code> 之间的时间差。</p>
+<p>而如果使用 <code>Date</code>
+API，我们需要手动计算两个日期之间的天数，如下所示：</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> oneDay <span class="op">=</span> <span class="dv">24</span> <span class="op">*</span> <span class="dv">60</span> <span class="op">*</span> <span class="dv">60</span> <span class="op">*</span> <span class="dv">1000</span><span class="op">;</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> firstDate <span class="op">=</span> <span class="kw">new</span> <span class="bu">Date</span>(<span class="dv">2008</span><span class="op">,</span> <span class="dv">1</span><span class="op">,</span> <span class="dv">12</span>)<span class="op">;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> secondDate <span class="op">=</span> <span class="kw">new</span> <span class="bu">Date</span>(<span class="dv">2008</span><span class="op">,</span> <span class="dv">1</span><span class="op">,</span> <span class="dv">22</span>)<span class="op">;</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> diffDays <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">round</span>(<span class="bu">Math</span><span class="op">.</span><span class="fu">abs</span>((firstDate <span class="op">-</span> secondDate) <span class="op">/</span> oneDay))<span class="op">;</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(diffDays)<span class="op">;</span> <span class="co">// 10</span></span></code></pre></div>
+<p>如果是 <code>Temporal</code> API，我们可以通过 <code>until()</code>
+方法简单地计算 <code>diffDays</code>：</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> firstDate <span class="op">=</span> Temporal<span class="op">.</span><span class="at">PlainDate</span><span class="op">.</span><span class="fu">from</span>(<span class="st">'2008-01-12'</span>)<span class="op">;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> secondDate <span class="op">=</span> Temporal<span class="op">.</span><span class="at">PlainDate</span><span class="op">.</span><span class="fu">from</span>(<span class="st">'2008-01-22'</span>)<span class="op">;</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> diffDays <span class="op">=</span> firstDate<span class="op">.</span><span class="fu">until</span>(secondDate)<span class="op">.</span><span class="at">days</span><span class="op">;</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(diffDays)<span class="op">;</span> <span class="co">// 10</span></span></code></pre></div>
+<p>其他的帮助我们计算的方法还有：</p>
+<ul>
+<li><a href="https://tc39.es/proposal-temporal/docs/plaindate.html#subtract"><code>.subtract()</code>
+方法</a>，用于减少当前日期的天数、月数或年数。</li>
+<li><a href="https://tc39.es/proposal-temporal/docs/plaindate.html#since"><code>.since()</code>
+方法</a>，用于计算一个特定日期迄今为止所经历的天数、月数或年数。</li>
+<li><a href="https://tc39.es/proposal-temporal/docs/plaindate.html#equals"><code>.equals()</code>
+方法</a>，用于比较两个日期是否相同。</li>
+</ul>
+<p>这些 API 能够帮助我们去完成计算，而无需自己创建解决方案。</p>
+<h2 id="支持所有时区">支持所有时区</h2>
+<p>当前的 <code>Date</code> API 在系统中以 UTC
+标准跟踪时间，通常会在计算机的时区中生成日期对象，操纵时区没有简单的方法。</p>
+<p>我发现操纵时区的一种方式是使用 <code>Date.toLocaleString()</code>
+方法，如下所示：</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> date <span class="op">=</span> <span class="kw">new</span> <span class="bu">Date</span>()<span class="op">;</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> tokyoDate <span class="op">=</span> date<span class="op">.</span><span class="fu">toLocaleString</span>(<span class="st">"en-US"</span><span class="op">,</span> {</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">timeZone</span><span class="op">:</span> <span class="st">"Asia/Tokyo"</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> singaporeDate <span class="op">=</span> date<span class="op">.</span><span class="fu">toLocaleString</span>(<span class="st">"en-US"</span><span class="op">,</span> {</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">timeZone</span><span class="op">:</span> <span class="st">"Asia/Singapore"</span><span class="op">,</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(tokyoDate)<span class="op">;</span> <span class="co">// 2/21/2021, 1:36:46 PM</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(singaporeDate)<span class="op">;</span> <span class="co">// 2/21/2021, 12:36:46 PM</span></span></code></pre></div>
+<p>但是由于此方法返回一个字符串，因此进一步的日期和时间操作要求我们先将字符串转换回日期。</p>
+<p>而 <code>Temporal</code> API 允许我们在使用
+<code>zonedDateTimeISO()</code>
+方法创建日期的时候去定义时区。我们可以使用 <code>.now</code>
+对象去获取当前的日期、时间：</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> tokyoDate <span class="op">=</span> Temporal<span class="op">.</span><span class="at">now</span><span class="op">.</span><span class="fu">zonedDateTimeISO</span>(<span class="st">'Asia/Tokyo'</span>)<span class="op">;</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> singaporeDate <span class="op">=</span> Temporal<span class="op">.</span><span class="at">now</span><span class="op">.</span><span class="fu">zonedDateTimeISO</span>(<span class="st">'Asia/Singapore'</span>)<span class="op">;</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(tokyoDate)<span class="op">;</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co">// 2021-02-20T13:48:24.435904429+09:00[Asia/Tokyo]</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(singaporeDate)<span class="op">;</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co">// 2021-02-20T12:48:24.429904404+08:00[Asia/Singapore]</span></span></code></pre></div>
+<p>由于返回的值仍然是 <code>Temporal</code> 日期，因此我们可以使用
+<code>Temporal</code> 本身的方法进一步对其进行操作：</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> date <span class="op">=</span> Temporal<span class="op">.</span><span class="at">now</span><span class="op">.</span><span class="fu">zonedDateTimeISO</span>(<span class="st">'Asia/Tokyo'</span>)<span class="op">;</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> oneWeekLater <span class="op">=</span> date<span class="op">.</span><span class="fu">add</span>({<span class="dt">weeks</span><span class="op">:</span> <span class="dv">1</span>})<span class="op">;</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(oneWeekLater)<span class="op">;</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co">// 2021-02-27T13:48:24.435904429+09:00[Asia/Tokyo]</span></span></code></pre></div>
+<p><code>Temporal</code> API 遵循使用类型的约定，其中以
+<code>Plain</code>
+开头的名称是没有时区的（<code>.PlainDate</code>、<code>.PlainTime</code>、<code>.PlainDateTime</code>），而
+<code>.ZonedDateTime</code> 则相反。</p>
+<h2 id="遵循-iso-8601-标准进行严格的日期解析">遵循 ISO-8601
+标准进行严格的日期解析</h2>
+<p>现有的从字符串解析日期的方式是不可靠的，因为当我们传递 ISO-8601
+格式的日期字符串时，返回值将根据是否传递了时区偏移量而有所不同。</p>
+<p>考虑以下示例：</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">new</span> <span class="bu">Date</span>(<span class="st">"2021-02-20"</span>)<span class="op">.</span><span class="fu">toISOString</span>()<span class="op">;</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co">// 2021-02-20T00:00:00.000Z</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="kw">new</span> <span class="bu">Date</span>(<span class="st">"2021-02-20T05:30"</span>)<span class="op">.</span><span class="fu">toISOString</span>()<span class="op">;</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co">// 2021-02-20T10:30:00.000Z</span></span></code></pre></div>
+<p>上面的第一个 <code>Date</code> 构造器将字符串视为 UTC+0
+时区，而第二个构造器将字符串视为 UTC-5
+时区（我当前所在的时区），因此返回值会被调整到 UTC+0 时区**（5:30 UTC-5
+相当于 10:30 UTC+0）**。</p>
+<p><code>Temposal</code> 提案通过区分 <code>PlainDateTime</code> 和
+<code>ZonedDateTime</code> 来解决此问题，如下所示：</p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*Y4XViVCg-Cl6KtivlWbF5A.png" alt="来源：临时提案文档"></p>
+<p>当我们想要使日期成为包含时区的对象时，我们需要使用 <a href="https://tc39.es/proposal-temporal/docs/index.html#Temporal-ZonedDateTime">ZonedDateTime</a>
+对象，反之则使用 <a href="https://tc39.es/proposal-temporal/docs/index.html#Temporal-PlainDateTime">PlainDateTime</a>
+对象。</p>
+<p>通过分开创建包含时区和不包含时区的日期，<code>Temporal</code> API
+可帮助我们从提供的字符串中解析正确的日期、时间组合：</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>Temporal<span class="op">.</span><span class="at">PlainDateTime</span><span class="op">.</span><span class="fu">from</span>(<span class="st">"2021-02-20"</span>)<span class="op">;</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co">// 2021-02-20T00:00:00</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>Temporal<span class="op">.</span><span class="at">PlainDateTime</span><span class="op">.</span><span class="fu">from</span>(<span class="st">"2021-02-20T05:30"</span>)<span class="op">;</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co">// 2021-02-20T05:30:00</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>Temporal<span class="op">.</span><span class="at">ZonedDateTime</span><span class="op">.</span><span class="fu">from</span>(<span class="st">"2021-02-20T05:30[Asia/Tokyo]"</span>)<span class="op">;</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="co">// 2021-02-20T05:30:00+09:00[Asia/Tokyo]</span></span></code></pre></div>
+<p>从上面的示例中可以看到，<code>Temporal</code> API
+不会对你所在的时区进行预设。</p>
+<h2 id="支持公历以外的历法">支持公历以外的历法</h2>
+<p>尽管公历是世界上使用最广泛的日历系统，但有时我们可能需要使用其他日历系统以查看具有文化或宗教意义的特殊日期。</p>
+<p><code>Temporal</code> API
+允许我们指定要用于日期、时间计算的日历系统。</p>
+<p>日历的 NPM Polyfill 实现尚未完成，因此我们需要尝试使用 Browser
+Polyfill 中的 <code>withCalendar()</code> 方法。请访问 <a href="https://tc39.es/proposal-temporal/docs/">Temporal
+文档页面</a>，然后将以下代码粘贴到浏览器的控制台中：</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>Temporal<span class="op">.</span><span class="at">PlainDate</span><span class="op">.</span><span class="fu">from</span>(<span class="st">"2021-02-06"</span>)<span class="op">.</span><span class="fu">withCalendar</span>(<span class="st">"gregory"</span>)<span class="op">.</span><span class="at">day</span><span class="op">;</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co">// 6</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>Temporal<span class="op">.</span><span class="at">PlainDate</span><span class="op">.</span><span class="fu">from</span>(<span class="st">"2021-02-06"</span>)<span class="op">.</span><span class="fu">withCalendar</span>(<span class="st">"chinese"</span>)<span class="op">.</span><span class="at">day</span><span class="op">;</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co">// 25</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>Temporal<span class="op">.</span><span class="at">PlainDate</span><span class="op">.</span><span class="fu">from</span>(<span class="st">"2021-02-06"</span>)<span class="op">.</span><span class="fu">withCalendar</span>(<span class="st">"japanese"</span>)<span class="op">.</span><span class="at">day</span><span class="op">;</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="co">// 6</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>Temporal<span class="op">.</span><span class="at">PlainDate</span><span class="op">.</span><span class="fu">from</span>(<span class="st">"2021-02-06"</span>)<span class="op">.</span><span class="fu">withCalendar</span>(<span class="st">"hebrew"</span>)<span class="op">.</span><span class="at">day</span><span class="op">;</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="co">// 24</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>Temporal<span class="op">.</span><span class="at">PlainDate</span><span class="op">.</span><span class="fu">from</span>(<span class="st">"2021-02-06"</span>)<span class="op">.</span><span class="fu">withCalendar</span>(<span class="st">"islamic"</span>)<span class="op">.</span><span class="at">day</span><span class="op">;</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a><span class="co">// 24</span></span></code></pre></div>
+<p>一旦提案通过，<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#parameters">Intl.DateTimeFormat</a>
+中所有可能的日历值都将被实现。</p>
+<h2 id="结论">结论</h2>
+<p><code>Temporal</code> API 是针对 JavaScript
+的一项新提案，有望为该语言提供现代化的日期和时间 API。而根据我基于
+Polyfill 的测试，该 API
+确实提供了更简单的日期和时间操作，同时也考虑到了时区和日历的差异。</p>
+<p>该提案本身仍处于第三阶段，因此，如果你有兴趣了解更多信息并提供反馈，你可以访问
+<a href="https://tc39.es/proposal-temporal/docs/index.html">Temporal
+文档</a> 并尝试其提供的 <a href="https://www.npmjs.com/package/proposal-temporal">Polyfill NPM
+包</a>。</p>
+
+
+
+            </div>
+        </article>
+        <div class="sidebar">
+            <div class="about-box">
+    <div class="avatar">
+        <img src="/assets/media/bitmap/avatar.jpeg" alt="avatar">
+    </div>
+    <h1>霜羽 Hoarfroster</h1>
+    <h2>@PassionPenguin</h2>
+    <p class="moment"><span class="status">🤔</span><span>努力！</span></p>
+    <ul>
+        <li><i class="fa-solid fa-location-dot"></i> 广东 · 广州 | <span class="light">Guangzhou, China</span>
+        </li>
+        <li><i class="fa-solid fa-envelope"></i> <a href="mailto:hoarfroster@outlook.com">hoarfroster@outlook.com</a>
+        </li>
+        <li><i class="fa-solid fa-house"></i> <a href="https://story.hoarfroster.space/">https://story.hoarfroster.space/</a>
+        </li>
+    </ul>
+</div>
+<div class="organization">
+    <h4>组织 Organizations</h4>
+    <ul>
+        <li>
+            <img src="https://avatars.githubusercontent.com/u/81648011?s=60&amp;v=4"
+                alt="Hexa-Penguin"><span>Hexa-Penguin</span>
+        </li>
+        <li>
+            <img src="https://avatars.githubusercontent.com/u/10482599?s=60&amp;v=4" alt="xitu"><span>稀土 xitu</span>
+        </li>
+    </ul>
+</div>
+<div class="category">
+    <span class="title">文章分类</span>
+    <ul>
+        <!-- <li><a href="/archive.html">所有分类</a></li> -->
+    </ul>
+</div>
+<div class="archive">
+    <span class="title">文章存档</span>
+    <ul>
+        <!-- <li><a href="/archive.html">所有文章</a></li> -->
+    </ul>
+</div>
+        </div>
+    </div>
+    <div class="footer">
+    <div class="content">
+        <div class="about">
+            <p>霜羽 Hoarfroster</p>
+            <p>&copy; Copyright 2021 Hoarfroster and contributors.</p>
+        </div>
+        <div class="nav">
+            <div class="links">
+                <span class="title">关于文章</span>
+                <ul>
+                    <li><a href="/archive.html">文章存档</a></li>
+                </ul>
+            </div>
+            <div class="category">
+                <span class="title">关于霜羽</span>
+                <ul>
+                    <li><a href="/about.html">有关霜羽</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <ul class="social-accounts">
+        <li>
+            <a href="https://www.zhihu.com/people/shuang-yu-29-75">
+                <i class="fa-brands fa-zhihu" style="font-size: 24px; color:#06f; line-height: 24px;"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://github.com/PassionPenguin">
+                <img src="/assets/media/vectors/github.svg" alt="github-logo"/>
+            </a>
+        </li>
+        <li>
+            <a href="https://dribbble.com/Hoarfroster">
+                <img src="/assets/media/vectors/dribbble.svg" alt="dribbble-logo"/>
+            </a>
+        </li>
+        <li>
+            <a href="https://zh.wikipedia.org/wiki/User:HoarfrostFeather">
+                <i class="fa-brands fa-wikipedia-w" style="font-size: 22px; color: #888; line-height: 24px;"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://space.bilibili.com/201469972">
+                <i class="fa-brands fa-bilibili" style="font-size: 22px; color: #00a1d6; line-height: 24px;"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+</body>
+
+</html>

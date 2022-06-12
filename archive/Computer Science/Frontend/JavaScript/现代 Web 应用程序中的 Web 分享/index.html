@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>现代 Web 应用程序中的 Web 分享</title>
+    <script src="/assets/script/main.js"></script>
+    <link rel="stylesheet" href="/assets/style/styles.css">
+</head>
+
+<body>
+    <div class="header">
+    <div class="container">
+        <div class="icon">
+            <img src="/assets/media/vectors/hoarfroster-text.svg" alt="Hoarfroster Logo with Text">
+        </div>
+        <nav class="navigation">
+            <ul class="header-navigation-list">
+                <li><a href="/">首页</a></li>
+                <li><a href="/archive.html">文章</a></li>
+                <li><a href="/about.html">关于</a></li>
+            </ul>
+            <form action="/search" method="post">
+                <label>
+                    <input type="text" class="search" placeholder="搜索咕咕咕的小站"/>
+                </label>
+                <label class="submit">
+                    <input type="submit"/>
+                </label>
+            </form>
+        </nav>
+        <ul class="social-accounts">
+            <li>
+                <a href="https://www.zhihu.com/people/shuang-yu-29-75">
+                    <i class="fa-brands fa-zhihu" style="font-size: 20px; color:#06f; line-height: 20px;"></i>
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/PassionPenguin">
+                    <img src="/assets/media/vectors/github.svg" alt="github-logo"/>
+                </a>
+            </li>
+            <li>
+                <a href="https://dribbble.com/Hoarfroster">
+                    <img src="/assets/media/vectors/dribbble.svg" alt="dribbble-logo"/>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+    <div class="content article">
+        <article>
+            <div class="title">
+                <h1>现代 Web 应用程序中的 Web 分享</h1>
+                <p><span class='chars'>12068B</span><span class='created-date'>Created Sun Jun 12 2022 23:55:03 GM</span><span class='modified-date'>Modified Sun Jun 12 2022 23:55:03 GM</span></p>
+            </div>
+            <div class="main markdown-body">
+                
+
+<blockquote>
+<ul>
+<li>原文地址：<a href="https://blog.bitsrc.io/web-share-for-modern-web-apps-43c3e2329093">Web
+Share for Modern Web Apps</a></li>
+<li>原文作者：<a href="https://medium.com/@clickforjanaka">Janaka
+Ekanayake</a></li>
+<li>译者：<a href="https://github.com/PassionPenguin">霜羽
+Hoarfroster</a></li>
+<li>校对者：<a href="https://github.com/Chorer">Chorer</a>、<a href="https://github.com/Usualminds">Usualminds</a></li>
+</ul>
+</blockquote>
+<p><img src="https://cdn-images-1.medium.com/max/5760/1*QXEz4H_A4nons0JRZmblhQ.png"></p>
+<blockquote>
+<p>最近，Windows 和 Chrome OS（译者注：其实还有 macOS）开始支持 Web 分享
+和 Web Share API，这吸引了不少 Web 开发者的目光。</p>
+</blockquote>
+<p>不知道你有没有接触过 Web Share
+API？我想你们中的很多人应该都听说过这个词吧！Web Share API
+其实已经出现一段时间了，只不过最初只有移动设备支持 Web Share API。</p>
+<h2 id="web-share-api--快速演示">Web Share API —— 快速演示</h2>
+<p>我们可以按照以下步骤，对 Web Share API 进行快速测试 ——
+在网页与其他应用程序之间进行数据分享。</p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*sHKOD8KJJxktrFqgPyAQwA.png" alt="来源: https://web-share.glitch.me/"></p>
+<ol type="1">
+<li>首先，确保你使用的是最新版本的谷歌浏览器。</li>
+<li>打开浏览器，打开<a href="https://web-share.glitch.me/">这个链接</a>，点击<strong>分享</strong>按钮。</li>
+<li>你可以打开任何允许分享的应用程序。此外，它还支持与附近的设备分享。</li>
+<li>点击分享后，你就可以在目标应用程序中查看分享的数据。我这里使用<strong>邮件</strong>作为应用程序。如图所示，应用程序会将
+Web Share API 传递过来的文本数据添加到电子邮件正文中。</li>
+</ol>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*YSWUxwngdvAWwQOtAHYzvg.png"></p>
+<p><strong>我希望你在尝试以后会感到高兴！</strong> ——
+至少这是我在浏览器中查看 Web Share 功能演示时的第一印象。</p>
+<h2 id="在实践中使用-web-share">在实践中使用 Web Share</h2>
+<h3 id="分享链接和文本">分享链接和文本</h3>
+<p>你可以使用一个简单的 <code>share()</code>
+方法来分享你想要的链接和文本。下面给出的代码片段可以帮助你完成 Web
+Share：</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="bu">navigator</span><span class="op">.</span><span class="at">share</span>) {</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">navigator</span><span class="op">.</span><span class="fu">share</span>({</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        <span class="dt">title</span><span class="op">:</span> <span class="st">'juejin.cn'</span><span class="op">,</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        <span class="dt">text</span><span class="op">:</span> <span class="st">'访问掘金开发者社区'</span><span class="op">,</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>        <span class="dt">url</span><span class="op">:</span> <span class="st">'https://www.juejin.com/'</span><span class="op">,</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    })<span class="op">.</span><span class="fu">then</span>(() <span class="kw">=&gt;</span> <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">'分享成功！'</span>))</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">catch</span>((error) <span class="kw">=&gt;</span> <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">'分享时候遇到了错误……'</span><span class="op">,</span> error))<span class="op">;</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<h3 id="分享文件">分享文件</h3>
+<p>文件分享与 URL 分享有些不同 —— 你必须先调用
+<code>navigator.canShare()</code> 确认是否可以分享文件，然后才可以在调用
+<code>navigator.share()</code> 时添加一个文件数组。</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="bu">navigator</span><span class="op">.</span><span class="at">canShare</span> <span class="op">&amp;&amp;</span> <span class="bu">navigator</span><span class="op">.</span><span class="fu">canShare</span>({<span class="dt">files</span><span class="op">:</span> fileArr})) {</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">navigator</span><span class="op">.</span><span class="fu">share</span>({</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>        <span class="dt">files</span><span class="op">:</span> fileArr<span class="op">,</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>        <span class="dt">title</span><span class="op">:</span> <span class="st">'我的相片集'</span><span class="op">,</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>        <span class="dt">text</span><span class="op">:</span> <span class="st">'北极de假期'</span><span class="op">,</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    })<span class="op">.</span><span class="fu">then</span>(() <span class="kw">=&gt;</span> <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">'分享成功！'</span>))</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">catch</span>((error) <span class="kw">=&gt;</span> <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">'分享时候遇到了错误……'</span><span class="op">,</span> error))<span class="op">;</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="vs">`你的浏览器不支持分享这些文件……`</span>)<span class="op">;</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<h3 id="分享目标">分享目标</h3>
+<p>要成为分享目标，应用程序需要满足 Chrome
+设置的一些标准。你可以浏览一下<a href="https://developers.google.com/web/fundamentals/app-install-banners/#criteria">这篇帮助文档</a>来查看这些条件。</p>
+<p>要在网络应用清单中注册，你必须添加一个
+<code>share_target</code>。这会提醒浏览器将该应用视为一个可能的分享选项，如下文所示：</p>
+<ol type="1">
+<li>接收基本信息</li>
+<li>接收文件</li>
+<li>接收应用程序变更</li>
+</ol>
+<p>你必须使用 Web Share Target API
+来声明分享目标。它可以明确与其他应用程序分享的文件和内容：</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"share_target"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"action"</span><span class="fu">:</span> <span class="st">"/?share-target"</span><span class="fu">,</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"method"</span><span class="fu">:</span> <span class="st">"POST"</span><span class="fu">,</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"enctype"</span><span class="fu">:</span> <span class="st">"multipart/form-data"</span><span class="fu">,</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"params"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"files"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        <span class="fu">{</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>          <span class="dt">"name"</span><span class="fu">:</span> <span class="st">"file"</span><span class="fu">,</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>          <span class="dt">"accept"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>            <span class="st">"image/*"</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>          <span class="ot">]</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>        <span class="fu">}</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>      <span class="ot">]</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">}</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
+<p>不过在已安装的应用程序之间传输文件会比较容易。你可以分享链接、文件等多种类型。</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">async</span> <span class="kw">function</span> <span class="fu">share</span>(title<span class="op">,</span> text<span class="op">,</span> url) {</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span> {</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">await</span> <span class="bu">navigator</span><span class="op">.</span><span class="fu">share</span>({title<span class="op">,</span> text<span class="op">,</span> url})<span class="op">;</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="kw">true</span><span class="op">;</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">catch</span> (ex) {</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        <span class="bu">console</span><span class="op">.</span><span class="fu">error</span>(<span class="st">'分享失败……'</span><span class="op">,</span> ex)<span class="op">;</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="kw">false</span><span class="op">;</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<h2 id="web-share-api--功能和局限性">Web Share API —— 功能和局限性</h2>
+<h3 id="功能">功能</h3>
+<ul>
+<li>使用 Web Share，你的 Web
+应用程序可以像特定平台的原生应用程序那样使用系统提供的分享功能。</li>
+<li>开发者可以获得更全面的分享选项。</li>
+<li>可以在设备中自定义分享目标和设备。因此，你可以提高页面加载速度。</li>
+<li>Web Share API 有助于分享文本、URL 和文件。此外，Web Share
+也扩展来其支持分享的范围。</li>
+<li>它适用于 Chrome OS、Windows 平台的 Chrome、Safari 和 Android 的
+Chromium 内核浏览器。</li>
+</ul>
+<h3 id="局限性">局限性</h3>
+<p>然而，无论这个功能有多好，它也有不少缺点和局限性。</p>
+<ul>
+<li><p>首先，只有通过 https 访问的网站才能使用 Web Share。</p></li>
+<li><p>还有一点就是，你不能用类似于 <code>onload</code>
+的操作来调用它，它必须通过用户的交互行为进行调用。比如说，用户可以通过点击调用它。</p></li>
+<li><p>另外，Mac 平台的 Chrome 的这个功能还在开发中。</p></li>
+</ul>
+<h2 id="小结">小结</h2>
+<p>Web Share API 是一个现代化的 Web
+平台功能，它有助于我们在社交网络、短信和注册目标应用之间更轻松地分享内容。</p>
+<p>Chrome 是支持 Web Share Target API 的主要浏览器之一。此外，Safari
+也支持它。</p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*CtRllCb7OzXfmPxJk4eaew.png"></p>
+<blockquote>
+<p>但是，Web Share API
+应该由用户主动操作触发，这样做是为了减少不便和滥用。</p>
+</blockquote>
+<p>谢谢你的阅读。欢迎在下方留言，分享你的经验。</p>
+<h2 id="译者补充翻译--mdn">译者补充翻译 —— MDN</h2>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Share_API">网络共享
+API</a> 的 <code>navigator.share()</code>
+方法可以用于调用设备的本地共享机制来共享数据，如文本、URL
+或文件。可用的_共享接受者_取决于设备，可能会包括剪贴板、联系人和电子邮件应用程序、网站、蓝牙等。</p>
+<p>这个方法要求当前文档有 <a href="/en-US/docs/Web/HTTP/Headers/Feature-Policy/web-share"><code>web-share</code></a>
+权限策略，并且该方法必须由一个 UI
+事件触发，比如点击按钮，而不能由脚本自行调用。此外，该方法必须指定有效的数据，并由本地实现支持共享。</p>
+<p>该方法会用 <code>undefined</code> 来 <code>resolve</code> 一个 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise"><code>Promise</code></a>。在
+Windows 上，<code>resolve</code> 会发生在启动共享弹出窗口的时候，而在
+Android 上，一旦数据被成功传递到_共享接受者_，<code>Promise</code>
+就会被 <code>resolve</code>。</p>
+<h3 id="语法">语法</h3>
+<pre><code>navigator.share(data)</code></pre>
+<h4 id="参数">参数</h4>
+<p><code>data</code></p>
+<p>一个包含要分享的数据的对象。</p>
+<p>User Agent
+会忽略它无法解析的数据对象，并且也只会基于对象的属性进行判断。所有属性都是可选的，但必须至少指定一个已知的数据属性。</p>
+<p>可能的值是。</p>
+<ul>
+<li><code>url</code>: 一个 <a href="https://developer.mozilla.org/en-US/docs/Web/API/USVString"><code>USVString</code></a>
+代表一个要共享的URL。</li>
+<li><code>text</code>: 一个 <a href="https://developer.mozilla.org/en-US/docs/Web/API/USVString"><code>USVString</code></a>
+代表要分享的文本。</li>
+<li><code>title</code>: 一个 <a href="https://developer.mozilla.org/en-US/docs/Web/API/USVString"><code>USVString</code></a>
+代表要共享的标题（可能会被传递接受者忽略）。</li>
+<li><code>files</code>: 一个 <a href="https://developer.mozilla.org/en-US/docs/Web/API/File"><code>File</code></a>
+对象的数组，指代要共享的文件。关于可共享的文件类型详见下文。</li>
+</ul>
+<h4 id="返回值">返回值</h4>
+<p>一个 <code>resolve</code> 结果为 <code>undefined</code>的 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise"><code>Promise</code></a>。如果遇到错误，则会返回一个
+<code>rejected</code> 的 <code>Promise</code>。</p>
+<h3 id="exceptions">Exceptions</h3>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise"><code>Promise</code></a>
+可能会被以下 <code>DOMException</code> 值之一拒绝。</p>
+<p><code>NotAllowedError</code></p>
+<p>产生该错误的原因是用户没有授予 <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy/web-share">web-share</a>
+权限，或者这一次调用不是由用户行为调用的（不是 UI
+等调用的函数所调用的），或者由于安全考虑，文件共享被阻止了。</p>
+<p><code>TypeError</code></p>
+<p>指定的共享数据不合法，可能的原因包括:</p>
+<ul>
+<li><code>data</code>
+参数被完全省略或只包含未知值的属性。请注意，任何无法被 User Agent
+识别的属性都会被忽略。</li>
+<li>一个不合规的 <code>URL</code>。</li>
+<li>指定了一个文件但是浏览器在该平台上的 implement 不支持文件共享。</li>
+<li>分享指定的数据会被 User Agent 认为是 “恶意的分享”。</li>
+</ul>
+<p><code>AbortError</code></p>
+<p>用户取消了共享操作或没有可用的共享目标。</p>
+<p><code>DataError</code></p>
+<p>启动共享目标或传输数据时出现了问题。</p>
+<h3 id="可共享文件类型">可共享文件类型</h3>
+<p>下面是一个通常可共享的文件类型的列表。然而，你应该总是在调用这个 API
+之前先用 <a href="https://developer.mozilla.org/en-US/docs/Web/API/Navigator/canShare"><code>navigator.canShare()</code></a>
+测试共享是否会成功。</p>
+<ul>
+<li>应用程序文件
+<ul>
+<li><code>.pdf</code> - <code>application/pdf</code>。</li>
+</ul></li>
+<li>音频
+<ul>
+<li><code>.flac</code> - <code>audio/flac</code>。</li>
+<li><code>.m4a</code> - <code>audio/x-m4a</code>。</li>
+<li><code>.mp3</code> - <code>audio/mpeg</code> (也接受
+<code>audio/mp3</code>)</li>
+<li><code>.oga</code> - <code>audio/ogg</code>。</li>
+<li><code>.ogg</code> - <code>audio/ogg</code>。</li>
+<li><code>.opus</code> - <code>audio/ogg</code>。</li>
+<li><code>.wav</code> - <code>audio/wav</code>。</li>
+<li><code>.weba</code> - <code>audio/webm</code>。</li>
+</ul></li>
+<li>图像
+<ul>
+<li><code>.bmp</code> - <code>image/bmp</code>。</li>
+<li><code>.gif</code> - <code>image/gif</code>。</li>
+<li><code>.ico</code> - <code>image/x-icon</code>。</li>
+<li><code>.jfif</code> - <code>image/jpeg</code>。</li>
+<li><code>.jpeg</code> - <code>image/jpeg</code>。</li>
+<li><code>.jpg</code> - <code>image/jpeg</code>。</li>
+<li><code>.pjp</code> - <code>image/jpeg</code>。</li>
+<li><code>.pjpeg</code> - <code>image/jpeg</code>。</li>
+<li><code>.png</code> - <code>image/png</code>。</li>
+<li><code>.svg</code> - <code>image/svg+xml</code>。</li>
+<li><code>.svgz</code> - <code>image/svg+xml</code>。</li>
+<li><code>.tif</code> - <code>image/tiff</code>。</li>
+<li><code>.tiff</code> - <code>image/tiff</code>。</li>
+<li><code>.webp</code> - <code>image/webp</code>。</li>
+<li><code>.xbm</code> - <code>image/x-xbitmap</code>。</li>
+</ul></li>
+<li>文本
+<ul>
+<li><code>.css</code> - <code>text/css</code>。</li>
+<li><code>.csv</code> - <code>text/csv</code>。</li>
+<li><code>.ehtml</code> - <code>text/html</code>。</li>
+<li><code>.htm</code> - <code>text/html</code>。</li>
+<li><code>.html</code> - <code>text/html</code>。</li>
+<li><code>.shtm</code> - <code>text/html</code>。</li>
+<li><code>.shtml</code> - <code>text/html</code>。</li>
+<li><code>.text</code> - <code>text/plain</code>。</li>
+<li><code>.txt</code> - <code>text/plain</code>。</li>
+</ul></li>
+<li>视频
+<ul>
+<li><code>.m4v</code> - <code>video/mp4</code>。</li>
+<li><code>.mp4</code> - <code>video/mp4</code>。</li>
+<li><code>.mpeg</code> - <code>video/mpeg</code>。</li>
+<li><code>.mpg</code> - <code>video/mpeg</code>。</li>
+<li><code>.ogm</code> - <code>video/ogg</code>。</li>
+<li><code>.ogv</code> - <code>video/ogg</code>。</li>
+<li><code>.webm</code> - <code>video/webm</code>。</li>
+</ul></li>
+</ul>
+<h3 id="示例">示例</h3>
+<p>如下例子为分享网页链接：一个监测点击按钮行为，调用 Web Share API 分享
+MDN 的 URL 的例子。这是从我们的 <a href="https://mdn.github.io/dom-examples/web-share/">Web Share
+Test</a>（<a href="https://github.com/mdn/dom-examples/blob/master/web-share/index.html">见源代码</a>）中复制过来的。</p>
+<h4 id="html">HTML</h4>
+<p>HTML 代码仅仅只包括一个按钮供触发事件以及一个 <code>&lt;p&gt;</code>
+标签用于显示测试结果。</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;p&gt;&lt;button&gt;</span>Share MDN!<span class="kw">&lt;/button&gt;&lt;/p&gt;</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;p</span> <span class="er">class</span><span class="ot">=</span><span class="st">"result"</span><span class="kw">&gt;&lt;/p&gt;</span></span></code></pre></div>
+<h3 id="javascript">JavaScript</h3>
+<div class="sourceCode" id="cb7"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> shareData <span class="op">=</span> {</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">title</span><span class="op">:</span> <span class="st">'MDN'</span><span class="op">,</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">text</span><span class="op">:</span> <span class="st">'在 MDN 上学习技术！'</span><span class="op">,</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">url</span><span class="op">:</span> <span class="st">'https://developer.mozilla.org'</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>}<span class="op">;</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> btn <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">querySelector</span>(<span class="st">'button'</span>)<span class="op">;</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> resultPara <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">querySelector</span>(<span class="st">'.result'</span>)<span class="op">;</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="co">// 分享操作必须由用户行为触发</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>btn<span class="op">.</span><span class="fu">addEventListener</span>(<span class="st">'click'</span><span class="op">,</span> <span class="kw">async</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  <span class="cf">try</span> {</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">await</span> <span class="bu">navigator</span><span class="op">.</span><span class="fu">share</span>(shareData)<span class="op">;</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>    resultPara<span class="op">.</span><span class="at">textContent</span> <span class="op">=</span> <span class="st">'MDN 链接被成功分享了'</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">catch</span>(err) {</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>    resultPara<span class="op">.</span><span class="at">textContent</span> <span class="op">=</span> <span class="st">'Error: '</span> <span class="op">+</span> err</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span></code></pre></div>
+<h3 id="规范">规范</h3>
+<p>相关规范：<a href="https://w3c.github.io/web-share/#share-method">Web
+Share API #share-method</a></p>
+
+
+
+            </div>
+        </article>
+        <div class="sidebar">
+            <div class="about-box">
+    <div class="avatar">
+        <img src="/assets/media/bitmap/avatar.jpeg" alt="avatar">
+    </div>
+    <h1>霜羽 Hoarfroster</h1>
+    <h2>@PassionPenguin</h2>
+    <p class="moment"><span class="status">🤔</span><span>努力！</span></p>
+    <ul>
+        <li><i class="fa-solid fa-location-dot"></i> 广东 · 广州 | <span class="light">Guangzhou, China</span>
+        </li>
+        <li><i class="fa-solid fa-envelope"></i> <a href="mailto:hoarfroster@outlook.com">hoarfroster@outlook.com</a>
+        </li>
+        <li><i class="fa-solid fa-house"></i> <a href="https://story.hoarfroster.space/">https://story.hoarfroster.space/</a>
+        </li>
+    </ul>
+</div>
+<div class="organization">
+    <h4>组织 Organizations</h4>
+    <ul>
+        <li>
+            <img src="https://avatars.githubusercontent.com/u/81648011?s=60&amp;v=4"
+                alt="Hexa-Penguin"><span>Hexa-Penguin</span>
+        </li>
+        <li>
+            <img src="https://avatars.githubusercontent.com/u/10482599?s=60&amp;v=4" alt="xitu"><span>稀土 xitu</span>
+        </li>
+    </ul>
+</div>
+<div class="category">
+    <span class="title">文章分类</span>
+    <ul>
+        <!-- <li><a href="/archive.html">所有分类</a></li> -->
+    </ul>
+</div>
+<div class="archive">
+    <span class="title">文章存档</span>
+    <ul>
+        <!-- <li><a href="/archive.html">所有文章</a></li> -->
+    </ul>
+</div>
+        </div>
+    </div>
+    <div class="footer">
+    <div class="content">
+        <div class="about">
+            <p>霜羽 Hoarfroster</p>
+            <p>&copy; Copyright 2021 Hoarfroster and contributors.</p>
+        </div>
+        <div class="nav">
+            <div class="links">
+                <span class="title">关于文章</span>
+                <ul>
+                    <li><a href="/archive.html">文章存档</a></li>
+                </ul>
+            </div>
+            <div class="category">
+                <span class="title">关于霜羽</span>
+                <ul>
+                    <li><a href="/about.html">有关霜羽</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <ul class="social-accounts">
+        <li>
+            <a href="https://www.zhihu.com/people/shuang-yu-29-75">
+                <i class="fa-brands fa-zhihu" style="font-size: 24px; color:#06f; line-height: 24px;"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://github.com/PassionPenguin">
+                <img src="/assets/media/vectors/github.svg" alt="github-logo"/>
+            </a>
+        </li>
+        <li>
+            <a href="https://dribbble.com/Hoarfroster">
+                <img src="/assets/media/vectors/dribbble.svg" alt="dribbble-logo"/>
+            </a>
+        </li>
+        <li>
+            <a href="https://zh.wikipedia.org/wiki/User:HoarfrostFeather">
+                <i class="fa-brands fa-wikipedia-w" style="font-size: 22px; color: #888; line-height: 24px;"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://space.bilibili.com/201469972">
+                <i class="fa-brands fa-bilibili" style="font-size: 22px; color: #00a1d6; line-height: 24px;"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+</body>
+
+</html>

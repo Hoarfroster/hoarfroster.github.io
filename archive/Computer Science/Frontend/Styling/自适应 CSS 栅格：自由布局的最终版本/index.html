@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自适应 CSS 栅格：自由布局的最终版本</title>
+    <script src="/assets/script/main.js"></script>
+    <link rel="stylesheet" href="/assets/style/styles.css">
+</head>
+
+<body>
+    <div class="header">
+    <div class="container">
+        <div class="icon">
+            <img src="/assets/media/vectors/hoarfroster-text.svg" alt="Hoarfroster Logo with Text">
+        </div>
+        <nav class="navigation">
+            <ul class="header-navigation-list">
+                <li><a href="/">首页</a></li>
+                <li><a href="/archive.html">文章</a></li>
+                <li><a href="/about.html">关于</a></li>
+            </ul>
+            <form action="/search" method="post">
+                <label>
+                    <input type="text" class="search" placeholder="搜索咕咕咕的小站"/>
+                </label>
+                <label class="submit">
+                    <input type="submit"/>
+                </label>
+            </form>
+        </nav>
+        <ul class="social-accounts">
+            <li>
+                <a href="https://www.zhihu.com/people/shuang-yu-29-75">
+                    <i class="fa-brands fa-zhihu" style="font-size: 20px; color:#06f; line-height: 20px;"></i>
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/PassionPenguin">
+                    <img src="/assets/media/vectors/github.svg" alt="github-logo"/>
+                </a>
+            </li>
+            <li>
+                <a href="https://dribbble.com/Hoarfroster">
+                    <img src="/assets/media/vectors/dribbble.svg" alt="dribbble-logo"/>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+    <div class="content article">
+        <article>
+            <div class="title">
+                <h1>自适应 CSS 栅格：自由布局的最终版本</h1>
+                <p><span class='chars'>8407B</span><span class='created-date'>Created Sun Jun 12 2022 23:55:03 GM</span><span class='modified-date'>Modified Sun Jun 12 2022 23:55:03 GM</span></p>
+            </div>
+            <div class="main markdown-body">
+                
+
+<blockquote>
+<ul>
+<li>原文地址：<a href="https://medium.muz.li/understanding-css-grid-ce92b7aa67cb">Responsive
+CSS Grid: The Ultimate Layout Freedom</a></li>
+<li>原文作者：<a href="https://medium.com/@christinevallaure">Christine
+Vallaure</a></li>
+<li>译者：<a href="https://github.com/PassionPenguin">霜羽
+Hoarfroster</a></li>
+<li>校对者：<a href="https://github.com/zenblo">zenblo</a>、<a href="https://github.com/Chorer">Chorer</a>、<a href="https://github.com/lsvih">lsvih</a></li>
+</ul>
+</blockquote>
+<p><img src="https://cdn-images-1.medium.com/max/2800/0*MJfiLHUiFLi5M2sm.png"></p>
+<p>CSS 栅格布局（Grid）是一种全新的在 Web
+上创建二维布局的方法。我们仅需几行 CSS，就可以创建一个之前不用
+JavaScript
+根本不可能实现的栅格布局。我们不需要任何插件或复杂的安装步骤，不需要繁琐的附加文件，同时也不需要局限于
+12 列的栅格布局（译者注：指 Bootstrap 提供的 12 栅格系统）。</p>
+<h2 id="我们可以使用什么栅格">我们可以使用什么栅格？</h2>
+<p>简而言之：我们实际上可以使用<strong>几乎所有能够想到的栅格布局</strong>，并且还不限于此。我们可以自由地选择不同栅格的尺寸、大小和位置。你可以在<a href="https://gridbyexample.com/examples/">栅格示例</a>中找到最常见的带有标记的栅格的概述。</p>
+<h3 id="让我们从构建示例的-html-标记开始吧">让我们从构建示例的 HTML
+标记开始吧！</h3>
+<p>一个类名为 <code>container</code> 的 <code>div</code> 元素容纳了 5
+个子 <code>div</code> 元素，或称之为项目（当然，可以比 5
+个更多或者更少）。如果你愿意，我们可以直接从 <a href="https://codepen.io/chrisvall/pen/YJJdxQ">CodePen 中的 HTML 和 CSS
+标记</a>代码入手。</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;div</span> <span class="er">class</span><span class="ot">=</span><span class="st">"container"</span><span class="kw">&gt;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;div</span> <span class="er">class</span><span class="ot">=</span><span class="st">"item color-1"</span><span class="kw">&gt;</span>item-1<span class="kw">&lt;/div&gt;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;div</span> <span class="er">class</span><span class="ot">=</span><span class="st">"item color-2"</span><span class="kw">&gt;</span>item-2<span class="kw">&lt;/div&gt;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;div</span> <span class="er">class</span><span class="ot">=</span><span class="st">"item color-3"</span><span class="kw">&gt;</span>item-3<span class="kw">&lt;/div&gt;</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;div</span> <span class="er">class</span><span class="ot">=</span><span class="st">"item color-4"</span><span class="kw">&gt;</span>item-4<span class="kw">&lt;/div&gt;</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;div</span> <span class="er">class</span><span class="ot">=</span><span class="st">"item color-5"</span><span class="kw">&gt;</span>item-5<span class="kw">&lt;/div&gt;</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/div&gt;</span></span></code></pre></div>
+<p><img src="https://cdn-images-1.medium.com/max/2800/0*lCX1UQBdGhuXCuJl.jpeg" alt="我额外添加了一些 CSS 代码让大家更好理解，与 Grid 实现毫无关系"></p>
+<h3 id="基础在-css-中设置栅格和行列">基础：在 CSS 中设置栅格和行列</h3>
+<p>在 CSS 中，我们可以通过 <code>display: grid</code> 定义将
+<code>.container</code> 类的元素变为栅格布局。通过使用
+<code>grid-template-columns</code>，我们划分了所需的列（本例中将划分 5
+列，每列设置为 250px）。通过使用
+<code>grid-template-rows</code>，我们可以设置行的高度（如果需要的话），本例中是
+150px。完成以上步骤之后，我们就实现了第一个栅格布局！</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.container</span> {</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">display</span>: grid<span class="op">;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">grid-template-columns</span>: <span class="dv">250</span><span class="dt">px</span> <span class="dv">250</span><span class="dt">px</span> <span class="dv">250</span><span class="dt">px</span> <span class="dv">250</span><span class="dt">px</span> <span class="dv">250</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">grid-template-rows</span>: <span class="dv">150</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">/* 缩写：</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"> grid-template-columns: repeat(5, 250px); */</span> </span></code></pre></div>
+<p><img src="https://cdn-images-1.medium.com/max/2800/0*yYYJTjLzTLzogzyu.jpeg"></p>
+<h3 id="设置间隔">设置间隔</h3>
+<p>我们可以使用 <code>grip-gap</code> 来设置每一项之间的间隔，也可以使用
+<code>column-gap</code> 和 <code>row-gap</code>
+分别设置水平和垂直的间隔。顺便提一句，我们可以使用所有通用单位，例如使用
+<code>px</code> 用于设置固定的间隔，或使用 <code>％</code>
+来设置自适应的间隔。</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.container</span> {</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">display</span>: grid<span class="op">;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">grid-template-columns</span>: <span class="fu">repeat(</span><span class="dv">5</span><span class="op">,</span> <span class="dv">250</span><span class="dt">px</span><span class="fu">)</span><span class="op">;</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">grid-template-rows</span>: <span class="dv">150</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">grid-gap</span>: <span class="dv">30</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p><img src="https://cdn-images-1.medium.com/max/2800/0*CR0ENpYQu_-fNCuD.png" alt="需要注意的是容器的左边会将间隔减半，因此在本例中他们的间隔是 15px（对大多数其它的栅格同理）"></p>
+<p><small>译者注：在 Chrome 91，Safari 14.0.2，Firefox 86.0a1
+均未有此现象，估摸为原文笔误或版本不同</small></p>
+<h3 id="使用-fr-自动填充剩余空间">使用 <code>fr</code>
+自动填充剩余空间</h3>
+<p>这可是每一个设计师的梦想！我们可以使用
+<strong>分数单位</strong>（Fractional Units）或简写
+<code>fr</code>，根据我们自己的想法分配可用空间！例如，在这里，我们将屏幕空间划分为
+6 个部分。 第一列占用空间的 1/6 = 1fr，第二列 3/6 = 3fr，第三列 2/6 =
+2fr。当然，我们也可以根据需要添加 <code>grid-gap</code>。</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.container</span> {</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">display</span>: grid<span class="op">;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">grid-template-columns</span>: <span class="dv">1</span>fr <span class="dv">3</span>fr <span class="dv">2</span>fr<span class="op">;</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p><img src="https://cdn-images-1.medium.com/max/2980/0*yh7hFOcFs43LM9q8.gif"></p>
+<p>现在所有的行都是自适应的！</p>
+<h3 id="混合使用-px-和-fr-构建自适应而又固定的列">混合使用
+<code>px</code> 和 <code>fr</code> 构建自适应而又固定的列</h3>
+<p><code>px</code> 和 <code>fr</code>
+的按需同时使用可以让栅格适应可用的空间，这非常好用！</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.container</span> {</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">display</span>: grid<span class="op">;</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">grid-template-columns</span>: <span class="dv">300</span><span class="dt">px</span> <span class="dv">3</span>fr <span class="dv">2</span>fr<span class="op">;</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p><img src="https://cdn-images-1.medium.com/max/2000/0*9buHg29Y9pG0bJir.gif" alt="第一列用了 px 去固定尺寸，而剩余的布局是自适应的"></p>
+<h3 id="排序上的绝对自由">排序上的绝对自由</h3>
+<p>私以为，最棒的是在栅格中，我们可以自由设置每一项所占用的尺寸！我们可以用
+<code>grid-column-start</code> 设置起点，并用
+<code>grid-column-end</code> 设置终点，或采用缩写方式
+<code>grid-column: startpoint / endpoint;</code>：</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.container</span> {</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">display</span>: grid<span class="op">;</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">grid-template-columns</span>: <span class="dv">1</span>fr <span class="dv">3</span>fr <span class="dv">2</span>fr<span class="op">;</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="fu">.item-1</span> {</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">grid-column</span>: <span class="dv">1</span> / <span class="dv">4</span><span class="op">;</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="fu">.item-5</span> {</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">grid-column</span>: <span class="dv">3</span> / <span class="dv">4</span><span class="op">;</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p><img src="https://cdn-images-1.medium.com/max/2800/0*fGVZP5_NMbf9UJs3.png"></p>
+<p>别被栅格线所迷惑，它们总是在第一项的开始！</p>
+<h3 id="同样适用于垂直或全区域的分布">同样适用于垂直或全区域的分布！</h3>
+<p>在这方面 CSS Grid 耀眼十足，表现出了对比 Bootstrap 和 Co 的优越性 ——
+借助
+<code>grid-row</code>，每一项都可以定义任意的位置及宽度。正如我们将在下一个示例中看到的那样，这对于适应不同屏幕尺寸和设备具有绝对优势：</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.container</span> {</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">display</span>: grid<span class="op">;</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">grid-template-columns</span>: <span class="dv">1</span>fr <span class="dv">3</span>fr <span class="dv">2</span>fr<span class="op">;</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="fu">.item-2</span> {</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">grid-row</span>: <span class="dv">1</span> / <span class="dv">3</span><span class="op">;</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="fu">.item-1</span> {</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">grid-column</span>: <span class="dv">1</span> / <span class="dv">4</span><span class="op">;</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">grid-row</span>: <span class="dv">3</span> / <span class="dv">4</span><span class="op">;</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p><img src="https://cdn-images-1.medium.com/max/2800/0*a3fS5-GjETjWhArV.png" alt="任何垂直方向上的宽度和位置 "></p>
+<h3 id="想要适应不同的屏幕尺寸和设备当然没问题">想要适应不同的屏幕尺寸和设备？当然没问题！</h3>
+<p>CSS Grid
+与常规栅格相比也具有明显的优势，根据屏幕大小，我们不仅可以通过媒体查询从自适应值切换到固定值，还可以调整整个项目的位置！</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.container</span> {</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">display</span>: grid<span class="op">;</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">grid-template-columns</span>: <span class="dv">250</span><span class="dt">px</span> <span class="dv">3</span>fr <span class="dv">2</span>fr<span class="op">;</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="fu">.item-1</span> {</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">grid-column</span>: <span class="dv">1</span> / <span class="dv">4</span><span class="op">;</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="fu">.item-2</span> {</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">grid-row</span>: <span class="dv">2</span> / <span class="dv">4</span><span class="op">;</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="im">@media</span> <span class="kw">only</span> <span class="dv">screen</span> <span class="kw">and</span> (<span class="kw">max-width</span>: <span class="dv">720</span><span class="dt">px</span>) {</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">.container</span> {</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>        <span class="kw">grid-template-columns</span>: <span class="dv">1</span>fr <span class="dv">1</span>fr<span class="op">;</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">.item-1</span> {</span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>        <span class="kw">grid-column</span>: <span class="dv">1</span> / <span class="dv">3</span><span class="op">;</span></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>        <span class="kw">grid-row</span>: <span class="dv">2</span> / <span class="dv">3</span><span class="op">;</span></span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">.item-2</span> {</span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>        <span class="kw">grid-row</span>: <span class="dv">1</span> / <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p><img src="https://cdn-images-1.medium.com/max/2856/0*zF54G2_cLwYLyNh-.gif"></p>
+<h2 id="浏览器支持">浏览器支持</h2>
+<p>现在，所有现代浏览器（Safari、Chrome、Firefox、Edge）都原生地支持 CSS
+Grid。凭借 87.85% 的全球支持率（译者注：截止至译文发布时，支持率已达到
+95.47％），CSS Grid 已经成为 Boostrap 和 Co 的替代品。</p>
+<p><img src="https://github.com/PassionPenguin/picgo-database/blob/main/understanding-css-grid-caniuse.com__search=CSS%2520Grid.png?raw=true" alt="2021 年 3 月的状态，数据来自 caniuse.com"></p>
+<h2 id="css-栅格的实践案例">CSS 栅格的实践案例</h2>
+<ul>
+<li><a href="http://www.christinevallaure.com">christinevallaure.com,</a>，UX/UI
+设计</li>
+<li><a href="https://moonlearning.io/">moonlearning.io</a>，UX/UI
+在线课程</li>
+<li><a href="https://slack.com/intl/de-de/">Slack</a>，企业网站</li>
+<li><a href="https://medium.com/">Medium</a>，原文发布的地方</li>
+<li><a href="https://photo.skylerhughes.com/">Skyler
+Hughes</a>，摄影网站</li>
+<li><a href="https://mxb.at/">Max Böck</a>，前端开发者网站</li>
+<li><a href="https://designcode.io/">Design+Code</a>，Web
+设计师站点</li>
+<li><a href="http://www.hi.agency/deck/">Hi Agency,
+Deck</a>，模版页面</li>
+</ul>
+<h2 id="在你开始使用-grid-之前">在你开始使用 Grid 之前</h2>
+<p>我想你可能还会喜欢我在 <a href="https://moonlearning.io/">moonlearning.io</a> 或<a href="https://www.udemy.com/course/design-handoff/?referralCode=1296BF141742FFA166C2">完整的设计移交到开发课程</a>
+上发布的其它文章和课程（有关如何使用 Grid 的更多信息！）。</p>
+
+
+
+            </div>
+        </article>
+        <div class="sidebar">
+            <div class="about-box">
+    <div class="avatar">
+        <img src="/assets/media/bitmap/avatar.jpeg" alt="avatar">
+    </div>
+    <h1>霜羽 Hoarfroster</h1>
+    <h2>@PassionPenguin</h2>
+    <p class="moment"><span class="status">🤔</span><span>努力！</span></p>
+    <ul>
+        <li><i class="fa-solid fa-location-dot"></i> 广东 · 广州 | <span class="light">Guangzhou, China</span>
+        </li>
+        <li><i class="fa-solid fa-envelope"></i> <a href="mailto:hoarfroster@outlook.com">hoarfroster@outlook.com</a>
+        </li>
+        <li><i class="fa-solid fa-house"></i> <a href="https://story.hoarfroster.space/">https://story.hoarfroster.space/</a>
+        </li>
+    </ul>
+</div>
+<div class="organization">
+    <h4>组织 Organizations</h4>
+    <ul>
+        <li>
+            <img src="https://avatars.githubusercontent.com/u/81648011?s=60&amp;v=4"
+                alt="Hexa-Penguin"><span>Hexa-Penguin</span>
+        </li>
+        <li>
+            <img src="https://avatars.githubusercontent.com/u/10482599?s=60&amp;v=4" alt="xitu"><span>稀土 xitu</span>
+        </li>
+    </ul>
+</div>
+<div class="category">
+    <span class="title">文章分类</span>
+    <ul>
+        <!-- <li><a href="/archive.html">所有分类</a></li> -->
+    </ul>
+</div>
+<div class="archive">
+    <span class="title">文章存档</span>
+    <ul>
+        <!-- <li><a href="/archive.html">所有文章</a></li> -->
+    </ul>
+</div>
+        </div>
+    </div>
+    <div class="footer">
+    <div class="content">
+        <div class="about">
+            <p>霜羽 Hoarfroster</p>
+            <p>&copy; Copyright 2021 Hoarfroster and contributors.</p>
+        </div>
+        <div class="nav">
+            <div class="links">
+                <span class="title">关于文章</span>
+                <ul>
+                    <li><a href="/archive.html">文章存档</a></li>
+                </ul>
+            </div>
+            <div class="category">
+                <span class="title">关于霜羽</span>
+                <ul>
+                    <li><a href="/about.html">有关霜羽</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <ul class="social-accounts">
+        <li>
+            <a href="https://www.zhihu.com/people/shuang-yu-29-75">
+                <i class="fa-brands fa-zhihu" style="font-size: 24px; color:#06f; line-height: 24px;"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://github.com/PassionPenguin">
+                <img src="/assets/media/vectors/github.svg" alt="github-logo"/>
+            </a>
+        </li>
+        <li>
+            <a href="https://dribbble.com/Hoarfroster">
+                <img src="/assets/media/vectors/dribbble.svg" alt="dribbble-logo"/>
+            </a>
+        </li>
+        <li>
+            <a href="https://zh.wikipedia.org/wiki/User:HoarfrostFeather">
+                <i class="fa-brands fa-wikipedia-w" style="font-size: 22px; color: #888; line-height: 24px;"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://space.bilibili.com/201469972">
+                <i class="fa-brands fa-bilibili" style="font-size: 22px; color: #00a1d6; line-height: 24px;"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+</body>
+
+</html>

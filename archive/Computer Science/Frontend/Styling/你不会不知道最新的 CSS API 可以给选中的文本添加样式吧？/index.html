@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>你不会不知道最新的 CSS API 可以给选中的文本添加样式吧？</title>
+    <script src="/assets/script/main.js"></script>
+    <link rel="stylesheet" href="/assets/style/styles.css">
+</head>
+
+<body>
+    <div class="header">
+    <div class="container">
+        <div class="icon">
+            <img src="/assets/media/vectors/hoarfroster-text.svg" alt="Hoarfroster Logo with Text">
+        </div>
+        <nav class="navigation">
+            <ul class="header-navigation-list">
+                <li><a href="/">首页</a></li>
+                <li><a href="/archive.html">文章</a></li>
+                <li><a href="/about.html">关于</a></li>
+            </ul>
+            <form action="/search" method="post">
+                <label>
+                    <input type="text" class="search" placeholder="搜索咕咕咕的小站"/>
+                </label>
+                <label class="submit">
+                    <input type="submit"/>
+                </label>
+            </form>
+        </nav>
+        <ul class="social-accounts">
+            <li>
+                <a href="https://www.zhihu.com/people/shuang-yu-29-75">
+                    <i class="fa-brands fa-zhihu" style="font-size: 20px; color:#06f; line-height: 20px;"></i>
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/PassionPenguin">
+                    <img src="/assets/media/vectors/github.svg" alt="github-logo"/>
+                </a>
+            </li>
+            <li>
+                <a href="https://dribbble.com/Hoarfroster">
+                    <img src="/assets/media/vectors/dribbble.svg" alt="dribbble-logo"/>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+    <div class="content article">
+        <article>
+            <div class="title">
+                <h1>你不会不知道最新的 CSS API 可以给选中的文本添加样式吧？</h1>
+                <p><span class='chars'>16737B</span><span class='created-date'>Created Sun Jun 12 2022 23:55:03 GM</span><span class='modified-date'>Modified Sun Jun 12 2022 23:55:03 GM</span></p>
+            </div>
+            <div class="main markdown-body">
+                
+
+<blockquote>
+<ul>
+<li>原文地址：<a href="https://css-tricks.com/css-custom-highlight-api-early-loo/">CSS
+Custom Highlight API: The Future of Highlighting Text Ranges on the
+Web</a></li>
+<li>原文作者：<a href="https://css-tricks.com/author/patrickbrosset/">Patrick Brosset
+</a></li>
+<li>译者：<a href="https://github.com/PassionPenguin">霜羽
+Hoarfroster</a></li>
+</ul>
+</blockquote>
+<p><strong>给选中的文本添加样式</strong>并不是没用的行为，而值得开心的是，CSS
+Custom Highlight API 即将到来，而且它将会成为未来 Web
+上样式化选中文本的不二法门！</p>
+<p><img src="https://i0.wp.com/css-tricks.com/wp-content/uploads/2022/02/s_8E0FC85C45E73C25EFCF623C768360F2F95DBDDEC338D5F6DE316BB0830F6F67_1644484463021_highlight-api-demo-no-text-deco.gif?resize=800%2C733&amp;ssl=1" alt="CSS Custom Highlight API demo 动画演示"></p>
+<p>举个例子：如果我们用过 知乎编辑器、Google Docs、百度文库、Word 或
+Dropbox Paper
+这些文本编辑软件，我们不难发现它们会检测到拼写和语法错误，并会在错误的下方用下划波浪线提醒我们**“大傻子！写错了！”**。类似的，VS
+Code、IDEA 这样的代码编辑器也会在出现代码错误时有类似的提醒。</p>
+<p><img src="https://i0.wp.com/css-tricks.com/wp-content/uploads/2022/02/s_8E0FC85C45E73C25EFCF623C768360F2F95DBDDEC338D5F6DE316BB0830F6F67_1643042116795_image.png?resize=977%2C269&amp;ssl=1"></p>
+<p>对于高亮文本，另一个非常常见的用例的是<strong>搜索并高亮</strong>这一操作。在我们进行网页内搜索时，浏览器会弹出一个文本输入框。在我们输入相关内容后，网页中相匹配的内容就会被高亮。我们可以现在试试按
+<code>Ctrl</code>/<code>⌘</code>+
+<code>F</code>，然后并输入本文中的一些文字尝试这一操作。</p>
+<p><img src="https://i0.wp.com/css-tricks.com/wp-content/uploads/2022/02/s_8E0FC85C45E73C25EFCF623C768360F2F95DBDDEC338D5F6DE316BB0830F6F67_1643042176497_image.png?resize=1117%2C951&amp;ssl=1"></p>
+<p>浏览器本身就经常需要处理这类高亮，比如说可编辑元素（如
+<code>&lt;textarea&gt;</code>）会有错误拼写检查，搜索功能会自动高亮找到的文本内容……</p>
+<p>但是我们是否（或者我们的产品经理是否）想要让我们在网页上实现这种样式呢？似乎在网页上实现高亮文本一直是个常见的需求，可能浪费了不少人让他们去造轮子……</p>
+<p>别把这个问题想得太简单啦，我们不只需要将文本扔进一个有特定
+<code>class</code> 的 <code>&lt;span&gt;</code> 中并对它应用一些 CSS
+样式。实际上，我们需要能够在各种情形下的复杂的 DOM
+树中正确高亮文本<em>多段</em>文本，并且任意一段文本都可能会跨越多个 DOM
+元素的边界。</p>
+<p>有两种常见的解决方案，包括：</p>
+<ol type="1">
+<li>给伪元素样式化（<code>:selection</code> 等伪元素）；</li>
+<li>创建自己的文本高亮系统；</li>
+</ol>
+<p>我们将首先用这两种方法完成高亮文本操作，然后看看<strong>即将推出的可以改变这一切的
+CSS Custom Highlight API</strong>。</p>
+<h3 id="潜在方案-1可样式化的文本范围">潜在方案
+#1：可样式化的文本范围</h3>
+<p>可能最常见的用例是我们选择的文本，当我们使用鼠标等选择网页中的一段文本时，浏览器会自动创建一个
+<a href="https://developer.mozilla.org/en-US/docs/Web/API/Selection"><code>Selection</code></a>
+对象。事实上，现在尝试在此页面上选择文本，然后在 DevTools 控制台中运行
+<code>document.getSelection()</code>。
+我们应该会看到有关所选文本的位置信息。</p>
+<p><img src="https://i0.wp.com/css-tricks.com/wp-content/uploads/2022/02/Screen-Shot-2022-02-14-at-7.33.16-AM.png?resize=1846%2C1196&amp;ssl=1" alt="DevTools 的一个显示当前文本选择位置的控制台窗口。"></p>
+<p>事实证明，我们还可以通过 JavaScript 以编程方式创建文本选择。
+这是一个例子：</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">// First, create a Range object.</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> range <span class="op">=</span> <span class="kw">new</span> <span class="bu">Range</span>()<span class="op">;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">// And set its start and end positions.</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>range<span class="op">.</span><span class="fu">setStart</span>(parentNode<span class="op">,</span> startOffset)<span class="op">;</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>range<span class="op">.</span><span class="fu">setEnd</span>(parentNode<span class="op">,</span> endOffset)<span class="op">;</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">// Then, set the current selection to this range.</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="bu">document</span><span class="op">.</span><span class="fu">getSelection</span>()<span class="op">.</span><span class="fu">removeAllRanges</span>()<span class="op">;</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="bu">document</span><span class="op">.</span><span class="fu">getSelection</span>()<span class="op">.</span><span class="fu">addRange</span>(range)<span class="op">;</span></span></code></pre></div>
+<p>还有一些代码，用于定义选中内容的样式。 CSS 有一个名为 <a href="https://css-tricks.com/almanac/selectors/s/selection/"><code>::selection</code></a>
+的伪元素可以做到这一点，它在 [所有浏览器](https:
+//caniuse.com/css-selection) 中几乎都得到支持。</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="in">::selection</span> {</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">background-color</span>: <span class="cn">#f06</span><span class="op">;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">color</span>: <span class="cn">white</span><span class="op">;</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>这是一个使用此方案按单词顺序高亮页面中所有单词的示例：<a href="https://codepen.io/captainbrosset/pen/eYeYJBx">CodePen</a>。</p>
+<p>在 <code>::selection</code> 伪元素之上，还有许多其他伪元素：</p>
+<ul>
+<li><code>::target-text</code> 选择在支持 <a href="https://wicg.github.io/scroll-to-text-fragment/">scroll-to-text</a>
+功能的浏览器中滚动到的文本。 (<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/::target-text">MDN</a>)</li>
+<li><code>::spelling-error</code> 选择被浏览器标记为包含拼写错误的文本。
+(<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/::spelling-error">MDN</a>)</li>
+<li><code>::grammar-error</code> 选择被浏览器标记为包含语法错误的文本。
+(<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/::grammar-error">MDN</a>)</li>
+</ul>
+<p>不幸的是，这些 CSS
+选择器的浏览器支持不是很好，虽然这些范围选择器在需要用到它们的领域中都很有用，但它们不能用于设置自定义文本的样式
+—— 这些只能由浏览器定义。</p>
+<p>所以我们的方案很好，因为它相对简单，不会改变页面的
+DOM。事实上，<code>Range</code>
+对象本质上是页面中段落的坐标，而不是需要创建才能存在的 HTML 元素。</p>
+<p>然而，一个主要缺点是创建选择会重置用户已经手动选择的任何内容。尝试在上面的演示中选择文本来测试它。一旦代码将选择移动到其他地方，我们就会看到它是如何消失的。</p>
+<h3 id="潜在方案-2自定义高亮文本系统">潜在方案
+#2：自定义高亮文本系统</h3>
+<p>如果使用 <code>Selection</code>
+对象对我们来说不够用，那么第二个解决方案几乎是我们唯一可以做的事情。这个解决方案围绕着自己做所有事情，使用
+JavaScript 在我们希望高亮文本的 DOM 中插入新的 HTML 元素。</p>
+<p>不幸的是，这意味着要编写和维护更多的
+JavaScript，更不用说它迫使浏览器在高亮文本发生变化时重新创建页面布局。此外，还有一些复杂的边缘情况，例如，当我们想要高亮文本跨越多个
+DOM 元素的一段文本时。</p>
+<p><img src="https://i0.wp.com/css-tricks.com/wp-content/uploads/2022/02/s_8E0FC85C45E73C25EFCF623C768360F2F95DBDDEC338D5F6DE316BB0830F6F67_1643109885151_image.png?resize=1129%2C100&amp;ssl=1" alt="显示一行用斜体、粗体显示，并且由一条亮黄色的高亮的 HTML 内容。"></p>
+<p>有趣的是，<a href="https://codemirror.net">CodeMirror</a> 和 <a href="https://microsoft.github.io/monaco-editor/">Monaco</a>（支持 VS
+Code 的 JavaScript
+文本编辑器库）有自己的高亮逻辑，使用了稍微不同的方法，其中高亮放在了 DOM
+树单独一个部分中 —— 文本行和高亮文本的段在 DOM
+中的两个不同位置呈现，然后彼此重叠。如果我们检查包含文本的 DOM
+子树，你会发现并没有高亮样式。这样，可以重新渲染高亮样式，而不会影响文本行，也不必在其中引入新元素。</p>
+<p>总体而言，感觉就像缺少浏览器驱动的高亮文本功能。有助于解决所有这些缺点（不干扰用户文本选择、多选支持、简单代码）并且比定制解决方案更快的东西。</p>
+<p>幸运的是，这就是我们在这里谈论的内容！</p>
+<h3 id="开始研究-css-自定义高亮-api">开始研究 CSS 自定义高亮 API</h3>
+<p><a href="https://www.w3.org/TR/css-highlight-api-1/">CSS 自定义高亮
+API</a> 是一个新的 W3C
+规范（目前处于工作草案状态），它可以设置任意文本范围的样式来自
+JavaScript！这里的方法与我们之前回顾的用户文本选择技术非常相似。它为开发人员提供了一种从
+JavaScript 创建任意范围，然后使用 CSS 设置样式的方法。</p>
+<h4 id="创建文本范围">创建文本范围</h4>
+<p>第一步是创建要高亮文本的文本范围。这可以使用 JavaScript 中的 <a href="https://developer.mozilla.org/en-US/docs/Web/API/Range"><code>Range</code></a>
+来完成。所以，就像我们在设置当前选择时所做的那样：</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> range <span class="op">=</span> <span class="kw">new</span> <span class="bu">Range</span>()<span class="op">;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>range<span class="op">.</span><span class="fu">setStart</span>(parentNode<span class="op">,</span> startOffset)<span class="op">;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>range<span class="op">.</span><span class="fu">setEnd</span>(parentNode<span class="op">,</span> endOffset)<span class="op">;</span></span></code></pre></div>
+<p>值得注意的是，如果作为第一个参数传递的节点是否是文本节点，则
+<code>setStart</code> 和 <code>setEnd</code>
+方法的工作方式不同。对于文本节点，偏移量对应于节点内的字符数。对于其他节点，偏移量对应于父节点内的子节点数。</p>
+<p>另外值得注意的是，<code>setStart</code> 和 <code>setEnd</code>
+并不是描述范围开始和结束位置的唯一方法。查看 <code>Range</code>
+类上可用的 <a href="https://developer.mozilla.org/en-US/docs/Web/API/Range#methods">其他方法</a>
+以查看其他选项。</p>
+<h4 id="创建-highlight-对象">创建 Highlight 对象</h4>
+<p>第二步包括为最后一步中创建的范围创建 <a href="https://www.w3.org/TR/css-highlight-api-1/#highlight"><code>Highlight</code></a>
+对象。一个 <code>Highlight</code> 对象可以接收一个或多个
+<code>Range</code>。因此，如果我们想以完全相同的方式高亮文本一堆文本，我们可能应该创建一个
+<code>Highlight</code> 对象并使用与这些文本相对应的所有
+<code>Range</code> 来初始化它。</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> highlight <span class="op">=</span> <span class="kw">new</span> <span class="fu">Highlight</span>(range1<span class="op">,</span> range2<span class="op">,</span> <span class="op">...,</span> rangeN)<span class="op">;</span></span></code></pre></div>
+<p>但我们也可以根据需要创建任意数量的 <code>Highlight</code> 对象。
+例如，如果我们正在构建一个协作文本编辑器，其中每个用户都获得不同的文本颜色，那么我们可以为每个用户创建一个
+<code>Highlight</code> 对象。
+然后每个对象都可以设置不同的样式，我们接下来会看到。</p>
+<h4 id="注册-highlight">注册 Highlight</h4>
+<p>现在高亮对象自己不做任何事情。 他们首先需要在所谓的高亮注册表中注册。
+这是通过使用 <a href="https://www.w3.org/TR/css-highlight-api-1/#highlight-registry">CSS
+Highlights API</a> 完成的。
+注册表就像一张地图，我们可以在其中通过命名来注册新的亮点，以及删除亮点（甚至清除整个注册表）。</p>
+<p>这是注册单个亮点的方法。</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">CSS</span><span class="op">.</span><span class="at">highlights</span><span class="op">.</span><span class="fu">set</span>(<span class="st">'my-custom-highlight'</span><span class="op">,</span> highlight)<span class="op">;</span></span></code></pre></div>
+<p>其中 <code>my-custom-highlight</code> 是我们选择的名称，而
+<code>highlight</code> 是在最后一步中创建的 <code>Highlight</code>
+对象。</p>
+<h4 id="给高亮文本设置样式">给高亮文本设置样式</h4>
+<p>最后一步是实际设置注册高光的样式。 通过定义新的 CSS <a href="https://www.w3.org/TR/css-highlight-api-1/#custom-highlight-pseudo"><code>::highlight()</code></a>
+伪元素并使用我们在注册 <code>Highlight</code>
+对象时选择的名称（在我们上面的示例中为<code>my-custom-highlight</code>），我们就完成设置了。</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="in">::highlight(my-custom-highlight)</span> {</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">background-color</span>: <span class="cn">yellow</span><span class="op">;</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">color</span>: <span class="cn">black</span><span class="op">;</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>值得注意的是，就像 <code>::selection</code> 一样，CSS
+属性的子集只能与 <code>::highlight()</code> 伪元素一起使用：</p>
+<ul>
+<li><a href="https://css-tricks.com/almanac/properties/b/background-color/"><code>background-color</code></a></li>
+<li><a href="https://css-tricks.com/almanac/properties/c/caret-color/"><code>caret-color</code></a></li>
+<li><a href="https://css-tricks.com/almanac/properties/c/color/"><code>color</code></a></li>
+<li><a href="https://css-tricks.com/almanac/properties/c/cursor/"><code>cursor</code></a></li>
+<li><a href="https://css-tricks.com/almanac/properties/f/fill/"><code>fill</code></a></li>
+<li><a href="https://css-tricks.com/almanac/properties/s/stroke/"><code>stroke</code></a></li>
+<li><a href="https://css-tricks.com/almanac/properties/s/stroke-width/"><code>stroke-width</code></a></li>
+<li><a href="https://css-tricks.com/almanac/properties/t/text-decoration/"><code>text-decoration</code></a>（可能仅在规范的第
+2 版中受支持）</li>
+<li><a href="https://css-tricks.com/almanac/properties/t/text-shadow/"><code>text-shadow</code></a></li>
+</ul>
+<h4 id="更新高亮文本">更新高亮文本</h4>
+<p>有多种方法可以更新页面上高亮文本的文本。</p>
+<p>例如，我们可以使用 <code>CSS.highlights.clear()</code>
+完全清除高亮注册表，然后从头开始。或者，我们也可以更新基础范围，而无需重新创建任何对象。为此，再次使用
+<code>range.setStart</code> 和 <code>range.setEnd</code>
+方法（或任何其他 <code>Range</code>
+方法），浏览器将重新绘制高亮文本。</p>
+<p>但是，<code>Highlight</code> 对象的工作方式类似于 JavaScript 的 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set"><code>Set</code></a>，因此这意味着我们还可以添加使用
+<code>highlight.add(newRange)</code> 将新的 <code>Range</code>
+对象添加到现有的 <code>Highlight</code> 或使用
+<code>highlight.delete(existingRange)</code> 删除
+<code>Range</code>。</p>
+<p>第三，我们还可以从 <code>CSS.highlights</code>
+注册表中添加或删除特定的 <code>Highlight</code> 对象。由于此 API
+的工作方式类似于 JavaScript 的 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map"><code>Map</code></a>，因此我们可以
+[<code>set</code>](https:
+//developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map/set)
+和 [<code>delete</code>](https://developer.mozilla.org/en-US/docs/Web
+/JavaScript/Reference/Global_Objects/Map/delete)
+来更新当前注册的<code>Highlight</code>。</p>
+<h4 id="浏览器支持">浏览器支持</h4>
+<p>CSS Custom Highlight API
+的规范相对较新，它在浏览器中的实现仍然不完整。因此，尽管这将成为 Web
+平台的一个非常有用的补充，但它还没有完全准备好用于生产环境。</p>
+<p>Microsoft Edge 团队目前正在 Chromium 中实现 CSS 自定义高亮
+API。事实上，通过启用 Experimental Web Platform features 标志（在
+<code>about:flags</code> 下），该功能现在已经可以在 Canary
+版本中使用。目前还没有确定该功能何时会在 Chrome、Edge 和其他基于
+Chromium 的浏览器中发布的计划，但已经非常接近了。</p>
+<p><a href="https://developer.apple.com/safari/technology-preview/release-notes/#r99">Safari
+99+</a> 也支持该 API，但需要开启 Experiment Flag（Develop → Experimental
+Features → Highlight API）后才可以使用，并且接口有点不同，因为它使用 <a href="https://developer.mozilla.org/en-US/docs/Web/API/StaticRange"><code>StaticRange</code></a>
+对象。</p>
+<p>Firefox 尚不支持 API，你可以 <a href="https://github.com/mozilla/standards-positions/issues/482">阅读
+Mozilla 对此的观点</a> 了解更多信息。</p>
+<h3 id="demo">Demo</h3>
+<p>说到 Microsoft Edge，他们在 GitHub 上建立了一个
+Demo，让我们可以在其中使用 CSS 自定义高亮 API 进行试驾。（尝试 demo
+前，首先请确保使用的是 Chrome Canary 或 Edge Canary，并在
+<code>about:flags</code> 页面中开启 Experimental Web Platform features
+flag）：<a href="https://microsoftedge.github.io/Demos/custom-highlight-api/">查看演示</a>。</p>
+<p>该演示使用自定义高亮文本 API
+根据我们在页面顶部的搜索字段中键入的内容高亮文本页面中的文本范围。</p>
+<p>页面加载后，JavaScript 代码检索页面中的所有文本节点（使用 <a href="https://developer.mozilla.org/en-US/docs/Web/API/TreeWalker">TreeWalker</a>）以及当用户键入时在搜索字段中，代码会遍历这些节点，直到找到匹配项。然后使用这些匹配项创建“范围”对象，然后使用自定义高亮文本
+API 高亮文本这些对象。</p>
+<h3 id="结语">结语</h3>
+<p>那么，这个新的浏览器提供的高亮 API
+真的值得我们的关注吗？当然，它<strong>太值得了</strong>！</p>
+<p>一方面，即使 CSS 自定义高亮文本 API
+一开始可能看起来有点复杂（即必须创建范围，然后高亮文本，然后注册它们，最后为它们设置样式），它仍然比创建新的
+DOM 元素并插入要简单得多，而且也能更棒的胜任高亮文本的任务。</p>
+<p>更重要的是，浏览器引擎可以非常非常快速地设置这些范围的样式。</p>
+<p>仅允许将 CSS 属性的子集与 <code>::highlight()</code>
+伪元素一起使用的原因是子集仅包含可以由浏览器非常有效地应用而无需重新创建页面布局的属性.通过在周围的页面中插入新的
+DOM 元素来高亮文本文本范围需要引擎做更多的工作。</p>
+<p><a href="https://github.com/ffiori">Fernando Fiori</a>，这一 API
+的贡献者，创建了这个漂亮的[性能比较演示](https://ffiori.github.io/highlight-api-demos/demo-performance
+.html)。在笔者的测试中，CSS 自定义高亮 API 的平均执行速度比基于 DOM
+的高亮快 5 倍。</p>
+<p>有了 Chromium 和 Safari
+的实验性支持，我们正在稳步接近这一即将可以运用在生产中的
+API。我着实迫不及待地期盼着浏览器对这一 API 的广泛支持，想象着可以用这一
+API 解决什么问题，解锁什么 CSS 的骚操作！</p>
+
+
+
+            </div>
+        </article>
+        <div class="sidebar">
+            <div class="about-box">
+    <div class="avatar">
+        <img src="/assets/media/bitmap/avatar.jpeg" alt="avatar">
+    </div>
+    <h1>霜羽 Hoarfroster</h1>
+    <h2>@PassionPenguin</h2>
+    <p class="moment"><span class="status">🤔</span><span>努力！</span></p>
+    <ul>
+        <li><i class="fa-solid fa-location-dot"></i> 广东 · 广州 | <span class="light">Guangzhou, China</span>
+        </li>
+        <li><i class="fa-solid fa-envelope"></i> <a href="mailto:hoarfroster@outlook.com">hoarfroster@outlook.com</a>
+        </li>
+        <li><i class="fa-solid fa-house"></i> <a href="https://story.hoarfroster.space/">https://story.hoarfroster.space/</a>
+        </li>
+    </ul>
+</div>
+<div class="organization">
+    <h4>组织 Organizations</h4>
+    <ul>
+        <li>
+            <img src="https://avatars.githubusercontent.com/u/81648011?s=60&amp;v=4"
+                alt="Hexa-Penguin"><span>Hexa-Penguin</span>
+        </li>
+        <li>
+            <img src="https://avatars.githubusercontent.com/u/10482599?s=60&amp;v=4" alt="xitu"><span>稀土 xitu</span>
+        </li>
+    </ul>
+</div>
+<div class="category">
+    <span class="title">文章分类</span>
+    <ul>
+        <!-- <li><a href="/archive.html">所有分类</a></li> -->
+    </ul>
+</div>
+<div class="archive">
+    <span class="title">文章存档</span>
+    <ul>
+        <!-- <li><a href="/archive.html">所有文章</a></li> -->
+    </ul>
+</div>
+        </div>
+    </div>
+    <div class="footer">
+    <div class="content">
+        <div class="about">
+            <p>霜羽 Hoarfroster</p>
+            <p>&copy; Copyright 2021 Hoarfroster and contributors.</p>
+        </div>
+        <div class="nav">
+            <div class="links">
+                <span class="title">关于文章</span>
+                <ul>
+                    <li><a href="/archive.html">文章存档</a></li>
+                </ul>
+            </div>
+            <div class="category">
+                <span class="title">关于霜羽</span>
+                <ul>
+                    <li><a href="/about.html">有关霜羽</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <ul class="social-accounts">
+        <li>
+            <a href="https://www.zhihu.com/people/shuang-yu-29-75">
+                <i class="fa-brands fa-zhihu" style="font-size: 24px; color:#06f; line-height: 24px;"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://github.com/PassionPenguin">
+                <img src="/assets/media/vectors/github.svg" alt="github-logo"/>
+            </a>
+        </li>
+        <li>
+            <a href="https://dribbble.com/Hoarfroster">
+                <img src="/assets/media/vectors/dribbble.svg" alt="dribbble-logo"/>
+            </a>
+        </li>
+        <li>
+            <a href="https://zh.wikipedia.org/wiki/User:HoarfrostFeather">
+                <i class="fa-brands fa-wikipedia-w" style="font-size: 22px; color: #888; line-height: 24px;"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://space.bilibili.com/201469972">
+                <i class="fa-brands fa-bilibili" style="font-size: 22px; color: #00a1d6; line-height: 24px;"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+</body>
+
+</html>

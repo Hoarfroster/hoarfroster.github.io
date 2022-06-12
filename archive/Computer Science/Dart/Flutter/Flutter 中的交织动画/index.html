@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flutter 中的交织动画</title>
+    <script src="/assets/script/main.js"></script>
+    <link rel="stylesheet" href="/assets/style/styles.css">
+</head>
+
+<body>
+    <div class="header">
+    <div class="container">
+        <div class="icon">
+            <img src="/assets/media/vectors/hoarfroster-text.svg" alt="Hoarfroster Logo with Text">
+        </div>
+        <nav class="navigation">
+            <ul class="header-navigation-list">
+                <li><a href="/">首页</a></li>
+                <li><a href="/archive.html">文章</a></li>
+                <li><a href="/about.html">关于</a></li>
+            </ul>
+            <form action="/search" method="post">
+                <label>
+                    <input type="text" class="search" placeholder="搜索咕咕咕的小站"/>
+                </label>
+                <label class="submit">
+                    <input type="submit"/>
+                </label>
+            </form>
+        </nav>
+        <ul class="social-accounts">
+            <li>
+                <a href="https://www.zhihu.com/people/shuang-yu-29-75">
+                    <i class="fa-brands fa-zhihu" style="font-size: 20px; color:#06f; line-height: 20px;"></i>
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/PassionPenguin">
+                    <img src="/assets/media/vectors/github.svg" alt="github-logo"/>
+                </a>
+            </li>
+            <li>
+                <a href="https://dribbble.com/Hoarfroster">
+                    <img src="/assets/media/vectors/dribbble.svg" alt="dribbble-logo"/>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+    <div class="content article">
+        <article>
+            <div class="title">
+                <h1>Flutter 中的交织动画</h1>
+                <p><span class='chars'>9496B</span><span class='created-date'>Created Sun Jun 12 2022 23:55:03 GM</span><span class='modified-date'>Modified Sun Jun 12 2022 23:55:03 GM</span></p>
+            </div>
+            <div class="main markdown-body">
+                
+
+<blockquote>
+<ul>
+<li>原文地址：<a href="https://medium.com/flutterdevs/staggered-animation-in-flutter-e7282a936b99">Staggered
+Animation In Flutter</a></li>
+<li>原文作者：<a href="https://medium.com/@shaiq_khan">Shaiq
+khan</a></li>
+<li>译者：<a href="https://github.com/PassionPenguin">霜羽
+Hoarfroster</a></li>
+<li>校对者：<a href="https://github.com/lsvih">lsvih</a></li>
+</ul>
+</blockquote>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*icYuiagsCKqcRapvjiLbmw.png" alt="Flutter 中的交织动画"></p>
+<p>交织动画由一个动画序列或重叠的动画组成，而要制作交织的动画，我们需要使用多个或多组动画对象。我们应该使用同一个
+<code>AnimationController</code>
+控制所有动画，每个动画对象都应该指定某个点或锚点在一段时间内的运动，并且对于要执行的动画的每个属性，我们都应该创建一个补间（<code>Tween</code>）。</p>
+<p>所谓交织动画，直接来说就是：并非在同一时刻发生全部的视觉变化，而是让其随着任务的进行逐步发生。这个动画可能纯粹只是一个顺序动画，视觉上的变化一个接一个的出现；也可能有部分的动画重叠出现，乃至完全重叠。当然，交织动画的动画中同样可能会有一些时刻空着，即在一些间隙中没有发生任何动画。</p>
+<p><a href="https://youtu.be/0fFvnZemmh8"><strong>这里是一段有关交织动画的样例视频</strong></a></p>
+<p>在这个视频中，你可以看到发生在一控件上，从一个带边框而略微有圆角的蓝色矩形的出现开始的动画。这个矩形会按照以下顺序变化：</p>
+<ul>
+<li>淡入</li>
+<li>水平上变宽</li>
+<li>向上移动同时竖直上变得更高</li>
+<li>变为一个有边框的圆圈</li>
+<li>颜色变为橙色</li>
+</ul>
+<p>在顺序播放完动画后，将会反向播放上述的动画。</p>
+<h4 id="交织动画的基础结构">交织动画的基础结构</h4>
+<ul>
+<li>所有的动画都是由相同同样的 <code>AnimationController</code>
+控制。</li>
+<li>无论动画在现实时间中播放多长时间，控制器的值必须在 0.0 和 1.0
+之间，包括 0.0 和 1.0。</li>
+<li>每个动画都有一个 <code>Interval</code>，这个值必须在 0.0 和 1.0
+之间，包括 0.0 和 1.0。</li>
+<li>对于每一个间隔内产生动画的属性，创建一个 <code>Tween</code>。
+<code>Tween</code> 指定此属性的开始值和结束值。</li>
+<li><code>Tween</code> 产生一个由动画控制器管理的 <code>Animation</code>
+对象。</li>
+</ul>
+<h4 id="要设置这样一个动画">要设置这样一个动画</h4>
+<ul>
+<li>创建一个 <code>AnimationController</code> 管理所有的
+<code>Animations</code>。</li>
+<li>为每一个有动画的属性创建一个 <code>Tween</code>。</li>
+<li>为 <code>Tween</code> 设置不同的值。</li>
+<li><code>Tween</code> 的 <code>animate()</code> 方法需要一个
+<code>AnimationController</code> 来用这些属性生成一个动画。</li>
+<li>通过修改 <code>Animation</code> 构造器中的 <code>curve</code>
+属性指定动画的间隔时间</li>
+</ul>
+<p><strong>如何在 Flutter 中使用交织动画:</strong></p>
+<p>下面的代码为 avatarSize 这一属性定义了一个补间动画。它构造了一个 <a href="https://api.flutter.cn/flutter/animation/CurvedAnimation-class.html"><strong>CurvedAnimation</strong></a>
+动画类并且指定了动画曲线为一条 elasticOut
+曲线。要查看更多的预设动画曲线，请访问网页 <a href="https://api.flutter.cn/flutter/animation/Curves-class.html"><strong>Curves</strong></a>
+。</p>
+<pre class="dart"><code>avatarSize = Tween&lt;double&gt;(
+  begin: 50.0,
+  end: 150.0,
+).animate(
+  CurvedAnimation(
+    parent: controller,
+    curve: Interval(
+      0.125, 0.250,
+      curve: Curves.elasticOut,
+    ),
+  ),
+),</code></pre>
+<blockquote>
+<p><code>AnimationController</code> 和 <code>Animation</code> 定义了类
+<code>AnimationController</code> 的实例 以下是
+<code>AnimateController</code> 以及 5 个用于控制动画的进展的
+<code>Animation</code> 的实例，其中 <code>&lt;double&gt;</code>
+用于获取一个用于定义动画过程的数值，该数值必须在 0 到 1 之间。</p>
+</blockquote>
+<pre class="dart"><code>final AnimationController controller;
+final Animation&lt;double&gt; barHeight;
+final Animation&lt;double&gt; avatarSize;
+final Animation&lt;double&gt; titleOpacity;
+final Animation&lt;double&gt; textOpacity;
+final Animation&lt;double&gt; imageOpacity;</code></pre>
+<blockquote>
+<p>我们应该在控件的定义中覆写 <code>initState</code> 方法以在其中完成对
+<code>AnimationController</code>
+的初始化，在定义语句中，我们实际是在设置动画的参数。下面的例子我们将动画时长设置为
+3 秒。</p>
+</blockquote>
+<pre class="dart"><code>// 译者注：代码从 Flutter 库中截取，路径 /lib/src/animation/animation_controller.dart:150
+@override
+void initState() {
+    super.initState();
+    _controller = AnimationController(
+        vsync: this, // 对 SingleTickerProviderStateMixin 的引用
+        duration: widget.duration,
+    );
+}</code></pre>
+<p><strong>如何在代码中实现：</strong></p>
+<p>你需要在代码中实现以下内容：</p>
+<ul>
+<li>添加一个 <code>StatefulWidget</code> （带有状态的）控件</li>
+<li>然后将这个控件与 <code>SingleTickerProviderStateMixin</code>
+Mixin，以让 <code>AnimationController</code> 确定它的动画时长为 3500
+毫秒。</li>
+</ul>
+<p>控制器将会播放一个动画，然后会在 widget
+树上创建一个无动画的部分。当在屏幕上检测到点击事件时，开始播放动画。动画一开始会顺序播放，然后会倒序播放。</p>
+<pre class="Dart"><code>import 'package:flutter/material.dart';
+import 'package:stag_animation/trekking/staggered_trekking.dart';
+
+class StaggeredTrekkingAnimation extends StatefulWidget {
+  @override
+  _StaggeredTrekkingAnimationState createState() =&gt;
+      _StaggeredTrekkingAnimationState();
+}
+
+class _StaggeredTrekkingAnimationState extends State&lt;StaggeredTrekkingAnimation&gt;
+    with SingleTickerProviderStateMixin {
+  AnimationController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      duration: const Duration(milliseconds: 3500),
+      vsync: this,
+    );
+    _controller.forward();
+  }
+
+  Future&lt;void&gt; _playAnimation() async {
+    try {
+      await _controller.forward().orCancel;
+      await _controller.reverse().orCancel;
+    } on TickerCanceled {
+      // 这个动画被暂停了，可能因为该控件被 dispose 了。
+    }
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _controller.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      behavior: HitTestBehavior.opaque,
+      onTap: () {
+        _playAnimation();
+      },
+      child: StaggeredTrekking(
+        controller: _controller,
+      ),
+    );
+  }
+}</code></pre>
+<p>在 Staggered Trekking Enter
+动画中，我们使用了补间去决定动画的进展。</p>
+<p>接下来，你会完成一个无状态的控件的 <a href="https://github.com/ShaiqAhmedkhan/Flutter_Staggered_Animation/blob/master/lib/trekking/staggered_trekking.dart">Staggered
+Trekking 动画</a>。我们会用 <code>build()</code>
+函数为这个控件的动画初始化定义一个 <a href="https://api.flutter.cn/flutter/widgets/AnimatedBuilder-class.html"><strong>AnimatedBuilder</strong></a>。同时，我们需要创建一个名为
+<code>_buildAnimation()</code> 的函数，负责更新用户界面，并将其分配给
+<code>builder</code> 属性.</p>
+<pre class="Dart"><code>import 'package:flutter/material.dart';
+
+class StaggeredTrekkingEnterAnimation {
+  StaggeredTrekkingEnterAnimation(this.controller)
+      : barHeight = Tween&lt;double&gt;(begin: 0, end: 150).animate(
+          CurvedAnimation(
+            parent: controller,
+            curve: Interval(0, 0.3, curve: Curves.easeIn),
+          ),
+        ),
+        avatarSize = Tween&lt;double&gt;(begin: 0, end: 1).animate(
+          CurvedAnimation(
+            parent: controller,
+            curve: Interval(0.3, 0.6, curve: Curves.elasticOut),
+          ),
+        ),
+        titleOpacity = Tween&lt;double&gt;(begin: 0, end: 1).animate(
+          CurvedAnimation(
+            parent: controller,
+            curve: Interval(0.6, 0.65, curve: Curves.easeIn),
+          ),
+        ),
+        textOpacity = Tween&lt;double&gt;(begin: 0, end: 1).animate(
+          CurvedAnimation(
+            parent: controller,
+            curve: Interval(0.65, 0.8, curve: Curves.easeIn),
+          ),
+        ),
+        imageOpacity = Tween&lt;double&gt;(begin: 0, end: 1).animate(
+          CurvedAnimation(
+            parent: controller,
+            curve: Interval(0.8, 0.99, curve: Curves.easeIn),
+          ),
+        );
+
+  final AnimationController controller;
+  final Animation&lt;double&gt; barHeight;
+  final Animation&lt;double&gt; avatarSize;
+  final Animation&lt;double&gt; titleOpacity;
+  final Animation&lt;double&gt; textOpacity;
+  final Animation&lt;double&gt; imageOpacity;
+}</code></pre>
+<p><code>AnimatedBuilder</code>
+将侦听来自动画控制器的通知，然后会标记该控件的值的改变。对于动画的每一帧，这些值会因为调用
+<code>_buildAnimation()</code> 而都被更新。</p>
+<p>在下面发布的视频中，你将看到交织动画的工作方式。当你在屏幕上的任意位置点击时，它将启动动画并在向前播放动画之后自动向后播放动画。在这代码中，你还可以控制动画播放的速度。</p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*vQm1tBYamr7UZSaoApsAdg.gif"></p>
+<p>这就是交织动画的基本示例。在这里我们做了一个简单的示例，你可以尝试学习它。</p>
+<p><strong>单击下面的 GitHub 链接以找到交织动画的源代码：</strong></p>
+<p><a href="https://github.com/flutter-devs/Flutter-StaggeredAnimation"><strong>flutter-devs/Flutter-StaggeredAnimation</strong></a></p>
+
+
+
+            </div>
+        </article>
+        <div class="sidebar">
+            <div class="about-box">
+    <div class="avatar">
+        <img src="/assets/media/bitmap/avatar.jpeg" alt="avatar">
+    </div>
+    <h1>霜羽 Hoarfroster</h1>
+    <h2>@PassionPenguin</h2>
+    <p class="moment"><span class="status">🤔</span><span>努力！</span></p>
+    <ul>
+        <li><i class="fa-solid fa-location-dot"></i> 广东 · 广州 | <span class="light">Guangzhou, China</span>
+        </li>
+        <li><i class="fa-solid fa-envelope"></i> <a href="mailto:hoarfroster@outlook.com">hoarfroster@outlook.com</a>
+        </li>
+        <li><i class="fa-solid fa-house"></i> <a href="https://story.hoarfroster.space/">https://story.hoarfroster.space/</a>
+        </li>
+    </ul>
+</div>
+<div class="organization">
+    <h4>组织 Organizations</h4>
+    <ul>
+        <li>
+            <img src="https://avatars.githubusercontent.com/u/81648011?s=60&amp;v=4"
+                alt="Hexa-Penguin"><span>Hexa-Penguin</span>
+        </li>
+        <li>
+            <img src="https://avatars.githubusercontent.com/u/10482599?s=60&amp;v=4" alt="xitu"><span>稀土 xitu</span>
+        </li>
+    </ul>
+</div>
+<div class="category">
+    <span class="title">文章分类</span>
+    <ul>
+        <!-- <li><a href="/archive.html">所有分类</a></li> -->
+    </ul>
+</div>
+<div class="archive">
+    <span class="title">文章存档</span>
+    <ul>
+        <!-- <li><a href="/archive.html">所有文章</a></li> -->
+    </ul>
+</div>
+        </div>
+    </div>
+    <div class="footer">
+    <div class="content">
+        <div class="about">
+            <p>霜羽 Hoarfroster</p>
+            <p>&copy; Copyright 2021 Hoarfroster and contributors.</p>
+        </div>
+        <div class="nav">
+            <div class="links">
+                <span class="title">关于文章</span>
+                <ul>
+                    <li><a href="/archive.html">文章存档</a></li>
+                </ul>
+            </div>
+            <div class="category">
+                <span class="title">关于霜羽</span>
+                <ul>
+                    <li><a href="/about.html">有关霜羽</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <ul class="social-accounts">
+        <li>
+            <a href="https://www.zhihu.com/people/shuang-yu-29-75">
+                <i class="fa-brands fa-zhihu" style="font-size: 24px; color:#06f; line-height: 24px;"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://github.com/PassionPenguin">
+                <img src="/assets/media/vectors/github.svg" alt="github-logo"/>
+            </a>
+        </li>
+        <li>
+            <a href="https://dribbble.com/Hoarfroster">
+                <img src="/assets/media/vectors/dribbble.svg" alt="dribbble-logo"/>
+            </a>
+        </li>
+        <li>
+            <a href="https://zh.wikipedia.org/wiki/User:HoarfrostFeather">
+                <i class="fa-brands fa-wikipedia-w" style="font-size: 22px; color: #888; line-height: 24px;"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://space.bilibili.com/201469972">
+                <i class="fa-brands fa-bilibili" style="font-size: 22px; color: #00a1d6; line-height: 24px;"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+</body>
+
+</html>

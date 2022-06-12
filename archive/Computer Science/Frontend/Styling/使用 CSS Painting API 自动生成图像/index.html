@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>使用 CSS Painting API 自动生成图像</title>
+    <script src="/assets/script/main.js"></script>
+    <link rel="stylesheet" href="/assets/style/styles.css">
+</head>
+
+<body>
+    <div class="header">
+    <div class="container">
+        <div class="icon">
+            <img src="/assets/media/vectors/hoarfroster-text.svg" alt="Hoarfroster Logo with Text">
+        </div>
+        <nav class="navigation">
+            <ul class="header-navigation-list">
+                <li><a href="/">首页</a></li>
+                <li><a href="/archive.html">文章</a></li>
+                <li><a href="/about.html">关于</a></li>
+            </ul>
+            <form action="/search" method="post">
+                <label>
+                    <input type="text" class="search" placeholder="搜索咕咕咕的小站"/>
+                </label>
+                <label class="submit">
+                    <input type="submit"/>
+                </label>
+            </form>
+        </nav>
+        <ul class="social-accounts">
+            <li>
+                <a href="https://www.zhihu.com/people/shuang-yu-29-75">
+                    <i class="fa-brands fa-zhihu" style="font-size: 20px; color:#06f; line-height: 20px;"></i>
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/PassionPenguin">
+                    <img src="/assets/media/vectors/github.svg" alt="github-logo"/>
+                </a>
+            </li>
+            <li>
+                <a href="https://dribbble.com/Hoarfroster">
+                    <img src="/assets/media/vectors/dribbble.svg" alt="dribbble-logo"/>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+    <div class="content article">
+        <article>
+            <div class="title">
+                <h1>使用 CSS Painting API 自动生成图像</h1>
+                <p><span class='chars'>9141B</span><span class='created-date'>Created Sun Jun 12 2022 23:55:03 GM</span><span class='modified-date'>Modified Sun Jun 12 2022 23:55:03 GM</span></p>
+            </div>
+            <div class="main markdown-body">
+                
+
+<blockquote>
+<ul>
+<li>原文地址：<a href="https://blog.bitsrc.io/programmatically-generate-images-with-css-painting-api-3b1a860dae3b">Programmatically
+generate images with CSS Painting API</a></li>
+<li>原文作者：<a href="https://medium.com/@viduniwickramarachchi">Viduni
+Wickramarachchi</a></li>
+<li>译者：<a href="https://github.com/PassionPenguin">霜羽
+Hoarfroster</a></li>
+<li>校对者：<a href="https://github.com/zenblo">zenblo</a>、<a href="https://github.com/lsvih">lsvih</a></li>
+</ul>
+</blockquote>
+<p><img src="https://cdn-images-1.medium.com/max/5760/1*wKYGWd-7eWgpmMeBNiLCDA.jpeg" alt="Banner"></p>
+<p>图像为应用程序增添色彩，丰富内容。然而，如果网页中嵌入了大量高分辨率图像，会大量增加页面资源加载时间，严重影响用户体验。对于展示产品、方案等必须内容的图像，我们别无选择，只能按照正常方式嵌入这些图像并通过缓存它们来优化应用程序。但是，如果我们在应用程序中需要几何图像，则不必再将其作为资源来加载。</p>
+<blockquote>
+<p>我们可以使用 CSS Painting API 即时生成几何图像。</p>
+</blockquote>
+<p>让我们一起来走进这个 API，并且学习如何使用它生成图像吧～</p>
+<h2 id="css-painting-api-的简介">CSS Painting API 的简介</h2>
+<p>开发者们能够使用 <a href="https://developer.mozilla.org/en-US/docs/Web/API/CSS_Painting_API">CSS
+Painting API</a> 使用编写的 JavaScript 函数将图像绘制到 CSS 属性中，例如
+<code>background-image</code>和 <code>border</code>。它提供了一组
+API，使开发人员可以访问 CSSOM，CSS Houdini（<a href="https://github.com/w3c/css-houdini-drafts">Houdini</a>）的一部分
+—— 新浏览器 API 的集合，为开发人员提供了对 CSS
+本身的更底层的访问方法。）</p>
+<p>嵌入图像的传统方法如下。</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>div {</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">background-image</span>: <span class="fu">url(</span><span class="st">'assets/background.jpg'</span><span class="fu">)</span><span class="op">;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>而如果使用 CSS Painting API，我们只需要调用 <code>paint()</code>
+函数，并且传入一个 JavaScript 声明好的 Worklet：</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>div {</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">background-image</span>: paint<span class="fu">(</span><span class="cn">background</span><span class="fu">)</span><span class="op">;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>这串代码的工作逻辑是这样的：</p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*c2EShrISdnmcxc87qJdKPg.png"></p>
+<p>在上文中似乎存在着一些晦涩难懂的术语。例如，我们提及了
+<code>worklet</code>？</p>
+<p>简而言之，让程序自动生成图像的 JavaScript 代码称为 Paint Worklet。<a href="https://www.w3.org/TR/worklets-1/#intro">Worklet</a>
+是浏览器渲染管道的一个扩展。除了 Paint Worklet 之外，还有其他类型的
+Worklet，例如 Animation Worklet 和 Layout Worklet。</p>
+<p>现在，让我们看一下程序生成图像的分步方法。</p>
+<h2 id="在实践中使用-css-painting-api">在实践中使用 CSS Painting
+API</h2>
+<p>在本文中，我们将会探讨如何创建一个气泡背景</p>
+<h4 id="第一步添加-css-paint-函数">第一步：添加 CSS paint() 函数</h4>
+<p>在开始这一切之前，我们需要往所需要添加图片的 CSS 属性中添加
+<code>paint()</code> 函数。</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.bubble-background</span> {</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">width</span>: <span class="dv">400</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">height</span>: <span class="dv">400</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">background-image</span>: paint<span class="fu">(</span>bubble<span class="fu">)</span><span class="op">;</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p><code>bubble</code> 就是我们等下生成图片的 Worklet，而要生成
+Worklet，仅仅只需要短短几步。</p>
+<h4 id="第二步定义-worklet">第二步：定义 Worklet</h4>
+<p>Worklet 需要在外部 JavaScript 文件中被保存，而 Painting Worklet
+应该是一个 <code>class</code>，例如
+<code>class Bubble { …… }</code>，然后这个 Worklet 需要使用
+<code>registerPaint()</code> 函数注册。</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Bubble {</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">paint</span>(context<span class="op">,</span> canvas<span class="op">,</span> properties) {</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>        <span class="co">/* </span><span class="al">TODO</span><span class="co">: ... */</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="fu">registerPaint</span>(<span class="st">'bubble'</span><span class="op">,</span> Bubble)<span class="op">;</span></span></code></pre></div>
+<p><code>registerPaint()</code> 函数的第一个参数是我们向在 CSS
+中使用的参考名。</p>
+<p>现在就让我们来绘制背景吧！</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Bubble {</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">paint</span>(context<span class="op">,</span> canvas<span class="op">,</span> properties) {</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>        <span class="kw">const</span> circleSize <span class="op">=</span> <span class="dv">10</span><span class="op">;</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>        <span class="kw">const</span> bodyWidth <span class="op">=</span> canvas<span class="op">.</span><span class="at">width</span><span class="op">;</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>        <span class="kw">const</span> bodyHeight <span class="op">=</span> canvas<span class="op">.</span><span class="at">height</span><span class="op">;</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>        <span class="kw">const</span> maxX <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">floor</span>(bodyWidth <span class="op">/</span> circleSize)<span class="op">;</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>        <span class="kw">const</span> maxY <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">floor</span>(bodyHeight <span class="op">/</span> circleSize)<span class="op">;</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> (<span class="kw">let</span> y <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> y <span class="op">&lt;</span> maxY<span class="op">;</span> y<span class="op">++</span>) {</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> (<span class="kw">let</span> x <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> x <span class="op">&lt;</span> maxX<span class="op">;</span> x<span class="op">++</span>) {</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>                context<span class="op">.</span><span class="at">fillStyle</span> <span class="op">=</span> <span class="st">'#eee'</span><span class="op">;</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>                context<span class="op">.</span><span class="fu">beginPath</span>()<span class="op">;</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>                context<span class="op">.</span><span class="fu">arc</span>(x <span class="op">*</span> circleSize <span class="op">*</span> <span class="dv">2</span> <span class="op">+</span> circleSize<span class="op">,</span> y <span class="op">*</span> circleSize <span class="op">*</span> <span class="dv">2</span> <span class="op">+</span> circleSize<span class="op">,</span> circleSize<span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">2</span> <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span><span class="op">,</span> <span class="kw">true</span>)<span class="op">;</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>                context<span class="op">.</span><span class="fu">closePath</span>()<span class="op">;</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>                context<span class="op">.</span><span class="fu">fill</span>()<span class="op">;</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>            }</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="fu">registerPaint</span>(<span class="st">'bubble'</span><span class="op">,</span> Bubble)<span class="op">;</span></span></code></pre></div>
+<p>创建图像的运算是在 <code>paint()</code>
+函数的内部进行的。我们将需要一些有关 Canvas
+的知识来绘制上述图像。如果不熟悉，我们其实可以看一下 <a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial">Canvas
+API</a> 文档。</p>
+<h4 id="第三步调用-worklet">第三步：调用 Worklet</h4>
+<p>最后一步是在 HTML 文件中调用 Worklet。</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;div</span> <span class="er">class</span><span class="ot">=</span><span class="st">"bubble-background"</span><span class="kw">&gt;&lt;/div&gt;</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;script&gt;</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">CSS</span><span class="op">.</span><span class="at">paintWorklet</span><span class="op">.</span><span class="fu">addModule</span>(<span class="st">'https://codepen.io/viduni94/pen/ZEpgMja.js'</span>)<span class="op">;</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/script&gt;</span></span></code></pre></div>
+<p>这就好啦！</p>
+<p>你现在已经在三步之内用程序自动生成一张图片啦！</p>
+<h2 id="生成的图片">生成的图片</h2>
+<p>我们所编写的的代码的运行效果应该是这样的：</p>
+<p><img src="https://cdn-images-1.medium.com/max/2448/1*vvLIdPpqWdRWswddJ9CgUw.png" alt="在编辑器中查看"></p>
+<h2 id="我们还可以用-css-painting-api-干些什么呢">我们还可以用 CSS
+Painting API 干些什么呢？</h2>
+<p>The power of the CSS Painting API is not over yet. There are more
+things you can do with it.</p>
+<h4 id="1-我们可以创建动图">1. 我们可以创建动图</h4>
+<p>例如，我们可以动态更改气泡的颜色，而 CSS
+变量就是服务此目的的。为了使用 CSS
+变量，浏览器应该先明白我们在使用它。我们可以使用
+<code>inputProperties()</code> 函数来做到这一点。</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">registerPaint</span>(<span class="st">'bubble'</span><span class="op">,</span> <span class="kw">class</span> {</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">static</span> get <span class="fu">inputProperties</span>() {</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> [<span class="st">'--bubble-size'</span><span class="op">,</span> <span class="st">'--bubble-color'</span>]<span class="op">;</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">paint</span>() {</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>        <span class="co">/* ... */</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span></code></pre></div>
+<p>变量们可以通过第三个参数传给 <code>paint()</code> 方法</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">paint</span>(context<span class="op">,</span> canvas<span class="op">,</span> properties)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> circleSize <span class="op">=</span> <span class="pp">parseInt</span>(properties<span class="op">.</span><span class="fu">get</span>(<span class="st">'--bubble-size'</span>)<span class="op">.</span><span class="fu">toString</span>())<span class="op">;</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> circleColor <span class="op">=</span> properties<span class="op">.</span><span class="fu">get</span>(<span class="st">'--bubble-color'</span>)<span class="op">.</span><span class="fu">toString</span>()<span class="op">;</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> bodyWidth <span class="op">=</span> canvas<span class="op">.</span><span class="at">width</span><span class="op">;</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> bodyHeight <span class="op">=</span> canvas<span class="op">.</span><span class="at">height</span><span class="op">;</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> maxX <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">floor</span>(bodyWidth <span class="op">/</span> circleSize)<span class="op">;</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> maxY <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">floor</span>(bodyHeight <span class="op">/</span> circleSize)<span class="op">;</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (<span class="kw">let</span> y <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> y <span class="op">&lt;</span> maxY<span class="op">;</span> y<span class="op">++</span>) {</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> (<span class="kw">let</span> x <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> x <span class="op">&lt;</span> maxX<span class="op">;</span> x<span class="op">++</span>) {</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>            context<span class="op">.</span><span class="at">fillStyle</span> <span class="op">=</span> circleColor<span class="op">;</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>            context<span class="op">.</span><span class="fu">beginPath</span>()<span class="op">;</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>            context<span class="op">.</span><span class="fu">arc</span>(x <span class="op">*</span> circleSize <span class="op">*</span> <span class="dv">2</span> <span class="op">+</span> circleSize<span class="op">,</span> y <span class="op">*</span> circleSize <span class="op">*</span> <span class="dv">2</span> <span class="op">+</span> circleSize<span class="op">,</span> circleSize<span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">2</span> <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span><span class="op">,</span> <span class="kw">true</span>)<span class="op">;</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>            context<span class="op">.</span><span class="fu">closePath</span>()<span class="op">;</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>            context<span class="op">.</span><span class="fu">fill</span>()<span class="op">;</span></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<h4 id="2-我们可以使用-mathrandom-在-paint-函数中生成随机的图片">2.
+我们可以使用 <code>Math.random()</code> 在 <code>paint()</code>
+函数中生成随机的图片</h4>
+<div class="sourceCode" id="cb9"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>body {</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">width</span>: <span class="dv">200</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">height</span>: <span class="dv">200</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">background-image</span>: paint<span class="fu">(</span>random<span class="fu">)</span><span class="op">;</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">getRandomHexColor</span>() {</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="st">'#'</span> <span class="op">+</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">floor</span>(<span class="bu">Math</span><span class="op">.</span><span class="fu">random</span>() <span class="op">*</span> <span class="dv">16777215</span>)<span class="op">.</span><span class="fu">toString</span>(<span class="dv">16</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Random {</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">paint</span>(context<span class="op">,</span> canvas) {</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>        <span class="kw">const</span> color1 <span class="op">=</span> <span class="fu">getRandomHexColor</span>()<span class="op">;</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>        <span class="kw">const</span> color2 <span class="op">=</span> <span class="fu">getRandomHexColor</span>()<span class="op">;</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>        <span class="kw">const</span> gradient <span class="op">=</span> context<span class="op">.</span><span class="fu">createLinearGradient</span>(<span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> canvas<span class="op">.</span><span class="at">width</span><span class="op">,</span> <span class="dv">0</span>)<span class="op">;</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>        gradient<span class="op">.</span><span class="fu">addColorStop</span>(<span class="dv">0</span><span class="op">,</span> color1)<span class="op">;</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>        gradient<span class="op">.</span><span class="fu">addColorStop</span>(<span class="dv">1</span><span class="op">,</span> color2)<span class="op">;</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>        context<span class="op">.</span><span class="at">fillStyle</span> <span class="op">=</span> gradient<span class="op">;</span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>        context<span class="op">.</span><span class="fu">fillRect</span>(<span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> canvas<span class="op">.</span><span class="at">width</span><span class="op">,</span> canvas<span class="op">.</span><span class="at">height</span>)<span class="op">;</span></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a><span class="fu">registerPaint</span>(<span class="st">'random'</span><span class="op">,</span> Random)<span class="op">;</span></span></code></pre></div>
+<p>如果你在如何做到这些上存在疑惑，请在评论区中提出你的问题。</p>
+<p>这个真是太棒啦！</p>
+<p>但是，好事总有糟糕的一面，这个 API
+现在仅仅只被部分浏览器所有限制的支持。</p>
+<h2 id="浏览器支持">浏览器支持</h2>
+<p><img src="https://github.com/PassionPenguin/picgo-database/blob/main/programmatically-generate-images-with-css-painting-api-caniuse.com_css-paint-api.png?raw=true" alt="数据源：Can I Use"></p>
+<p>包括 Firefox 在内的大多数浏览器都不支持 CSS Painting
+API。到目前为止，只有基于 Chromium
+的浏览器完全支持此功能，真希望不久的将来浏览器支持会有所改善。</p>
+<h2 id="摘要">摘要</h2>
+<p>CSS Painting API
+对于减少网络请求的响应时间非常有用，因为图片是程序化生成而非获取网络数据得到的。</p>
+<p>最重要的是，我认为主要的好处如下。</p>
+<ul>
+<li>能够创建完全可定制的图像，而不是静态图像。</li>
+<li>它创建与分辨率无关的图像（让我们的站点上不再有质量差的图像）。</li>
+</ul>
+<p>需要注意的重要一点是，我们可以使用 <code>polyfill</code>
+等库作为解决方案来支持尚未实现 CSS Painting API 的 Firefox
+等浏览器。</p>
+<hr>
+<p>如果你对本文有任何疑问或想法，请在评论区告诉我们！感谢你的阅读！</p>
+
+
+
+            </div>
+        </article>
+        <div class="sidebar">
+            <div class="about-box">
+    <div class="avatar">
+        <img src="/assets/media/bitmap/avatar.jpeg" alt="avatar">
+    </div>
+    <h1>霜羽 Hoarfroster</h1>
+    <h2>@PassionPenguin</h2>
+    <p class="moment"><span class="status">🤔</span><span>努力！</span></p>
+    <ul>
+        <li><i class="fa-solid fa-location-dot"></i> 广东 · 广州 | <span class="light">Guangzhou, China</span>
+        </li>
+        <li><i class="fa-solid fa-envelope"></i> <a href="mailto:hoarfroster@outlook.com">hoarfroster@outlook.com</a>
+        </li>
+        <li><i class="fa-solid fa-house"></i> <a href="https://story.hoarfroster.space/">https://story.hoarfroster.space/</a>
+        </li>
+    </ul>
+</div>
+<div class="organization">
+    <h4>组织 Organizations</h4>
+    <ul>
+        <li>
+            <img src="https://avatars.githubusercontent.com/u/81648011?s=60&amp;v=4"
+                alt="Hexa-Penguin"><span>Hexa-Penguin</span>
+        </li>
+        <li>
+            <img src="https://avatars.githubusercontent.com/u/10482599?s=60&amp;v=4" alt="xitu"><span>稀土 xitu</span>
+        </li>
+    </ul>
+</div>
+<div class="category">
+    <span class="title">文章分类</span>
+    <ul>
+        <!-- <li><a href="/archive.html">所有分类</a></li> -->
+    </ul>
+</div>
+<div class="archive">
+    <span class="title">文章存档</span>
+    <ul>
+        <!-- <li><a href="/archive.html">所有文章</a></li> -->
+    </ul>
+</div>
+        </div>
+    </div>
+    <div class="footer">
+    <div class="content">
+        <div class="about">
+            <p>霜羽 Hoarfroster</p>
+            <p>&copy; Copyright 2021 Hoarfroster and contributors.</p>
+        </div>
+        <div class="nav">
+            <div class="links">
+                <span class="title">关于文章</span>
+                <ul>
+                    <li><a href="/archive.html">文章存档</a></li>
+                </ul>
+            </div>
+            <div class="category">
+                <span class="title">关于霜羽</span>
+                <ul>
+                    <li><a href="/about.html">有关霜羽</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <ul class="social-accounts">
+        <li>
+            <a href="https://www.zhihu.com/people/shuang-yu-29-75">
+                <i class="fa-brands fa-zhihu" style="font-size: 24px; color:#06f; line-height: 24px;"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://github.com/PassionPenguin">
+                <img src="/assets/media/vectors/github.svg" alt="github-logo"/>
+            </a>
+        </li>
+        <li>
+            <a href="https://dribbble.com/Hoarfroster">
+                <img src="/assets/media/vectors/dribbble.svg" alt="dribbble-logo"/>
+            </a>
+        </li>
+        <li>
+            <a href="https://zh.wikipedia.org/wiki/User:HoarfrostFeather">
+                <i class="fa-brands fa-wikipedia-w" style="font-size: 22px; color: #888; line-height: 24px;"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://space.bilibili.com/201469972">
+                <i class="fa-brands fa-bilibili" style="font-size: 22px; color: #00a1d6; line-height: 24px;"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+</body>
+
+</html>

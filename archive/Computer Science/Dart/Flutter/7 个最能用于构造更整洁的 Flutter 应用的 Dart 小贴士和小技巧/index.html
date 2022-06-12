@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7 个最能用于构造更整洁的 Flutter 应用的 Dart 小贴士和小技巧</title>
+    <script src="/assets/script/main.js"></script>
+    <link rel="stylesheet" href="/assets/style/styles.css">
+</head>
+
+<body>
+    <div class="header">
+    <div class="container">
+        <div class="icon">
+            <img src="/assets/media/vectors/hoarfroster-text.svg" alt="Hoarfroster Logo with Text">
+        </div>
+        <nav class="navigation">
+            <ul class="header-navigation-list">
+                <li><a href="/">首页</a></li>
+                <li><a href="/archive.html">文章</a></li>
+                <li><a href="/about.html">关于</a></li>
+            </ul>
+            <form action="/search" method="post">
+                <label>
+                    <input type="text" class="search" placeholder="搜索咕咕咕的小站"/>
+                </label>
+                <label class="submit">
+                    <input type="submit"/>
+                </label>
+            </form>
+        </nav>
+        <ul class="social-accounts">
+            <li>
+                <a href="https://www.zhihu.com/people/shuang-yu-29-75">
+                    <i class="fa-brands fa-zhihu" style="font-size: 20px; color:#06f; line-height: 20px;"></i>
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/PassionPenguin">
+                    <img src="/assets/media/vectors/github.svg" alt="github-logo"/>
+                </a>
+            </li>
+            <li>
+                <a href="https://dribbble.com/Hoarfroster">
+                    <img src="/assets/media/vectors/dribbble.svg" alt="dribbble-logo"/>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+    <div class="content article">
+        <article>
+            <div class="title">
+                <h1>7 个最能用于构造更整洁的 Flutter 应用的 Dart 小贴士和小技巧</h1>
+                <p><span class='chars'>8611B</span><span class='created-date'>Created Sun Jun 12 2022 23:55:03 GM</span><span class='modified-date'>Modified Sun Jun 12 2022 23:55:03 GM</span></p>
+            </div>
+            <div class="main markdown-body">
+                
+
+<blockquote>
+<ul>
+<li>原文地址：<a href="https://betterprogramming.pub/top-7-dart-tips-and-tricks-for-cleaner-flutter-apps-562664a15826">Top
+7 Dart Tips and Tricks for Cleaner Flutter Apps</a></li>
+<li>原文作者：<a href="https://medium.com/@educative-inc">The Educative
+Team</a></li>
+<li>译者：<a href="https://github.com/PassionPenguin">霜羽
+Hoarfroster</a></li>
+<li>校对者：<a href="https://github.com/5Reasons">5Reasons</a>、<a href="https://github.com/greycodee">greycodee</a></li>
+</ul>
+</blockquote>
+<p><img src="https://cdn-images-1.medium.com/max/10368/1*UkUGENyS23H0pweg_EdyNg.jpeg" alt="由 Lucie Hošová 上传至 Unsplash"></p>
+<p><a href="https://www.educative.io/blog/dart-2-language-features">Dart</a>
+是一门针对客户端进行了优化的编程语言，专门用于快速地构建移动端、桌面端和服务端应用程序。Dart
+由 Google 开发，并与 Google 的跨平台框架 Flutter 相互搭配。借助 Flutter
+和 Dart，我们可以构建具有流畅 UI 和原生性能的应用程序。</p>
+<p>今天，我们总结并分享了七个我们认为最实用的 Dart
+技巧，来帮助大家改善应用程序的开发。我们可以使用这些技巧来编写简洁的代码，并充分利用上
+Dart 所提供的许多特性。</p>
+<p><strong>速览 —— 贴士和技巧：</strong></p>
+<ol type="1">
+<li>使用匿名函数作为参数</li>
+<li>使用 <code>call</code> 方法让类可以像是个函数一样被调用</li>
+<li>使用 <code>.entries</code> 来在一个 map 上遍历</li>
+<li>如何使用 getter 和 setter</li>
+<li>用 <code>Set</code> 存储唯一值</li>
+<li>使用 Inspect 功能</li>
+<li>使用 sync 和 async 生成器</li>
+</ol>
+<h2 id="1-使用匿名函数作为参数">1. 使用匿名函数作为参数</h2>
+<p>在 Dart 语言中，我们可以将函数作为参数传递给其他函数，而 Dart
+语言本身还支持无需命名即可调用的匿名函数。</p>
+<p>以下是 Dart
+中使用匿名函数的示例。在本例中，我们将一个匿名的求立方函数传递给内置方法
+<code>forEach</code>，尝试获取 <code>list</code>
+数组中每一项的立方。</p>
+<pre class="Dart"><code>main() {
+  var list = [1, 2, 3];
+  list.forEach((item) {
+    print(item * item * item);
+  });
+}</code></pre>
+<h2 id="2-使用-call-方法让类可以像是个函数一样被调用">2. 使用
+<code>call</code> 方法让类可以像是个函数一样被调用</h2>
+<p>使用 Dart
+语言我们可以构造一个可调用的类，允许将该类的实例作为函数调用。我们可以用
+<code>call()</code> 方法做到这一点,请参见下面的语法：</p>
+<pre class="Dart"><code>class class_name {
+  ... // class 
+
+  return_type call ( parameters ) {
+    ... // 调用这个函数内容
+  }
+
+}</code></pre>
+<p>让我们来看一个例子：</p>
+<pre class="Dart"><code>class EducativeIntro {
+
+  // 定义 call 方法 
+  String call(String a, String b, String c) =&gt; 'Welcome to $a$b$c';
+}
+
+// 主函数  
+void main() {
+  var educative_input = EducativeIntro();
+
+  // 借助实例调用这个类
+  var educative_output = educative_input('our ', 'Dart ', 'tutorial');
+
+  print(educative_output);
+}</code></pre>
+<blockquote>
+<p><strong>注意：</strong> Dart 不支持多个可调用方法</p>
+</blockquote>
+<h2 id="3-使用-entries-来在一个-map-上遍历">3. 使用
+<code>.entries</code> 来在一个 map 上遍历</h2>
+<p>在 Dart 中我们可以使用 <code>entries()</code>
+方法以空安全的方式遍历一张 map。假设我们现在有一张 map
+用于追踪在不同产品上花费的金额（通常我们会使用 <code>!</code> 运算符在此
+map 中进行遍历）：</p>
+<pre class="Dart"><code>for (var key in moneySpent.keys) {
+  final value = moneySpent[key]!;
+  print('$key: $value');
+}</code></pre>
+<p>我们可以改进此代码，并使用循环使其更安全。当我们使用
+<code>entries</code>
+变量进行遍历时，我们可以用空安全的方式访问键值对。</p>
+<pre class="Dart"><code>for (var entry in moneySpent.entries) {
+  // 使用键值对做一些事情
+  print('${entry.key}: ${entry.value}');
+}</code></pre>
+<h2 id="4-如何使用-getter-和-setter">4. 如何使用 getter 和 setter</h2>
+<p>getter 和 setter
+是一对特殊的方法，它们能够对一个对象的属性进行读、写操作。我们对 getter
+和 setter
+的调用类似于实例变量：点运算符（<code>.</code>）后面紧跟函数的名称。</p>
+<p>getter 是用于获取对象属性值的函数，使用 <code>get</code>
+关键字定义。</p>
+<p>在下面的示例中，我们在第 13 行创建了一个 getter 函数，返回当前实例的
+<code>name</code> 属性的值。而在第 21 行，我们调用了 getter
+函数，这里的输出应是 <code>Sarah</code>。</p>
+<pre class="Dart"><code>class Person {
+  String name;
+  String gender;
+  int age;
+
+  Person(this.name, this.gender, this.age);
+
+  Person.newBorn(){
+    this.age = 0;
+  }
+
+    // getter 函数，获取 name 的值
+  String get personName =&gt; name;
+
+  walking() =&gt; print('$name is walking');
+
+  talking() =&gt; print('$name is talking');
+}
+
+int main() {
+  var firstPerson = Person("Sarah", "Female", 25);
+  print(firstPerson.personName);
+}</code></pre>
+<p>setter 则是用于写入一个对象的属性的函数，使用 <code>set</code>
+关键词：</p>
+<pre class="Dart"><code>class Person {
+  String name;
+  String gender;
+  int age;
+
+  String get personName =&gt; name;
+
+    // setter 函数用于设置 age 的值
+  void set personAge(num val) {
+    if (val &lt; 0) {
+      print("Age cannot be negative");
+    } else {
+      this.age = val;
+    }
+  }
+
+  walking() =&gt; print('$name is walking');
+
+  talking() =&gt; print('$name is talking');
+}
+
+int main() {
+  var firstPerson = Person();
+  firstPerson.personAge = -5;
+  print(firstPerson.age);
+}</code></pre>
+<p>第 9 行到第 15 行代码中我们创建了一个 setter 函数用于设置
+<code>age</code>
+的值。该函数还被添加了一个条件判断，让我们不能输入负的年龄。在第 23
+行，我们使用 <code>personAge</code> setter 函数为
+<code>firstPerson</code> 设置了年龄值。</p>
+<h2 id="用-set-存储唯一值">用 <code>Set</code> 存储唯一值</h2>
+<p>列表是 Dart
+中最常见的集合类型之一，但是列表可以容纳重复项。有时我们只想要唯一值的集合，这就是
+<code>Set</code> 用武之处。</p>
+<pre class="Dart"><code>
+final countriesSet = {
+  'USA',
+  'India',
+  'Iceland',
+  'USA',
+};</code></pre>
+<p>在一个 <code>Set</code> 中两个元素不能相同，因此上面的代码会有一个
+warning 并且无法被编译。同理使用 <code>const set</code>
+也无法被编译。</p>
+<h2 id="6-使用-inspect-功能">6. 使用 Inspect 功能</h2>
+<p>在网络开发中我们经常会需要用到 Inspect 功能，因为它能够告诉我们应用于
+HTML 标记的所有属性。Dart 也提供了类似的功能，我们称之为 Flutter
+Inspect。这个功能可以有效简化 Flutter
+应用程序的开发，用于找到屏幕上的任何控件并查看应用于它的属性。</p>
+<p>Inspect 还可以帮助我们可视化 Flutter
+控件树以了解布局或确定布局问题。</p>
+<p>要使用它，请按照下列步骤操作：</p>
+<ul>
+<li>单击 <code>Flutter Inspector</code>。</li>
+<li>单击 <code>启用选择 Widget 模式</code>。</li>
+<li>选择屏幕上的控件以获取更多信息</li>
+</ul>
+<p><img src="https://cdn-images-1.medium.com/max/4920/1*8HtnC_I_iMewckScC92stA.png"></p>
+<h2 id="7-使用-sync-和-async-生成器">7. 使用 Sync 和 Async 生成器</h2>
+<p>在 Dart 中，生成器可以生成一系列值。而 Dart
+一共有两个生成器函数：</p>
+<ul>
+<li><strong>同步生成器：</strong> 返回一个可迭代的对象</li>
+<li><strong>异步生成器：</strong> 返回 <code>Stream</code> 对象</li>
+</ul>
+<p>换句话说，同步生成器返回可以顺序访问的值的集合。为此，我们将函数体标记为
+<code>sync*</code>。我们会以 <code>yield</code> 语句用作值。</p>
+<pre class="Dart"><code>Iterable&lt;int&gt; count(int n) sync* {
+  for (var i = 1; i &lt;= n; i++) {
+    yield i;
+  }
+}</code></pre>
+<p>异步生成器则会返回一个 <code>Stream</code>
+对象，让接收一系列事件成为可能。我们可以通过将函数体标记为
+<code>async*</code> 来做到这一点。我们会以 <code>yield</code>
+语句用作值。</p>
+<pre class="Dart"><code>Stream&lt;int&gt; countStream(int n) async* {
+  for (var i = 1; i &lt;= n; i++) {
+    yield i;
+  }
+}</code></pre>
+<h2 id="你下一步将学习什么">你下一步将学习什么？</h2>
+<p>我们希望这些技巧能帮助您充分利用 Dart 及其提供的所有特性。Flutter 和
+Dart
+是一套强大的工具，用于构建具有原生感和流畅感的应用程序。接下来要研究的其他高级的
+Dart 特性应该是：</p>
+<ul>
+<li>嵌套 <code>if</code> 语句的传播运算符</li>
+<li>命名构造函数和初始化列表</li>
+<li>Dart 库</li>
+<li>枚举类型</li>
+</ul>
+<p>学习愉快！</p>
+
+
+
+            </div>
+        </article>
+        <div class="sidebar">
+            <div class="about-box">
+    <div class="avatar">
+        <img src="/assets/media/bitmap/avatar.jpeg" alt="avatar">
+    </div>
+    <h1>霜羽 Hoarfroster</h1>
+    <h2>@PassionPenguin</h2>
+    <p class="moment"><span class="status">🤔</span><span>努力！</span></p>
+    <ul>
+        <li><i class="fa-solid fa-location-dot"></i> 广东 · 广州 | <span class="light">Guangzhou, China</span>
+        </li>
+        <li><i class="fa-solid fa-envelope"></i> <a href="mailto:hoarfroster@outlook.com">hoarfroster@outlook.com</a>
+        </li>
+        <li><i class="fa-solid fa-house"></i> <a href="https://story.hoarfroster.space/">https://story.hoarfroster.space/</a>
+        </li>
+    </ul>
+</div>
+<div class="organization">
+    <h4>组织 Organizations</h4>
+    <ul>
+        <li>
+            <img src="https://avatars.githubusercontent.com/u/81648011?s=60&amp;v=4"
+                alt="Hexa-Penguin"><span>Hexa-Penguin</span>
+        </li>
+        <li>
+            <img src="https://avatars.githubusercontent.com/u/10482599?s=60&amp;v=4" alt="xitu"><span>稀土 xitu</span>
+        </li>
+    </ul>
+</div>
+<div class="category">
+    <span class="title">文章分类</span>
+    <ul>
+        <!-- <li><a href="/archive.html">所有分类</a></li> -->
+    </ul>
+</div>
+<div class="archive">
+    <span class="title">文章存档</span>
+    <ul>
+        <!-- <li><a href="/archive.html">所有文章</a></li> -->
+    </ul>
+</div>
+        </div>
+    </div>
+    <div class="footer">
+    <div class="content">
+        <div class="about">
+            <p>霜羽 Hoarfroster</p>
+            <p>&copy; Copyright 2021 Hoarfroster and contributors.</p>
+        </div>
+        <div class="nav">
+            <div class="links">
+                <span class="title">关于文章</span>
+                <ul>
+                    <li><a href="/archive.html">文章存档</a></li>
+                </ul>
+            </div>
+            <div class="category">
+                <span class="title">关于霜羽</span>
+                <ul>
+                    <li><a href="/about.html">有关霜羽</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <ul class="social-accounts">
+        <li>
+            <a href="https://www.zhihu.com/people/shuang-yu-29-75">
+                <i class="fa-brands fa-zhihu" style="font-size: 24px; color:#06f; line-height: 24px;"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://github.com/PassionPenguin">
+                <img src="/assets/media/vectors/github.svg" alt="github-logo"/>
+            </a>
+        </li>
+        <li>
+            <a href="https://dribbble.com/Hoarfroster">
+                <img src="/assets/media/vectors/dribbble.svg" alt="dribbble-logo"/>
+            </a>
+        </li>
+        <li>
+            <a href="https://zh.wikipedia.org/wiki/User:HoarfrostFeather">
+                <i class="fa-brands fa-wikipedia-w" style="font-size: 22px; color: #888; line-height: 24px;"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://space.bilibili.com/201469972">
+                <i class="fa-brands fa-bilibili" style="font-size: 22px; color: #00a1d6; line-height: 24px;"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS3 会替代 SCSS 吗？</title>
+    <script src="/assets/script/main.js"></script>
+    <link rel="stylesheet" href="/assets/style/styles.css">
+</head>
+
+<body>
+    <div class="header">
+    <div class="container">
+        <div class="icon">
+            <img src="/assets/media/vectors/hoarfroster-text.svg" alt="Hoarfroster Logo with Text">
+        </div>
+        <nav class="navigation">
+            <ul class="header-navigation-list">
+                <li><a href="/">首页</a></li>
+                <li><a href="/archive.html">文章</a></li>
+                <li><a href="/about.html">关于</a></li>
+            </ul>
+            <form action="/search" method="post">
+                <label>
+                    <input type="text" class="search" placeholder="搜索咕咕咕的小站"/>
+                </label>
+                <label class="submit">
+                    <input type="submit"/>
+                </label>
+            </form>
+        </nav>
+        <ul class="social-accounts">
+            <li>
+                <a href="https://www.zhihu.com/people/shuang-yu-29-75">
+                    <i class="fa-brands fa-zhihu" style="font-size: 20px; color:#06f; line-height: 20px;"></i>
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/PassionPenguin">
+                    <img src="/assets/media/vectors/github.svg" alt="github-logo"/>
+                </a>
+            </li>
+            <li>
+                <a href="https://dribbble.com/Hoarfroster">
+                    <img src="/assets/media/vectors/dribbble.svg" alt="dribbble-logo"/>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+    <div class="content article">
+        <article>
+            <div class="title">
+                <h1>CSS3 会替代 SCSS 吗？</h1>
+                <p><span class='chars'>7107B</span><span class='created-date'>Created Sun Jun 12 2022 23:55:03 GM</span><span class='modified-date'>Modified Sun Jun 12 2022 23:55:03 GM</span></p>
+            </div>
+            <div class="main markdown-body">
+                
+
+<blockquote>
+<ul>
+<li>原文地址：<a href="https://blog.bitsrc.io/will-scss-be-replaced-by-css3-754842d6b681">Will
+SCSS be replaced by CSS3?</a></li>
+<li>原文作者：<a href="https://medium.com/@viduniwickramarachchi">Viduni
+Wickramarachchi</a></li>
+<li>译者：<a href="https://github.com/PassionPenguin">霜羽
+Hoarfroster</a></li>
+<li>校对者：<a href="https://github.com/Chorer">Chorer</a>、<a href="https://github.com/Usualminds">Usualminds</a></li>
+</ul>
+</blockquote>
+<p><img src="https://cdn-images-1.medium.com/max/5760/1*iiuMRihN7Lj3i1-hTk8PjA.jpeg"></p>
+<p>当谈及设置网页样式的时候，我们可以选择在项目中使用纯 CSS 或是
+SCSS（除了其它处理器之外）。SCSS 是 CSS
+的超集。大多数的开发者都认为，受益于高级的功能和清晰的语法，SCSS
+使用起来比 CSS 更加方便。</p>
+<p>在这篇文章中我想要带着大家一起探索 SCSS 的功能以及 CSS
+这些年来在功能上的提升。此外，我还会评估是否可以在实际项目中用 CSS 替代
+SCSS。</p>
+<h2 id="css-当前的功能">CSS 当前的功能</h2>
+<p>CSS 自诞生以来已经取得了很大的进展。近些年来 CSS
+的发展也降低了在动画领域使用 JavaScript 的必要性。现代浏览器甚至使用了
+GPU 去提升这些 CSS
+动画的性能。我们现在甚至只需要稍微学习一下，就可以使用 CSS
+构建复杂的响应式网格布局。</p>
+<p>如今 CSS 有了许多新的功能，但本文只会重点提及一些在现代 Web
+应用中常用的新功能。</p>
+<ul>
+<li>在任何 Web
+应用的构建中，最主要的一部分就是页面的布局。我们当中的大多数人这些年都依赖于诸如
+Bootstrap 这样的 CSS 框架，但 CSS 如今已经提供了
+Grid（网格）、Subgrid（子网格）、Flexbox（弹性盒）等新功能去原生地构建布局。虽说
+Flexbox 在开发者当中广受欢迎，但 Grid 布局也正迎头赶上。</li>
+<li>灵活的文字排版</li>
+<li>Transition 和 Transform 的强大能力让我们不再需要使用 JavaScript
+去制作动画</li>
+<li>自定义属性或变量</li>
+</ul>
+<h2 id="scss-的功能">SCSS 的功能</h2>
+<h4 id="scss-支持使用变量--避免冗杂的代码">SCSS 支持使用变量 ——
+避免冗杂的代码</h4>
+<p>我们其实可以在我们的样式表中重用一堆的颜色 <code>color</code>
+或其他元素定义（例如字体
+<code>font</code>）。为了做到在统一的一个地方声明这些可重用的东西，SCSS
+为我们提供了变量功能，让我们能够用一个变量名表示某个颜色，并在项目的其它地方使用该变量名，而不是重写一遍颜色值。</p>
+<p>例如下面这个例子：</p>
+<pre class="scss"><code>$black: #000000;
+$primary-font: 'Ubuntu', 'Helvetica', sans-serif;
+$unit: 1rem;
+
+body {
+    color: $black;
+    font-family: $primary-font;
+    padding: #{$unit * 2};
+}</code></pre>
+<p>CSS 也支持变量和自定义属性，以下就是 CSS 中的自定义属性：</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>--black<span class="in">: #000000;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>--width<span class="in">: 800px;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>--primaryFont<span class="in">: 'Ubuntu</span>'<span class="op">,</span> 'Helvetica'<span class="op">,</span> sans-serif;</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>body {</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">width</span>: <span class="fu">var(</span><span class="va">--width</span><span class="fu">)</span><span class="op">;</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">color</span>: <span class="fu">var(</span><span class="va">--black</span><span class="fu">)</span><span class="op">;</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">font-family</span>: <span class="fu">var(</span><span class="va">--primaryFont</span><span class="fu">)</span><span class="op">;</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<blockquote>
+<h1 id="但是在运行时-css-自定义属性比-scss-变量更耗时">但是在运行时 CSS
+自定义属性比 SCSS 变量更耗时。</h1>
+</blockquote>
+<p>这是因为浏览器会在运行时去处理这些属性。而 SCSS
+则相反，它在预处理阶段会被转化为 CSS，并去处理变量。因此，SCSS
+中变量的使用和代码的重用相比 CSS 而言有着更好的性能。</p>
+<h4 id="scss-允许嵌套的语法--更简洁的源代码">SCSS 允许嵌套的语法 ——
+更简洁的源代码</h4>
+<p>假如有下面这样的 CSS 代码块：</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.header</span> {</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">padding</span>: <span class="dv">1</span><span class="dt">rem</span><span class="op">;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">border-bottom</span>: <span class="dv">1</span><span class="dt">px</span> <span class="dv">solid</span> <span class="cn">grey</span><span class="op">;</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">.header</span> <span class="fu">.nav</span> {</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">list-style</span>: <span class="dv">none</span><span class="op">;</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="fu">.header</span> <span class="fu">.nav</span> li {</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">display</span>: inline-flex<span class="op">;</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="fu">.header</span> <span class="fu">.nav</span> li a {</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    <span class="kw">display</span>: flex<span class="op">;</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    <span class="kw">padding</span>: <span class="dv">0.5</span><span class="dt">rem</span><span class="op">;</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    <span class="kw">color</span>: <span class="cn">red</span><span class="op">;</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>上述的代码看起来很混乱，为了给子元素添加样式，不得不重复声明同一个父元素。</p>
+<p>但如果使用 SCSS
+的嵌套语法，我们可以编写更简洁的代码。上述的代码如果用 SCSS
+编写，是这样的：</p>
+<pre class="scss"><code>.header {
+    padding: 1rem;
+    border-bottom: 1px solid grey;
+
+    .nav {
+        list-style: none;
+
+        li {
+            display: inline-flex;
+
+            a {
+                display: flex;
+                padding: 0.5rem;
+                color: red;
+            }
+        }
+    }
+}</code></pre>
+<p>因此，与传统的 CSS 相比，使用 SCSS 设计组件似乎更加优雅而简洁。</p>
+<h4 id="extend-功能--避免重复同样的样式">@extend 功能 ——
+避免重复同样的样式！</h4>
+<p>在 SCSS 中，我们可以使用 <code>@extend</code>
+在不同的选择器中共享相同的属性。带有占位符的 <code>@extend</code>
+的使用方法如下所示：</p>
+<pre class="scss"><code>%unstyled-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}</code></pre>
+<p><code>%unstyled-list</code>
+是一个可以避免重复编写代码的语法糖，我们可以在不同的地方使用这个列表样式模版，例如说：</p>
+<pre class="scss"><code>.search-results {
+    @extend %unstyled-list;
+}
+
+.advertisements {
+    @extend %unstyled-list;
+}
+
+.dashboard {
+    @extend %unstyled-list;
+}</code></pre>
+<p>同样，我们可以在所有引入了这个定义的样式表中重用它。</p>
+<p>SCSS 中还有很多例如<a href="https://sass-lang.com/documentation/at-rules/function">函数</a>、<a href="https://sass-lang.com/documentation/at-rules/mixin">混入</a>、<a href="https://sass-lang.com/documentation/at-rules/control/for">循环</a>
+的功能，能让我们的前端开发更加高效。</p>
+<h2 id="我应该从-scss-切换到-css-吗">我应该从 SCSS 切换到 CSS 吗？</h2>
+<p>在上文中我们探索了 CSS 现有提供的功能以及 SCSS 的功能。但是，如果将
+CSS 与 SCSS 进行比较，我们会发现还有一些必要的功能无法在 CSS
+中使用。</p>
+<ul>
+<li>随着 Web 应用的不断发展，样式表会变得越发复杂和庞大。CSS
+的嵌套功能将大幅度地提高代码的可读性，让我们在开发此类项目的时候得心应手。但是，截止撰写本文的时间，CSS
+尚未支持该功能。</li>
+<li>CSS 无法处理流控制规则。 SCSS 内置提供了诸如
+<code>@if</code>、<code>@else</code>、<code>@each</code>、<code>for</code>
+和 <code>@while</code>
+的流控制规则。作为程序员，我发现这个功能对于定义样式来说是非常有用的。这也让我们可以编写更少更简洁的代码。</li>
+<li>此外，SCSS 还支持数字运算符的标准集，而在 CSS 中我们必须使用
+<code>calc()</code> 函数才能完成数值运算。SCSS
+的数值运算还能在其兼容的单位之间进行自动转换。</li>
+</ul>
+<p><strong>但是</strong>, <code>calc()</code> 这个 CSS
+函数几乎没有限制，例如除法中除数必须是数字，或是对于乘法运算至少有一个参数是数字。</p>
+<ul>
+<li>另一个重要方面是样式重用，这是 SCSS 的”杀手锏“。在这个方面，SCSS
+提供了许多功能，例如内置模块、映射、循环和变量。</li>
+</ul>
+<p>因此我认为，即使 CSS 已经诞生了很多新功能，SCSS
+仍然是更好的选择。你可以在下面的评论区中谈谈你的想法。</p>
+<p>希望你能够喜欢这篇文章。谢谢阅读！</p>
+
+
+
+            </div>
+        </article>
+        <div class="sidebar">
+            <div class="about-box">
+    <div class="avatar">
+        <img src="/assets/media/bitmap/avatar.jpeg" alt="avatar">
+    </div>
+    <h1>霜羽 Hoarfroster</h1>
+    <h2>@PassionPenguin</h2>
+    <p class="moment"><span class="status">🤔</span><span>努力！</span></p>
+    <ul>
+        <li><i class="fa-solid fa-location-dot"></i> 广东 · 广州 | <span class="light">Guangzhou, China</span>
+        </li>
+        <li><i class="fa-solid fa-envelope"></i> <a href="mailto:hoarfroster@outlook.com">hoarfroster@outlook.com</a>
+        </li>
+        <li><i class="fa-solid fa-house"></i> <a href="https://story.hoarfroster.space/">https://story.hoarfroster.space/</a>
+        </li>
+    </ul>
+</div>
+<div class="organization">
+    <h4>组织 Organizations</h4>
+    <ul>
+        <li>
+            <img src="https://avatars.githubusercontent.com/u/81648011?s=60&amp;v=4"
+                alt="Hexa-Penguin"><span>Hexa-Penguin</span>
+        </li>
+        <li>
+            <img src="https://avatars.githubusercontent.com/u/10482599?s=60&amp;v=4" alt="xitu"><span>稀土 xitu</span>
+        </li>
+    </ul>
+</div>
+<div class="category">
+    <span class="title">文章分类</span>
+    <ul>
+        <!-- <li><a href="/archive.html">所有分类</a></li> -->
+    </ul>
+</div>
+<div class="archive">
+    <span class="title">文章存档</span>
+    <ul>
+        <!-- <li><a href="/archive.html">所有文章</a></li> -->
+    </ul>
+</div>
+        </div>
+    </div>
+    <div class="footer">
+    <div class="content">
+        <div class="about">
+            <p>霜羽 Hoarfroster</p>
+            <p>&copy; Copyright 2021 Hoarfroster and contributors.</p>
+        </div>
+        <div class="nav">
+            <div class="links">
+                <span class="title">关于文章</span>
+                <ul>
+                    <li><a href="/archive.html">文章存档</a></li>
+                </ul>
+            </div>
+            <div class="category">
+                <span class="title">关于霜羽</span>
+                <ul>
+                    <li><a href="/about.html">有关霜羽</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <ul class="social-accounts">
+        <li>
+            <a href="https://www.zhihu.com/people/shuang-yu-29-75">
+                <i class="fa-brands fa-zhihu" style="font-size: 24px; color:#06f; line-height: 24px;"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://github.com/PassionPenguin">
+                <img src="/assets/media/vectors/github.svg" alt="github-logo"/>
+            </a>
+        </li>
+        <li>
+            <a href="https://dribbble.com/Hoarfroster">
+                <img src="/assets/media/vectors/dribbble.svg" alt="dribbble-logo"/>
+            </a>
+        </li>
+        <li>
+            <a href="https://zh.wikipedia.org/wiki/User:HoarfrostFeather">
+                <i class="fa-brands fa-wikipedia-w" style="font-size: 22px; color: #888; line-height: 24px;"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://space.bilibili.com/201469972">
+                <i class="fa-brands fa-bilibili" style="font-size: 22px; color: #00a1d6; line-height: 24px;"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+</body>
+
+</html>

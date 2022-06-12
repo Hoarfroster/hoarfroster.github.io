@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>假如浏览器支持原生的"跳至内容"链接……</title>
+    <script src="/assets/script/main.js"></script>
+    <link rel="stylesheet" href="/assets/style/styles.css">
+</head>
+
+<body>
+    <div class="header">
+    <div class="container">
+        <div class="icon">
+            <img src="/assets/media/vectors/hoarfroster-text.svg" alt="Hoarfroster Logo with Text">
+        </div>
+        <nav class="navigation">
+            <ul class="header-navigation-list">
+                <li><a href="/">首页</a></li>
+                <li><a href="/archive.html">文章</a></li>
+                <li><a href="/about.html">关于</a></li>
+            </ul>
+            <form action="/search" method="post">
+                <label>
+                    <input type="text" class="search" placeholder="搜索咕咕咕的小站"/>
+                </label>
+                <label class="submit">
+                    <input type="submit"/>
+                </label>
+            </form>
+        </nav>
+        <ul class="social-accounts">
+            <li>
+                <a href="https://www.zhihu.com/people/shuang-yu-29-75">
+                    <i class="fa-brands fa-zhihu" style="font-size: 20px; color:#06f; line-height: 20px;"></i>
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/PassionPenguin">
+                    <img src="/assets/media/vectors/github.svg" alt="github-logo"/>
+                </a>
+            </li>
+            <li>
+                <a href="https://dribbble.com/Hoarfroster">
+                    <img src="/assets/media/vectors/dribbble.svg" alt="dribbble-logo"/>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+    <div class="content article">
+        <article>
+            <div class="title">
+                <h1>假如浏览器支持原生的"跳至内容"链接……</h1>
+                <p><span class='chars'>6200B</span><span class='created-date'>Created Sun Jun 12 2022 23:55:03 GM</span><span class='modified-date'>Modified Sun Jun 12 2022 23:55:03 GM</span></p>
+            </div>
+            <div class="main markdown-body">
+                
+
+<blockquote>
+<ul>
+<li>原文地址：<a href="https://kittygiraudel.com/2021/03/07/imagining-native-skip-links/">Imagining
+native skip links</a></li>
+<li>原文作者：<a href="https://kittygiraudel.com/">kittygiraudel.com</a></li>
+<li>译者：<a href="https://github.com/PassionPenguin">霜羽
+Hoarfroster</a></li>
+<li>校对者：<a href="https://github.com/chzh9311">chzh9311</a>、<a href="https://github.com/Kimhooo">Kimhooo</a></li>
+</ul>
+</blockquote>
+<p>我们最近在 <a href="https://kittygiraudel.com/2020/12/01/a11y-advent-calendar/">A11y
+Advent calendar</a> 话题中谈到了<a href="https://kittygiraudel.com/2020/12/06/a11y-advent-skip-to-content/">“跳至内容“链接</a>。如果你不熟悉这个概念，我引用一下那里的原文：</p>
+<blockquote>
+<p>当点击一个链接时，页面会被重新加载，焦点会恢复到页面顶部。而如果在这时候使用无障碍辅助功能在页面中导航，在访问主要内容之前，必须先逐一跳过整个页眉、导航，有时甚至包括侧边栏。这体验太糟糕了！为了解决这个问题，一个常见的设计模式是实现一个跳过链接，也就是发送至主要内容区域的锚链接。</p>
+</blockquote>
+<h2 id="存在的问题">存在的问题</h2>
+<p>所以这一切都很好。只是跳至内容链接的实现并不那么简单。仅列出几个它应该满足的约束条件：</p>
+<ul>
+<li>它应该是第一个能够被辅助功能识别的链接。</li>
+<li>它应该被<a href="https://kittygiraudel.com/2021/02/17/hiding-content-responsibly/">小心地隐藏起来</a>，以让其对特定用户而言仍然可以使用。</li>
+<li>当聚焦到它上面时它应该变得可见。</li>
+<li>它的内容应该以 “跳过” 开头，以便于让用户识别。</li>
+<li>它应该导航到页面的主要内容。</li>
+</ul>
+<p>这并不复杂，但也很容易搞砸。既然每个网站都需要这样做，那么问题就来了
+—— <strong>为什么浏览器不原生支持呢？</strong> —— 这是12月时<a href="https://github.com/WebWeWant/webwewant.fyi/discussions/233">我向
+Web We Want</a>提议的。</p>
+<h2 id="浏览器的功能">浏览器的功能？</h2>
+<p>不难想象，为了给使用辅助技术的人提供更好、更一致的体验，浏览器可以在原生的情况下处理这个问题，几乎不需要网页开发人员进行控制。</p>
+<p>在浏览器的用户界面中跳出一个标签（或使用专用的快捷键切换），进入另一个网页时，浏览器会立即显示跳过链接，并且清楚：</p>
+<ol type="1">
+<li>它将作为标签顺序中的第一个元素被插入。</li>
+<li>它将使用浏览器的语言，这不一定是网页的语言。</li>
+<li>从技术上讲，它将是浏览器界面的一部分，而不是网站的一部分。因此，这将根据浏览器的主题进行样式设计。</li>
+<li>它不会被网页故意访问（严格意义上的）。</li>
+<li>它将被渲染在页面的顶部，以避免破坏布局的风险。</li>
+</ol>
+<h2 id="一个-html-api">一个 HTML API</h2>
+<p>中心思想是尽量减少对它的控制权。就像开发者对浏览器的标签或地址栏的外观和行为没有发言权一样。也就是说，链接的目标应该是可以配置的。</p>
+<p>一个合理的默认值是指向 <code>&lt;main&gt;</code>
+元素，因为它在每个页面中都是唯一的，并且明确地要包含主要内容。</p>
+<blockquote>
+<p><code>&lt;main&gt;</code>
+是文档或应用程序正文的主要内容。主要内容区域由与文档的中心主题或应用程序的中心功能直接相关或扩展的内容组成。</p>
+<ul>
+<li><a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-main-element">W3C
+HTML 编辑草案</a></li>
+</ul>
+</blockquote>
+<p>但并不是所有的网站都使用 <code>&lt;main&gt;</code>
+元素。我认为浏览器可能会有一些内置的启发式方法来找出什么是主要的内容容器，但恐怕这不在该功能讨论的范围内。</p>
+<p>因此，为了给 Web
+开发者提供一种方法来精确定义哪个容器才是真正的主容器，可以使用一个
+<code>&lt;meta&gt;</code> 标签。它将接受一个 CSS
+选择器（复杂程度由需求决定），当使用跳过链接时，浏览器将查询该 DOM
+节点，将滚动并聚焦它。</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;meta</span> <span class="er">name</span><span class="ot">=</span><span class="st">"skip-link"</span> <span class="er">value</span><span class="ot">=</span><span class="st">"#content"</span><span class="kw">/&gt;</span></span></code></pre></div>
+<p>另一种方法是使用带有 <code>rel</code> 属性的
+<code>&lt;link&gt;</code> 标签，如 <a href="https://github.com/WebWeWant/webwewant.fyi/discussions/233#discussioncomment-146471">Aaron
+Gustafson 所提示的</a>。</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;link</span> <span class="er">rel</span><span class="ot">=</span><span class="st">"skip-link"</span> <span class="er">href</span><span class="ot">=</span><span class="st">"#content"</span><span class="kw">/&gt;</span></span></code></pre></div>
+<p>浏览器是否应该监听这个元素的变化（不管是什么）是一个开放性的问题。我认为是的，只是为了安全起见。</p>
+<h2 id="现有的跳转内容链接应该怎么处理">现有的跳转内容链接应该怎么处理？</h2>
+<p>浏览器是否会在本地实现跳过链接，我们现有的自定义链接又会怎样？他们很可能不会有太大的困扰。</p>
+<p>在网页内容区域中的标签将显示原生的跳转链接。如果使用，它将绕过整个导航，包括自定义跳转链接。如果不使用，下一个标签将是网站的跳转链接，这将是多余的，但也无关紧要。</p>
+<p>理想的情况是，浏览器提供一种方法来知道是否支持该功能，这样跳转链接就可以为还不支持跳转链接的浏览器进行多重填充。不过这很可能需要
+JavaScript。</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="op">!</span>windows<span class="op">.</span><span class="at">navigator</span><span class="op">.</span><span class="at">skipLink</span>) {</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> skipLink <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">createElement</span>(<span class="st">'a'</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    skipLink<span class="op">.</span><span class="at">href</span><span class="op">=</span><span class="st">'#main'</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    skipLink<span class="op">.</span><span class="at">innerHTML</span> <span class="op">=</span> <span class="st">'跳转到主要内容'</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">document</span><span class="op">.</span><span class="at">body</span><span class="op">.</span><span class="fu">prepend</span>(skipLink)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<h2 id="收尾">收尾</h2>
+<p>这绝不是完美的，我也没有一个万无一失的解决方案可以提供。如果有的话，我相信比我更聪明、更有见识的人早就提出来了。</p>
+<p>不过，缺乏跳转链接对使用辅助技术浏览网页的人来说是一个很大的障碍。而且考虑到每个网站都需要一个，不同网站之间几乎没有差异，这确实感觉像是浏览器在原生上该做的事情。</p>
+
+
+
+            </div>
+        </article>
+        <div class="sidebar">
+            <div class="about-box">
+    <div class="avatar">
+        <img src="/assets/media/bitmap/avatar.jpeg" alt="avatar">
+    </div>
+    <h1>霜羽 Hoarfroster</h1>
+    <h2>@PassionPenguin</h2>
+    <p class="moment"><span class="status">🤔</span><span>努力！</span></p>
+    <ul>
+        <li><i class="fa-solid fa-location-dot"></i> 广东 · 广州 | <span class="light">Guangzhou, China</span>
+        </li>
+        <li><i class="fa-solid fa-envelope"></i> <a href="mailto:hoarfroster@outlook.com">hoarfroster@outlook.com</a>
+        </li>
+        <li><i class="fa-solid fa-house"></i> <a href="https://story.hoarfroster.space/">https://story.hoarfroster.space/</a>
+        </li>
+    </ul>
+</div>
+<div class="organization">
+    <h4>组织 Organizations</h4>
+    <ul>
+        <li>
+            <img src="https://avatars.githubusercontent.com/u/81648011?s=60&amp;v=4"
+                alt="Hexa-Penguin"><span>Hexa-Penguin</span>
+        </li>
+        <li>
+            <img src="https://avatars.githubusercontent.com/u/10482599?s=60&amp;v=4" alt="xitu"><span>稀土 xitu</span>
+        </li>
+    </ul>
+</div>
+<div class="category">
+    <span class="title">文章分类</span>
+    <ul>
+        <!-- <li><a href="/archive.html">所有分类</a></li> -->
+    </ul>
+</div>
+<div class="archive">
+    <span class="title">文章存档</span>
+    <ul>
+        <!-- <li><a href="/archive.html">所有文章</a></li> -->
+    </ul>
+</div>
+        </div>
+    </div>
+    <div class="footer">
+    <div class="content">
+        <div class="about">
+            <p>霜羽 Hoarfroster</p>
+            <p>&copy; Copyright 2021 Hoarfroster and contributors.</p>
+        </div>
+        <div class="nav">
+            <div class="links">
+                <span class="title">关于文章</span>
+                <ul>
+                    <li><a href="/archive.html">文章存档</a></li>
+                </ul>
+            </div>
+            <div class="category">
+                <span class="title">关于霜羽</span>
+                <ul>
+                    <li><a href="/about.html">有关霜羽</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <ul class="social-accounts">
+        <li>
+            <a href="https://www.zhihu.com/people/shuang-yu-29-75">
+                <i class="fa-brands fa-zhihu" style="font-size: 24px; color:#06f; line-height: 24px;"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://github.com/PassionPenguin">
+                <img src="/assets/media/vectors/github.svg" alt="github-logo"/>
+            </a>
+        </li>
+        <li>
+            <a href="https://dribbble.com/Hoarfroster">
+                <img src="/assets/media/vectors/dribbble.svg" alt="dribbble-logo"/>
+            </a>
+        </li>
+        <li>
+            <a href="https://zh.wikipedia.org/wiki/User:HoarfrostFeather">
+                <i class="fa-brands fa-wikipedia-w" style="font-size: 22px; color: #888; line-height: 24px;"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://space.bilibili.com/201469972">
+                <i class="fa-brands fa-bilibili" style="font-size: 22px; color: #00a1d6; line-height: 24px;"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+</body>
+
+</html>

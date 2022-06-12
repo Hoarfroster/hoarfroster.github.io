@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bash 中的 if else 语句</title>
+    <script src="/assets/script/main.js"></script>
+    <link rel="stylesheet" href="/assets/style/styles.css">
+</head>
+
+<body>
+    <div class="header">
+    <div class="container">
+        <div class="icon">
+            <img src="/assets/media/vectors/hoarfroster-text.svg" alt="Hoarfroster Logo with Text">
+        </div>
+        <nav class="navigation">
+            <ul class="header-navigation-list">
+                <li><a href="/">首页</a></li>
+                <li><a href="/archive.html">文章</a></li>
+                <li><a href="/about.html">关于</a></li>
+            </ul>
+            <form action="/search" method="post">
+                <label>
+                    <input type="text" class="search" placeholder="搜索咕咕咕的小站"/>
+                </label>
+                <label class="submit">
+                    <input type="submit"/>
+                </label>
+            </form>
+        </nav>
+        <ul class="social-accounts">
+            <li>
+                <a href="https://www.zhihu.com/people/shuang-yu-29-75">
+                    <i class="fa-brands fa-zhihu" style="font-size: 20px; color:#06f; line-height: 20px;"></i>
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/PassionPenguin">
+                    <img src="/assets/media/vectors/github.svg" alt="github-logo"/>
+                </a>
+            </li>
+            <li>
+                <a href="https://dribbble.com/Hoarfroster">
+                    <img src="/assets/media/vectors/dribbble.svg" alt="dribbble-logo"/>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+    <div class="content article">
+        <article>
+            <div class="title">
+                <h1>Bash 中的 if else 语句</h1>
+                <p><span class='chars'>8006B</span><span class='created-date'>Created Sun Jun 12 2022 23:55:03 GM</span><span class='modified-date'>Modified Sun Jun 12 2022 23:55:03 GM</span></p>
+            </div>
+            <div class="main markdown-body">
+                
+
+<blockquote>
+<ul>
+<li>原文地址：<a href="https://linuxize.com/post/bash-if-else-statement/">Bash if..else
+Statement</a></li>
+<li>原文作者：<a href="https://twitter.com/linuxize">linuxize</a></li>
+<li>译者：<a href="https://github.com/PassionPenguin">霜羽
+Hoarfroster</a></li>
+<li>校对者：<a href="https://github.com/zenblo">zenblo</a>、<a href="https://github.com/flying-yogurt">flying-yogurt</a>、<a href="https://github.com/lsvih">lsvih</a></li>
+</ul>
+</blockquote>
+<p><img src="https://assets-img.hoarfroster.space/featured_hu91e1d6741dfcdbd79b4fecce3479ee44_25821_768x0_resize_q75_lanczos.jpg" alt="Bash 中的 if else 语句"></p>
+<p>在本篇教程中，我们会逐步深入 Bash 中的 if
+语句基础，带着大家一起学习如何在 Shell 脚本中使用 if 语句。</p>
+<p>决策，计算机程序中的一个最基础的要素。就如同其他的编程语言一样，通过使用
+<code>if</code>、<code>if..else</code>、<code>if..elif..else</code>
+以及嵌套 <code>if</code> 语句，我们可以在 Bash
+中基于特定条件执行对应的代码。</p>
+<h2 id="if-语句"><code>if</code> 语句</h2>
+<p>Bash 中的 <code>if</code>
+条件语句拥有不同的实现格式。例如最基本的形式：</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode zsh"><code class="sourceCode zsh"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="ex">TEST-COMMAND</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="cf">then</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="ex">STATEMENTS</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="cf">fi</span></span></code></pre></div>
+<p><code>if</code> 语句由 <code>if</code>
+关键字引导，接上一段条件表达式，然后是 <code>then</code> 关键字，并以
+<code>fi</code> 关键字结束。</p>
+<p>如果 <code>TEST-COMMAND</code> 执行后为真，那么相应地，
+<code>STATEMENTS</code> 就会被执行；而如果为假，则
+<code>STATEMENTS</code> 会被忽略。</p>
+<p>大多数情况下，（在原文件中）保持你的代码拥有优秀的缩进及空行，可是个很好的习惯，能让你的代码具有更强的可读性和组织性结构性。大多数人都是用
+4 个空格或 2 个空格的缩进。</p>
+<p>让我们看看如下用于检查给定数字是否大于 10 的一段代码：</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode zsh"><code class="sourceCode zsh"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/zsh</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="at">-n</span> <span class="st">"输入一个数字："</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="bu">read</span> <span class="va">VAR</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="kw">[[</span> <span class="va">$VAR</span> <span class="ot">-gt</span> 10 <span class="kw">]]</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="cf">then</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="bu">echo</span> <span class="st">"该变量大于 10。"</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="cf">fi</span></span></code></pre></div>
+<p>保存上面的代码并在命令行中执行它：</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode zsh"><code class="sourceCode zsh"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 注意，在运行该段代码前，你可能需要先赋予其相应权限。</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># chmod +x test.sh</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ./test.sh</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span> test.sh</span></code></pre></div>
+<p>这段脚本会要求你输入一个数字，举个例子，如果你输入了 15，那么
+<code>TEST-COMMAND</code> 即 <code>[[ $VAR -gt 10 ]]</code>
+等同于真，然后 <code>then</code> 分句中的 <a href="https://linuxize.com/post/echo-command-in-linux-with-examples/"><code>echo</code></a>
+语句就会被执行。</p>
+<p>因此上述代码的输出是：</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode zsh"><code class="sourceCode zsh"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">该变量大于</span> 10。</span></code></pre></div>
+<h2 id="ifelse-语句"><code>if..else</code> 语句</h2>
+<p>Bash 中的 <code>if..else</code> 语句是这个样子的：</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode zsh"><code class="sourceCode zsh"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="ex">TEST-COMMAND</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="cf">then</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="ex">STATEMENTS1</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="ex">STATEMENTS2</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="cf">fi</span></span></code></pre></div>
+<p>如果 <code>TEST-COMMAND</code> 为真，那么 <code>STATEMENT1</code>
+会被执行；而如果为假，那么 <code>STATEMENT2</code>
+就会被执行。对于每一个 <code>if</code> 语句，只能有一个
+<code>else</code> 语句与之对应。</p>
+<p>让我们给上一个例子加一个 <code>else</code> 语句：</p>
+<pre><code>#!/bin/bash
+
+echo -n "输入一个数字："
+read VAR
+
+if [[ $VAR -gt 10 ]]
+then
+  echo "该变量大于 10。"
+else
+  echo "该变量小于等于 10。"
+fi</code></pre>
+<p>如果你执行上述代码并输入一段数字，脚本会给予你输入的数字与 10
+之间的大小关系输出不同的信息。</p>
+<h2 id="ifelifelse-语句"><code>if..elif..else</code> 语句</h2>
+<p>Bash 的 <code>if..elif..else</code> 语句是这样子的：</p>
+<pre><code>if TEST-COMMAND1
+then
+  STATEMENTS1
+elif TEST-COMMAND2
+then
+  STATEMENTS2
+else
+  STATEMENTS3
+fi</code></pre>
+<p>如果 <code>TEST-COMMAND1</code> 条件为真，那么
+<code>STATEMENTS1</code> 就会被执行。若为假，则继续如下判断：如果
+<code>TEST-COMMAND2</code> 条件为真，那么 <code>STATEMENTS2</code>
+就会被执行。否则，<code>STATEMENTS3</code> 将会被执行。</p>
+<p>你可以拥有一个或多个 <code>elif</code> 语句在一段语句中，而
+<code>else</code> 则是可有可无的。</p>
+<p>这些条件判断语句是按顺序执行的，一旦其中一个条件从句是真，那么剩下的判断都不会执行，并且程序会在执行完语句以后，直接跳转到
+<code>if</code> 整个段落的末尾，执行下一段代码。</p>
+<p>让我们给上一个例子添加 <code>elif</code> 语句吧：</p>
+<pre><code>#!/bin/bash
+
+echo -n "输入一个数字："
+read VAR
+
+if [[ $VAR -gt 10 ]]
+then
+  echo "该变量大于 10。"
+elif [[ $VAR -eq 10 ]]
+then
+  echo "该变量等于 10。"
+else
+  echo "该变量小于 10。"
+fi</code></pre>
+<h2 id="嵌套-if-语句">嵌套 <code>if</code> 语句</h2>
+<p>Bash 允许在一个 <code>if</code> 语句中嵌套一个或多个<code>if</code>
+语句。</p>
+<p>下面的脚本会要求你输入三个数字，然后会打印其中最大的数字：</p>
+<pre><code>#!/bin/bash
+
+echo -n "输入一个数字："
+read VAR1
+echo -n "再输入一个数字："
+read VAR2
+echo -n "再再输入一个数字："
+read VAR3
+
+if [[ $VAR1 -ge $VAR2 ]] &amp;&amp; [[ $VAR1 -ge $VAR3 ]]
+then
+  echo "$VAR1 是最大的数字。"
+elif [[ $VAR2 -ge $VAR1 ]] &amp;&amp; [[ $VAR2 -ge $VAR3 ]]
+then
+  echo "$VAR2 是最大的数字。"
+else
+  echo "$VAR3 是最大的数字。"
+fi</code></pre>
+<p>而输出就是这样子的：</p>
+<pre><code>7 是最大的数字。</code></pre>
+<p>一般来说，使用 <a href="https://linuxize.com/post/bash-case-statement/"><code>case</code></a>
+语句比使用 <code>if</code> 语句更高效。</p>
+<h2 id="多重条件">多重条件</h2>
+<p>逻辑运算符 <code>OR</code> 和 <code>AND</code> 能够让你在一条
+<code>if</code> 语句中使用多重条件。</p>
+<p>下面就是获取三个数中最大数字的另一种写法，而在这个版本中，我们用了逻辑
+<code>AND</code>（<code>&amp;&amp;</code>） 运算符而非嵌套
+<code>if</code> 语句。</p>
+<pre><code>#!/bin/bash
+
+echo -n "输入一个数字："
+read VAR1
+echo -n "再输入一个数字："
+read VAR2
+echo -n "再再输入一个数字："
+read VAR3
+
+if [[ $VAR1 -ge $VAR2 ]] &amp;&amp; [[ $VAR1 -ge $VAR3 ]]
+then
+  echo "$VAR1 是最大的数字"
+elif [[ $VAR2 -ge $VAR1 ]] &amp;&amp; [[ $VAR2 -ge $VAR3 ]]
+then
+  echo "$VAR2 是最大的数字"
+else
+  echo "$VAR3 是最大的数字"
+fi</code></pre>
+<h2 id="test-操作"><code>test</code> 操作</h2>
+<p>在 Bash 中，<code>test</code> 语句可以长这样的：</p>
+<p><code>test EXPRESSION [ EXPRESSION ] [[ EXPRESSION ]]</code></p>
+<p>为了使我们的脚本可移植，最好使用兼容所有 POSIX shell 的旧版本
+<code>[</code> …… <code>]</code>语句。使用 Bash、Zsh、Ksh 作为默认 shell
+的大多数现代系统都支持 <code>[[</code> ……
+<code>]]</code>（双括号）新版语法。</p>
+<p>要否定测试表达式，请使用逻辑
+<code>NOT</code>（<code>!</code>）运算符。在<a href="https://linuxize.com/post/how-to-compare-strings-in-bash/">比较字符串</a>时，请始终使用单引号或双引号，以避免单词拆分和乱码问题。</p>
+<p>以下是一些最常用的运算符：</p>
+<ul>
+<li><code>n VAR</code> —— 如果 <code>VAR</code>
+的长度大于零，则为真。</li>
+<li><code>z VAR</code> —— 如果 <code>VAR</code> 为空，则为真。</li>
+<li><code>STRING1 = STRING2</code> —— 如果 <code>STRING1</code> 和
+<code>STRING2</code> 相等，则为真。</li>
+<li><code>STRING1 != STRING2</code> —— 如果 <code>STRING1</code> 和
+<code>STRING2</code> 不相等，则为真。</li>
+<li><code>INTEGER1 -eq INTEGER2</code> —— 如果 <code>INTEGER1</code> 和
+<code>INTEGER2</code>相等则为真。</li>
+<li><code>INTEGER1 -gt INTEGER2</code> —— 如果 <code>INTEGER1</code>
+大于 <code>INTEGER2</code>，则为真。</li>
+<li><code>INTEGER1 -lt INTEGER2</code> —— 如果 <code>INTEGER1</code>
+小于 <code>INTEGER2</code>，则为真。</li>
+<li><code>INTEGER1 -ge INTEGER2</code> —— 如果 <code>INTEGER1</code>
+等于或大于 <code>INTEGER2</code>，则为真。</li>
+<li><code>INTEGER1 -le INTEGER2</code> —— 如果 <code>INTEGER1</code>
+等于或小于 <code>INTEGER2</code>，则为真。</li>
+<li><code>h FILE</code> —— 如果 <code>FILE</code>
+存在并且是符号链接，则为真。</li>
+<li><code>r FILE</code> —— 如果 <code>FILE</code>
+存在并且可读，则为真。</li>
+<li><code>w FILE</code> —— 如果 <code>FILE</code>
+存在且可写，则为真。</li>
+<li><code>x FILE</code> —— 如果 <code>FILE</code>
+存在且可执行，则为真。</li>
+<li><code>d FILE</code> —— 如果 <code>FILE</code>
+存在并且是目录，则为真。</li>
+<li><code>e FILE</code> —— 如果 <code>FILE</code>
+存在并且是一个文件并且不管它的类型（不管是节点、目录还是
+socket），则为真。</li>
+<li><code>f FILE</code> —— 如果 <a href="https://linuxize.com/post/bash-check-if-file-exists/"><code>FILE</code>
+存在</a>，并且是常规文件（不是目录或设备什么的） ，则为真。</li>
+</ul>
+<h2 id="结论">结论</h2>
+<p><code>if</code>、<code>if..else</code> 和 <code>if..elif..else</code>
+语句让我们能够基于不同的判断条件来控制 Bash 脚本中逻辑语句的执行。</p>
+<p>如果你有任何疑问或反馈，请随时发表评论。</p>
+
+
+
+            </div>
+        </article>
+        <div class="sidebar">
+            <div class="about-box">
+    <div class="avatar">
+        <img src="/assets/media/bitmap/avatar.jpeg" alt="avatar">
+    </div>
+    <h1>霜羽 Hoarfroster</h1>
+    <h2>@PassionPenguin</h2>
+    <p class="moment"><span class="status">🤔</span><span>努力！</span></p>
+    <ul>
+        <li><i class="fa-solid fa-location-dot"></i> 广东 · 广州 | <span class="light">Guangzhou, China</span>
+        </li>
+        <li><i class="fa-solid fa-envelope"></i> <a href="mailto:hoarfroster@outlook.com">hoarfroster@outlook.com</a>
+        </li>
+        <li><i class="fa-solid fa-house"></i> <a href="https://story.hoarfroster.space/">https://story.hoarfroster.space/</a>
+        </li>
+    </ul>
+</div>
+<div class="organization">
+    <h4>组织 Organizations</h4>
+    <ul>
+        <li>
+            <img src="https://avatars.githubusercontent.com/u/81648011?s=60&amp;v=4"
+                alt="Hexa-Penguin"><span>Hexa-Penguin</span>
+        </li>
+        <li>
+            <img src="https://avatars.githubusercontent.com/u/10482599?s=60&amp;v=4" alt="xitu"><span>稀土 xitu</span>
+        </li>
+    </ul>
+</div>
+<div class="category">
+    <span class="title">文章分类</span>
+    <ul>
+        <!-- <li><a href="/archive.html">所有分类</a></li> -->
+    </ul>
+</div>
+<div class="archive">
+    <span class="title">文章存档</span>
+    <ul>
+        <!-- <li><a href="/archive.html">所有文章</a></li> -->
+    </ul>
+</div>
+        </div>
+    </div>
+    <div class="footer">
+    <div class="content">
+        <div class="about">
+            <p>霜羽 Hoarfroster</p>
+            <p>&copy; Copyright 2021 Hoarfroster and contributors.</p>
+        </div>
+        <div class="nav">
+            <div class="links">
+                <span class="title">关于文章</span>
+                <ul>
+                    <li><a href="/archive.html">文章存档</a></li>
+                </ul>
+            </div>
+            <div class="category">
+                <span class="title">关于霜羽</span>
+                <ul>
+                    <li><a href="/about.html">有关霜羽</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <ul class="social-accounts">
+        <li>
+            <a href="https://www.zhihu.com/people/shuang-yu-29-75">
+                <i class="fa-brands fa-zhihu" style="font-size: 24px; color:#06f; line-height: 24px;"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://github.com/PassionPenguin">
+                <img src="/assets/media/vectors/github.svg" alt="github-logo"/>
+            </a>
+        </li>
+        <li>
+            <a href="https://dribbble.com/Hoarfroster">
+                <img src="/assets/media/vectors/dribbble.svg" alt="dribbble-logo"/>
+            </a>
+        </li>
+        <li>
+            <a href="https://zh.wikipedia.org/wiki/User:HoarfrostFeather">
+                <i class="fa-brands fa-wikipedia-w" style="font-size: 22px; color: #888; line-height: 24px;"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://space.bilibili.com/201469972">
+                <i class="fa-brands fa-bilibili" style="font-size: 22px; color: #00a1d6; line-height: 24px;"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+</body>
+
+</html>

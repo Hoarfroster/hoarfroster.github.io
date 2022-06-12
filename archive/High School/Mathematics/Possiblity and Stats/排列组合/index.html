@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>排列组合</title>
+    <script src="/assets/script/main.js"></script>
+    <link rel="stylesheet" href="/assets/style/styles.css">
+</head>
+
+<body>
+    <div class="header">
+    <div class="container">
+        <div class="icon">
+            <img src="/assets/media/vectors/hoarfroster-text.svg" alt="Hoarfroster Logo with Text">
+        </div>
+        <nav class="navigation">
+            <ul class="header-navigation-list">
+                <li><a href="/">首页</a></li>
+                <li><a href="/archive.html">文章</a></li>
+                <li><a href="/about.html">关于</a></li>
+            </ul>
+            <form action="/search" method="post">
+                <label>
+                    <input type="text" class="search" placeholder="搜索咕咕咕的小站"/>
+                </label>
+                <label class="submit">
+                    <input type="submit"/>
+                </label>
+            </form>
+        </nav>
+        <ul class="social-accounts">
+            <li>
+                <a href="https://www.zhihu.com/people/shuang-yu-29-75">
+                    <i class="fa-brands fa-zhihu" style="font-size: 20px; color:#06f; line-height: 20px;"></i>
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/PassionPenguin">
+                    <img src="/assets/media/vectors/github.svg" alt="github-logo"/>
+                </a>
+            </li>
+            <li>
+                <a href="https://dribbble.com/Hoarfroster">
+                    <img src="/assets/media/vectors/dribbble.svg" alt="dribbble-logo"/>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+    <div class="content article">
+        <article>
+            <div class="title">
+                <h1>排列组合</h1>
+                <p><span class='chars'>5398B</span><span class='created-date'>Created Sat May 28 2022 23:43:08 GM</span><span class='modified-date'>Modified Sat May 28 2022 23:43:08 GM</span></p>
+            </div>
+            <div class="main markdown-body">
+                
+
+<h2 id="知识聚焦">知识聚焦</h2>
+<h3 id="一排列数与组合数">一、排列数与组合数</h3>
+<h4 id="1-排列数与组合数">1. 排列数与组合数</h4>
+<p><span class="tab"></span>从 <span class="math inline"><em>n</em></span> 个不同的元素中任取
+<span class="math inline"><em>m</em>(<em>m</em>≤<em>n</em>)</span>
+个元素的所有不同排列的个数为 <span class="math inline"><em>A</em><sub><em>n</em></sub><sup><em>m</em></sup></span>，且
+<span class="math inline"><em>A</em><sub><em>n</em></sub><sup><em>m</em></sup> = <em>n</em>(<em>n</em>−1)(<em>n</em>−2)⋯(<em>n</em>−<em>m</em>+1)</span>（<span class="math inline">$m,n\in\N^*$</span>），并规定 <span class="math inline"><em>A</em><sub><em>n</em></sub><sup><em>n</em></sup> = <em>n</em>(<em>n</em>−1)(<em>n</em>−2)⋯1 = <em>n</em>!</span>（规定
+<strong><span class="math inline">0! = 1</span></strong>）。</p>
+<p><span class="tab"></span>从 <span class="math inline"><em>n</em></span> 个不同的元素中任取
+<span class="math inline"><em>m</em>(<em>m</em>≤<em>n</em>)</span>
+个元素的所有不同组合的个数为 <span class="math inline"><em>C</em><sub><em>n</em></sub><sup><em>m</em></sup></span>，且
+<span class="math inline">$C_n^m=\dfrac{n(n-1)(n-2)\cdots(n-m+1)}{m!}=\dfrac{n!}{m!(n-m)!}=\dfrac{A_n^m}{A_m^m}$</span>（<span class="math inline">$m,n\in\N^*$</span>），组合数有如下性质：</p>
+<ol type="1">
+<li>性质一：<strong><span class="math inline"><em>C</em><sub><em>n</em></sub><sup><em>m</em></sup> = <em>C</em><sub><em>n</em></sub><sup><em>n</em> − <em>m</em></sup></span></strong>，规定
+<strong><span class="math inline"><em>C</em><sub><em>n</em></sub><sup>0</sup> = 1</span></strong>；</li>
+<li>性质二：<strong><span class="math inline"><em>C</em><sub><em>n</em> + 1</sub><sup><em>m</em></sup> = <em>C</em><sub><em>n</em></sub><sup><em>m</em></sup> + <em>C</em><sub><em>n</em></sub><sup><em>m</em> − 1</sup></span></strong>。</li>
+</ol>
+<h4 id="2-分类与分布">2. 分类与分布</h4>
+<p><span class="tab"></span><strong>分类计数原理</strong>指做一件事有 <span class="math inline"><em>n</em></span> 类方法，第 1 类方法中有 <span class="math inline"><em>m</em><sub>1</sub></span> 中不同的方法，第 2
+类方法中有 <span class="math inline"><em>m</em><sub>2</sub></span>
+种不同的方法，……，第 <span class="math inline"><em>n</em></span>
+类方法中一共有 <span class="math inline"><em>m</em><sub><em>n</em></sub></span>
+种不同的方法，完成这件事一共有 <span class="math inline"><em>N</em> = <em>m</em><sub>1</sub> + <em>m</em><sub>2</sub> + ⋯ + <em>m</em><sub><em>n</em></sub></span>
+种方法。</p>
+<p><span class="tab"></span><strong>分步计数原理</strong>指做一件事有 <span class="math inline"><em>n</em></span> 个步骤，第 1 步有 <span class="math inline"><em>m</em><sub>1</sub></span> 种不用的方法，做第 2
+步有 <span class="math inline"><em>m</em><sub>2</sub></span>
+种不同的方法，……，第 <span class="math inline"><em>n</em></span> 步有
+<span class="math inline"><em>m</em><sub><em>n</em></sub></span>
+种不同的方法，完成这件事一共有 <span class="math inline"><em>N</em> = <em>m</em><sub>1</sub> × <em>m</em><sub>2</sub> × ⋯ × <em>m</em><sub><em>n</em></sub></span>
+种不同的方法。</p>
+<h3 id="二排列组合数学模型">二、排列组合数学模型</h3>
+<h4 id="1-特殊分析">1. 特殊分析</h4>
+<p><span class="tab"></span><strong>在与不在</strong>问题的处理方法有两种：</p>
+<ol type="1">
+<li>元素优先法：先排特殊元素，再排普通元素。</li>
+<li>位置优先法：先排特殊位置，再排普通位置。</li>
+<li>设元素与位置组成的集合分别为 <span class="math inline"><em>A</em></span> 与 <span class="math inline"><em>B</em></span>，如果：
+<ol type="1">
+<li>集合 <span class="math inline"><em>A</em></span> 和 <span class="math inline"><em>B</em></span>
+中每个元素都有对应，且都有特殊元素，则<strong>优先分类特殊元素少的</strong>。</li>
+<li>集合 <span class="math inline"><em>A</em></span>
+中的每一个元素在集合 <span class="math inline"><em>B</em></span>
+中的有对应，而 <span class="math inline"><em>B</em></span>
+中的元素不是每一个都能在 <span class="math inline"><em>A</em></span>
+中找到对应，则<strong>优先讨论全部元素对应的</strong>。</li>
+</ol></li>
+</ol>
+<p><span class="tab"></span>对于 <strong>含有、不含有</strong>
+的组合，含有则先取出这些元素，再用其他元素补足；不含有则先将这些元素剔除，再从剩下的元素中选取。</p>
+<p><span class="tab"></span>对于 <strong>至少、之多含有几个元素</strong>
+的组合，当直接法分类复杂时可以逆向求解，排除法解决。</p>
+<h4 id="2-重复定序问题">2. 重复、定序问题</h4>
+<p><span class="tab"></span>设一共有 <span class="math inline"><em>n</em></span> 个元素，有
+<span class="math inline"><em>m</em></span>
+中不同的类别，且各类元素的个数为 <span class="math inline"><em>n</em><sub>1</sub>, <em>n</em><sub>2</sub>, ⋯, <em>n</em><sub><em>m</em></sub></span>，即
+<span class="math inline"><em>n</em> = <em>n</em><sub>1</sub> + <em>n</em><sub>2</sub> + ⋯ + <em>n</em><sub><em>m</em></sub></span>，将这
+<span class="math inline"><em>n</em></span> 个数排成一列，有：</p>
+<ol type="1">
+<li>元素优先法：<span class="math inline">$\dfrac{n!}{n_1!n_2!\cdots
+n_m!}$</span> 种。</li>
+<li>位置优先法：<span class="math inline"><em>C</em><sub><em>n</em></sub><sup><em>n</em><sub>1</sub></sup><em>C</em><sub><em>n</em> − <em>n</em><sub>1</sub></sub><sup><em>n</em><sub>2</sub></sup>⋯<em>C</em><sub><em>n</em> − <em>n</em><sub>1</sub> − ⋯ − <em>n</em><sub><em>m</em> − 1</sub></sub><sup><em>n</em><sub><em>m</em></sub></sup></span>
+种。</li>
+</ol>
+<p><span class="tab"></span>定序问题本质上与重复问题一样，因为如果 <span class="math inline"><em>m</em></span> 个不同元素按一定顺序排列，等价于
+<span class="math inline"><em>m</em></span>
+个相同元素进行排列。<strong>多排定序问题与单排定序问题相同</strong>。</p>
+<h4 id="3-差异分组问题">3. 差异分组问题</h4>
+<p><span class="tab"></span><span class="math inline"><em>n</em></span>
+个<em>不同元素</em>平均分成 <span class="math inline"><em>m</em></span>
+组，有 <span class="math inline">$\dfrac{C_n^kC_{n-k}^k\cdots
+C_k^k}{A_m^m}, k=\dfrac{n}{m}$</span> 种不同的方法（分完后消序除以 <span class="math inline"><em>m</em>!</span>）。</p>
+<p><span class="tab"></span>对于局部分组问题，同理，只需消去所有重复的组（也即均匀分配的组）。</p>
+<h4 id="4-无差异分组问题">4. 无差异分组问题</h4>
+<p><span class="tab"></span>将 <span class="math inline"><em>n</em></span> 个相同元素分给 <span class="math inline"><em>m</em></span> 个不同的对象（<span class="math inline"><em>n</em> ≥ <em>m</em></span>），则：</p>
+<ol type="1">
+<li>挡板法：若每个对象至少分得一个元素，有 <span class="math inline"><em>C</em><sub><em>n</em> − 1</sub><em>m</em> − 1</span>
+种方法，可描述为 <strong><span class="math inline"><em>n</em> − 1</span>
+个空中插入 <span class="math inline"><em>m</em> − 1</span>
+块板</strong>。</li>
+</ol>
+<h4 id="5-相邻与不相邻">5. 相邻与不相邻</h4>
+<p><span class="tab"></span><strong>相邻问题捆绑法</strong>：若有 <span class="math inline"><em>n</em></span> 个元素排成一列，要求 <span class="math inline"><em>a</em><sub>1</sub>, <em>a</em><sub>2</sub>, ⋯, <em>a</em><sub><em>m</em></sub></span>
+相邻，我们可以先将这些元素捆绑成一个元素，此时共有 <span class="math inline"><em>n</em> − <em>m</em> + 1</span> 各元素，有 <span class="math inline">(<em>n</em>−<em>m</em>+1)!</span>
+种排法，再排序捆绑的元素内部的顺序，故共有 <span class="math inline">(<em>n</em>−<em>m</em>+1)!<em>m</em>!</span>
+种排法。</p>
+<p><span class="tab"></span><strong>不相邻问题插空法</strong>：若有 <span class="math inline"><em>n</em></span> 个元素排成一列，要求 <span class="math inline"><em>a</em><sub>1</sub>, <em>a</em><sub>2</sub>, ⋯, <em>a</em><sub><em>m</em></sub></span>
+不相邻，我们可以先将其他元素排序，有 <span class="math inline">(<em>n</em>−<em>m</em>)!</span> 种排法，再将 <span class="math inline"><em>m</em></span> 个不相邻的元素插入空位，有 <span class="math inline"><em>A</em><sub><em>n</em> − <em>m</em> + 1</sub><sup><em>m</em></sup></span>
+种排法，故不同排法有 <span class="math inline">(<em>n</em>−<em>m</em>)!<em>A</em><sub><em>n</em> − <em>m</em> + 1</sub><sup><em>m</em></sup></span>
+种排法。</p>
+<p><span class="tab"></span><strong>涂色问题</strong>求解时，一般按分步乘法计数原理、分类加法计数原理分析。</p>
+<h3 id="三二项式定理">三、二项式定理</h3>
+<h4 id="1-二项式定理">1. 二项式定理</h4>
+<p><span class="tab"></span><span class="math inline">(<em>a</em>+<em>b</em>)<sup><em>n</em></sup> = <em>C</em><sub><em>n</em></sub><sup>0</sup><em>a</em><sup><em>n</em></sup><em>b</em><sup>0</sup> + <em>C</em><sub><em>n</em></sub><sup>1</sup><em>a</em><sup><em>n</em> − 1</sup><em>b</em><sup>1</sup> + ⋯ + <em>C</em><sub><em>n</em></sub><sup><em>n</em></sup><em>a</em><sup>0</sup><em>b</em><sup><em>n</em></sup></span>，通项
+<span class="math inline"><em>T</em><sub><em>r</em> + 1</sub> = <em>C</em><sub><em>n</em></sub><sup><em>r</em></sup><em>a</em><sup><em>n</em> − <em>r</em></sup><em>b</em><sup><em>r</em></sup></span>，<strong>二项式系数</strong>指
+<span class="math inline"><em>C</em><sub><em>n</em></sub><sup><em>r</em></sup></span>。</p>
+<h4 id="2-二项式定理的系数问题">2. 二项式定理的系数问题</h4>
+<ol type="1">
+<li>求展开式的所有二项式系数和，我们只需令二项式中两个元素都为 <span class="math inline">1</span>，可推出 <strong><span class="math inline">(<em>a</em>+<em>b</em>)<sup><em>n</em></sup></span>
+的二项式系数和为 <span class="math inline">2<sup><em>n</em></sup></span></strong>。
+<ol type="1">
+<li>奇偶数项问题：同理，令 <span class="math inline"><em>a</em> = 1, <em>b</em> =  − 1</span>，可以得出<strong>奇数项的二项式系数和与偶数项的二项式系数和均为
+<span class="math inline">2<sup><em>n</em> − 1</sup></span></strong>。</li>
+</ol></li>
+<li>求展开式 <span class="math inline"><em>f</em>(<em>x</em>) = <em>a</em><sub>0</sub> + <em>a</em><sub>1</sub><em>x</em> + <em>a</em><sub>2</sub><em>x</em><sup>2</sup> + ⋯ + <em>a</em><sub><em>n</em></sub><em>x</em><sup><em>n</em></sup></span>
+的所有系数和，我们只需令未知数等于 <span class="math inline">1</span>（<strong>赋值法</strong>），则得到展开式的各项系数之和。
+<ol type="1">
+<li>奇数项系数和：<span class="math inline">$a_1+a_3+\cdots=\dfrac{f(1)-f(-1)}{2}$</span>。</li>
+<li>偶数项系数和：<span class="math inline">$a_0+a_2+\cdots=\dfrac{f(1)+f(-1)}{2}$</span>。</li>
+<li>特殊系数和：<span class="math inline"><em>a</em><sub>1</sub> + 2<em>a</em><sub>2</sub> + 3<em>a</em><sub>3</sub> + 4<em>a</em><sub>4</sub> + ⋯ + <em>n</em><em>a</em><sub><em>n</em></sub> = <em>f</em>′(1)</span>（求导，多次求导可以求出每一个单独的值）。</li>
+</ol></li>
+</ol>
+
+
+
+            </div>
+        </article>
+        <div class="sidebar">
+            <div class="about-box">
+    <div class="avatar">
+        <img src="/assets/media/bitmap/avatar.jpeg" alt="avatar">
+    </div>
+    <h1>霜羽 Hoarfroster</h1>
+    <h2>@PassionPenguin</h2>
+    <p class="moment"><span class="status">🤔</span><span>努力！</span></p>
+    <ul>
+        <li><i class="fa-solid fa-location-dot"></i> 广东 · 广州 | <span class="light">Guangzhou, China</span>
+        </li>
+        <li><i class="fa-solid fa-envelope"></i> <a href="mailto:hoarfroster@outlook.com">hoarfroster@outlook.com</a>
+        </li>
+        <li><i class="fa-solid fa-house"></i> <a href="https://story.hoarfroster.space/">https://story.hoarfroster.space/</a>
+        </li>
+    </ul>
+</div>
+<div class="organization">
+    <h4>组织 Organizations</h4>
+    <ul>
+        <li>
+            <img src="https://avatars.githubusercontent.com/u/81648011?s=60&amp;v=4"
+                alt="Hexa-Penguin"><span>Hexa-Penguin</span>
+        </li>
+        <li>
+            <img src="https://avatars.githubusercontent.com/u/10482599?s=60&amp;v=4" alt="xitu"><span>稀土 xitu</span>
+        </li>
+    </ul>
+</div>
+<div class="category">
+    <span class="title">文章分类</span>
+    <ul>
+        <!-- <li><a href="/archive.html">所有分类</a></li> -->
+    </ul>
+</div>
+<div class="archive">
+    <span class="title">文章存档</span>
+    <ul>
+        <!-- <li><a href="/archive.html">所有文章</a></li> -->
+    </ul>
+</div>
+        </div>
+    </div>
+    <div class="footer">
+    <div class="content">
+        <div class="about">
+            <p>霜羽 Hoarfroster</p>
+            <p>&copy; Copyright 2021 Hoarfroster and contributors.</p>
+        </div>
+        <div class="nav">
+            <div class="links">
+                <span class="title">关于文章</span>
+                <ul>
+                    <li><a href="/archive.html">文章存档</a></li>
+                </ul>
+            </div>
+            <div class="category">
+                <span class="title">关于霜羽</span>
+                <ul>
+                    <li><a href="/about.html">有关霜羽</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <ul class="social-accounts">
+        <li>
+            <a href="https://www.zhihu.com/people/shuang-yu-29-75">
+                <i class="fa-brands fa-zhihu" style="font-size: 24px; color:#06f; line-height: 24px;"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://github.com/PassionPenguin">
+                <img src="/assets/media/vectors/github.svg" alt="github-logo"/>
+            </a>
+        </li>
+        <li>
+            <a href="https://dribbble.com/Hoarfroster">
+                <img src="/assets/media/vectors/dribbble.svg" alt="dribbble-logo"/>
+            </a>
+        </li>
+        <li>
+            <a href="https://zh.wikipedia.org/wiki/User:HoarfrostFeather">
+                <i class="fa-brands fa-wikipedia-w" style="font-size: 22px; color: #888; line-height: 24px;"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://space.bilibili.com/201469972">
+                <i class="fa-brands fa-bilibili" style="font-size: 22px; color: #00a1d6; line-height: 24px;"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+</body>
+
+</html>
