@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>详细解读 Webpack 的模块热替换功能</title>
+    <script src="/assets/script/main.js"></script>
+    <link rel="stylesheet" href="/assets/style/styles.css">
+</head>
+
+<body>
+    <div class="header">
+    <div class="container">
+        <div class="icon">
+            <img src="/assets/media/vectors/hoarfroster-text.svg" alt="Hoarfroster Logo with Text">
+        </div>
+        <nav class="navigation">
+            <ul class="header-navigation-list">
+                <li><a href="/">首页</a></li>
+                <li><a href="/archive.html">文章</a></li>
+                <li><a href="/about.html">关于</a></li>
+            </ul>
+            <form action="/search" method="post">
+                <label>
+                    <input type="text" class="search" placeholder="搜索咕咕咕的小站"/>
+                </label>
+                <label class="submit">
+                    <input type="submit"/>
+                </label>
+            </form>
+        </nav>
+        <ul class="social-accounts">
+            <li>
+                <a href="https://www.zhihu.com/people/shuang-yu-29-75">
+                    <i class="fa-brands fa-zhihu" style="font-size: 20px; color:#06f; line-height: 20px;"></i>
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/PassionPenguin">
+                    <img src="/assets/media/vectors/github.svg" alt="github-logo"/>
+                </a>
+            </li>
+            <li>
+                <a href="https://dribbble.com/Hoarfroster">
+                    <img src="/assets/media/vectors/dribbble.svg" alt="dribbble-logo"/>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+    <div class="content article">
+        <article>
+            <div class="title">
+                <h1>详细解读 Webpack 的模块热替换功能</h1>
+                <p><span class='chars'>undefined chars</span><span class='created-date'>Created Sat May 28 2022 23:43:08 GM</span><span class='modified-date'>Modified Sat May 28 2022 23:43:08 GM</span></p>
+            </div>
+            <div class="main markdown-body">
+                
+
+<blockquote>
+<ul>
+<li>原文地址：<a href="https://blog.bitsrc.io/webpacks-hot-module-replacement-feature-explained-43c13b169986">Webpack’s
+Hot Module Replacement Feature Explained</a></li>
+<li>原文作者：<a href="https://medium.com/@nathansebhastian">Nathan
+Sebhastian</a></li>
+<li>译者：<a href="https://github.com/PassionPenguin">霜羽
+Hoarfroster</a></li>
+<li>校对者：<a href="https://github.com/5Reasons">5Reasons</a>、<a href="https://github.com/nia3y">nia3y</a></li>
+</ul>
+</blockquote>
+<p><img src="https://cdn-images-1.medium.com/max/2024/1*q3OLOdT-Ep86tfnvugnabw.png"></p>
+<p>在开发 JavaScript
+应用程序时，每次我们保存代码更改后，我们都需要重新加载浏览器以刷新用户界面。</p>
+<p>像 Webpack
+之类的开发者工具可以通过<strong>监视模式</strong>来监听项目文件的更改。一旦检测到更改，Webpack
+就会自动地重新构建应用程序并重新加载浏览器。</p>
+<p>但是很快，开发者们就开始思考，有没有一种方法可以在不重新加载浏览器的情况下保存和更新页面的更改？毕竟，重新加载意味着会丢失在
+UI 上的任何执行的状态：</p>
+<ul>
+<li>我们正在使用的所有模态框或对话框都将消失。我们需要从头开始，重复步骤，以使它们再次出现。</li>
+<li>我们的应用程序的状态将被重置。如果我们使用的是 React 或 Vue
+之类的库，我们需要重新执行状态更改，或者通过本地存储持久化状态。</li>
+<li>想要将状态持久保存到本地存储，我们需要额外多写一些代码。除非我们的在生产环境下也有这种需求，否则每次开发时都需要为了调试而添加和删除代码，着实非常不方便。</li>
+<li>即便我们仅仅只对 CSS
+代码做出了很小的更改，也会触发浏览器的刷新。</li>
+</ul>
+<p>而<a href="https://webpack.js.org/concepts/hot-module-replacement/">模块热替换（Hot
+Module
+Replacement，HMR）</a>功能就是为了解决这种问题，并且现在已经成为了为前端开发提速的有力助手。</p>
+<h2 id="hmr-功能是怎么工作的">HMR 功能是怎么工作的？</h2>
+<p>HMR 让我们可以在应用程序运行时交换、添加或删除 JavaScript
+模块，而无需重新加载浏览器。在 Webpack 中是通过在 Webpack 开发服务器（<a href="https://github.com/webpack/webpack-dev-server">webpack-dev-server</a>）中创建一个
+<strong>HMR 服务器</strong>实现的，而该服务器会通过 Websocket
+与浏览器中的 <strong>HMR 运行时</strong>进行通信。</p>
+<p><img src="https://cdn-images-1.medium.com/max/3840/1*UGYFDKGrQF6ID3CofCHUwg.png" alt="简述 HMR 工作的方式"></p>
+<p>交换模块的过程如下：</p>
+<ul>
+<li>首次构建应用程序时，Webpack
+会生成一份清单文件，包含编译的哈希和所有模块的列表。Webpack 会将
+<strong>HMR 运行时</strong>注入到生成的 <code>bundle.js</code>
+文件中。</li>
+<li>Webpack 会在保存文件时检测文件的更改。</li>
+<li>Webpack
+编译器会用我们所做的更改来构建我们的应用程序，创建一个新的清单文件并将其与旧的清单文件进行比较。此过程也称为“热更新”。</li>
+<li><strong>热更新</strong>数据将被发送到 <strong>HMR
+服务器</strong>，后者则会把更新发送至 <strong>HMR 运行时</strong>。</li>
+<li><strong>HMR
+运行时</strong>将解包<strong>热更新</strong>数据，并使用适当的加载器来处理更改。如果我们有
+CSS 更改，则将调用 css-loader 或 style-loader。如果我们对 JavaScript
+代码进行了更改，则通常会调用 babel-loader。</li>
+</ul>
+<p>通过启用 HMR
+功能，我们无需刷新浏览器即可让浏览器下载新的软件包并解包应用更改。HMR
+运行时将接受来自 HMR
+服务器的传入请求，包含清单文件和代码块，替换浏览器中的当前文件。</p>
+<p>在运行启用了 HMR 的应用程序时保存代码更改时，我们实际上可以在
+“Network” 选项卡上看到从 HMR 服务器发送的热更新文件：</p>
+<p><img src="https://cdn-images-1.medium.com/max/2880/1*phxmgjIC0OrLPZVFsWlvyA.png" alt="网络选项卡下的热更新文件"></p>
+<p>当“热更新”无法替换浏览器中的代码时，HMR 运行时将通知
+webpack-dev-server。然后，webpack-dev-server 将刷新浏览器以下载新的
+<code>bundle.js</code> 文件。我们可以通过在 Webpack 配置中添加
+<code>hotOnly：true</code> 来禁用此行为。</p>
+<h2 id="如何启用-hmr-功能">如何启用 HMR 功能</h2>
+<p>为了在项目中启用
+HMR，我们需要让我们的应用程序知道如何处理<strong>热更新</strong>。我们可以通过实例化
+Webpack 公开的 <code>module.hot</code> API 来实现：</p>
+<p>首先，我们需要向 Webpack 配置文件中添加 <code>hot: true</code> 来启用
+HMR，如下所示：</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">// webpack.config.js</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>module<span class="op">.</span><span class="at">exports</span> <span class="op">=</span> {</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">entry</span><span class="op">:</span> {</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>        <span class="dt">app</span><span class="op">:</span> <span class="st">'./src/index.js'</span><span class="op">,</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    }<span class="op">,</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">devtool</span><span class="op">:</span> <span class="st">'inline-source-map'</span><span class="op">,</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">devServer</span><span class="op">:</span> {</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>        <span class="dt">hot</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>        <span class="co">// ... 忽略掉其他配置</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    }<span class="op">,</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="dt">plugins</span><span class="op">:</span> [</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>        <span class="co">// 开启这个插件</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>        <span class="kw">new</span> webpack<span class="op">.</span><span class="fu">HotModuleReplacementPlugin</span>()<span class="op">,</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    ]<span class="op">,</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>之后，我们必须使用 <code>module.hot</code> API 处理传入的 HMR
+请求。这是一个普通的 JS 项目的实现示例：</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">// index.js</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> component <span class="im">from</span> <span class="st">"./component"</span><span class="op">;</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="bu">document</span><span class="op">.</span><span class="at">body</span><span class="op">.</span><span class="fu">appendChild</span>(component)<span class="op">;</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">// 检查是否支持 HMR 接口</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (module<span class="op">.</span><span class="at">hot</span>) {</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 支持热更新</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    module<span class="op">.</span><span class="at">hot</span><span class="op">.</span><span class="fu">accept</span>()<span class="op">;</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>一旦告诉 Webpack 我们支持 HMR，HMR
+运行时和加载程序就会接管处理更新。</p>
+<p>但是，为复杂的应用程序实现 HMR
+可能会很棘手，因为我们可能会遇到不希望的副作用，例如<a href="https://webpack.js.org/guides/hot-module-replacement/＃enabling-hmr">仍然绑定到旧函数的事件处理程序</a>，尤其是当你使用
+React 或 Vue 之类的库。此外，我们还需要确保<a href="https://webpack.js.org/guides/production/">仅在开发中启用
+HMR</a>。</p>
+<p>不过在我们尝试自己实施 HMR
+之前，建议你先为我们的项目寻找一下可用的解决方案，因为 HMR
+已经集成到许多流行的 JavaScript 应用程序生成器中。</p>
+<p>Create React App 和 Next.js 都内置了 React Fast Refresh，React
+特定的热重载实现。而 Vue CLI 3 的 HMR 则是通过 <a href="https://github.com/vuejs/vue-loader">vue-loader</a> 实现的。<a href="https://github.com/sveltejs/svelte-loader">Svelte</a> 和 <a href="https://github.com/PatrickJS/angular-hmr">Angular</a> 也有自己的
+HMR 集成，因此我们没有必要从头开始编写集成。</p>
+<h2 id="小结">小结</h2>
+<p>热模块替换能让我们无需刷新浏览器即可在浏览器中查看代码更改所带来的效果，从而可以保留前端应用程序的状态。</p>
+<p>但是实现 HMR 可能很棘手，因为它会产生一些副作用。幸运的是，HMR
+已在许多 JavaScript
+应用程序生成器中实现。因此我们可以直接享受此功能，而不必自己实现。</p>
+
+
+
+            </div>
+        </article>
+        <div class="sidebar">
+            <div class="about-box">
+    <div class="avatar">
+        <img src="/assets/media/bitmap/avatar.jpeg" alt="avatar">
+    </div>
+    <h1>霜羽 Hoarfroster</h1>
+    <h2>@PassionPenguin</h2>
+    <p class="moment"><span class="status">🤔</span><span>努力！</span></p>
+    <ul>
+        <li><i class="fa-solid fa-location-dot"></i> 广东 · 广州 | <span class="light">Guangzhou, China</span>
+        </li>
+        <li><i class="fa-solid fa-envelope"></i> <a href="mailto:hoarfroster@outlook.com">hoarfroster@outlook.com</a>
+        </li>
+        <li><i class="fa-solid fa-house"></i> <a href="https://story.hoarfroster.space/">https://story.hoarfroster.space/</a>
+        </li>
+    </ul>
+</div>
+<div class="organization">
+    <h4>组织 Organizations</h4>
+    <ul>
+        <li>
+            <img src="https://avatars.githubusercontent.com/u/81648011?s=60&amp;v=4"
+                alt="Hexa-Penguin"><span>Hexa-Penguin</span>
+        </li>
+        <li>
+            <img src="https://avatars.githubusercontent.com/u/10482599?s=60&amp;v=4" alt="xitu"><span>稀土 xitu</span>
+        </li>
+    </ul>
+</div>
+<div class="category">
+    <span class="title">文章分类</span>
+    <ul>
+        <!-- <li><a href="/archive.html">所有分类</a></li> -->
+    </ul>
+</div>
+<div class="archive">
+    <span class="title">文章存档</span>
+    <ul>
+        <!-- <li><a href="/archive.html">所有文章</a></li> -->
+    </ul>
+</div>
+        </div>
+    </div>
+    <div class="footer">
+    <div class="content">
+        <div class="about">
+            <p>霜羽 Hoarfroster</p>
+            <p>&copy; Copyright 2021 Hoarfroster and contributors.</p>
+        </div>
+        <div class="nav">
+            <div class="links">
+                <span class="title">关于文章</span>
+                <ul>
+                    <li><a href="/archive.html">文章存档</a></li>
+                </ul>
+            </div>
+            <div class="category">
+                <span class="title">关于霜羽</span>
+                <ul>
+                    <li><a href="/about.html">有关霜羽</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <ul class="social-accounts">
+        <li>
+            <a href="https://www.zhihu.com/people/shuang-yu-29-75">
+                <i class="fa-brands fa-zhihu" style="font-size: 24px; color:#06f; line-height: 24px;"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://github.com/PassionPenguin">
+                <img src="/assets/media/vectors/github.svg" alt="github-logo"/>
+            </a>
+        </li>
+        <li>
+            <a href="https://dribbble.com/Hoarfroster">
+                <img src="/assets/media/vectors/dribbble.svg" alt="dribbble-logo"/>
+            </a>
+        </li>
+        <li>
+            <a href="https://zh.wikipedia.org/wiki/User:HoarfrostFeather">
+                <i class="fa-brands fa-wikipedia-w" style="font-size: 22px; color: #888; line-height: 24px;"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://space.bilibili.com/201469972">
+                <i class="fa-brands fa-bilibili" style="font-size: 22px; color: #00a1d6; line-height: 24px;"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+</body>
+
+</html>

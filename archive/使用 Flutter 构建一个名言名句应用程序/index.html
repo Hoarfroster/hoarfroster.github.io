@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>使用 Flutter 构建一个名言名句应用程序</title>
+    <script src="/assets/script/main.js"></script>
+    <link rel="stylesheet" href="/assets/style/styles.css">
+</head>
+
+<body>
+    <div class="header">
+    <div class="container">
+        <div class="icon">
+            <img src="/assets/media/vectors/hoarfroster-text.svg" alt="Hoarfroster Logo with Text">
+        </div>
+        <nav class="navigation">
+            <ul class="header-navigation-list">
+                <li><a href="/">首页</a></li>
+                <li><a href="/archive.html">文章</a></li>
+                <li><a href="/about.html">关于</a></li>
+            </ul>
+            <form action="/search" method="post">
+                <label>
+                    <input type="text" class="search" placeholder="搜索咕咕咕的小站"/>
+                </label>
+                <label class="submit">
+                    <input type="submit"/>
+                </label>
+            </form>
+        </nav>
+        <ul class="social-accounts">
+            <li>
+                <a href="https://www.zhihu.com/people/shuang-yu-29-75">
+                    <i class="fa-brands fa-zhihu" style="font-size: 20px; color:#06f; line-height: 20px;"></i>
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/PassionPenguin">
+                    <img src="/assets/media/vectors/github.svg" alt="github-logo"/>
+                </a>
+            </li>
+            <li>
+                <a href="https://dribbble.com/Hoarfroster">
+                    <img src="/assets/media/vectors/dribbble.svg" alt="dribbble-logo"/>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+    <div class="content article">
+        <article>
+            <div class="title">
+                <h1>使用 Flutter 构建一个名言名句应用程序</h1>
+                <p><span class='chars'>undefined chars</span><span class='created-date'>Created Sat May 28 2022 23:43:08 GM</span><span class='modified-date'>Modified Sat May 28 2022 23:43:08 GM</span></p>
+            </div>
+            <div class="main markdown-body">
+                
+
+<blockquote>
+<ul>
+<li>原文地址：<a href="https://medium.com/flutterdevs/flutter-quotes-app-bb30ef27b255">Flutter
+Quotes App</a></li>
+<li>原文作者：<a href="https://medium.com/@danubhav">Anubhav
+Gupta</a></li>
+<li>译者：<a href="https://github.com/PassionPenguin">霜羽
+Hoarfroster</a></li>
+<li>校对者：<a href="https://github.com/5Reasons">5Reasons</a>、<a href="https://github.com/greycodee">greycodee</a></li>
+</ul>
+</blockquote>
+<p><img src="https://miro.medium.com/max/3600/1*WGJ7_7_EXkJwzf1mVTyjrA.png"></p>
+<h2 id="引言">引言</h2>
+<p>在过去的 8 个月里，我一直在探索
+Flutter。今天我将带着大家开始一段旅程，制作一个属于自己的简单而又漂亮的应用，并同时学会进行
+API 请求。</p>
+<h2 id="目录-toc">目录 TOC</h2>
+<blockquote>
+<p>从互联网上获取数据。 设计应用程序的用户界面。 为文本设计样式。</p>
+</blockquote>
+<p>让我们开始……</p>
+<h2 id="初步设置">初步设置</h2>
+<p>在我们深入研究之前，不要忘记将这些包添加到你的项目中：</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">animated_text_kit</span><span class="kw">:</span><span class="at"> ^3.1.0</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">google_fonts</span><span class="kw">:</span><span class="at"> ^1.1.1</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">http</span><span class="kw">:</span><span class="at"> ^0.12.2</span></span></code></pre></div>
+<h2 id="创建一个新的-flutter-项目">创建一个新的 Flutter 项目</h2>
+<p>打开你最喜欢的 IDE（VScode 或 Android Studio），创建一个新的 Flutter
+应用，并给它取一个你喜欢的名字，保存在本地磁盘的某个地方。</p>
+<p>首先我们删除掉默认生成的计数器应用代码，并创建一个主函数来运行我们的
+Material 应用程序。</p>
+<pre class="dart"><code>// main.dart
+
+import 'package:flutter/material.dart';
+import 'package:flutter_quote_app/screens/home.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  // 你的应用程序 Widget 树的根 Widget
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+        title: '名言名句应用程序',
+        theme: ThemeData(
+          primarySwatch: Colors.amber,
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+        ),
+        debugShowCheckedModeBanner: false,
+        home: HomeScreen());
+  }
+}</code></pre>
+<h2 id="通过-api-获取数据">通过 API 获取数据</h2>
+<p>为了获得数据，我们需要一个 API 以获得名言名句的 JSON
+格式的原始数据。</p>
+<p>获取数据的 API 是 <a href="https://zenquotes.io/api/quotes"><strong>https://zenquotes.io/api/quotes</strong></a>。当你打开这个链接时，它会向你显示名言名句的原始数据。选择所有的文本复制一下，然后在另一个标签页中打开
+<a href="https://app.quicktype.io/"><strong>quicktype</strong></a>
+并粘贴进去，我们就可以立即生成我们的<strong>Dart Model</strong>。</p>
+<p><img src="https://miro.medium.com/max/3840/1*zp9nqjB8poJ2Lb8gS-Zw3A.png"></p>
+<p>将原始数据复制到左侧栏中，并给模型类命名：</p>
+<pre class="dart"><code>// quotesmodel.dart
+
+import 'dart:convert';
+
+List&lt;Quotes&gt; quotesFromJson(String str) =&gt;
+  List&lt;Quotes&gt;.from(json.decode(str).map((x) =&gt; Quotes.fromJson(x)));
+
+String quotesToJson(List&lt;Quotes&gt; data) =&gt;
+  json.encode(List&lt;dynamic&gt;.from(data.map((x) =&gt; x.toJson())));
+
+class Quotes {
+  Quotes({
+    this.q,
+    this.a,
+    this.h,
+  });
+
+  String q;
+  String a;
+  String h;
+
+  factory Quotes.fromJson(Map&lt;String, dynamic&gt; json) =&gt; Quotes(
+      q: json["q"],
+      a: json["a"],
+      h: json["h"],
+    );
+
+  Map&lt;String, dynamic&gt; toJson() =&gt; {
+      "q": q,
+      "a": a,
+      "h": h,
+    };
+}</code></pre>
+<p>以上是生成的 Dart 模型类。</p>
+<h3 id="让我们创建一个函数来请求-api-获取数据">让我们创建一个函数来请求
+API 获取数据</h3>
+<pre class="dart"><code>// home.dart
+
+static Future&lt;List&lt;Quotes&gt;&gt; fetchQuotes() async {
+  final response = await http.get('https://zenquotes.io/api/quotes');
+  if (response.statusCode == 200) {
+    print(quotesFromJson(response.body).length);
+    return quotesFromJson(response.body);
+  } else {
+    throw Exception('失败加载名言名句');
+  }
+}</code></pre>
+<p>在上面的代码中，我们有一个异步方法，作出一个 GET
+请求。如果响应的状态码是
+<code>200</code>，它就会返回<strong>名言名句</strong>的列表，否则就抛出一个异常。</p>
+<h2 id="设计-ui">设计 UI</h2>
+<p>现在我们已经准备好了所有的东西，让我们做一个漂亮的 UI
+来显示我们的名言名句。</p>
+<p>所以，首先要创建一个有状态的 Widget 作为 <strong>HomeScreen</strong>
+界面。它将有一个 <strong>Widget</strong> 构建方法（返回一个
+<code>Scaffold</code>）。</p>
+<pre class="dart"><code>// home.dart
+
+import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_quote_app/models/qoutemodel.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:http/http.dart' as http;
+
+class HomeScreen extends StatefulWidget {
+  @override
+  _HomeScreenState createState() =&gt; _HomeScreenState();
+}
+
+PageController pageController = PageController(keepPage: true);
+
+class _HomeScreenState extends State&lt;HomeScreen&gt; {
+  // 调用 API 并获取数据
+  static Future&lt;List&lt;Quotes&gt;&gt; fetchQuotes() async {
+    final response = await http.get('https://zenquotes.io/api/quotes');
+    if (response.statusCode == 200) {
+      print(quotesFromJson(response.body).length);
+      return quotesFromJson(response.body);
+    } else {
+      throw Exception('获取名言名句失败');
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    fetchQuotes();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Column(
+        children: [
+          Expanded(
+            flex: 8,
+            child: /* TODO */
+          ),
+          Expanded(
+            child: Container(
+              alignment: Alignment.center,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}</code></pre>
+<p>在这里，我们使用 <code>Column</code> 作为 <code>Scaffold</code> 的
+<code>body</code> 属性值，包含两个 <code>Expanded</code> 子
+Widget，一个有 <code>flex: 8</code>，另一个没有 <code>flex</code>
+不过有一个 <code>Container</code> 作为子 Widget。</p>
+<p>另外，如果你看到上面的代码，我们有一个 <code>void</code> 返回值的
+<code>initState</code>。它将在我们导航到 <code>HomeScreen</code>
+时运行。它有我们的 <code>fetchQuotes</code> 方法，在 Widget
+被插入到树中之前被调用。</p>
+<blockquote>
+<p>由于我们使用的是API，所以我们将使用 <code>FutureBuilder</code>。</p>
+</blockquote>
+<blockquote>
+<p>为什么要用这个东西呢？</p>
+</blockquote>
+<p>由于我们的 UI 会在应用运行后立即构建，但我们却无法立刻获取到来自 API
+的<em><strong>响应</strong></em>，因此如果你的 UI 依赖于 API
+响应值，那么它将会抛出很多的 <code>null</code> 错误。</p>
+<h3 id="让我们投奔-future">让我们投奔 Future</h3>
+<p><code>FutureBuilder</code> 也是一个 Widget，因此我们可以直接在我们的
+<code>Scaffold</code> 上使用它，或者也可以把它作为一个子 Widget
+连接到任何你喜欢的 Widget 上。在这里我将使用 <code>Expanded</code>
+Widget 作为 <code>FutureBuilder</code> 的父 Widget。</p>
+<pre class="dart"><code>// home.dart
+
+import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_quote_app/models/qoutemodel.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:http/http.dart' as http;
+
+class HomeScreen extends StatefulWidget {
+  @override
+  _HomeScreenState createState() =&gt; _HomeScreenState();
+}
+
+PageController pageController = PageController(keepPage: true);
+
+class _HomeScreenState extends State&lt;HomeScreen&gt; {
+  // 调用 API 并获取数据
+  static Future&lt;List&lt;Quotes&gt;&gt; fetchQuotes() async {
+    final response = await http.get('https://zenquotes.io/api/quotes');
+    if (response.statusCode == 200) {
+      print(quotesFromJson(response.body).length);
+      return quotesFromJson(response.body);
+    } else {
+      throw Exception('失败加载名言名句');
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    fetchQuotes();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Column(
+        children: [
+          Expanded(
+            flex: 8,
+            child: FutureBuilder&lt;List&lt;Quotes&gt;&gt;(
+              future: fetchQuotes(),
+              builder:
+                  (BuildContext context, AsyncSnapshot&lt;List&lt;Quotes&gt;&gt; snapshot) {
+                if (snapshot.connectionState == ConnectionState.done &amp;&amp;
+                    snapshot.hasData) {
+                  return buildPageView(snapshot);
+                } else {
+                  return Center(child: CircularProgressIndicator());
+                }
+              },
+            ),
+          ),
+          Expanded(
+            child: Container(
+              alignment: Alignment.center,
+            ),
+          ),
+        ],
+      ),
+    );
+  }</code></pre>
+<p><code>FutureBuilder</code> 有两个主要属性：<code>future</code> 和
+<code>builder</code>。这里我们将 <code>future</code> 赋值为
+<code>fetchQuotes()</code> 方法以运行获取数据的函数并将结果返回给
+<code>builder</code> 的
+<code>snapshot</code>。现在只要用给出的结果创建任何你喜欢的 Widget
+即可。</p>
+<p>现在我想要的是这样的行为：当我在等待结果的时候，我想向用户显示一个
+<code>CircularProgressIndicator</code>。而一旦有了返回的数据就立即显示名言名句页面。</p>
+<p><code>FutureBuilder</code> 能帮助我们轻松实现：</p>
+<pre class="dart"><code>future: fetchQuotes(),          
+builder: (BuildContext context, AsyncSnapshot&lt;List&lt;Quotes&gt;&gt; snapshot) {
+    if (snapshot.connectionState == ConnectionState.done &amp;&amp; snapshot.hasData) {
+       return buildPageView(snapshot);
+    } else {
+       return Center(child: CircularProgressIndicator());
+    }
+}</code></pre>
+<p>在这里，我们已经创建了我的 <code>PageView</code> Widget 构造器
+<code>buildPageView()</code>，并将其传递给子 Widget。</p>
+<h2 id="样式化文本">样式化文本</h2>
+<pre class="dart"><code>// home.dart
+
+PageView buildPageView(AsyncSnapshot&lt;List&lt;Quotes&gt;&gt; snapshot) {
+    return PageView.builder(
+      controller: pageController,
+      itemCount: snapshot.data.length,
+      scrollDirection: Axis.vertical,
+      itemBuilder: (BuildContext context, int index) {
+        return Container(
+          // height: MediaQuery.of(context).size.height * 0.87,
+          width: double.infinity,
+          decoration: BoxDecoration(
+            color: Colors.amberAccent[700],
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(20),
+              bottomLeft: Radius.circular(60),
+            ),
+          ),
+          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 30),
+          margin: EdgeInsets.only(bottom: 10),
+
+          child: Stack(
+            children: [
+              Text(
+                '名言名句应用程序',
+                style: GoogleFonts.lobster(fontSize: 45, color: Colors.white),
+              ),
+              Align(
+                alignment: Alignment.center,
+                child: TyperAnimatedTextKit(
+                  isRepeatingAnimation: false,
+                  repeatForever: false,
+                  displayFullTextOnTap: true,
+                  speed: const Duration(milliseconds: 150),
+                  onFinished: () {
+                    pageController.nextPage(
+                      duration: Duration(seconds: 1),
+                      curve: Curves.easeInOutCirc,
+                    );
+                  },
+                  text: ['"' + snapshot.data[index].q + '"'],
+                  textStyle: GoogleFonts.montserratAlternates(
+                      fontSize: 30.0, color: Colors.white),
+                ),
+              ),
+              Align(
+                alignment: Alignment.bottomRight,
+                child: Text(
+                  snapshot.data[index].a,
+                  style: GoogleFonts.lora(fontSize: 14),
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+}</code></pre>
+<p>在 PageView 构造器中，我们使用了
+<code>TyperAnimatedTextKit</code>，而你也需要导入这个包。在
+<code>TyperAnimatedTextKit</code>
+里面有一个函数，可以帮助我们在屏幕上输入完整的字符串时跳到下一页。另外，我们使用了
+<strong>Google Fonts</strong>，你也需要导入同样的包。</p>
+<p><img src="https://miro.medium.com/max/1200/1*PvXgGVrBtx31_HFm_mcWtg.gif"></p>
+<p>瞧! 您已经创建了第一个名言名句应用程序。</p>
+<p>本文代码：<a href="https://github.com/flutter-devs/flutter_quote_app.git"><strong>flutter-devs/flutter_quote_app</strong></a></p>
+
+
+
+            </div>
+        </article>
+        <div class="sidebar">
+            <div class="about-box">
+    <div class="avatar">
+        <img src="/assets/media/bitmap/avatar.jpeg" alt="avatar">
+    </div>
+    <h1>霜羽 Hoarfroster</h1>
+    <h2>@PassionPenguin</h2>
+    <p class="moment"><span class="status">🤔</span><span>努力！</span></p>
+    <ul>
+        <li><i class="fa-solid fa-location-dot"></i> 广东 · 广州 | <span class="light">Guangzhou, China</span>
+        </li>
+        <li><i class="fa-solid fa-envelope"></i> <a href="mailto:hoarfroster@outlook.com">hoarfroster@outlook.com</a>
+        </li>
+        <li><i class="fa-solid fa-house"></i> <a href="https://story.hoarfroster.space/">https://story.hoarfroster.space/</a>
+        </li>
+    </ul>
+</div>
+<div class="organization">
+    <h4>组织 Organizations</h4>
+    <ul>
+        <li>
+            <img src="https://avatars.githubusercontent.com/u/81648011?s=60&amp;v=4"
+                alt="Hexa-Penguin"><span>Hexa-Penguin</span>
+        </li>
+        <li>
+            <img src="https://avatars.githubusercontent.com/u/10482599?s=60&amp;v=4" alt="xitu"><span>稀土 xitu</span>
+        </li>
+    </ul>
+</div>
+<div class="category">
+    <span class="title">文章分类</span>
+    <ul>
+        <!-- <li><a href="/archive.html">所有分类</a></li> -->
+    </ul>
+</div>
+<div class="archive">
+    <span class="title">文章存档</span>
+    <ul>
+        <!-- <li><a href="/archive.html">所有文章</a></li> -->
+    </ul>
+</div>
+        </div>
+    </div>
+    <div class="footer">
+    <div class="content">
+        <div class="about">
+            <p>霜羽 Hoarfroster</p>
+            <p>&copy; Copyright 2021 Hoarfroster and contributors.</p>
+        </div>
+        <div class="nav">
+            <div class="links">
+                <span class="title">关于文章</span>
+                <ul>
+                    <li><a href="/archive.html">文章存档</a></li>
+                </ul>
+            </div>
+            <div class="category">
+                <span class="title">关于霜羽</span>
+                <ul>
+                    <li><a href="/about.html">有关霜羽</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <ul class="social-accounts">
+        <li>
+            <a href="https://www.zhihu.com/people/shuang-yu-29-75">
+                <i class="fa-brands fa-zhihu" style="font-size: 24px; color:#06f; line-height: 24px;"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://github.com/PassionPenguin">
+                <img src="/assets/media/vectors/github.svg" alt="github-logo"/>
+            </a>
+        </li>
+        <li>
+            <a href="https://dribbble.com/Hoarfroster">
+                <img src="/assets/media/vectors/dribbble.svg" alt="dribbble-logo"/>
+            </a>
+        </li>
+        <li>
+            <a href="https://zh.wikipedia.org/wiki/User:HoarfrostFeather">
+                <i class="fa-brands fa-wikipedia-w" style="font-size: 22px; color: #888; line-height: 24px;"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://space.bilibili.com/201469972">
+                <i class="fa-brands fa-bilibili" style="font-size: 22px; color: #00a1d6; line-height: 24px;"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+</body>
+
+</html>

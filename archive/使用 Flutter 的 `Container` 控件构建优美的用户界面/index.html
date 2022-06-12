@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>使用 Flutter 的 `Container` 控件构建优美的用户界面</title>
+    <script src="/assets/script/main.js"></script>
+    <link rel="stylesheet" href="/assets/style/styles.css">
+</head>
+
+<body>
+    <div class="header">
+    <div class="container">
+        <div class="icon">
+            <img src="/assets/media/vectors/hoarfroster-text.svg" alt="Hoarfroster Logo with Text">
+        </div>
+        <nav class="navigation">
+            <ul class="header-navigation-list">
+                <li><a href="/">首页</a></li>
+                <li><a href="/archive.html">文章</a></li>
+                <li><a href="/about.html">关于</a></li>
+            </ul>
+            <form action="/search" method="post">
+                <label>
+                    <input type="text" class="search" placeholder="搜索咕咕咕的小站"/>
+                </label>
+                <label class="submit">
+                    <input type="submit"/>
+                </label>
+            </form>
+        </nav>
+        <ul class="social-accounts">
+            <li>
+                <a href="https://www.zhihu.com/people/shuang-yu-29-75">
+                    <i class="fa-brands fa-zhihu" style="font-size: 20px; color:#06f; line-height: 20px;"></i>
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/PassionPenguin">
+                    <img src="/assets/media/vectors/github.svg" alt="github-logo"/>
+                </a>
+            </li>
+            <li>
+                <a href="https://dribbble.com/Hoarfroster">
+                    <img src="/assets/media/vectors/dribbble.svg" alt="dribbble-logo"/>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+    <div class="content article">
+        <article>
+            <div class="title">
+                <h1>使用 Flutter 的 `Container` 控件构建优美的用户界面</h1>
+                <p><span class='chars'>undefined chars</span><span class='created-date'>Created Sat May 28 2022 23:43:08 GM</span><span class='modified-date'>Modified Sat May 28 2022 23:43:08 GM</span></p>
+            </div>
+            <div class="main markdown-body">
+                
+
+<blockquote>
+<ul>
+<li>原文地址：<a href="https://maneesha-erandi.medium.com/flutter-creating-elegant-uis-with-containers-1d05ca90fccf">Flutter — Creating
+Elegant UIs with Containers</a></li>
+<li>原文作者：<a href="https://medium.com/@maneesha-erandi">Maneesha
+Erandi</a></li>
+<li>译者：<a href="https://github.com/PassionPenguin">霜羽
+Hoarfroster</a></li>
+<li>校对者：<a href="https://github.com/zenblo">zenblo</a></li>
+</ul>
+</blockquote>
+<p>当我们使用 Flutter 构建绝佳的 UI 界面的时候，<code>Container</code>
+扮演着重要的角色。我真的极度喜欢在任何地方添加 <code>Container</code>
+控件，而这也是因为它确实能够在快速简单地创建 UI 界面上帮上我大忙。</p>
+<p>我真心希望本文内容能对初学者们有所帮助！</p>
+<p>让我们一起看看我们能够怎样利用 <code>Container</code> 控件让我们的 UI
+更加有吸引力吧！</p>
+<p>要生成一个简简单单的正方形或矩形，我们可以创造一个
+<code>Container</code>
+控件并给它制定一个宽度和高度（我们可以看到下面的例子就避免了使用子控件去绘制形状）。</p>
+<p><img src="https://cdn-images-1.medium.com/max/2078/1*mzCSaRJfZi8BiBHYUrUbqg.png"></p>
+<pre class="Dart"><code>Widget squareContainer() {
+  return Container(
+    color: Colors.purpleAccent,
+    width: 100,
+    height: 100,
+  );
+}
+
+Widget rectContainer() {
+  return Container(
+    color: Colors.greenAccent,
+    width: 200,
+    height: 100,
+  );
+}</code></pre>
+<p>而下面的例子展示了如何给 <code>Container</code>
+控件加上圆角。首先操作的两个控件是使用了 <code>BoxDecoration</code>
+圆角化控件的。我们同样可以通过使用 <code>BoxDecoration</code>
+绘制一个圆形，就像第三个控件那样：</p>
+<p><img src="https://cdn-images-1.medium.com/max/2202/1*lK_CjuIIFxIMSrijjme1qg.png"></p>
+<pre class="Dart"><code>Widget roundedContainer() {
+  return Container(
+    width: 100,
+    height: 50,
+    decoration: BoxDecoration(
+        color: Colors.tealAccent,
+        borderRadius: BorderRadius.all(Radius.circular(10))),
+  );
+}
+
+Widget fullyRoundedContainer() {
+  return Container(
+    width: 100,
+    height: 50,
+    decoration: BoxDecoration(
+        color: Colors.blueAccent,
+        borderRadius: BorderRadius.all(Radius.circular(50))),
+  );
+}
+
+Widget circleContainer() {
+  return Container(
+    width: 100,
+    height: 100,
+    decoration: BoxDecoration(color: Colors.redAccent, shape: BoxShape.circle),
+  );
+}</code></pre>
+<p>如果我们用 <code>Container</code> 控件包裹一个有 <code>onTap</code>
+功能（本例中为 <code>InkWell</code>
+控件）的子控件，我们甚至可以构建一个自定义的按钮：</p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*0CUGG-lyqxr-iP4wb9PRNQ.png"></p>
+<pre class="Dart"><code>Widget containerButton() {
+  return InkWell(
+    onTap: () {},
+    child: Container(
+        decoration: BoxDecoration(
+            color: Colors.deepOrange,
+            borderRadius: BorderRadius.all(Radius.circular(10))),
+        padding: EdgeInsets.symmetric(horizontal: 60, vertical: 20),
+        child: Text(
+          "Button",
+          style: TextStyle(color: Colors.white),
+        )),
+  );
+}</code></pre>
+<p>我们还可以通过使用 <code>Border.all()</code> 来生成边框装饰我们的
+<code>Container</code> 控件。<code>BoxShadow</code> 则可以给我们的
+<code>Container</code> 添加所设置的阴影，如控件二：</p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*SAcNvyxyzu-ofhDJ9_qhWg.png"></p>
+<pre class="Dart"><code>Widget containerWithBorders() {
+  return Container(
+    width: 100,
+    height: 100,
+    decoration: BoxDecoration(
+        color: Colors.yellow,
+        border: Border.all(),
+        borderRadius: BorderRadius.all(Radius.circular(15))),
+  );
+}
+
+Widget containerWithShadow() {
+  return Container(
+    width: 100,
+    height: 100,
+    decoration: BoxDecoration(
+      color: Colors.white,
+      borderRadius: BorderRadius.all(Radius.circular(15)),
+      boxShadow: [
+        BoxShadow(
+          color: Colors.grey.withOpacity(0.4),
+          spreadRadius: 5,
+          blurRadius: 9,
+          offset: Offset(0, 3), // changes position of shadow
+        ),
+      ],
+    ),
+  );
+}</code></pre>
+<p>在一个 <code>Container</code> 控件中，我们可以通过使用
+<code>BoxDecoration</code> 以及 <code>DecorationImage</code>
+给它添加装饰图片。这里大家可以试着找找两张图片中 <code>Container</code>
+的区别，探究添加的装饰是如何被应用到控件上的：</p>
+<p><img src="https://cdn-images-1.medium.com/max/2224/1*W0xtgxhy3hLNkrcHbZEGhQ.png"></p>
+<pre class="Dart"><code>Widget containerImgDecoration() {
+  return Container(
+    width: 150,
+    height: 150,
+    decoration: BoxDecoration(
+        borderRadius: BorderRadius.all(Radius.circular(15)),
+        image: DecorationImage(
+            image: AssetImage("assets/images/img.jpg"), fit: BoxFit.cover)),
+  );
+}
+
+Widget containerImg() {
+  return Container(
+    width: 150,
+    height: 150,
+    decoration:
+        BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(15))),
+    child: Image(image: AssetImage("assets/images/img.jpg"), fit: BoxFit.cover),
+  );
+}</code></pre>
+<p>我们可以添加多彩的标题背景，让我们的 UI 更有吸引力。下面是三个使用
+<code>Container</code> 控件构造的标题栏的例子：</p>
+<p><img src="https://cdn-images-1.medium.com/max/2458/1*I5-WNUcfc8gRxQiiTD59zQ.png"></p>
+<p><img src="https://cdn-images-1.medium.com/max/2422/1*F3DS06d7jMIPJxwqVQlWKg.png"></p>
+<p><img src="https://cdn-images-1.medium.com/max/2484/1*0LAhQZtJZx2bgvHFgEvELw.png"></p>
+<pre class="Dart"><code>Widget containerHeaderOne({width}) {
+  return Container(
+    width: width,
+    height: 200,
+    decoration: BoxDecoration(
+      color: Colors.deepPurpleAccent,
+      borderRadius:  BorderRadius.vertical(
+          bottom:  Radius.elliptical(width, 200.0)),
+    ),
+  );
+}
+
+Widget containerHeaderTwo({width}) {
+  return Container(
+    width: width,
+    height: 200,
+    decoration: BoxDecoration(
+      color: Colors.redAccent,
+      borderRadius: BorderRadius.only(
+          bottomRight: Radius.circular(200)),
+    ),
+  );
+}
+
+Widget containerHeaderThree({width}) {
+  return Container(
+    width: width,
+    height: 200,
+    decoration: BoxDecoration(
+      color: Colors.green,
+      borderRadius: BorderRadius.only(
+          bottomLeft: Radius.circular(200),
+          bottomRight: Radius.circular(200)),
+    ),
+  );
+}</code></pre>
+<p>你可以在 <a href="https://github.com/manee92/FlutterDemo/blob/master/lib/screens/UIDemo/ContainerDemo.dart">这里</a>
+找到完整的代码。</p>
+<p>感谢你的阅读！</p>
+
+
+
+            </div>
+        </article>
+        <div class="sidebar">
+            <div class="about-box">
+    <div class="avatar">
+        <img src="/assets/media/bitmap/avatar.jpeg" alt="avatar">
+    </div>
+    <h1>霜羽 Hoarfroster</h1>
+    <h2>@PassionPenguin</h2>
+    <p class="moment"><span class="status">🤔</span><span>努力！</span></p>
+    <ul>
+        <li><i class="fa-solid fa-location-dot"></i> 广东 · 广州 | <span class="light">Guangzhou, China</span>
+        </li>
+        <li><i class="fa-solid fa-envelope"></i> <a href="mailto:hoarfroster@outlook.com">hoarfroster@outlook.com</a>
+        </li>
+        <li><i class="fa-solid fa-house"></i> <a href="https://story.hoarfroster.space/">https://story.hoarfroster.space/</a>
+        </li>
+    </ul>
+</div>
+<div class="organization">
+    <h4>组织 Organizations</h4>
+    <ul>
+        <li>
+            <img src="https://avatars.githubusercontent.com/u/81648011?s=60&amp;v=4"
+                alt="Hexa-Penguin"><span>Hexa-Penguin</span>
+        </li>
+        <li>
+            <img src="https://avatars.githubusercontent.com/u/10482599?s=60&amp;v=4" alt="xitu"><span>稀土 xitu</span>
+        </li>
+    </ul>
+</div>
+<div class="category">
+    <span class="title">文章分类</span>
+    <ul>
+        <!-- <li><a href="/archive.html">所有分类</a></li> -->
+    </ul>
+</div>
+<div class="archive">
+    <span class="title">文章存档</span>
+    <ul>
+        <!-- <li><a href="/archive.html">所有文章</a></li> -->
+    </ul>
+</div>
+        </div>
+    </div>
+    <div class="footer">
+    <div class="content">
+        <div class="about">
+            <p>霜羽 Hoarfroster</p>
+            <p>&copy; Copyright 2021 Hoarfroster and contributors.</p>
+        </div>
+        <div class="nav">
+            <div class="links">
+                <span class="title">关于文章</span>
+                <ul>
+                    <li><a href="/archive.html">文章存档</a></li>
+                </ul>
+            </div>
+            <div class="category">
+                <span class="title">关于霜羽</span>
+                <ul>
+                    <li><a href="/about.html">有关霜羽</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <ul class="social-accounts">
+        <li>
+            <a href="https://www.zhihu.com/people/shuang-yu-29-75">
+                <i class="fa-brands fa-zhihu" style="font-size: 24px; color:#06f; line-height: 24px;"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://github.com/PassionPenguin">
+                <img src="/assets/media/vectors/github.svg" alt="github-logo"/>
+            </a>
+        </li>
+        <li>
+            <a href="https://dribbble.com/Hoarfroster">
+                <img src="/assets/media/vectors/dribbble.svg" alt="dribbble-logo"/>
+            </a>
+        </li>
+        <li>
+            <a href="https://zh.wikipedia.org/wiki/User:HoarfrostFeather">
+                <i class="fa-brands fa-wikipedia-w" style="font-size: 22px; color: #888; line-height: 24px;"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://space.bilibili.com/201469972">
+                <i class="fa-brands fa-bilibili" style="font-size: 22px; color: #00a1d6; line-height: 24px;"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+</body>
+
+</html>

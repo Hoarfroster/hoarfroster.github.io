@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>有关 ECMAScript 最新版本的所有信息｜ECMAScript 2021</title>
+    <script src="/assets/script/main.js"></script>
+    <link rel="stylesheet" href="/assets/style/styles.css">
+</head>
+
+<body>
+    <div class="header">
+    <div class="container">
+        <div class="icon">
+            <img src="/assets/media/vectors/hoarfroster-text.svg" alt="Hoarfroster Logo with Text">
+        </div>
+        <nav class="navigation">
+            <ul class="header-navigation-list">
+                <li><a href="/">首页</a></li>
+                <li><a href="/archive.html">文章</a></li>
+                <li><a href="/about.html">关于</a></li>
+            </ul>
+            <form action="/search" method="post">
+                <label>
+                    <input type="text" class="search" placeholder="搜索咕咕咕的小站"/>
+                </label>
+                <label class="submit">
+                    <input type="submit"/>
+                </label>
+            </form>
+        </nav>
+        <ul class="social-accounts">
+            <li>
+                <a href="https://www.zhihu.com/people/shuang-yu-29-75">
+                    <i class="fa-brands fa-zhihu" style="font-size: 20px; color:#06f; line-height: 20px;"></i>
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/PassionPenguin">
+                    <img src="/assets/media/vectors/github.svg" alt="github-logo"/>
+                </a>
+            </li>
+            <li>
+                <a href="https://dribbble.com/Hoarfroster">
+                    <img src="/assets/media/vectors/dribbble.svg" alt="dribbble-logo"/>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+    <div class="content article">
+        <article>
+            <div class="title">
+                <h1>有关 ECMAScript 最新版本的所有信息｜ECMAScript 2021</h1>
+                <p><span class='chars'>undefined chars</span><span class='created-date'>Created Sat May 28 2022 23:43:08 GM</span><span class='modified-date'>Modified Sat May 28 2022 23:43:08 GM</span></p>
+            </div>
+            <div class="main markdown-body">
+                
+
+<blockquote>
+<ul>
+<li>原文地址：<a href="https://levelup.gitconnected.com/everything-about-the-latest-ecmascript-release-ecmascript-2021-c011e817f41a">Everything
+about the latest ECMAScript release | ECMAScript 2021</a></li>
+<li>原文作者：<a href="https://medium.com/@kritikasharmablog">Kritika
+Sharma</a></li>
+<li>译者：<a href="https://github.com/Hoarfroster">霜羽
+Hoarfroster</a></li>
+<li>校对者：<a href="https://github.com/KimYangOfCat">KimYang</a>、<a href="https://github.com/Tong-H">Tong-H</a></li>
+</ul>
+</blockquote>
+<p>在本文中，我们将通过一些示例代码向大家介绍 ECMAScript 2021
+最新版本的功能。</p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*ex1pND6jnzW3Hj2vjRjaDA.jpeg"></p>
+<h2 id="新的功能">新的功能</h2>
+<h3 id="1-stringreplaceall-">1. String.replaceAll( )</h3>
+<p>将查找到的目标字符串的所有实例替换为所需的字符串：</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> fact <span class="op">=</span> <span class="st">"JavaScript is the best web scripting language. JavaScript can be used for both front end and backend"</span><span class="op">;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(fact<span class="op">.</span><span class="fu">replaceAll</span>(<span class="st">"JavaScript"</span><span class="op">,</span> <span class="st">"TypeScript"</span>))<span class="op">;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">// 输出：</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">// "TypeScript is the best web scripting language. TypeScript can be used for both front end and backend";</span></span></code></pre></div>
+<p>与之前的 <code>replace()</code>
+方法（仅将目标字符串的第一个匹配项替换为所需的字符串）相比：</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> fact <span class="op">=</span> <span class="st">"JavaScript is the best web scripting language. JavaScript can be used for both front end and backend"</span><span class="op">;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(fact<span class="op">.</span><span class="fu">replace</span>(<span class="st">"JavaScript"</span><span class="op">,</span> <span class="st">"TypeScript"</span>))<span class="op">;</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">// 输出：</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">// "TypeScript is the best web scripting language. JavaScript can be used for both front end and backend";</span></span></code></pre></div>
+<h3 id="2-promiseany-">2. Promise.any( )</h3>
+<p>只要所提供的<code>Promise</code>
+中的任何一个得到解决，<code>Promise.any()</code> 就会直接被解决，而
+<code>Promise.all()</code> 则等待所有的 <code>Promise</code>
+都得到解决后才会标记为解决，基本上与 <code>Promise.all()</code>
+相反。</p>
+<p>如果 <strong>“兑现了一个 <code>Promise</code>”</strong>：</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> promises <span class="op">=</span> [   </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>          <span class="bu">Promise</span><span class="op">.</span><span class="fu">reject</span>(<span class="st">'错误 A'</span>)<span class="op">,</span>           </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>          <span class="bu">Promise</span><span class="op">.</span><span class="fu">reject</span>(<span class="st">'错误 B'</span>)<span class="op">,</span>   </span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>          <span class="bu">Promise</span><span class="op">.</span><span class="fu">resolve</span>(<span class="st">'结果'</span>)<span class="op">,</span> </span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>]<span class="op">;</span> </span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="bu">Promise</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">any</span>(promises)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">then</span>((result) <span class="kw">=&gt;</span> assert<span class="op">.</span><span class="fu">equal</span>(result<span class="op">,</span> <span class="st">'结果'</span>))<span class="op">;</span> <span class="co">//true</span></span></code></pre></div>
+<p>如果 <strong>“所有 <code>Promise</code> 都是被拒绝的”</strong>：</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> promises <span class="op">=</span> [   </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>          <span class="bu">Promise</span><span class="op">.</span><span class="fu">reject</span>(<span class="st">'错误 A'</span>)<span class="op">,</span>  </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>          <span class="bu">Promise</span><span class="op">.</span><span class="fu">reject</span>(<span class="st">'错误 B'</span>)<span class="op">,</span>   </span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>          <span class="bu">Promise</span><span class="op">.</span><span class="fu">reject</span>(<span class="st">'错误 C'</span>)<span class="op">,</span> </span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>]<span class="op">;</span> </span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="bu">Promise</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">any</span>(promises)   </span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">catch</span>((aggregateError) <span class="kw">=&gt;</span> {</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>            assert<span class="op">.</span><span class="fu">deepEqual</span>(aggregateError<span class="op">.</span><span class="at">errors</span><span class="op">,</span> </span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>            [<span class="st">'错误 A'</span><span class="op">,</span> <span class="st">'错误 B'</span><span class="op">,</span> <span class="st">'错误 C'</span>])<span class="op">;</span> <span class="co">//true</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>   })<span class="op">;</span></span></code></pre></div>
+<h3 id="3-逻辑赋值操作符">3. 逻辑赋值操作符</h3>
+<p><img src="https://cdn-images-1.medium.com/max/2972/1*WS3OZEp_hEv0_zLaihk6-Q.png" alt="来源: https://exploringjs.com/impatient-js/ch_operators.html#logical-assignment-operators"></p>
+<p><code>a ||= b</code> 等同于
+<code>a || (a = b)</code>（短路运算符）</p>
+<p>为何不是 <code>a = a || b</code>？</p>
+<p>好吧，因为对于前一个表达式，只有在 <code>a</code> 计算为
+<code>false</code>
+时，赋值才会被执行。因此，前者仅在必要时才会被赋值。相反，后一个表达式始终执行赋值。</p>
+<p><code>a ||= b</code> 的一个例子：</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> a <span class="op">=</span> <span class="dv">1</span><span class="op">;</span>  </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> b <span class="op">=</span> <span class="dv">2</span><span class="op">;</span>  </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>a <span class="op">||=</span> b<span class="op">;</span>   </span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(a)<span class="op">;</span> <span class="co">// 1</span></span></code></pre></div>
+<p><code>a &amp;&amp;= b</code> 的一个例子：</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> a <span class="op">=</span> <span class="dv">1</span><span class="op">;</span> </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> b <span class="op">=</span> <span class="dv">2</span><span class="op">;</span> </span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>a <span class="op">&amp;&amp;=</span> b<span class="op">;</span> </span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(a)<span class="op">;</span> <span class="co">// 2</span></span></code></pre></div>
+<p><code>a ??= b</code> 的一个例子：</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> a<span class="op">;</span>  </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> b <span class="op">=</span> <span class="dv">2</span><span class="op">;</span>   </span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>a <span class="op">??=</span> b<span class="op">;</span>   </span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(a)<span class="op">;</span> <span class="co">// 2</span></span></code></pre></div>
+<h3 id="4-数字分隔符">4. 数字分隔符</h3>
+<p>现在，我们可以使用 <strong>下划线（<code>_</code>）</strong>
+作为数字文字和 bigInt
+文字的分隔符。这将帮助开发人员提高其数字文字的可读性（“下划线”基本上会充当我们平日生活中书写数字时候所用的“逗号”（用于在不同的数字组之间提供分隔））。</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> budget <span class="op">=</span> <span class="dv">1000000000000</span><span class="op">;</span> <span class="co">// 可以这样写：</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> budget <span class="op">=</span> <span class="dv">1_000_000_000_000</span><span class="op">;</span> </span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(budget)<span class="op">;</span> <span class="co">// 会打印正常数字：</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co">// 输出：</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="co">// 1000000000000</span></span></code></pre></div>
+<p>希望本文能帮助您了解 ECMAScript
+的最新版本。感谢您的阅读，如有任何疑问，请随时发表评论。</p>
+<p>参考资料：</p>
+<ul>
+<li><a href="https://dev.to/faithfulojebiyi/new-features-in-ecmascript-2021-with-code-examples-302h">https://dev.to/faithfulojebiyi/new-features-in-ecmascript-2021-with-code-examples-302h</a></li>
+<li><a href="https://2ality.com/2020/09/ecmascript-2021.html">https://2ality.com/2020/09/ecmascript-2021.html</a></li>
+</ul>
+
+
+
+            </div>
+        </article>
+        <div class="sidebar">
+            <div class="about-box">
+    <div class="avatar">
+        <img src="/assets/media/bitmap/avatar.jpeg" alt="avatar">
+    </div>
+    <h1>霜羽 Hoarfroster</h1>
+    <h2>@PassionPenguin</h2>
+    <p class="moment"><span class="status">🤔</span><span>努力！</span></p>
+    <ul>
+        <li><i class="fa-solid fa-location-dot"></i> 广东 · 广州 | <span class="light">Guangzhou, China</span>
+        </li>
+        <li><i class="fa-solid fa-envelope"></i> <a href="mailto:hoarfroster@outlook.com">hoarfroster@outlook.com</a>
+        </li>
+        <li><i class="fa-solid fa-house"></i> <a href="https://story.hoarfroster.space/">https://story.hoarfroster.space/</a>
+        </li>
+    </ul>
+</div>
+<div class="organization">
+    <h4>组织 Organizations</h4>
+    <ul>
+        <li>
+            <img src="https://avatars.githubusercontent.com/u/81648011?s=60&amp;v=4"
+                alt="Hexa-Penguin"><span>Hexa-Penguin</span>
+        </li>
+        <li>
+            <img src="https://avatars.githubusercontent.com/u/10482599?s=60&amp;v=4" alt="xitu"><span>稀土 xitu</span>
+        </li>
+    </ul>
+</div>
+<div class="category">
+    <span class="title">文章分类</span>
+    <ul>
+        <!-- <li><a href="/archive.html">所有分类</a></li> -->
+    </ul>
+</div>
+<div class="archive">
+    <span class="title">文章存档</span>
+    <ul>
+        <!-- <li><a href="/archive.html">所有文章</a></li> -->
+    </ul>
+</div>
+        </div>
+    </div>
+    <div class="footer">
+    <div class="content">
+        <div class="about">
+            <p>霜羽 Hoarfroster</p>
+            <p>&copy; Copyright 2021 Hoarfroster and contributors.</p>
+        </div>
+        <div class="nav">
+            <div class="links">
+                <span class="title">关于文章</span>
+                <ul>
+                    <li><a href="/archive.html">文章存档</a></li>
+                </ul>
+            </div>
+            <div class="category">
+                <span class="title">关于霜羽</span>
+                <ul>
+                    <li><a href="/about.html">有关霜羽</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <ul class="social-accounts">
+        <li>
+            <a href="https://www.zhihu.com/people/shuang-yu-29-75">
+                <i class="fa-brands fa-zhihu" style="font-size: 24px; color:#06f; line-height: 24px;"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://github.com/PassionPenguin">
+                <img src="/assets/media/vectors/github.svg" alt="github-logo"/>
+            </a>
+        </li>
+        <li>
+            <a href="https://dribbble.com/Hoarfroster">
+                <img src="/assets/media/vectors/dribbble.svg" alt="dribbble-logo"/>
+            </a>
+        </li>
+        <li>
+            <a href="https://zh.wikipedia.org/wiki/User:HoarfrostFeather">
+                <i class="fa-brands fa-wikipedia-w" style="font-size: 22px; color: #888; line-height: 24px;"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://space.bilibili.com/201469972">
+                <i class="fa-brands fa-bilibili" style="font-size: 22px; color: #00a1d6; line-height: 24px;"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+</body>
+
+</html>

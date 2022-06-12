@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web 开发者应该避免的 5 个 CSS 的做法</title>
+    <script src="/assets/script/main.js"></script>
+    <link rel="stylesheet" href="/assets/style/styles.css">
+</head>
+
+<body>
+    <div class="header">
+    <div class="container">
+        <div class="icon">
+            <img src="/assets/media/vectors/hoarfroster-text.svg" alt="Hoarfroster Logo with Text">
+        </div>
+        <nav class="navigation">
+            <ul class="header-navigation-list">
+                <li><a href="/">首页</a></li>
+                <li><a href="/archive.html">文章</a></li>
+                <li><a href="/about.html">关于</a></li>
+            </ul>
+            <form action="/search" method="post">
+                <label>
+                    <input type="text" class="search" placeholder="搜索咕咕咕的小站"/>
+                </label>
+                <label class="submit">
+                    <input type="submit"/>
+                </label>
+            </form>
+        </nav>
+        <ul class="social-accounts">
+            <li>
+                <a href="https://www.zhihu.com/people/shuang-yu-29-75">
+                    <i class="fa-brands fa-zhihu" style="font-size: 20px; color:#06f; line-height: 20px;"></i>
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/PassionPenguin">
+                    <img src="/assets/media/vectors/github.svg" alt="github-logo"/>
+                </a>
+            </li>
+            <li>
+                <a href="https://dribbble.com/Hoarfroster">
+                    <img src="/assets/media/vectors/dribbble.svg" alt="dribbble-logo"/>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+    <div class="content article">
+        <article>
+            <div class="title">
+                <h1>Web 开发者应该避免的 5 个 CSS 的做法</h1>
+                <p><span class='chars'>undefined chars</span><span class='created-date'>Created Sat May 28 2022 23:43:08 GM</span><span class='modified-date'>Modified Sat May 28 2022 23:43:08 GM</span></p>
+            </div>
+            <div class="main markdown-body">
+                
+
+<blockquote>
+<ul>
+<li>原文地址：<a href="https://betterprogramming.pub/5-css-practices-to-avoid-as-a-web-developer-1b7553c05131">5
+CSS Practices To Avoid as a Web Developer</a></li>
+<li>原文作者：<a href="https://medium.com/@alexey-shepelev">Alexey
+Shepelev</a></li>
+<li>译者：<a href="https://github.com/PassionPenguin">霜羽
+Hoarfroster</a></li>
+<li>校对者：<a href="https://github.com/KimYangOfCat">KimYang</a>、<a href="https://github.com/Chorer">Chorer</a></li>
+</ul>
+</blockquote>
+<p><img src="https://cdn-images-1.medium.com/max/9874/1*0Ca38BL7C5MRI0qsdAQT3Q.jpeg" alt="图源 Pankaj Patel，上传至 Unsplash."></p>
+<p>有人认为 CSS 很难学习，觉得 CSS
+有很多的坑，甚至还有一点儿魔幻，难以理解，很容易会搬起石头砸自己的脚。对此我感到难过，毕竟，我可不这么认为。</p>
+<p>在考虑了可以做什么之后，我提出了五个我挺讨厌的 CSS
+的做法，希望帮助大家避免这些习惯。</p>
+<h2 id="1-设置内外边距然后将其重置">1. 设置内外边距，然后将其重置</h2>
+<p>我经常看到人们为所有元素设置内外边距，然后为第一个元素或者最后一个元素清除刚刚写的边距。我不知道为什么你非要在一条规则就可以解决问题的情况下写两条规则。一次为所有必需的元素设置边距明显容易得多！</p>
+<p>为简化 CSS，你可以选用以下几种选择器：<code>nth-child</code> 或
+<code>nth-of-type</code> 选择器，还有 <code>:not()</code>
+伪类或相邻元素组合器（即 <code>+</code>）。</p>
+<p>不要这么写：</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode CSS"><code class="sourceCode css"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.item</span> {</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">margin-right</span>: <span class="dv">1.6</span><span class="dt">rem</span><span class="op">;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">.item</span><span class="in">:last-child</span> {</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">margin-right</span>: <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>你可以这么写：</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode CSS"><code class="sourceCode css"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.item</span><span class="in">:not(</span>:last-child<span class="in">)</span> {</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">margin-right</span>: <span class="dv">1.6</span><span class="dt">rem</span><span class="op">;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>或这样写：</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode CSS"><code class="sourceCode css"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.item</span><span class="in">:nth-child(n+2)</span> {</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">margin-left</span>: <span class="dv">1.6</span><span class="dt">rem</span><span class="op">;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>或者用：</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode CSS"><code class="sourceCode css"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.item</span> <span class="op">+</span> <span class="fu">.item</span> {</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">margin-left</span>: <span class="dv">1.6</span><span class="dt">rem</span><span class="op">;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<h2 id="2-为-position-为-fixed-或-absolute-的元素添加-displayblock">2.
+为 <code>position</code> 为 <code>fixed</code> 或 <code>absolute</code>
+的元素添加 <code>display:block</code></h2>
+<p>你知道吗？其实你无需为 <code>position</code> 为 <code>fixed</code> 或
+<code>absolute</code> 的元素添加
+<code>display:block</code>，因为这是默认发生的。</p>
+<p>另外，如果你在这些元素上使用 <code>inline-*</code>
+值，它们将按以下方式更改：</p>
+<ul>
+<li><code>inline</code>、<code>inline-block</code> -&gt;
+<code>block</code></li>
+<li><code>inline-flex</code> -&gt; <code>flex</code></li>
+<li><code>inline-grid</code> -&gt; <code>grid</code></li>
+<li><code>inline-table</code> -&gt; <code>table</code></li>
+</ul>
+<p>因此，对于 <code>position</code> 为 <code>fixed</code> 或
+<code>absolute</code> 的元素，你只需在要使用 flex 布局或者 grid
+布局的时候设置 <code>display</code>。</p>
+<p>不要这样写：</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode CSS"><code class="sourceCode css"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.button</span><span class="in">::before</span> {</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">content</span>: <span class="st">""</span><span class="op">;</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">position</span>: <span class="dv">absolute</span><span class="op">;</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">display</span>: <span class="dv">block</span><span class="op">;</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>或者不要这样写：</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode CSS"><code class="sourceCode css"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.button</span><span class="in">::before</span> {</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">content</span>: <span class="st">""</span><span class="op">;</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">position</span>: <span class="dv">fixed</span><span class="op">;</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">display</span>: <span class="dv">block</span><span class="op">;</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>直接这样：</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode CSS"><code class="sourceCode css"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.button</span><span class="in">::before</span> {</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">content</span>: <span class="st">""</span><span class="op">;</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">position</span>: <span class="dv">absolute</span><span class="op">;</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>或者这样写：</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode CSS"><code class="sourceCode css"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.button</span><span class="in">::before</span> {</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">content</span>: <span class="st">""</span><span class="op">;</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">position</span>: <span class="dv">fixed</span><span class="op">;</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<h2 id="3-使用-transform-translate-50--50-实现居中">3. 使用
+<code>transform: translate(-50%, -50%)</code> 实现居中</h2>
+<p>曾几何时，有一个非常普遍的问题让开发者们烦恼不已。这种情况一直持续到
+2015 年，而在此之前，该问题的所有解决方案或多或少都有毛病。这个问题就是
+—— 将未指定高度的元素在水平和竖直方向居中。</p>
+<p>特别地，一种解决方案是结合使用绝对定位和 <code>transform</code>
+属性。此技术在基于 Chromium 的浏览器中会导致文本的模糊问题。</p>
+<p>但是在引入 <code>flexbox</code>
+之后，我认为这个解决方法已不再适用，毕竟这个方法存在文本模糊的问题，而且我们还得使用五个属性才能实现居中。现在我想向大家分享一个技巧，缩减代码为两个属性。</p>
+<p>我们可以在 <code>flex</code> 容器内使用
+<code>margin: auto</code>（只有这两个属性，仅此而已！）。浏览器会自动将元素居中。</p>
+<p>不要这样写：</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode CSS"><code class="sourceCode css"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.parent</span> {</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">position</span>: <span class="dv">relative</span><span class="op">;</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">.child</span> {</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">position</span>: <span class="dv">absolute</span><span class="op">;</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">top</span>: <span class="dv">50</span><span class="dt">%</span><span class="op">;</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">left</span>: <span class="dv">50</span><span class="dt">%</span><span class="op">;</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">transform</span>: <span class="fu">translate(</span><span class="dv">-50</span><span class="dt">%</span><span class="op">,</span> <span class="dv">-50</span><span class="dt">%</span><span class="fu">)</span><span class="op">;</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>直接这样写：</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode CSS"><code class="sourceCode css"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.parent</span> {</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">display</span>: flex<span class="op">;</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">.child</span> {</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">margin</span>: <span class="bu">auto</span><span class="op">;</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<h2 id="4-为块状元素使用-width-100">4. 为块状元素使用
+<code>width: 100%</code></h2>
+<p>我们经常使用 <code>flexbox</code>
+创建一个多列网格，然后转换为单列网格。</p>
+<p>为了将多列网格转换为单列网格，开发人员使用了
+<code>width：100％</code>。我不明白他们为什么这么做 ——
+网格元素是块元素，默认情况下的宽度就是
+<code>100%</code>，而无需使用其他属性。</p>
+<p>因此，我们不需要使用
+<code>width：100％</code>，而是应该编写媒体查询，以便
+<code>flexbox</code> 仅用于创建多列网格。</p>
+<p>不要这样写：</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode HTML"><code class="sourceCode html"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;div</span> <span class="er">class</span><span class="ot">=</span><span class="st">"parent"</span><span class="kw">&gt;</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;div</span> <span class="er">class</span><span class="ot">=</span><span class="st">"child"</span><span class="kw">&gt;</span>Item 1<span class="kw">&lt;/div&gt;</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;div</span> <span class="er">class</span><span class="ot">=</span><span class="st">"child"</span><span class="kw">&gt;</span>Item 2<span class="kw">&lt;/div&gt;</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;div</span> <span class="er">class</span><span class="ot">=</span><span class="st">"child"</span><span class="kw">&gt;</span>Item 3<span class="kw">&lt;/div&gt;</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;div</span> <span class="er">class</span><span class="ot">=</span><span class="st">"child"</span><span class="kw">&gt;</span>Item 4<span class="kw">&lt;/div&gt;</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/div&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode CSS"><code class="sourceCode css"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.parent</span> {</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">display</span>: flex<span class="op">;</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">flex-wrap</span>: wrap<span class="op">;</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="fu">.child</span> {</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">width</span>: <span class="dv">100</span><span class="dt">%</span><span class="op">;</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="im">@media</span> (<span class="kw">min-width</span>: <span class="dv">1024</span><span class="dt">px</span>) {</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">.child</span> {</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>        <span class="kw">width</span>: <span class="dv">25</span><span class="dt">%</span><span class="op">;</span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>直接这样写：</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode HTML"><code class="sourceCode html"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;div</span> <span class="er">class</span><span class="ot">=</span><span class="st">"parent"</span><span class="kw">&gt;</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;div</span> <span class="er">class</span><span class="ot">=</span><span class="st">"child"</span><span class="kw">&gt;</span>Item 1<span class="kw">&lt;/div&gt;</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;div</span> <span class="er">class</span><span class="ot">=</span><span class="st">"child"</span><span class="kw">&gt;</span>Item 2<span class="kw">&lt;/div&gt;</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;div</span> <span class="er">class</span><span class="ot">=</span><span class="st">"child"</span><span class="kw">&gt;</span>Item 3<span class="kw">&lt;/div&gt;</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;div</span> <span class="er">class</span><span class="ot">=</span><span class="st">"child"</span><span class="kw">&gt;</span>Item 4<span class="kw">&lt;/div&gt;</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/div&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode CSS"><code class="sourceCode css"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">@media</span> (<span class="kw">min-width</span>: <span class="dv">1024</span><span class="dt">px</span>) {</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">.parent</span> {</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>        <span class="kw">display</span>: flex<span class="op">;</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>        <span class="kw">flex-wrap</span>: wrap<span class="op">;</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">.child</span> {</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>        <span class="kw">width</span>: <span class="dv">25</span><span class="dt">%</span><span class="op">;</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<h2 id="5-为-flex-项目设置-display-block">5. 为 flex 项目设置
+<code>display: block</code></h2>
+<p>使用 flexbox 时，请务必记住，当创建一个 flex
+容器（<code>display: flex</code>）时，所有子项（<code>flex</code>
+项目）都会被转化为 <code>block</code>。</p>
+<p>这意味着所有子项的 <code>display</code> 都会被默认设置为
+<code>block</code>。</p>
+<ul>
+<li><code>inline</code>、<code>inline-block</code> -&gt;
+<code>block</code></li>
+<li><code>inline-flex</code> -&gt; <code>flex</code></li>
+<li><code>inline-grid</code> -&gt; <code>grid</code></li>
+<li><code>inline-table</code> -&gt; <code>table</code></li>
+</ul>
+<p>因此，无需在 <code>flex</code> 项目中添加
+<code>display：block</code>，浏览器将为你完成此操作。</p>
+<p>不要这样做：</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode CSS"><code class="sourceCode css"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.parent</span> {</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">display</span>: flex<span class="op">;</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="fu">.child</span> {</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">display</span>: <span class="dv">block</span><span class="op">;</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>你可以直接这样：</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode CSS"><code class="sourceCode css"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.parent</span> {</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">display</span>: flex<span class="op">;</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<h2 id="小结">小结</h2>
+<p>希望在阅读本文后，你能够学会如何避免这些简单的错误并接受我的建议。感谢阅读！</p>
+
+
+
+            </div>
+        </article>
+        <div class="sidebar">
+            <div class="about-box">
+    <div class="avatar">
+        <img src="/assets/media/bitmap/avatar.jpeg" alt="avatar">
+    </div>
+    <h1>霜羽 Hoarfroster</h1>
+    <h2>@PassionPenguin</h2>
+    <p class="moment"><span class="status">🤔</span><span>努力！</span></p>
+    <ul>
+        <li><i class="fa-solid fa-location-dot"></i> 广东 · 广州 | <span class="light">Guangzhou, China</span>
+        </li>
+        <li><i class="fa-solid fa-envelope"></i> <a href="mailto:hoarfroster@outlook.com">hoarfroster@outlook.com</a>
+        </li>
+        <li><i class="fa-solid fa-house"></i> <a href="https://story.hoarfroster.space/">https://story.hoarfroster.space/</a>
+        </li>
+    </ul>
+</div>
+<div class="organization">
+    <h4>组织 Organizations</h4>
+    <ul>
+        <li>
+            <img src="https://avatars.githubusercontent.com/u/81648011?s=60&amp;v=4"
+                alt="Hexa-Penguin"><span>Hexa-Penguin</span>
+        </li>
+        <li>
+            <img src="https://avatars.githubusercontent.com/u/10482599?s=60&amp;v=4" alt="xitu"><span>稀土 xitu</span>
+        </li>
+    </ul>
+</div>
+<div class="category">
+    <span class="title">文章分类</span>
+    <ul>
+        <!-- <li><a href="/archive.html">所有分类</a></li> -->
+    </ul>
+</div>
+<div class="archive">
+    <span class="title">文章存档</span>
+    <ul>
+        <!-- <li><a href="/archive.html">所有文章</a></li> -->
+    </ul>
+</div>
+        </div>
+    </div>
+    <div class="footer">
+    <div class="content">
+        <div class="about">
+            <p>霜羽 Hoarfroster</p>
+            <p>&copy; Copyright 2021 Hoarfroster and contributors.</p>
+        </div>
+        <div class="nav">
+            <div class="links">
+                <span class="title">关于文章</span>
+                <ul>
+                    <li><a href="/archive.html">文章存档</a></li>
+                </ul>
+            </div>
+            <div class="category">
+                <span class="title">关于霜羽</span>
+                <ul>
+                    <li><a href="/about.html">有关霜羽</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <ul class="social-accounts">
+        <li>
+            <a href="https://www.zhihu.com/people/shuang-yu-29-75">
+                <i class="fa-brands fa-zhihu" style="font-size: 24px; color:#06f; line-height: 24px;"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://github.com/PassionPenguin">
+                <img src="/assets/media/vectors/github.svg" alt="github-logo"/>
+            </a>
+        </li>
+        <li>
+            <a href="https://dribbble.com/Hoarfroster">
+                <img src="/assets/media/vectors/dribbble.svg" alt="dribbble-logo"/>
+            </a>
+        </li>
+        <li>
+            <a href="https://zh.wikipedia.org/wiki/User:HoarfrostFeather">
+                <i class="fa-brands fa-wikipedia-w" style="font-size: 22px; color: #888; line-height: 24px;"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://space.bilibili.com/201469972">
+                <i class="fa-brands fa-bilibili" style="font-size: 22px; color: #00a1d6; line-height: 24px;"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+</body>
+
+</html>

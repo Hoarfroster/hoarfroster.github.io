@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>概率</title>
+    <script src="/assets/script/main.js"></script>
+    <link rel="stylesheet" href="/assets/style/styles.css">
+</head>
+
+<body>
+    <div class="header">
+    <div class="container">
+        <div class="icon">
+            <img src="/assets/media/vectors/hoarfroster-text.svg" alt="Hoarfroster Logo with Text">
+        </div>
+        <nav class="navigation">
+            <ul class="header-navigation-list">
+                <li><a href="/">首页</a></li>
+                <li><a href="/archive.html">文章</a></li>
+                <li><a href="/about.html">关于</a></li>
+            </ul>
+            <form action="/search" method="post">
+                <label>
+                    <input type="text" class="search" placeholder="搜索咕咕咕的小站"/>
+                </label>
+                <label class="submit">
+                    <input type="submit"/>
+                </label>
+            </form>
+        </nav>
+        <ul class="social-accounts">
+            <li>
+                <a href="https://www.zhihu.com/people/shuang-yu-29-75">
+                    <i class="fa-brands fa-zhihu" style="font-size: 20px; color:#06f; line-height: 20px;"></i>
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/PassionPenguin">
+                    <img src="/assets/media/vectors/github.svg" alt="github-logo"/>
+                </a>
+            </li>
+            <li>
+                <a href="https://dribbble.com/Hoarfroster">
+                    <img src="/assets/media/vectors/dribbble.svg" alt="dribbble-logo"/>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+    <div class="content article">
+        <article>
+            <div class="title">
+                <h1>概率</h1>
+                <p><span class='chars'>undefined chars</span><span class='created-date'>Created Sat May 28 2022 23:43:08 GM</span><span class='modified-date'>Modified Sat May 28 2022 23:43:08 GM</span></p>
+            </div>
+            <div class="main markdown-body">
+                
+
+<h2 id="知识聚焦">知识聚焦</h2>
+<h3 id="一随机事件的概率">一、随机事件的概率</h3>
+<h4 id="1-事件与概率">1. 事件与概率</h4>
+<p><span class="tab"></span><strong>事件</strong>指试验出现的结果：</p>
+<ol type="1">
+<li>根据事件是否发生，可以分为<strong>必然事件、不可能事件和随机事件</strong>，其中必然事件的概率为
+<span class="math inline">1</span>，不可能事件的概率为 <span class="math inline">0</span>，随机事件的概率属于 <span class="math inline">(0,1)</span>。</li>
+<li><strong>互斥事件</strong>指事件不能同时发生，满足 <span class="math inline"><em>P</em>(<em>A</em>∪<em>B</em>) = <em>P</em>(<em>A</em>) + <em>P</em>(<em>B</em>)</span>，<span class="math inline"><em>A</em> ∩ <em>B</em> = ⌀</span>。</li>
+<li><strong>对立事件</strong>指 <span class="math inline"><em>A</em> ∪ <em>B</em></span> 为必然事件，<span class="math inline"><em>A</em> ∩ <em>B</em> = ⌀</span>，<strong>对立事件是特殊的互斥事件</strong>，记作
+<span class="math inline">$B=\overline{A}$</span>，<span class="math inline">$P(A)=1-P(\overline{A})$</span>。</li>
+</ol>
+<h4 id="2-古典概型">2. 古典概型</h4>
+<p><span class="tab"></span>如果一次试验有如下两个特征，则称这样的试验为古典概型：</p>
+<ol type="1">
+<li><strong>有限性</strong>：一次试验的结果只可以是有限个，即只有有限个不同的基本事件。</li>
+<li><strong>等可能性</strong>：每个基本事件发生的可能性是均等的。</li>
+</ol>
+<p><span class="tab"></span>古典概型的计算公式 <span class="math inline">$P(A) = \dfrac{事件 A
+包含的基本事件个数}{试验的基本事件总数}$</span>。</p>
+<h4 id="3-独立性">3. 独立性</h4>
+<p><span class="tab"></span>一般的，对于两个事件 <span class="math inline"><em>A</em>, <em>B</em></span>，若 <span class="math inline"><em>A</em></span> 事件的发生不改变 <span class="math inline"><em>B</em></span> 事件发生的概率，则称 <span class="math inline"><em>A</em>, <em>B</em></span>
+事件<strong>相互独立</strong>。若 <span class="math inline"><em>P</em>(<em>A</em><em>B</em>) = <em>P</em>(<em>A</em>)<em>P</em>(<em>B</em>)</span>，也满足相互独立。</p>
+<h3 id="二条件概率">二、条件概率</h3>
+<h4 id="1-条件概率">1. 条件概率</h4>
+<p><span class="tab"></span>对于两个事件 <span class="math inline"><em>A</em>, <em>B</em></span> 且 <span class="math inline"><em>P</em>(<em>A</em>) &gt; 0</span>，在已知事件
+<span class="math inline"><em>A</em></span> 发生下，事件 <span class="math inline"><em>B</em></span>
+发生的概率称为<strong>条件概率</strong> <span class="math inline"><em>P</em>(<em>B</em>|<em>A</em>)</span>，计算公式
+<span class="math inline">$P(B|A)=\dfrac{P(AB)}{P(A)}$</span>。条件概率的本质是改变了<strong>基本事件样本空间</strong>，计算条件概率可以使用<em><strong>缩小样本空间法</strong></em>。</p>
+<h4 id="2-全概率与贝叶斯公式">2. 全概率与贝叶斯公式</h4>
+<p><span class="tab"></span>对于 <span class="math inline"><em>A</em><sub>1</sub>, <em>A</em><sub>2</sub>, ⋯, <em>A</em><sub><em>n</em></sub></span>
+是一组两两互斥的事件，<span class="math inline"><em>A</em><sub>1</sub> ∪ <em>A</em><sub>2</sub> ∪ ⋯ ∪ <em>A</em><sub><em>n</em></sub> = <em>Ω</em></span>，且
+<span class="math inline"><em>P</em>(<em>A</em><sub><em>i</em></sub>) &gt; 0, <em>i</em> ∈ {1, 2, ⋯, <em>n</em>}</span>，则对任意事件
+<span class="math inline"><em>B</em> ∈ <em>Ω</em></span>
+有<strong>全概率公式</strong>： $ <span class="math inline">$P(B)=\sum^n_{i=1}{P(A_i)P(B|A_i)}$</span> $ <span class="tab"></span>若
+<span class="math inline"><em>P</em>(<em>B</em>) &gt; 0</span>，有<strong>贝叶斯公式</strong>：
+$ <span class="math inline">$P(A_i|B)=\dfrac{P(A_i)P(B|A_i)}{P(B)}$</span>
+$</p>
+<h4 id="2-离散型随机变量及其数字特征">2. 离散型随机变量及其数字特征</h4>
+<p><span class="tab"></span>一般地，对于随机试验样本空间 <span class="math inline"><em>Ω</em></span> 的每一个样本点 <span class="math inline"><em>ω</em></span>，都有唯一实数 <span class="math inline"><em>X</em>(<em>ω</em>)</span> 与之对应，则 <span class="math inline"><em>X</em></span>
+为<strong>随机变量</strong>。如果随机变量可能取值为<strong>有限个或可以一一列举的无限个</strong>，我们称之为<strong>离散型随机变量</strong>。</p>
+<p><span class="tab"></span>对离散型随机变量的可能取值 <span class="math inline"><em>x</em><sub>1</sub>, <em>x</em><sub>2</sub>, ⋯, <em>x</em><sub><em>n</em></sub></span>，我们称
+<span class="math inline"><em>X</em></span> 取每一个值 <span class="math inline"><em>x</em><sub><em>i</em></sub></span> 的概率 <span class="math inline"><em>P</em>(<em>X</em>=<em>x</em><sub><em>i</em></sub>) = <em>p</em><sub><em>i</em></sub>, <em>i</em> ∈ {1, 2, ⋯, <em>n</em>}</span>
+为 <span class="math inline"><em>X</em></span>
+的<strong>随机分布列</strong>，简称<strong>分布列</strong>，可以用表格或图像表示。</p>
+<p><span class="tab"></span>我们对上述离散型随机变量，称 <span class="math inline">$E(X)=\sum^n_{i=1}{x_ip_i}$</span>
+为随机变量的<strong>均值</strong>或<strong>数学期望</strong>（简称<strong>期望</strong>），即其可能取值关于对应概率的加权平均数。同样，我们规定
+<span class="math inline">$D(X)=\sum^{n}_{i=1}{(x_i-E(X))^2p_i}=E(X^2)-(E(X))^2$</span>
+为随机变量的<strong>方差</strong>（也可记为 <span class="math inline"><em>V</em><em>a</em><em>r</em>(<em>X</em>)</span>），并称其算数平均数为其标准差，记为
+<span class="math inline"><em>σ</em>(<em>X</em>)</span>。</p>
+<ol type="1">
+<li><span class="math inline"><em>E</em>(<em>a</em><em>X</em>+<em>b</em>) = <em>a</em><em>E</em>(<em>X</em>) + <em>b</em></span>；</li>
+<li><span class="math inline"><em>D</em>(<em>a</em><em>X</em>+<em>b</em>) = <em>a</em><sup>2</sup><em>D</em>(<em>X</em>)</span>；</li>
+</ol>
+<h3 id="三二项分布与超几何分布">三、二项分布与超几何分布</h3>
+<h4 id="1-二项分布">1. 二项分布</h4>
+<p><span class="tab"></span>我们把只有两个可能结果的随机试验的结果 <span class="math inline"><em>X</em></span>
+称其服从<strong>两点分布</strong>。</p>
+<p><span class="tab"></span>我们把只包含两个可能结果的试验称为<strong>伯努利试验</strong>，将一个伯努利试验独立地重复进行
+<span class="math inline"><em>n</em></span> 次所组成的随机试验称为
+<strong><span class="math inline"><em>n</em></span>
+重伯努利试验</strong>。一般地，在 <span class="math inline"><em>n</em></span> 重伯努利试验中，设每次试验中事件
+<span class="math inline"><em>A</em></span> 发生的概率为 <span class="math inline"><em>p</em> ∈ (0,1)</span>，用 <span class="math inline"><em>X</em></span> 表示其发生的次数，则 <span class="math inline"><em>X</em></span> 的分布列为 <span class="math inline"><em>P</em>(<em>X</em>=<em>k</em>) = <em>C</em><sub><em>n</em></sub><sup><em>k</em></sup><em>p</em><sup><em>k</em></sup>(1−<em>p</em>)<sup><em>n</em> − <em>k</em></sup>, <em>k</em> ∈ {0, 1, 2, ⋯, <em>n</em>}</span>，并称
+<span class="math inline"><em>X</em></span> 服从二项分布，记作 <span class="math inline"><em>X</em> ∼ <em>B</em>(<em>n</em>,<em>p</em>)</span>。</p>
+<p><span class="tab"></span>一般地，服从二项分布的离散型随机变量 <span class="math inline"><em>X</em></span>：</p>
+<ol type="1">
+<li><span class="math inline"><em>E</em>(<em>X</em>) = <em>n</em><em>p</em></span>；</li>
+<li><span class="math inline"><em>D</em>(<em>X</em>) = <em>n</em><em>p</em>(1−<em>p</em>)</span>；</li>
+</ol>
+<h4 id="2-超几何分布">2. 超几何分布</h4>
+<p><span class="tab"></span>随机变量如果服从超几何分布，则记为 <span class="math inline"><em>X</em> ∼ <em>H</em>(<em>n</em>,<em>M</em>,<em>N</em>)</span>，其中
+<span class="math inline"><em>N</em></span> 为总数，<span class="math inline"><em>M</em></span> 为某类的总数，<span class="math inline"><em>n</em></span> 是选出来的个数，<span class="math inline">$P(X=k)=\dfrac{C_M^kC_{N-M}^{n-k}}{C_N^n}$</span>，<span class="math inline">$E(X)=n\dfrac{M}{N}$</span>，<sub><sub><span class="math inline">$D(X)=n\dfrac{M}{N}\cdot\dfrac{(N-M)(N-n)}{N(N-1)}$</span></sub></sub>。</p>
+<p><span class="tab"></span>超几何分布是古典概型的一种情况，特点是<mark>总体有两类元素组成，从总体中不放回的取出元素，其中含有一类元素的个数服从超几何分布</mark>。<em><strong>二项分布是有放回抽样，特点是独立与重复；超几何分布是不放回抽样；当问题涉及“用样本数据估计总体数据”，在超几何分布与二项分布中一般选二项分布</strong></em>。</p>
+<h4 id="3-正态分布">3. 正态分布</h4>
+<p><span class="tab"></span>如果一个随机变量取值充满整个区间甚至整个实数轴，但取一点的概率为
+<span class="math inline">0</span>，我们称这类变量为<strong>连续型随机变量</strong>。</p>
+<p><span class="tab"></span>正态曲线 <span class="math inline">$\phi_{\mu,\sigma}(x)=\dfrac{1}{\sqrt{2\pi}\sigma}e^{-\dfrac{(x-\mu)^2}{2\sigma^2}},
+x\in\R$</span>，其中 <span class="math inline"><em>μ</em>, <em>σ</em></span>（<span class="math inline"><em>σ</em> &gt; 0</span>）为参数，我们称该曲线的图像为正态分布密度曲线，简称正态曲线，记作
+<span class="math inline"><em>X</em> ∼ <em>N</em>(<em>μ</em>,<em>σ</em><sup>2</sup>)</span>。</p>
+<ol type="1">
+<li><span class="math inline"><em>μ</em></span> 可以理解为均值，<span class="math inline"><em>σ</em></span> 可以理解为标准差（<span class="math inline"><em>σ</em><sup>2</sup></span> 为方差）；</li>
+<li>曲线位于 <span class="math inline"><em>x</em></span> 轴上方，关于
+<span class="math inline"><em>x</em> = <em>μ</em></span> 对称，与 <span class="math inline"><em>x</em></span> 轴之间的面积为 <span class="math inline">1</span>；</li>
+<li>曲线在 <span class="math inline"><em>x</em> = <em>μ</em></span>
+处达到最大值 <span class="math inline">$\dfrac{1}{\sqrt{2\pi}\sigma}$</span>；</li>
+<li><span class="math inline"><em>σ</em></span> 一定时，曲线由 <span class="math inline"><em>μ</em></span> 确定位置，沿 <span class="math inline"><em>x</em></span> 轴左加右减；</li>
+<li><span class="math inline"><em>μ</em></span> 一定时，曲线由 <span class="math inline"><em>σ</em></span> 确定形状，<span class="math inline"><em>σ</em></span>
+越小总体分布越集中曲线越瘦小，反之越分散越矮胖。</li>
+</ol>
+<p><span class="tab"></span>若 <span class="math inline"><em>X</em> ∼ <em>N</em>(<em>μ</em>,<em>σ</em><sup>2</sup>)</span>，则
+<span class="math inline"><em>P</em>(<em>μ</em>−<em>σ</em>≤<em>X</em>≤<em>μ</em>+<em>σ</em>) = 0.6826</span>，<span class="math inline"><em>P</em>(<em>μ</em>−2<em>σ</em>≤<em>X</em>≤<em>μ</em>+2<em>σ</em>) = 0.9544</span>，<span class="math inline"><em>P</em>(<em>μ</em>−3<em>σ</em>≤<em>X</em>≤<em>μ</em>+3<em>σ</em>) = 0.9974</span>。正态总体几乎总取值于区间
+<span class="math inline">[<em>μ</em>−3<em>σ</em>,<em>μ</em>+3<em>σ</em>]</span>
+之内，在此之外几乎不可能发生，统计学中称之为 <strong><span class="math inline">3<em>σ</em></span> 原则</strong>。</p>
+
+
+
+            </div>
+        </article>
+        <div class="sidebar">
+            <div class="about-box">
+    <div class="avatar">
+        <img src="/assets/media/bitmap/avatar.jpeg" alt="avatar">
+    </div>
+    <h1>霜羽 Hoarfroster</h1>
+    <h2>@PassionPenguin</h2>
+    <p class="moment"><span class="status">🤔</span><span>努力！</span></p>
+    <ul>
+        <li><i class="fa-solid fa-location-dot"></i> 广东 · 广州 | <span class="light">Guangzhou, China</span>
+        </li>
+        <li><i class="fa-solid fa-envelope"></i> <a href="mailto:hoarfroster@outlook.com">hoarfroster@outlook.com</a>
+        </li>
+        <li><i class="fa-solid fa-house"></i> <a href="https://story.hoarfroster.space/">https://story.hoarfroster.space/</a>
+        </li>
+    </ul>
+</div>
+<div class="organization">
+    <h4>组织 Organizations</h4>
+    <ul>
+        <li>
+            <img src="https://avatars.githubusercontent.com/u/81648011?s=60&amp;v=4"
+                alt="Hexa-Penguin"><span>Hexa-Penguin</span>
+        </li>
+        <li>
+            <img src="https://avatars.githubusercontent.com/u/10482599?s=60&amp;v=4" alt="xitu"><span>稀土 xitu</span>
+        </li>
+    </ul>
+</div>
+<div class="category">
+    <span class="title">文章分类</span>
+    <ul>
+        <!-- <li><a href="/archive.html">所有分类</a></li> -->
+    </ul>
+</div>
+<div class="archive">
+    <span class="title">文章存档</span>
+    <ul>
+        <!-- <li><a href="/archive.html">所有文章</a></li> -->
+    </ul>
+</div>
+        </div>
+    </div>
+    <div class="footer">
+    <div class="content">
+        <div class="about">
+            <p>霜羽 Hoarfroster</p>
+            <p>&copy; Copyright 2021 Hoarfroster and contributors.</p>
+        </div>
+        <div class="nav">
+            <div class="links">
+                <span class="title">关于文章</span>
+                <ul>
+                    <li><a href="/archive.html">文章存档</a></li>
+                </ul>
+            </div>
+            <div class="category">
+                <span class="title">关于霜羽</span>
+                <ul>
+                    <li><a href="/about.html">有关霜羽</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <ul class="social-accounts">
+        <li>
+            <a href="https://www.zhihu.com/people/shuang-yu-29-75">
+                <i class="fa-brands fa-zhihu" style="font-size: 24px; color:#06f; line-height: 24px;"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://github.com/PassionPenguin">
+                <img src="/assets/media/vectors/github.svg" alt="github-logo"/>
+            </a>
+        </li>
+        <li>
+            <a href="https://dribbble.com/Hoarfroster">
+                <img src="/assets/media/vectors/dribbble.svg" alt="dribbble-logo"/>
+            </a>
+        </li>
+        <li>
+            <a href="https://zh.wikipedia.org/wiki/User:HoarfrostFeather">
+                <i class="fa-brands fa-wikipedia-w" style="font-size: 22px; color: #888; line-height: 24px;"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://space.bilibili.com/201469972">
+                <i class="fa-brands fa-bilibili" style="font-size: 22px; color: #00a1d6; line-height: 24px;"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+</body>
+
+</html>

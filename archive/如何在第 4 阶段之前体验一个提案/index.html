@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>如何在第 4 阶段之前体验一个提案</title>
+    <script src="/assets/script/main.js"></script>
+    <link rel="stylesheet" href="/assets/style/styles.css">
+</head>
+
+<body>
+    <div class="header">
+    <div class="container">
+        <div class="icon">
+            <img src="/assets/media/vectors/hoarfroster-text.svg" alt="Hoarfroster Logo with Text">
+        </div>
+        <nav class="navigation">
+            <ul class="header-navigation-list">
+                <li><a href="/">首页</a></li>
+                <li><a href="/archive.html">文章</a></li>
+                <li><a href="/about.html">关于</a></li>
+            </ul>
+            <form action="/search" method="post">
+                <label>
+                    <input type="text" class="search" placeholder="搜索咕咕咕的小站"/>
+                </label>
+                <label class="submit">
+                    <input type="submit"/>
+                </label>
+            </form>
+        </nav>
+        <ul class="social-accounts">
+            <li>
+                <a href="https://www.zhihu.com/people/shuang-yu-29-75">
+                    <i class="fa-brands fa-zhihu" style="font-size: 20px; color:#06f; line-height: 20px;"></i>
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/PassionPenguin">
+                    <img src="/assets/media/vectors/github.svg" alt="github-logo"/>
+                </a>
+            </li>
+            <li>
+                <a href="https://dribbble.com/Hoarfroster">
+                    <img src="/assets/media/vectors/dribbble.svg" alt="dribbble-logo"/>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+    <div class="content article">
+        <article>
+            <div class="title">
+                <h1>如何在第 4 阶段之前体验一个提案</h1>
+                <p><span class='chars'>undefined chars</span><span class='created-date'>Created Sat May 28 2022 23:43:08 GM</span><span class='modified-date'>Modified Sat May 28 2022 23:43:08 GM</span></p>
+            </div>
+            <div class="main markdown-body">
+                
+
+<blockquote>
+<ul>
+<li>原文地址：<a href="https://github.com/tc39/how-we-work/blob/master/experiment.md">How
+to experiment with a proposal before Stage 4</a></li>
+<li>原文作者：<a href="https://github.com/tc39/how-we-work">Ecma
+TC39</a></li>
+<li>译者：<a href="https://github.com/PassionPenguin">霜羽
+Hoarfroster</a></li>
+<li>校对者：<a href="https://github.com/finalwhy">finalwhy</a>，<a href="https://github.com/zaviertang">zaviertang</a></li>
+</ul>
+</blockquote>
+<p>对于敢于冒险并想就提案向 TC39 给予反馈的 JavaScript
+程序员而言，可以通过以下几种方式提前尝试新提案：</p>
+<ul>
+<li>对于不需要通过 TC39
+语言设计更改进行维护的代码，通过使用运行时或构建时标志将其打开来试验该功能，例如：
+<ul>
+<li>在 Babel 中，启用你选择的 Babel 预设中的功能（请参阅 <a href="https://github.com/babel/proposals/issues">babel/proposals</a>
+了解功能状态）。</li>
+<li>使用高级版本的 Web 浏览器，例如 <strong>Edge Insider
+Edition</strong>、<strong>Safari Tech Preview</strong>、<strong>Firefox
+Nightly</strong> 或 <strong>Chrome
+Canary</strong>，以获得某些新语言功能。你可以选择去查看他们的发行说明以了解包含的内容。</li>
+<li>使用 TypeScript —— TypeScript 实现了多个 Stage 3 TC39 的提案。</li>
+<li>在 V8 中，通过传入一个以 <code>--harmony</code>
+开头的标志来开启对应的实验性功能，你可以在 <a href="https://github.com/v8/v8/blob/master/src/flag-definitions.h">flag-definitions.h</a>
+中找到这些标志。请注意，某些标记的实现可能不稳定或不完整，通常不应在生产环境中使用。
+<ul>
+<li>在基于 V8 的 Node.js 中，可以像这样直接传递标志；</li>
+<li>在 Chrome 中，在 <code>about:flags</code> 中启用“实验性 JavaScript
+功能”，或使用命令行参数
+<code>--js-flags=--harmony-&lt;flagname&gt;</code>。</li>
+</ul></li>
+</ul></li>
+<li>如果缺少实现，你可以自己动手 <a href="https://github.com/tc39/how-we-work/blob/master/implement.md">添加一个</a>！</li>
+<li>如果你想给提案提出一些反馈，可以在 GitHub 仓库中创建一个
+issue。</li>
+</ul>
+<p>警告：第 3 阶段及以下阶段的提案可能会发生重大变化或删除。</p>
+
+
+
+            </div>
+        </article>
+        <div class="sidebar">
+            <div class="about-box">
+    <div class="avatar">
+        <img src="/assets/media/bitmap/avatar.jpeg" alt="avatar">
+    </div>
+    <h1>霜羽 Hoarfroster</h1>
+    <h2>@PassionPenguin</h2>
+    <p class="moment"><span class="status">🤔</span><span>努力！</span></p>
+    <ul>
+        <li><i class="fa-solid fa-location-dot"></i> 广东 · 广州 | <span class="light">Guangzhou, China</span>
+        </li>
+        <li><i class="fa-solid fa-envelope"></i> <a href="mailto:hoarfroster@outlook.com">hoarfroster@outlook.com</a>
+        </li>
+        <li><i class="fa-solid fa-house"></i> <a href="https://story.hoarfroster.space/">https://story.hoarfroster.space/</a>
+        </li>
+    </ul>
+</div>
+<div class="organization">
+    <h4>组织 Organizations</h4>
+    <ul>
+        <li>
+            <img src="https://avatars.githubusercontent.com/u/81648011?s=60&amp;v=4"
+                alt="Hexa-Penguin"><span>Hexa-Penguin</span>
+        </li>
+        <li>
+            <img src="https://avatars.githubusercontent.com/u/10482599?s=60&amp;v=4" alt="xitu"><span>稀土 xitu</span>
+        </li>
+    </ul>
+</div>
+<div class="category">
+    <span class="title">文章分类</span>
+    <ul>
+        <!-- <li><a href="/archive.html">所有分类</a></li> -->
+    </ul>
+</div>
+<div class="archive">
+    <span class="title">文章存档</span>
+    <ul>
+        <!-- <li><a href="/archive.html">所有文章</a></li> -->
+    </ul>
+</div>
+        </div>
+    </div>
+    <div class="footer">
+    <div class="content">
+        <div class="about">
+            <p>霜羽 Hoarfroster</p>
+            <p>&copy; Copyright 2021 Hoarfroster and contributors.</p>
+        </div>
+        <div class="nav">
+            <div class="links">
+                <span class="title">关于文章</span>
+                <ul>
+                    <li><a href="/archive.html">文章存档</a></li>
+                </ul>
+            </div>
+            <div class="category">
+                <span class="title">关于霜羽</span>
+                <ul>
+                    <li><a href="/about.html">有关霜羽</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <ul class="social-accounts">
+        <li>
+            <a href="https://www.zhihu.com/people/shuang-yu-29-75">
+                <i class="fa-brands fa-zhihu" style="font-size: 24px; color:#06f; line-height: 24px;"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://github.com/PassionPenguin">
+                <img src="/assets/media/vectors/github.svg" alt="github-logo"/>
+            </a>
+        </li>
+        <li>
+            <a href="https://dribbble.com/Hoarfroster">
+                <img src="/assets/media/vectors/dribbble.svg" alt="dribbble-logo"/>
+            </a>
+        </li>
+        <li>
+            <a href="https://zh.wikipedia.org/wiki/User:HoarfrostFeather">
+                <i class="fa-brands fa-wikipedia-w" style="font-size: 22px; color: #888; line-height: 24px;"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://space.bilibili.com/201469972">
+                <i class="fa-brands fa-bilibili" style="font-size: 22px; color: #00a1d6; line-height: 24px;"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+</body>
+
+</html>

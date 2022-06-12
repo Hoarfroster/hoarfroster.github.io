@@ -1,0 +1,10 @@
+.header {
+  height: 36px;
+  box-shadow: 0 0 4px #00000022;
+}
+.header .icon {
+  width: 64px;
+  background: url("/assets/media/vectors/hoarfroster-text.svg");
+}
+
+/*# sourceMappingURL=nav.css.map */

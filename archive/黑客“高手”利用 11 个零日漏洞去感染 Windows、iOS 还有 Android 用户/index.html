@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>黑客“高手”利用 11 个零日漏洞去感染 Windows、iOS 还有 Android 用户</title>
+    <script src="/assets/script/main.js"></script>
+    <link rel="stylesheet" href="/assets/style/styles.css">
+</head>
+
+<body>
+    <div class="header">
+    <div class="container">
+        <div class="icon">
+            <img src="/assets/media/vectors/hoarfroster-text.svg" alt="Hoarfroster Logo with Text">
+        </div>
+        <nav class="navigation">
+            <ul class="header-navigation-list">
+                <li><a href="/">首页</a></li>
+                <li><a href="/archive.html">文章</a></li>
+                <li><a href="/about.html">关于</a></li>
+            </ul>
+            <form action="/search" method="post">
+                <label>
+                    <input type="text" class="search" placeholder="搜索咕咕咕的小站"/>
+                </label>
+                <label class="submit">
+                    <input type="submit"/>
+                </label>
+            </form>
+        </nav>
+        <ul class="social-accounts">
+            <li>
+                <a href="https://www.zhihu.com/people/shuang-yu-29-75">
+                    <i class="fa-brands fa-zhihu" style="font-size: 20px; color:#06f; line-height: 20px;"></i>
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/PassionPenguin">
+                    <img src="/assets/media/vectors/github.svg" alt="github-logo"/>
+                </a>
+            </li>
+            <li>
+                <a href="https://dribbble.com/Hoarfroster">
+                    <img src="/assets/media/vectors/dribbble.svg" alt="dribbble-logo"/>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+    <div class="content article">
+        <article>
+            <div class="title">
+                <h1>黑客“高手”利用 11 个零日漏洞去感染 Windows、iOS 还有 Android 用户</h1>
+                <p><span class='chars'>undefined chars</span><span class='created-date'>Created Sat May 28 2022 23:43:08 GM</span><span class='modified-date'>Modified Sat May 28 2022 23:43:08 GM</span></p>
+            </div>
+            <div class="main markdown-body">
+                
+
+<blockquote>
+<ul>
+<li>原文地址：<a href="https://arstechnica.com/information-technology/2021/03/expert-hackers-used-11-zerodays-to-infect-windows-ios-and-android-users/">“Expert”
+hackers used 11 zerodays to infect Windows, iOS, and Android
+users</a></li>
+<li>原文作者：<a href="https://arstechnica.com/author/dan-goodin/">Dan
+Goodin</a></li>
+<li>译者：<a href="https://github.com/PassionPenguin">霜羽
+Hoarfroster</a></li>
+<li>校对者：<a href="https://github.com/Kimhooo">Kimhooo</a>、<a href="https://github.com/PingHGao">PingHGao</a>
+针对未知漏洞的漏洞利用程序花样百出，让这个黑客团伙与众不同。 <img src="https://cdn.arstechnica.net/wp-content/uploads/2020/11/zeroday-800x534.jpg" alt="图源 Getty"></li>
+</ul>
+</blockquote>
+<p>谷歌研究人员说，一个高级黑客团队在为期 9 个月的攻击活动中利用了不少于
+11 个零日漏洞，并通过被感染的网站去感染打过所有补丁的运行 Windows、iOS
+和 Android 的设备。</p>
+<p>依托先进的开发和伪装技术、利用各个漏洞类型并使用了一套复杂的投放框架，该团伙在
+2020 年 2 月发现了<a href="https://arstechnica.com/information-technology/2021/01/hackers-used-4-0days-to-infect-windows-and-android-devices/">四个零日漏洞</a>。这伙黑客能够把攻陷了已全面打上补丁的
+Windows 和 Android 设备的多个漏洞串联起来的能力让谷歌旗下 Project Zero
+和威胁分析小组的成员们惊叹其“手法非常老到”。</p>
+<h2 id="攻击还没结束">攻击还没结束</h2>
+<p>周四，Project Zero 研究人员 Maddie Stone 表示，在 2
+月份攻击发生后的八个月中，同一团伙利用了另外七个以前未知的漏洞，而这些漏洞至今还存在于
+iOS 中。与 2 月份的情况如出一辙，黑客通过水坑式攻击（watering-hole
+attack）投放了漏洞利用程序。这些攻击破坏了目标用户经常访问的网站，并在这些网站上添加了用于将恶意软件安装在访问者设备上的代码。</p>
+<p>在所有攻击中，水坑式站点都将访客重定向到一个庞大的架构。这个架构会根据访客使用的设备和浏览器，向用户的设备安装不同的漏洞利用程序。尽管二月份使用的两台服务器仅攻击了
+Windows 和 Android 设备，但后来的攻击也针对了运行 iOS
+的设备。下图展示了它的工作原理：</p>
+<p><img src="https://cdn.arstechnica.net/wp-content/uploads/2021/03/device-flow-diagram.jpg"></p>
+<p>突破打过补丁的功能完善的操作系统，以及让应用程序内置的高级防御功能（例如，运行于
+Windows 10 的 Chrome 和运行于 iOS 的
+Safari）破防的能力证明了该团队的高超技能，也同时说明了这个团伙拥有的零日漏洞的数量之多。Google
+修补了攻击者 2 月份在 <a href="https://nvd.nist.gov/vuln/detail/CVE-2020-15999">Chrome
+渲染器</a>中利用的代码执行漏洞后，黑客迅速针对 Chrome V8
+引擎的漏洞为他们的利用程序添加了新的代码。</p>
+<p>在周四发表的<a href="https://googleprojectzero.blogspot.com/2021/03/in-wild-series-october-2020-0-day.html">博客</a>中，Stone
+写道：</p>
+<blockquote>
+<p>从 JIT
+的漏洞到大量的字体错误的缓存，这些漏洞涵盖了相当广泛的领域。总体而言，每个漏洞利用程序本身都体现出他们在漏洞利用程序开发和利用已知漏洞的领域方面的专业理解。Chrome
+Freetype 的零日病毒的漏洞利用方法对我们 Project Zero
+来说是新颖的。弄清楚如何触发 iOS
+内核特权漏洞的过程并非易事，因为伪装方法多种多样且难以短时间发现。</p>
+</blockquote>
+<p>总而言之，Google 研究人员收集到以下信息：</p>
+<blockquote>
+<ul>
+<li>1 条完整的会攻击运行 Google Chrome 的打上所有补丁的 Windows 10
+的设备的漏洞攻击链</li>
+<li>2 条会攻击运行 Google Chrome 和三星浏览器的打上补丁的 Android 10
+设备的部分链</li>
+<li>针对 iOS 11-13 的 RCE 漏洞利用程序和针对 iOS 13
+的权限升级漏洞利用程序</li>
+</ul>
+</blockquote>
+<p>这七个零日病毒是：</p>
+<blockquote>
+<ul>
+<li>CVE-2020-15999 —— Chrome Freetype 堆缓冲区溢出</li>
+<li>CVE-2020-17087 —— cng.sys 中的 Windows 堆缓冲区溢出</li>
+<li>CVE-2020-16009 —— TurboFan 地图弃用中的 Chrome 类型混淆</li>
+<li>CVE-2020-16010 —— 适用于 Android 的 Chrome 浏览器堆缓冲区溢出</li>
+<li>CVE-2020-27930 —— 通过 Type 1 字体进行 Safari 任意堆栈读取/写入</li>
+<li>CVE-2020-27950 —— mach 消息尾部中的 iOS XNU 内核内存泄露</li>
+<li>CVE-2020-27932 —— 借助 turnstiles 的 iOS 内核类型混淆</li>
+</ul>
+</blockquote>
+<h2 id="突破防御">突破防御</h2>
+<p>需要复杂的漏洞利用链才能突破现代操作系统和应用程序内置的防御层。通常，我们也需要一系列攻击以利用目标设备上的代码，使该代码脱离浏览器安全沙箱并提升特权，以便代码可以访问操作系统的敏感部分。</p>
+<p>周四的帖子未提供负责袭击的组织的详细信息。我们特别想知道这些黑客是不是研究人员已经知道的某个团伙的成员，还是说这是之前未见过的团伙。有关被攻击对象的信息也很有用。</p>
+<p>确保应用程序和操作系统处于最新版本状态，并避免去访问可疑网站依然很重要。但不幸的是，这些措施对于被这个来历不明的团伙攻击的受害者而言却毫无帮助。</p>
+
+
+
+            </div>
+        </article>
+        <div class="sidebar">
+            <div class="about-box">
+    <div class="avatar">
+        <img src="/assets/media/bitmap/avatar.jpeg" alt="avatar">
+    </div>
+    <h1>霜羽 Hoarfroster</h1>
+    <h2>@PassionPenguin</h2>
+    <p class="moment"><span class="status">🤔</span><span>努力！</span></p>
+    <ul>
+        <li><i class="fa-solid fa-location-dot"></i> 广东 · 广州 | <span class="light">Guangzhou, China</span>
+        </li>
+        <li><i class="fa-solid fa-envelope"></i> <a href="mailto:hoarfroster@outlook.com">hoarfroster@outlook.com</a>
+        </li>
+        <li><i class="fa-solid fa-house"></i> <a href="https://story.hoarfroster.space/">https://story.hoarfroster.space/</a>
+        </li>
+    </ul>
+</div>
+<div class="organization">
+    <h4>组织 Organizations</h4>
+    <ul>
+        <li>
+            <img src="https://avatars.githubusercontent.com/u/81648011?s=60&amp;v=4"
+                alt="Hexa-Penguin"><span>Hexa-Penguin</span>
+        </li>
+        <li>
+            <img src="https://avatars.githubusercontent.com/u/10482599?s=60&amp;v=4" alt="xitu"><span>稀土 xitu</span>
+        </li>
+    </ul>
+</div>
+<div class="category">
+    <span class="title">文章分类</span>
+    <ul>
+        <!-- <li><a href="/archive.html">所有分类</a></li> -->
+    </ul>
+</div>
+<div class="archive">
+    <span class="title">文章存档</span>
+    <ul>
+        <!-- <li><a href="/archive.html">所有文章</a></li> -->
+    </ul>
+</div>
+        </div>
+    </div>
+    <div class="footer">
+    <div class="content">
+        <div class="about">
+            <p>霜羽 Hoarfroster</p>
+            <p>&copy; Copyright 2021 Hoarfroster and contributors.</p>
+        </div>
+        <div class="nav">
+            <div class="links">
+                <span class="title">关于文章</span>
+                <ul>
+                    <li><a href="/archive.html">文章存档</a></li>
+                </ul>
+            </div>
+            <div class="category">
+                <span class="title">关于霜羽</span>
+                <ul>
+                    <li><a href="/about.html">有关霜羽</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <ul class="social-accounts">
+        <li>
+            <a href="https://www.zhihu.com/people/shuang-yu-29-75">
+                <i class="fa-brands fa-zhihu" style="font-size: 24px; color:#06f; line-height: 24px;"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://github.com/PassionPenguin">
+                <img src="/assets/media/vectors/github.svg" alt="github-logo"/>
+            </a>
+        </li>
+        <li>
+            <a href="https://dribbble.com/Hoarfroster">
+                <img src="/assets/media/vectors/dribbble.svg" alt="dribbble-logo"/>
+            </a>
+        </li>
+        <li>
+            <a href="https://zh.wikipedia.org/wiki/User:HoarfrostFeather">
+                <i class="fa-brands fa-wikipedia-w" style="font-size: 22px; color: #888; line-height: 24px;"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://space.bilibili.com/201469972">
+                <i class="fa-brands fa-bilibili" style="font-size: 22px; color: #00a1d6; line-height: 24px;"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+</body>
+
+</html>

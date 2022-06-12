@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chrome 88 DevTools 中的新功能</title>
+    <script src="/assets/script/main.js"></script>
+    <link rel="stylesheet" href="/assets/style/styles.css">
+</head>
+
+<body>
+    <div class="header">
+    <div class="container">
+        <div class="icon">
+            <img src="/assets/media/vectors/hoarfroster-text.svg" alt="Hoarfroster Logo with Text">
+        </div>
+        <nav class="navigation">
+            <ul class="header-navigation-list">
+                <li><a href="/">首页</a></li>
+                <li><a href="/archive.html">文章</a></li>
+                <li><a href="/about.html">关于</a></li>
+            </ul>
+            <form action="/search" method="post">
+                <label>
+                    <input type="text" class="search" placeholder="搜索咕咕咕的小站"/>
+                </label>
+                <label class="submit">
+                    <input type="submit"/>
+                </label>
+            </form>
+        </nav>
+        <ul class="social-accounts">
+            <li>
+                <a href="https://www.zhihu.com/people/shuang-yu-29-75">
+                    <i class="fa-brands fa-zhihu" style="font-size: 20px; color:#06f; line-height: 20px;"></i>
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/PassionPenguin">
+                    <img src="/assets/media/vectors/github.svg" alt="github-logo"/>
+                </a>
+            </li>
+            <li>
+                <a href="https://dribbble.com/Hoarfroster">
+                    <img src="/assets/media/vectors/dribbble.svg" alt="dribbble-logo"/>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+    <div class="content article">
+        <article>
+            <div class="title">
+                <h1>Chrome 88 DevTools 中的新功能</h1>
+                <p><span class='chars'>undefined chars</span><span class='created-date'>Created Sat May 28 2022 23:43:08 GM</span><span class='modified-date'>Modified Sat May 28 2022 23:43:08 GM</span></p>
+            </div>
+            <div class="main markdown-body">
+                
+
+<blockquote>
+<ul>
+<li>原文地址：<a href="https://www.infoq.com/news/2021/03/new-features-chrome-88/?topicPageSponsorship=eb89fa44-b190-43ef-87d0-4bc8727e7413">New
+Features in Chrome 88 Devtools</a></li>
+<li>原文作者：<a href="https://www.infoq.com/profile/Guy-Nesher/">Guy
+Nesher</a></li>
+<li>译者：<a href="https://github.com/PassionPenguin">霜羽
+Hoarfroster</a></li>
+<li>校对者：<a href="https://github.com/Chorer">Chorer</a></li>
+</ul>
+</blockquote>
+<p>最近发布的 Chrome 88 对 Chrome DevTools
+进行了重大更新，包括改进的网络调试、实验性的 CSS Flexbox
+调试工具、改进的框架详细信息视图、新的 WASM
+调试功能以及总体性能上的提高。</p>
+<p>网络选项卡提供了三种旨在简化调试过程的新功能：</p>
+<ol type="1">
+<li>现在，我们可以通过右键单击特定请求并选择<code>复制值</code>（<code>Copy value</code>），直接从<code>网络</code>（<code>Network</code>）选项卡中复制请求属性。</li>
+<li>现在可以通过选择<code>复制堆栈跟踪</code>（<code>Copy stack trace</code>）选项，从单个网络请求中复制网络启动器的堆栈跟踪。</li>
+<li>现在可以在网络视图上正确地标记 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CORS/Errors"><strong>C</strong>ross-<strong>O</strong>rigin-<strong>R</strong>esource-<strong>S</strong>haring
+的错误</a>。</li>
+</ol>
+<p><a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox">CSS
+Flexbox</a>
+是一种功能强大的设计工具，但由于它在两个轴上进行操作，因此通常很难调试。为了简化调试过程，Chrome
+提供了两个新标志。第一个标志出现在元素层次结构视图上，并标记了带有
+<em><code>display：flex</code></em> 的元素。</p>
+<p>第二个标志是上下文敏感的对齐指示符，该指示符基于以下
+<code>flexbox</code> 属性：</p>
+<ul>
+<li><code>flex-direction</code></li>
+<li><code>align-items</code></li>
+<li><code>align-content</code></li>
+<li><code>align-self</code></li>
+<li><code>justify-items</code></li>
+<li><code>justify-content</code></li>
+</ul>
+<p>同时也会顾及到基于以下属性的方向：</p>
+<ul>
+<li><code>flex-direction</code></li>
+<li><code>direction</code></li>
+<li><code>writing-mode</code></li>
+</ul>
+<p>要使用 Flexbox
+的调试，开发人员需要在“设置”&gt;“实验”标签下启用它。</p>
+<p><img src="https://res.infoq.com/news/2021/03/new-features-chrome-88/en/resources/113-flex-debugging-1614281700033.png"></p>
+<p>Chrome 88 Devtools
+还提供了改进的框架详细信息视图，其中包括有关跨域隔离信息状态的额外信息、有关框架
+Web Worker 的专用信息，以及发现哪个框架触发了另一个窗口打开的功能。</p>
+<p>Chrome 88 还使 <a href="https://developer.mozilla.org/zh-CN/docs/WebAssembly">Wasm</a>
+调试与现有的 JavaScript
+调试功能保持一致。在打断点暂停代码执行时，开发人员可以将鼠标悬停在变量上以查看其当前值，或在控制台中对其进行计算。</p>
+<p>最后，从 JavaScript
+编译速度的角度来说，由于减少了启动过程中的序列化、解析和反序列化所带来的性能开销，DevTools
+现在的启动速度提高了近 40％。</p>
+<p>Chrome DevTools 提供了丰富的实用程序集以调试 Web
+应用，并且用于大多数基于 Chromium 的浏览器中。Chrome 开发团队将继续改进
+DevTools，并在每次发布新版本的 Chrome 时都提供新功能。开发者可以在 <a href="https://developers.google.com/web/updates/tags/devtools">Google
+开发者网站</a>上跟进最新功能，并在<a href="https://groups.google.com/forum/#!forum/google-chrome-developer-tools">邮件列表</a>中讨论可能出现的功能、更新和漏洞。</p>
+
+
+
+            </div>
+        </article>
+        <div class="sidebar">
+            <div class="about-box">
+    <div class="avatar">
+        <img src="/assets/media/bitmap/avatar.jpeg" alt="avatar">
+    </div>
+    <h1>霜羽 Hoarfroster</h1>
+    <h2>@PassionPenguin</h2>
+    <p class="moment"><span class="status">🤔</span><span>努力！</span></p>
+    <ul>
+        <li><i class="fa-solid fa-location-dot"></i> 广东 · 广州 | <span class="light">Guangzhou, China</span>
+        </li>
+        <li><i class="fa-solid fa-envelope"></i> <a href="mailto:hoarfroster@outlook.com">hoarfroster@outlook.com</a>
+        </li>
+        <li><i class="fa-solid fa-house"></i> <a href="https://story.hoarfroster.space/">https://story.hoarfroster.space/</a>
+        </li>
+    </ul>
+</div>
+<div class="organization">
+    <h4>组织 Organizations</h4>
+    <ul>
+        <li>
+            <img src="https://avatars.githubusercontent.com/u/81648011?s=60&amp;v=4"
+                alt="Hexa-Penguin"><span>Hexa-Penguin</span>
+        </li>
+        <li>
+            <img src="https://avatars.githubusercontent.com/u/10482599?s=60&amp;v=4" alt="xitu"><span>稀土 xitu</span>
+        </li>
+    </ul>
+</div>
+<div class="category">
+    <span class="title">文章分类</span>
+    <ul>
+        <!-- <li><a href="/archive.html">所有分类</a></li> -->
+    </ul>
+</div>
+<div class="archive">
+    <span class="title">文章存档</span>
+    <ul>
+        <!-- <li><a href="/archive.html">所有文章</a></li> -->
+    </ul>
+</div>
+        </div>
+    </div>
+    <div class="footer">
+    <div class="content">
+        <div class="about">
+            <p>霜羽 Hoarfroster</p>
+            <p>&copy; Copyright 2021 Hoarfroster and contributors.</p>
+        </div>
+        <div class="nav">
+            <div class="links">
+                <span class="title">关于文章</span>
+                <ul>
+                    <li><a href="/archive.html">文章存档</a></li>
+                </ul>
+            </div>
+            <div class="category">
+                <span class="title">关于霜羽</span>
+                <ul>
+                    <li><a href="/about.html">有关霜羽</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <ul class="social-accounts">
+        <li>
+            <a href="https://www.zhihu.com/people/shuang-yu-29-75">
+                <i class="fa-brands fa-zhihu" style="font-size: 24px; color:#06f; line-height: 24px;"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://github.com/PassionPenguin">
+                <img src="/assets/media/vectors/github.svg" alt="github-logo"/>
+            </a>
+        </li>
+        <li>
+            <a href="https://dribbble.com/Hoarfroster">
+                <img src="/assets/media/vectors/dribbble.svg" alt="dribbble-logo"/>
+            </a>
+        </li>
+        <li>
+            <a href="https://zh.wikipedia.org/wiki/User:HoarfrostFeather">
+                <i class="fa-brands fa-wikipedia-w" style="font-size: 22px; color: #888; line-height: 24px;"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://space.bilibili.com/201469972">
+                <i class="fa-brands fa-bilibili" style="font-size: 22px; color: #00a1d6; line-height: 24px;"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+</body>
+
+</html>

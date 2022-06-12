@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3 个鲜为人知的 Bash 技巧</title>
+    <script src="/assets/script/main.js"></script>
+    <link rel="stylesheet" href="/assets/style/styles.css">
+</head>
+
+<body>
+    <div class="header">
+    <div class="container">
+        <div class="icon">
+            <img src="/assets/media/vectors/hoarfroster-text.svg" alt="Hoarfroster Logo with Text">
+        </div>
+        <nav class="navigation">
+            <ul class="header-navigation-list">
+                <li><a href="/">首页</a></li>
+                <li><a href="/archive.html">文章</a></li>
+                <li><a href="/about.html">关于</a></li>
+            </ul>
+            <form action="/search" method="post">
+                <label>
+                    <input type="text" class="search" placeholder="搜索咕咕咕的小站"/>
+                </label>
+                <label class="submit">
+                    <input type="submit"/>
+                </label>
+            </form>
+        </nav>
+        <ul class="social-accounts">
+            <li>
+                <a href="https://www.zhihu.com/people/shuang-yu-29-75">
+                    <i class="fa-brands fa-zhihu" style="font-size: 20px; color:#06f; line-height: 20px;"></i>
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/PassionPenguin">
+                    <img src="/assets/media/vectors/github.svg" alt="github-logo"/>
+                </a>
+            </li>
+            <li>
+                <a href="https://dribbble.com/Hoarfroster">
+                    <img src="/assets/media/vectors/dribbble.svg" alt="dribbble-logo"/>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+    <div class="content article">
+        <article>
+            <div class="title">
+                <h1>3 个鲜为人知的 Bash 技巧</h1>
+                <p><span class='chars'>undefined chars</span><span class='created-date'>Created Sat May 28 2022 23:43:08 GM</span><span class='modified-date'>Modified Sat May 28 2022 23:43:08 GM</span></p>
+            </div>
+            <div class="main markdown-body">
+                
+
+<blockquote>
+<ul>
+<li>原文地址：<a href="https://medium.com/better-programming/3-uncommon-bash-tricks-that-you-should-know-c0fc988065c7">3
+Uncommon Bash Tricks That You Should Know</a></li>
+<li>原文作者：<a href="https://medium.com/@adgefficiency">Adam
+Green</a></li>
+<li>译者：<a href="https://github.com/PassionPenguin">霜羽
+Hoarfroster</a></li>
+<li>校对者：<a href="https://github.com/flashhu">flashhu</a>、<a href="https://github.com/plusmultiply0">plusmultiply0</a></li>
+</ul>
+</blockquote>
+<p><img src="https://cdn-images-1.medium.com/max/4000/0*-UdH52A57htDgdu0.png" alt="图源 Matera，摄于意大利"></p>
+<p>优秀的开发人员往往键入的内容更少 —— 这也让他们能够：</p>
+<ul>
+<li>更快地工作</li>
+<li>更准确地工作</li>
+<li>减少错误</li>
+<li>减轻双手疲劳的压力</li>
+</ul>
+<p>一种减少键入的方法是恰当地使用你的命令行（通常是
+Bash），<strong>而本文将要向大家介绍的内容就是 —— 3 个减少键入的 Bash
+技巧。</strong></p>
+<p>本文中介绍的 3 个 Bash 技巧是：</p>
+<ol type="1">
+<li>使用 <code>{a,b}</code> —— 扩展参数，以避免再次键入单个命令</li>
+<li>使用 <code>$_</code> ——
+访问最后一个参数，以避免从最后一个命令中重新键入</li>
+<li>使用 <code>^old^new</code> —— 快速更改最后一条命令的一部分</li>
+</ol>
+<p>所有这些技巧都与 zsh 兼容。</p>
+<p><strong>本文输入的命令均以 <code>$</code>
+开头。对于命令行解析后的代码，我将在相关代码下面以不带 <code>$</code>
+的单独一行写出这句代码等同的解析后的代码。</strong></p>
+<h2 id="ab-拓展参数"><code>{a,b}</code> 拓展参数</h2>
+<p>当我们在编写命令时，我们常会重复输入同一个命令。</p>
+<p>以更改文件后缀为例，我们一般使用的是 <code>mv</code>：</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> mv README.txt README.md</span></code></pre></div>
+<p>注意到我们写了两次 README，而参数扩展就可以避免这种重复 ——
+更改文件的后缀而无需输入 README 两次：</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> mv README.<span class="dt">{txt</span><span class="op">,</span><span class="dt">md}</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> README.txt README.md</span></code></pre></div>
+<p>我们使用的参数扩展为 <code>{txt,md}</code>，而它将会扩展为两个参数 ——
+<code>txt md</code>（会以空格分隔）。</p>
+<p><strong>参数扩展会为花括号内，以逗号分割的每个元素分别创建一个参数：</strong></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="dt">{1</span><span class="op">,</span><span class="dt">2</span><span class="op">,</span><span class="dt">3}</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">1</span> 2 3</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo pre<span class="dt">{1</span><span class="op">,</span><span class="dt">2</span><span class="op">,</span><span class="dt">3}</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="ex">pre1</span> pre2 pre3</span></code></pre></div>
+<p>空元素将创建不带任何替换项的参数：</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo pre<span class="dt">{</span><span class="op">,</span><span class="dt">1</span><span class="op">,</span><span class="dt">2}</span>fix</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">prefix</span> pre1fix pre2fix</span></code></pre></div>
+<p>另一个例子 —— 我们将要把 <code>data</code> 文件夹中的
+<code>models</code> 文件夹重命名为 <code>ml</code>：</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> mv data/models data/ml</span></code></pre></div>
+<p>我们可以使用参数扩展来节省重新输入 <code>data/</code> 的时间：</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> mv data/<span class="dt">{models</span><span class="op">,</span><span class="dt">ml}</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> data/models data/ml</span></code></pre></div>
+<p>我们可以使用带有数字序列的参数扩展 ——
+这在创建顺序编号目录时很有用：</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> mkdir data<span class="dt">{</span><span class="dv">0</span><span class="dt">..</span><span class="dv">2</span><span class="dt">}</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> data0 data1 data2</span></code></pre></div>
+<p>我们还可以在<strong>参数内部进行参数扩展</strong> ——
+例如，更改路径中的文件夹名称：</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cat models/<span class="dt">{baseline</span><span class="op">,</span><span class="dt">final}</span>/data.csv</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> models/baseline/data.csv models/final/data.csv</span></code></pre></div>
+<p>最后一个示例：在 <code>mv</code> 命令中，我们使用了 3 个参数 ——
+将两个 Python 文件移动到 tests 文件夹中：</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> mv test_unit.py test_system.py tests</span></code></pre></div>
+<h3 id="小结">小结</h3>
+<p><strong>每当你在单个命令中多次键入某些内容时，参数扩展极大可能可以帮助你节省精力。</strong></p>
+<h2 id="使用-_-使用访问最后一个参数">使用 <code>$_</code>
+使用访问最后一个参数</h2>
+<p>终端由一系列命令操作构成，而我们经常在多个命令之间重用信息。</p>
+<p>如果说我们前面的技巧，参数扩展，是用于减少在单个命令上的键入的。那么现在这个技巧则是用于减少对多个命令的键入。</p>
+<p>以创建文件夹并将当前目录转移到其中的情况为例：</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> mkdir temp</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd temp</span></code></pre></div>
+<p>现在我们其实可以通过使用 <code>$_</code>
+<strong>将上个命令的参数传递过来</strong>，避免让自己重复键入同样的内容：</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> mkdir temp    </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd <span class="va">$_</span> </span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> temp </span></code></pre></div>
+<p>上面的代码中，我们使用了 <code>$_</code>
+访问上一个命令的最后一个参数，在本例中这个参数为 <code>temp</code>。</p>
+<p>想要重用上一个命令的最后一个参数（本例中为
+<code>temp</code>）的场景其实非常普遍，以至于 Bash
+会将其存储在一个特殊的变量 <code>_</code> 中。我们需要使用
+<code>$</code> 前缀来访问它（与 <code>$PATH</code> 或 <code>$HOME</code>
+相同）。</p>
+<p>下面是使用 <code>$_</code> 的另一个示例 —— 移动文件并借助
+<code>cat</code> 使用打印内容到 <code>STDOUT</code>：</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> mv main.py src/main.py </span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cat src/main.py</span></code></pre></div>
+<p>那么现在我们该如何再次重用最后一个参数 <code>src/main.py</code>？</p>
+<p>你可以使用以下命令重写此代码，<code>$_</code>
+在第二个命令中会自动替换为 <code>src/main.py</code>：</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> mv main.py src/main.py </span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cat <span class="va">$_</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> src/main.py</span></code></pre></div>
+<p>使用 <code>$_</code>
+意味着你不需要重写复杂的文件路径，从而不会在重新键入时出错。</p>
+<h3 id="小结-1">小结</h3>
+<p><strong>每当你需要在多个命令重复键入某些内容时，使用 <code>$_</code>
+可能有助于减轻疲惫的双手的压力。</strong></p>
+<h2 id="使用-oldnew-快速替换">使用 <code>^old^new</code> 快速替换</h2>
+<p>有时，我们可能在命令行管理程序中运行了一个命令，并很快意识到自己在命令中犯了一个错误。</p>
+<p>但其实我们无需再次键入命令，我们可以使用快速替换，通过更换上一个命令中的内容来修复错误。</p>
+<p>举个例子 —— 你希望通过 ssh 连接到服务器，并运行了命令去连接 ——
+运行后才意识到用户名应该是 user 而非 ubuntu！</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ssh ubuntu@198.compute.com</span></code></pre></div>
+<p>你可以<strong>使用快速替换来更改所需的部分</strong>，而不必再次重新键入整个命令以在此处将
+ubuntu 改为 user：</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ^ubuntu^user</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> user@198.compute.com</span></code></pre></div>
+<p>快速替换的格式是 <code>^old^new</code>，等效于：</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> !!:s/old/new</span></code></pre></div>
+<p><code>!!</code> 用于获取最后一个命令，而 <code>:s</code>
+是替换的正则表达式。我想你会同意 <code>^old^new</code>
+减轻了不少工作负担！</p>
+<h3 id="小结-2">小结</h3>
+<p><strong>当你写错了命令，并且命令不方便重写（例如很长），那么，使用
+<code>^old^new</code> 能够极大的减轻你的麻烦。</strong></p>
+<hr>
+<p>感谢阅读！</p>
+
+
+
+            </div>
+        </article>
+        <div class="sidebar">
+            <div class="about-box">
+    <div class="avatar">
+        <img src="/assets/media/bitmap/avatar.jpeg" alt="avatar">
+    </div>
+    <h1>霜羽 Hoarfroster</h1>
+    <h2>@PassionPenguin</h2>
+    <p class="moment"><span class="status">🤔</span><span>努力！</span></p>
+    <ul>
+        <li><i class="fa-solid fa-location-dot"></i> 广东 · 广州 | <span class="light">Guangzhou, China</span>
+        </li>
+        <li><i class="fa-solid fa-envelope"></i> <a href="mailto:hoarfroster@outlook.com">hoarfroster@outlook.com</a>
+        </li>
+        <li><i class="fa-solid fa-house"></i> <a href="https://story.hoarfroster.space/">https://story.hoarfroster.space/</a>
+        </li>
+    </ul>
+</div>
+<div class="organization">
+    <h4>组织 Organizations</h4>
+    <ul>
+        <li>
+            <img src="https://avatars.githubusercontent.com/u/81648011?s=60&amp;v=4"
+                alt="Hexa-Penguin"><span>Hexa-Penguin</span>
+        </li>
+        <li>
+            <img src="https://avatars.githubusercontent.com/u/10482599?s=60&amp;v=4" alt="xitu"><span>稀土 xitu</span>
+        </li>
+    </ul>
+</div>
+<div class="category">
+    <span class="title">文章分类</span>
+    <ul>
+        <!-- <li><a href="/archive.html">所有分类</a></li> -->
+    </ul>
+</div>
+<div class="archive">
+    <span class="title">文章存档</span>
+    <ul>
+        <!-- <li><a href="/archive.html">所有文章</a></li> -->
+    </ul>
+</div>
+        </div>
+    </div>
+    <div class="footer">
+    <div class="content">
+        <div class="about">
+            <p>霜羽 Hoarfroster</p>
+            <p>&copy; Copyright 2021 Hoarfroster and contributors.</p>
+        </div>
+        <div class="nav">
+            <div class="links">
+                <span class="title">关于文章</span>
+                <ul>
+                    <li><a href="/archive.html">文章存档</a></li>
+                </ul>
+            </div>
+            <div class="category">
+                <span class="title">关于霜羽</span>
+                <ul>
+                    <li><a href="/about.html">有关霜羽</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <ul class="social-accounts">
+        <li>
+            <a href="https://www.zhihu.com/people/shuang-yu-29-75">
+                <i class="fa-brands fa-zhihu" style="font-size: 24px; color:#06f; line-height: 24px;"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://github.com/PassionPenguin">
+                <img src="/assets/media/vectors/github.svg" alt="github-logo"/>
+            </a>
+        </li>
+        <li>
+            <a href="https://dribbble.com/Hoarfroster">
+                <img src="/assets/media/vectors/dribbble.svg" alt="dribbble-logo"/>
+            </a>
+        </li>
+        <li>
+            <a href="https://zh.wikipedia.org/wiki/User:HoarfrostFeather">
+                <i class="fa-brands fa-wikipedia-w" style="font-size: 22px; color: #888; line-height: 24px;"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://space.bilibili.com/201469972">
+                <i class="fa-brands fa-bilibili" style="font-size: 22px; color: #00a1d6; line-height: 24px;"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,55 @@
+.main > .archive {
+  list-style: none;
+  margin: 0;
+  padding: 8px;
+
+  & > li:not(:last-child) {
+    margin-bottom: 32px;
+  }
+
+  a.title {
+    font: 600 24px/1.5 sans-serif;
+  }
+
+  span.category {
+    line-height: 21px;
+    margin-right: 16px;
+    font-size: 18px;
+    border-radius: 8px;
+    border: 1px solid;
+    padding: 4px 8px;
+    vertical-align: middle;
+    display: inline-block;
+    height: 30px;
+    box-sizing: border-box;
+    user-select: none;
+  }
+
+  ul.tags {
+    list-style: none;
+    font-size: 12px;
+    margin: 6px 0;
+    display: flex;
+    padding: 0;
+    float: right;
+
+    li {
+      padding: 2px 4px;
+      margin: 0 4px;
+      background: #88888844;
+      border-radius: 4px;
+      cursor: pointer;
+
+      &:hover, &:focus {
+        background: #88888888;
+      }
+    }
+  }
+
+  span.meta {
+    display: block;
+    font-size: 14px;
+    margin-top: 8px;
+  }
+}
+

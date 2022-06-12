@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript 类型化数组</title>
+    <script src="/assets/script/main.js"></script>
+    <link rel="stylesheet" href="/assets/style/styles.css">
+</head>
+
+<body>
+    <div class="header">
+    <div class="container">
+        <div class="icon">
+            <img src="/assets/media/vectors/hoarfroster-text.svg" alt="Hoarfroster Logo with Text">
+        </div>
+        <nav class="navigation">
+            <ul class="header-navigation-list">
+                <li><a href="/">首页</a></li>
+                <li><a href="/archive.html">文章</a></li>
+                <li><a href="/about.html">关于</a></li>
+            </ul>
+            <form action="/search" method="post">
+                <label>
+                    <input type="text" class="search" placeholder="搜索咕咕咕的小站"/>
+                </label>
+                <label class="submit">
+                    <input type="submit"/>
+                </label>
+            </form>
+        </nav>
+        <ul class="social-accounts">
+            <li>
+                <a href="https://www.zhihu.com/people/shuang-yu-29-75">
+                    <i class="fa-brands fa-zhihu" style="font-size: 20px; color:#06f; line-height: 20px;"></i>
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/PassionPenguin">
+                    <img src="/assets/media/vectors/github.svg" alt="github-logo"/>
+                </a>
+            </li>
+            <li>
+                <a href="https://dribbble.com/Hoarfroster">
+                    <img src="/assets/media/vectors/dribbble.svg" alt="dribbble-logo"/>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+    <div class="content article">
+        <article>
+            <div class="title">
+                <h1>JavaScript 类型化数组</h1>
+                <p><span class='chars'>undefined chars</span><span class='created-date'>Created Sat May 28 2022 23:43:08 GM</span><span class='modified-date'>Modified Sat May 28 2022 23:43:08 GM</span></p>
+            </div>
+            <div class="main markdown-body">
+                
+
+<blockquote>
+<ul>
+<li>原文地址：<a href="https://blog.bitsrc.io/javascript-typed-arrays-ccfa5ae8838d">JavaScript
+Typed Arrays</a></li>
+<li>原文作者：<a href="https://medium.com/@mahdhirezvi">Mahdhi
+Rezvi</a></li>
+<li>译者：<a href="https://github.com/PassionPenguin">霜羽
+Hoarfroster</a></li>
+<li>校对者：<a href="https://github.com/KimYangOfCat">KimYang</a>、<a href="https://github.com/Kimhooo">Kimhooo</a></li>
+</ul>
+</blockquote>
+<p><img src="https://cdn-images-1.medium.com/max/10992/0*u7yLuqz5vOYfScJQ" alt="图源 Pierre Bamin，出自 Unsplash"></p>
+<p>在 JavaScript
+这门语言中，我们所有人都必须对数组足够熟悉，知晓数组本质上是动态的，并且可以容纳任何
+JavaScript 对象。不过，如果你曾经使用过类似于 C
+语言这样的其他语言，你应该知道其数组本质上不是动态的。而且你只能在该数组中存储特定的数据类型，毕竟从性能角度来看，这可以确保数组效率更高。但数组的动态化与存储信息类型的多样化其实并没有使
+JavaScript 数组效率低下。在 JavaScript 引擎优化的帮助下，JavaScript
+中数组的执行速度其实非常快。</p>
+<p>随着 Web 应用程序功能越来越强大，我们开始需要让 Web
+应用程序处理和操纵原始二进制数据。JavaScript
+数组无法处理这些原始二进制数据，也因此我们引入了 JavaScript
+的类型化数组。</p>
+<h2 id="类型化数组">类型化数组</h2>
+<p>类型化数组是与数组非常相似的对象，但是它提供了一种将原始二进制数据写入内存缓冲区的机制。所有主要浏览器均很好地支持此功能，并且
+ES6 已将其集成到 JavaScript 核心框架中，也可以访问诸如
+<code>map()</code>、<code>filter()</code> 等 Array
+方法。我强烈建议你浏览本文结尾处提到的资源，以更深入了解类型化数组。</p>
+<h3 id="组成">组成</h3>
+<p>类型化数组由两个主要部分组成，<code>Buffer</code> 和
+<code>View</code>。</p>
+<h4 id="缓冲区">缓冲区</h4>
+<p><code>Buffer</code> 是 <code>ArrayBuffer</code>
+类型的对象，表示一个数据块。此原始二进制数据块无法被单独访问或修改。你可能好奇，无法访问或修改的数据对象的能有什么用途。实际上视图是缓冲区的读写接口。</p>
+<h4 id="视图">视图</h4>
+<p><code>View</code> 是一个对象，允许你访问和修改存储在
+<code>ArrayBuffer</code> 中的原始二进制内容。一般来说有两种视图。</p>
+<h4 id="typedarray-对象的实例"><code>TypedArray</code> 对象的实例</h4>
+<p>这些类型的对象与普通数组非常相似，但是仅存储单一类型的数值数据。诸如
+<code>Int8</code>、<code>Uint8</code>、<code>Int16</code>、<code>Float32</code>
+就是类型化数组的数据类型。类型中的数字表示为数据类型分配的位数。例如，<code>Int8</code>
+表示 8 位的整数。</p>
+<blockquote>
+<p>你可以阅读 <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Typed_arrays#%E7%B1%BB%E5%9E%8B%E6%95%B0%E7%BB%84%E8%A7%86%E5%9B%BE">参考文档</a>
+来详细了解类型化数组的数据类型。</p>
+</blockquote>
+<h4 id="dataview-对象的实例"><code>DataView</code> 对象的实例</h4>
+<p><code>DataView</code> 是一个低级接口，提供了一个 <code>getter</code>
+/ <code>setter</code> API
+来读取和写入任意数据到缓冲区。这很大程度上方便了我们的开发，尤其是需要在单个类型化数组中处理多种数据类型时。</p>
+<p>使用 <code>DataView</code> 的另一个好处是，它可以让你控制数据的字节序
+——
+类型化数组使用平台的字节序。当然如果你的程序运行在本地，这将不是问题，因为你的设备将使用与输入数组相同的字节序。在大多数情况下，你的类型化数组将为低端字节序，因为英特尔采取的是小端字节序。由于英特尔在计算机处理器中非常普遍，因此大多数时候不会出现问题。但是，如果将小端字节序编码的数据传输到使用大端字节序编码的设备，则会导致读取时候的错误，最终可能导致数据的丢失。由于
+<code>DataView</code>
+使你可以控制字节序的方向，因此你可以在必要时使用它。</p>
+<h2 id="是什么使它们与普通数组不同">是什么使它们与普通数组不同</h2>
+<p>如前所述，普通的 JavaScript 数组已通过 JavaScript
+引擎进行了优化，你没必要为了提升性能而使用类型化数组，因为这不会给你带来太多升级。但是有些特性使类型化数组不同于普通数组，这才可能是你选择它们的原因。</p>
+<ul>
+<li>让你能够处理原始二进制数据</li>
+<li>由于它们处理的数据类型是有限的，因此与普通数组相比，你的引擎更易优化类型化数组，因为普通数组的优化其实是一个非常复杂的过程。</li>
+<li>不能保证普通数组永远都能得到优化，因为你的引擎可能因各种原因决定不进行优化。</li>
+</ul>
+<h2 id="在-web-开发中的用途">在 Web 开发中的用途</h2>
+<h3 id="xmlhttprequest-api">XMLHttpRequest API</h3>
+<p>你可以根据你的响应类型以 <code>ArrayBuffer</code>
+形式接收数据响应。</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> xhr <span class="op">=</span> <span class="kw">new</span> <span class="bu">XMLHttpRequest</span>()<span class="op">;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>xhr<span class="op">.</span><span class="fu">open</span>(<span class="st">'GET'</span><span class="op">,</span> exampleUrl)<span class="op">;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>xhr<span class="op">.</span><span class="at">responseType</span> <span class="op">=</span> <span class="st">'arraybuffer'</span><span class="op">;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>xhr<span class="op">.</span><span class="at">onload</span> <span class="op">=</span> <span class="kw">function</span> () {</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> arrayBuffer <span class="op">=</span> xhr<span class="op">.</span><span class="at">response</span><span class="op">;</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 处理数据</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>}<span class="op">;</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>xhr<span class="op">.</span><span class="fu">send</span>()<span class="op">;</span></span></code></pre></div>
+<h3 id="fetch-api">Fetch API</h3>
+<p>类似于 XMLHttpRequest API，Fetch API 还允许你在
+<code>ArrayBuffer</code> 中接收响应。你只需在 fetch API 响应中使用
+<code>arrayBuffer()</code> 方法，你就能够收到一个使用
+<code>ArrayBuffer</code> 解析的 <code>Promise</code>。</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fetch</span>(url)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="op">.</span><span class="fu">then</span>(response <span class="kw">=&gt;</span> response<span class="op">.</span><span class="fu">arrayBuffer</span>())</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="op">.</span><span class="fu">then</span>(arrayBuffer <span class="kw">=&gt;</span> {</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>   <span class="co">// 处理数据</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span></code></pre></div>
+<h3 id="html-canvas">HTML Canvas</h3>
+<p>HTML5 Canvas 元素使你可以渲染动态的 2D
+形状和位图图像。该元素仅充当图形的容器，而图形则是在 JavaScript
+的帮助下绘制。</p>
+<p>canvas 的 2D Context 使你可以将位图数据作为
+<code>Uint8ClampedArray</code> 的实例进行检索。让我们看一下 Axel
+博士提供的示例代码：</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> canvas <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">'my_canvas'</span>)<span class="op">;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> context <span class="op">=</span> canvas<span class="op">.</span><span class="fu">getContext</span>(<span class="st">'2d'</span>)<span class="op">;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> imageData <span class="op">=</span> context<span class="op">.</span><span class="fu">getImageData</span>(<span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> canvas<span class="op">.</span><span class="at">width</span><span class="op">,</span> canvas<span class="op">.</span><span class="at">height</span>)<span class="op">;</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> uint8ClampedArray <span class="op">=</span> imageData<span class="op">.</span><span class="at">data</span><span class="op">;</span></span></code></pre></div>
+<h3 id="webgl">WebGL</h3>
+<p>WebGL 允许你渲染高性能的交互式 3D 和 2D
+图形。它在很大程度上依赖于类型化数组，因为它会处理原始像素数据以在画布上输出必要的图形。</p>
+<p>你可以在 <a href="https://blog.bitsrc.io/understanding-webgl-51ab81ccb48c">这篇文章</a>
+中阅读有关 WebGL 基础的更多信息。</p>
+<h3 id="web-socket">Web Socket</h3>
+<p>Web Socket 允许你以 Blob
+或数组缓冲区的形式发送和接收原始二进制数据。</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> socket <span class="op">=</span> <span class="kw">new</span> <span class="bu">WebSocket</span>(<span class="st">"ws://localhost:8080"</span>)<span class="op">;</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>socket<span class="op">.</span><span class="at">binaryType</span> <span class="op">=</span> <span class="st">"arraybuffer"</span><span class="op">;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">// 监听 message</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>socket<span class="op">.</span><span class="fu">addEventListener</span>(<span class="st">"message"</span><span class="op">,</span> <span class="kw">function</span> (<span class="bu">event</span>) {</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> view <span class="op">=</span> <span class="kw">new</span> <span class="bu">DataView</span>(<span class="bu">event</span><span class="op">.</span><span class="at">data</span>)<span class="op">;</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 处理接收数据</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co">// 发送二进制数据</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>socket<span class="op">.</span><span class="fu">addEventListener</span>(<span class="st">'open'</span><span class="op">,</span> <span class="kw">function</span> (<span class="bu">event</span>) {</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> typedArray <span class="op">=</span> <span class="kw">new</span> <span class="bu">Uint16Array</span>(<span class="dv">7</span>)<span class="op">;</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    socket<span class="op">.</span><span class="fu">send</span>(typedArray<span class="op">.</span><span class="at">buffer</span>)<span class="op">;</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span></code></pre></div>
+<p>尽管初学者可能不需要详细了解类型化数组，但是当你进入中高级 JavaScript
+开发的时候，它们是必不可少的。这主要是因为你可能要开发需要使用类型化数组的更复杂的应用程序。</p>
+<p>要深入了解类型化数组，请浏览下面附带的资源链接。</p>
+<p>感谢你的阅读，祝你编程愉快！！</p>
+<h2 id="资源">资源</h2>
+<ul>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Typed_arrays">JavaScript
+类型化数组 - MDN 文档</a></li>
+<li><a href="https://exploringjs.com/es6/ch_typed-arrays.html">Exploring
+JS by Dr. Axel</a></li>
+</ul>
+
+
+
+            </div>
+        </article>
+        <div class="sidebar">
+            <div class="about-box">
+    <div class="avatar">
+        <img src="/assets/media/bitmap/avatar.jpeg" alt="avatar">
+    </div>
+    <h1>霜羽 Hoarfroster</h1>
+    <h2>@PassionPenguin</h2>
+    <p class="moment"><span class="status">🤔</span><span>努力！</span></p>
+    <ul>
+        <li><i class="fa-solid fa-location-dot"></i> 广东 · 广州 | <span class="light">Guangzhou, China</span>
+        </li>
+        <li><i class="fa-solid fa-envelope"></i> <a href="mailto:hoarfroster@outlook.com">hoarfroster@outlook.com</a>
+        </li>
+        <li><i class="fa-solid fa-house"></i> <a href="https://story.hoarfroster.space/">https://story.hoarfroster.space/</a>
+        </li>
+    </ul>
+</div>
+<div class="organization">
+    <h4>组织 Organizations</h4>
+    <ul>
+        <li>
+            <img src="https://avatars.githubusercontent.com/u/81648011?s=60&amp;v=4"
+                alt="Hexa-Penguin"><span>Hexa-Penguin</span>
+        </li>
+        <li>
+            <img src="https://avatars.githubusercontent.com/u/10482599?s=60&amp;v=4" alt="xitu"><span>稀土 xitu</span>
+        </li>
+    </ul>
+</div>
+<div class="category">
+    <span class="title">文章分类</span>
+    <ul>
+        <!-- <li><a href="/archive.html">所有分类</a></li> -->
+    </ul>
+</div>
+<div class="archive">
+    <span class="title">文章存档</span>
+    <ul>
+        <!-- <li><a href="/archive.html">所有文章</a></li> -->
+    </ul>
+</div>
+        </div>
+    </div>
+    <div class="footer">
+    <div class="content">
+        <div class="about">
+            <p>霜羽 Hoarfroster</p>
+            <p>&copy; Copyright 2021 Hoarfroster and contributors.</p>
+        </div>
+        <div class="nav">
+            <div class="links">
+                <span class="title">关于文章</span>
+                <ul>
+                    <li><a href="/archive.html">文章存档</a></li>
+                </ul>
+            </div>
+            <div class="category">
+                <span class="title">关于霜羽</span>
+                <ul>
+                    <li><a href="/about.html">有关霜羽</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <ul class="social-accounts">
+        <li>
+            <a href="https://www.zhihu.com/people/shuang-yu-29-75">
+                <i class="fa-brands fa-zhihu" style="font-size: 24px; color:#06f; line-height: 24px;"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://github.com/PassionPenguin">
+                <img src="/assets/media/vectors/github.svg" alt="github-logo"/>
+            </a>
+        </li>
+        <li>
+            <a href="https://dribbble.com/Hoarfroster">
+                <img src="/assets/media/vectors/dribbble.svg" alt="dribbble-logo"/>
+            </a>
+        </li>
+        <li>
+            <a href="https://zh.wikipedia.org/wiki/User:HoarfrostFeather">
+                <i class="fa-brands fa-wikipedia-w" style="font-size: 22px; color: #888; line-height: 24px;"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://space.bilibili.com/201469972">
+                <i class="fa-brands fa-bilibili" style="font-size: 22px; color: #00a1d6; line-height: 24px;"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>快停止在 CSS 中使用像素单位</title>
+    <script src="/assets/script/main.js"></script>
+    <link rel="stylesheet" href="/assets/style/styles.css">
+</head>
+
+<body>
+    <div class="header">
+    <div class="container">
+        <div class="icon">
+            <img src="/assets/media/vectors/hoarfroster-text.svg" alt="Hoarfroster Logo with Text">
+        </div>
+        <nav class="navigation">
+            <ul class="header-navigation-list">
+                <li><a href="/">首页</a></li>
+                <li><a href="/archive.html">文章</a></li>
+                <li><a href="/about.html">关于</a></li>
+            </ul>
+            <form action="/search" method="post">
+                <label>
+                    <input type="text" class="search" placeholder="搜索咕咕咕的小站"/>
+                </label>
+                <label class="submit">
+                    <input type="submit"/>
+                </label>
+            </form>
+        </nav>
+        <ul class="social-accounts">
+            <li>
+                <a href="https://www.zhihu.com/people/shuang-yu-29-75">
+                    <i class="fa-brands fa-zhihu" style="font-size: 20px; color:#06f; line-height: 20px;"></i>
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/PassionPenguin">
+                    <img src="/assets/media/vectors/github.svg" alt="github-logo"/>
+                </a>
+            </li>
+            <li>
+                <a href="https://dribbble.com/Hoarfroster">
+                    <img src="/assets/media/vectors/dribbble.svg" alt="dribbble-logo"/>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+    <div class="content article">
+        <article>
+            <div class="title">
+                <h1>快停止在 CSS 中使用像素单位</h1>
+                <p><span class='chars'>undefined chars</span><span class='created-date'>Created Sat May 28 2022 23:43:08 GM</span><span class='modified-date'>Modified Sat May 28 2022 23:43:08 GM</span></p>
+            </div>
+            <div class="main markdown-body">
+                
+
+<blockquote>
+<ul>
+<li>原文地址：<a href="https://betterprogramming.pub/stop-using-the-pixel-unit-in-css-8b8788a1301f">Stop
+Using the Pixel Unit in CSS</a></li>
+<li>原文作者：<a href="https://medium.com/@dioxmio">Jose Granja</a></li>
+<li>译者：<a href="https://github.com/PassionPenguin">霜羽
+Hoarfroster</a></li>
+<li>校对者：<a href="https://github.com/KimYangOfCat">KimYangOfCat</a>，<a href="https://github.com/Kimhooo">Kimhooo</a>、<a href="https://github.com/Li-saltair">Li-saltair</a></li>
+</ul>
+</blockquote>
+<p><img src="https://cdn-images-1.medium.com/max/12450/0*5eX8OB4YTWwqM1RV" alt="图源 Alexander Andrews，出自 Unsplash."></p>
+<p>为什么 Web 开发者如此盲目地使用 px
+单位？这只是一个坏习惯吗？是因为缺乏其他单位的知识吗？也许是因为设计团队的模拟依赖于
+px 和 pt？目前我们也无法明白为什么像素是大多数团队当前的首选单位。</p>
+<p>也许，主要原因是它看起来简单方便。凭直觉，我们认为我们了解此单位，因为它看起来好像在映射像素屏幕。</p>
+<p>px
+单位可以使你轻松上手，但是后来却变成了一个问题。在本文中，我将介绍避免像素单位的最有力的三个原因。我们将讨论其使用方面的问题以及一些可能的解决方案。</p>
+<h2 id="1-它们只是光学参考单位">1. 它们只是光学参考单位</h2>
+<p>如今像素值不再基于硬件像素，会在许多屏幕和分辨率下不生效，而且看起来都非常不同。它们只是基于光学单位，因此，我们发现对该单元更直观的部分不再存在。</p>
+<p>硬件每天都在变化，像素密度也在增长。我们不能依靠这样的假设，即设备的像素密度为
+96dpi —— 这不再是一个稳定的参考值。</p>
+<blockquote>
+<p>“请注意，如果锚点单位是像素单位，则物理单位可能与它们的物理尺寸不匹配。或者，如果锚点单元是物理单元，则像素单元可能不会映射到设备像素的总数。</p>
+<p>请注意，像素单位和物理单位的定义与CSS的早期版本不同。特别是，在 CSS
+的早期版本中，像素单位和物理单位不是以固定比率关联的：物理单位始终与物理尺寸相关联，而像素单位会发生变化以最紧密地匹配参考像素。（进行此更改是因为现有内容过多取决于
+96dpi 的假设，而打破该假设会破坏内容。）” —— <a href="https://www.w3.org/TR/2011/WD-css3-values-20110906/">W3C</a></p>
+</blockquote>
+<p>总之，这意味着像素不可靠。由于其不可靠的特性，可能无法实现像素完美的布局。</p>
+<p>让我们看一下每英寸点数不同的像素等效于 1mm 的像素：</p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*xgFl-SLMot8k2KR0HEn4mQ.png" alt="Pixelcalculator：MacBook 平均 dpi 转换 —— 毫米 to 像素"></p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*qBVYc5fFUBNnzgTMJYHtoQ.png" alt="Pixelcalculator：iPhone 平均 dpi 转换 —— 毫米 to 像素"></p>
+<p>可以区分屏幕上像素的日子已经一去不复返了。我们已经习惯了这种限制，这是一个我们需要放弃的想法。随着时间的流逝，“像素”一词的含义已失去其含义，现在该停止在我们的
+CSS 代码中将其设为默认单位了。</p>
+<h2 id="2-它们是绝对的值">2. 它们是绝对的值</h2>
+<p>看着上面的问题，为什么会发生？为什么我们的布局无法达到像素完美？因为像素单位是绝对的。这意味着它将无法适应我们浏览器的像素比率、分辨率、大小等。</p>
+<p>如果要满足广大受众的需求，绝对的值通常不是很有用。px
+是唯一的绝对单位吗？不，CSS 中还有另外六个绝对单位，如下图：</p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*aXVUdpRMgeFox_6uHkR_SA.png" alt="CSS 支持的绝对单位列表"></p>
+<p>这意味着，如果你使用这些单位，网站的访问着就会看到各种各样的布局，而让你的页面进行任何可能显示的分辨率进行适配都会是不合理的。</p>
+<p>我们如何解决这个问题？我们如何才能使布局具有响应性？——
+使用“相对单位”。那到底是什么？</p>
+<blockquote>
+<p>“相对长度单位是相对于其他单位的，也许是父元素字体的大小或视口的大小。”
+— <a href="https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Values_and_units">MDN
+Web 文档</a></p>
+</blockquote>
+<p>让我们检查一下我们可以使用的相对单位：</p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*4AZByHrtdOwFI_bDnfMKmQ.png" alt="CSS 中可用的相关相对单位列表"></p>
+<p>你会看到相对单位的列表大于绝对单位列表。为什么会有那么多的相对单位？</p>
+<p>这些中的每一个都有一些更适合使用的特定方案。有很多方案可选是个好消息，因为我们知道我们可以涵盖很多不同的用例。这就是为什么了解它们每个单位变得很重要。</p>
+<p>假设我们要显示一列每行最多 20 个字符的内容。</p>
+<p>大多数的开发者会想干什么？通过字符的字体、字体、大小和粗细来测量字符的平均长度，并将其乘以
+20。</p>
+<p>该方法会导致我们需要一个硬编码的像素值，也意味着，如果字体大小更改，你将不得不再次进行计算。这种方法只是一种近似，无法在所有设备上始终如一地工作。</p>
+<p>有什么更好的解决方案？使用 <code>ch</code> 单位。你可以将目标列宽基于
+<code>ch</code> 单位的倍数</p>
+<p>让我们看一下代码，以更好地理解这一点：</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode HTML"><code class="sourceCode html"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;!DOCTYPE </span>html<span class="dt">&gt;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;html&gt;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;head&gt;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;title&gt;</span>Units Playground<span class="kw">&lt;/title&gt;</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;meta</span> <span class="er">charset</span><span class="ot">=</span><span class="st">"UTF-8"</span><span class="kw">/&gt;</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/head&gt;</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;body&gt;</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;style</span> <span class="er">type</span><span class="ot">=</span><span class="st">"text/css"</span><span class="kw">&gt;</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    body {</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>        <span class="kw">color</span>: <span class="cn">white</span><span class="op">;</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>        <span class="kw">text-align</span>: <span class="dv">center</span><span class="op">;</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>        <span class="kw">box-sizing</span>: <span class="dv">content-box</span><span class="op">;</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>        <span class="kw">margin</span>: <span class="dv">1</span><span class="dt">em</span><span class="op">;</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="pp">#container</span> {</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>        <span class="kw">color</span>: <span class="cn">white</span><span class="op">;</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>        <span class="kw">display</span>: grid<span class="op">;</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>        <span class="kw">gap</span>: <span class="dv">1</span><span class="dt">rem</span><span class="op">;</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>        <span class="kw">grid-template-columns</span>: max-content <span class="dv">1</span>fr<span class="op">;</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    <span class="pp">#content</span> {</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>        <span class="kw">padding</span>: <span class="dv">1</span><span class="dt">em</span><span class="op">;</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>        <span class="kw">margin</span>: <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>        <span class="kw">background-color</span>: <span class="cn">#5B2E48</span><span class="op">;</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>        <span class="kw">color</span>: <span class="cn">white</span><span class="op">;</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>        <span class="kw">max-width</span>: <span class="dv">20</span><span class="dt">ch</span><span class="op">;</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>    <span class="pp">#photo</span> {</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>        <span class="kw">background-color</span>: <span class="cn">#CEB992</span><span class="op">;</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/style&gt;</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;div</span> <span class="er">id</span><span class="ot">=</span><span class="st">"container"</span><span class="kw">&gt;</span></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;p</span> <span class="er">id</span><span class="ot">=</span><span class="st">"content"</span><span class="kw">&gt;</span></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;/p&gt;</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;div</span> <span class="er">id</span><span class="ot">=</span><span class="st">"photo"</span><span class="kw">&gt;</span></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;/div&gt;</span></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/div&gt;</span></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/body&gt;</span></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/html&gt;</span></span></code></pre></div>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*1K2l3CJ41vA1UMqLOVbp_Q.png" alt="使用 ch 单位构建动态内容宽度的例子"></p>
+<p>如你所见，我们限制了我们内容的 <code>max-width</code> 为
+<code>20ch</code>。</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#content</span> {</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">max-width</span>: <span class="dv">20</span><span class="dt">ch</span><span class="op">;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>以上仅是示例。像素单元有很多替代品。有时，你不需要相对单位。你可以使用
+flex 和 grid
+布局的功能来相应地调整布局。不依赖绝对单位能够让你的布局保持一致。切记，始终首先依靠浏览器帮助我们完成这些繁重的工作。</p>
+<h2 id="3-可访问性它们不适应用户的默认字体大小">3.
+可访问性：它们不适应用户的默认字体大小</h2>
+<p>可访问性是一个被遗忘的主题，我们大家都应该更加关注它。像素单位的使用如何影响可访问性？</p>
+<p>浏览器可让你配置默认的基本字体大小。默认情况下，它设置为
+<code>16px</code>，但可以轻松更改。这对于视力障碍的人非常有用。然后，浏览器通过将基本字体大小设置为该值，向我们提示有关首选用户的字体大小。</p>
+<p>但是，如果开发者使用绝对像素值，则该信息将被忽略。基本的“字体大小”不会对我们的应用程序布局产生任何影响。所有用户的字体大小都将相同。这是一件坏事，因为你忽略了用户的偏好设置并损害了页面的可访问性。</p>
+<p>我们如何尊重基本字体大小？通过使用相对单位，例如 <code>rem</code> 和
+<code>em</code>。什么是 <code>rem</code> 和 <code>em</code>？
+<code>rem</code> 和 <code>em</code>
+单位表示相对于基本字体的字体大小（从框到文本）。简而言之，这意味着你的文本字体大小将是用户首选字体大小的倍数。两者有什么区别？</p>
+<ul>
+<li><code>rem</code> 的大小由根元素（<code>:root</code>）的
+<code>font-size</code> 决定。</li>
+<li><code>em</code> 的大小由父元素的 <code>font-size</code> 决定。</li>
+</ul>
+<p>你不仅限于仅在 <code>font-size</code> 属性上使用这些单位。它们可以在
+CSS
+元素中的任何位置使用。这意味着你可以根据用户设置创建自适应布局。你可以确保为用户提供适当的体验。</p>
+<p>让我们看一个示例，在该示例中，我们将根据用户的基本字体大小来调整整个布局。对于此特定示例，我们将依靠
+<code>rem</code> 设计自适应布局：</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode HTML"><code class="sourceCode html"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;!DOCTYPE </span>html<span class="dt">&gt;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;html&gt;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;head&gt;</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;title&gt;</span>Units Playground<span class="kw">&lt;/title&gt;</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;meta</span> <span class="er">charset</span><span class="ot">=</span><span class="st">"UTF-8"</span><span class="kw">/&gt;</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/head&gt;</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;body&gt;</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;style</span> <span class="er">type</span><span class="ot">=</span><span class="st">"text/css"</span><span class="kw">&gt;</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    body {</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>        <span class="kw">color</span>: <span class="cn">white</span><span class="op">;</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>        <span class="kw">text-align</span>: <span class="dv">center</span><span class="op">;</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>        <span class="kw">box-sizing</span>: <span class="dv">content-box</span><span class="op">;</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    h1 {</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>        <span class="kw">font-size</span>: <span class="dv">1.9</span><span class="dt">rem</span><span class="op">;</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>    h2 {</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>        <span class="kw">font-size</span>: <span class="dv">1.5</span><span class="dt">rem</span><span class="op">;</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>    p {</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>        <span class="kw">font-size</span>: <span class="dv">1.2</span><span class="dt">rem</span><span class="op">;</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>        <span class="kw">color</span>: <span class="cn">#5B2E48</span><span class="op">;</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>    <span class="fu">.main-article</span> {</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>        <span class="kw">padding</span>: <span class="dv">1</span><span class="dt">em</span><span class="op">;</span></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>        <span class="kw">margin</span>: <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>        <span class="kw">background-color</span>: <span class="cn">#5B2E48</span><span class="op">;</span></span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>        <span class="kw">color</span>: <span class="cn">white</span><span class="op">;</span></span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>        <span class="kw">width</span>: <span class="dv">30</span><span class="dt">em</span><span class="op">;</span></span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>    <span class="fu">.sub-article</span> {</span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>        <span class="kw">padding</span>: <span class="dv">1</span><span class="dt">em</span><span class="op">;</span></span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>        <span class="kw">margin</span>: <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>        <span class="kw">background-color</span>: <span class="cn">#CEB992</span><span class="op">;</span></span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>        <span class="kw">color</span>: <span class="cn">white</span><span class="op">;</span></span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>        <span class="kw">margin-bottom</span>: <span class="dv">1</span><span class="dt">em</span><span class="op">;</span></span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/style&gt;</span></span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;article</span> <span class="er">class</span><span class="ot">=</span><span class="st">"main-article"</span><span class="kw">&gt;</span></span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;h1&gt;</span>Weather forecast for Barcelona<span class="kw">&lt;/h1&gt;</span></span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;article</span> <span class="er">class</span><span class="ot">=</span><span class="st">"sub-article"</span><span class="kw">&gt;</span></span>
+<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;h2&gt;</span>10 May 2021<span class="kw">&lt;/h2&gt;</span></span>
+<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;p&gt;</span>Cloudy<span class="kw">&lt;/p&gt;</span></span>
+<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;/article&gt;</span></span>
+<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;article</span> <span class="er">class</span><span class="ot">=</span><span class="st">"sub-article"</span><span class="kw">&gt;</span></span>
+<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;h2&gt;</span>11 May 2021<span class="kw">&lt;/h2&gt;</span></span>
+<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;p&gt;</span>Sunny<span class="kw">&lt;/p&gt;</span></span>
+<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;/article&gt;</span></span>
+<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;article</span> <span class="er">class</span><span class="ot">=</span><span class="st">"sub-article"</span><span class="kw">&gt;</span></span>
+<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;h2&gt;</span>12 May 2021<span class="kw">&lt;/h2&gt;</span></span>
+<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;p&gt;</span>Sunny<span class="kw">&lt;/p&gt;</span></span>
+<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;/article&gt;</span></span>
+<span id="cb3-58"><a href="#cb3-58" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/article&gt;</span></span>
+<span id="cb3-59"><a href="#cb3-59" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/body&gt;</span></span>
+<span id="cb3-60"><a href="#cb3-60" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/html&gt;</span></span></code></pre></div>
+<p><img src="https://cdn-images-1.medium.com/max/2400/1*OHY0OQ7_MXRAbx9J5mmFTg.png" alt="使用不同字体大小的并排可访问组件"></p>
+<p>请注意，我们已将 <code>rem</code> 应用于
+<code>padding</code>、<code>width</code> 和 <code>font-size</code>
+三个属性。</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode CSS"><code class="sourceCode css"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>p {</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">font-size</span>: <span class="dv">1.2</span><span class="dt">rem</span><span class="op">;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">color</span>: <span class="cn">#5B2E48</span><span class="op">;</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="fu">.main-article</span> {</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">padding</span>: <span class="dv">1</span><span class="dt">em</span><span class="op">;</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">margin</span>: <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">background-color</span>: <span class="cn">#5B2E48</span><span class="op">;</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">color</span>: <span class="cn">white</span><span class="op">;</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">width</span>: <span class="dv">30</span><span class="dt">em</span><span class="op">;</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>我们可以在上方看到布局如何适应用户的浏览器设置。字体会更大一些，但
+article 也会变大一些 ——
+它们会变大以保留比例。即使针对不同用户的大小不同，它们的形状也保持一致。</p>
+<h2 id="额外提示">额外提示</h2>
+<p>当使用 <code>rem</code> 和 <code>rem</code> 单位时，使用默认的
+<code>16px</code>
+基本字体来表达所有内容可能会很麻烦。在这种情况下，有一个非常流行的技巧：</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>html {</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">font-size</span>: <span class="dv">62.5</span><span class="dt">%</span><span class="op">;</span> <span class="co">/* 基于默认浏览器字体大小，让 font-size 1em = 10px */</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>使用此技巧，现在所有字体大小都将基于默认像素 <code>16px</code> 的
+<code>10px</code>
+因子。它能使你的代码少一点混乱，也并不会损害可访问性。它将使你的工作更加轻松。</p>
+<h2 id="最后的想法">最后的想法</h2>
+<p>我们已经看到了为什么我们应该放弃像素单位的三个有力理由。依靠相对单位或布局功能将确保你的布局在设备和分辨率之间保持一致。</p>
+<p>幸运的是，相对单位如 <code>rem</code> 和 <code>em</code>
+的使用正在不断扩大。同时，浏览器正在尽力提供一些解决方案。当使用绝对值时，如果用户正在缩放，则浏览器单元将缩放以匹配用户应用的适当缩放。这虽不是完美的体验，也是个不错的后备。</p>
+<p>我希望本文能为你提供最后的推动力，使你尽可能远离像素单位。</p>
+
+
+
+            </div>
+        </article>
+        <div class="sidebar">
+            <div class="about-box">
+    <div class="avatar">
+        <img src="/assets/media/bitmap/avatar.jpeg" alt="avatar">
+    </div>
+    <h1>霜羽 Hoarfroster</h1>
+    <h2>@PassionPenguin</h2>
+    <p class="moment"><span class="status">🤔</span><span>努力！</span></p>
+    <ul>
+        <li><i class="fa-solid fa-location-dot"></i> 广东 · 广州 | <span class="light">Guangzhou, China</span>
+        </li>
+        <li><i class="fa-solid fa-envelope"></i> <a href="mailto:hoarfroster@outlook.com">hoarfroster@outlook.com</a>
+        </li>
+        <li><i class="fa-solid fa-house"></i> <a href="https://story.hoarfroster.space/">https://story.hoarfroster.space/</a>
+        </li>
+    </ul>
+</div>
+<div class="organization">
+    <h4>组织 Organizations</h4>
+    <ul>
+        <li>
+            <img src="https://avatars.githubusercontent.com/u/81648011?s=60&amp;v=4"
+                alt="Hexa-Penguin"><span>Hexa-Penguin</span>
+        </li>
+        <li>
+            <img src="https://avatars.githubusercontent.com/u/10482599?s=60&amp;v=4" alt="xitu"><span>稀土 xitu</span>
+        </li>
+    </ul>
+</div>
+<div class="category">
+    <span class="title">文章分类</span>
+    <ul>
+        <!-- <li><a href="/archive.html">所有分类</a></li> -->
+    </ul>
+</div>
+<div class="archive">
+    <span class="title">文章存档</span>
+    <ul>
+        <!-- <li><a href="/archive.html">所有文章</a></li> -->
+    </ul>
+</div>
+        </div>
+    </div>
+    <div class="footer">
+    <div class="content">
+        <div class="about">
+            <p>霜羽 Hoarfroster</p>
+            <p>&copy; Copyright 2021 Hoarfroster and contributors.</p>
+        </div>
+        <div class="nav">
+            <div class="links">
+                <span class="title">关于文章</span>
+                <ul>
+                    <li><a href="/archive.html">文章存档</a></li>
+                </ul>
+            </div>
+            <div class="category">
+                <span class="title">关于霜羽</span>
+                <ul>
+                    <li><a href="/about.html">有关霜羽</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <ul class="social-accounts">
+        <li>
+            <a href="https://www.zhihu.com/people/shuang-yu-29-75">
+                <i class="fa-brands fa-zhihu" style="font-size: 24px; color:#06f; line-height: 24px;"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://github.com/PassionPenguin">
+                <img src="/assets/media/vectors/github.svg" alt="github-logo"/>
+            </a>
+        </li>
+        <li>
+            <a href="https://dribbble.com/Hoarfroster">
+                <img src="/assets/media/vectors/dribbble.svg" alt="dribbble-logo"/>
+            </a>
+        </li>
+        <li>
+            <a href="https://zh.wikipedia.org/wiki/User:HoarfrostFeather">
+                <i class="fa-brands fa-wikipedia-w" style="font-size: 22px; color: #888; line-height: 24px;"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://space.bilibili.com/201469972">
+                <i class="fa-brands fa-bilibili" style="font-size: 22px; color: #00a1d6; line-height: 24px;"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+</body>
+
+</html>

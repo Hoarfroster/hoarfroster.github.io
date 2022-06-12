@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>纯 CSS 创建五彩斑斓的智能阴影</title>
+    <script src="/assets/script/main.js"></script>
+    <link rel="stylesheet" href="/assets/style/styles.css">
+</head>
+
+<body>
+    <div class="header">
+    <div class="container">
+        <div class="icon">
+            <img src="/assets/media/vectors/hoarfroster-text.svg" alt="Hoarfroster Logo with Text">
+        </div>
+        <nav class="navigation">
+            <ul class="header-navigation-list">
+                <li><a href="/">首页</a></li>
+                <li><a href="/archive.html">文章</a></li>
+                <li><a href="/about.html">关于</a></li>
+            </ul>
+            <form action="/search" method="post">
+                <label>
+                    <input type="text" class="search" placeholder="搜索咕咕咕的小站"/>
+                </label>
+                <label class="submit">
+                    <input type="submit"/>
+                </label>
+            </form>
+        </nav>
+        <ul class="social-accounts">
+            <li>
+                <a href="https://www.zhihu.com/people/shuang-yu-29-75">
+                    <i class="fa-brands fa-zhihu" style="font-size: 20px; color:#06f; line-height: 20px;"></i>
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/PassionPenguin">
+                    <img src="/assets/media/vectors/github.svg" alt="github-logo"/>
+                </a>
+            </li>
+            <li>
+                <a href="https://dribbble.com/Hoarfroster">
+                    <img src="/assets/media/vectors/dribbble.svg" alt="dribbble-logo"/>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+    <div class="content article">
+        <article>
+            <div class="title">
+                <h1>纯 CSS 创建五彩斑斓的智能阴影</h1>
+                <p><span class='chars'>undefined chars</span><span class='created-date'>Created Sat May 28 2022 23:43:08 GM</span><span class='modified-date'>Modified Sat May 28 2022 23:43:08 GM</span></p>
+            </div>
+            <div class="main markdown-body">
+                
+
+<blockquote>
+<ul>
+<li>原文地址：<a href="https://www.kirupa.com/html5/creating_colorful_smart_shadows.htm">Creating
+Colorful, Smart Shadows</a></li>
+<li>原文作者：<a href="https://www.kirupa.com/me/index.htm">kirupa</a></li>
+<li>译者：<a href="https://github.com/PassionPenguin">霜羽
+Hoarfroster</a></li>
+<li>校对者：<a href="https://github.com/CarlosChenN">CarlosChenN</a>、<a href="https://github.com/KimYangOfCat">Kim Yang</a></li>
+</ul>
+</blockquote>
+<p>几天前，我在 Home Depot（也就是大孩子的<a href="http://en.wikipedia.org/wiki/Toys_R_Us">玩具反斗城</a>）处发现，他们有一个巨大的显示器来展示所有这些彩色的供销售的电灯泡！其中一项是一组在电视后面的智能灯泡。它们会在电视的后面投影近似于电视在播出的内容的彩色阴影，与以下内容
+<a href="https://www.philips-hue.com/en-us/p/hue-play-hdmi-sync-box-/046677555221">类似</a>：</p>
+<p><img src="https://www.kirupa.com/html5/images/lighting_behind_tv.png"></p>
+<p>注意电视后面发生的事情。屏幕中所显示的颜色会被灯泡投影为电视机身后面的彩色阴影。随着屏幕上的颜色发生变化，投射在背景中的颜色也会发生变化。真的很酷，对吧？</p>
+<p>自然，看到这个之后，我的第一个想法是，我们是否可以使用 Web
+技术创建一个足够智能以模仿前景色的彩色阴影。事实证明，我们完全可以只使用
+CSS 构建出这个案例。在本文中，我们将了解如何创建这种效果。</p>
+<p>走起！</p>
+<h2 id="让它变成真的">让它变成真的！</h2>
+<p>正如您将在以下部分中看到的，使用 CSS
+创建这种彩色阴影似乎是一项艰巨的任务（当然，只是就刚开始而言）。当我们开始进入它并将这个困难的任务的核心分割成一个个小任务时，我们其实能够发现，要实现这个效果，其实蛮简单的。在接下来的几个小节中，我们将创建以下示例：</p>
+<p><img src="https://user-images.githubusercontent.com/5164225/122199432-9bf35d80-cecc-11eb-9150-28c7b09c595e.gif"></p>
+<p>你应该看到的是一张后面有一个五颜六色的阴影的寿司的图片。（只是为了强调我们正在做这一切，我们为阴影添加了脉冲的动画效果）抛开示例，让我们深入了解实现，看看
+HTML 和 CSS 如何让这一切变为现实！</p>
+<h3 id="展示我们的照片">展示我们的照片</h3>
+<p>用来展示我们寿司图片的 HTML 其实没什么特别的：</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;div</span> <span class="er">class</span><span class="ot">=</span><span class="st">"parent"</span><span class="kw">&gt;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;div</span> <span class="er">class</span><span class="ot">=</span><span class="st">"colorfulShadow sushi"</span><span class="kw">&gt;&lt;/div&gt;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/div&gt;</span></span></code></pre></div>
+<p>我们有一个父 div 元素，包含一个负责显示寿司的子 div
+元素。我们显示寿司的方式是将其指定为背景图像，并由以下
+<strong>.sushi</strong> 样式规则处理：</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.sushi</span> {</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">margin</span>: <span class="dv">100</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">width</span>: <span class="dv">150</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">height</span>: <span class="dv">150</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">background-image</span>: <span class="fu">url(</span><span class="st">"https://www.kirupa.com/icon/1f363.svg"</span><span class="fu">)</span><span class="op">;</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">background-repeat</span>: <span class="dv">no-repeat</span><span class="op">;</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">background-size</span>: <span class="dv">contain</span><span class="op">;</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>在此样式规则中，我们将 div 的大小指定为 150 x 150 像素，并在其上设置
+<code>background-image</code> 和相关的其他属性。就目前而言，我们所看到的
+HTML 和 CSS 会给我们提供如下所示的内容：</p>
+<p><img src="https://www.kirupa.com/html5/images/chrome_sushi_only.png"></p>
+<h2 id="现在是阴影时间">现在是阴影时间</h2>
+<p>现在我们的图像出现了，剩下的就是我们定义阴影这一有趣的部分。我们要定义阴影的方法是指定一个子伪元素（使用
+<code>::after</code>），它将做三件事：</p>
+<ol type="1">
+<li>直接定位在我们的图片后面；</li>
+<li>继承与父元素相同的背景图片；</li>
+<li>依靠滤镜实现多彩的阴影效果；</li>
+</ol>
+<p>这三件事是通过以下两条样式规则完成的：</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.colorfulShadow</span> {</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">position</span>: <span class="dv">relative</span><span class="op">;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">.colorfulShadow</span><span class="in">::after</span> {</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">content</span>: <span class="st">""</span><span class="op">;</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">width</span>: <span class="dv">100</span><span class="dt">%</span><span class="op">;</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">height</span>: <span class="dv">100</span><span class="dt">%</span><span class="op">;</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">position</span>: <span class="dv">absolute</span><span class="op">;</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">background</span>: <span class="bu">inherit</span><span class="op">;</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">background-position</span>: <span class="dv">center</span> <span class="dv">center</span><span class="op">;</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">filter</span>: <span class="fu">drop-shadow(</span><span class="dv">0</span><span class="dt">px</span> <span class="dv">0</span><span class="dt">px</span> <span class="dv">10</span><span class="dt">px</span> rgba(<span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">0.50</span><span class="fu">)</span>) <span class="fu">blur(</span><span class="dv">20</span><span class="dt">px</span><span class="fu">)</span><span class="op">;</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="kw">z-index</span>: <span class="dv">-1</span><span class="op">;</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>让我们花一点时间来看看这里发生了些什么：先注意每一个属性和对应的值，有一些值得注意的属性
+—— <code>background</code> 和
+<code>filter</code>。<code>background</code> 属性使用了
+<code>inherit</code> 继承父元素，意味着能够继承父元素的背景：</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.colorfulShadow</span><span class="in">::after</span> {</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">content</span>: <span class="st">""</span><span class="op">;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">width</span>: <span class="dv">100</span><span class="dt">%</span><span class="op">;</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">height</span>: <span class="dv">100</span><span class="dt">%</span><span class="op">;</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">position</span>: <span class="dv">absolute</span><span class="op">;</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">background</span>: <span class="bu">inherit</span><span class="op">;</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">background-position</span>: <span class="dv">center</span> <span class="dv">center</span><span class="op">;</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">filter</span>: <span class="fu">drop-shadow(</span><span class="dv">0</span><span class="dt">px</span> <span class="dv">0</span><span class="dt">px</span> <span class="dv">10</span><span class="dt">px</span> rgba(<span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">0.50</span><span class="fu">)</span>) <span class="fu">blur(</span><span class="dv">20</span><span class="dt">px</span><span class="fu">)</span><span class="op">;</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">z-index</span>: <span class="dv">-1</span><span class="op">;</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>我们为 <code>filter</code> 属性定义了两个过滤的属性，分别是
+<strong>drop-shadow</strong> 和 <strong>blur</strong>：</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.colorfulShadow</span><span class="in">::after</span> {</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">content</span>: <span class="st">""</span><span class="op">;</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">width</span>: <span class="dv">100</span><span class="dt">%</span><span class="op">;</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">height</span>: <span class="dv">100</span><span class="dt">%</span><span class="op">;</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">position</span>: <span class="dv">absolute</span><span class="op">;</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">background</span>: <span class="bu">inherit</span><span class="op">;</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">background-position</span>: <span class="dv">center</span> <span class="dv">center</span><span class="op">;</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">filter</span>: <span class="fu">drop-shadow(</span><span class="dv">0</span><span class="dt">px</span> <span class="dv">0</span><span class="dt">px</span> <span class="dv">10</span><span class="dt">px</span> rgba(<span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">0.50</span><span class="fu">)</span>) <span class="fu">blur(</span><span class="dv">20</span><span class="dt">px</span><span class="fu">)</span><span class="op">;</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">z-index</span>: <span class="dv">-1</span><span class="op">;</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>我们的 <strong>drop-shadow</strong> 过滤器设置为显示不透明度为 50%
+的黑色阴影，而我们的 <strong>blur</strong> 过滤器会将我们的伪元素模糊
+20px。
+这两个过滤器的组合最终创建了彩色的阴影，当应用这两个样式规则时，该阴影现在将出现在我们的寿司图像后面：</p>
+<p><img src="https://www.kirupa.com/html5/images/chrome_sushi_shadow.png"></p>
+<p>至此，我们已经实现了智能阴影。为完整起见，如果我们想要彩色阴影缩放的动画，如下
+CSS 代码的添加能够助力我们实现目标：</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.colorfulShadow</span> {</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">position</span>: <span class="dv">relative</span><span class="op">;</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">.colorfulShadow</span><span class="in">::after</span> {</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">content</span>: <span class="st">""</span><span class="op">;</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">width</span>: <span class="dv">100</span><span class="dt">%</span><span class="op">;</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">height</span>: <span class="dv">100</span><span class="dt">%</span><span class="op">;</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">position</span>: <span class="dv">absolute</span><span class="op">;</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">background</span>: <span class="bu">inherit</span><span class="op">;</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">background-position</span>: <span class="dv">center</span> <span class="dv">center</span><span class="op">;</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">filter</span>: <span class="fu">drop-shadow(</span><span class="dv">0</span><span class="dt">px</span> <span class="dv">0</span><span class="dt">px</span> <span class="dv">10</span><span class="dt">px</span> rgba(<span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">0.50</span><span class="fu">)</span>) <span class="fu">blur(</span><span class="dv">20</span><span class="dt">px</span><span class="fu">)</span><span class="op">;</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    <span class="kw">z-index</span>: <span class="dv">-1</span><span class="op">;</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>    <span class="co">/* animation time! */</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>    <span class="kw">animation</span>: oscillate <span class="dv">1</span><span class="dt">s</span> <span class="fu">cubic-bezier(</span><span class="dv">.17</span><span class="op">,</span> <span class="dv">.67</span><span class="op">,</span> <span class="dv">.45</span><span class="op">,</span> <span class="dv">1.32</span><span class="fu">)</span> <span class="dv">infinite</span> <span class="dv">alternate</span><span class="op">;</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="im">@keyframes</span> oscillate {</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>    <span class="dv">from</span> {</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>        <span class="kw">transform</span>: <span class="fu">scale(</span><span class="dv">1</span><span class="op">,</span> <span class="dv">1</span><span class="fu">)</span><span class="op">;</span></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>    <span class="dv">to</span> {</span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>        <span class="kw">transform</span>: <span class="fu">scale(</span><span class="dv">1.3</span><span class="op">,</span> <span class="dv">1.3</span><span class="fu">)</span><span class="op">;</span></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>如果您想要一些交互性而没有不断循环的动画，您还可以使用 CSS
+过渡来更改阴影在某些动作（如悬停）上的行为方式。困难的部分是像对待在
+HTML 中明确定义或使用 JavaScript
+动态创建的任何其他元素一样对待伪元素。其唯一的区别是伪元素是完全使用 CSS
+创建的！</p>
+<h2 id="结论">结论</h2>
+<p>伪元素允许我们使用 CSS 来完成一些历史上属于 HTML 和 JavaScript
+领域的元素创建任务。对于我们多彩而智能的阴影，我们能够依靠父元素来设置背景图像。这使我们能够轻松定义一个既继承了父元素的背景图像细节，又允许我们为其设置一系列属性以实现模糊和阴影效果的子伪元素。尽管这一切都很好，我们也最大限度地减少了大量复制和粘贴，但这种方法不是很灵活。</p>
+<p>如果我想将这样的阴影应用到一个不只是带有背景图像的空元素上怎么办？如果我有一个像
+<strong>Button</strong> 或 <strong>ComboBox</strong> 这样的 HTML
+元素想要应用这种阴影效果怎么办？一种解决方案是依靠 JavaScript 在 DOM
+中复制适当的元素，将它们放置在前景元素下方，应用过滤器，然后就可以了。虽然可行，但考虑到该过程的复杂程度，实在是有些不寒而栗。可惜
+JavaScript 没有等效的 <a href="https://docs.microsoft.com/en-us/dotnet/api/system.windows.media.imaging.rendertargetbitmap?view=net-5.0">renderTargetBitmap</a>
+这种能够把我们的视觉效果渲染成位图，然后你可以做任何你想做的事的 API……
+🥶</p>
+
+
+
+            </div>
+        </article>
+        <div class="sidebar">
+            <div class="about-box">
+    <div class="avatar">
+        <img src="/assets/media/bitmap/avatar.jpeg" alt="avatar">
+    </div>
+    <h1>霜羽 Hoarfroster</h1>
+    <h2>@PassionPenguin</h2>
+    <p class="moment"><span class="status">🤔</span><span>努力！</span></p>
+    <ul>
+        <li><i class="fa-solid fa-location-dot"></i> 广东 · 广州 | <span class="light">Guangzhou, China</span>
+        </li>
+        <li><i class="fa-solid fa-envelope"></i> <a href="mailto:hoarfroster@outlook.com">hoarfroster@outlook.com</a>
+        </li>
+        <li><i class="fa-solid fa-house"></i> <a href="https://story.hoarfroster.space/">https://story.hoarfroster.space/</a>
+        </li>
+    </ul>
+</div>
+<div class="organization">
+    <h4>组织 Organizations</h4>
+    <ul>
+        <li>
+            <img src="https://avatars.githubusercontent.com/u/81648011?s=60&amp;v=4"
+                alt="Hexa-Penguin"><span>Hexa-Penguin</span>
+        </li>
+        <li>
+            <img src="https://avatars.githubusercontent.com/u/10482599?s=60&amp;v=4" alt="xitu"><span>稀土 xitu</span>
+        </li>
+    </ul>
+</div>
+<div class="category">
+    <span class="title">文章分类</span>
+    <ul>
+        <!-- <li><a href="/archive.html">所有分类</a></li> -->
+    </ul>
+</div>
+<div class="archive">
+    <span class="title">文章存档</span>
+    <ul>
+        <!-- <li><a href="/archive.html">所有文章</a></li> -->
+    </ul>
+</div>
+        </div>
+    </div>
+    <div class="footer">
+    <div class="content">
+        <div class="about">
+            <p>霜羽 Hoarfroster</p>
+            <p>&copy; Copyright 2021 Hoarfroster and contributors.</p>
+        </div>
+        <div class="nav">
+            <div class="links">
+                <span class="title">关于文章</span>
+                <ul>
+                    <li><a href="/archive.html">文章存档</a></li>
+                </ul>
+            </div>
+            <div class="category">
+                <span class="title">关于霜羽</span>
+                <ul>
+                    <li><a href="/about.html">有关霜羽</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <ul class="social-accounts">
+        <li>
+            <a href="https://www.zhihu.com/people/shuang-yu-29-75">
+                <i class="fa-brands fa-zhihu" style="font-size: 24px; color:#06f; line-height: 24px;"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://github.com/PassionPenguin">
+                <img src="/assets/media/vectors/github.svg" alt="github-logo"/>
+            </a>
+        </li>
+        <li>
+            <a href="https://dribbble.com/Hoarfroster">
+                <img src="/assets/media/vectors/dribbble.svg" alt="dribbble-logo"/>
+            </a>
+        </li>
+        <li>
+            <a href="https://zh.wikipedia.org/wiki/User:HoarfrostFeather">
+                <i class="fa-brands fa-wikipedia-w" style="font-size: 22px; color: #888; line-height: 24px;"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://space.bilibili.com/201469972">
+                <i class="fa-brands fa-bilibili" style="font-size: 22px; color: #00a1d6; line-height: 24px;"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+</body>
+
+</html>

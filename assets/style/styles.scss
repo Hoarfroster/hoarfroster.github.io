@@ -1,0 +1,21 @@
+@use "components/colors";
+@use 'components/components';
+@use 'fontawesome/css/all.min.css';
+
+html, body {
+  margin: 0;
+  background: #f8f8f8;
+}
+
+* {
+  transition: 250ms;
+}
+
+a {
+  color: colors.$textColor;
+  text-decoration: none;
+
+  &:hover, &:focus {
+    color: colors.$primaryColor;
+  }
+}

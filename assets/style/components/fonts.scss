@@ -1,0 +1,63 @@
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url(/assets/media/fonts/MaterialIcons.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Material Icons Outlined';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/materialiconsoutlined/v72/gok-H7zzDkdnRel8-DQ6KAXJ69wP1tGnf4ZGhUcel5euIg.woff2) format('woff2');
+}
+
+@mixin icons() {
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+}
+
+@mixin material-icons() {
+  font-family: 'Material Icons', sans-serif;
+  @include icons;
+}
+
+@mixin material-icons-outlined() {
+  font-family: 'Material Icons Outlined', sans-serif;
+  @include icons;
+}
+
+.material-icons, .icon {
+  @include material-icons;
+}
+
+.material-icons-outlined {
+  @include material-icons-outlined;
+}
+
+:root {
+  font-family: "Helvetica", "Source Han Sans CN", sans-serif;
+}
+
+code {
+  font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace !important;
+  padding: 2px;
+  vertical-align: middle;
+  display: inline-block;
+
+  &.path {
+    background: none;
+    border: none;
+    font-size: 12px;
+  }
+}

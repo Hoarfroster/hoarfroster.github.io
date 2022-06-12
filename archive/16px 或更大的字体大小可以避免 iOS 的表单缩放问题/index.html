@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>16px 或更大的字体大小可以避免 iOS 的表单缩放问题</title>
+    <script src="/assets/script/main.js"></script>
+    <link rel="stylesheet" href="/assets/style/styles.css">
+</head>
+
+<body>
+    <div class="header">
+    <div class="container">
+        <div class="icon">
+            <img src="/assets/media/vectors/hoarfroster-text.svg" alt="Hoarfroster Logo with Text">
+        </div>
+        <nav class="navigation">
+            <ul class="header-navigation-list">
+                <li><a href="/">首页</a></li>
+                <li><a href="/archive.html">文章</a></li>
+                <li><a href="/about.html">关于</a></li>
+            </ul>
+            <form action="/search" method="post">
+                <label>
+                    <input type="text" class="search" placeholder="搜索咕咕咕的小站"/>
+                </label>
+                <label class="submit">
+                    <input type="submit"/>
+                </label>
+            </form>
+        </nav>
+        <ul class="social-accounts">
+            <li>
+                <a href="https://www.zhihu.com/people/shuang-yu-29-75">
+                    <i class="fa-brands fa-zhihu" style="font-size: 20px; color:#06f; line-height: 20px;"></i>
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/PassionPenguin">
+                    <img src="/assets/media/vectors/github.svg" alt="github-logo"/>
+                </a>
+            </li>
+            <li>
+                <a href="https://dribbble.com/Hoarfroster">
+                    <img src="/assets/media/vectors/dribbble.svg" alt="dribbble-logo"/>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+    <div class="content article">
+        <article>
+            <div class="title">
+                <h1>16px 或更大的字体大小可以避免 iOS 的表单缩放问题</h1>
+                <p><span class='chars'>undefined chars</span><span class='created-date'>Created Sat May 28 2022 23:43:08 GM</span><span class='modified-date'>Modified Sat May 28 2022 23:43:08 GM</span></p>
+            </div>
+            <div class="main markdown-body">
+                
+
+<blockquote>
+<ul>
+<li>原文地址：<a href="https://css-tricks.com/16px-or-larger-text-prevents-ios-form-zoom/">16px
+or Larger Text Prevents iOS Form Zoom</a></li>
+<li>原文作者：<a href="https://css-tricks.com/author/chriscoyier/">Chris
+Coyier </a></li>
+<li>译者：<a href="https://github.com/PassionPenguin">霜羽
+Hoarfroster</a></li>
+<li>校对者：<a href="https://github.com/KimYangOfCat">Kim Yang</a>、<a href="https://github.com/Chorer">Chorer</a></li>
+</ul>
+</blockquote>
+<p><a href="https://twitter.com/joshwcomeau/status/1379782931116351490?s=12">“今天我已经学到的”
+—— 我从乔什·科莫（Josh W. Comeau）的推特中学习到</a>
+的东西真的是太棒了！！！如果 <code>&lt;input&gt;</code> 的
+<code>font-size</code> 被设定为 <code>16px</code> 或更大，那么 iOS 上的
+Safari 将正常聚焦到输入表单中。但是，一旦 <code>font-size</code>
+等于或小于 <code>15px</code>，视图窗口就会放大并聚焦到该
+<code>&lt;input&gt;</code>（或许是因为苹果认为字体太小，因此它会放大以帮助你更清楚地看到自己在做什么）。这个设计是用来增强可访问性的，如果你不想要，请确保
+<code>&lt;input&gt;</code> 的字体足够大。</p>
+<p>如果你想自己试试，请打开<a href="https://codepen.io/joshwcomeau/pen/VwPMPZo">乔什的
+<code>codepen</code></a>。</p>
+<p>总的来说，我还挺喜欢这个功能。它可以帮助人们了解自己在做什么，并且也表了态
+—— 苹果不建议开发者在 UI
+中使用过小的字体。让人略感遗憾的是（我在这里并没责怪任何人），在不同字体大小的可读性上，并非所有字体都是一样的。比如说，下图是字体大小为
+16px 的 <em>San Francisco</em> 与 <em>Caveat</em> 的对比：</p>
+<p><img src="https://i2.wp.com/css-tricks.com/wp-content/uploads/2021/04/Screen-Shot-2021-04-30-at-9.11.55-AM.png?resize=558％2C344&amp;ssl=1"></p>
+<p><small>左边是 <em>San Francisco</em>，右边是 <em>Caveat</em>。即使
+<code>font-size</code> 相同，<em>Caveat</em>
+在外观上看起来也要小得多。</small></p>
+<p>你可以在 Safari 浏览器中打开<a href="https://cdpn.io/chriscoyier/debug/MWJxXWz">调试模式</a> ，查看<a href="https://codepen.io/chriscoyier/pen/MWJxXWz">该示例</a>，并更改字体大小以查看会自动放大聚焦与不会放大聚焦的具体表现。</p>
+<hr>
+<blockquote>
+<p>🔥 将表单输入设置为 1rem（16px）或更大的字体，以防止在点击时 iOS
+Safari 浏览器自动放大并聚焦到 <code>input</code> 元素上。</p>
+<p>从用户体验的角度来看有很大的不同！</p>
+<p><img src="https://github.com/PassionPenguin/picgo-database/blob/main/16px-or-larger-text-prevents-ios-form-zoom-EyX2MSaXMAExyQA.gif?raw=true"></p>
+<p>—— Josh W. Comeau @JoshWComeau 9:07, Apr 7, 2021</p>
+<hr>
+<p>当 Safari 放大时，它似乎希望让该 input 控件的实际字体大小为
+16px。在下面两张图中，用户在输入文本时看到的字体大小其实都是
+16px。因此更改后，输入文本的阅读体验实际上并没有变得更差！！</p>
+<p>另外，人们始终可以根据需要手动放大。</p>
+<p><img src="https://pbs.twimg.com/media/EyX5HAlXEAErIj6?format=png&amp;name=small"></p>
+<p><img src="https://pbs.twimg.com/media/EyX5IBWWUAA8Sis?format=png&amp;name=small"></p>
+<p>—— Josh W. Comeau @JoshWComeau 9:07, Apr 7, 2021</p>
+</blockquote>
+
+
+
+            </div>
+        </article>
+        <div class="sidebar">
+            <div class="about-box">
+    <div class="avatar">
+        <img src="/assets/media/bitmap/avatar.jpeg" alt="avatar">
+    </div>
+    <h1>霜羽 Hoarfroster</h1>
+    <h2>@PassionPenguin</h2>
+    <p class="moment"><span class="status">🤔</span><span>努力！</span></p>
+    <ul>
+        <li><i class="fa-solid fa-location-dot"></i> 广东 · 广州 | <span class="light">Guangzhou, China</span>
+        </li>
+        <li><i class="fa-solid fa-envelope"></i> <a href="mailto:hoarfroster@outlook.com">hoarfroster@outlook.com</a>
+        </li>
+        <li><i class="fa-solid fa-house"></i> <a href="https://story.hoarfroster.space/">https://story.hoarfroster.space/</a>
+        </li>
+    </ul>
+</div>
+<div class="organization">
+    <h4>组织 Organizations</h4>
+    <ul>
+        <li>
+            <img src="https://avatars.githubusercontent.com/u/81648011?s=60&amp;v=4"
+                alt="Hexa-Penguin"><span>Hexa-Penguin</span>
+        </li>
+        <li>
+            <img src="https://avatars.githubusercontent.com/u/10482599?s=60&amp;v=4" alt="xitu"><span>稀土 xitu</span>
+        </li>
+    </ul>
+</div>
+<div class="category">
+    <span class="title">文章分类</span>
+    <ul>
+        <!-- <li><a href="/archive.html">所有分类</a></li> -->
+    </ul>
+</div>
+<div class="archive">
+    <span class="title">文章存档</span>
+    <ul>
+        <!-- <li><a href="/archive.html">所有文章</a></li> -->
+    </ul>
+</div>
+        </div>
+    </div>
+    <div class="footer">
+    <div class="content">
+        <div class="about">
+            <p>霜羽 Hoarfroster</p>
+            <p>&copy; Copyright 2021 Hoarfroster and contributors.</p>
+        </div>
+        <div class="nav">
+            <div class="links">
+                <span class="title">关于文章</span>
+                <ul>
+                    <li><a href="/archive.html">文章存档</a></li>
+                </ul>
+            </div>
+            <div class="category">
+                <span class="title">关于霜羽</span>
+                <ul>
+                    <li><a href="/about.html">有关霜羽</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <ul class="social-accounts">
+        <li>
+            <a href="https://www.zhihu.com/people/shuang-yu-29-75">
+                <i class="fa-brands fa-zhihu" style="font-size: 24px; color:#06f; line-height: 24px;"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://github.com/PassionPenguin">
+                <img src="/assets/media/vectors/github.svg" alt="github-logo"/>
+            </a>
+        </li>
+        <li>
+            <a href="https://dribbble.com/Hoarfroster">
+                <img src="/assets/media/vectors/dribbble.svg" alt="dribbble-logo"/>
+            </a>
+        </li>
+        <li>
+            <a href="https://zh.wikipedia.org/wiki/User:HoarfrostFeather">
+                <i class="fa-brands fa-wikipedia-w" style="font-size: 22px; color: #888; line-height: 24px;"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://space.bilibili.com/201469972">
+                <i class="fa-brands fa-bilibili" style="font-size: 22px; color: #00a1d6; line-height: 24px;"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Svelte NodeGUI 发布了！我们现在可以使用 Qt 和 Svelte 构建原生桌面端应用程序</title>
+    <script src="/assets/script/main.js"></script>
+    <link rel="stylesheet" href="/assets/style/styles.css">
+</head>
+
+<body>
+    <div class="header">
+    <div class="container">
+        <div class="icon">
+            <img src="/assets/media/vectors/hoarfroster-text.svg" alt="Hoarfroster Logo with Text">
+        </div>
+        <nav class="navigation">
+            <ul class="header-navigation-list">
+                <li><a href="/">首页</a></li>
+                <li><a href="/archive.html">文章</a></li>
+                <li><a href="/about.html">关于</a></li>
+            </ul>
+            <form action="/search" method="post">
+                <label>
+                    <input type="text" class="search" placeholder="搜索咕咕咕的小站"/>
+                </label>
+                <label class="submit">
+                    <input type="submit"/>
+                </label>
+            </form>
+        </nav>
+        <ul class="social-accounts">
+            <li>
+                <a href="https://www.zhihu.com/people/shuang-yu-29-75">
+                    <i class="fa-brands fa-zhihu" style="font-size: 20px; color:#06f; line-height: 20px;"></i>
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/PassionPenguin">
+                    <img src="/assets/media/vectors/github.svg" alt="github-logo"/>
+                </a>
+            </li>
+            <li>
+                <a href="https://dribbble.com/Hoarfroster">
+                    <img src="/assets/media/vectors/dribbble.svg" alt="dribbble-logo"/>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+    <div class="content article">
+        <article>
+            <div class="title">
+                <h1>Svelte NodeGUI 发布了！我们现在可以使用 Qt 和 Svelte 构建原生桌面端应用程序</h1>
+                <p><span class='chars'>undefined chars</span><span class='created-date'>Created Sat May 28 2022 23:43:08 GM</span><span class='modified-date'>Modified Sat May 28 2022 23:43:08 GM</span></p>
+            </div>
+            <div class="main markdown-body">
+                
+
+<blockquote>
+<ul>
+<li>原文地址：<a href="https://www.infoq.com/news/2021/03/svelte-nodegui-native-desktop/">New
+Svelte NodeGui Allows Creating Native Desktop Applications with Qt and
+Svelte</a></li>
+<li>原文作者：<a href="https://www.infoq.com/profile/Bruno-Couriol/">Bruno
+Couriol</a></li>
+<li>译者：<a href="https://github.com/PassionPenguin">Hoarfroster</a></li>
+<li>校对者：</li>
+</ul>
+</blockquote>
+<p><a href="https://twitter.com/LinguaBrowse">Jamie Birch</a> 最近<a href="https://twitter.com/LinguaBrowse/status/1367929896685756422">发布了
+Svelte NodeGUI</a>，一个用于在 Windows、Linux 和 macOS
+上构建桌面端应用程序的框架。这是一个相较 Electron
+来说更轻量的代替方案，让我们能够使用 <a href="https://svelte.dev/">Svelte 前端框架和编译器</a>，以及 <a href="https://www.qt.io/">Qt 控件工具包</a>，还可以用 HTML 和 CSS
+子集，构建桌面端应用程序。</p>
+<p>Svelte NodeGUI
+的文档展现了它的基本原理以及使用它的好处，如下所示：</p>
+<blockquote>
+<p>Svelte NodeGUI 是一个 Svelte 对 <a href="https://nodegui.org/">NodeGUI</a>) 的渲染器。这是一个高效的
+JavaScript 库，与跨平台 GUI 库 <code>Qt</code> 相捆绑。Qt
+是最成熟最高效的构建桌面应用的库之一。这让 Svelte NodeGUI 在内存和 CPU
+上更具效率，与其它的 JavaScript 桌面端 GUI
+解决方案形成了明显的对比。一个用 Svelte NodeGUI 构建的 <em>Hello
+World</em> 应用程序在内存上比其他 GUI 解决方案少占用 20 MB。</p>
+</blockquote>
+<p>有的开发者已经报告称一个基础的 <em>Hello World</em> 的用 Electron
+构建的应用程序的尺寸会高达 <a href="https://medium.com/gowombat/how-to-reduce-the-size-of-an-electron-app-installer-a2bc88a37732">115
+MB</a> 甚至是 <a href="https://stackoverflow.com/questions/59731319/how-can-i-reduce-my-275mb-hello-world-electron-package-size">275
+MB</a>。Svelte NodeGUI 则成功地通过不内置 Chromium
+浏览器包，编译一个内存更优的尺寸更小的可执行文件。</p>
+<p>相反，我们无法在 Svelte NodeGUI 应用程序中使用所有的浏览器中有的 API
+以及 HTML 和 CSS 的功能。Svelte NodeGUI 应用程序本质上是一个 Node.js
+应用程序，其用户界面由 Qt 控件如 <a href="https://doc.qt.io/qt-5/qmainwindow.html"><code>QMainWindow</code></a>、<a href="https://doc.qt.io/qt-5/qcheckbox.html"><code>QCheckBox</code></a>
+构建的，我们可以使用 <a href="https://doc.qt.io/qt-5/stylesheet-syntax.html">Qt
+样式表语法</a>样式化应用程序。它使用了 <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox">Flexbox</a>
+进行布局 —— 这是网络浏览器的一维布局方法。Qt
+控件的数量和覆盖范围可能小于 <a href="https://www.htmlquick.com/reference/tags.html">HTML 原生元素</a>
+的数量和覆盖范围，这实际上也限制了我们 —— 我们只能使用 Qt 支持的 HTML
+子集。Svelte NodeGUI 附带 13 种标签或称之为 UI
+组件，包括按钮，图像标签，可编辑文本区域，进度条和窗口。</p>
+<p>Qt
+窗口小部件可能会发出事件（称为信号），可以监听事件并以编程方式将其与事件处理程序关联。NodeGUI
+还提供了一组的内部事件，应用程序可以对其监听（即 <a href="https://svelte.nodeGUI.org/docs/GUIdes/handle-events#event-handling">QEvents</a>）。Svelte
+NodeGUI 的文档提供了<a href="https://svelte.nodeGUI.org/docs/GUIdes/handle-events#how-do-i-know-which-events-are-supported-">以下示例，说明了布局机制和事件语法</a>：</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode jsx"><code class="sourceCode javascriptreact"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;script</span> <span class="ot">lang</span><span class="op">=</span><span class="st">"ts"</span><span class="kw">&gt;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    import <span class="va">{</span>onMount<span class="va">}</span> from "svelte";</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    import <span class="va">{</span>Direction<span class="va">}</span> from "@nodegui/nodegui";</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    import type <span class="va">{</span>QPushButtonSignals<span class="va">}</span> from "@nodegui/nodegui";</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    let additionalButtons: string[] = [];</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    let direction: Direction = Direction.LeftToRight;</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    function addHandler(): void <span class="va">{</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>        additionalButtons <span class="op">=</span> [<span class="op">...</span>additionalButtons<span class="op">,</span> <span class="vs">`Button </span><span class="sc">${</span>additionalButtons<span class="op">.</span><span class="at">length</span><span class="sc">}</span><span class="vs">`</span>]<span class="op">;</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="va">}</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    function removeHandler(): void <span class="va">{</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>        additionalButtons <span class="op">=</span> [<span class="op">...</span>additionalButtons<span class="op">.</span><span class="fu">slice</span>(<span class="dv">0</span><span class="op">,</span> additionalButtons<span class="op">.</span><span class="at">length</span> <span class="op">-</span> <span class="dv">1</span>)]<span class="op">;</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="va">}</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    function toggleDirection(): void <span class="va">{</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>        direction <span class="op">=</span> ((direction <span class="op">+</span> <span class="dv">1</span>) <span class="op">%</span> <span class="dv">4</span>) <span class="im">as</span> Direction<span class="op">;</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="va">}</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    onMount(() =&gt; <span class="va">{</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>        (<span class="bu">window</span> <span class="im">as</span> any)<span class="op">.</span><span class="at">win</span> <span class="op">=</span> win<span class="op">;</span> <span class="co">// Prevent garbage collection.</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>        win<span class="op">.</span><span class="at">nativeView</span><span class="op">.</span><span class="fu">show</span>()<span class="op">;</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>        <span class="kw">delete</span> (<span class="bu">window</span> <span class="im">as</span> any)<span class="op">.</span><span class="at">win</span><span class="op">;</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    }<span class="op">;</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="va">}</span>);</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/script&gt;</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;window</span> <span class="ot">bind:this</span><span class="op">=</span><span class="va">{</span>win<span class="va">}</span><span class="kw">&gt;</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>    <span class="fu">&lt;boxView</span> <span class="ot">direction</span><span class="op">=</span><span class="va">{</span>direction<span class="va">}</span><span class="fu">&gt;</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;button</span> <span class="ot">text</span><span class="op">=</span><span class="st">"Add"</span> <span class="ot">on</span><span class="op">=</span><span class="va">{</span>addHandler<span class="va">}</span><span class="kw">/&gt;</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;button</span> <span class="ot">text</span><span class="op">=</span><span class="st">"Remove"</span> <span class="ot">on</span><span class="op">=</span><span class="va">{</span>removeHandler<span class="va">}</span><span class="kw">/&gt;</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;button</span> <span class="ot">text</span><span class="op">=</span><span class="st">"Toggle direction"</span> <span class="ot">on</span><span class="op">=</span><span class="va">{</span>toggleDirection<span class="va">}</span><span class="kw">/&gt;</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>            <span class="va">{</span>#each additionalButtons <span class="im">as</span> <span class="fu">additionalButton</span> (additionalButton)<span class="va">}</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;button</span> <span class="ot">text</span><span class="op">=</span><span class="va">{</span>additionalButton<span class="va">}</span><span class="kw">/&gt;</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>        <span class="va">{</span><span class="ss">/each}</span></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="ss">    &lt;/boxView</span><span class="op">&gt;</span></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;/</span><span class="bu">window</span><span class="op">&gt;</span></span></code></pre></div>
+<p>如前面的代码示例所示，常规的 <a href="https://svelte.dev/tutorial/basics">Svelte
+单文件组件语法</a>用于描述应用程序逻辑。Svelte 的 <code>onMount</code>
+生命周期挂钩用于显示原生应用程序窗口。窗口的内容被包装在
+<code>&lt;window&gt;</code>
+标签内，由四个按给定方向布置的按钮组成，用户可以通过单击按钮来切换。每次切换时，生成的桌面应用程序的用户界面都会在以下两个布局之间改变：</p>
+<p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/192cc012c7914f0ba6b799d79583393f~tplv-k3u1fbpfcp-zoom-1.image" alt="框布局示例 1"></p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/61210db10be44879baf7b10e5df608cc~tplv-k3u1fbpfcp-zoom-1.image" alt="框布局示例 2"></p>
+<p>（来源：<a href="https://svelte.nodegui.org/docs/guides/layout#boxview-layout">Svelte
+NodeGUI 文档</a>）</p>
+<p>尽管我们无法使用使用浏览器 API，我们可以从大量现有的 Node.js
+软件包中挑选我们想要的功能（例如 <a href="https://github.com/node-fetch/node-fetch">Node Fetch</a>）。我们<a href="https://svelte.nodegui.org/docs/guides/using-native-node-modules">也可以安装原生的
+Node.js 模块</a>并使用这些模块。我们还可以使用 <a href="https://nodejs.org/en/docs/inspector/">Chromium 开发者工具</a><a href="https://svelte.nodegui.org/docs/guides/debugging">调试我们的
+Svelte NodeGUI 应用程序</a>，就像开发 Node.js 应用程序那样。</p>
+<p>该版本在 HackerNews 上引起了热烈的讨论。一位用户<a href="https://news.ycombinator.com/item?id=26361924">热烈地欢迎了桌面端原生应用程序的新功能</a>，如下：</p>
+<blockquote>
+<p>看起来真的很好！乍一看，这似乎是我在 HackerNews
+上看到的最好的替代品。</p>
+<p>除了一致的 GUI 层，我认为许多团队坚持使用 Electron
+的一个被低估的原因是用于跨平台构建和升级的成熟工具。DIY
+真的非常痛苦。</p>
+<p>NodeGUI
+目前似乎不支持交叉编译，这是否在计划中？升级、自动升级工具怎么样？代码签名？</p>
+</blockquote>
+<p><a href="https://electron-react-boilerplate.js.org/">react-electron-boilerplate</a>，<a href="https://neutralino.js.org/">neutralino</a> 和 <a href="https://tauri.studio/en/">tauri</a> 则也同样是替代 Web
+技术开发轻量级桌面应用程序的选项。Google 最近还<a href="https://www.infoq.com/news/2021/03/flutter-2-released/">发布了
+Flutter 2</a>，一个跨平台的 UI
+工具包，致力于支持我们编写用于移动，网络，和单个代码库的桌面平台的应用程序。一名
+HackerNews 读者还<a href="https://news.ycombinator.com/item?id=26364927">提及了
+Sciter.js</a>，它为 <a href="https://sciter.com/">Sciter</a>，一种可嵌入的 HTML / CSS / Script
+引擎，提供了 JavaScript 接口：</p>
+<blockquote>
+<p>VanilaJS 和 Sciter.JS 中的相同演示：<a href="https://github.com/c-smile/sciter-js-sdk">https://github.com/c-smile/sciter-js-sdk</a>（请参阅屏幕截图）。</p>
+<p>二进制文件约为 5 MB，即 HTML / CSS + QuickJS + NodeJS 运行时。</p>
+<p>与 50MB+ 的 NodeGUI 相对应，即 Node.JS + QT。</p>
+<p>SvelteJS 也可以直接在 Sciter.JS 中使用。</p>
+</blockquote>
+<p>Qt <a href="https://www.qt.io/licensing/">针对商业和开源许可证提供了两种许可</a>。<a href="https://docs.nodegui.org/">NodeGUI 项目</a> 的创建者则强调了<a href="https://twitter.com/a7ulr/status/1225498258233053184?s=21">许可对软件分发的影响</a>：</p>
+<blockquote>
+<p>只要遵守 LGPL 许可要求，你就可以免费将 Qt
+用于商业应用程序。对于桌面应用程序，这相对容易实现。我们需要确保你正在动态链接到
+Qt 库和额外的许可证和信用信息。更多信息请点击<a href="https://www.youtube.com/watch?v=bwTlCBbB3RY">此处</a>。</p>
+</blockquote>
+<p><a href="https://github.com/nodegui/svelte-nodegui">Svelte
+NodeGUI</a> 则是根据 MIT 许可分发的开源项目。</p>
+
+
+
+            </div>
+        </article>
+        <div class="sidebar">
+            <div class="about-box">
+    <div class="avatar">
+        <img src="/assets/media/bitmap/avatar.jpeg" alt="avatar">
+    </div>
+    <h1>霜羽 Hoarfroster</h1>
+    <h2>@PassionPenguin</h2>
+    <p class="moment"><span class="status">🤔</span><span>努力！</span></p>
+    <ul>
+        <li><i class="fa-solid fa-location-dot"></i> 广东 · 广州 | <span class="light">Guangzhou, China</span>
+        </li>
+        <li><i class="fa-solid fa-envelope"></i> <a href="mailto:hoarfroster@outlook.com">hoarfroster@outlook.com</a>
+        </li>
+        <li><i class="fa-solid fa-house"></i> <a href="https://story.hoarfroster.space/">https://story.hoarfroster.space/</a>
+        </li>
+    </ul>
+</div>
+<div class="organization">
+    <h4>组织 Organizations</h4>
+    <ul>
+        <li>
+            <img src="https://avatars.githubusercontent.com/u/81648011?s=60&amp;v=4"
+                alt="Hexa-Penguin"><span>Hexa-Penguin</span>
+        </li>
+        <li>
+            <img src="https://avatars.githubusercontent.com/u/10482599?s=60&amp;v=4" alt="xitu"><span>稀土 xitu</span>
+        </li>
+    </ul>
+</div>
+<div class="category">
+    <span class="title">文章分类</span>
+    <ul>
+        <!-- <li><a href="/archive.html">所有分类</a></li> -->
+    </ul>
+</div>
+<div class="archive">
+    <span class="title">文章存档</span>
+    <ul>
+        <!-- <li><a href="/archive.html">所有文章</a></li> -->
+    </ul>
+</div>
+        </div>
+    </div>
+    <div class="footer">
+    <div class="content">
+        <div class="about">
+            <p>霜羽 Hoarfroster</p>
+            <p>&copy; Copyright 2021 Hoarfroster and contributors.</p>
+        </div>
+        <div class="nav">
+            <div class="links">
+                <span class="title">关于文章</span>
+                <ul>
+                    <li><a href="/archive.html">文章存档</a></li>
+                </ul>
+            </div>
+            <div class="category">
+                <span class="title">关于霜羽</span>
+                <ul>
+                    <li><a href="/about.html">有关霜羽</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <ul class="social-accounts">
+        <li>
+            <a href="https://www.zhihu.com/people/shuang-yu-29-75">
+                <i class="fa-brands fa-zhihu" style="font-size: 24px; color:#06f; line-height: 24px;"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://github.com/PassionPenguin">
+                <img src="/assets/media/vectors/github.svg" alt="github-logo"/>
+            </a>
+        </li>
+        <li>
+            <a href="https://dribbble.com/Hoarfroster">
+                <img src="/assets/media/vectors/dribbble.svg" alt="dribbble-logo"/>
+            </a>
+        </li>
+        <li>
+            <a href="https://zh.wikipedia.org/wiki/User:HoarfrostFeather">
+                <i class="fa-brands fa-wikipedia-w" style="font-size: 22px; color: #888; line-height: 24px;"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://space.bilibili.com/201469972">
+                <i class="fa-brands fa-bilibili" style="font-size: 22px; color: #00a1d6; line-height: 24px;"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+</body>
+
+</html>

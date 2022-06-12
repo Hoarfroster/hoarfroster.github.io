@@ -1,0 +1,41 @@
+@use 'colors';
+
+.btn, .button {
+  outline: none;
+  border: 0;
+  border-radius: 4px;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, .1);
+  cursor: pointer;
+  background: #4b9a70;
+  color: #fff;
+  line-height: 28px;
+  font-weight: 600;
+  height: 36px;
+  padding: 2px 16px;
+  box-sizing: content-box;
+
+  &:hover, &:focus, &.active {
+    background: #59ac80;
+  }
+
+  .material-icons, .material-icons-outlined {
+    vertical-align: middle;
+    line-height: 28px;
+  }
+
+  &.btn-text {
+    background: 0;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    padding-left: 0;
+    padding-right: 0;
+    color: colors.$textColor;
+    border-bottom: 3px solid colors.$borderColor;
+
+    &:hover, &:focus, &.active {
+      color: colors.$primaryColor;
+      border-color: colors.$primaryColor;
+    }
+  }
+}

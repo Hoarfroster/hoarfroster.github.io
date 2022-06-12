@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flutter 动画：构建一个和 Medium 一样的鼓掌动画</title>
+    <script src="/assets/script/main.js"></script>
+    <link rel="stylesheet" href="/assets/style/styles.css">
+</head>
+
+<body>
+    <div class="header">
+    <div class="container">
+        <div class="icon">
+            <img src="/assets/media/vectors/hoarfroster-text.svg" alt="Hoarfroster Logo with Text">
+        </div>
+        <nav class="navigation">
+            <ul class="header-navigation-list">
+                <li><a href="/">首页</a></li>
+                <li><a href="/archive.html">文章</a></li>
+                <li><a href="/about.html">关于</a></li>
+            </ul>
+            <form action="/search" method="post">
+                <label>
+                    <input type="text" class="search" placeholder="搜索咕咕咕的小站"/>
+                </label>
+                <label class="submit">
+                    <input type="submit"/>
+                </label>
+            </form>
+        </nav>
+        <ul class="social-accounts">
+            <li>
+                <a href="https://www.zhihu.com/people/shuang-yu-29-75">
+                    <i class="fa-brands fa-zhihu" style="font-size: 20px; color:#06f; line-height: 20px;"></i>
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/PassionPenguin">
+                    <img src="/assets/media/vectors/github.svg" alt="github-logo"/>
+                </a>
+            </li>
+            <li>
+                <a href="https://dribbble.com/Hoarfroster">
+                    <img src="/assets/media/vectors/dribbble.svg" alt="dribbble-logo"/>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+    <div class="content article">
+        <article>
+            <div class="title">
+                <h1>Flutter 动画：构建一个和 Medium 一样的鼓掌动画</h1>
+                <p><span class='chars'>undefined chars</span><span class='created-date'>Created Sat May 28 2022 23:43:08 GM</span><span class='modified-date'>Modified Sat May 28 2022 23:43:08 GM</span></p>
+            </div>
+            <div class="main markdown-body">
+                
+
+<blockquote>
+<ul>
+<li>原文地址：<a href="https://proandroiddev.com/flutter-animation-creating-mediums-clap-animation-in-flutter-3168f047421e">Flutter
+Animation : Creating medium’s clap animation in flutter</a></li>
+<li>原文作者：<a href="https://medium.com/@Kartik1607">Kartik
+Sharma</a></li>
+<li>译者：<a href="https://github.com/PassionPenguin">霜羽
+Hoarfroster</a></li>
+<li>校对者：<a href="https://github.com/greycodee">greycodee</a>、<a href="https://github.com/HumanBeingXenon">HumanBeingXenon</a></li>
+</ul>
+</blockquote>
+<p>在这篇文章中，我们将从零开始探索 Flutter 动画。我们将通过在 Flutter
+中模仿制作 Medium 的鼓掌动画，学习一些关于动画的核心概念。</p>
+<p>正如标题所说，这篇文章将更多地关注动画，而不是 Flutter
+的基础知识。</p>
+<h2 id="入门">入门</h2>
+<p>我们会从新建一个 Flutter 项目开始。每当我们新建一个 Flutter
+项目，我们就会看到这段代码：</p>
+<pre class="dart"><code>// main.dart
+
+import 'package:flutter/material.dart';
+
+void main() =&gt; runApp(new MyApp());
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new MaterialApp(
+      title: 'Flutter Demo',
+      theme: new ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: new MyHomePage(title: 'Flutter Demo Home Page'),
+    );
+  }
+}
+
+class MyHomePage extends StatefulWidget {
+  MyHomePage({Key key, this.title}) : super(key: key);
+  final String title;
+
+  @override
+  _MyHomePageState createState() =&gt; new _MyHomePageState();
+}
+
+class _MyHomePageState extends State&lt;MyHomePage&gt; {
+  int _counter = 0;
+
+  void _incrementCounter() {
+    setState(() {
+      _counter++;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+      appBar: new AppBar(
+        title: new Text(widget.title),
+      ),
+      body: new Center(
+        child: new Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: &lt;Widget&gt;[
+            new Text(
+              'You have pushed the button this many times:',
+            ),
+            new Text(
+              '$_counter',
+              style: Theme.of(context).textTheme.display1,
+            ),
+          ],
+        ),
+      ),
+      floatingActionButton: new FloatingActionButton(
+        onPressed: _incrementCounter,
+        tooltip: 'Increment',
+        child: new Icon(Icons.add),
+      ),
+    );
+  }
+}</code></pre>
+<p>Flutter
+为我们提供了一份免费的入门代码午餐～它已经管理了点击次数的状态，并为我们创建了一个浮动的动作按钮。</p>
+<p><img src="https://miro.medium.com/max/110/1*TpeTkSaUBAfKctD802YCtA.png" alt="我们目前有的按钮"></p>
+<p>下面是我们想要达到的最终效果：</p>
+<p><img src="https://miro.medium.com/max/1600/1*Hnkdb5BSXFmjVitdYQiirQ.gif" alt="我们将会创建的动画。作者：Thuy Gia Nguyen"></p>
+<p>在添加动画之前，我们先来快速浏览并解决一些简单的问题。</p>
+<ol type="1">
+<li>改变按钮图标和背景。</li>
+<li>当我们按住按钮时，按钮应该继续添加计数。</li>
+</ol>
+<p>让我们添加这 2 个快速修复，然后开始制作动画：</p>
+<pre class="dart"><code>// main.dart
+
+class _MyHomePageState extends State&lt;MyHomePage&gt; {
+  int _counter = 0;
+  final duration = new Duration(milliseconds: 300);
+  Timer timer;
+
+
+  initState() {
+    super.initState();
+  }
+
+  dispose() {
+   super.dispose();
+  }
+
+  void increment(Timer t) {
+    setState(() {
+      _counter++;
+    });
+  }
+
+  void onTapDown(TapDownDetails tap) {
+    // User pressed the button. This can be a tap or a hold.
+    increment(null); // Take care of tap
+    timer = new Timer.periodic(duration, increment); // Takes care of hold
+  }
+
+  void onTapUp(TapUpDetails tap) {
+    // User removed his finger from button.
+    timer.cancel();
+  }
+
+  Widget getScoreButton() {
+
+    return new Positioned(
+        child: new Opacity(opacity: 1.0, child: new Container(
+            height: 50.0 ,
+            width: 50.0 ,
+            decoration: new ShapeDecoration(
+              shape: new CircleBorder(
+                  side: BorderSide.none
+              ),
+              color: Colors.pink,
+            ),
+            child: new Center(child:
+            new Text("+" + _counter.toString(),
+              style: new TextStyle(color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 15.0),))
+        )),
+        bottom: 100.0
+    );
+  }
+
+  Widget getClapButton() {
+    // Using custom gesture detector because we want to keep increasing the claps
+    // when user holds the button.
+    return new GestureDetector(
+        onTapUp: onTapUp,
+        onTapDown: onTapDown,
+        child: new Container(
+          height: 60.0 ,
+          width: 60.0 ,
+          padding: new EdgeInsets.all(10.0),
+          decoration: new BoxDecoration(
+              border: new Border.all(color: Colors.pink, width: 1.0),
+              borderRadius: new BorderRadius.circular(50.0),
+              color: Colors.white,
+              boxShadow: [
+                new BoxShadow(color: Colors.pink, blurRadius: 8.0)
+              ]
+          ),
+          child: new ImageIcon(
+              new AssetImage("images/clap.png"), color: Colors.pink,
+              size: 40.0),
+        )
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+      appBar: new AppBar(
+        title: new Text(widget.title),
+      ),
+      body: new Center(
+        child: new Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: &lt;Widget&gt;[
+            new Text(
+              'You have pushed the button this many times:',
+            ),
+            new Text(
+              '$_counter',
+              style: Theme
+                  .of(context)
+                  .textTheme
+                  .display1,
+            ),
+          ],
+        ),
+      ),
+      floatingActionButton: new Padding(
+          padding: new EdgeInsets.only(right: 20.0),
+          child: new Stack(
+            alignment: FractionalOffset.center,
+            overflow: Overflow.visible,
+            children: &lt;Widget&gt;[
+              getScoreButton(),
+              getClapButton(),
+            ],
+          )
+      ),
+    );
+  }
+}</code></pre>
+<p>从最终的产品来看，我们需要补充 3 点。</p>
+<ol type="1">
+<li>改变 Widget 的大小</li>
+<li>当按钮被按下时，显示那个展示鼓掌次数的
+Widget，并在按钮释放时隐藏这个 Widget</li>
+<li>添加那些很小的向四周撒花的 Widget，并将它们做成动画</li>
+</ol>
+<p>让我们一个一个来，慢慢推进学习进度。开始之前，我们需要了解 Flutter
+中一些关于动画的基本知识。</p>
+<h2 id="了解-flutter-中基本动画的-widget">了解 Flutter 中基本动画的
+Widget</h2>
+<p>一个动画无非是一些随时间变化的数值。例如，当我们点击按钮时，我们想让显示鼓掌次数的
+Widget
+从底部逐步上移。当按钮释放的时候它应该已经上移了不少，这时候我们应该把它隐藏起来。</p>
+<p>将焦点关注在显示鼓掌次数的 Widget
+上，我们需要<strong>在一段时间内改变</strong>它的位置和不透明度。</p>
+<pre class="dart"><code>// 显示鼓掌次数的 Widget
+
+new Positioned(
+  child: new Opacity(opacity: 1.0, 
+    child: new Container(
+      // ……
+    )),
+  bottom: 100.0
+);</code></pre>
+<p>比方说，我们想让显示鼓掌次数的 Widget 在 150
+毫秒后才从底部向上淡入。让我们在时间轴上思索一下，如下所示：</p>
+<p><img src="https://miro.medium.com/max/974/1*KZuvwwIIH-YDxiHpMr9FqA.png"></p>
+<p>这是一幅简单的二维图像，位置随着时间推移而改变。</p>
+<p>请注意这是一条斜线，不过如果你喜欢的话，这其实也可以是一条曲线。</p>
+<p>你可以让位置随着时间慢慢增加，然后越来越快。或者你也可以让它以超高速进来，然后在最后慢下来。</p>
+<p>这就是我们要介绍的第一个 Widget
+<code>AnimationController</code>。</p>
+<p><code>AnimationController</code> 构造器是这样的：</p>
+<pre class="dart"><code>scoreInAnimationController = new AnimationController(duration: new Duration(milliseconds: 150), vsync: this);</code></pre>
+<p>在这里，我们已经为动画创建了一个简单的控制器，并指定了要运行动画的持续时间为
+150ms。不过那个 <code>vsync</code> 是什么？</p>
+<p>移动设备每隔几毫秒就会刷新一次屏幕。这就是我们如何将一组图像感知为一个连续的流或一部影片。</p>
+<p>屏幕刷新的速度可以因设备而异。比方说，手机每秒刷新屏幕 60 次（60
+帧/秒），那就是每隔 16.67
+毫秒之后设备会绘制一个新的界面。有时图像可能会发生错位（我们在屏幕刷新时发送了不同的图像），我们就会看到屏幕撕裂。<code>vsync</code>
+可以解决这个问题。</p>
+<p>让我们在控制器上添加一个监听器然后运行动画：</p>
+<pre class="dart"><code>scoreInAnimationController.addListener(() {
+  print(scoreInAnimationController.value);
+});
+scoreInAnimationController.forward(from: 0.0);
+
+/* OUTPUT
+I/flutter ( 1913): 0.0
+I/flutter ( 1913): 0.0
+I/flutter ( 1913): 0.22297333333333333
+I/flutter ( 1913): 0.3344533333333333
+I/flutter ( 1913): 0.4459333333333334
+I/flutter ( 1913): 0.5574133333333334
+I/flutter ( 1913): 0.6688933333333335
+I/flutter ( 1913): 0.7803666666666668
+I/flutter ( 1913): 0.8918466666666668
+I/flutter ( 1913): 1.0
+*/</code></pre>
+<p><strong>控制器在 150 毫秒内产生了从 0.0 到 1.0 的数字</strong> ——
+请注意，产生的数值几乎是线性的（0.2, 0.3,
+0.4……）。我们如何改变这种行为？这将由第二个 Widget
+<code>CurvedAnimation</code> 来完成：</p>
+<pre class="dart"><code>bounceInAnimation = new CurvedAnimation(parent: scoreInAnimationController, curve: Curves.bounceIn);
+bounceInAnimation.addListener(() {
+  print(bounceInAnimation.value);
+});
+
+/* OUTPUT
+I/flutter ( 5221): 0.0
+I/flutter ( 5221): 0.0
+I/flutter ( 5221): 0.24945376519722218
+I/flutter ( 5221): 0.16975716286388898
+I/flutter ( 5221): 0.17177866222222238
+I/flutter ( 5221): 0.6359024059750003
+I/flutter ( 5221): 0.9119433941222221
+I/flutter ( 5221): 1.0
+*/</code></pre>
+<p>我们通过将 <code>parent</code>
+设置为我们的控制器并提供我们想要跟随的曲线，创建了一个曲线动画。在 <a href="https://docs.flutter.io/flutter/animation/Curves-class.html">Flutter
+Curves 类参考文档页面</a>我们可以看到一系列我们可以使用的曲线。控制器在
+150 毫秒的时间内向曲线动画 Widget 提供 0.0 到 1.0 的数值，而曲线动画
+Widget 就会按照我们设置的曲线对这些值进行插值。</p>
+<p>现在我们得到了从 0.0 到 1.0 的值，而我们希望我们的展示点赞次数的
+Widget 的动画值的范围是
+<code>[0.0, 100.0]</code>。我们可以简单地将上一步得到的值乘以 100
+来得到结果。或者我们可以使用第三种部件 <code>Tween</code> 类。</p>
+<pre class="dart"><code>tweenAnimation = new Tween(begin: 0.0, end: 100.0).animate(scoreInAnimationController);
+tweenAnimation.addListener(() {
+  print(tweenAnimation.value);
+});
+
+/* Output 
+I/flutter ( 2639): 0.0
+I/flutter ( 2639): 0.0
+I/flutter ( 2639): 33.452000000000005
+I/flutter ( 2639): 44.602000000000004
+I/flutter ( 2639): 55.75133333333334
+I/flutter ( 2639): 66.90133333333334
+I/flutter ( 2639): 78.05133333333333
+I/flutter ( 2639): 89.20066666666668
+I/flutter ( 2639): 100.0
+*/</code></pre>
+<p><code>Tween</code> 类生成了从 <code>begin</code> 到 <code>end</code>
+的值。我们使用了前面的 <code>scoreInAnimationController</code>
+，它使用了一条线性曲线。（当然我们也可以使用我们的反弹曲线来获得不同的值）。<code>Tween</code>
+的优势并不止于此 —— 你还可以 <code>Tween</code> 其他东西。<a href="https://docs.flutter.io/flutter/animation/Tween-class.html">你可以直接
+<code>Tween</code> 颜色、偏移、位置以及其他继承了 <code>Tween</code>
+基类的 Widget 属性</a>。</p>
+<p><strong>展示鼓掌次数的 Widget 的位置动画</strong></p>
+<p>在这一点上，我们已经有足够的知识让我们的展示鼓掌次数的 Widget
+在我们按下按钮时从底部弹出，而在我们释放按钮的时候隐藏。</p>
+<pre class="dart"><code>initState() {
+  super.initState();
+  scoreInAnimationController = new AnimationController(duration: new Duration(milliseconds: 150), vsync: this);
+  scoreInAnimationController.addListener((){
+    setState(() {}); // 调用渲染函数（译者注：其实是更新状态）
+  });
+}
+
+void onTapDown(TapDownDetails tap) {
+  scoreInAnimationController.forward(from: 0.0);
+  ...    
+}
+Widget getScoreButton() {
+  var scorePosition = scoreInAnimationController.value * 100;
+  var scoreOpacity = scoreInAnimationController.value;
+  return new Positioned(
+    child: new Opacity(opacity: scoreOpacity, 
+      child: new Container(/* …… */)
+    ),
+    bottom: scorePosition
+  );
+}</code></pre>
+<p><img src="https://miro.medium.com/max/748/1*SG72TWaiaHNspnOUmPityQ.gif" alt="动画的现状"></p>
+<p>点开后弹出展示鼓掌次数的 Widget，不过还是有一个问题：</p>
+<p>当我们多次点击按钮时，展示鼓掌次数的 Widget
+会不断地弹出。这是因为上面代码中的一个小错误。我们告诉控制器在每次点击按钮时从
+0 开始前进。</p>
+<p>现在，让我们为展示鼓掌次数的 Widget 添加输出动画。</p>
+<p>首先，我们添加一个枚举来更容易地管理展示鼓掌次数的 Widget
+的状态。</p>
+<pre class="dart"><code>enum ScoreWidgetStatus {
+  HIDDEN,
+  BECOMING_VISIBLE,
+  BECOMING_INVISIBLE
+}</code></pre>
+<p>然后，我们创建一个动画控制器，对 Widget 的位置值在
+<code>[100, 150]</code>
+范围内进行非线性动画。我们还为动画添加了一个状态监听器，一旦动画结束，我们就将展示鼓掌次数的
+Widget 的状态设置为隐藏。</p>
+<pre class="dart"><code>scoreOutAnimationController = new AnimationController(vsync: this, duration: duration);
+scoreOutPositionAnimation = new Tween(begin: 100.0, end: 150.0).animate(
+  new CurvedAnimation(parent: scoreOutAnimationController, curve: Curves.easeOut)
+);
+scoreOutPositionAnimation.addListener((){
+  setState(() {});
+});
+scoreOutAnimationController.addStatusListener((status) {
+  if (status == AnimationStatus.completed) {
+    _scoreWidgetStatus = ScoreWidgetStatus.HIDDEN;
+  }
+});</code></pre>
+<p>当用户将手指从 Widget 上移开时，我们将设置相应的状态，并启动一个 300
+毫秒的计时器。300 毫秒后，我们将对 Widget
+的位置和不透明度进行动画处理：</p>
+<pre class="dart"><code>void onTapUp(TapUpDetails tap) {
+  // 用户移开了他的手指
+  scoreOutETA = new Timer(duration, () {
+    scoreOutAnimationController.forward(from: 0.0);
+    _scoreWidgetStatus = ScoreWidgetStatus.BECOMING_INVISIBLE;
+  });
+  holdTimer.cancel();
+}</code></pre>
+<p>当用户将手指点按 Widget 时，我们将设置相应的状态，并启动一个 300
+毫秒的计时器：</p>
+<pre class="dart"><code>void onTapDown(TapDownDetails tap) {
+  // 用户点按了按钮 —— 不管是长按还是点按
+  if (scoreOutETA != null) scoreOutETA.cancel(); // 我们不希望次数消失！
+  if (_scoreWidgetStatus == ScoreWidgetStatus.HIDDEN) {
+    scoreInAnimationController.forward(from: 0.0);
+    _scoreWidgetStatus = ScoreWidgetStatus.BECOMING_VISIBLE;
+  }
+  increment(null); // 关注点按
+  holdTimer = new Timer.periodic(duration, increment); // 关注长按
+}</code></pre>
+<p>我们还修改了 <code>TapDown</code>
+事件，以处理一些特殊情况。最后，我们需要选择我们需要使用哪个控制器的值来处理我们的展示鼓掌次数的
+Widget 的位置和不透明度。一个简单的 <code>switch</code>
+就可以完成这项工作：</p>
+<pre class="dart"><code>Widget getScoreButton() {
+  var scorePosition = 0.0;
+  var scoreOpacity = 0.0;
+  switch(_scoreWidgetStatus) {
+    case ScoreWidgetStatus.HIDDEN:
+      break;
+    case ScoreWidgetStatus.BECOMING_VISIBLE:
+      scorePosition = scoreInAnimationController.value * 100;
+      scoreOpacity = scoreInAnimationController.value;
+      break;
+    case ScoreWidgetStatus.BECOMING_INVISIBLE:
+      scorePosition = scoreOutPositionAnimation.value;
+      scoreOpacity = 1.0 - scoreOutAnimationController.value;
+  }
+  return ……
+}</code></pre>
+<p>当前输出：</p>
+<p><img src="https://miro.medium.com/max/732/1*RNvj1meQIy6nCn5d-S74qQ.gif"></p>
+<p>最后，我们需要选择我们需要使用哪个控制器的值来设置展示鼓掌次数的
+Widget 的位置和不透明度 —— 它应该弹出+淡出。</p>
+<p><strong>展示鼓掌次数的 Widget 大小动画</strong></p>
+<p>在这一点上，当次数增加时我们也知道如何改变大小。让我们快速添加大小动画，然后我们转到撒花动画上。</p>
+<p>我更新了 <code>ScoreWidgetStatus</code> 枚举，以持有一个额外的
+<code>VISIBLE</code> 值。现在，我们为大小属性添加一个新的控制器。</p>
+<pre class="dart"><code>scoreSizeAnimationController = new AnimationController(vsync: this, duration: new Duration(milliseconds: 150));
+scoreSizeAnimationController.addStatusListener((status) {
+  if(status == AnimationStatus.completed) {
+    scoreSizeAnimationController.reverse();
+  }
+});
+scoreSizeAnimationController.addListener((){
+  setState(() {});
+});</code></pre>
+<p>控制器在 150 毫秒内产生从 0 到 1 的数值，一旦完成，我们就产生从 1 到
+0 的数值，这样就有了很好的放大和缩小的效果。</p>
+<p>我们还更新了我们的 <code>increment</code> 函数 ——
+当数字递增时就会开始动画。</p>
+<pre class="dart"><code>void increment(Timer t) {
+  scoreSizeAnimationController.forward(from: 0.0);
+  setState(() {
+    _counter++;
+  });
+}</code></pre>
+<p>我们需要处理枚举的 <code>Visible</code> 属性的情况。为此，我们需要在
+<code>TouchDown</code> 事件中添加一些判断：</p>
+<pre class="dart"><code>void onTapDown(TapDownDetails tap) {
+  // 用户点按了按钮 —— 不管是长按还是点按
+  if (scoreOutETA != null) scoreOutETA.cancel(); // 我们不希望次数消失！
+  if(_scoreWidgetStatus == ScoreWidgetStatus.BECOMING_INVISIBLE) {
+    // 在 Widget 向上飞入的时候点击了按钮，把那玩意暂停掉！
+    scoreOutAnimationController.stop(canceled: true);
+    _scoreWidgetStatus = ScoreWidgetStatus.VISIBLE;
+  }
+  else if (_scoreWidgetStatus == ScoreWidgetStatus.HIDDEN ) {
+    _scoreWidgetStatus = ScoreWidgetStatus.BECOMING_VISIBLE;
+    scoreInAnimationController.forward(from: 0.0);
+  }
+  increment(null); // 关注点按
+  holdTimer = new Timer.periodic(duration, increment); // 关注长按
+}</code></pre>
+<p>最后，我们在 Widget 中使用控制器的值。</p>
+<pre class="dart"><code>extraSize = scoreSizeAnimationController.value * 10;
+...
+height: 50.0 + extraSize,
+width: 50.0  + extraSize,
+...</code></pre>
+<p>完整的代码可以在 <a href="https://gist.github.com/Kartik1607/52c882194e3119e0d176fb15e6c6b913">GitHub
+Gist</a>
+处找到。这里我们同时运行的大小和位置的动画。尺寸放缩动画还需要一点点调整，最后再说。</p>
+<p><img src="https://miro.medium.com/max/716/1*5ttrTDWNuApskZBCIX1zrQ.gif" alt="尺寸和位置动画一起工作"></p>
+<h2 id="撒花动画">撒花动画</h2>
+<p>在做撒花动画之前，我们需要对尺寸放缩动画做一些调整。目前来看，按钮的放大幅度太大。解决方法很简单，将
+<code>extrasize</code> 系数从 <code>10</code> 改为小一点的数字。</p>
+<p>现在来看撒花动画。我们可以观察到，<strong>撒出来的花只是 5
+个变化着位置的图像。</strong></p>
+<p>我在微软的 Paint 软件中制作了一个三角形和一个圆形的图像，并将其保存到
+Flutter 资源中。现在我们就可以将该图像作为 Image Asset 素材。</p>
+<p>在制作动画之前，我们先来思考一下定位和一些我们需要完成的任务。</p>
+<ol type="1">
+<li>我们需要定位 5 张图片，每张图片呈现不同角度，围成一个完整的圆。</li>
+<li>我们需要根据角度旋转图像。</li>
+<li>我们需要随着时间增加圆的半径。</li>
+<li>我们需要根据角度和半径找到坐标。</li>
+</ol>
+<p>简单的三角学给我们提供了根据角度的正弦和余弦得到 x 和 y
+坐标的公式。</p>
+<pre class="dart"><code>var sparklesWidget =
+  new Positioned(child: new Transform.rotate(
+    angle: currentAngle - pi/2,
+    child: new Opacity(opacity: sparklesOpacity,
+      child : new Image.asset("images/sparkles.png", width: 14.0, height: 14.0, ))
+    ),
+    left:(sparkleRadius*cos(currentAngle)) + 20,
+    top: (sparkleRadius* sin(currentAngle)) + 20 ,
+  );</code></pre>
+<p>现在，我们需要创建 5 个这样的 Widget，而每个 Widget
+都应该有不同的角度。一个简单的 <code>for</code> 循环就可以了。</p>
+<pre class="dart"><code>for(int i = 0;i &lt; 5; ++i) {
+  var currentAngle = (firstAngle + ((2*pi)/5)*(i));
+  var sparklesWidget = ...
+  stackChildren.add(sparklesWidget);
+}</code></pre>
+<p>我们只需将 <code>2*pi</code>（360 度）分成 5 份，并据此创建一个
+Widget。然后，我们将这些 Widget
+添加到一个数组中，这个数组将作为栈的孩子。</p>
+<p>现在，在这一点上，大部分的工作已经完成。我们只需要对
+<code>sparkleRadius</code> 进行动画处理，并在分数递增时生成一个新的
+<code>firstAngle</code>。</p>
+<pre class="dart"><code>sparklesAnimationController = new AnimationController(vsync: this, duration: duration);
+sparklesAnimation = new CurvedAnimation(parent: sparklesAnimationController, curve: Curves.easeIn);
+sparklesAnimation.addListener((){
+  setState(() { });
+});
+
+void increment(Timer t) {
+  sparklesAnimationController.forward(from: 0.0);
+  ...
+  setState(() {
+  ...
+  _sparklesAngle = random.nextDouble() * (2*pi);
+});
+     
+Widget getScoreButton() {
+  ...
+  var firstAngle = _sparklesAngle;
+  var sparkleRadius = (sparklesAnimationController.value * 50) ;
+  var sparklesOpacity = (1 - sparklesAnimation.value);
+  ...
+}</code></pre>
+<p><img src="https://miro.medium.com/max/788/1*O5FNILFgN18aAbfbTVfsDA.gif" alt="最终结果"></p>
+<p>这就是我们对 Flutter
+中<strong>基本动画的介绍</strong>。我们未来还会继续探索更多的 Flutter
+知识，以学习创建更高级的 UI。</p>
+<p>你可以在我的 <a href="https://github.com/Kartik1607/FlutterUI/tree/master/MediumClapAnimation/medium_clap">Git
+仓库</a>找到完整的代码。</p>
+
+
+
+            </div>
+        </article>
+        <div class="sidebar">
+            <div class="about-box">
+    <div class="avatar">
+        <img src="/assets/media/bitmap/avatar.jpeg" alt="avatar">
+    </div>
+    <h1>霜羽 Hoarfroster</h1>
+    <h2>@PassionPenguin</h2>
+    <p class="moment"><span class="status">🤔</span><span>努力！</span></p>
+    <ul>
+        <li><i class="fa-solid fa-location-dot"></i> 广东 · 广州 | <span class="light">Guangzhou, China</span>
+        </li>
+        <li><i class="fa-solid fa-envelope"></i> <a href="mailto:hoarfroster@outlook.com">hoarfroster@outlook.com</a>
+        </li>
+        <li><i class="fa-solid fa-house"></i> <a href="https://story.hoarfroster.space/">https://story.hoarfroster.space/</a>
+        </li>
+    </ul>
+</div>
+<div class="organization">
+    <h4>组织 Organizations</h4>
+    <ul>
+        <li>
+            <img src="https://avatars.githubusercontent.com/u/81648011?s=60&amp;v=4"
+                alt="Hexa-Penguin"><span>Hexa-Penguin</span>
+        </li>
+        <li>
+            <img src="https://avatars.githubusercontent.com/u/10482599?s=60&amp;v=4" alt="xitu"><span>稀土 xitu</span>
+        </li>
+    </ul>
+</div>
+<div class="category">
+    <span class="title">文章分类</span>
+    <ul>
+        <!-- <li><a href="/archive.html">所有分类</a></li> -->
+    </ul>
+</div>
+<div class="archive">
+    <span class="title">文章存档</span>
+    <ul>
+        <!-- <li><a href="/archive.html">所有文章</a></li> -->
+    </ul>
+</div>
+        </div>
+    </div>
+    <div class="footer">
+    <div class="content">
+        <div class="about">
+            <p>霜羽 Hoarfroster</p>
+            <p>&copy; Copyright 2021 Hoarfroster and contributors.</p>
+        </div>
+        <div class="nav">
+            <div class="links">
+                <span class="title">关于文章</span>
+                <ul>
+                    <li><a href="/archive.html">文章存档</a></li>
+                </ul>
+            </div>
+            <div class="category">
+                <span class="title">关于霜羽</span>
+                <ul>
+                    <li><a href="/about.html">有关霜羽</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <ul class="social-accounts">
+        <li>
+            <a href="https://www.zhihu.com/people/shuang-yu-29-75">
+                <i class="fa-brands fa-zhihu" style="font-size: 24px; color:#06f; line-height: 24px;"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://github.com/PassionPenguin">
+                <img src="/assets/media/vectors/github.svg" alt="github-logo"/>
+            </a>
+        </li>
+        <li>
+            <a href="https://dribbble.com/Hoarfroster">
+                <img src="/assets/media/vectors/dribbble.svg" alt="dribbble-logo"/>
+            </a>
+        </li>
+        <li>
+            <a href="https://zh.wikipedia.org/wiki/User:HoarfrostFeather">
+                <i class="fa-brands fa-wikipedia-w" style="font-size: 22px; color: #888; line-height: 24px;"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://space.bilibili.com/201469972">
+                <i class="fa-brands fa-bilibili" style="font-size: 22px; color: #00a1d6; line-height: 24px;"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+</body>
+
+</html>

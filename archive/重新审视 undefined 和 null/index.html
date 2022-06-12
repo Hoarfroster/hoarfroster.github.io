@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>重新审视 undefined 和 null</title>
+    <script src="/assets/script/main.js"></script>
+    <link rel="stylesheet" href="/assets/style/styles.css">
+</head>
+
+<body>
+    <div class="header">
+    <div class="container">
+        <div class="icon">
+            <img src="/assets/media/vectors/hoarfroster-text.svg" alt="Hoarfroster Logo with Text">
+        </div>
+        <nav class="navigation">
+            <ul class="header-navigation-list">
+                <li><a href="/">首页</a></li>
+                <li><a href="/archive.html">文章</a></li>
+                <li><a href="/about.html">关于</a></li>
+            </ul>
+            <form action="/search" method="post">
+                <label>
+                    <input type="text" class="search" placeholder="搜索咕咕咕的小站"/>
+                </label>
+                <label class="submit">
+                    <input type="submit"/>
+                </label>
+            </form>
+        </nav>
+        <ul class="social-accounts">
+            <li>
+                <a href="https://www.zhihu.com/people/shuang-yu-29-75">
+                    <i class="fa-brands fa-zhihu" style="font-size: 20px; color:#06f; line-height: 20px;"></i>
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/PassionPenguin">
+                    <img src="/assets/media/vectors/github.svg" alt="github-logo"/>
+                </a>
+            </li>
+            <li>
+                <a href="https://dribbble.com/Hoarfroster">
+                    <img src="/assets/media/vectors/dribbble.svg" alt="dribbble-logo"/>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+    <div class="content article">
+        <article>
+            <div class="title">
+                <h1>重新审视 undefined 和 null</h1>
+                <p><span class='chars'>undefined chars</span><span class='created-date'>Created Sat May 28 2022 23:43:08 GM</span><span class='modified-date'>Modified Sat May 28 2022 23:43:08 GM</span></p>
+            </div>
+            <div class="main markdown-body">
+                
+
+<blockquote>
+<ul>
+<li>原文地址：<a href="https://2ality.com/2021/01/undefined-null-revisited.html">undefined
+vs. null revisited</a></li>
+<li>原文作者：<a href="http://dr-axel.de/">Dr. Axel Rauschmayer</a></li>
+<li>译者：<a href="https://github.com/PassionPenguin">霜羽
+Hoarfroster</a></li>
+<li>校对者：<a href="https://github.com/Moonball">Moonball</a>、<a href="https://github.com/felixliao">felixliao</a></li>
+</ul>
+</blockquote>
+<p>很多的编程语言都有一种表示空值的类型，叫做
+<code>null</code>。它指示了一个变量当前并没有指向任何对象 ——
+例如，某个变量还没有初始化的时候。</p>
+<p>作为不同，JavaScript 则拥有两种表示空值的类型，一种是
+<code>undefined</code>，另一种则是
+<code>null</code>。在这篇文章中，我们将测试它们的区别，以及如何去挑选最佳的类型或避免去使用它们。</p>
+<h2 id="undefined-vs-null"><code>undefined</code> vs.
+<code>null</code></h2>
+<p>两个值都很是相像，并且通常被相互替代着使用，也因此，他们之间的区别很是细微。</p>
+<h3 id="undefinednull-在ecmascript-语言标准上的对比"><code>undefined</code>、<code>null</code>
+在ECMAScript 语言标准上的对比</h3>
+<p>ECMAScript 语言标准按照如下内容描述他们：</p>
+<ul>
+<li><code>undefined</code> 是在一个变量还没有被赋值时候使用的。<sup><a href="https://tc39.es/ecma262/#sec-undefined-value">出处</a></sup></li>
+<li><code>null</code> 表示任何有意地缺省对象值。<sup><a href="https://tc39.es/ecma262/#sec-null-value">出处</a></sup></li>
+</ul>
+<p>我们等下就会探索一下作为程序员，我们应该如何去以最佳的方式使用这两个值。</p>
+<h3 id="两个空值--一个不能弥补的错误">两个空值 ——
+一个不能弥补的错误</h3>
+<p>在 JavaScript
+中同时有两个表示空值的值现在被认为是一个设计错误（哪怕是 JavaScript 之父
+Brendan Eich 也这么认为）。</p>
+<p>那么为什么不从 JavaScript 中删除这两个值之一呢？JavaScript
+的一项核心原则是永不破坏向后的兼容性。该原则具有<a href="https://exploringjs.com/impatient-js/ch_history.html#backward-compatibility">好处</a>，但同时也拥有着最大的缺点，即无法弥补设计错误。</p>
+<h3 id="undefined-和-null-的历史"><code>undefined</code> 和
+<code>null</code> 的历史</h3>
+<p>在 Java（影响了 JavaScript
+很多方面的语言）中初始值依赖于一个变量的静态类型：</p>
+<ul>
+<li>以对象值为类型的变量初始化为 <code>null</code>。</li>
+<li>每个基本类型都拥有它的初始值，例如 <code>int</code> 整型对应
+<code>0</code>。</li>
+</ul>
+<p>在 JavaScript 中，每一个变量都可以存储对象值或原始值，意味着如果
+<code>null</code> 表示不是一个对象，那么 JavaScript
+也同时需要一个初始值表示既不是一个对象也不拥有原始值，这就是
+<code>undefined</code>。</p>
+<h2 id="undefined-的出现场合"><code>undefined</code> 的出现场合</h2>
+<p>如果一个变量 <code>myVar</code> 还没有被初始化，那么它的值就是
+<code>undefined</code>：</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> myVar<span class="op">;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>assert<span class="op">.</span><span class="fu">equal</span>(myVar<span class="op">,</span> <span class="kw">undefined</span>)<span class="op">;</span></span></code></pre></div>
+<p>如果一个属性 <code>.unknownProp</code> 不存在，访问这个属性就会生成
+<code>undefined</code> 值：</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> obj <span class="op">=</span> {}<span class="op">;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>assert<span class="op">.</span><span class="fu">equal</span>(obj<span class="op">.</span><span class="at">unknownProp</span><span class="op">,</span> <span class="kw">undefined</span>)<span class="op">;</span></span></code></pre></div>
+<p>如果一个函数没有明确返回任何内容，那么默认就会返回
+<code>undefined</code>：</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">myFunc</span>() {</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>assert<span class="op">.</span><span class="fu">equal</span>(<span class="fu">myFunc</span>()<span class="op">,</span> <span class="kw">undefined</span>)<span class="op">;</span></span></code></pre></div>
+<p>如果一个函数拥有一个 <code>return</code>
+语句但没有指定任何返回值，那么也会默认返回 <code>undefined</code>：</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">myFunc</span>() {</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span><span class="op">;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>assert<span class="op">.</span><span class="fu">equal</span>(<span class="fu">myFunc</span>()<span class="op">,</span> <span class="kw">undefined</span>)<span class="op">;</span></span></code></pre></div>
+<p>如果一个参数 <code>x</code> 没有传实参，那么就会被初始化为
+<code>undefined</code>：</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">myFunc</span>(x) {</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    assert<span class="op">.</span><span class="fu">equal</span>(x<span class="op">,</span> <span class="kw">undefined</span>)<span class="op">;</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">myFunc</span>()<span class="op">;</span></span></code></pre></div>
+<p>通过 <code>obj?.someProp</code> 访问的<a href="https://exploringjs.com/impatient-js/ch_single-objects.html#optional-chaining">可选链</a>在<code> obj</code>
+是 <code>undefined</code> 或 <code>null</code> 的时候返回
+<code>undefined</code>：</p>
+<pre class="repl"><code>&gt; undefined?.someProp
+undefined
+&gt; null?.someProp
+undefined</code></pre>
+<h2 id="null-的出现场合"><code>null</code> 的出现场合</h2>
+<p>一个对象的原型要么是另一个对象，要么是原型链末尾的
+<code>null</code>。<code>Object.prototype</code> 没有原型：</p>
+<pre class="repl"><code>&gt; Object.getPrototypeOf(Object.prototype)
+null</code></pre>
+<p>如果我们使用一个正则表达式（例如
+<code>/a/</code>）匹配一个字符串（例如
+<code>x</code>），我们要么得到一个存储着匹配数据的对象（如果匹配成功），要么得到
+<code>null</code>（如果匹配失败）。</p>
+<pre class="repl"><code>&gt; /a/.exec('x')
+null</code></pre>
+<p><a href="https://exploringjs.com/impatient-js/ch_json.html">JSON
+数据格式</a> 不支持 <code>undefined</code>，只支持
+<code>null</code>：</p>
+<pre class="repl"><code>&gt; JSON.stringify({a: undefined, b: null})
+'{"b":null}'</code></pre>
+<h2 id="专门用来对付-undefined-和-null-的操作符">专门用来对付
+<code>undefined</code> 和 <code>null</code> 的操作符</h2>
+<h3 id="undefined-以及默认参数值"><code>undefined</code>
+以及默认参数值</h3>
+<p>一个参数的默认值会在以下情况下被使用：</p>
+<ul>
+<li>这个参数被我们忽略掉了。</li>
+<li>这个参数被赋予 <code>undefined</code> 值。</li>
+</ul>
+<p>举个例子：</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">myFunc</span>(arg <span class="op">=</span> <span class="st">'abc'</span>) {</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> arg<span class="op">;</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>assert<span class="op">.</span><span class="fu">equal</span>(<span class="fu">myFunc</span>(<span class="st">'hello'</span>)<span class="op">,</span> <span class="st">'hello'</span>)<span class="op">;</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>assert<span class="op">.</span><span class="fu">equal</span>(<span class="fu">myFunc</span>()<span class="op">,</span> <span class="st">'abc'</span>)<span class="op">;</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>assert<span class="op">.</span><span class="fu">equal</span>(<span class="fu">myFunc</span>(<span class="kw">undefined</span>)<span class="op">,</span> <span class="st">'abc'</span>)<span class="op">;</span></span></code></pre></div>
+<p>当指向它的值为一个元值时，<code>undefined</code>
+也会触发默认参数值。</p>
+<p>以下的例子示范了这个特性有用的地方：</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">concat</span>(str1 <span class="op">=</span> <span class="st">''</span><span class="op">,</span> str2 <span class="op">=</span> <span class="st">''</span>) {</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> str1 <span class="op">+</span> str2<span class="op">;</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">twice</span>(str) { <span class="co">// (A)</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="fu">concat</span>(str<span class="op">,</span> str)<span class="op">;</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>在 A 行，我们并没有制定参数 <code>str</code>
+的默认值，而当这个参数被忽略掉的时候，我们将该状态转发到
+<code>concat()</code>，让其选择默认值。</p>
+<h3 id="undefined解构默认值"><code>undefined</code>，解构默认值</h3>
+<p>解构下的默认值的工作方式与参数默认值类似 ——
+如果变量在数据中不匹配或与 <code>undefined</code> 匹配，则使用它们：</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> [a <span class="op">=</span> <span class="st">'a'</span>] <span class="op">=</span> []<span class="op">;</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>assert<span class="op">.</span><span class="fu">equal</span>(a<span class="op">,</span> <span class="st">'a'</span>)<span class="op">;</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> [b <span class="op">=</span> <span class="st">'b'</span>] <span class="op">=</span> [<span class="kw">undefined</span>]<span class="op">;</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>assert<span class="op">.</span><span class="fu">equal</span>(b<span class="op">,</span> <span class="st">'b'</span>)<span class="op">;</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> {<span class="dt">prop</span><span class="op">:</span> c <span class="op">=</span> <span class="st">'c'</span>} <span class="op">=</span> {}<span class="op">;</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>assert<span class="op">.</span><span class="fu">equal</span>(c<span class="op">,</span> <span class="st">'c'</span>)<span class="op">;</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> {<span class="dt">prop</span><span class="op">:</span> d <span class="op">=</span> <span class="st">'d'</span>} <span class="op">=</span> {<span class="dt">prop</span><span class="op">:</span> <span class="kw">undefined</span>}<span class="op">;</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>assert<span class="op">.</span><span class="fu">equal</span>(d<span class="op">,</span> <span class="st">'d'</span>)<span class="op">;</span></span></code></pre></div>
+<h3 id="undefinednull-和可选链"><code>undefined</code>、<code>null</code>
+和可选链</h3>
+<p>如果通过 <code>value?.prop</code> 使用了<a href="https://exploringjs.com/impatient-js/ch_single-objects.html#optional-chaining">可选链</a>：</p>
+<ul>
+<li>如果 <code>value</code> 是 <code>undefined</code> 或
+<code>null</code> 的，将会返回 <code>undefined</code>。也就是说，如果
+<code>value.prop</code> 抛出错误，就会返回 <code>undefined</code>。</li>
+<li>否则会返回 <code>value.prop</code>.</li>
+</ul>
+<div class="sourceCode" id="cb13"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">getProp</span>(value) {</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 可选的静态属性访问</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> value<span class="op">?.</span><span class="at">prop</span><span class="op">;</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>assert<span class="op">.</span><span class="fu">equal</span>(</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">getProp</span>({<span class="dt">prop</span><span class="op">:</span> <span class="dv">123</span>})<span class="op">,</span> <span class="dv">123</span>)<span class="op">;</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>assert<span class="op">.</span><span class="fu">equal</span>(</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">getProp</span>(<span class="kw">undefined</span>)<span class="op">,</span> <span class="kw">undefined</span>)<span class="op">;</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>assert<span class="op">.</span><span class="fu">equal</span>(</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">getProp</span>(<span class="kw">null</span>)<span class="op">,</span> <span class="kw">undefined</span>)<span class="op">;</span></span></code></pre></div>
+<p>以下的两个操作也很是类似的工作：</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>obj<span class="op">?.</span>[«expr»] <span class="co">// 可选的动态属性访问</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>func<span class="op">?.</span>(«arg0»<span class="op">,</span> «arg1») <span class="co">// 可选的函数或方法调用</span></span></code></pre></div>
+<h3 id="undefinednull-和空合并"><code>undefined</code>、<code>null</code>
+和空合并</h3>
+<p><a href="https://exploringjs.com/impatient-js/ch_operators.html#nullish-coalescing-operator">空合并操作符
+<code>??</code></a> 可让我们在一个值是 <code>undefined</code> 或
+<code>null</code> 时，使用默认值：</p>
+<pre class="repl"><code>&gt; undefined ?? 'default value'
+'default value'
+&gt; null ?? 'default value'
+'default value'
+
+&gt; 0 ?? 'default value'
+0
+&gt; 123 ?? 'default value'
+123
+&gt; '' ?? 'default value'
+''
+&gt; 'abc' ?? 'default value'
+'abc'</code></pre>
+<p><a href="https://2ality.com/2020/06/logical-assignment-operators.html">空合并赋值操作符
+<code>??=</code></a> 合并了空合并操作符与赋值操作符：</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">setName</span>(obj) {</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    obj<span class="op">.</span><span class="at">name</span> <span class="op">??=</span> <span class="st">'(Unnamed)'</span><span class="op">;</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> obj<span class="op">;</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>assert<span class="op">.</span><span class="fu">deepEqual</span>(</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">setName</span>({})<span class="op">,</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>    {<span class="dt">name</span><span class="op">:</span> <span class="st">'(Unnamed)'</span>}</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>)<span class="op">;</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>assert<span class="op">.</span><span class="fu">deepEqual</span>(</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">setName</span>({<span class="dt">name</span><span class="op">:</span> <span class="kw">undefined</span>})<span class="op">,</span></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>    {<span class="dt">name</span><span class="op">:</span> <span class="st">'(Unnamed)'</span>}</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>)<span class="op">;</span></span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>assert<span class="op">.</span><span class="fu">deepEqual</span>(</span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">setName</span>({<span class="dt">name</span><span class="op">:</span> <span class="kw">null</span>})<span class="op">,</span></span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>    {<span class="dt">name</span><span class="op">:</span> <span class="st">'(Unnamed)'</span>}</span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>)<span class="op">;</span></span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>assert<span class="op">.</span><span class="fu">deepEqual</span>(</span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">setName</span>({<span class="dt">name</span><span class="op">:</span> <span class="st">'Jane'</span>})<span class="op">,</span></span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>    {<span class="dt">name</span><span class="op">:</span> <span class="st">'Jane'</span>}</span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>)<span class="op">;</span></span></code></pre></div>
+<h2 id="处理-undefined-与-null">处理 <code>undefined</code> 与
+<code>null</code></h2>
+<p>以下的部分解释了在我们代码中最常见的处理 <code>undefined</code> 和
+<code>null</code> 的方法：</p>
+<h3 id="实际值既不是-undefined-也不是-null">实际值既不是
+<code>undefined</code> 也不是 <code>null</code></h3>
+<p>例如，我们可能希望属性 <code>file.title</code>
+始终存在并且始终是字符串，那么有两种常见的方法可以实现此目的。</p>
+<p>请注意，在此博客文章中，我们仅检查 <code>undefined</code> 和
+<code>null</code>，而不检查值是否为字符串。你需要自己决定是否要添加检查器，作为附加的安全保障措施。</p>
+<h4 id="同时禁止-undefined-和-null">同时禁止 <code>undefined</code> 和
+<code>null</code></h4>
+<p>例如：</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">createFile</span>(title) {</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (title <span class="op">===</span> <span class="kw">undefined</span> <span class="op">||</span> title <span class="op">===</span> <span class="kw">null</span>) {</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">throw</span> <span class="kw">new</span> <span class="bu">Error</span>(<span class="st">'`title` must not be nullish'</span>)<span class="op">;</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">// ···</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>为什么选择这个方法？</p>
+<ul>
+<li><p>我们希望以相同的方式处理 <code>undefined</code> 和
+<code>null</code>，因为 JavaScript 代码就是经常那样做，例如：</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">// 检查一个属性是否存在</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="op">!</span>obj<span class="op">.</span><span class="at">requiredProp</span>) {</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  obj<span class="op">.</span><span class="at">requiredProp</span> <span class="op">=</span> <span class="dv">123</span><span class="op">;</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="co">// 通过空合并操作符使用默认值</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> myValue <span class="op">=</span> myParameter <span class="op">??</span> <span class="st">'some default'</span><span class="op">;</span></span></code></pre></div></li>
+<li><p>如果我们的代码中出现了问题，让 <code>undefined</code> 或
+<code>null</code> 出现了，我们需要让它尽早结束执行并抛出错误。</p></li>
+</ul>
+<h4 id="同时对-undefined-和-null-使用默认值">同时对
+<code>undefined</code> 和 <code>null</code> 使用默认值</h4>
+<p>例如：</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">createFile</span>(title) {</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    title <span class="op">??=</span> <span class="st">'(Untitled)'</span><span class="op">;</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">// ···</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>我们不能使用参数默认值，因为它只会被 <code>undefined</code>
+触发。在这里，我们依赖于<a href="https://2ality.com/2020/06/logical-assignment-operators.html">空合并赋值运算符
+<code>??=</code></a>。</p>
+<p>为什么选择这个方法？</p>
+<ul>
+<li>我们希望以相同方式对待 <code>undefined</code> 和
+<code>null</code>（见上文）。</li>
+<li>我们希望我们的代码无声但有力地对待 <code>undefined</code> 和
+<code>null</code>。</li>
+</ul>
+<h3 id="undefined-或-null-是一个被忽略的值"><code>undefined</code> 或
+<code>null</code> 是一个被忽略的值</h3>
+<p>例如，我们可能希望属性 <code>file.title</code>
+是字符串或是被忽略的值（即 <code>file</code>
+没有标题），那么有几种方法可以实现此目的。</p>
+<h4 id="null-是被忽略值"><code>null</code> 是被忽略值</h4>
+<p>例如：</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">createFile</span>(title) {</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (title <span class="op">===</span> <span class="kw">undefined</span>) {</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">throw</span> <span class="kw">new</span> <span class="bu">Error</span>(<span class="st">'`title` 不应该是 undefined'</span>)<span class="op">;</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {title}<span class="op">;</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>或者，<code>undefined</code> 也可以触发默认值：</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">createFile</span>(title <span class="op">=</span> <span class="st">'(Untitled)'</span>) {</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {title}<span class="op">;</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>为什么要选择这个方法？</p>
+<ul>
+<li>我们需要一个空值来表示被忽略。</li>
+<li>我们不希望空值触发参数默认值并破坏默认值。</li>
+<li>我们想将空值字符串化为 JSON（这是我们无法对 <code>undefined</code>
+进行的处理）。</li>
+</ul>
+<h4 id="undefined-是被忽略的值"><code>undefined</code> 是被忽略的值</h4>
+<p>例如：</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">createFile</span>(title) {</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (title <span class="op">===</span> <span class="kw">null</span>) {</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">throw</span> <span class="kw">new</span> <span class="bu">Error</span>(<span class="st">'`title` 不应该是 null'</span>)<span class="op">;</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {title}<span class="op">;</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>为什么选择这种方法？</p>
+<ul>
+<li>我们需要一个空值来表示被忽略。</li>
+<li>我们确实希望空值触发参数或解构默认值。</li>
+</ul>
+<p><code>undefined</code> 的一个缺点是它通常是在 JavaScript 中意外赋予的
+—— 在未初始化的变量，属性名称中的错字，忘记从函数中返回内容等。</p>
+<h4 id="为什么不同时将-undefined-和-null-看作是被忽略的值">为什么不同时将
+<code>undefined</code> 和 <code>null</code> 看作是被忽略的值？</h4>
+<p>当接收到一个值时，将 <code>undefined</code> 和 <code>null</code>
+都视为 “空值” 是有意义的。
+但是，当我们创建值时，我们不希望模棱两可，以避免不必要的麻烦。</p>
+<p>这指向了另一种角度：如果我们需要一个被忽略的值，但又不想使用
+<code>undefined</code> 或 <code>null</code>
+作为被忽略值时该怎么办？看看下文吧：</p>
+<h3 id="其他处理被忽略值的方法">其他处理被忽略值的方法</h3>
+<h4 id="特殊值">特殊值</h4>
+<p>我们可以创建一个特殊值，每当属性被忽略时 <code>.title</code>
+时就使用该值：</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> UNTITLED <span class="op">=</span> <span class="bu">Symbol</span>(<span class="st">'UNTITLED'</span>)<span class="op">;</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> file <span class="op">=</span> {</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">title</span><span class="op">:</span> UNTITLED<span class="op">,</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>}<span class="op">;</span></span></code></pre></div>
+<h4 id="null-对象模式">Null 对象模式</h4>
+<p><strong>Null 对象模式</strong> 来自 OOP（面对对象编程）：</p>
+<ul>
+<li>一个公共超类的所有子类都具有相同的接口。</li>
+<li>每个子类实现一种不同的模式供其实例使用。</li>
+<li>这些模式之一是 <code>null</code>。</li>
+</ul>
+<p>在下文中，<code>UntitledFile</code> 继承了 “null” 模式。</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Abstract superclass</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> <span class="bu">File</span> {</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">constructor</span>(content) {</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (<span class="kw">new</span><span class="op">.</span><span class="at">target</span> <span class="op">===</span> <span class="bu">File</span>) {</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>            <span class="cf">throw</span> <span class="kw">new</span> <span class="bu">Error</span>(<span class="st">'Can’t instantiate this class'</span>)<span class="op">;</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>        <span class="kw">this</span><span class="op">.</span><span class="at">content</span> <span class="op">=</span> content<span class="op">;</span></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> TitledFile <span class="kw">extends</span> <span class="bu">File</span> {</span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">constructor</span>(content<span class="op">,</span> title) {</span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>        <span class="kw">super</span>(content)<span class="op">;</span></span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>        <span class="kw">this</span><span class="op">.</span><span class="at">title</span> <span class="op">=</span> title<span class="op">;</span></span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">getTitle</span>() {</span>
+<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="kw">this</span><span class="op">.</span><span class="at">title</span><span class="op">;</span></span>
+<span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb24-20"><a href="#cb24-20" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb24-21"><a href="#cb24-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-22"><a href="#cb24-22" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> UntitledFile <span class="kw">extends</span> <span class="bu">File</span> {</span>
+<span id="cb24-23"><a href="#cb24-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">constructor</span>(content) {</span>
+<span id="cb24-24"><a href="#cb24-24" aria-hidden="true" tabindex="-1"></a>        <span class="kw">super</span>(content)<span class="op">;</span></span>
+<span id="cb24-25"><a href="#cb24-25" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb24-26"><a href="#cb24-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-27"><a href="#cb24-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">getTitle</span>() {</span>
+<span id="cb24-28"><a href="#cb24-28" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">'(Untitled)'</span><span class="op">;</span></span>
+<span id="cb24-29"><a href="#cb24-29" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb24-30"><a href="#cb24-30" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb24-31"><a href="#cb24-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-32"><a href="#cb24-32" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> files <span class="op">=</span> [</span>
+<span id="cb24-33"><a href="#cb24-33" aria-hidden="true" tabindex="-1"></a>    <span class="kw">new</span> <span class="fu">TitledFile</span>(<span class="st">'Dear diary!'</span><span class="op">,</span> <span class="st">'My Diary'</span>)<span class="op">,</span></span>
+<span id="cb24-34"><a href="#cb24-34" aria-hidden="true" tabindex="-1"></a>    <span class="kw">new</span> <span class="fu">UntitledFile</span>(<span class="st">'Reminder: pick a title!'</span>)<span class="op">,</span></span>
+<span id="cb24-35"><a href="#cb24-35" aria-hidden="true" tabindex="-1"></a>]<span class="op">;</span></span>
+<span id="cb24-36"><a href="#cb24-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-37"><a href="#cb24-37" aria-hidden="true" tabindex="-1"></a>assert<span class="op">.</span><span class="fu">deepEqual</span>(</span>
+<span id="cb24-38"><a href="#cb24-38" aria-hidden="true" tabindex="-1"></a>    files<span class="op">.</span><span class="fu">map</span>(f <span class="kw">=&gt;</span> f<span class="op">.</span><span class="fu">getTitle</span>())<span class="op">,</span></span>
+<span id="cb24-39"><a href="#cb24-39" aria-hidden="true" tabindex="-1"></a>    [</span>
+<span id="cb24-40"><a href="#cb24-40" aria-hidden="true" tabindex="-1"></a>        <span class="st">'My Diary'</span><span class="op">,</span></span>
+<span id="cb24-41"><a href="#cb24-41" aria-hidden="true" tabindex="-1"></a>        <span class="st">'(Untitled)'</span><span class="op">,</span></span>
+<span id="cb24-42"><a href="#cb24-42" aria-hidden="true" tabindex="-1"></a>    ])<span class="op">;</span></span></code></pre></div>
+<p>我们也可以只为标题（而不是整个文件对象）使用空对象模式。</p>
+<h4 id="也许类型">“也许”类型</h4>
+<p>“也许”类型是一种函数编程技术：</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">getTitle</span>(file) {</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">switch</span> (file<span class="op">.</span><span class="at">title</span><span class="op">.</span><span class="at">kind</span>) {</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">case</span> <span class="st">'just'</span><span class="op">:</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> file<span class="op">.</span><span class="at">title</span><span class="op">.</span><span class="at">value</span><span class="op">;</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">case</span> <span class="st">'nothing'</span><span class="op">:</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="st">'(Untitled)'</span><span class="op">;</span></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">default</span><span class="op">:</span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>            <span class="cf">throw</span> <span class="kw">new</span> <span class="bu">Error</span>()<span class="op">;</span></span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> files <span class="op">=</span> [</span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>    {</span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>        <span class="dt">title</span><span class="op">:</span> {<span class="dt">kind</span><span class="op">:</span> <span class="st">'just'</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="st">'My Diary'</span>}<span class="op">,</span></span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>        <span class="dt">content</span><span class="op">:</span> <span class="st">'Dear diary!'</span><span class="op">,</span></span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a>    }<span class="op">,</span></span>
+<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a>    {</span>
+<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a>        <span class="dt">title</span><span class="op">:</span> {<span class="dt">kind</span><span class="op">:</span> <span class="st">'nothing'</span>}<span class="op">,</span></span>
+<span id="cb25-19"><a href="#cb25-19" aria-hidden="true" tabindex="-1"></a>        <span class="dt">content</span><span class="op">:</span> <span class="st">'Reminder: pick a title!'</span><span class="op">,</span></span>
+<span id="cb25-20"><a href="#cb25-20" aria-hidden="true" tabindex="-1"></a>    }<span class="op">,</span></span>
+<span id="cb25-21"><a href="#cb25-21" aria-hidden="true" tabindex="-1"></a>]<span class="op">;</span></span>
+<span id="cb25-22"><a href="#cb25-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-23"><a href="#cb25-23" aria-hidden="true" tabindex="-1"></a>assert<span class="op">.</span><span class="fu">deepEqual</span>(</span>
+<span id="cb25-24"><a href="#cb25-24" aria-hidden="true" tabindex="-1"></a>    files<span class="op">.</span><span class="fu">map</span>(f <span class="kw">=&gt;</span> <span class="fu">getTitle</span>(f))<span class="op">,</span></span>
+<span id="cb25-25"><a href="#cb25-25" aria-hidden="true" tabindex="-1"></a>    [</span>
+<span id="cb25-26"><a href="#cb25-26" aria-hidden="true" tabindex="-1"></a>        <span class="st">'My Diary'</span><span class="op">,</span></span>
+<span id="cb25-27"><a href="#cb25-27" aria-hidden="true" tabindex="-1"></a>        <span class="st">'(Untitled)'</span><span class="op">,</span></span>
+<span id="cb25-28"><a href="#cb25-28" aria-hidden="true" tabindex="-1"></a>    ])<span class="op">;</span></span></code></pre></div>
+<p>我们本可以通过数组对 “just” 和 “nothing”
+进行编码，但我们的方法的好处是 TypeScript 对其有很好的支持（通过<a href="https://www.typescriptlang.org/docs/handbook/unions-and-intersections.html#discriminate-unions">可辨识联合</a>）。</p>
+<h2 id="我的方法">我的方法</h2>
+<p>我不喜欢将 <code>undefined</code> 用作被忽略的值的原因有三个：</p>
+<ul>
+<li><code>undefined</code> 通常是在 JavaScript 中意外出现的。</li>
+<li><code>undefined</code>
+会触发参数和解构的默认值（出于某些原因，某些人更喜欢
+<code>undefined</code>）。</li>
+</ul>
+<p>因此，如果需要特殊值，可以使用以下两种方法之一：</p>
+<ul>
+<li>我将 <code>null</code> 用作被忽略的值。（顺便说一句，TypeScript
+相对较好地支持了这种方法。）</li>
+<li>我通过上述的其中一种技术避免了同时出现 <code>undefined</code> 和
+<code>null</code>
+的情况，优点在乎让代码更干净，而缺点在于需要做出更多的工作。</li>
+</ul>
+
+
+
+            </div>
+        </article>
+        <div class="sidebar">
+            <div class="about-box">
+    <div class="avatar">
+        <img src="/assets/media/bitmap/avatar.jpeg" alt="avatar">
+    </div>
+    <h1>霜羽 Hoarfroster</h1>
+    <h2>@PassionPenguin</h2>
+    <p class="moment"><span class="status">🤔</span><span>努力！</span></p>
+    <ul>
+        <li><i class="fa-solid fa-location-dot"></i> 广东 · 广州 | <span class="light">Guangzhou, China</span>
+        </li>
+        <li><i class="fa-solid fa-envelope"></i> <a href="mailto:hoarfroster@outlook.com">hoarfroster@outlook.com</a>
+        </li>
+        <li><i class="fa-solid fa-house"></i> <a href="https://story.hoarfroster.space/">https://story.hoarfroster.space/</a>
+        </li>
+    </ul>
+</div>
+<div class="organization">
+    <h4>组织 Organizations</h4>
+    <ul>
+        <li>
+            <img src="https://avatars.githubusercontent.com/u/81648011?s=60&amp;v=4"
+                alt="Hexa-Penguin"><span>Hexa-Penguin</span>
+        </li>
+        <li>
+            <img src="https://avatars.githubusercontent.com/u/10482599?s=60&amp;v=4" alt="xitu"><span>稀土 xitu</span>
+        </li>
+    </ul>
+</div>
+<div class="category">
+    <span class="title">文章分类</span>
+    <ul>
+        <!-- <li><a href="/archive.html">所有分类</a></li> -->
+    </ul>
+</div>
+<div class="archive">
+    <span class="title">文章存档</span>
+    <ul>
+        <!-- <li><a href="/archive.html">所有文章</a></li> -->
+    </ul>
+</div>
+        </div>
+    </div>
+    <div class="footer">
+    <div class="content">
+        <div class="about">
+            <p>霜羽 Hoarfroster</p>
+            <p>&copy; Copyright 2021 Hoarfroster and contributors.</p>
+        </div>
+        <div class="nav">
+            <div class="links">
+                <span class="title">关于文章</span>
+                <ul>
+                    <li><a href="/archive.html">文章存档</a></li>
+                </ul>
+            </div>
+            <div class="category">
+                <span class="title">关于霜羽</span>
+                <ul>
+                    <li><a href="/about.html">有关霜羽</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <ul class="social-accounts">
+        <li>
+            <a href="https://www.zhihu.com/people/shuang-yu-29-75">
+                <i class="fa-brands fa-zhihu" style="font-size: 24px; color:#06f; line-height: 24px;"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://github.com/PassionPenguin">
+                <img src="/assets/media/vectors/github.svg" alt="github-logo"/>
+            </a>
+        </li>
+        <li>
+            <a href="https://dribbble.com/Hoarfroster">
+                <img src="/assets/media/vectors/dribbble.svg" alt="dribbble-logo"/>
+            </a>
+        </li>
+        <li>
+            <a href="https://zh.wikipedia.org/wiki/User:HoarfrostFeather">
+                <i class="fa-brands fa-wikipedia-w" style="font-size: 22px; color: #888; line-height: 24px;"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://space.bilibili.com/201469972">
+                <i class="fa-brands fa-bilibili" style="font-size: 22px; color: #00a1d6; line-height: 24px;"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+</body>
+
+</html>

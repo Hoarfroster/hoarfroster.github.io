@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>幻数并没有我们想象中的那么奇幻</title>
+    <script src="/assets/script/main.js"></script>
+    <link rel="stylesheet" href="/assets/style/styles.css">
+</head>
+
+<body>
+    <div class="header">
+    <div class="container">
+        <div class="icon">
+            <img src="/assets/media/vectors/hoarfroster-text.svg" alt="Hoarfroster Logo with Text">
+        </div>
+        <nav class="navigation">
+            <ul class="header-navigation-list">
+                <li><a href="/">首页</a></li>
+                <li><a href="/archive.html">文章</a></li>
+                <li><a href="/about.html">关于</a></li>
+            </ul>
+            <form action="/search" method="post">
+                <label>
+                    <input type="text" class="search" placeholder="搜索咕咕咕的小站"/>
+                </label>
+                <label class="submit">
+                    <input type="submit"/>
+                </label>
+            </form>
+        </nav>
+        <ul class="social-accounts">
+            <li>
+                <a href="https://www.zhihu.com/people/shuang-yu-29-75">
+                    <i class="fa-brands fa-zhihu" style="font-size: 20px; color:#06f; line-height: 20px;"></i>
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/PassionPenguin">
+                    <img src="/assets/media/vectors/github.svg" alt="github-logo"/>
+                </a>
+            </li>
+            <li>
+                <a href="https://dribbble.com/Hoarfroster">
+                    <img src="/assets/media/vectors/dribbble.svg" alt="dribbble-logo"/>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+    <div class="content article">
+        <article>
+            <div class="title">
+                <h1>幻数并没有我们想象中的那么奇幻</h1>
+                <p><span class='chars'>undefined chars</span><span class='created-date'>Created Sat May 28 2022 23:43:08 GM</span><span class='modified-date'>Modified Sat May 28 2022 23:43:08 GM</span></p>
+            </div>
+            <div class="main markdown-body">
+                
+
+<blockquote>
+<ul>
+<li>原文地址：<a href="https://medium.com/better-programming/magic-numbers-are-not-that-magic-132297d435f5">Magic
+Numbers Are Not That Magic</a></li>
+<li>原文作者：<a href="https://medium.com/@steven.popovich">Steven
+Popovich</a></li>
+<li>译者：<a href="https://github.com/PassionPenguin">霜羽
+Hoarfroster</a></li>
+<li>校对者：<a href="https://github.com/fltenwall">fltenwall</a>、<a href="https://github.com/HumanBeingXenon">HumanBeingXenon</a></li>
+</ul>
+</blockquote>
+<blockquote>
+<p>A better solution for hardcoded numbers</p>
+</blockquote>
+<p><img src="https://cdn-images-1.medium.com/max/9562/1*fzMDTQAsZ8D9O3YXJwLW5A.jpeg" alt="图自 Maail 源 Unsplash"></p>
+<p>我真的不喜欢幻数这个词 ——
+我看到太多人都理解错了。我见过这么一种代码审查，一看见代码中或者注释中有数字就评论：“哦，这是个幻数呢，请您务必给它取个名并放在代码头部”，我好多的代码里也会有这样的评论。</p>
+<p>（我也很不喜欢有的时候我们会有应该要把所有的变量放在一个文件的顶部的想法，但这是另一个故事。）</p>
+<p>亲爱的开发人员们啊，您可以在代码中大量使用纯数字，只是请务必注意自己在干什么啊。</p>
+<h2 id="什么是幻数">什么是幻数？</h2>
+<p>我的意思是，您可以在 Google
+上搜索它，并获得一堆如金银绸缎但却又站不住脚的定义。但实际上，幻数其实就是代码中难以理解的数字。</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode kotlin"><code class="sourceCode kotlin"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fun</span> <span class="fu">generate</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="op">(</span>i <span class="kw">in</span> <span class="dv">0</span> until <span class="dv">52</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        deck<span class="op">[</span>i<span class="op">]</span> <span class="op">=</span> uniqueCard<span class="op">()</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>这个 52 从哪来的？</p>
+<p>好吧，事实证明这是生成纸牌组的代码，而 52
+恰好是纸牌组中的纸牌总数。不妨让我们给数字起个名字。</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode kotlin"><code class="sourceCode kotlin"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>const <span class="kw">val</span> <span class="va">numberOfCardsInADeck</span> <span class="op">=</span> <span class="dv">52</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="kw">fun</span> <span class="fu">generate</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="op">(</span>i <span class="kw">in</span> <span class="dv">0</span> until numberOfCardsInADeck<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>        deck<span class="op">[</span>i<span class="op">]</span> <span class="op">=</span> uniqueCard<span class="op">()</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>这样，代码就会更具可读性、可维护性。太好了，您已经掌握了如何编写干净的代码的不二法门。</p>
+<p>嘿嘿，不，这只是冰山一角。这个示例（这是一个非常常见的示例）告诉我们一个非常深奥的道理
+—— 开发人员可能很容易地从其余的代码中明白 52 究竟是什么 ——
+这是一只非常温顺的幻数怪。</p>
+<p>当幻数怪突然冒出来的时候，那才是它们展示真实面孔的时间嗷。例如使用以下代码调整搜索算法：</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode kotlin"><code class="sourceCode kotlin"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fun</span> <span class="fu">search</span><span class="op">(</span><span class="va">query</span><span class="op">:</span> <span class="dt">String</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    find<span class="op">(</span>query<span class="op">,</span> <span class="fl">2.4f</span><span class="op">,</span> <span class="fl">10.234f</span><span class="op">,</span> <span class="dv">999</span><span class="op">,</span> <span class="kw">Int</span><span class="op">.</span>MAX_VALUE<span class="op">,</span> <span class="kw">false</span><span class="op">)</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>噢这奇怪的数字到底意味着什么？看来想要弄清楚这些数字的用途和作用并不容易。</p>
+<h2 id="为什么使用幻数是个问题">为什么使用幻数是个问题？</h2>
+<p>假设您的应用规模不断扩大，需要搜索的内容还很多，突然之间，您的搜索结果并没有完全满足您的需求。</p>
+<p>我们有一个错误：“当我搜索“麦片“时，即使我知道谷物一定是它的成分，谷物也不会出现在结果中。”</p>
+<p>在本算法四年前那最后一次被修改以后，我的 Joe Schmo
+啊，您现在需要更改这些值以解决此错误，而您首先需要改变什么？</p>
+<p>——
+幻数。如果您将这些幻数怪与一个描述性名称或者注释文档组合在一起，那么就可以杀害幻数怪。当然，幻数怪那么可爱，杀害它们会让我们更容易理解这个算法！让我们一起来解决这个问题：</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode kotlin"><code class="sourceCode kotlin"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>const <span class="kw">val</span> <span class="va">searchWeight</span> <span class="op">=</span> <span class="fl">2.4f</span> <span class="co">// 查询结果的具体程度，增加此数字以获得更多模糊的结果</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>const <span class="kw">val</span> <span class="va">searchSpread</span> <span class="op">=</span> <span class="fl">10.234f</span> <span class="co">// 结果的连续程度。在数据库中连续选择更多单词</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>const <span class="kw">val</span> <span class="va">searchPageSize</span> <span class="op">=</span> <span class="dv">999</span> <span class="co">// 每个搜索页面所需的结果数</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>const <span class="kw">val</span> <span class="va">searchMaxResults</span> <span class="op">=</span> <span class="kw">Int</span><span class="op">.</span>MAX_VALUE <span class="co">// 我们希望的能从搜索中获得所有可能的结果</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>const <span class="kw">val</span> <span class="va">shouldSearchIndex</span> <span class="op">=</span> <span class="kw">false</span> <span class="co">// 我们不想搜索索引</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="kw">fun</span> <span class="fu">search</span><span class="op">(</span><span class="va">query</span><span class="op">:</span> <span class="dt">String</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    find<span class="op">(</span>query<span class="op">,</span> searchWeight<span class="op">,</span> searchSpread<span class="op">,</span> searchPageSize<span class="op">,</span> searchMaxResults<span class="op">,</span> shouldSearchIndex<span class="op">)</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co">// 调用我们的加权搜索算法。在foo.bar.com上阅读有关此算法的文档</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="kw">fun</span> <span class="fu">find</span><span class="op">(</span><span class="va">query</span><span class="op">:</span> <span class="dt">String</span><span class="op">,</span> <span class="va">weight</span><span class="op">:</span> <span class="dt">Float</span><span class="op">,</span> <span class="va">spread</span><span class="op">:</span> <span class="dt">Float</span><span class="op">,</span> <span class="va">pageSize</span><span class="op">:</span> <span class="dt">Int</span><span class="op">,</span> <span class="va">maxResults</span><span class="op">:</span> <span class="dt">Int</span><span class="op">,</span> <span class="va">index</span><span class="op">:</span> <span class="dt">Boolean</span><span class="op">)</span> <span class="op">{}</span></span></code></pre></div>
+<p>处理这样的代码，您会不会感觉舒服多了？您甚至可能对如何进行更改有所了解。优化搜索可能很困难，但是接手的人凭着这份文档，就能更好地解决这个漏洞</p>
+<h2 id="什么不能称之为幻数">什么不能称之为幻数？</h2>
+<p>实际上，难以推理的数字不会像容易推理的数字那样频繁出现。例如这个数据：</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode kotlin"><code class="sourceCode kotlin"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>view<span class="op">.</span>height <span class="op">=</span> <span class="dv">42</span></span></code></pre></div>
+<p>这可不是一个幻数，我再强调一遍：这不是一个幻数！</p>
+<p>我知道。我给一些 Java 代码纯粹主义者和洁癖一个暴击。</p>
+<p>但是这个数字并不难推论 —— 它的意义是完全独立的 —— 该视图的高度为
+42！最多的翻译就是这样，但是像这样数据，即使我们给它取一个名称，又会增加什么价值？</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode kotlin"><code class="sourceCode kotlin"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>const <span class="kw">val</span> <span class="va">viewHeight</span> <span class="op">=</span> <span class="dv">42</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="kw">fun</span> <span class="fu">buildView</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    view<span class="op">.</span>height <span class="op">=</span> viewHeight</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>以上做法只会导致冗杂代码。而这似乎是一个很小的例子，但是这种不必要地命名数字的想法会迅速增加
+UI 代码的大小 —— 增加代码行数，完成绩效。</p>
+<h2 id="所以我们是否可以在代码中使用数字">所以我们是否可以在代码中使用数字？</h2>
+<p>这是当然的！世界上有很多不错的代码里面使用了数字。要做到不出现幻数，您只需要记住以下几点：</p>
+<ul>
+<li>确保您的数字易于理解 —— 就算是孩子也能指出数字是哪里来的</li>
+<li>如果您要更改数字，调整某些内容，或在纸上进行一些计算才能得到的硬编码数字，请务必进行解释。在代码中，在数字旁边，或至少在更改的提交中，应当提出并解释硬编码数字发生的变更。</li>
+<li>额外一招：请确保您的硬编码数字是干净的</li>
+</ul>
+<p>相信我，使用注释解释或使用变量名解释数字是很有用的！</p>
+<p>祝你好运，感谢你的阅读！</p>
+
+
+
+            </div>
+        </article>
+        <div class="sidebar">
+            <div class="about-box">
+    <div class="avatar">
+        <img src="/assets/media/bitmap/avatar.jpeg" alt="avatar">
+    </div>
+    <h1>霜羽 Hoarfroster</h1>
+    <h2>@PassionPenguin</h2>
+    <p class="moment"><span class="status">🤔</span><span>努力！</span></p>
+    <ul>
+        <li><i class="fa-solid fa-location-dot"></i> 广东 · 广州 | <span class="light">Guangzhou, China</span>
+        </li>
+        <li><i class="fa-solid fa-envelope"></i> <a href="mailto:hoarfroster@outlook.com">hoarfroster@outlook.com</a>
+        </li>
+        <li><i class="fa-solid fa-house"></i> <a href="https://story.hoarfroster.space/">https://story.hoarfroster.space/</a>
+        </li>
+    </ul>
+</div>
+<div class="organization">
+    <h4>组织 Organizations</h4>
+    <ul>
+        <li>
+            <img src="https://avatars.githubusercontent.com/u/81648011?s=60&amp;v=4"
+                alt="Hexa-Penguin"><span>Hexa-Penguin</span>
+        </li>
+        <li>
+            <img src="https://avatars.githubusercontent.com/u/10482599?s=60&amp;v=4" alt="xitu"><span>稀土 xitu</span>
+        </li>
+    </ul>
+</div>
+<div class="category">
+    <span class="title">文章分类</span>
+    <ul>
+        <!-- <li><a href="/archive.html">所有分类</a></li> -->
+    </ul>
+</div>
+<div class="archive">
+    <span class="title">文章存档</span>
+    <ul>
+        <!-- <li><a href="/archive.html">所有文章</a></li> -->
+    </ul>
+</div>
+        </div>
+    </div>
+    <div class="footer">
+    <div class="content">
+        <div class="about">
+            <p>霜羽 Hoarfroster</p>
+            <p>&copy; Copyright 2021 Hoarfroster and contributors.</p>
+        </div>
+        <div class="nav">
+            <div class="links">
+                <span class="title">关于文章</span>
+                <ul>
+                    <li><a href="/archive.html">文章存档</a></li>
+                </ul>
+            </div>
+            <div class="category">
+                <span class="title">关于霜羽</span>
+                <ul>
+                    <li><a href="/about.html">有关霜羽</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <ul class="social-accounts">
+        <li>
+            <a href="https://www.zhihu.com/people/shuang-yu-29-75">
+                <i class="fa-brands fa-zhihu" style="font-size: 24px; color:#06f; line-height: 24px;"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://github.com/PassionPenguin">
+                <img src="/assets/media/vectors/github.svg" alt="github-logo"/>
+            </a>
+        </li>
+        <li>
+            <a href="https://dribbble.com/Hoarfroster">
+                <img src="/assets/media/vectors/dribbble.svg" alt="dribbble-logo"/>
+            </a>
+        </li>
+        <li>
+            <a href="https://zh.wikipedia.org/wiki/User:HoarfrostFeather">
+                <i class="fa-brands fa-wikipedia-w" style="font-size: 22px; color: #888; line-height: 24px;"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://space.bilibili.com/201469972">
+                <i class="fa-brands fa-bilibili" style="font-size: 22px; color: #00a1d6; line-height: 24px;"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+</body>
+
+</html>

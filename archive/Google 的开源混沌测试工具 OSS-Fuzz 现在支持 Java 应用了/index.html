@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google 的开源混沌测试工具 OSS-Fuzz 现在支持 Java 应用了</title>
+    <script src="/assets/script/main.js"></script>
+    <link rel="stylesheet" href="/assets/style/styles.css">
+</head>
+
+<body>
+    <div class="header">
+    <div class="container">
+        <div class="icon">
+            <img src="/assets/media/vectors/hoarfroster-text.svg" alt="Hoarfroster Logo with Text">
+        </div>
+        <nav class="navigation">
+            <ul class="header-navigation-list">
+                <li><a href="/">首页</a></li>
+                <li><a href="/archive.html">文章</a></li>
+                <li><a href="/about.html">关于</a></li>
+            </ul>
+            <form action="/search" method="post">
+                <label>
+                    <input type="text" class="search" placeholder="搜索咕咕咕的小站"/>
+                </label>
+                <label class="submit">
+                    <input type="submit"/>
+                </label>
+            </form>
+        </nav>
+        <ul class="social-accounts">
+            <li>
+                <a href="https://www.zhihu.com/people/shuang-yu-29-75">
+                    <i class="fa-brands fa-zhihu" style="font-size: 20px; color:#06f; line-height: 20px;"></i>
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/PassionPenguin">
+                    <img src="/assets/media/vectors/github.svg" alt="github-logo"/>
+                </a>
+            </li>
+            <li>
+                <a href="https://dribbble.com/Hoarfroster">
+                    <img src="/assets/media/vectors/dribbble.svg" alt="dribbble-logo"/>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+    <div class="content article">
+        <article>
+            <div class="title">
+                <h1>Google 的开源混沌测试工具 OSS-Fuzz 现在支持 Java 应用了</h1>
+                <p><span class='chars'>undefined chars</span><span class='created-date'>Created Sat May 28 2022 23:43:08 GM</span><span class='modified-date'>Modified Sat May 28 2022 23:43:08 GM</span></p>
+            </div>
+            <div class="main markdown-body">
+                
+
+<blockquote>
+<ul>
+<li>原文地址：<a href="https://www.infoworld.com/article/3611510/googles-oss-fuzz-extends-fuzzing-to-java-apps.html#tk.rss_devops">Google’s
+OSS-Fuzz extends fuzzing to Java apps</a></li>
+<li>原文作者：<a href="https://www.infoworld.com/author/Paul-Krill/">Paul Krill</a></li>
+<li>译者：<a href="https://github.com/PassionPenguin">霜羽
+Hoarfroster</a></li>
+<li>校对者：<a href="https://github.com/huifrank">huifrank</a>，<a href="https://github.com/1autodidact">1autodidact</a></li>
+</ul>
+</blockquote>
+<p>Google 的开源混沌测试服务 OSS-Fuzz 现在支持 Java 以及 JVM-based
+的应用程序了！这项功能于 3 月 10 日公布。</p>
+<p><a href="https://github.com/google/oss-fuzz">OSS-Fuzz</a>
+为开源软件提供持续的混沌测试。混沌测试作为一种将半随机和非法的输入流发送到程序，用于发现软件中的编程错误和安全漏洞的技术。用内存安全语言（基于
+JVM
+的语言）编写的混沌代码能够帮助我们发现导致程序崩溃或行为异常的错误。</p>
+<p>Google 通过将 OSS-Fuzz 与 Code Intelligence 的 <a href="https://blog.code-intelligence.com/engineering-jazzer">Jazzer</a>
+混沌器集成在一起，为 Java 和 JVM 开启了混沌处理功能。Jazzer
+让我们可以通过 LLVM 项目的 libFuzzer
+引擎（运行于进程内，覆盖引导的的混沌引擎），类似于对 C / C++
+的混沌处理，对基于 JVM 语言编写的代码进行混沌处理。Jazzer 支持的语言包括
+Java、Clojure、Kotlin 和 Scala。代码覆盖率的反馈是基于 JVM 字节码提供给
+libFuzzer 的，而 libFuzzer 功能包括：</p>
+<ul>
+<li><a href="https://github.com/google/fuzzing/blob/master/docs/split-inputs.md#fuzzed-data-provider">FuzzedDataProvider</a>
+用于混沌测试中处理不接收字节数组的代码。</li>
+<li>基于8位边缘计数器的代码覆盖率评估。</li>
+<li>最大限度地减少崩溃的输入。</li>
+<li><a href="https://llvm.org/docs/LibFuzzer.html#value-profile">Value
+Profiles</a>.</li>
+</ul>
+<p><a href="https://google.github.io/oss-fuzz/getting-started/new-project-guide/jvm-lang/">Google
+提供了</a>向基于 JVM 语言编写的开源项目加入 OSS-Fuzz 的文档。Jazzer
+的开发计划要求 Jazzer 最终支持所有的 libFuzzer 功能。Jazzer 还可以通过
+Java
+原生接口执行本地代码时提供覆盖率反馈。这样可以发现内存不安全的本地代码中的内存损坏漏洞。OSS-Fuzz
+还同时支持了 Go、Python，C/C + 和 Rust 等语言。</p>
+
+
+
+            </div>
+        </article>
+        <div class="sidebar">
+            <div class="about-box">
+    <div class="avatar">
+        <img src="/assets/media/bitmap/avatar.jpeg" alt="avatar">
+    </div>
+    <h1>霜羽 Hoarfroster</h1>
+    <h2>@PassionPenguin</h2>
+    <p class="moment"><span class="status">🤔</span><span>努力！</span></p>
+    <ul>
+        <li><i class="fa-solid fa-location-dot"></i> 广东 · 广州 | <span class="light">Guangzhou, China</span>
+        </li>
+        <li><i class="fa-solid fa-envelope"></i> <a href="mailto:hoarfroster@outlook.com">hoarfroster@outlook.com</a>
+        </li>
+        <li><i class="fa-solid fa-house"></i> <a href="https://story.hoarfroster.space/">https://story.hoarfroster.space/</a>
+        </li>
+    </ul>
+</div>
+<div class="organization">
+    <h4>组织 Organizations</h4>
+    <ul>
+        <li>
+            <img src="https://avatars.githubusercontent.com/u/81648011?s=60&amp;v=4"
+                alt="Hexa-Penguin"><span>Hexa-Penguin</span>
+        </li>
+        <li>
+            <img src="https://avatars.githubusercontent.com/u/10482599?s=60&amp;v=4" alt="xitu"><span>稀土 xitu</span>
+        </li>
+    </ul>
+</div>
+<div class="category">
+    <span class="title">文章分类</span>
+    <ul>
+        <!-- <li><a href="/archive.html">所有分类</a></li> -->
+    </ul>
+</div>
+<div class="archive">
+    <span class="title">文章存档</span>
+    <ul>
+        <!-- <li><a href="/archive.html">所有文章</a></li> -->
+    </ul>
+</div>
+        </div>
+    </div>
+    <div class="footer">
+    <div class="content">
+        <div class="about">
+            <p>霜羽 Hoarfroster</p>
+            <p>&copy; Copyright 2021 Hoarfroster and contributors.</p>
+        </div>
+        <div class="nav">
+            <div class="links">
+                <span class="title">关于文章</span>
+                <ul>
+                    <li><a href="/archive.html">文章存档</a></li>
+                </ul>
+            </div>
+            <div class="category">
+                <span class="title">关于霜羽</span>
+                <ul>
+                    <li><a href="/about.html">有关霜羽</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <ul class="social-accounts">
+        <li>
+            <a href="https://www.zhihu.com/people/shuang-yu-29-75">
+                <i class="fa-brands fa-zhihu" style="font-size: 24px; color:#06f; line-height: 24px;"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://github.com/PassionPenguin">
+                <img src="/assets/media/vectors/github.svg" alt="github-logo"/>
+            </a>
+        </li>
+        <li>
+            <a href="https://dribbble.com/Hoarfroster">
+                <img src="/assets/media/vectors/dribbble.svg" alt="dribbble-logo"/>
+            </a>
+        </li>
+        <li>
+            <a href="https://zh.wikipedia.org/wiki/User:HoarfrostFeather">
+                <i class="fa-brands fa-wikipedia-w" style="font-size: 22px; color: #888; line-height: 24px;"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://space.bilibili.com/201469972">
+                <i class="fa-brands fa-bilibili" style="font-size: 22px; color: #00a1d6; line-height: 24px;"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+</body>
+
+</html>
