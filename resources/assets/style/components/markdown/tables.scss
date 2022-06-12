@@ -1,0 +1,38 @@
+@use '../colors';
+
+// Needs refactoring
+// stylelint-disable selector-max-type
+.markdown-body {
+  // Tables
+  table {
+    display: block;
+    width: 100%; // keep for backwards compatibility
+    width: max-content;
+    max-width: 100%;
+    overflow: auto;
+
+    th {
+      font-weight: 600;
+    }
+
+    th,
+    td {
+      // stylelint-disable-next-line primer/spacing
+      padding: 6px 13px;
+      border: 1px solid colors.$borderColor;
+    }
+
+    tr {
+      background-color: colors.$white;
+      border-top: 1px solid colors.$borderColor;
+
+      &:nth-child(2n) {
+        background-color: colors.$lightColor;
+      }
+    }
+
+    img {
+      background-color: transparent;
+    }
+  }
+}

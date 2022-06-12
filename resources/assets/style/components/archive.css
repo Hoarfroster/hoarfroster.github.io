@@ -1,0 +1,54 @@
+.main > .archive {
+  list-style: none;
+  margin: 0;
+  padding: 8px;
+}
+
+.main > .archive > li {
+  margin-bottom: 32px;
+}
+
+.main > .archive span.title {
+  font: 600 24px/1.5 sans-serif;
+}
+
+.main .archive span.category {
+  line-height: 21px;
+  margin-right: 16px;
+  font-size: 18px;
+  border-radius: 8px;
+  border: 1px solid;
+  padding: 4px 8px;
+  vertical-align: middle;
+  display: inline-block;
+  height: 30px;
+  box-sizing: border-box;
+}
+
+.main .archive ul.tags {
+  list-style: none;
+  font-size: 12px;
+  margin: 6px 0;
+  display: flex;
+  padding: 0;
+  float: right;
+}
+
+.main .archive ul.tags li {
+  padding: 2px 4px;
+  margin: 0 4px;
+  background: #88888844;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.main .archive ul.tags li:hover, .main .archive ul.tags li:focus {
+  background: #88888888;
+}
+
+.main .archive span.meta {
+  display: block;
+  font-size: 14px;
+}
+
+/*# sourceMappingURL=archive.css.map */

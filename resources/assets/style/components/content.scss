@@ -1,0 +1,352 @@
+@use 'colors';
+
+.content {
+  max-width: 1200px;
+  width: calc(100% - 40px);
+  margin: 36px auto;
+  display: flex;
+  align-items: flex-start;
+
+  &.article,
+  &.archive {
+    article {
+      padding: 24px 36px;
+      flex: 5;
+      background: #fff;
+      max-width: calc(100% - 360px);
+
+      .title {
+        text-align: center;
+
+        h1 {
+          border-bottom: 1px solid #ddd;
+          padding-bottom: 16px;
+          font-size: 2rem;
+        }
+      }
+
+      .toc p {
+        font: 800 18px/2 sans-serif;
+      }
+
+      img[loading="lazy"] {
+        max-width: 75%;
+        margin: 8px auto;
+        display: block;
+      }
+    }
+
+    .sidebar {
+      margin: 0 16px;
+      flex: 2;
+      max-width: 280px;
+
+      &>* {
+        margin-bottom: 16px;
+        padding: 12px 16px;
+        background: #fff;
+
+        &>span.title {
+          margin-bottom: 16px;
+          padding-bottom: 12px;
+          display: block;
+          border-bottom: 1px solid #ddd;
+        }
+      }
+
+      .avatar {
+        margin: 16px auto;
+        display: block;
+      }
+
+      .about-box {
+        padding: 16px 24px;
+      }
+    }
+  }
+
+  &.home {
+    min-height: calc(100vh - 56px);
+    width: 100vw;
+    max-width: unset;
+    flex-direction: column;
+
+    &>* {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 25vh;
+      margin-bottom: min(3vw, 24px);
+      font-size: min(10vw, 72px);
+    }
+
+    button {
+      width: fit-content;
+      font-size: min(6vw, 28px);
+      padding-bottom: min(1vw, 8px);
+    }
+  }
+
+  &.about {
+    flex-direction: column;
+
+    .tab {
+      display: none;
+      padding-left: calc(25vw - 10px);
+      border-bottom: 1px solid colors.$borderColor;
+      width: calc(75% + 50px); // 100% - 40px - (25% - 10px)
+
+      .tab-item {
+        padding: 8px 16px;
+        cursor: pointer;
+        font-size: 15px;
+        font-weight: 600;
+
+        .material-icons-outlined {
+          font-size: 18px;
+          vertical-align: middle;
+          padding-right: 4px;
+        }
+
+        &.active {
+          border-bottom: 3px solid colors.$primaryColor;
+        }
+
+        &:hover,
+        &:focus {
+          border-bottom: 3px solid colors.$borderColor;
+        }
+      }
+    }
+
+    .container {
+      display: flex;
+      width: 100%;
+    }
+
+    .main {
+      background: colors.$white;
+      border-radius: 8px;
+      border: 1px solid colors.$borderColor;
+      margin: 36px 24px;
+      padding: 16px 36px 36px 36px;
+      width: 100%;
+      position: relative;
+
+      * {
+        transition: 500ms ease-in-out;
+      }
+
+      &>* {
+        opacity: 0;
+        display: none;
+
+        &.active {
+          display: block;
+          opacity: 1;
+        }
+
+        &.animation {
+          opacity: 1;
+          display: block;
+        }
+
+        &.active.animation {
+          opacity: 0;
+        }
+      }
+    }
+
+    .sidebar {
+      width: calc(25vw - 10px); // (100% - 40px) * 40%
+      max-width: 320px;
+      min-width: 280px;
+      padding: 0 22px;
+      display: none;
+    }
+
+    .about article {
+      font-size: 14px;
+      padding-top: 16px;
+    }
+
+    .projects {
+      ul {
+        list-style: none;
+        padding: 0;
+
+        li {
+          padding-top: 4px;
+          height: 24px;
+          font-size: 14px;
+          font-weight: 600;
+        }
+      }
+    }
+
+    .contact {
+      ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      li {
+        padding-top: 4px;
+        height: 24px;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 24px;
+
+        img,
+        .fa-solid,
+        .fa-brands {
+          width: 20px;
+          font-size: 20px;
+          vertical-align: middle;
+          padding-right: 8px;
+        }
+      }
+    }
+  }
+
+
+
+  .sidebar {
+
+    &>div {
+      padding: 16px 0;
+
+      &:not(:last-child) {
+        border-bottom: 1px solid colors.$borderColor;
+      }
+    }
+
+    .avatar img {
+      width: calc(100% - 72px);
+      aspect-ratio: 1;
+      margin: -36px 36px 36px 24px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    h4 {
+      margin: 0;
+      font-size: 18px;
+    }
+
+    .about-box {
+      h1 {
+        border-bottom: none;
+        font-size: 24px;
+        margin: 0;
+      }
+
+      h2 {
+        border-bottom: none;
+        font-size: 20px;
+        color: colors.$lightTextColor;
+        margin: 0;
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+
+        li {
+          height: 24px;
+          padding-top: 4px;
+          font-weight: 600;
+          font-size: 14px;
+          line-height: 24px;
+
+          .material-icons-outlined {
+            font-size: 18px;
+            vertical-align: middle;
+            padding-right: 4px;
+          }
+        }
+      }
+
+      .moment {
+        padding: 4px 16px;
+        font-size: 14px;
+        border: 1px solid colors.$borderColor;
+        border-radius: 8px;
+        width: fit-content;
+
+        .status {
+          font-size: 12px;
+          padding-right: 8px;
+        }
+      }
+    }
+
+    .organization {
+      font-weight: 600;
+      font-size: 14px;
+
+      ul {
+        list-style: none;
+        padding: 0;
+
+        li {
+          padding: 8px 0;
+        }
+      }
+
+      img {
+        width: 36px;
+        height: 36px;
+        border-radius: 4px;
+        margin-right: 8px;
+        vertical-align: middle;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .content {
+    &.about {
+      .tab {
+        display: flex;
+      }
+
+      .sidebar {
+        display: unset;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 640px) {
+
+  .content.article,
+  .content.archive {
+    display: block;
+
+    article {
+      max-width: unset;
+    }
+
+    .sidebar {
+      display: none;
+    }
+  }
+
+  .content.about {
+    .main {
+      margin: 0 8px 36px 8px;
+      padding: 16px;
+    }
+  }
+}
+
+.meta > * {
+  padding: 8px;
+  font-size: 14px;
+  color: #888;
+}

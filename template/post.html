@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+    <script src="/assets/script/main.js"></script>
+    <link rel="stylesheet" href="/assets/style/styles.css">
+</head>
+
+<body>
+    {{topbar}}
+    <div class="content article">
+        <article>
+            <div class="title">
+                <h1>{{title}}</h1>
+                <p>{{meta}}</p>
+            </div>
+            <div class="main markdown-body">
+                {{content}}
+            </div>
+        </article>
+        <div class="sidebar">
+            {{sidebar}}
+        </div>
+    </div>
+    {{footer}}
+</body>
+
+</html>
