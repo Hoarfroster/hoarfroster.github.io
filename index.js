@@ -71,7 +71,7 @@ if (cluster.isMaster) {
                                 fse.copySync(path.join(__dirname, 'resources', 'assets'), path.join(__dirname, 'public', 'assets'), { overwrite: true });
                                 fse.copySync(path.join(__dirname, 'resources', 'CNAME'), path.join(__dirname, 'public', 'CNAME'), { overwrite: true });
                                 let aboutPageContent = fse.readFileSync(path.join(__dirname, 'resources', 'about.html'), 'utf8');
-                                aboutPageContent = aboutPageContent.replace('{{sidebar}}', templateSidebar);
+                                aboutPageContent = aboutPageContent.replace('{{sidebar}}', templateSidebar).replace('{{topbar}}', templateTopbar).replace('{{footer}}', templateFooter);
                                 fse.writeFileSync(path.join(__dirname, 'public', 'about.html'), aboutPageContent);
                             }, 10);
                         }
