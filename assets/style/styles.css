@@ -343,8 +343,8 @@ code.path {
   flex-direction: column;
 }
 .content.about .tab {
-  display: none;
-  padding-left: calc(25vw - 10px);
+  display: flex;
+  padding-left: 292px;
   border-bottom: 1px solid #ddd;
   width: calc(75% + 50px);
 }
@@ -397,25 +397,134 @@ code.path {
   opacity: 0;
 }
 .content.about .sidebar {
-  width: calc(25vw - 10px);
-  max-width: 320px;
-  min-width: 280px;
+  width: 280px;
   padding: 0 22px;
   display: none;
+  margin-top: 32px;
 }
-.content.about .about article {
+.content.about section.about article {
   font-size: 14px;
   padding-top: 16px;
 }
-.content.about .projects ul {
+.content.about section.about article .description-quote {
+  padding: 0 16px !important;
+  margin: 24px 0 !important;
+  display: block;
+  color: #888 !important;
+  font-weight: 600;
+}
+.content.about section.experiences,
+.content.about section.educations,
+.content.about section.certificates,
+.content.about section.social-accounts,
+.content.about section.basic-contacts,
+.content.about section.interests {
+  margin: 8px 0;
+}
+.content.about section.experiences h4,
+.content.about section.educations h4,
+.content.about section.certificates h4,
+.content.about section.social-accounts h4,
+.content.about section.basic-contacts h4,
+.content.about section.interests h4 {
+  color: #264864;
+  font-size: 16px !important;
+  line-height: 18px !important;
+  vertical-align: middle;
+}
+.content.about section.experiences h4 .arrow::before,
+.content.about section.educations h4 .arrow::before,
+.content.about section.certificates h4 .arrow::before,
+.content.about section.social-accounts h4 .arrow::before,
+.content.about section.basic-contacts h4 .arrow::before,
+.content.about section.interests h4 .arrow::before {
+  content: "";
+  position: absolute;
+  right: -10px;
+  bottom: 0;
+  width: 0;
+  height: 0;
+  border-left: 10px solid #32557f;
+  border-bottom: 16px solid transparent;
+}
+.content.about section.experiences h4 .arrow::after,
+.content.about section.educations h4 .arrow::after,
+.content.about section.certificates h4 .arrow::after,
+.content.about section.social-accounts h4 .arrow::after,
+.content.about section.basic-contacts h4 .arrow::after,
+.content.about section.interests h4 .arrow::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 0;
+  border-left: 8px solid #f8f8f8;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+}
+.content.about section.experiences h4 .arrow,
+.content.about section.educations h4 .arrow,
+.content.about section.certificates h4 .arrow,
+.content.about section.social-accounts h4 .arrow,
+.content.about section.basic-contacts h4 .arrow,
+.content.about section.interests h4 .arrow {
+  display: inline-block;
+  width: 48px;
+  height: 16px;
+  background: #32557f;
+  position: relative;
+  margin-left: -64px;
+  margin-right: 16px;
+  vertical-align: middle;
+}
+.content.about section.experiences.interests ul,
+.content.about section.educations.interests ul,
+.content.about section.certificates.interests ul,
+.content.about section.social-accounts.interests ul,
+.content.about section.basic-contacts.interests ul,
+.content.about section.interests.interests ul {
+  display: inline-block;
+  font-weight: 600;
+  margin-top: 16px;
+}
+.content.about section.experiences:not(.basic-contacts):not(.social-accounts) ul,
+.content.about section.educations:not(.basic-contacts):not(.social-accounts) ul,
+.content.about section.certificates:not(.basic-contacts):not(.social-accounts) ul,
+.content.about section.social-accounts:not(.basic-contacts):not(.social-accounts) ul,
+.content.about section.basic-contacts:not(.basic-contacts):not(.social-accounts) ul,
+.content.about section.interests:not(.basic-contacts):not(.social-accounts) ul {
   list-style: none;
   padding: 0;
 }
-.content.about .projects ul li {
+.content.about section.experiences:not(.basic-contacts):not(.social-accounts) ul li,
+.content.about section.educations:not(.basic-contacts):not(.social-accounts) ul li,
+.content.about section.certificates:not(.basic-contacts):not(.social-accounts) ul li,
+.content.about section.social-accounts:not(.basic-contacts):not(.social-accounts) ul li,
+.content.about section.basic-contacts:not(.basic-contacts):not(.social-accounts) ul li,
+.content.about section.interests:not(.basic-contacts):not(.social-accounts) ul li {
   padding-top: 4px;
-  height: 24px;
   font-size: 14px;
   font-weight: 600;
+  display: grid;
+  grid-template-columns: 128px auto;
+}
+.content.about section.experiences:not(.basic-contacts):not(.social-accounts) ul li span.time,
+.content.about section.educations:not(.basic-contacts):not(.social-accounts) ul li span.time,
+.content.about section.certificates:not(.basic-contacts):not(.social-accounts) ul li span.time,
+.content.about section.social-accounts:not(.basic-contacts):not(.social-accounts) ul li span.time,
+.content.about section.basic-contacts:not(.basic-contacts):not(.social-accounts) ul li span.time,
+.content.about section.interests:not(.basic-contacts):not(.social-accounts) ul li span.time {
+  color: steelblue;
+  margin-top: 12px;
+}
+.content.about section.experiences:not(.basic-contacts):not(.social-accounts) ul li p,
+.content.about section.educations:not(.basic-contacts):not(.social-accounts) ul li p,
+.content.about section.certificates:not(.basic-contacts):not(.social-accounts) ul li p,
+.content.about section.social-accounts:not(.basic-contacts):not(.social-accounts) ul li p,
+.content.about section.basic-contacts:not(.basic-contacts):not(.social-accounts) ul li p,
+.content.about section.interests:not(.basic-contacts):not(.social-accounts) ul li p {
+  display: block;
 }
 .content.about .contact ul {
   list-style: none;
@@ -436,6 +545,66 @@ code.path {
   vertical-align: middle;
   padding-right: 8px;
 }
+@media (max-width: 1080px) {
+  .content.about .sidebar {
+    display: none;
+  }
+  .content.about .flex-bar {
+    display: grid;
+    grid-template-columns: 256px 100%;
+    margin-top: 16px;
+    margin-bottom: -16px;
+    padding: 0 32px;
+  }
+  .content.about .flex-bar .small-size-about-box {
+    display: grid;
+    grid-template-areas: "avatar title1" "avatar title2";
+  }
+  .content.about .flex-bar .small-size-about-box h1 {
+    font-size: 18px;
+    grid-area: title1;
+    margin: 0;
+    height: 28px;
+    margin-top: 4px;
+  }
+  .content.about .flex-bar .small-size-about-box h2 {
+    font-size: 14px;
+    grid-area: title2;
+    margin: 0;
+    height: 24px;
+    margin-top: -4px;
+    color: #888;
+  }
+  .content.about .flex-bar .small-size-about-box .avatar {
+    grid-area: avatar;
+  }
+  .content.about .flex-bar .small-size-about-box .avatar img {
+    width: 72px;
+    height: 72px;
+    object-fit: cover;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    vertical-align: middle;
+  }
+  .content.about .flex-bar .tab {
+    padding: 0;
+    height: 42px;
+    display: flex;
+    width: max-content !important;
+    margin: 8px 8px 0 0;
+  }
+}
+@media (min-width: 1080px) {
+  .content.about .sidebar {
+    display: block;
+  }
+  .content.about .small-size-about-box {
+    display: none;
+  }
+  .content.about .flex-bar {
+    display: block;
+  }
+}
 .content .sidebar > div {
   padding: 16px 0;
 }
@@ -443,11 +612,11 @@ code.path {
   border-bottom: 1px solid #ddd;
 }
 .content .sidebar .avatar img {
-  width: calc(100% - 72px);
+  width: calc(100% - 48px);
   aspect-ratio: 1;
-  margin: -36px 36px 36px 24px;
-  border-radius: 50%;
   object-fit: cover;
+  margin: -36px 24px 36px 24px;
+  border-radius: 50%;
 }
 .content .sidebar h4 {
   margin: 0;
@@ -474,11 +643,9 @@ code.path {
   font-weight: 600;
   font-size: 14px;
   line-height: 24px;
-}
-.content .sidebar .about-box ul li .material-icons-outlined {
-  font-size: 18px;
-  vertical-align: middle;
-  padding-right: 4px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 .content .sidebar .about-box .moment {
   padding: 4px 16px;
@@ -510,14 +677,6 @@ code.path {
   vertical-align: middle;
 }
 
-@media screen and (min-width: 768px) {
-  .content.about .tab {
-    display: flex;
-  }
-  .content.about .sidebar {
-    display: unset;
-  }
-}
 @media screen and (max-width: 640px) {
   .content.article,
 .content.archive {
